@@ -4,3 +4,6 @@ syntax: glob
 *.gz
 Optimization - Journal of Climate\template.pdf
 Optimization - Journal of Climate/AMS docs/
+_refs/
+*.bbl
+*.blg
