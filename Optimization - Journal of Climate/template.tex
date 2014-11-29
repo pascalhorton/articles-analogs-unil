@@ -18,8 +18,12 @@
 % DOUBLE-SPACED VERSION FOR SUBMISSION TO THE AMS
 \documentclass{ametsoc}
 
+
 % TWO-COLUMN JOURNAL PAGE LAYOUT---FOR AUTHOR USE ONLY
 % \documentclass[twocol]{ametsoc}
+
+\usepackage{multirow}
+\usepackage{gensymb}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% To be entered only if twocol option is used
@@ -150,12 +154,35 @@
 ...
 
 \subsection{Data}
-...
+
+The analogue method relies on two types of data: predictors, that are atmospheric variables describing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather time series we want to forecast.
+
+Predictors are generally reanalysis datasets (and outputs of a global numerical weather prediction models for the target situation in operational forecasting, which is not the topic of this paper). We will work here with the NCEP/NCAR reanalysis \citep[6-hourly, 17 atmospheric levels at a resolution of 2.5\degree, see][]{Kalnay1996a}, but it can be any other reanalysis.
+
+The predictand (which is to be predicted) is here the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss' stations network, for the period 1962-2007. The time series from every available gauging station were averaged over subregions in order to smooth local effects \citep{Obled2002a, Marty2012}.
+
 
 \subsection{The analogue method}
-...
 
-\cite{Horton2012}
+The analogue method is a downscaling technique based on the idea expressed by \citet{Lorenz1969a}. It aims at forecasting a predictand, often the daily precipitation, on the basis of predictor variables describing the synoptic atmospheric circulation. Its main hypothesis is that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Bontron2005}.
+
+Multiple variations of the methods are possible, and some aspects and parameters will not be detailed hereafter. There are mainly 2 implementations that are used most often: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on humidity variables \citep{Obled2002a, Bontron2005, Marty2012}.
+
+The method based on the analogy of the synoptic circulation consists in the following steps (Table \ref{table_params_R1}): For a target date, we evaluate the similarity of the atmospheric circulation with every day of the archive by processing the S1 criteria \citep[Eq.\ (\ref{eq:S1}), ][]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial window. \citet{Bontron2005} showed that the geopotential heights at 500~hPa and 1000~hPa are the best first predictors of the NCEP/NCAR reanalysis dataset, and that the S1 criteria performs better than scores based on absolute distances. The reason for such better results is that the S1 criteria allows comparing the circulation pattern, by means of the gradients, rather than the absolute value of the geopotential heights. To cope with seasonal effects, candidate data are extracted for every year from the archive within a period of 4 months centred around the target date.
+
+\begin{equation}
+\label{eq:S1}
+S1=100 \frac {\displaystyle \sum_{i} \vert \Delta\hat{z}_{i} - \Delta z_{i} \vert}
+{\displaystyle \sum_{i} max\left\lbrace \vert \Delta\hat{z}_{i} \vert , \vert \Delta z_{i} \vert \right\rbrace }
+\end{equation}
+where $\Delta \hat{z}_{i}$ is the forecast geopotential height difference between the \textit{i}th pair of adjacent points in the target situation, and $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation. The differences are processed separately in both directions. The smaller the S1 values are, the more similar the pressure fields.
+
+The $N_{1}$ dates with the lowest values of S1 are considered as analogues to the target day. The number of analogues, $N_{1}$, is a parameter to calibrate. It has an optimum clearly identifiable that is often around 50 dates when we consider only one level of analogy.
+
+Then, the daily observed precipitation amount of the $N_{1}$ resulting dates provide the empirical conditional distribution considered as the probabilistic forecast for the target day.
+
+The other most know method adds a second level of analogy on humidity variables (Table \ref{table_params_R2}). The predictor that \citet{Bontron2004a} found as optimal for the France territory is a humidity index made of the multiplication of the precipitable water with the relative humidity at 850~hPa. \cite{Horton2012b} confirmed that this product is better than any other variable from the NCEP/NCAR reanalysis considered independently. When adding a second level of analogy, we subsample $N_{2}$ (30) dates in the $N_{1}$ analogues on the atmospheric circulation, to end up with a smaller number of analogue situations. When we add a second level of analogy, we keep a higher number of analogues on the first level (70 instead of 50).
+
 
 \subsection{Calibration framework}
 
@@ -262,29 +289,37 @@ These supplementary steps often result in spatial windows that are a bit differe
 ...
 
 
-\section{Optimization of the analogy of atmospheric circulation}
+\section{Global optimization of the analogue method}
 ...
 
-\subsection{Which parameters are optimized ?}
+\subsection{Case study description}
+
+The study area is the alpine upper Rhône catchment in Switzerland (Fig.\ \ref{figure_map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region in the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project that aims at providing a real-time flood management on the upper Rh\^{o}ne catchment \citep{GarciaHernandez2009b}. The first global optimizations were part of the MINERVE project \citep{Horton2012, Horton2012b}.
+
+
+\subsection{Optimization of the analogy of atmospheric circulation}
 ...
 
-\subsection{Results of the optimization of atmospheric circulation}
+\subsubsection{Which parameters are optimized ?}
 ...
 
-\subsection{Discussion}
+\subsubsection{Results of the optimization of atmospheric circulation}
+...
+
+\subsubsection{Discussion}
 ...
 
 
-\section{Optimization of the analogy with humidity variables}
+\subsection{Optimization of the analogy with humidity variables}
 ...
 
-\subsection{Results of the optimization on both analogy levels}
+\subsubsection{Results of the optimization on both analogy levels}
 ...
 
-\subsection{Successive optimization vs global optimization}
+\subsubsection{Successive optimization vs global optimization}
 ...
 
-\subsection{Discussion}
+\subsubsection{Discussion}
 ...
 
 
@@ -367,6 +402,45 @@ Start acknowledgments here.
 %\end{center}
 %\end{table}
 
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Parameters of the reference method on the atmospheric circulation.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Analogues nb} \\ 
+			\hline 
+			preselection & \multicolumn{4}{c}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & geopotential hgt 1000~hPa & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+			& geopotential hgt 500~hPa & 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table_params_R1}
+\end{table}
+
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Parameters of the reference method with humidity variables.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Analogues nb} \\ 
+			\hline 
+			preselection & \multicolumn{4}{c}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & geopotential hgt 1000~hPa & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+			& geopotential hgt 500~hPa & 24~h & & \\ 
+			\hline
+			\multirow{2}{*}{2} & precipitable water * relative humidity 850~hPa & 12~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{30} \\
+			& precipitable water * relative humidity 850~hPa & 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table_params_R2}
+\end{table}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FIGURES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -378,5 +452,13 @@ Start acknowledgments here.
 %  \caption{Enter the caption for your figure here.  Repeat as
 %  necessary for each of your figures. Figure from \protect\cite{Knutti2008}.}\label{f1}
 %\end{figure}
+
+
+\begin{figure}[htb]
+	\centerline{\includegraphics[width=8.3cm]{figure_map.pdf}}
+	\caption{Location of the alpine Rhône catchment in Switzerland. (source: Swisstopo)}
+	\label{figure_map}
+\end{figure}
+
 
 \end{document}
