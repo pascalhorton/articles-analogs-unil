@@ -75,7 +75,7 @@
     % \affiliation{American Meteorological Society, 
     % Boston, Massachusetts.}
 
-\affiliation{University of Lausanne, Lausanne, and Terranum,  Bussigny-pr\`{e}s-Lausanne, Switzerland}
+\affiliation{University of Lausanne, and Terranum,  Bussigny-pr\`{e}s-Lausanne, Switzerland}
 
 %% Follow this form:
     %\email{latex@ametsoc.org}
@@ -147,7 +147,7 @@
 
 \section{Introduction}
 ...
-\cite{Horton2012b}
+\cite{Horton2012a}
 
 
 \section{Calibration of the analogue method}
@@ -157,16 +157,16 @@
 
 The analogue method relies on two types of data: predictors, that are atmospheric variables describing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather time series we want to forecast.
 
-Predictors are generally reanalysis datasets (and outputs of a global numerical weather prediction models for the target situation in operational forecasting, which is not the topic of this paper). We will work here with the NCEP/NCAR reanalysis \citep[6-hourly, 17 atmospheric levels at a resolution of 2.5\degree, see][]{Kalnay1996a}, but it can be any other reanalysis.
+Predictors are generally reanalysis datasets (and outputs of a global numerical weather prediction models for the target situation in operational forecasting, which is not the topic of this paper). We will work here with the NCEP/NCAR reanalysis \citep[6-hourly, 17 atmospheric levels at a resolution of 2.5\degree, see][]{Kalnay1996}, but it can be any other reanalysis.
 
-The predictand (which is to be predicted) is here the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss' stations network, for the period 1962-2007. The time series from every available gauging station were averaged over subregions in order to smooth local effects \citep{Obled2002a, Marty2012}.
+The predictand (which is to be predicted) is here the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss' stations network, for the period 1962-2007. The time series from every available gauging station were averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}.
 
 
 \subsection{The analogue method}
 
-The analogue method is a downscaling technique based on the idea expressed by \citet{Lorenz1969a}. It aims at forecasting a predictand, often the daily precipitation, on the basis of predictor variables describing the synoptic atmospheric circulation. Its main hypothesis is that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Bontron2005}.
+The analogue method is a downscaling technique based on the idea expressed by \citet{Lorenz1969}. It aims at forecasting a predictand, often the daily precipitation, on the basis of predictor variables describing the synoptic atmospheric circulation. Its main hypothesis is that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Bontron2005}.
 
-Multiple variations of the methods are possible, and some aspects and parameters will not be detailed hereafter. There are mainly 2 implementations that are used most often: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on humidity variables \citep{Obled2002a, Bontron2005, Marty2012}.
+Multiple variations of the methods are possible, and some aspects and parameters will not be detailed hereafter. There are mainly 2 implementations that are used most often: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on humidity variables \citep{Obled2002, Bontron2005, Marty2012}.
 
 The method based on the analogy of the synoptic circulation consists in the following steps (Table \ref{table_params_R1}): For a target date, we evaluate the similarity of the atmospheric circulation with every day of the archive by processing the S1 criteria \citep[Eq.\ (\ref{eq:S1}), ][]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial window. \citet{Bontron2005} showed that the geopotential heights at 500~hPa and 1000~hPa are the best first predictors of the NCEP/NCAR reanalysis dataset, and that the S1 criteria performs better than scores based on absolute distances. The reason for such better results is that the S1 criteria allows comparing the circulation pattern, by means of the gradients, rather than the absolute value of the geopotential heights. To cope with seasonal effects, candidate data are extracted for every year from the archive within a period of 4 months centred around the target date.
 
@@ -181,14 +181,14 @@ The $N_{1}$ dates with the lowest values of S1 are considered as analogues to th
 
 Then, the daily observed precipitation amount of the $N_{1}$ resulting dates provide the empirical conditional distribution considered as the probabilistic forecast for the target day.
 
-The other most know method adds a second level of analogy on humidity variables (Table \ref{table_params_R2}). The predictor that \citet{Bontron2004a} found as optimal for the France territory is a humidity index made of the multiplication of the precipitable water with the relative humidity at 850~hPa. \cite{Horton2012b} confirmed that this product is better than any other variable from the NCEP/NCAR reanalysis considered independently. When adding a second level of analogy, we subsample $N_{2}$ (30) dates in the $N_{1}$ analogues on the atmospheric circulation, to end up with a smaller number of analogue situations. When we add a second level of analogy, we keep a higher number of analogues on the first level (70 instead of 50).
+The other most know method adds a second level of analogy on humidity variables (Table \ref{table_params_R2}). The predictor that \citet{Bontron2004} found as optimal for the France territory is a humidity index made of the multiplication of the precipitable water with the relative humidity at 850~hPa. \cite{Horton2012a} confirmed that this product is better than any other variable from the NCEP/NCAR reanalysis considered independently. When adding a second level of analogy, we subsample $N_{2}$ (30) dates in the $N_{1}$ analogues on the atmospheric circulation, to end up with a smaller number of analogue situations. When we add a second level of analogy, we keep a higher number of analogues on the first level (70 instead of 50).
 
 
 \subsection{Calibration framework}
 
-The calibration of the analogue method is usually done in a perfect prognosis \citep{Klein1959a} framework \citep{BenDaoud2010a, Bontron2004a}. Perfect prognosis uses observed or reanalyzed data to calibrate the relationship between predictors and predictands. Then, when used in operational forecasting, this relationship is applied to global model forecasts, that contains larger uncertainties. This framework allow us to identify relationships that are as close as possible to the natural links between predictors and predictands, by reducing uncertainties related to numerical forecasting models. However, no model is perfect, and even reanalysis data contains a bias that cannot be ignored. For this reason, the statistical relationships identified in the perfect prognosis framework should be applied to model outputs that are as similar as possible to the model used to elaborate the reanalysis. 
+The calibration of the analogue method is usually done in a perfect prognosis \citep{Klein1959} framework \citep{BenDaoud2010, Bontron2004}. Perfect prognosis uses observed or reanalyzed data to calibrate the relationship between predictors and predictands. Then, when used in operational forecasting, this relationship is applied to global model forecasts, that contains larger uncertainties. This framework allow us to identify relationships that are as close as possible to the natural links between predictors and predictands, by reducing uncertainties related to numerical forecasting models. However, no model is perfect, and even reanalysis data contains a bias that cannot be ignored. For this reason, the statistical relationships identified in the perfect prognosis framework should be applied to model outputs that are as similar as possible to the model used to elaborate the reanalysis. 
 
-Another reason for working in a perfect prognosis framework is that numerical models evolve continuously, and so does the forecast they provide. Re-forecasts allows us to work on a homogeneous dataset, as they are regularly reprocessed. However, it would involve that we need to redo the calibration procedure every time a new version is available, in order to reduce the bias \citep{Wilson2002a}. Moreover, the reforecasts are not re-processed for every new version of the model, meaning we still end up with a bias between the forecast and the archive. Finally, the length of reanalyses datasets are usually much longer than reforecast datasets, which allows us to identify more robust relationships. The size of the archive is indeed an important criteria for the analogue method.
+Another reason for working in a perfect prognosis framework is that numerical models evolve continuously, and so does the forecast they provide. Re-forecasts allows us to work on a homogeneous dataset, as they are regularly reprocessed. However, it would involve that we need to redo the calibration procedure every time a new version is available, in order to reduce the bias \citep{Wilson2002}. Moreover, the reforecasts are not re-processed for every new version of the model, meaning we still end up with a bias between the forecast and the archive. Finally, the length of reanalyses datasets are usually much longer than reforecast datasets, which allows us to identify more robust relationships. The size of the archive is indeed an important criteria for the analogue method.
 
 The statistical relationship is established on a calibration period that is as long as possible. For every day of this period, a search for analogues is processed, the precipitation data are associated with the corresponding dates and a forecast score is calculated. During the search for analogues situations, 120 days around the target date are excluded (thus excluding data in the same year) in order to consider only truly independent candidates days.
 
@@ -207,7 +207,7 @@ The mean CRPS is processed on the calibration, respectively the validation perio
 
 \subsection{The classic calibration approach}
 
-The calibration procedure that we call ''classic'' was developed by \citet{Bontron2004a} at the LTHE laborytory (INPG, Grenoble). It determines the optimal settings for the different variables of each level of analogy. The analogy levels (eg the atmospheric circulation or humidity variables) are calibrated sequentially. The procedure consists of the following steps \citet{Bontron2004a}:
+The calibration procedure that we call ''classic'' was developed by \citet{Bontron2004} at the LTHE laborytory (INPG, Grenoble). It determines the optimal settings for the different variables of each level of analogy. The analogy levels (eg the atmospheric circulation or humidity variables) are calibrated sequentially. The procedure consists of the following steps \citet{Bontron2004}:
 
 \begin{enumerate}
 	\item Manual choice of the following parameters:
@@ -234,7 +234,7 @@ The calibration procedure that we call ''classic'' was developed by \citet{Bontr
 	\item Finally, the numbers of analogues are re-assessed for the different analogue levels. This is done iteratively by varying the number of analogues of each level in a systematic way.
 \end{enumerate}
 
-Calibration is done in stages, to determine the optimal parameters systematically. The steps are distinct and previously optimized parameters are generally not reassessed. \citet{Bontron2004a} notes however that ''this type of algorithm, which is changing the parameters of a model in a unique path, can lead to the best solution, provided that there is no local optima''. The advantage of this method is that it is fast and has low computing requirements. We added small improvements to this method by allowing the spatial windows to do other moves, such as:
+Calibration is done in stages, to determine the optimal parameters systematically. The steps are distinct and previously optimized parameters are generally not reassessed. \citet{Bontron2004} notes however that ''\textit{this type of algorithm, which is changing the parameters of a model in a unique path, can lead to the best solution, provided that there is no local optima}''. The advantage of this method is that it is fast and has low computing requirements. We added small improvements to this method by allowing the spatial windows to do other moves, such as:
 
 \begin{itemize}
 	\item increase in 2 simultaneous directions,
@@ -244,26 +244,25 @@ Calibration is done in stages, to determine the optimal parameters systematicall
 	\item and finally all the moves described above, but with a factor of 2, 3, or more. For example, we try to increase by 2 units in one (or more) direction. This allows to skip one size that may not be optimal.
 \end{itemize}
 
-These supplementary steps often result in spatial windows that are a bit different, but the performance gain is rather marginal.
+These supplementary steps often result in spatial windows that are a bit different, but the performance gain is rather marginal (gain of 0.2\%). These methods are available in the open source software AtmoSwing (Analogue Technique MOdel for Statistical Weather forecastING, www.atmoswing.org).
 
 
+\section{Motivation for a global optimization}
+
+The classic calibration is fast to optimize one spatial window for a given atmospheric level and temporal window. However, it doesn't provide an objective choice of the atmospheric level and temporal window. The only option is to try systematically every combination, which may be acceptable for no more than 2 levels. However, \citet{Horton2012} showed that additional atmospheric levels may improve the method.
+
+We observed during the calibration of the analogue method that the resulting parameters vary with the initial choices (such as the number of analogues). In addition, the different levels of analogy (on the atmospheric circulation and the humidity variables) are always calibrated sequentially. However, we can not exclude any dependency between them, which could lead us to select other parameters if we calibrate them together. Simultaneous calibration of all parameters has never been undertaken so far. Only a global optimization can be able to optimize all parameters of all analogy levels simultaneously.
+
+When creating the classic calibration procedure, \citet{Bontron2004} was aware of the problem of dependencies between parameters and wrote: '' \textit{We perceive here the combinatorial aspect of our problem: variables and spatial windows are not independent. We will present our results by first searching the best variable [note: e.g. choice of the atmospheric level and the temporal window for the geopotential height] on a chosen spatial window, and next, the best window for the chosen variable. However, even by repeating the process, are we sure to have found the optimal combination?} ''. And later in his work: '' \textit{Our approach, which is again to vary the parameters one by one -- the others being fixed in a more or less arbitrary manner -- may therefore not exactly lead us to the optimal solution} ''. \citet{Bliefernicht2010} has also faced the combinatorial issue of the parameters of the analogue method and concludes that one needs to be an expert to know their respective influence, their sensitivity and their nonlinear interactions. \citet{BenDaoud2010}, when calibrating the analogue method, also stated that '' \textit{the combinatory aspect related to the calibration was found to be too high for all the parameters to be calibrated simultaneously } ''. The configuration of the analogue method resulting from a classic approach is likely to be a local optimum.
+
+The analogue method needs to be adapted to every new region it is applied, because the leading meteorological influences are specific to this region. Even the choice of the atmospheric level and the temporal window should be reconsidered, when not the variable itself. For example, \citet{BenDaoud2010} found the vertical velocity relevant for the great plains in France, when \citet{Horton2012} found no interest in this variable in an Alpine environment, because the vertical velocity is mainly related to the orographic effect, and was thus already well related to the atmospheric circulation itself. So, when adapting the analogue method to a new region, we should assess systematically every combination of atmospheric levels, time and spatial windows, which is an intensive task. This procedure can be automatized by a global optimization technique.
+
+Our ambition was then to assess the feasibility of an automatic optimization of the analogue method through various techniques. The objective is to find an approach to optimize all parameters simultaneously, and thus be able to identify the global optimum in the parameter space. In addition, it can overcome the systematic manual assessments of certain parameters such as atmospheric levels and time windows. Finally, it can open new perspectives by allowing the addition of new degrees of freedom, such as a weighting of the criteria values between the atmospheric levels, and the consideration of non-overlapping spatial windows between the atmospheric levels.
+
+\citet{Horton2012} assessed the ability of the \citep{Nelder1965a} method based on a simplex approach. This technique didn't provide satisfying results and failed at identifying the global optimum. Indeed, the optimized parameters didn't converge and many local optimums came out. The parameters space of the analogue method is very complex and not appropriate for a linear optimization technique. 
 
 
-
-
-
-
-
-
-
-\subsection{Limits of the classic calibration}
-...
-
-
-\section{Characterization of the parameters space}
-...
-
-\subsection{Monte-Carlo analysis}
+\subsection{Characterization of the parameters space}
 ...
 
 \subsection{Parameters that should be optimized}
@@ -274,13 +273,36 @@ These supplementary steps often result in spatial windows that are a bit differe
 
 
 \section{Adapting the genetic algorithms}
-...
+
+Genetic algorithms (GAs) come from the world of stochastic optimization, more specifically from metaheuristic approaches. These are stochastic iterative algorithms that behave like search algorithms by exploiting the characteristics of a problem and are particularly suitable for complex parameters spaces.
+
+Genetic algorithms are part of the family of evolutionary algorithms \citet{Back1993c, Schwefel1993}, which get inspiration from some mechanisms of biological evolution, such as reproduction, genetic mutations, chromosomal crossovers, and natural selection. GAs are the most used technique from evolutionary algorithms \citep{Back1993b}, and they are constantly improving \citep{Haupt2004}. However, with time, the different methods of evolutionary algorithms tend to be similar and share many commonalities \citep{Back1996b, Haupt2004}.
+
+The method was developed by \citet{Holland1992} and was popularized by \citet{Goldberg1989}. Unlike a linear or local optimization, GAs seek the global optimum on a complex surface, theoretically without restrictions, but with no guarantee to reach it.
+
 
 \subsection{Basic concepts of the genetic algorithms}
-...
+
+GAs mimic the evolution of a population of individuals in a new environment, by applying rules based on natural processes, such as DNA mutation, chromosomes crossover, natural selection, etc. It simulates the fact in the natural environment, the most suitable individuals tend to survive longer, to reproduce more easily, and so to influence coming generations by providing some genes that provide some good performance in a certain domain. Generation after generation, the DNA mixes and the strong genes cumulate in some individuals \citep{Beasley1996}. Globally, the fitness of the population to its environment increases, while retaining enough variety to not converge too quickly to a local optimum.
+
+
+
+
+9.5.1.2 Quand utiliser des algorithmes genetiques
+
+
 
 \subsection{Structure and operators}
-...
+
+
+
+
+
+The combination of strong genes by the operator of chromosomes crossover is theoretically the most important operating mechanism in the conventional GAs \citep{Holland1992b,Back1993}. However, many studies identify the mutation process as main operator, and crossovers as secondary \citep[see][]{Back1992,Back1996,Back1996b,Smith1997,Deb1999,Haupt2004,Costa2005,Costa2007}.
+
+
+
+
 
 \subsection{Implementation and contraints}
 ...
@@ -294,7 +316,7 @@ These supplementary steps often result in spatial windows that are a bit differe
 
 \subsection{Case study description}
 
-The study area is the alpine upper Rhône catchment in Switzerland (Fig.\ \ref{figure_map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region in the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project that aims at providing a real-time flood management on the upper Rh\^{o}ne catchment \citep{GarciaHernandez2009b}. The first global optimizations were part of the MINERVE project \citep{Horton2012, Horton2012b}.
+The study area is the alpine upper Rhône catchment in Switzerland (Fig.\ \ref{figure_map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region in the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project that aims at providing a real-time flood management on the upper Rh\^{o}ne catchment \citep{GarciaHernandez2009b}. The first global optimizations were part of the MINERVE project \citep{Horton2012, Horton2012a}.
 
 
 \subsection{Optimization of the analogy of atmospheric circulation}
@@ -333,7 +355,10 @@ The study area is the alpine upper Rhône catchment in Switzerland (Fig.\ \ref{f
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \acknowledgments
-Start acknowledgments here.
+Thanks to Hamid Hussain-Khan of the University of Lausanne for his help and availability, and for the intensive use of the cluster he is in charge of.
+
+Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton and the Water, Land and Sanitation Service of the Vaud Canton who financed the MINERVE project which started this research. NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. Precipitation time series provided by MeteoSwiss. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % APPENDIXES
@@ -373,7 +398,7 @@ Start acknowledgments here.
 % \bibliographystyle{ametsoc2014}
 % \bibliography{references}
 
-\bibliographystyle{ametsoc2014}
+\bibliographystyle{ametsoc2014_no_url}
 % \bibliography{references}
 \bibliography{../_refs/_articles-optimization}
 
