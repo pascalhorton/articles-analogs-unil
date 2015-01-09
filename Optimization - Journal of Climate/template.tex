@@ -278,27 +278,36 @@ Genetic algorithms (GAs) come from the world of stochastic optimization, more sp
 
 Genetic algorithms are part of the family of evolutionary algorithms \citet{Back1993c, Schwefel1993}, which get inspiration from some mechanisms of biological evolution, such as reproduction, genetic mutations, chromosomal crossovers, and natural selection. GAs are the most used technique from evolutionary algorithms \citep{Back1993b}, and they are constantly improving \citep{Haupt2004}. However, with time, the different methods of evolutionary algorithms tend to be similar and share many commonalities \citep{Back1996b, Haupt2004}.
 
-The method was developed by \citet{Holland1992} and was popularized by \citet{Goldberg1989}. Unlike a linear or local optimization, GAs seek the global optimum on a complex surface, theoretically without restrictions, but with no guarantee to reach it.
+The method was developed by \citet{Holland1992b} and was popularized by \citet{Goldberg1989}. Unlike a linear or local optimization, GAs seek the global optimum on a complex surface, theoretically without restrictions, but with no guarantee to reach it.
 
 
 \subsection{Basic concepts of the genetic algorithms}
 
-GAs mimic the evolution of a population of individuals in a new environment, by applying rules based on natural processes, such as DNA mutation, chromosomes crossover, natural selection, etc. It simulates the fact in the natural environment, the most suitable individuals tend to survive longer, to reproduce more easily, and so to influence coming generations by providing some genes that provide some good performance in a certain domain. Generation after generation, the DNA mixes and the strong genes cumulate in some individuals \citep{Beasley1996}. Globally, the fitness of the population to its environment increases, while retaining enough variety to not converge too quickly to a local optimum.
+GAs mimic the evolution of a population of individuals in a new environment, by applying rules based on natural processes, such as DNA mutation, chromosomes crossover, natural selection, etc. It simulates the fact in the natural environment, the most suitable individuals tend to survive longer, to reproduce more easily, and so to influence coming generations by providing some genes that provide some good performance in a certain domain. Generation after generation, the DNA mixes and the strong genes cumulate in some individuals \citep{Beasley1996a}. Globally, the fitness of the population to its environment increases, while retaining enough variety to not converge too quickly to a local optimum.
 
+Applications of GAs are very diversified as they can handle many parameters of various types \citep{Joines1996a}, even with very complex cost surfaces \citep{Haupt2004}. GAs work remarkably well with intervariable dependences \citep{Haupt2004}. The objective function to optimize (often named fitness function in this context) can be of different types (mathematical function, experimental or numerical modeling). Only the resulting value is used for optimization. Indeed, these algorithms do not require any knowledge of the problem, which can be used as black-box.
 
+By means of the reproduction operator and the natural selection, the GAs focus on the most promising regions of the parameter space \citep{Holland1992b}. Points (parameters sets) are densified in these areas because the strong genes of the best individuals propagate from generation to generation.
 
+Two conditions guarantee in theory the convergence to the global optimum \citep{Zitzler2004a}:
 
-9.5.1.2 Quand utiliser des algorithmes genetiques
+\begin{enumerate}
+	\item Parameters mutations that can allow to explore the entire parameter space, thus ensures that any value can be achieved with a non-zero probability.
+	\item A rule of elitism ensuring that an optimal solution can not be lost or damaged.
+\end{enumerate}
 
+Practically, GAs allow rapidly approaching satisfactory solutions, but they do not provide the optimum solution for sure \citep{Zitzler2004a}. It is indeed mainly a matter of time. When the optimizer gets closer to the global optimum, any new improvement takes more time to appear, and the final adjustment of the parameters is very time consuming \citep{Back1993a}. For problems that require a significant amount of time in order to evaluate the objective function, as in our case, we have to limit the number of generations to get reasonable processing time. Thus, different acceptable solutions can result from one or more optimizations \citep{Holland1992b}. This is a strength and a weakness of GAs: they are very good at exploring complex parameters spaces in order to identify the most promising areas, but they will not necessarily find the best solution with the optimal values of all parameters \citep{Holland1992b}.
 
 
 \subsection{Structure and operators}
 
+The GAs optimize a population of individuals (parameters sets). Each individual contains a chromosome (parameters of the analogue method in our case). We call gene every parameter that constitutes the chromosome.
 
 
 
 
-The combination of strong genes by the operator of chromosomes crossover is theoretically the most important operating mechanism in the conventional GAs \citep{Holland1992b,Back1993}. However, many studies identify the mutation process as main operator, and crossovers as secondary \citep[see][]{Back1992,Back1996,Back1996b,Smith1997,Deb1999,Haupt2004,Costa2005,Costa2007}.
+
+The combination of strong genes by the operator of chromosomes crossover is theoretically the most important operating mechanism in the conventional GAs \citep{Holland1992b,Back1993b}. However, many studies identify the mutation process as main operator, and crossovers as secondary \citep[see][]{Back1992a,Back1996a,Back1996b,Smith1997a,Deb1999,Haupt2004,Costa2005a,Costa2007a}.
 
 
 
