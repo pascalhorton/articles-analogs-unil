@@ -301,7 +301,47 @@ Practically, GAs allow rapidly approaching satisfactory solutions, but they do n
 
 \subsection{Structure and operators}
 
-The GAs optimize a population of individuals (parameters sets). Each individual contains a chromosome (parameters of the analogue method in our case). We call gene every parameter that constitutes the chromosome.
+The GAs optimize a population of individuals (parameters sets). Each individual contains a chromosome (parameters of the analogue method in our case). We call gene every parameter that constitutes the chromosome. The parameters to optimize have long been coded in binary form and assembled as strings in the canonical GAs \citep{Goldberg1989}. Encoding and decoding steps were needed to transform the variable from its floating-point representation into its binary representation, and vice versa, which introduce quantification errors \citep{Haupt2004}. According to \citet{Holland1992b}, working with binary chromosomes was supposed to be more efficient \citep{Goldberg1990a, Back1993b}. However, more and more applications use floating-point representations, allowing to avoid the coding and decoding steps and the quantification errors \citep{Haupt2004}, and which also often resulted in a performance improvement \citep{Goldberg1990a}. It is thus now considered that for continuous variables, a floating-point representation is more suited \citep{Michalewicz1996, Herrera1998a, Haupt2004, Back1996b, Gaffney2010a}. 
+
+There are numerous implementation variants of GAs often optimal for a given problem \citep{Hart1991a,Schraudolph1992a}. However, the structure of the method (Figure \ref{figure_structure_gas}) resulting from the work of \citet{Holland1992b} is common to most applications \citep{Back1993b}. The divergences are the operators implementation, through significantly different algorithms, which has an important effect on the results \citep{Gaffney2010a}.
+
+All operators we used and their options, applied to real coding, are described in the following sections. Many other operators exist, but we will only present the ones we evaluated.
+
+
+\subsubsection{Genesis of the population}
+
+The first step of the optimization is to generate the initial population. A population is a set of $N$ individuals (each of which represents a point in the space of potential solutions, a parameters set of the analogue method in our application) that we are going to make evolve. A generation is the population at a given time. 
+
+A random initialization based on a uniform distribution is the most current version. The size $N$ of the population is often a compromise between the computation time and the quality of the solution. $N$ must allow sufficient sampling of the solutions field \citep{Beasley1996a}, and should thus vary as a function of chromosome size (ie the number of parameters to be optimized). In our application, we found the following ranges to be accurate in average:
+
+\begin{itemize}
+	\item $50<N<100$ for a very simple implementation of the analogue method (1 level of analogy with 2 atmospheric levels),
+	
+	\item $N\approx200$ for a bit more complex method (1 level of analogy with 4 atmospheric levels, or 2 level of analogy with less atmospheric levels),
+	
+	\item $N\approx500$ for significantly more complex methods (2-3 levels of analogy with 4 atmospheric levels for the atmospheric circulation, and 2 to 4 levels for the analogy humidity),
+\end{itemize}
+
+We didn't find any improvement with $N>500$, the results were even surprisingly of a lower quality. However, this cannot be generalized and depends on the analogue method to optimize, and supposedly on the characteristics of the processes generating the precipitations in a given region. 
+
+
+\subsubsection{Natural selection}
+
+Natural selection is performed on the basis of the objective function values. The selection allows to only keep a certain part of the population, usually half ($N/2$), which can access the mating pool (intermediate generation with $N_{mp}$ members). If $N_{mp}$ is too high, the reproduction rate is too low, whereas if it is too small, the strong traits of individuals do not have the ability to accumulate in the same chromosome \citep{Haupt2004}. Several techniques exist, such as:
+
+\begin{itemize}
+	\item \textbf{$N_{mp}$-elitism} \citep{Michalewicz1996}: the population is sorted according to the value of the objective function and only the better half is preserved. 
+		
+	\item \textbf{Tournament selection} \citep{Michalewicz1996, Zitzler2004a}: two individuals are randomly selected and fight. The one with the highest score is chosen, but with a certain probability, in order to reduce the selection pressure. This procedure is repeated until the mating pool is full. Individuals can be selected several times, and thus be represented several times in the mating pool.
+\end{itemize}
+
+
+\subsubsection{Selection of the couples}
+
+
+
+
+
 
 
 
@@ -493,6 +533,15 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 	\caption{Location of the alpine Rhône catchment in Switzerland. (source: Swisstopo)}
 	\label{figure_map}
 \end{figure}
+
+
+\begin{figure}[htb]
+	\centerline{\includegraphics[width=10.3cm]{figure_structure_gas.pdf}}
+	\caption{Genetic algorithms operational flowchart}
+	\label{figure_structure_gas}
+\end{figure}
+
+
 
 
 \end{document}
