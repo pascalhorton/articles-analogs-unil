@@ -375,110 +375,78 @@ The evaluated crossover operators are the following:
 \begin{itemize}
 	\item \textbf{Single-point crossover}: a crossover point is randomly chosen for the pair. The genes (our parameters) located after that point are exchanged in between the two chromosomes.
 	
-	\item \textbf{Two-point crossover}: works like the single-point crossover, but there are two intersections defining the segments to exchange. This approach, which significantly extends the search space for the children, is considered more efficient than the previous \citep{Beasley1993b, Haupt2004}.
+	\item \textbf{Two-point crossover}: works like the single-point crossover, but there are two intersections defining the segments to exchange. This approach, which significantly extends the search space for the children, is considered more efficient than the previous \citep{Beasley1993a, Haupt2004}.
 	
 	\item \textbf{Multiple-point crossover} \citep{DeJong1975a}: it is a generalization of the previous, with a number of crossover points up to the number of genes.
 	
 	\item \textbf{Uniform crossover} \citep{Syswerda1989}: for each gene of the chromosome, it is randomly chosen to exchange or not the values between the parents.
 	
-	\item \textbf{Binary-like crossover} \citep{Haupt2004}: chromosome crossover on a binary coding can generate new values for variables located at intersection points, since the crossovers are applied at the bit level, thus often within a gene. This is not the case for the floating-point representation, since the crossover is performed between the genes. To reproduce the behaviour present in the original algorithms, which introduces new information, \citet{Haupt2004} propose an operator that combines standard crossover with an interpolation approach. The genes located after a crossover point are exchanged, but the gene located at the intersection is modified as follows:
+	\item \textbf{Binary-like crossover} \citep{Haupt2004}: chromosome crossover on a binary coding can generate new values for variables located at intersection points, since the crossovers are applied at the bit level, thus often within a gene. This is not the case for the floating-point representation, since the crossover is performed between the genes. To reproduce the behaviour present in the original algorithms, which introduces new information, \citet{Haupt2004} propose an operator that combines standard crossover with an interpolation approach. The genes located after a crossover point are exchanged, but the gene located at the intersection is modified as follows (equation \ref{equation_mating_as_binary}):
 	\begin{equation}
 	\left\lbrace \begin{array}{l} 
-	g_{e1,n} = g_{p1,n} - \beta (g_{p1,n} - g_{p2,n}) \\
-	g_{e2,n} = g_{p2,n} + \beta (g_{p1,n} - g_{p2,n}) \\
+	g_{o1,n} = g_{p1,n} - \beta (g_{p1,n} - g_{p2,n}) \\
+	g_{o2,n} = g_{p2,n} + \beta (g_{p1,n} - g_{p2,n}) \\
 	\end{array} \right.
-	\label{eq:GA_mating_as_binary}
+	\label{equation_mating_as_binary}
 	\end{equation}
-	\noindent
-	where $\beta$ is a random value between 0 and 1.
+	where $g_{o1,n}$ and $g_{o2,n}$ are the $n$-th gene of the two new offspring, and $g_{p1,n}$ and $g_{p2,n}$ are those of the two parents. $\beta$ is a random value between 0 and 1.
 	
-	
-	
-	
-	
-	
-	\item \textbf{Blending method} \citep{Radcliffe1991}: in this approach, instead of exchanging the genes in between the chromosome after a crossover point, these are combined by linear combination.
+	\item \textbf{Blending method} \citep{Radcliffe1991a}: in this approach, instead of exchanging the genes in between the chromosomes after one or multiple crossover points, these are combined by linear combination (equation \ref{equation_mating_blending_method}). The genes of the parents are blended together using a random value ($\beta$) that can be unique for the whole chromosome, or that can change for every gene. The genes of the offspring are bounded by the genes of the parents, no value can be out of their range.
 	\begin{equation}
 	\left\lbrace \begin{array}{l} 
-	g_{e1,n} = \beta g_{p1,n} + (1-\beta)g_{p2,n} \\ 
-	g_{e2,n} = (1-\beta) g_{p1,n} + \beta g_{p2,n} \\
+	g_{o1,n} = \beta g_{p1,n} + (1-\beta)g_{p2,n} \\ 
+	g_{o2,n} = (1-\beta) g_{p1,n} + \beta g_{p2,n} \\
 	\end{array} \right.
-	\label{eq:GA_mating_blending_method}
+	\label{equation_mating_blending_method}
 	\end{equation}
-	\noindent
 	
+	\item \textbf{Linear crossover} \citep{Wright1991a}: in order to allow the genes to take values outside the interval defined by the parents, a method of extrapolation is necessary. Linear crossover introduces such an approach, and produces three children from two parents, following equation \ref{equation_mating_linear_crossover}. Less couples are required in order to fill up the generation.
+	\begin{equation}
+	\left\lbrace \begin{array}{l} 
+	g_{o1,n} = 0.5 g_{p1,n} + 0.5 g_{p2,n} \\ 
+	g_{o2,n} = 1.5 g_{p1,n} - 0.5 g_{p2,n} \\ 
+	g_{e3,n} = - 0.5 g_{p1,n} + 1.5 g_{p2,n} \\ 
+	\end{array} \right.
+	\label{equation_mating_linear_crossover}
+	\end{equation}
 	
+	\item \textbf{Heuristic crossover} \citep{Michalewicz1996}: it is a variation of the latter methods that relies on the following equation:
+	\begin{equation}
+	\left\lbrace \begin{array}{l} 
+	g_{o1,n} = \beta (g_{p1,n} - g_{p2,n}) + g_{p1,n} \\
+	g_{o2,n} = \beta (g_{p2,n} - g_{p1,n}) + g_{p2,n} \\
+	\end{array} \right.
+	\label{equation_mating_heuristic_crossover}
+	\end{equation}
 	
+	\item \textbf{Linear interpolation}: unlike previous techniques, this technique does not rely on crossover points, but on a linear interpolation on every gene of the couple (equation \ref{equation_mating_linear_interpolation}).
+	\begin{equation}
+	\left\lbrace \begin{array}{l} 
+	c_{o1} = c_{p1} - \beta (c_{p1} - c_{p2}) \\
+	c_{o2} = c_{p2} + \beta (c_{p1} - c_{p2}) \\
+	\end{array} \right.
+	\label{equation_mating_linear_interpolation}
+	\end{equation}
+	where $c_{o1}$ and $c_{o2}$ are the full chromosomes of the offspring, and $c_{p1}$ an $c_{p2}$ are the ones of the parents. As before, $\beta$ is a random value between 0 and 1, and is here the same for every gene.
 	
-	
-	%ou $g_{e1,n}$ et $g_{e2,n}$ sont les $n$-ieme gènes des deux enfants, $g_{p1,n}$ et $g_{p2,n}$ ceux des parents, et $\beta$ est un nombre aléatoire entre 0 et 1. Pour $\beta = 0.5$, on obtient la moyenne pour cette variable.
-	
+	\item \textbf{Free interpolation}: this technique performs interpolation on each gene, like the previous one; but in this case, the weighting factor changes for each gene:
+	\begin{equation}
+	\left\lbrace \begin{array}{l} 
+	c_{o1} = c_{p1} - [\beta_{1} (g_{p1,1} - g_{p2,1}), \beta_{2} (g_{p1,2}\\
+	~~~~~~~~~~~~ - g_{p2,2}), ..., \beta_{Ng} (g_{p1,N_{g}} - g_{p2,N_{g}})] \\
+	c_{o2} = c_{p2} + [\beta_{1} (g_{p1,1} - g_{p2,1}), \beta_{2} (g_{p1,2}\\
+	~~~~~~~~~~~~ - g_{p2,2}), ..., \beta_{Ng} (g_{p1,N_{g}} - g_{p2,N_{g}})] \\
+	\end{array} \right.
+	\label{equation_mating_free_interpolation}
+	\end{equation}
+	where $N_{g}$ is the number of genes, and $\beta$ is here independent between the genes.
 	
 \end{itemize}
 
+Many other methods or variations exist, combining the advantages of different approaches. The performance of the variants being related to the problem to be addressed, we can not identify a priori the best technique for our application.
 
 
-
-
-
-
-
-
-
-	
-	
-	
-	\citet{Michalewicz1996} a montré que cette méthode fonctionne bien pour différentes applications. Le choix des variables à mélanger peut être fait de différentes manières, par exemple toutes les variables à droite ou à gauche du point de croisement \citep{Haupt2004}. Les croisements peuvent également être multiples. Les gènes des chromosomes sont alors mélangés en conservant le même $\beta$, ou en le changeant pour chaque gène. Ces méthodes produisent des enfants ayant des variables comprises entre les valeurs des parents, sans sortir de cet intervalle.
-	
-	\item \textbf{Croisement linéaire} \citep[\textit{linear crossover}]{Wright1991}: afin de permettre aux variables de prendre des valeurs en dehors de l'intervalle défini par les parents, une méthode d'extrapolation est nécessaire. Trois enfants sont alors générés à partir des deux parents, selon l'équation \ref{eq:GA_mating_linear_crossover}. Il y a donc moins de couples sélectionnés pour compléter la population.
-	
-	\begin{equation}
-	\left\lbrace \begin{array}{l} 
-	g_{e1,n} = 0.5 g_{p1,n} + 0.5 g_{p2,n} \\ 
-	g_{e2,n} = 1.5 g_{p1,n} - 0.5 g_{p2,n} \\ 
-	g_{e3,n} = - 0.5 g_{p1,n} + 1.5 g_{p2,n} \\ 
-	\end{array} \right.
-	\label{eq:GA_mating_linear_crossover}
-	\end{equation}
-	
-	\newpage
-	
-	\item \textbf{Croisement heuristique} \citep[\textit{heuristic crossover},][]{Michalewicz1996}: le croisement heuristique est une variation de ces dernières méthodes, qui calcule les valeurs des nouveaux gènes selon l'équation suivante:
-	
-	\begin{equation}
-	\left\lbrace \begin{array}{l} 
-	g_{e1,n} = \beta (g_{p1,n} - g_{p2,n}) + g_{p1,n} \\
-	g_{e2,n} = \beta (g_{p2,n} - g_{p1,n}) + g_{p2,n} \\
-	\end{array} \right.
-	\label{eq:GA_mating_heuristic_crossover}
-	\end{equation}
-	
-	\item \textbf{Interpolation linéaire} (\textit{linear interpolation}): au contraire des techniques précédentes, nous ne faisons plus de croisement, mais une interpolation linéaire sur tous les gènes du couple. Les enfants sont donc situés sur une ligne connectant les deux parents.
-	
-	\begin{equation}
-	\left\lbrace \begin{array}{l} 
-	ind_{e1} = ind_{p1} - \beta (ind_{p1} - ind_{p2}) \\
-	ind_{e2} = ind_{p2} + \beta (ind_{p1} - ind_{p2}) \\
-	\end{array} \right.
-	\label{eq:GA_mating_linear_interpolation}
-	\end{equation}
-	\noindent
-	où $ind_{e1}$ et $ind_{e2}$ sont les individus enfants, $ind_{p1}$ et $ind_{p2}$ les parents, et $\beta$ est une valeur aléatoire entre 0 et 1. $\beta$ est le même pour chaque variable.
-	
-	\item \textbf{Interpolation libre} (\textit{free interpolation}): cette technique effectue une interpolation sur chaque gène, tout comme la précédente; mais dans ce cas, le facteur de pondération change pour chaque gène:
-	
-	\begin{equation}
-	\left\lbrace \begin{array}{l} 
-	ind_{e1} = ind_{p1} - [\beta_{1} (g_{p1,1} - g_{p2,1}), \beta_{2} (g_{p1,2} - g_{p2,2}), ..., \beta_{Ng} (g_{p1,N_{g}} - g_{p2,N_{g}})] \\
-	ind_{e2} = ind_{p2} + [\beta_{1} (g_{p1,1} - g_{p2,1}), \beta_{2} (g_{p1,2} - g_{p2,2}), ..., \beta_{Ng} (g_{p1,N_{g}} - g_{p2,N_{g}})] \\
-	\end{array} \right.
-	\label{eq:GA_mating_free_interpolation}
-	\end{equation}
-	\noindent
-	où $ind_{e1}$ et $ind_{e2}$ sont les individus enfants, $ind_{p1}$ et $ind_{p2}$ les parents, $N_{g}$ le nombre de gènes, et $\beta_{n}$ sont des valeurs aléatoires (entre 0 et 1) indépendantes.
-	
-
-De multiples autres méthodes ou variantes existent, combinant les avantages de différentes approches. La performance des variantes étant liée au problème à traiter, nous ne pouvons pas identifier a priori la meilleure technique pour notre étude.
+\subsubsection{Mutation}
 
 
 
