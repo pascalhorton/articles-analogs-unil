@@ -448,16 +448,110 @@ Many other methods or variations exist, combining the advantages of different ap
 
 \subsubsection{Mutation}
 
-
-
-
-
-
-
-
-
-
 The combination of strong genes by the operator of chromosomes crossover is theoretically the most important operating mechanism in the conventional GAs \citep{Holland1992b,Back1993b}. However, many studies identify the mutation process as main operator, and crossovers as secondary \citep[see][]{Back1992a,Back1996a,Back1996b,Smith1997a,Deb1999,Haupt2004,Costa2005a,Costa2007a}.
+
+The mutation operator is a direct modification of genes. In a binary coding, it is implemented as an inversion of one bit in a chromosome, while in real coding, it is done by changing the value of a gene. Mutations add diversity to the population and prevent a freeze of the evolution, or a genetic drift to a local optimum. Thus, it makes the convergence to the global optimum theoretically possible \citep{Beasley1993a}, as they allow exploring beyond the current region of the variable space. They therefore help prevent the algorithm to converge too quickly to a local optimum and bring new characteristics that were not present in the original population \citep{Haupt2004}. 
+
+The evaluated and developed mutation operators are the following:
+
+\begin{itemize}
+	\item \textbf{Uniform mutation}: The mutation rate is constant and equal for every gene of each individual; they all have the same probability to mutate. When a gene is selected for mutation, a new random value is assigned, according to a uniform law.
+	
+	\item \textbf{Uniform variable mutation} \citep{Fogarty1989}: a variable mutation rate over the generations was first suggested by \citet{Holland1992b} and evaluated by \citet{Fogarty1989}. It improved significantly the performance of GAs. In most applications, the mutation rate decreases with the generations, in a deterministic and global (for all individuals) manner \citep{Back1992b}. Its optimum configuration depends on the size of the chromosomes, of the properties of the objective function, and of the population size \citep{Back1992b}. We implemented this operator according to equation \ref{equation_mutation_uniformvariable}.
+	\begin{equation}
+	p_{n,G} = p_{G_{0}}+\left( \dfrac{p_{G_{0}}-p_{G_{m,p}}}{G_{m,p}} \right) min\left\lbrace G,G_{m,p}\right\rbrace 
+	\label{equation_mutation_uniformvariable}
+	\end{equation}
+	where $p_{n,G}$ is the mutation rate (probability) of the gene $n$ for generation number $G$, $G_{m,p}$ is the maximum number of generations during which the mutation rate varies. $p_{G_{0}}$ is the initial mutation probability, and $p_{G_{m,p}}$ is the final one. $p_{G_{0}}$, $p_{G_{m,p}}$ and $G_{m,p}$ are the three controlling parameters of the operator. The evolution of the mutation rate is linear.
+	
+	\item \textbf{Constant normal mutation}: many users use a normal distributions to generate new values. The gene $g$ that mutate becomes:
+	\begin{equation}
+	g' = N(g,\sigma^{2})
+	\label{equation_mutating_normal_distribution}
+	\end{equation}
+	where $\sigma$ is the standard deviation of the distribution. The disadvantage of this technique is that an accurate value of $\sigma$ must be chosen \citep{Haupt2004}, which is impossible to know beforehand.
+	
+
+
+\end{itemize}
+
+
+
+	
+	
+	\item \textbf{Mutation normale variable}: selon la même logique que la mutation uniforme variable, nous avons établi un opérateur de mutation utilisant une distribution normale avec un taux de mutation et un écart-type variables. Le taux de mutation est calculé par l'équation \ref{equation_utation_uniformvariable}. Sur ce même principe, nous faisons varier linéairement (diminution avec le nombre de générations) l'écart-type au fil des générations:
+	
+	\begin{equation}
+	\sigma_{n,G} = \sigma_{G_{0}}+\left( \dfrac{\sigma_{G_{0}}-\sigma_{G_{m,sdev}}}{G_{m,sdev}} \right) min\left\lbrace G,G_{m,sdev}\right\rbrace 
+	\label{equation_mutation_normalvariable}
+	\end{equation}
+	\noindent
+	où $\sigma_{n,G}$ est l'écart type du gène $n$ à la génération $G$, $\sigma_{G_{0}}$ est l'écart type de départ, $\sigma_{G_{m,sdev}}$ est l'écart type final, $G_{m,sdev}$ le nombre maximum de générations durant lesquelles l'écart type varie. $p_{G_{0}}$, $p_{G_{m,p}}$, $G_{m,p}$, $\sigma_{G_{0}}$, $\sigma_{G_{m,sdev}}$ et $G_{m,sdev}$ sont les six paramètres de la méthode.
+	
+	
+	\item \textbf{Mutation non uniforme} \citep[\textit{non-uniform mutation},][]{Michalewicz1996}: lorsqu'un gène est sélectionné pour muter, un déplacement aléatoire lui est appliqué selon les lois suivantes. Deux nombres aléatoires, $r_{1}$ déterminant la direction du déplacement et $r_{2}$ sa magnitude, sont tirés selon une loi uniforme dans le domaine [0,1]. La nouvelle valeur du gène est donnée par l'équation suivante:
+	
+	\begin{equation}
+	g_{n}^{'} = 
+	\left\lbrace \begin{array}{l l} 
+	g_{n} + \left(b_{n}-g_{n}\right) r_{2} \left(1 - \dfrac{G}{G_{max}} \right)^{2} & si \; r_{1} < 0.5 \\
+	g_{n} - \left(g_{n}-a_{n}\right) r_{2} \left(1 - \dfrac{G}{G_{max}} \right)^{2} & si \; r_{1} \geq 0.5 \\
+	\end{array} \right.
+	\label{equation_mutation_nonuniform_original}
+	\end{equation}
+	\noindent
+	où $a_{n}$ est la borne inférieure du $n$-ième gène, $b_{n}$ sa borne supérieure, $G$ la génération actuelle, $G_{max}$ le nombre maximum de générations.
+	
+	Nous avons adapté cet opérateur à notre application, qui ne se base pas sur un nombre de générations prédéfini:
+	
+	\begin{equation}
+	g_{n}^{'} = 
+	\left\lbrace \begin{array}{l l} 
+	g_{n} + \left(b_{n}-g_{n}\right) r_{2} \left(1 - \min \left\lbrace \dfrac{G}{G_{m,r}}, 1 \right\rbrace \left(1-\omega\right) \right)^{2} & si \; r_{1} < 0.5 \\
+	g_{n} - \left(g_{n}-a_{n}\right) r_{2} \left(1 - \min \left\lbrace \dfrac{G}{G_{m,r}}, 1 \right\rbrace \left(1-\omega\right) \right)^{2} & si \; r_{1} \geq 0.5 \\
+	\end{array} \right.
+	\label{equation_mutation_nonuniform}
+	\end{equation}
+	\noindent
+	où $G_{m,r}$ est le nombre maximum de générations durant lesquelles l'amplitude de la recherche varie, et $\omega$ un seuil choisi par l'utilisateur afin de conserver un rayon de recherche minimum lorsque $G>G_{m,r}$ .
+	
+	Lors des premières générations, le domaine d'exploration couvre tout l'espace des paramètres. En revanche, ce domaine se réduit au fil des générations, permettant une exploitation des solutions locales.
+	
+	
+	\item \textbf{Taux de mutation adaptatif individuel} \citep[\textit{adaptative mutation rate},][]{Back1992}: s'inspirant des techniques de stratégies d'évolution \citep[\textit{Evolution Strategies}, voir][]{Rechenberg1973, Schwefel1981}, \citet{Back1992} introduit une notion d'auto-adaptation aux algorithmes génétiques. Le principe est de distribuer des paramètres de contrôle de l'optimisation dans les individus eux-mêmes, et donc de décentraliser partiellement le contrôle de l'évolution, ce qui a pour but de réduire la paramétrisation des AGs et de permettre aux algorithmes de s'autogérer. Pour ce faire, la première méthode consiste en l'introduction d'un taux de mutation par individu. Lors de chaque mutation, le taux lui-même mute selon sa propre probabilité \citep{Back1992}. Puis l'éventuel nouveau taux est utilisé pour muter individuellement les gènes de l'individu. Ainsi, lorsque ce taux diminue, il aura moins de chance d'être lui-même muté. Les mutations sont effectuées selon une distribution uniforme constante. Nous avons choisi ici de ne pas altérer ce taux de mutation lors des opérations de reproduction.
+	
+	Cette approche est proche des phénomènes naturels d'adaptation. Une population moins bien adaptée à son environnement évolue en effet plus rapidement qu'une population mieux adaptée. Ainsi, dans notre application, un individu mal adapté ayant une probabilité de mutation trop faible sera vite dépassé par les autres membres de la population et tendrait à disparaître. Au contraire, lorsque la population commence à converger, un taux de mutation trop important est néfaste, et l'individu concerné risque de se dégrader rapidement.
+	
+	Les taux de mutation initiaux sont tirés aléatoirement \citep{Back1992} et la méthode n'a aucun paramètre. D'autres approches existent pour introduire une auto-adaptation \citep[voir p.ex.][]{Smith1997,Deb1999,Deb2001}.
+	
+	
+	\item \textbf{Rayon de recherche adaptatif individuel}: en nous inspirant de la mutation non uniforme, nous introduisons un rayon de recherche dans l'approche du taux de mutation adaptatif individuel. Ce rayon de recherche $r_{a}$, borné entre 0 et 1, est également adaptatif et se comporte de manière similaire au taux de mutation adaptatif. Dans le but de dissocier son évolution de celle du taux de mutation, sa propre valeur est considérée dans un premier temps comme taux d'auto-mutation pour éventuellement muter avant d'être utilisée comme rayon de recherche normalisé. La valeur d'un gène après mutation est donnée par la formule suivante, qui est une simplification de la mutation non uniforme:
+	
+	\begin{equation}
+	g_{n}^{'} = 
+	\left\lbrace \begin{array}{l l} 
+	g_{n} + \left(b_{n}-g_{n}\right) r_{2} r_{a} & si \; r_{1} < 0.5 \\
+	g_{n} - \left(g_{n}-a_{n}\right) r_{2} r_{a} & si \; r_{1} \geq 0.5 \\
+	\end{array} \right.
+	\label{equation_mutation_rayon_adaptatif}
+	\end{equation}
+	\noindent
+	où $r_{1}$ et $r_{2}$ sont tirés aléatoirement, de la même manière que pour la mutation non uniforme. Aucun paramètre externe n'est donc nécessaire.
+	
+	
+	\item \textbf{Chromosome de taux de mutation adaptatifs} \citep[\textit{n adaptative mutation rate},][]{Back1992}: de manière analogue au taux de mutation adaptatif individuel, cette approche laisse le contrôle de la vitesse d'évolution aux individus eux-mêmes. La différence est ici que chaque gène a un taux de mutation propre. Le principal avantage est que le réglage de la mutation peut se faire beaucoup plus finement \citep{Smith1997}. Nous considérons donc un second chromosome contenant les taux de mutation correspondant à chaque gène du chromosome de base. Nous choisissons l'approche de \citet{Magnin2006}, qui est de considérer les chromosomes en parallèle plutôt que de les concaténer.
+	
+	Le fonctionnement de la mutation et de l'auto-mutation est similaire au cas du taux de mutation adaptatif individuel, mais de manière distribuée dans le chromosome. Une autre différence est que nous appliquons ici les mêmes opérations de croisement que celles que subissent les gènes du chromosome de base, et ceci pour les mêmes points de croisement. Ainsi, lors d'un échange de gènes, les enfants héritent également des taux de mutation propres à chacun de ces gènes.
+	
+	
+	\item \textbf{Chromosome de rayons de recherche adaptatifs}: cet opérateur combine les fonctionnements du chromosome de taux de mutation adaptatifs et du rayon de recherche adaptatif. De manière analogue, l'individu possède 3 chromosomes, le premier contenant les valeurs à optimiser, le second les taux de mutation distribués, et le dernier les rayons de recherche distribués. À nouveau, aucun paramètre externe n'est requis.
+	
+	
+	\item \textbf{Mutation multi-échelles}: en nous inspirant de la mutation non uniforme, nous proposons une approche également basée sur un rayon de recherche, celui-ci n'étant cependant pas décroissant avec le temps. Il est en effet difficile d'anticiper la vitesse de convergence et donc de paramétrer la mutation non uniforme. Le rayon de recherche $r_{a}$ de l'équation \ref{equation_mutation_rayon_adaptatif} est ici tiré aléatoirement, pour chaque individu, entre 4 valeurs équiprobables: 1, 0.5, 0.1, 0.02. Ainsi, l'évolution des individus est un mélange d'exploration et d'exploitation au lieu d'être une transition de l'un à l'autre. Le seul paramètre externe est le taux de mutation qui est fixe.
+	\vspace{2mm}
+	
+
+Lorsque le gène à muter est représenté par une liste d'éléments distincts (p.ex. variable ou niveau atmosphérique, ou critère d'analogie), un tirage d'une nouvelle valeur selon une distribution uniforme est toujours utilisé. Il ne fait en effet pas sens d'utiliser des opérateurs fonctionnant sur des principes de proximité lorsque celle-ci n'existe pas.
 
 
 
