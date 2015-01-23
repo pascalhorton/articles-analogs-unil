@@ -16,11 +16,11 @@
 
 %% Start with one of the following:
 % DOUBLE-SPACED VERSION FOR SUBMISSION TO THE AMS
-%\documentclass{ametsoc}
+\documentclass{ametsoc}
 
 
 % TWO-COLUMN JOURNAL PAGE LAYOUT---FOR AUTHOR USE ONLY
- \documentclass[twocol]{ametsoc}
+%\documentclass[twocol]{ametsoc}
 
 \usepackage{multirow}
 \usepackage{gensymb}
@@ -565,7 +565,7 @@ This comparison required tens of thousands of optimizations that were performed 
 
 	We didn't find any improvement with $N>500$, the results were even surprisingly of a lower quality. However, this cannot be generalized and depends on the analogue method to optimize, and supposedly on the characteristics of the processes generating the precipitations in a given region. 
 	
-	\item \textbf{Natural selection}: this operator has no significant influence, and both tested implementations work fine.
+	\item \textbf{Natural selection}: this operator has no significant influence, and both tested implementations work fine, with a slightly better performance for the ratio-elitism.
 	
 	\item \textbf{Selection of couples}: 6 variants of the couples selection were assessed. The performance of these variants are relatively close, both in terms of score, convergence, and number of evaluations. The random pairing performed the most poorly, when the tournament selection with 3 candidates is slightly superior. The roulette wheel weighting is not far behind, but it is less effective in terms of convergence and number of evaluations. This operator has not a significant role in our application. 
 	
@@ -575,7 +575,7 @@ This comparison required tens of thousands of optimizations that were performed 
 	
 	The mutation operators based on a variable normal or uniform law work very poorly and are difficult to configure. We then observe many operators more or less with the same scores and requiring a variable amount of assessments. The convergence analysis allows us to highlight three best operators:
 	
-	\textit{Non-uniform mutation} \citep{Michalewicz1996}: this operator is good in terms of convergence, mainly when the number of parameters to optimize is rather low. The number of required evaluations, however, can be quite substantial. The main disadvantage of the non-uniform mutation is the complexity of its parameterization, which is difficult to estimate a priori. These parameters must be carefully chosen to be in line with the evolution rate of the population, and are therefore dependent on the problem being treated. We could observe that the $\omega$ coefficient does not influence performance. The role of $G_{max}$ is rather difficult to judge, but does not seem essential. The mutation rate was found to be important. The difficulty is that the optimal value seems to be very case-related. Indeed, by even changing the precipitation time series (ie optimizing for another region), but not the complexity of the analogue method, the optimal mutation rate changes, making it impossible to estimate in advance.
+	\textit{Non-uniform mutation} \citep{Michalewicz1996}: this operator is good in terms of convergence, mainly when the number of parameters to optimize is rather low. The number of required evaluations, however, can be quite substantial. The main disadvantage of the non-uniform mutation is the complexity of its parameterization, which is difficult to estimate a priori. These parameters must be carefully chosen to be in line with the evolution rate of the population, and are therefore dependent on the problem being treated. We could observe that the $\omega$ coefficient does not influence performance. The role of $G_{m}$ is rather difficult to judge, but does not seem essential. The mutation rate was found to be important. The difficulty is that the optimal value seems to be very case-related. Indeed, by even changing the precipitation time series (ie optimizing for another region), but not the complexity of the analogue method, the optimal mutation rate changes, making it impossible to estimate in advance.
 		
 	\textit{Chromosome of adaptive search radius} \citep{Horton2012a}: unlike the previous one, this operator is very robust, as it requires no option and is self-managing. It may be sometimes a little bit less efficient for simple problems, but does not require parameterization, which is an important advantage. It is interesting to notice that our insertion of an extra chromosome representing the search radius gives better performance than other self-adaptive operators (such as, eg, the chromosome of adaptive mutation rate).
 		
@@ -588,19 +588,38 @@ This comparison required tens of thousands of optimizations that were performed 
 \end{itemize}
 
 
-
-
-
-
-
-
-
-
-
 \subsubsection{Recommended parameterization of GAs}
 
-	
+We evaluated the optimization by genetic algorithms on methods of varying complexity, with a large number of combinations of operators to be able to make recommendations for optimizing the analogue method. Our conclusions are:
 
+\begin{itemize}
+	\item The optimization does not systematically converge to the global optimum  (but still often nearby), which is why we recommend doing several optimizations in parallel in order to compare the results, analyze the convergence, and keep the best.
+	
+	\item The population size should be in accordance with the complexity of the method to optimize: from 50 for the simple ones, up to 500 for the most complex methods.
+	
+	\item The value of the ratio for the intermediate population is not so important, and value of 50\% seems quite appropriate.
+	
+	\item Ratio-elitism is slightly better than tournaments for the natural selection operator, but it is not decisive.
+	
+	\item The performance of the operators for the couples selection perform relatively similarly. The roulette wheel weighting and the tournament selection are more efficient in terms of convergence and the required number of evaluations.
+	
+	\item Most crossover operators have relatively similar performance. Binary-like crossover, especially with two points of intersection, are better than others, especially for convergence.
+	 
+	\item Mutation has a clearly dominant influence. Three mutation operators stand out, two of which we have developed: the non-uniform mutation, the chromosome of adaptive search radius, and the multi-scale mutation. The latter two are more robust as they have less or even no parameter.
+	 
+\end{itemize}
+
+In order to make an optimization of the analogue method with genetic algorithms, it may be wise to consider these three mutation operators in parallel. We would then combine algorithms that are sometimes faster to other that are more robust. In order to be confident in the optimized methods, we propose using a set of the following mutation operators:
+
+\begin{itemize}
+	\setlength\itemsep{-2px}
+	\item 1x non-uniform, $p_{mut}=0.1$, $G_{m}=50$, $\omega=0.1$
+	\item 1x non-uniform, $p_{mut}=0.1$, $G_{m}=100$, $\omega=0.1$
+	\item 1x non-uniform, $p_{mut}=0.2$, $G_{m}=100$, $\omega=0.1$
+	\item 1x multi-scale,  $p_{mut}=0.1$
+	\item 1x multi-scale,  $p_{mut}=0.2$
+	\item 3x chromosome of adaptive search radius
+\end{itemize}
 
 
 \section{Global optimization of the analogue method}
@@ -612,7 +631,9 @@ The study area is the alpine upper Rhône catchment in Switzerland (Fig.\ \ref{f
 
 
 \subsection{Optimization of the analogy of atmospheric circulation}
-...
+
+We optimize here simultaneously the choice of the atmospheric levels, the time of the observation, the spatial windows and the number of analogues! An evaluation of all these parameters with the classic calibration requires multiple assessments of all possible combinations. In addition, these studies are often carried out with a spatial window of fixed size and a fixed number of analogues. So we hope to find solutions as good or better, but automatically.
+
 
 \subsubsection{Which parameters are optimized ?}
 ...
@@ -639,6 +660,12 @@ The study area is the alpine upper Rhône catchment in Switzerland (Fig.\ \ref{f
 
 \section{Conclusions and perspectives}
 ...
+
+
+
+%\item Mutation non uniforme: cet opérateur présente potentiellement le meilleur taux de convergence, pour autant qu'il soit bien paramétré. En revanche, si l'évolution de la population n'a pas été correctement estimée au préalable, et que nous choisissons une mauvaise valeur parmi ses trois paramètres, l'optimisation peut être médiocre. Son potentiel est donc prometteur, mais l'opérateur est difficile à maîtriser, car les paramètres sont nombreux et leur valeur dépend du problème à optimiser.
+%\item Chromosome de rayons de recherche adaptatifs: nous avons élaboré le chromosome de rayons de recherche adaptatifs en nous inspirant du chromosome de taux de mutation adaptatifs. Notre version est plus performante, car elle intègre une notion de distance dans l'espace des paramètres, qui décroît avec l'évolution de la population, améliorant ainsi la convergence. Une grande force de cet opérateur est qu'il ne nécessite aucun paramètre, il s'autocontrôle et évolue avec la population, ce qui le rend très robuste.
+%\item Mutation multi-échelles: la mutation multi-échelles est une nouvelle approche qui ne cherche pas une évolution de l'opérateur de mutation, mais qui effectue des recherches globales, régionales et locales en tout temps. Il est ainsi constamment en train d'explorer l'espace des paramètres complet et d'exploiter l'information locale, les deux aspects importants des algorithmes génétiques. Il ne nécessite qu'un seul paramètre, qui est le taux de mutation. Celui-ci doit cependant être bien choisi, et cette valeur change en fonction de la méthode à optimiser.
 
 
 
