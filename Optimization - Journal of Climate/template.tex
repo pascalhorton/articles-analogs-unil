@@ -16,11 +16,11 @@
 
 %% Start with one of the following:
 % DOUBLE-SPACED VERSION FOR SUBMISSION TO THE AMS
-\documentclass{ametsoc}
+%\documentclass{ametsoc}
 
 
 % TWO-COLUMN JOURNAL PAGE LAYOUT---FOR AUTHOR USE ONLY
-%\documentclass[twocol]{ametsoc}
+\documentclass[twocol]{ametsoc}
 
 \usepackage{multirow}
 \usepackage{gensymb}
@@ -154,15 +154,17 @@
 ...
 
 \subsection{Data}
+\label{section_data}
 
 The analogue method relies on two types of data: predictors, that are atmospheric variables describing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather time series we want to forecast.
 
 Predictors are generally reanalysis datasets (and outputs of a global numerical weather prediction models for the target situation in operational forecasting, which is not the topic of this paper). We will work here with the NCEP/NCAR reanalysis \citep[6-hourly, 17 atmospheric levels at a resolution of 2.5\degree, see][]{Kalnay1996}, but it can be any other reanalysis.
 
-The predictand (which is to be predicted) is here the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss' stations network, for the period 1962-2007. The time series from every available gauging station were averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}.
+The predictand (which is to be predicted) is here the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss' stations network, for the period 1961-2008. The time series from every available gauging station were averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}.
 
 
 \subsection{The analogue method}
+\label{section_analog_method}
 
 The analogue method is a downscaling technique based on the idea expressed by \citet{Lorenz1969}. It aims at forecasting a predictand, often the daily precipitation, on the basis of predictor variables describing the synoptic atmospheric circulation. Its main hypothesis is that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Bontron2005}.
 
@@ -234,7 +236,7 @@ The calibration procedure that we call ''classic'' was developed by \citet{Bontr
 	\item Finally, the numbers of analogues are re-assessed for the different analogue levels. This is done iteratively by varying the number of analogues of each level in a systematic way.
 \end{enumerate}
 
-Calibration is done in stages, to determine the optimal parameters systematically. The steps are distinct and previously optimized parameters are generally not reassessed. \citet{Bontron2004} notes however that ''\textit{this type of algorithm, which is changing the parameters of a model in a unique path, can lead to the best solution, provided that there is no local optima}''. The advantage of this method is that it is fast and has low computing requirements. We added small improvements to this method by allowing the spatial windows to do other moves, such as: (1) increase in 2 simultaneous directions, (2) decrease in 1 or 2 simultaneous directions, (3) expansion or contraction (in every direction), (4) shift of the window (without resizing) in 8 directions (including diagonals), (5) and finally all the moves described above, but with a factor of 2, 3, or more. For example, we try to increase by 2 units in one (or more) direction. This allows to skip one size that may not be optimal.
+Calibration is done in stages, to determine the optimal parameters systematically. The steps are distinct and previously optimized parameters are generally not reassessed. \citet{Bontron2004} notes however that ''\textit{this type of algorithm, which is changing the parameters of a model in a unique path, can lead to the best solution, provided that there is no local optima}''. The advantage of this method is that it is fast, it provides acceptable results, and it has low computing requirements. We added small improvements to this method by allowing the spatial windows to do other moves, such as: (1) increase in 2 simultaneous directions, (2) decrease in 1 or 2 simultaneous directions, (3) expansion or contraction (in every direction), (4) shift of the window (without resizing) in 8 directions (including diagonals), (5) and finally all the moves described above, but with a factor of 2, 3, or more. For example, we try to increase by 2 units in one (or more) direction. This allows to skip one size that may not be optimal.
 
 These supplementary steps often result in spatial windows that are a bit different, but the performance gain is rather marginal (gain of 0.2\%). These methods are available in the open source software AtmoSwing (Analogue Technique MOdel for Statistical Weather forecastING, www.atmoswing.org).
 
@@ -255,12 +257,6 @@ Our ambition was then to assess the feasibility of an automatic optimization of 
 
 
 \subsection{Characterization of the parameters space}
-...
-
-\subsection{Parameters that should be optimized}
-...
-
-\subsection{Possible new degrees of freedom}
 ...
 
 
@@ -482,7 +478,7 @@ The evaluated and developed mutation operators are the following:
 	\end{equation}
 	where $G_{m,r}$ is the maximum number of generations during which the magnitude of the research varies, and $\omega$ is a threshold chosen by the user to maintain a minimum search radius when $G>G_{m,r}$. During the first generations, the exploration extent covers the entire parameters space. However, this area is reduced over generations, allowing exploitation of local solutions.
 	
-	\item \textbf{Individual adaptive mutation rate} \citep{Back1992a}: based on the ides of Evolution Strategies \citep[see][]{Rechenberg1973, Schwefel1981}, \citet{Back1992a} introduced a concept of self-adaptive genetic algorithms. The idea is to distribute control parameters within individuals themselves, which partially decentralize control of the evolution. It allows reducing the parameterization of GAs and introducing a notion of self-management. The first approach is the introduction of a mutation rate per individual, that mutates itself under its own probability \citep{Back1992a}. Then, the eventual new rate is used to mutate the genes of the individual. Thus, as this rate decreases, it will have less probability of being itself mutated. This approach is close to the natural adaptation phenomena. A population less suited to its environment is changing faster than better adapted population. Mutations are performed according to a constant uniform distribution. The initial mutation rates are randomly chosen \citep{Back1992a} and the method has no parameter. Other approaches exist to introduce a self-adaptation \citep[see][]{Smith1997a,Deb1999,Deb2001a}.
+	\item \textbf{Individual adaptive mutation rate} \citep{Back1992a}: based on the ides of Evolution Strategies \citep[see][]{Rechenberg1973, Schwefel1981}, \citet{Back1992a} introduced a concept of self-adaptive genetic algorithms. The idea is to distribute control parameters within individuals themselves, which partially decentralize control of the evolution. It allows reducing the parametrization of GAs and introducing a notion of self-management. The first approach is the introduction of a mutation rate per individual, that mutates itself under its own probability \citep{Back1992a}. Then, the eventual new rate is used to mutate the genes of the individual. Thus, as this rate decreases, it will have less probability of being itself mutated. This approach is close to the natural adaptation phenomena. A population less suited to its environment is changing faster than better adapted population. Mutations are performed according to a constant uniform distribution. The initial mutation rates are randomly chosen \citep{Back1992a} and the method has no parameter. Other approaches exist to introduce a self-adaptation \citep[see][]{Smith1997a,Deb1999,Deb2001a}.
 	
 	\item \textbf{Individual adaptive search radius} \citep{Horton2012a}: based on the ideas of the non-uniform mutation, we introduce a search radius in the approach of individual adaptive mutation rates. This search radius $r_{a}$, bounded between 0 and 1, is also adaptive and behaves similarly to the adaptive mutation rates. In order to separate its evolution to the one of the mutation rate, its own value is considered initially as a self-mutation rate to eventually mutate before being used as a normalized search radius. The value of a mutated gene is given by the following equation, which is a simplification of the non-uniform mutation:
 	\begin{equation}
@@ -517,7 +513,7 @@ We used a process of elitism on natural selection as well as on mutations. This 
 The convergence check determines whether the solution is acceptable and if the algorithm may stop. The stopping criteria are not often well documented in GAs case studies \citep{Haupt2004}. We chose to stop the optimization if the best individual does not change for $x$ generations. This value should not be too low to allow the algorithm to escape from a local minimum. In addition, the rate of improvement decreases with the progression of the optimization. It is thus common that the best individual does not evolve over generations when we get closer to the global solution. We chose a value of $x=20$ generations.
 
 
-\subsection{Implementation and contraints}
+\subsection{Implementation and constraints}
 
 Some constraints need to be taken into account. For example, when a crossover or a mutation operation resulted in a parameter value standing out of the authorized bounds, it had to be brought back within the limits. Moreover, the parameters are of different nature: some are continuous, such as the weight, some are discretized, such as the analogues number, or the spatial windows, and finally, some are independent elements in an array, such as the choice of the meteorological variable. New values resulting from the optimizer needs to respect the type of data it represents.
 
@@ -528,22 +524,22 @@ GAs are very computationally intensive because they require many evaluations of 
 The assessment (calculation of the objective function) of each member of the population of a generation is completely independent and can be performed in parallel on different processors of a computer \citep{Haupt2004, Alliot2005}. We implemented this technique and the resulting time savings was very important. In order to perform optimizations for multiple time series, the use of a cluster is a necessity, which our code allows.
 
 
-\subsection{Recommendations of parameterization}
+\subsection{Recommendations of parametrization}
 
-The GAs parameterization, such as the mutation rate, population size, natural selection options, and so on, is difficult given the high number of existing variants, each developed for a specific problem \citep{Haupt2004, Costa2007a}. This parameterization depends on the objective function, implementation variants, the bounds of variables to be optimized, and performance indicators. Thus, different studies suggest very different parameterization.
+The GAs parametrization, such as the mutation rate, population size, natural selection options, and so on, is difficult given the high number of existing variants, each developed for a specific problem \citep{Haupt2004, Costa2007a}. This parametrization depends on the objective function, implementation variants, the bounds of variables to be optimized, and performance indicators. Thus, different studies suggest very different parametrization.
 
-A key element of the parameterization of GAs is finding the right balance between exploration and exploitation \citep{Back1992a, Smith1997a}. Exploration is characterized by a relatively high probability to assess the regions of the parameters space that have not yet been visited. This probability must be sufficiently large at the beginning of the optimization, so that the algorithm is capable of identifying the region where the global optimum is located. Exploitation is characterized by a local search in an area of interest, and generally makes small movements. The latter is interesting to refine the results at the end of the optimization.
+A key element of the parametrization of GAs is finding the right balance between exploration and exploitation \citep{Back1992a, Smith1997a}. Exploration is characterized by a relatively high probability to assess the regions of the parameters space that have not yet been visited. This probability must be sufficiently large at the beginning of the optimization, so that the algorithm is capable of identifying the region where the global optimum is located. Exploitation is characterized by a local search in an area of interest, and generally makes small movements. The latter is interesting to refine the results at the end of the optimization.
 
-\citet{DeJong1975a} and \citet{Grefenstette1986} compared different implementations and parameterizations of GAs on functions of varying complexity. They observed that a small population size improves the initial performance, while a large population improves long-term performance; the size of the population should be selected between 50 and 100. They also observed that the ratio of the population to keep for the mating pool is around 50\% (45\% to 60\%).
+\citet{DeJong1975a} and \citet{Grefenstette1986} compared different implementations and parametrizations of GAs on functions of varying complexity. They observed that a small population size improves the initial performance, while a large population improves long-term performance; the size of the population should be selected between 50 and 100. They also observed that the ratio of the population to keep for the mating pool is around 50\% (45\% to 60\%).
 
 Values of the mutation rate varies broadly between the studies: from 0.001 \citep{DeJong1975a} to 0.2 \citet{Haupt2004}. \citet{Back1996b} showed that mutation rates higher than the usual ranges are more optimal at the beginning of optimization, allowing further exploration. The combination of a small population and a high mutation rate works best for the first generations \citep{DeJong1975a, Back1996b, Haupt2004}, but as we could observe, it does not guarantee the quality of the final result. Incremental approaches with varying mutation rates are certainly more optimal but more complex to implement \citep{Back1996a, Back1996b}.
 
 
 \subsubsection{Comparison process and results}
 
-One of our goals being to make recommendations of parameterization for optimization of the analogue method, proceeded systematically. The results are summarized hereafter \citep[see][for the details]{Horton2012a}. We used concepts from the factorial design approach \citep[see eg.][]{Costa2005,Costa2007,Mariano2010}, which is sometimes used for comparative analysis of different parameterizations of GAs. We processed by stages, analyzing in details and in a systematic way every variants of the implemented operators, in combination with multiple other options and parameters in order to take into account eventual co-dependencies. 
+One of our goals being to make recommendations of parametrization for optimization of the analogue method, proceeded systematically. The results are summarized hereafter \citep[see][for the details]{Horton2012a}. We used concepts from the factorial design approach \citep[see eg.][]{Costa2005,Costa2007,Mariano2010}, which is sometimes used for comparative analysis of different parametrizations of GAs. We processed by stages, analysing in details and in a systematic way every variants of the implemented operators, in combination with multiple other options and parameters in order to take into account eventual co-dependencies. 
 
-In order to evaluate a combination of operators/options, we processed 10 optimizations for one parameterization of GAs. The performances were characterized by four indicators:
+In order to evaluate a combination of operators/options, we processed 10 optimizations for one parametrization of GAs. The performances were characterized by four indicators:
 
 \begin{itemize}
 	\item mean score: average of the final scores of the 10 optimizations,
@@ -569,15 +565,15 @@ This comparison required tens of thousands of optimizations that were performed 
 	
 	\item \textbf{Selection of couples}: 6 variants of the couples selection were assessed. The performance of these variants are relatively close, both in terms of score, convergence, and number of evaluations. The random pairing performed the most poorly, when the tournament selection with 3 candidates is slightly superior. The roulette wheel weighting is not far behind, but it is less effective in terms of convergence and number of evaluations. This operator has not a significant role in our application. 
 	
-	\item \textbf{Chromosomes crossover}: we compared 21 different options of the crossover operators. This analysis revealed some slightly better options, some bad ones, and many averages. Among the bad operators, we find first the heuristic crossover, which is also more demanding in number of evaluations, as well as the linear crossover. Binary-like crossovers (especially with 2 points of intersection, whether $\beta$ is shared or not) are significantly better than the others, especially in terms of convergence. The two points crossover is relatively close. Other operators can be considered usable, yet may not be optimal. Once again, this operator is not the key of the GAs parameterization.
+	\item \textbf{Chromosomes crossover}: we compared 21 different options of the crossover operators. This analysis revealed some slightly better options, some bad ones, and many averages. Among the bad operators, we find first the heuristic crossover, which is also more demanding in number of evaluations, as well as the linear crossover. Binary-like crossovers (especially with 2 points of intersection, whether $\beta$ is shared or not) are significantly better than the others, especially in terms of convergence. The two points crossover is relatively close. Other operators can be considered usable, yet may not be optimal. Once again, this operator is not the key of the GAs parametrization.
 	
 	\item \textbf{Mutation}: we compared the 10 mutation operators with different options, bringing the number of variations of this operator to 110. We immediately observed that the mutation operator has a very important role on the performance of the optimizations of the analogue method, and that the other reproduction operators seem of secondary importance. This observation is in line with the work of \citet{Back1996a}, who argues for the importance of mutation over reproduction. He even suggests, in opposition with the theory of \citet{Holland1992a}, that chromosomes crossovers have mostly a corrective role of mutation operations. Various studies have also identified the importance of the mutation operator relative to reproduction \citep[see eg.][]{Back1992a, Back1996b, Smith1997a, Deb1999, Haupt2004, Costa2005a, Costa2007a}.
 	
 	The mutation operators based on a variable normal or uniform law work very poorly and are difficult to configure. We then observe many operators more or less with the same scores and requiring a variable amount of assessments. The convergence analysis allows us to highlight three best operators:
 	
-	\textit{Non-uniform mutation} \citep{Michalewicz1996}: this operator is good in terms of convergence, mainly when the number of parameters to optimize is rather low. The number of required evaluations, however, can be quite substantial. The main disadvantage of the non-uniform mutation is the complexity of its parameterization, which is difficult to estimate a priori. These parameters must be carefully chosen to be in line with the evolution rate of the population, and are therefore dependent on the problem being treated. We could observe that the $\omega$ coefficient does not influence performance. The role of $G_{m}$ is rather difficult to judge, but does not seem essential. The mutation rate was found to be important. The difficulty is that the optimal value seems to be very case-related. Indeed, by even changing the precipitation time series (ie optimizing for another region), but not the complexity of the analogue method, the optimal mutation rate changes, making it impossible to estimate in advance.
+	\textit{Non-uniform mutation} \citep{Michalewicz1996}: this operator is good in terms of convergence, mainly when the number of parameters to optimize is rather low. The number of required evaluations, however, can be quite substantial. The main disadvantage of the non-uniform mutation is the complexity of its parametrization, which is difficult to estimate a priori. These parameters must be carefully chosen to be in line with the evolution rate of the population, and are therefore dependent on the problem being treated. We could observe that the $\omega$ coefficient does not influence performance. The role of $G_{m}$ is rather difficult to judge, but does not seem essential. The mutation rate was found to be important. The difficulty is that the optimal value seems to be very case-related. Indeed, by even changing the precipitation time series (ie optimizing for another region), but not the complexity of the analogue method, the optimal mutation rate changes, making it impossible to estimate in advance.
 		
-	\textit{Chromosome of adaptive search radius} \citep{Horton2012a}: unlike the previous one, this operator is very robust, as it requires no option and is self-managing. It may be sometimes a little bit less efficient for simple problems, but does not require parameterization, which is an important advantage. It is interesting to notice that our insertion of an extra chromosome representing the search radius gives better performance than other self-adaptive operators (such as, eg, the chromosome of adaptive mutation rate).
+	\textit{Chromosome of adaptive search radius} \citep{Horton2012a}: unlike the previous one, this operator is very robust, as it requires no option and is self-managing. It may be sometimes a little bit less efficient for simple problems, but does not require parametrization, which is an important advantage. It is interesting to notice that our insertion of an extra chromosome representing the search radius gives better performance than other self-adaptive operators (such as, eg, the chromosome of adaptive mutation rate).
 		
 	\textit{Multi-scale mutation} \citep{Horton2012a}: finally, our multi-scale mutation, which also performs pretty well, can as well be seen as fairly robust, since it requires only one parameter, the mutation rate. Our tests seem to indicate that a high mutation rate here is preferable.
 	
@@ -588,12 +584,12 @@ This comparison required tens of thousands of optimizations that were performed 
 \end{itemize}
 
 
-\subsubsection{Recommended parameterization of GAs}
+\subsubsection{Recommended parametrization of GAs}
 
 We evaluated the optimization by genetic algorithms on methods of varying complexity, with a large number of combinations of operators to be able to make recommendations for optimizing the analogue method. Our conclusions are:
 
 \begin{itemize}
-	\item The optimization does not systematically converge to the global optimum  (but still often nearby), which is why we recommend doing several optimizations in parallel in order to compare the results, analyze the convergence, and keep the best.
+	\item The optimization does not systematically converge to the global optimum  (but still often nearby), which is why we recommend doing several optimizations in parallel in order to compare the results, analyse the convergence, and keep the best.
 	
 	\item The population size should be in accordance with the complexity of the method to optimize: from 50 for the simple ones, up to 500 for the most complex methods.
 	
@@ -612,7 +608,7 @@ We evaluated the optimization by genetic algorithms on methods of varying comple
 In order to make an optimization of the analogue method with genetic algorithms, it may be wise to consider these three mutation operators in parallel. We would then combine algorithms that are sometimes faster to other that are more robust. In order to be confident in the optimized methods, we propose using a set of the following mutation operators:
 
 \begin{itemize}
-	\setlength\itemsep{-2px}
+	\setlength\itemsep{-4px}
 	\item 1x non-uniform, $p_{mut}=0.1$, $G_{m}=50$, $\omega=0.1$
 	\item 1x non-uniform, $p_{mut}=0.1$, $G_{m}=100$, $\omega=0.1$
 	\item 1x non-uniform, $p_{mut}=0.2$, $G_{m}=100$, $\omega=0.1$
@@ -623,20 +619,46 @@ In order to make an optimization of the analogue method with genetic algorithms,
 
 
 \section{Global optimization of the analogue method}
-...
+
+We made different attempts to improve the analogue method by means of genetic algorithms. A summary of the main results are provided here \citep[see][for the details]{Horton2012a}. The analogue method has to be adapted to every new location it is applied. We will focus here on an application to the Swiss Alps. Even though the results may differ from one place to another, the applicability of GAs to the analogue method remains universal.
+
 
 \subsection{Case study description}
 
 The study area is the alpine upper Rhône catchment in Switzerland (Fig.\ \ref{figure_map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region in the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project that aims at providing a real-time flood management on the upper Rh\^{o}ne catchment \citep{GarciaHernandez2009b}. The first global optimizations were part of the MINERVE project \citep{Horton2012, Horton2012a}.
 
+The 48 years period (see section \ref{section_data}) was divided into a calibration period and a validation period. Using data independent from the calibration period to validate our results is very important in order to assess the robustness of the improvements and to avoid overparametrization of the method.
+
+In order to reduce potential bias related to trends in the climate change or to the evolution in measurement techniques, the selection of the validation period is evenly distributed over the entire series. Thus, we select one year every six years for validation, which represents a total of eight years for the validation and forty for calibration. The choice of the sequence was made in order to have similar statistical characteristics between the calibration and the validation periods.
+
 
 \subsection{Optimization of the analogy of atmospheric circulation}
 
-We optimize here simultaneously the choice of the atmospheric levels, the time of the observation, the spatial windows and the number of analogues! An evaluation of all these parameters with the classic calibration requires multiple assessments of all possible combinations. In addition, these studies are often carried out with a spatial window of fixed size and a fixed number of analogues. So we hope to find solutions as good or better, but automatically.
+We first optimized the analogy of atmospheric circulation alone, without humidity variables. We started from the most simple method, and increased the complexity of the method, thus the number of degrees of freedom in order to identify the ones that are of particular interest. Thus, the tested parametrization evolved iteratively in complexity. We do not provide the detailed results of the intermediate stages \citep[see][for the details]{Horton2012a}, but only the main conclusions.
+
+We first considered the reference method for the analogy of the atmospheric circulation, based on the 500 and 1000~hPa levels. We let the optimizer choose the number of analogues, both spatial windows with no overlapping constraint, as well as the temporal window (hours of observation of the geopotential). The classic calibration cannot automatically choose the temporal window, neither handle non-overlapping spatial windows, and finally it cannot optimize all parameters simultaneously. With these improvements, we could gain a relative improvement of the CRPSS of 3.97\% and 2.45\% in average for the calibration and the validation periods respectively. Some tests showed that most of the gains are due to the non-overlapping spatial windows.
+
+Then, we provided an additional degree of freedom to the AGs by letting them choose the atmospheric levels along with the other parameters. Evaluation of atmospheric levels is also a non-automated process in the classic calibration. However, we could observe that the choice of this degree of freedom improves the optimization time and may decrease the number of simulations which converge to a single solution. However, most solutions are very close in terms of score. The averaged relative improvement of the CRPSS is 5.63\% for the calibration and 3.82\% for the validation period. The atmospheric levels that were chosen are 500~hPa or 700~hPa for the upper level, and 925~hPa or 1000~hPa (most often) for the lower level.
+
+Parallel analyses showed that the analogy of circulation is incomplete, and that the geopotential still contains relevant data that can improve the statistical relationship. So we added a third predictor that the optimizer can use along with the previous parameters. There is no constraint on the predictors, so that the same atmospheric level can be selected multiple times. Some improvements were found on the score, both for the calibration and the validation periods, confirming that this additional information is beneficial for the quality of the forecast. We then tried with 4 predictors, and so on, up to 8. Every time we added a new predictor to optimize, the score on the calibration period increased, but always in a smaller extent. However, the validation period dropped after 4 predictors, revealing an over-parametrization of the method, and thus a lack of robustness. Moreover, the complexity of the method increases, and its interpretation becomes more and more difficult. We thus found that considering 4 predictors is optimal for our case study, since the gain in CRPSS is significant. It can not be excluded that another number would prevail under other meteorological conditions.
+
+Finally, we added a weighting of these 4 predictors (atmospheric levels), which is also optimized by GAs. The weighting operates in the combination of the S1 criteria of every level, which were previously averaged with equal weights. The role of this new degree of freedom is to give more weight to the levels with greater predictive capacity, and to consider the geopotential variability changes with altitude. 
 
 
 \subsubsection{Which parameters are optimized ?}
-...
+
+The method we finally optimized for the analogy of the atmospheric circulation, based on 4 levels of the geopotential, is made of the following degrees of freedom:
+
+\begin{itemize}
+	\setlength\itemsep{-4px}
+	\item the atmospheric levels (4 degrees)
+	\item the temporal windows (4)
+	\item the spatial windows (16)
+	\item the weights (4)
+	\item the number of analogues (1).
+\end{itemize}
+
+This sums up to 29 degrees of freedom that are optimize simultaneously.
 
 \subsubsection{Results of the optimization of atmospheric circulation}
 ...
@@ -645,17 +667,35 @@ We optimize here simultaneously the choice of the atmospheric levels, the time o
 ...
 
 
+%Nous avons cherché à identifier quelle part du gain est attribuable à quel nouveau degré de liberté par rapport à la méthode M6. De manière générale, nous avons remarqué qu'il y a une forte dépendance entre ces paramètres (fenêtres spatiales, fenêtres temporelles et pondération des niveaux atmosphériques), et qu'il n'est pas recommandable de les considérer séparément. Par exemple, l'introduction des poids (non réoptimisés) dans les paramètres de la méthode M6 a un effet en moyenne nul, mais peut engendrer des pertes non négligeables sur les scores de certains groupements.
+
+%An evaluation of all these parameters with the classic calibration requires multiple assessments of all possible combinations. In addition, these studies are often carried out with a spatial window of fixed size and a fixed number of analogues. So we hope to find solutions as good or better, but automatically.
+
 \subsection{Optimization of the analogy with humidity variables}
-...
+
+We previously worked with a method based on a unique level of analogy. However, we know that humidity variables in a second level of analogy do provide improvements to the method (section \ref{section_analog_method}). So we also want to optimize the humidity index, which is a combination of the relative humidity and the precipitable water. In order to do so, we had to introduce a constraint to the optimizer, so that it selects the same temporal window for both variables. 
+
+We proceeded to an optimization of both levels of analogy simultaneously. This implies that the analogy of the atmospheric circulation may change due to the new humidity information.
+
+When we introduce 2 predictors for the humidity analogy, the number of degrees of freedom raises to 42, and to 54 when we add 4 predictors.
+
+
+
+%We tried first to optimize the humidity predictors while keeping the same parameters for the first level of analogy on the atmospheric circulation. The results were not really satisfying, mainly on the scores of the validation. -> POUR FLUX !
+
 
 \subsubsection{Results of the optimization on both analogy levels}
 ...
 
-\subsubsection{Successive optimization vs global optimization}
-...
+%Ces optimisations ont mené à des paramétrisations différentes de l'analogie de circulation par rapport à précédemment. Il existe donc bien des relations entre les paramètres des différents niveaux d'analogie, soit entre la circulation atmosphérique et le flux d'humidité. Ainsi, en connaissance de l'information du flux d'humidité, la méthode préférera une représentation différente de la circulation. Cet aspect n'a encore jamais été mis en évidence, car les outils habituels de calibration ne le permettent pas. 
+
+%Pour tenir compte des dépendances entre les paramètres des différents niveaux d'analogie, il est nécessaire d'utiliser une méthode d'optimisation globale telle que les AGs.
+
 
 \subsubsection{Discussion}
 ...
+
+We also tried optimizing the humidity flux, which is composed of the humidity index multiplied with the wind flux. However, the results were not as good as when we considered the humidity index alone. This may be related to the fact that the optimizer tries to provide the best analogy of the atmospheric circulation in the first place, which makes the wind information less relevant in the second level of analogy.
 
 
 \section{Conclusions and perspectives}
