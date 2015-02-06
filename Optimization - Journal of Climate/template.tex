@@ -682,19 +682,60 @@ When we introduce 2 predictors for the humidity analogy, the number of degrees o
 
 
 \subsubsection{Discussion}
-...
 
-We also tried optimizing the humidity flux, which is composed of the humidity index multiplied with the wind flux. However, the results were not as good as when we considered the humidity index alone. This may be related to the fact that the optimizer tries to provide the best analogy of the atmospheric circulation in the first place, which makes the wind information less relevant in the second level of analogy.
+The optimization of the analogue method by means of genetic algorithms has been undertaken in stages by releasing progressively new degrees of freedom. This approach allowed us to differentiate contributions to performance gains, as well as to identify possible over-parametrization. The main improvements for our case study are due to the following factors:
+
+\begin{itemize}
+	\item Using 4 atmospheric levels for the analogy of circulation. It seems to be the optimal number for the studied region. Beyond that value the validation score drops, revealing a lost in robustness due to over-parametrization.
+	\item The automatic and joint optimization of all parameters: the analogues number, the choice of the atmospheric levels and the time windows, and the spatial windows. These parameters are highly interdependent, so we need to optimize them jointly in order to identify optimal combinations. Traditional calibration procedures based on a systematic assessment of every combination is no more possible when considering more than 2 atmospheric levels.
+	\item The introduction of distinct spatial windows between atmospheric levels. Indeed, the synoptic circulation is characterized by features with very different scales depending on the height, and important information for predicting rainfall is not necessarily located in the same area from one level to another.
+	\item The weighting of the analogy criteria between different atmospheric levels. It can be influenced by the variability of the geopotential with altitude, and the change of some levels significance with the targeted region. 
+	\item The joint optimization of the circulation and humidity analogy levels, that are usually calibrated successively. We have been able to demonstrate that there is a dependency between the analogy levels, and that in order to approach the optimal parameters, we must consider them jointly.
+\end{itemize}
+	
+GAs are very useful to optimize complex variants of the analogue method, and to assess new degrees of freedom that were not available so far. However, it can be dangerous to add too many parameters to optimize. Indeed, the optimizer will probably use them to successfully improve the calibration score, but the validation control remains very important in order to determine if we are actually improving the method, or if we are over-parametrizing it.
+
+The convergence of parallel optimizations decreases when the method to optimize becomes more and more complex. The optimizer do not always converge to the exact global optimum, but to its surroundings. This is related to the fact that the optimization slows down when it gets closer to the global optimum, and that we have to stop it before the end due to the required processing time. The resulting parameters may sometimes present significant differences, even though the score is almost similar. Through some Monte-Carlo analyses of the parameter space properties of the analogue method, \citet{Horton2012a} showed that some parameters of the method have a wide range of acceptable values. The spatial windows, for example, can be larger than the optimal size without much impact on the score, while they cannot be smaller \citep[see also][]{Bontron2004}. We could also observe that the choice of the atmospheric level is not a parameter as discrete as we would have thought, and that choosing another level may have reduced consequences on the performance. This is particularly true for higher atmospheric levels and can be more critical for lower layers. It was thus interesting to sometimes get several sets of near-optimal parameters, but with some nuances, in order to have an idea of the sensitivity of the parameters for a given region, and to compare the score on the validation period. In this regard, a cross-validation approach may be recommended.
+
+We tried to optimize the preselection period (the 4-months window) jointly with the other parameters, but we did not get improvement. We also tried optimizing the humidity flux, which is composed of the humidity index multiplied with the wind flux. However, the results were not as good as when we considered the humidity index alone. This may be related to the fact that the optimizer tries to provide the best analogy of the atmospheric circulation in the first place, which makes the wind information less relevant in the second level of analogy.
+
+GAs are relatively heavy to implement and require an IT infrastructure capable of performing thousands hours of calculations. However, they automatically optimize all parameters of the analogue method, what the classic calibration does not allow. We therefore save much human time that was required to assess successively numerous combinations of parameters (particularly the choice of the atmospheric levels and the temporal windows). The ability to optimize jointly all parameters has been important given the strong dependencies between them and between levels of analogy.
+
+
+
+
+
+
+
+	 
+
+
+% Cet aspect a été confirmé par l'optimisation, qui propose de petites fenêtres pour les niveaux supérieurs, et de grandes fenêtres pour les altitudes proches du sol. Notre hypothèse est que l'information des gradients des couches supérieures au-dessus du bassin suffit à résumer l'orientation et la vitesse des masses d'air d'intérêt, qui sont potentiellement liées à un forçage par-dessus la barrière orographique. De manière complémentaire, les fenêtres plus étendues pour les basses couches cherchent à intégrer la structure de la circulation, car celle-ci renseigne sur les centres actifs et sur le chemin qu'a parcouru la masse d'air éventuellement chargée en humidité avant d'arriver sur la zone d'intérêt.
+	
+	
 
 
 \section{Conclusions and perspectives}
-...
+
+We could observe strong dependencies between the parameters of the analogue method. Thus, the classic calibration, which optimizes the parameters successively, may not lead to the optimal combination. Moreover, it contains several manual systematic assessment, such as the choice of the atmospheric levels and the temporal windows.
+
+In order to automatically optimize the analogue method, we evaluated the genetic algorithms, a global optimization technique, that is able to solve complex problems. Given the large number of existing operators and options, we had to evaluate systematically multiple variants in order to identify which operators are important, and which variant works best for the analogue method. We could thus identify that the mutation operator is a key element for our application, and provided new variants that were found to be efficient. Recommendations were established for a relevant use of GAs for the optimization of the analogue method.
+
+GAs provide parametrizations of the analogue method that exceed performance results of classic calibration. In addition, they are used to select the atmospheric levels and the time windows automatically, which was not possible with traditional tools and which can save a considerable amount of human time. A great advantage of a global optimization is its ability to approach or reach optimal parameter values when they are considered jointly. 
+
+We were able to identify that there is a parametric dependence between the analogy of circulation and the moisture humidity. When we consider the two levels together, the optimal parameters of the analogy of circulation are different. This complexity can only be exploited in a suitable manner by global optimization methods.
+
+For our case study, there seems to be an optimum number of atmospheric levels to consider for the analogy of circulation, which is four, before losing performance in validation. We have also been able to improve the analogy of circulation by introducing a weighting between atmospheric levels, and considering independent spatial windows between levels.
+
+However, there is a risk of over-parametrization with this type of approach. It is therefore important to always evaluate the proposed parameters over an independent period for validation. 
 
 
 
 %\item Mutation non uniforme: cet opérateur présente potentiellement le meilleur taux de convergence, pour autant qu'il soit bien paramétré. En revanche, si l'évolution de la population n'a pas été correctement estimée au préalable, et que nous choisissons une mauvaise valeur parmi ses trois paramètres, l'optimisation peut être médiocre. Son potentiel est donc prometteur, mais l'opérateur est difficile à maîtriser, car les paramètres sont nombreux et leur valeur dépend du problème à optimiser.
 %\item Chromosome de rayons de recherche adaptatifs: nous avons élaboré le chromosome de rayons de recherche adaptatifs en nous inspirant du chromosome de taux de mutation adaptatifs. Notre version est plus performante, car elle intègre une notion de distance dans l'espace des paramètres, qui décroît avec l'évolution de la population, améliorant ainsi la convergence. Une grande force de cet opérateur est qu'il ne nécessite aucun paramètre, il s'autocontrôle et évolue avec la population, ce qui le rend très robuste.
 %\item Mutation multi-échelles: la mutation multi-échelles est une nouvelle approche qui ne cherche pas une évolution de l'opérateur de mutation, mais qui effectue des recherches globales, régionales et locales en tout temps. Il est ainsi constamment en train d'explorer l'espace des paramètres complet et d'exploiter l'information locale, les deux aspects importants des algorithmes génétiques. Il ne nécessite qu'un seul paramètre, qui est le taux de mutation. Celui-ci doit cependant être bien choisi, et cette valeur change en fonction de la méthode à optimiser.
+
+% Finalement, les AGs, tels qu'ils ont été implémentés, sont également en mesure de choisir les variables prédicteurs d'intérêt. Si nous n'avons plus vraiment de doute sur le choix des variables pour la prévision des précipitations, en raison des multiples travaux réalisés sur ce sujet, nous ne connaissons pas a priori les variables qui seraient les plus informatives pour prévoir un autre prédictand, comme la température, la grêle ou le vent. Ces outils d'optimisation peuvent alors explorer les variables et nous proposer les meilleures combinaisons. Toutefois, l'automatisation de variables composées (par exemple le flux d'humidité) présentera toujours quelques limites.
 
 
 
