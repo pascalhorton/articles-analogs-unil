@@ -223,13 +223,7 @@ The calibration procedure that we call ''classic'' was developed by \citet{Bontr
 	\item For every level of analogy:
 	\begin{enumerate}
 		\item Identification of the most skilled unitary cell (1 point for humidity variables and 4 for the geopotential fields when using the S1 criteria) over a large domain. Every point (or cell) of the full domain is assessed jointly on every predictor of the level of analogy (consisting generally of the same variable, but on different atmospheric levels and at different hours).
-		\item From this most skilled point, the spatial window is expanded by successive iterations in the direction of greater performance gain. The detailed stages are the followings:
-		\begin{enumerate}
-			\item The unitary spatial window is expanded in every 4 directions successively. The performance score is processed for these 4 windows.
-			\item Only the direction providing the best improvement is applied to our spatial window.
-			\item From this new spatial window, an increase in every 4 directions is once again assessed, and the best improvement is applied.
-			\item The spatial window grows up by repeating the previous steps, until no improvement is reached.
-		\end{enumerate}
+		\item From this most skilled point, the spatial window is expanded by successive iterations in the direction of greater performance gain. The detailed stages are the followings: (i) The unitary spatial window is expanded in every 4 directions successively. The performance score is processed for these 4 windows. (ii) Only the direction providing the best improvement is applied to our spatial window. (iii) From this new spatial window, an increase in every 4 directions is once again assessed, and the best improvement is applied. (iv) The spatial window grows up by repeating the previous steps, until no improvement is reached.
 		\item The number of analogues is optimized for the current level of analogy.
 		\item A new level of analogy can be added, based on other variables on predefined atmospheric levels and time frames. The analogue number for the next level of analogy is initiated at a chosen value. Then, the procedure starts again from step (a). The parameters calibrated on the previous analogue levels are fixed and do not change (except the number of analogues, at the final stage). 
 	\end{enumerate}
@@ -277,12 +271,7 @@ Applications of GAs are very diversified as they can handle many parameters of v
 
 By means of the reproduction operator and the natural selection, the GAs focus on the most promising regions of the parameter space \citep{Holland1992b}. Points (parameters sets) are densified in these areas because the strong genes of the best individuals propagate from generation to generation.
 
-Two conditions guarantee in theory the convergence to the global optimum \citep{Zitzler2004a}:
-
-\begin{enumerate}
-	\item Parameters mutations that can allow to explore the entire parameter space, thus ensures that any value can be achieved with a non-zero probability.
-	\item A rule of elitism ensuring that an optimal solution can not be lost or damaged.
-\end{enumerate}
+Two conditions guarantee in theory the convergence to the global optimum \citep{Zitzler2004a}: (1) Parameters mutations that can allow to explore the entire parameter space, thus ensures that any value can be achieved with a non-zero probability. (2) A rule of elitism ensuring that an optimal solution can not be lost or damaged.
 
 Practically, GAs allow rapidly approaching satisfactory solutions, but they do not provide the optimum solution for sure \citep{Zitzler2004a}. It is indeed mainly a matter of time. When the optimizer gets closer to the global optimum, any new improvement takes more time to appear, and the final adjustment of the parameters is very time consuming \citep{Back1993a}. For problems that require a significant amount of time in order to evaluate the objective function, as in our case, we have to limit the number of generations to get reasonable processing time. Thus, different acceptable solutions can result from one or more optimizations \citep{Holland1992b}. This is a strength and a weakness of GAs: they are very good at exploring complex parameters spaces in order to identify the most promising areas, but they will not necessarily find the best solution with the optimal values of all parameters \citep{Holland1992b}.
 
