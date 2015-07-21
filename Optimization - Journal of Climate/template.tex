@@ -24,6 +24,7 @@
 
 \usepackage{multirow}
 \usepackage{gensymb}
+\usepackage{subcaption}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% To be entered only if twocol option is used
@@ -280,7 +281,7 @@ Practically, GAs allow rapidly approaching satisfactory solutions, but they do n
 
 The GAs optimize a population of individuals (parameters sets). Each individual contains a chromosome (parameters of the analogue method in our case). We call gene every parameter that constitutes the chromosome. The parameters to optimize have long been coded in binary form and assembled as strings in the canonical GAs \citep{Goldberg1989}. Encoding and decoding steps were needed to transform the variable from its floating-point representation into its binary representation, and vice versa, which introduce quantification errors \citep{Haupt2004}. According to \citet{Holland1992b}, working with binary chromosomes was supposed to be more efficient \citep{Goldberg1990a, Back1993b}. However, more and more applications use floating-point representations, allowing to avoid the coding and decoding steps and the quantification errors \citep{Haupt2004}, and which also often resulted in a performance improvement \citep{Goldberg1990a}. It is thus now considered that for continuous variables, a floating-point representation is more suited \citep{Michalewicz1996, Herrera1998a, Haupt2004, Back1996b, Gaffney2010a}. 
 
-There are numerous implementation variants of GAs often optimal for a given problem \citep{Hart1991a,Schraudolph1992a}. However, the structure of the method (Figure \ref{figure_structure_gas}) resulting from the work of \citet{Holland1992b} is common to most applications \citep{Back1993b}. The divergences are the operators implementation, through significantly different algorithms, which has an important effect on the results \citep{Gaffney2010a}.
+There are numerous implementation variants of GAs often optimal for a given problem \citep{Hart1991a,Schraudolph1992a}. However, the structure of the method (Figure \ref{fig:structure_gas}) resulting from the work of \citet{Holland1992b} is common to most applications \citep{Back1993b}. The divergences are the operators implementation, through significantly different algorithms, which has an important effect on the results \citep{Gaffney2010a}.
 
 All operators we used and their options, applied to real coding, are described in the following sections. Many other operators exist, but we will only present the ones we evaluated.
 
@@ -614,7 +615,7 @@ We made different attempts to improve the analogue method by means of genetic al
 
 \subsection{Case study description}
 
-The study area is the alpine upper Rhône catchment in Switzerland (Fig.\ \ref{figure_map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region in the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project that aims at providing a real-time flood management on the upper Rh\^{o}ne catchment \citep{GarciaHernandez2009b}. The first global optimizations were part of the MINERVE project \citep{Horton2012, Horton2012a}.
+The study area is the alpine upper Rhône catchment in Switzerland (Fig.\ \ref{fig:map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region in the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project that aims at providing a real-time flood management on the upper Rh\^{o}ne catchment \citep{GarciaHernandez2009b}. The first global optimizations were part of the MINERVE project \citep{Horton2012, Horton2012a}.
 
 The 48 years period (see section \ref{section_data}) was divided into a calibration period and a validation period. Using data independent from the calibration period to validate our results is very important in order to assess the robustness of the improvements and to avoid overparametrization of the method.
 
@@ -869,19 +870,167 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 
 
 \begin{figure}[htb]
-	\centerline{\includegraphics[width=8.3cm]{figure_map.pdf}}
+	\centerline{\includegraphics[width=8.3cm]{figures/figure_map.pdf}}
 	\caption{Location of the alpine Rhône catchment in Switzerland. (source: Swisstopo)}
-	\label{figure_map}
+	\label{fig:map}
 \end{figure}
 
 
 \begin{figure}[htb]
-	\centerline{\includegraphics[width=10.3cm]{figure_structure_gas.pdf}}
+	\centerline{\includegraphics[width=8.3cm]{figures/figure_structure_gas.pdf}}
 	\caption{Genetic algorithms operational flowchart}
-	\label{figure_structure_gas}
+	\label{fig:structure_gas}
 \end{figure}
 
 
+\begin{figure}[htb]
+	\centering
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4/Spatial_windows_1.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4/Spatial_windows_2.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4/Spatial_windows_3.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4/Spatial_windows_4.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4/Spatial_windows_5.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4/Spatial_windows_6.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4/Spatial_windows_7.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4/Spatial_windows_8.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4/Spatial_windows_9.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4/Spatial_windows_10.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4/legend.png}
+	\end{subfigure}
+	\caption{Optimized spatial windows for the analogy of atmospheric circulation on 4 atmospheric levels. The atmospheric levels are ordered by increasing pressure and increasing time for the same levels.}
+	\label{fig:spatial_windows_z4}
+\end{figure}
 
+\begin{figure}[htb]
+	\centering
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi2/Spatial_windows_1.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi2/Spatial_windows_2.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi2/Spatial_windows_3.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi2/Spatial_windows_4.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi2/Spatial_windows_5.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi2/Spatial_windows_6.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi2/Spatial_windows_7.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi2/Spatial_windows_8.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi2/Spatial_windows_9.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi2/Spatial_windows_10.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi2/legend.png}
+	\end{subfigure}
+	\caption{Optimized spatial windows for the analogy of atmospheric circulation on 4 atmospheric levels and the analogy on the humidity index on 2 atmospheric levels. The atmospheric levels are ordered by increasing pressure and increasing time for the same levels.}
+	\label{fig:spatial_windows_z4-hi2}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi4/Spatial_windows_1.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi4/Spatial_windows_2.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi4/Spatial_windows_3.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi4/Spatial_windows_4.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi4/Spatial_windows_5.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi4/Spatial_windows_6.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi4/Spatial_windows_7.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi4/Spatial_windows_8.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi4/Spatial_windows_9.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=4.1cm]{figures/spatial_win_z4-hi4/Spatial_windows_10.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi4/legend.png}
+	\end{subfigure}
+	\caption{Optimized spatial windows for the analogy of atmospheric circulation on 4 atmospheric levels and the analogy on the humidity index on 4 atmospheric levels. The atmospheric levels are ordered by increasing pressure and increasing time for the same levels.}
+	\label{fig:spatial_windows_z4-hi4}
+\end{figure}
 
 \end{document}
