@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="figure_levels_weights.svg">
+  <defs
+     id="defs4">
+    <clipPath
+       id="clipPath4146"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4148"
+         d="M 0,0 595,0 595,842 0,842 0,0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath4156"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path4158"
+         d="m 811,419.922 3336,0 0,6177 -3336,0 0,-6177 z" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="128.26725"
+     inkscape:cy="432.90673"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1137"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       clip-path="url(#clipPath4146)"
+       transform="matrix(0,1.25,1.25,0,-132.05259,160.43721)"
+       inkscape:label="figure_levels_weights"
+       id="g4144">
+      <g
+         transform="scale(0.12,0.12)"
+         id="g4150">
+        <g
+           id="g4152">
+          <g
+             clip-path="url(#clipPath4156)"
+             id="g4154">
+            <path
+               inkscape:connector-curvature="0"
+               id="path4160"
+               style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+               d="m 812,420.922 3335,0 0,6177 -3335,0 0,-6177 z" />
+          </g>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           id="path4162"
+           style="fill:#d9d9d9;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 2909,905.922 0,5516.998 12,0 0,-5516.998 -12,0 z m -253,0 0,5516.998 12,0 0,-5516.998 -12,0 z m -251,0 0,5516.998 12,0 0,-5516.998 -12,0 z m -253,0 0,5516.998 12,0 0,-5516.998 -12,0 z m -251,0 0,5516.998 12,0 0,-5516.998 -12,0 z m -251,0 0,5516.998 12,0 0,-5516.998 -12,0 z m -252,0 0,5516.998 12,0 0,-5516.998" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4164"
+           style="fill:#4f81bd;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 1555,1008.92 0,96 1611,0 0,-96 -1611,0 z m 504,1379 0,96 1107,0 0,-96 -1107,0 z m -102,1379 0,96 1209,0 0,-96 -1209,0 z m 102,1379 0,96 1107,0 0,-96" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4166"
+           style="fill:#c0504d;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 1656,1129.92 0,94 1510,0 0,-94 -1510,0 z m 150,1379 0,94 1360,0 0,-94 -1360,0 z m 151,1379 0,94 1209,0 0,-94 -1209,0 z m 253,1379 0,94 956,0 0,-94" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4168"
+           style="fill:#9bbb59;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 1806,1248.92 0,95 1360,0 0,-95 -1360,0 z m 0,1379 0,95 1360,0 0,-95 -1360,0 z m 0,1379 0,95 1360,0 0,-95 -1360,0 z m 404,1379 0,95 956,0 0,-95" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4170"
+           style="fill:#8064a2;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 1605,1368.92 0,94 1561,0 0,-94 -1561,0 z m 454,1379 0,94 1107,0 0,-94 -1107,0 z m -253,1379 0,94 1360,0 0,-94 -1360,0 z m 352,1379 0,94 1008,0 0,-94" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4172"
+           style="fill:#4bacc6;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 1756,1487.92 0,96 1410,0 0,-96 -1410,0 z m 253,1379 0,96 1157,0 0,-96 -1157,0 z m -151,1379 0,96 1308,0 0,-96 -1308,0 z m 151,1379 0,96 1157,0 0,-96" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4174"
+           style="fill:#f79646;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 1806,1608.92 0,93 1360,0 0,-93 -1360,0 z m 101,1379 0,94 1259,0 0,-94 -1259,0 z m -49,1379 0,94 1308,0 0,-94 -1308,0 z m 201,1379 0,94 1107,0 0,-94" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4176"
+           style="fill:#2c4d75;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 1706,1728.92 0,94 1460,0 0,-94 -1460,0 z m -101,1379 0,94 1561,0 0,-94 -1561,0 z m 352,1379 0,94 1209,0 0,-94 -1209,0 z m 404,1379 0,94 805,0 0,-94" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4178"
+           style="fill:#772c2a;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 1706,1847.92 0,94 1460,0 0,-94 -1460,0 z m -50,1379 0,94 1510,0 0,-94 -1510,0 z m 403,1379 0,94 1107,0 0,-94 -1107,0 z m 151,1379 0,94 956,0 0,-94" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4180"
+           style="fill:#5f7530;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 1858,1968.92 0,94 1308,0 0,-94 -1308,0 z m -152,1379 0,94 1460,0 0,-94 -1460,0 z m 0,1379 0,94 1460,0 0,-94 -1460,0 z m 655,1379 0,94 805,0 0,-94" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4182"
+           style="fill:#4d3b62;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           d="m 1806,2086.92 0,94 1360,0 0,-94 -1360,0 z m 0,1379 0,94 1360,0 0,-94 -1360,0 z m 203,1380 0,93 1157,0 0,-93 -1157,0 z m 0,1379 0,93 1157,0 0,-93" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path4184"
+           style="fill:#d9d9d9;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           d="m 3160,905.922 12,0 0,5517 -12,0 0,-5517 z" />
+        <g
+           transform="scale(8.33333,8.33333)"
+           id="g4186">
+          <text
+             id="text4188"
+             style="font-variant:normal;font-weight:normal;font-size:17.2378006px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(0,1,1,0,384.84,71.6306)">
+            <tspan
+               id="tspan4190"
+               sodipodi:role="line"
+               y="0"
+               x="0 8.7600212">0%</tspan>
+            <tspan
+               id="tspan4192"
+               sodipodi:role="line"
+               y="-30.24"
+               x="0 8.7600212">5%</tspan>
+            <tspan
+               id="tspan4194"
+               sodipodi:role="line"
+               y="-60.48"
+               x="-8.7600002 2.121e-005 8.7600422">10%</tspan>
+            <tspan
+               id="tspan4196"
+               sodipodi:role="line"
+               y="-90.599998"
+               x="-8.7600002 2.121e-005 8.7600422">15%</tspan>
+            <tspan
+               id="tspan4198"
+               sodipodi:role="line"
+               y="-120.84"
+               x="-8.7600002 2.121e-005 8.7600422">20%</tspan>
+            <tspan
+               id="tspan4200"
+               sodipodi:role="line"
+               y="-151.08"
+               x="-8.7600002 2.121e-005 8.7600422">25%</tspan>
+            <tspan
+               id="tspan4202"
+               sodipodi:role="line"
+               y="-181.32001"
+               x="-8.7600002 2.121e-005 8.7600422">30%</tspan>
+            <tspan
+               id="tspan4204"
+               sodipodi:role="line"
+               y="-211.44"
+               x="-8.7600002 2.121e-005 8.7600422">35%</tspan>
+            <tspan
+               id="tspan4206"
+               sodipodi:role="line"
+               y="22.32"
+               x="111.36 119.52001 276.84045 285.00046 442.44089 450.48093 607.92133 615.96136">Z1Z2Z3Z4</tspan>
+          </text>
+          <text
+             id="text4208"
+             style="font-variant:normal;font-weight:normal;font-size:26.8913002px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(0,1,1,0,137.4,225.471)">
+            <tspan
+               id="tspan4210"
+               sodipodi:role="line"
+               y="0"
+               x="0 23.040026 36.360027 42.600018 55.20002 69.000023 78.000023 84.120018 98.160019 110.76002 116.76003 131.04005 139.32005 145.08006 154.08006 168.00006 181.32007 187.56007 200.16008 209.16008 230.5201 244.80013 255.36009 269.40015 283.44016 296.76019 306.12018 312.3602 323.64017 329.6402 335.88022 348.96027 360.84027 374.16031 380.40033">Weighting of the atmospheric levels</tspan>
+          </text>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           id="path4212"
+           style="fill:#4f81bd;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           d="m 3631,1027.92 79,0 0,79 -79,0 0,-79 z" />
+        <g
+           transform="scale(8.33333,8.33333)"
+           id="g4214">
+          <text
+             id="text4216"
+             style="font-variant:normal;font-weight:normal;font-size:17.2378006px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(0,1,1,0,445.44,136.791)">
+            <tspan
+               id="tspan4218"
+               sodipodi:role="line"
+               y="0"
+               x="0 10.80003 17.040041 25.920059 34.920086 44.16011 57.96014 66.360153 75.600182 81.360191 85.200203">Groupment 1</tspan>
+          </text>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           id="path4220"
+           style="fill:#c0504d;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           d="m 3631,2040.92 79,0 0,79 -79,0 0,-79 z" />
+        <g
+           transform="scale(8.33333,8.33333)"
+           id="g4222">
+          <text
+             id="text4224"
+             style="font-variant:normal;font-weight:normal;font-size:17.2378006px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(0,1,1,0,445.44,258.351)">
+            <tspan
+               id="tspan4226"
+               sodipodi:role="line"
+               y="0"
+               x="0 10.80003 17.040056 26.040091 34.920101 44.16011 57.960155 66.480186 75.600197 81.360207 85.320229">Groupment 2</tspan>
+          </text>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           id="path4228"
+           style="fill:#9bbb59;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           d="m 3631,3053.92 79,0 0,79 -79,0 0,-79 z" />
+        <g
+           transform="scale(8.33333,8.33333)"
+           id="g4230">
+          <text
+             id="text4232"
+             style="font-variant:normal;font-weight:normal;font-size:17.2378006px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(0,1,1,0,445.44,379.911)">
+            <tspan
+               id="tspan4234"
+               sodipodi:role="line"
+               y="0"
+               x="0 10.80003 17.040056 26.040091 34.920101 44.16011 57.960155 66.480186 75.600197 81.360207 85.320229">Groupment 3</tspan>
+          </text>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           id="path4236"
+           style="fill:#8064a2;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           d="m 3631,4067.92 79,0 0,79 -79,0 0,-79 z" />
+        <g
+           transform="scale(8.33333,8.33333)"
+           id="g4238">
+          <text
+             id="text4240"
+             style="font-variant:normal;font-weight:normal;font-size:17.2378006px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(0,1,1,0,445.44,501.591)">
+            <tspan
+               id="tspan4242"
+               sodipodi:role="line"
+               y="0"
+               x="0 10.800001 16.919996 25.920002 34.92004 44.040081 57.840096 66.360123 75.600166 81.360184 85.200203">Groupment 4</tspan>
+          </text>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           id="path4244"
+           style="fill:#4bacc6;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           d="m 3631,5080.92 79,0 0,79 -79,0 0,-79 z" />
+        <g
+           transform="scale(8.33333,8.33333)"
+           id="g4246">
+          <text
+             id="text4248"
+             style="font-variant:normal;font-weight:normal;font-size:17.2378006px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(0,1,1,0,445.44,623.151)">
+            <tspan
+               id="tspan4250"
+               sodipodi:role="line"
+               y="0"
+               x="0 10.800001 17.039999 25.920002 34.920044 44.160084 57.960098 66.36013 75.600166 81.360184 85.200203">Groupment 5</tspan>
+          </text>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           id="path4252"
+           style="fill:#f79646;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           d="m 3901,1027.92 79,0 0,79 -79,0 0,-79 z" />
+        <g
+           transform="scale(8.33333,8.33333)"
+           id="g4254">
+          <text
+             id="text4256"
+             style="font-variant:normal;font-weight:normal;font-size:17.2378006px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(0,1,1,0,477.72,136.791)">
+            <tspan
+               id="tspan4258"
+               sodipodi:role="line"
+               y="0"
+               x="0 10.80003 17.040041 25.920059 34.920086 44.16011 57.96014 66.360153 75.600182 81.360191 85.200203">Groupment 6</tspan>
+          </text>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           id="path4260"
+           style="fill:#2c4d75;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           d="m 3901,2040.92 79,0 0,79 -79,0 0,-79 z" />
+        <g
+           transform="scale(8.33333,8.33333)"
+           id="g4262">
+          <text
+             id="text4264"
+             style="font-variant:normal;font-weight:normal;font-size:17.2378006px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(0,1,1,0,477.72,258.351)">
+            <tspan
+               id="tspan4266"
+               sodipodi:role="line"
+               y="0"
+               x="0 10.80003 17.040056 26.040091 34.920101 44.16011 57.960155 66.480186 75.600197 81.360207 85.320229">Groupment 7</tspan>
+          </text>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           id="path4268"
+           style="fill:#772c2a;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           d="m 3901,3053.92 79,0 0,79 -79,0 0,-79 z" />
+        <g
+           transform="scale(8.33333,8.33333)"
+           id="g4270">
+          <text
+             id="text4272"
+             style="font-variant:normal;font-weight:normal;font-size:17.2378006px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(0,1,1,0,477.72,379.911)">
+            <tspan
+               id="tspan4274"
+               sodipodi:role="line"
+               y="0"
+               x="0 10.80003 17.040056 26.040091 34.920101 44.16011 57.960155 66.480186 75.600197 81.360207 85.320229">Groupment 8</tspan>
+          </text>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           id="path4276"
+           style="fill:#5f7530;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           d="m 3901,4067.92 79,0 0,79 -79,0 0,-79 z" />
+        <g
+           transform="scale(8.33333,8.33333)"
+           id="g4278">
+          <text
+             id="text4280"
+             style="font-variant:normal;font-weight:normal;font-size:17.2378006px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(0,1,1,0,477.72,501.591)">
+            <tspan
+               id="tspan4282"
+               sodipodi:role="line"
+               y="0"
+               x="0 10.800001 16.919996 25.920002 34.92004 44.040081 57.840096 66.360123 75.600166 81.360184 85.200203">Groupment 9</tspan>
+          </text>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           id="path4284"
+           style="fill:#4d3b62;fill-opacity:1;fill-rule:evenodd;stroke:none"
+           d="m 3901,5080.92 79,0 0,79 -79,0 0,-79 z" />
+        <g
+           transform="scale(8.33333,8.33333)"
+           id="g4286">
+          <text
+             id="text4288"
+             style="font-variant:normal;font-weight:normal;font-size:17.2378006px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             transform="matrix(0,1,1,0,477.72,623.151)">
+            <tspan
+               id="tspan4290"
+               sodipodi:role="line"
+               y="0"
+               x="0 10.800001 17.039999 25.920002 34.920044 44.160084 57.960098 66.36013 75.600166 81.360184 85.200203 93.960213">Groupment 10</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
