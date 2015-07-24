@@ -25,6 +25,13 @@
 \usepackage{multirow}
 \usepackage{gensymb}
 \usepackage{subcaption}
+\usepackage{xcolor,colortbl}
+
+% After http://tex.stackexchange.com/questions/94799/how-do-i-color-table-columns-and-rows
+\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
+\definecolor{Gray}{gray}{0.85}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\newcolumntype{a}{>{\columncolor{Gray}}c}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% To be entered only if twocol option is used
@@ -248,7 +255,7 @@ Our ambition was then to assess the feasibility of an automatic optimization of 
 \citet{Horton2012a} assessed the ability of the \citep{Nelder1965a} method based on a simplex approach. This technique didn't provide satisfying results and failed at identifying the global optimum. Indeed, the optimized parameters didn't converge and many local optimums came out. The parameters space of the analogue method is very complex and not appropriate for a linear optimization technique. 
 
 
-\section{Adapting genetic algorithms}
+\section{Adjusting genetic algorithms}
 
 Genetic algorithms (GAs) come from the world of stochastic optimization, more specifically from metaheuristic approaches. These are stochastic iterative algorithms that behave like search algorithms by exploiting the characteristics of a problem and are particularly suitable for complex parameters spaces.
 
@@ -1050,6 +1057,152 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 \end{table}
 
 
+\clearpage
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 1, calibration period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4_calib.pdf}}
+	\label{table:crossing_z4_calib}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 1, validation period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4_valid.pdf}}
+	\label{table:crossing_z4_valid}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 2, calibration period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi2_calib.pdf}}
+	\label{table:crossing_z4-hi2_calib}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 2, validation period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi2_valid.pdf}}
+	\label{table:crossing_z4-hi2_valid}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 3, calibration period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi4_calib.pdf}}
+	\label{table:crossing_z4-hi4_calib}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 3, validation period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi4_valid.pdf}}
+	\label{table:crossing_z4-hi4_valid}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized analogy of atmospheric circulation.}
+	\begin{center}
+		\begin{tabular}{rrarara}
+			\hline 
+			\textbf{ID} & \multicolumn{2}{c}{\textbf{z4}} & \multicolumn{2}{c}{\textbf{z4-hi2}} & \multicolumn{2}{c}{\textbf{z4-hi4}} \\ 
+			\hline 
+			 & calib & valid & calib & valid & calib & valid \\ 
+			\hline 
+			\textbf{1} & 13.6 & 13.0 & 11.9 & 9.9 & 12.8 & 9.6 \\ \hline
+			\textbf{2} & 13.3 & 7.5 & 11.2 & 9.4 & 12.5 & 10.8 \\ \hline
+			\textbf{3} & 12.2 & 9.0 & 13.2 & 12.0 & 14.1 & 13.5 \\ \hline
+			\textbf{4} & 14.2 & 10.5 & 12.4 & 10.6 & 14.5 & 12.5 \\ \hline
+			\textbf{5} & 14.5 & 8.8 & 12.5 & 9.1 & 14.1 & 10.0 \\ \hline
+			\textbf{6} & 13.3 & 8.6 & 11.5 & 8.2 & 14.1 & 8.4 \\ \hline
+			\textbf{7} & 22.8 & 10.6 & 19.7 & 15.7 & 21.7 & 16.3 \\ \hline
+			\textbf{8} & 20.7 & 11.9 & 19.2 & 13.5 & 20.8 & 14.0 \\ \hline
+			\textbf{9} & 14.4 & 9.5 & 15.8 & 15.2 & 16.7 & 14.1 \\ \hline
+			\textbf{10} & 14.2 & 9.4 & 12.9 & 11.2 & 14.6 & 11.8 \\ \hline
+			\textbf{av.} & \textbf{15.3} & \textbf{9.9} &\textbf{14.0} & \textbf{11.5} & \textbf{15.6} & \textbf{12.1} \\ \hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized analogy of atmospheric circulation.}
+	\begin{center}
+		\begin{tabular}{rrarara}
+			\hline 
+			\textbf{ID} & \multicolumn{2}{c}{\textbf{$P\geq1 mm$}} & \multicolumn{2}{c}{\textbf{$P\geq1 0.1\cdot P10$}} & \multicolumn{2}{c}{\textbf{$P\geq1 0.5\cdot P10$}} \\ 
+			\hline 
+			 & calib & valid & calib & valid & calib & valid \\ 
+			\hline 
+			\textbf{1} & 10.2 & 9.4 & 8.5 & 7.9 & 17.0 & 14.2 \\ \hline 
+			\textbf{2} & 9.9 & 3.4 & 10.2 & 7.3 & 19.3 & 13.7 \\ \hline 
+			\textbf{3} & 13.3 & 10.5 & 13.3 & 10.9 & 19.7 & 9.7 \\ \hline 
+			\textbf{4} & 11.0 & 7.4 & 12.9 & 10.0 & 23.2 & 23.8 \\ \hline 
+			\textbf{5} & 8.6 & 4.2 & 10.9 & 6.2 & 25.2 & 23.8 \\ \hline 
+			\textbf{6} & 10.5 & 5.1 & 11.1 & 7.1 & 21.2 & 41.1 \\ \hline 
+			\textbf{7} & 24.3 & 12.4 & 33.1 & 26.0 & 71.2 & 104.3 \\ \hline 
+			\textbf{8} & 19.0 & 12.7 & 26.2 & 19.2 & 39.4 & 34.9 \\ \hline 
+			\textbf{9} & 12.4 & 6.8 & 13.8 & 9.9 & 24.9 & 48.1 \\ \hline 
+			\textbf{10} & 13.6 & 6.8 & 14.4 & 6.9 & 29.9 & 31.5 \\ \hline 
+			\textbf{av.} &\textbf{ 13.3} & \textbf{7.9} & \textbf{15.4} & \textbf{11.1} & \textbf{29.1} & \textbf{34.5} \\ \hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores_z4}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized analogy of atmospheric circulation and humidity variables (2 levels).}
+	\begin{center}
+		\begin{tabular}{rrarara}
+			\hline 
+			\textbf{ID} & \multicolumn{2}{c}{\textbf{$P\geq1 mm$}} & \multicolumn{2}{c}{\textbf{$P\geq1 0.1\cdot P10$}} & \multicolumn{2}{c}{\textbf{$P\geq1 0.5\cdot P10$}} \\ 
+			\hline 
+			 & calib & valid & calib & valid & calib & valid \\ 
+			\hline 
+			\textbf{1} & 12.6 & 9.3 & 12.4 & 9.7 & 15.8 & 11.0 \\ \hline 
+			\textbf{2} & 10.4 & 7.7 & 11.2 & 10.5 & 18.9 & 16.6 \\ \hline 
+			\textbf{3} & 14.5 & 11.6 & 14.1 & 11.4 & 18.7 & 14.6 \\ \hline 
+			\textbf{4} & 11.4 & 9.4 & 11.5 & 11.6 & 14.9 & 22.7 \\ \hline 
+			\textbf{5} & 11.8 & 8.0 & 12.2 & 8.9 & 12.0 & 12.8 \\ \hline 
+			\textbf{6} & 11.3 & 7.1 & 11.2 & 8.0 & 15.3 & 29.1 \\ \hline 
+			\textbf{7} & 20.5 & 15.5 & 25.2 & 24.0 & 43.0 & 79.5 \\ \hline
+			\textbf{8} & 19.3 & 15.7 & 23.1 & 18.6 & 25.2 & 31.7 \\ \hline 
+			\textbf{9} & 17.0 & 15.4 & 17.4 & 16.5 & 23.7 & 39.4 \\ \hline 
+			\textbf{10} & 12.9 & 9.6 & 13.8 & 11.1 & 28.5 & 32.1 \\ \hline 
+			\textbf{av.} &\textbf{14.2} & \textbf{10.9} & \textbf{15.2} & \textbf{13.0} & \textbf{21.6} & \textbf{28.9} \\ \hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores_z4-hi2}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized analogy of atmospheric circulation and humidity variables (4 levels).}
+	\begin{center}
+		\begin{tabular}{rrarara}
+			\hline 
+			\textbf{ID} & \multicolumn{2}{c}{\textbf{P$\geq1$ mm}} & \multicolumn{2}{c}{\textbf{P$\geq1$ 0.1$\cdot$ P10}} & \multicolumn{2}{c}{\textbf{$P\geq1 0.5\cdot P10$}} \\ 
+			\hline 
+			 & calib & valid & calib & valid & calib & valid \\ 
+			\hline 
+			\textbf{1} & 21.2 & 17.9 & 13.4 & 9.3 & 17.8 & 13.3 \\ \hline 
+			\textbf{2} & 12.6 & 8.9 & 9.5 & 10.0 & 16.7 & 15.6 \\ \hline 
+			\textbf{3} & 17.0 & 16.1 & 14.0 & 12.4 & 21.3 & 15.9 \\ \hline 
+			\textbf{4} & 9.4 & 6.1 & 13.3 & 12.4 & 19.8 & 22.7 \\ \hline 
+			\textbf{5} & 16.4 & 8.7 & 13.3 & 9.9 & 15.5 & 19.8 \\ \hline 
+			\textbf{6} & 22.6 & 12.2 & 11.9 & 6.7 & 17.0 & 26.9 \\ \hline 
+			\textbf{7} & 14.6 & 4.9 & 24.7 & 23.5 & 42.7 & 87.6 \\ \hline 
+			\textbf{8} & 21.8 & 21.6 & 25.7 & 19.3 & 32.3 & 26.6 \\ \hline 
+			\textbf{9} & 20.2 & 18.9 & 17.4 & 14.2 & 24.5 & 33.9 \\ \hline 
+			\textbf{10} & 21.7 & 14.8 & 14.8 & 11.7 & 29.2 & 29.1 \\ \hline 
+			\textbf{av.} &\textbf{17.7} & \textbf{13.0} & \textbf{15.8} & \textbf{12.9} & \textbf{23.7} & \textbf{29.2} \\ \hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores_z4-hi4}
+\end{table}
+
+
+\clearpage
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FIGURES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1246,42 +1399,6 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 	\label{fig:evolution}
 \end{figure}
 
-\clearpage
 
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 1, calibration period.}
-	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4_calib.pdf}}
-	\label{table:crossing_z4_calib}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 1, validation period.}
-	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4_valid.pdf}}
-	\label{table:crossing_z4_valid}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 2, calibration period.}
-	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi2_calib.pdf}}
-	\label{table:crossing_z4-hi2_calib}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 2, validation period.}
-	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi2_valid.pdf}}
-	\label{table:crossing_z4-hi2_valid}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 3, calibration period.}
-	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi4_calib.pdf}}
-	\label{table:crossing_z4-hi4_calib}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 3, validation period.}
-	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi4_valid.pdf}}
-	\label{table:crossing_z4-hi4_valid}
-\end{table}
 
 \end{document}
