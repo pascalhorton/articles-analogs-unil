@@ -13,8 +13,8 @@
    height="1052.3622047"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.1 "
-   sodipodi:docname="SVG - Flowchart algorithmes génétiques - en.svg"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="figure_structure_gas.svg"
    inkscape:export-filename="D:\_PROJETS\MINERVE (working dir)\502 Figures\SVG - Flowchart algorithmes génétiques\SVG - Flowchart algorithmes génétiques - en.png"
    inkscape:export-xdpi="600.0672"
    inkscape:export-ydpi="600.0672">
@@ -248,13 +248,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="400.78426"
-     inkscape:cy="607.57836"
+     inkscape:cx="231.58371"
+     inkscape:cy="606.56821"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1280"
-     inkscape:window-height="738"
+     inkscape:window-width="1680"
+     inkscape:window-height="987"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -276,7 +276,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -305,7 +305,8 @@
            y="152.36218"
            x="340"
            id="tspan2993-9"
-           sodipodi:role="line">Genesis of the population</tspan></text>
+           sodipodi:role="line"
+           style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Genesis of the population</tspan></text>
     </g>
     <g
        style="display:inline"
@@ -328,7 +329,8 @@
            y="152.36218"
            x="340"
            id="tspan2993-9-5"
-           sodipodi:role="line">Evaluation of the population</tspan></text>
+           sodipodi:role="line"
+           style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Evaluation of the population</tspan></text>
     </g>
     <g
        style="display:inline"
@@ -350,7 +352,8 @@
            y="152.36218"
            x="350"
            id="tspan2993-6"
-           sodipodi:role="line">Initial population</tspan></text>
+           sodipodi:role="line"
+           style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Initial population</tspan></text>
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#TriangleOutM);display:inline"
@@ -391,7 +394,8 @@
            y="152.36218"
            x="340"
            id="tspan2993-9-5-0"
-           sodipodi:role="line">Natural selection</tspan></text>
+           sodipodi:role="line"
+           style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Natural selection</tspan></text>
     </g>
     <path
        sodipodi:nodetypes="ccccc"
@@ -409,7 +413,8 @@
          sodipodi:role="line"
          id="tspan2993-6-1"
          x="470"
-         y="312.36218">Intermediate generation</tspan></text>
+         y="312.36218"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Intermediate generation</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Arial;-inkscape-font-specification:Arial"
@@ -420,7 +425,8 @@
          sodipodi:role="line"
          id="tspan2993-6-1-7"
          x="174"
-         y="278.36218">Mating</tspan></text>
+         y="278.36218"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Mating</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#TriangleOutM);display:inline"
        d="m 470,262.36218 0,25"
@@ -448,7 +454,8 @@
            y="152.36218"
            x="340"
            id="tspan2993-9-5-0-6"
-           sodipodi:role="line">Selection of the couples</tspan></text>
+           sodipodi:role="line"
+           style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Selection of the couples</tspan></text>
     </g>
     <g
        style="display:inline"
@@ -471,7 +478,8 @@
            y="152.36218"
            x="340"
            id="tspan2993-9-5-0-6-7"
-           sodipodi:role="line">Reproduction</tspan></text>
+           sodipodi:role="line"
+           style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Reproduction</tspan></text>
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#TriangleOutM);display:inline"
@@ -519,7 +527,8 @@
            y="152.36218"
            x="340"
            id="tspan2993-9-5-0-5"
-           sodipodi:role="line">Mutation</tspan></text>
+           sodipodi:role="line"
+           style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Mutation</tspan></text>
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#TriangleOutM);display:inline"
@@ -547,7 +556,8 @@
            y="152.36218"
            x="350"
            id="tspan2993-6-4"
-           sodipodi:role="line">New generation</tspan></text>
+           sodipodi:role="line"
+           style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">New generation</tspan></text>
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#TriangleOutM);display:inline"
@@ -576,7 +586,8 @@
            y="152.36218"
            x="340"
            id="tspan2993-9-5-5"
-           sodipodi:role="line">Evaluation of the population</tspan></text>
+           sodipodi:role="line"
+           style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Evaluation of the population</tspan></text>
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#TriangleOutM);display:inline"
@@ -608,11 +619,13 @@
            id="tspan8205"
            y="700.60449"
            x="-320.00003"
-           sodipodi:role="line">Ending criteria</tspan><tspan
+           sodipodi:role="line"
+           style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Ending criteria</tspan><tspan
            y="718.10449"
            x="-320.00003"
            sodipodi:role="line"
-           id="tspan4562">verified ?</tspan></text>
+           id="tspan4562"
+           style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">verified ?</tspan></text>
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#TriangleOutM);display:inline"
@@ -636,7 +649,8 @@
          sodipodi:role="line"
          id="tspan2993-6-1-7-5"
          x="417"
-         y="667.36218">yes</tspan></text>
+         y="667.36218"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">yes</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Arial;-inkscape-font-specification:Arial"
@@ -647,7 +661,8 @@
          sodipodi:role="line"
          id="tspan2993-6-1-7-5-4"
          x="507"
-         y="617.36218">no</tspan></text>
+         y="617.36218"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">no</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Arial;-inkscape-font-specification:Arial"
@@ -658,7 +673,8 @@
          sodipodi:role="line"
          id="tspan2993-6-1-7-8"
          x="400"
-         y="702.36218">End of the optimization</tspan></text>
+         y="702.36218"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">End of the optimization</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4, 4;stroke-dashoffset:0;marker-start:url(#TriangleInM);marker-end:url(#TriangleOutM-25)"
        d="m 495,327.36218 c 0,0 5,35 -5,75 -10,40 -31,66 -31,66"
@@ -675,6 +691,7 @@
          sodipodi:role="line"
          id="tspan2993-6-1-7-9"
          x="520"
-         y="412.36218">Elitism</tspan></text>
+         y="412.36218"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Elitism</tspan></text>
   </g>
 </svg>

@@ -155,8 +155,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="164.14125"
-     inkscape:cy="479.76839"
+     inkscape:cx="-72.287321"
+     inkscape:cy="478.33982"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -173,7 +173,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -342,7 +342,8 @@
       <tspan
          id="tspan4246"
          y="752.19708"
-         x="146.57785">0</tspan>
+         x="146.57785"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">0</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -363,7 +364,8 @@
          id="tspan4254"
          sodipodi:role="line"
          y="752.19708"
-         x="199.49591 209.0359">20</tspan>
+         x="199.49591 209.0359"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">20</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -384,7 +386,8 @@
          id="tspan4262"
          sodipodi:role="line"
          y="752.19708"
-         x="256.96475 266.50476">40</tspan>
+         x="256.96475 266.50476"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">40</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -405,7 +408,8 @@
          id="tspan4270"
          sodipodi:role="line"
          y="752.19708"
-         x="314.76563 324.30563">60</tspan>
+         x="314.76563 324.30563"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">60</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -426,7 +430,8 @@
          id="tspan4278"
          sodipodi:role="line"
          y="752.19708"
-         x="372.39072 381.93073">80</tspan>
+         x="372.39072 381.93073"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">80</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -447,7 +452,8 @@
          id="tspan4286"
          sodipodi:role="line"
          y="752.19708"
-         x="425.57248 435.11246 444.65247">100</tspan>
+         x="425.57248 435.11246 444.65247"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">100</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -468,7 +474,8 @@
          id="tspan4294"
          sodipodi:role="line"
          y="752.19708"
-         x="483.2171 492.75711 502.29709">120</tspan>
+         x="483.2171 492.75711 502.29709"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">120</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -489,7 +496,8 @@
          id="tspan4302"
          sodipodi:role="line"
          y="752.19708"
-         x="540.86176 550.40173 559.94171">140</tspan>
+         x="540.86176 550.40173 559.94171"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">140</tspan>
     </text>
     <text
        id="text4304"
@@ -500,7 +508,8 @@
          id="tspan4306"
          sodipodi:role="line"
          y="772.97833"
-         x="327.3085 338.9335 348.15851 357.66849 366.89349 373.0585 382.25351 388.13351 392.3035 401.48349 410.9935">Generations</tspan>
+         x="327.3085 338.9335 348.15851 357.66849 366.89349 373.0585 382.25351 388.13351 392.3035 401.48349 410.9935"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Generations</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -521,7 +530,8 @@
          id="tspan4314"
          sodipodi:role="line"
          y="717.93726"
-         x="114.14621 123.68621 128.45621 137.99622">0.33</tspan>
+         x="114.14621 123.68621 128.45621 137.99622"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">0.33</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -542,7 +552,8 @@
          id="tspan4322"
          sodipodi:role="line"
          y="659.08893"
-         x="113.77511 123.31511 128.08511 137.62511">0.34</tspan>
+         x="113.77511 123.31511 128.08511 137.62511"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">0.34</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -563,7 +574,8 @@
          id="tspan4330"
          sodipodi:role="line"
          y="600.2406"
-         x="114.24386 123.78386 128.55386 138.09386">0.35</tspan>
+         x="114.24386 123.78386 128.55386 138.09386"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">0.35</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -584,7 +596,8 @@
          id="tspan4338"
          sodipodi:role="line"
          y="541.39233"
-         x="113.8923 123.4323 128.2023 137.74229">0.36</tspan>
+         x="113.8923 123.4323 128.2023 137.74229"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">0.36</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -605,7 +618,8 @@
          id="tspan4346"
          sodipodi:role="line"
          y="482.54401"
-         x="114.22433 123.76433 128.53433 138.07433">0.37</tspan>
+         x="114.22433 123.76433 128.53433 138.07433"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">0.37</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -626,7 +640,8 @@
          id="tspan4354"
          sodipodi:role="line"
          y="423.69568"
-         x="113.97043 123.51043 128.28043 137.82043">0.38</tspan>
+         x="113.97043 123.51043 128.28043 137.82043"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">0.38</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -647,7 +662,8 @@
          id="tspan4362"
          sodipodi:role="line"
          y="364.84738"
-         x="113.98996 123.52996 128.29996 137.83997">0.39</tspan>
+         x="113.98996 123.52996 128.29996 137.83997"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">0.39</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -668,7 +684,8 @@
          id="tspan4370"
          sodipodi:role="line"
          y="305.99908"
-         x="113.93136 123.47136 128.24136 137.78136">0.40</tspan>
+         x="113.93136 123.47136 128.24136 137.78136"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">0.40</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -689,7 +706,8 @@
          id="tspan4378"
          sodipodi:role="line"
          y="247.15076"
-         x="114.32199 123.86199 128.63199 138.172">0.41</tspan>
+         x="114.32199 123.86199 128.63199 138.172"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">0.41</tspan>
     </text>
     <text
        id="text4380"
@@ -701,7 +719,8 @@
          id="tspan4382"
          sodipodi:role="line"
          y="104.40011"
-         x="-507.45291 -496.98291 -486.55792 -477.51291 -467.98792">CRPSS</tspan>
+         x="-507.45291 -496.98291 -486.55792 -477.51291 -467.98792"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">CRPSS</tspan>
     </text>
     <text
        id="text4384"
@@ -712,7 +731,8 @@
          id="tspan4386"
          sodipodi:role="line"
          y="219.54082"
-         x="233.32413 244.70012 255.35612 266.37213 271.37613 282.78812 289.84412 294.84811 305.86414 317.27612 323.00012 334.01611 340.35211 346.07611 353.13211 364.54413 375.61414 381.33813 392.76813 403.8381 413.21613 420.27213 425.99612 431.00012 442.41211 453.84213 458.84613 469.50211 474.50613 485.93613 497.34811 508.38211">Evolution of the best individual</tspan>
+         x="233.32413 244.70012 255.35612 266.37213 271.37613 282.78812 289.84412 294.84811 305.86414 317.27612 323.00012 334.01611 340.35211 346.07611 353.13211 364.54413 375.61414 381.33813 392.76813 403.8381 413.21613 420.27213 425.99612 431.00012 442.41211 453.84213 458.84613 469.50211 474.50613 485.93613 497.34811 508.38211"
+         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000;fill-opacity:1">Evolution of the best individual</tspan>
     </text>
   </g>
 </svg>

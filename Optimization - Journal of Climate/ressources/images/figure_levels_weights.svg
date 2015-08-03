@@ -44,13 +44,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="128.26725"
-     inkscape:cy="432.90673"
+     inkscape:cx="278.50404"
+     inkscape:cy="431.89658"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1137"
+     inkscape:window-width="1680"
+     inkscape:window-height="987"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
@@ -62,7 +62,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -161,47 +161,56 @@
                id="tspan4190"
                sodipodi:role="line"
                y="0"
-               x="0 8.7600212">0%</tspan>
+               x="0 8.7600212"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000;fill-opacity:1">0%</tspan>
             <tspan
                id="tspan4192"
                sodipodi:role="line"
                y="-30.24"
-               x="0 8.7600212">5%</tspan>
+               x="0 8.7600212"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000;fill-opacity:1">5%</tspan>
             <tspan
                id="tspan4194"
                sodipodi:role="line"
                y="-60.48"
-               x="-8.7600002 2.121e-005 8.7600422">10%</tspan>
+               x="-8.7600002 2.121e-005 8.7600422"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000;fill-opacity:1">10%</tspan>
             <tspan
                id="tspan4196"
                sodipodi:role="line"
                y="-90.599998"
-               x="-8.7600002 2.121e-005 8.7600422">15%</tspan>
+               x="-8.7600002 2.121e-005 8.7600422"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000;fill-opacity:1">15%</tspan>
             <tspan
                id="tspan4198"
                sodipodi:role="line"
                y="-120.84"
-               x="-8.7600002 2.121e-005 8.7600422">20%</tspan>
+               x="-8.7600002 2.121e-005 8.7600422"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000;fill-opacity:1">20%</tspan>
             <tspan
                id="tspan4200"
                sodipodi:role="line"
                y="-151.08"
-               x="-8.7600002 2.121e-005 8.7600422">25%</tspan>
+               x="-8.7600002 2.121e-005 8.7600422"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000;fill-opacity:1">25%</tspan>
             <tspan
                id="tspan4202"
                sodipodi:role="line"
                y="-181.32001"
-               x="-8.7600002 2.121e-005 8.7600422">30%</tspan>
+               x="-8.7600002 2.121e-005 8.7600422"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000;fill-opacity:1">30%</tspan>
             <tspan
                id="tspan4204"
                sodipodi:role="line"
                y="-211.44"
-               x="-8.7600002 2.121e-005 8.7600422">35%</tspan>
+               x="-8.7600002 2.121e-005 8.7600422"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000;fill-opacity:1">35%</tspan>
             <tspan
                id="tspan4206"
                sodipodi:role="line"
-               y="22.32"
-               x="111.36 119.52001 276.84045 285.00046 442.44089 450.48093 607.92133 615.96136">Z1Z2Z3Z4</tspan>
+               x="0"
+               y="0"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000;fill-opacity:1" />
           </text>
           <text
              id="text4208"
@@ -211,7 +220,8 @@
                id="tspan4210"
                sodipodi:role="line"
                y="0"
-               x="0 23.040026 36.360027 42.600018 55.20002 69.000023 78.000023 84.120018 98.160019 110.76002 116.76003 131.04005 139.32005 145.08006 154.08006 168.00006 181.32007 187.56007 200.16008 209.16008 230.5201 244.80013 255.36009 269.40015 283.44016 296.76019 306.12018 312.3602 323.64017 329.6402 335.88022 348.96027 360.84027 374.16031 380.40033">Weighting of the atmospheric levels</tspan>
+               x="0 23.040026 36.360027 42.600018 55.20002 69.000023 78.000023 84.120018 98.160019 110.76002 116.76003 131.04005 139.32005 145.08006 154.08006 168.00006 181.32007 187.56007 200.16008 209.16008 230.5201 244.80013 255.36009 269.40015 283.44016 296.76019 306.12018 312.3602 323.64017 329.6402 335.88022 348.96027 360.84027 374.16031 380.40033"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000;fill-opacity:1;font-size:24.0000096px">Weighting of the atmospheric levels</tspan>
           </text>
         </g>
         <path
@@ -230,7 +240,8 @@
                id="tspan4218"
                sodipodi:role="line"
                y="0"
-               x="0 10.80003 17.040041 25.920059 34.920086 44.16011 57.96014 66.360153 75.600182 81.360191 85.200203">Groupment 1</tspan>
+               x="0 10.80003 17.040041 25.920059 34.920086 44.16011 57.96014 66.360153 75.600182 81.360191 85.200203"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16.0000064px;fill:#000000;fill-opacity:1">Groupment 1</tspan>
           </text>
         </g>
         <path
@@ -249,7 +260,8 @@
                id="tspan4226"
                sodipodi:role="line"
                y="0"
-               x="0 10.80003 17.040056 26.040091 34.920101 44.16011 57.960155 66.480186 75.600197 81.360207 85.320229">Groupment 2</tspan>
+               x="0 10.80003 17.040056 26.040091 34.920101 44.16011 57.960155 66.480186 75.600197 81.360207 85.320229"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16.0000064px;fill:#000000;fill-opacity:1">Groupment 2</tspan>
           </text>
         </g>
         <path
@@ -268,7 +280,8 @@
                id="tspan4234"
                sodipodi:role="line"
                y="0"
-               x="0 10.80003 17.040056 26.040091 34.920101 44.16011 57.960155 66.480186 75.600197 81.360207 85.320229">Groupment 3</tspan>
+               x="0 10.80003 17.040056 26.040091 34.920101 44.16011 57.960155 66.480186 75.600197 81.360207 85.320229"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16.0000064px;fill:#000000;fill-opacity:1">Groupment 3</tspan>
           </text>
         </g>
         <path
@@ -287,7 +300,8 @@
                id="tspan4242"
                sodipodi:role="line"
                y="0"
-               x="0 10.800001 16.919996 25.920002 34.92004 44.040081 57.840096 66.360123 75.600166 81.360184 85.200203">Groupment 4</tspan>
+               x="0 10.800001 16.919996 25.920002 34.92004 44.040081 57.840096 66.360123 75.600166 81.360184 85.200203"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000;fill-opacity:1;font-size:16.0000064px">Groupment 4</tspan>
           </text>
         </g>
         <path
@@ -306,7 +320,8 @@
                id="tspan4250"
                sodipodi:role="line"
                y="0"
-               x="0 10.800001 17.039999 25.920002 34.920044 44.160084 57.960098 66.36013 75.600166 81.360184 85.200203">Groupment 5</tspan>
+               x="0 10.800001 17.039999 25.920002 34.920044 44.160084 57.960098 66.36013 75.600166 81.360184 85.200203"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16.0000064px;fill:#000000;fill-opacity:1">Groupment 5</tspan>
           </text>
         </g>
         <path
@@ -325,7 +340,8 @@
                id="tspan4258"
                sodipodi:role="line"
                y="0"
-               x="0 10.80003 17.040041 25.920059 34.920086 44.16011 57.96014 66.360153 75.600182 81.360191 85.200203">Groupment 6</tspan>
+               x="0 10.80003 17.040041 25.920059 34.920086 44.16011 57.96014 66.360153 75.600182 81.360191 85.200203"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16.0000064px;fill:#000000;fill-opacity:1">Groupment 6</tspan>
           </text>
         </g>
         <path
@@ -344,7 +360,8 @@
                id="tspan4266"
                sodipodi:role="line"
                y="0"
-               x="0 10.80003 17.040056 26.040091 34.920101 44.16011 57.960155 66.480186 75.600197 81.360207 85.320229">Groupment 7</tspan>
+               x="0 10.80003 17.040056 26.040091 34.920101 44.16011 57.960155 66.480186 75.600197 81.360207 85.320229"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16.0000064px;fill:#000000;fill-opacity:1">Groupment 7</tspan>
           </text>
         </g>
         <path
@@ -363,7 +380,8 @@
                id="tspan4274"
                sodipodi:role="line"
                y="0"
-               x="0 10.80003 17.040056 26.040091 34.920101 44.16011 57.960155 66.480186 75.600197 81.360207 85.320229">Groupment 8</tspan>
+               x="0 10.80003 17.040056 26.040091 34.920101 44.16011 57.960155 66.480186 75.600197 81.360207 85.320229"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16.0000064px;fill:#000000;fill-opacity:1">Groupment 8</tspan>
           </text>
         </g>
         <path
@@ -382,7 +400,8 @@
                id="tspan4282"
                sodipodi:role="line"
                y="0"
-               x="0 10.800001 16.919996 25.920002 34.92004 44.040081 57.840096 66.360123 75.600166 81.360184 85.200203">Groupment 9</tspan>
+               x="0 10.800001 16.919996 25.920002 34.92004 44.040081 57.840096 66.360123 75.600166 81.360184 85.200203"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16.0000064px;fill:#000000;fill-opacity:1">Groupment 9</tspan>
           </text>
         </g>
         <path
@@ -401,10 +420,59 @@
                id="tspan4290"
                sodipodi:role="line"
                y="0"
-               x="0 10.800001 17.039999 25.920002 34.920044 44.160084 57.960098 66.36013 75.600166 81.360184 85.200203 93.960213">Groupment 10</tspan>
+               x="0 10.800001 17.039999 25.920002 34.920044 44.160084 57.960098 66.36013 75.600166 81.360184 85.200203 93.960213"
+               style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16.0000064px;fill:#000000;fill-opacity:1">Groupment 10</tspan>
           </text>
         </g>
       </g>
     </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="100.95434"
+       y="670.52454"
+       id="text4207"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4209"
+         x="100.95434"
+         y="670.52454"
+         style="font-size:20px">1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="308.95435"
+       y="670.52454"
+       id="text4207-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4209-1"
+         x="308.95435"
+         y="670.52454"
+         style="font-size:20px">2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="516.95435"
+       y="670.52454"
+       id="text4207-7-8"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4209-1-9"
+         x="516.95435"
+         y="670.52454"
+         style="font-size:20px">3</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="722.95435"
+       y="670.52454"
+       id="text4207-7-8-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4209-1-9-3"
+         x="722.95435"
+         y="670.52454"
+         style="font-size:20px">4</tspan></text>
   </g>
 </svg>
