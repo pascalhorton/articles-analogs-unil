@@ -154,8 +154,6 @@
 
 
 \section{Introduction}
-...
-\cite{Horton2012a}
 
 The analogue method is a downscaling technique based on the idea expressed by \citet{Lorenz1969}. It aims at forecasting a predictand, often the daily precipitation, on the basis of predictor variables describing the synoptic atmospheric circulation. Its main hypothesis is that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Bontron2005}.
 
@@ -603,41 +601,54 @@ In order to make an optimization of the analogue method with genetic algorithms,
 	\item 1x non-uniform, $p_{mut}=0.1$, $G_{m}=100$, $\omega=0.1$
 	\item 1x non-uniform, $p_{mut}=0.2$, $G_{m}=100$, $\omega=0.1$
 	\item 1x multi-scale,  $p_{mut}=0.1$
-	\item 1x multi-scale,  $p_{mut}=0.2$
-	\item 3x chromosome of adaptive search radius
+	\item 2x chromosome of adaptive search radius
 \end{itemize}
 
 
-\section{Global optimization of the analogue method}
+\section{Example case study}
 
-We made different attempts to improve the analogue method by means of genetic algorithms. A summary of the main results are provided here \citep[see][for the details]{Horton2012a}. The analogue method has to be adapted to every new location it is applied. We will focus here on an application to the Swiss Alps. Even though the results may differ from one place to another, the applicability of GAs to the analogue method remains universal.
+The analogue method has to be adapted to every new location it is applied. We will focus here on an application to the Swiss Alps. Even though the results may differ from one place to another, the applicability of GAs to the analogue method remains universal. We made different attempts to improve the analogue method for the Swiss Alps, by means of genetic algorithms. A summary of the main results are provided here \citep[see][for the details]{Horton2012a}.  
 
 
 \subsection{Case study description}
 
-The study area is the alpine upper Rhône catchment in Switzerland (Fig.\ \ref{fig:map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region in the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project that aims at providing a real-time flood management on the upper Rh\^{o}ne catchment \citep{GarciaHernandez2009b}. The first global optimizations were part of the MINERVE project \citep{Horton2012, Horton2012a}.
+The study area is the alpine upper Rhône catchment in Switzerland (Fig.\ \ref{fig:map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region is the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project that aims at providing a real-time flood management on the upper Rh\^{o}ne catchment \citep{GarciaHernandez2009b}. Even thought the region is rather small, the meteorological influences related to extreme weather conditions varies substantially within it \citep[see]{Horton2012}. Based on different climatological analyses, the gauging stations in the catchment were clustered in 10~groupments (Fig.\ \ref{fig:map}) :
+
+\begin{enumerate}
+	\setlength\itemsep{-4px}
+	\item Swiss Chablais
+	\item Trient Valley
+	\item West Bernese Alps
+	\item Lower Rhone Valley
+	\item Left side valleys
+	\item Southern ridges
+	\item Upper Rhone Valley
+	\item Southeast ridges
+	\item East Bernese Alps
+	\item Conches Valley
+\end{enumerate}
 
 The 48 years period (see section \ref{section_data}) was divided into a calibration period and a validation period. Using data independent from the calibration period to validate our results is very important in order to assess the robustness of the improvements and to avoid overparametrization of the method.
 
-In order to reduce potential bias related to trends in the climate change or to the evolution in measurement techniques, the selection of the validation period is evenly distributed over the entire series. Thus, we select one year every six years for validation, which represents a total of eight years for the validation and forty for calibration. The choice of the sequence was made in order to have similar statistical characteristics between the calibration and the validation periods.
+In order to reduce potential bias related to trends in the climate change or to the evolution in measurement techniques, the selection of the validation period is evenly distributed over the entire series \citep{BenDaoud2010}. Thus, we select one year every six years for validation, which represents a total of eight years for the validation and forty for calibration. The choice of the sequence was made in order to have similar statistical characteristics between the calibration and the validation periods.
 
 
 \subsection{Optimization of the analogy of atmospheric circulation}
 
-We first optimized the analogy of atmospheric circulation alone, without humidity variables. We started from the most simple method, and increased the complexity of the method, thus the number of degrees of freedom in order to identify the ones that are of particular interest. Thus, the tested parametrization evolved iteratively in complexity. We do not provide the detailed results of the intermediate stages \citep[see][for the details]{Horton2012a}, but only the main conclusions.
+We first optimized the analogy of atmospheric circulation alone, without humidity variables. We started from the most simple analogue method, and increased the complexity in order to identify the degrees of freedom that are of particular interest. Thus, the tested parametrization evolved iteratively in complexity. We do not provide the detailed results of the intermediate stages \citep[see][for the details]{Horton2012a}, but only the main conclusions.
 
 We first considered the reference method for the analogy of the atmospheric circulation, based on the 500 and 1000~hPa levels. We let the optimizer choose the number of analogues, both spatial windows with no overlapping constraint, as well as the temporal window (hours of observation of the geopotential). The classic calibration cannot automatically choose the temporal window, neither handle non-overlapping spatial windows, and finally it cannot optimize all parameters simultaneously. With these improvements, we could gain a relative improvement of the CRPSS of 3.97\% and 2.45\% in average for the calibration and the validation periods respectively. Some tests showed that most of the gains are due to the non-overlapping spatial windows.
 
-Then, we provided an additional degree of freedom to the AGs by letting them choose the atmospheric levels along with the other parameters. Evaluation of atmospheric levels is also a non-automated process in the classic calibration. However, we could observe that the choice of this degree of freedom improves the optimization time and may decrease the number of simulations which converge to a single solution. However, most solutions are very close in terms of score. The averaged relative improvement of the CRPSS is 5.63\% for the calibration and 3.82\% for the validation period. The atmospheric levels that were chosen are 500~hPa or 700~hPa for the upper level, and 925~hPa or 1000~hPa (most often) for the lower level.
+Then, we provided an additional degree of freedom to the AGs by letting them choose the atmospheric levels along with the other parameters. Evaluation of atmospheric levels is also a non-automated process in the classic calibration. However, we could observe that the choice of this degree of freedom increases the optimization time and may decrease the number of simulations that converge to a single solution. However, most solutions are very close in terms of score. The averaged relative improvement of the CRPSS is 5.63\% for the calibration and 3.82\% for the validation period. The atmospheric levels that were chosen are 500~hPa or 700~hPa for the upper level, and 925~hPa or 1000~hPa (most often) for the lower level.
 
-Parallel analyses showed that the analogy of circulation is incomplete, and that the geopotential still contains relevant data that can improve the statistical relationship. So we added a third predictor that the optimizer can use along with the previous parameters. There is no constraint on the predictors, so that the same atmospheric level can be selected multiple times. Some improvements were found on the score, both for the calibration and the validation periods, confirming that this additional information is beneficial for the quality of the forecast. We then tried with 4 predictors, and so on, up to 8. Every time we added a new predictor to optimize, the score on the calibration period increased, but always in a smaller extent. However, the validation period dropped after 4 predictors, revealing an over-parametrization of the method, and thus a lack of robustness. Moreover, the complexity of the method increases, and its interpretation becomes more and more difficult. We thus found that considering 4 predictors is optimal for our case study, since the gain in CRPSS is significant. It can not be excluded that another number would prevail under other meteorological conditions.
+Parallel analyses showed that the analogy of circulation is incomplete, and that the geopotential still contains relevant data that can improve the statistical relationship. Therefore, we added a third predictor (still the geopotential height) that the optimizer can use along with the previous parameters. There is no constraint on the predictors, so that the same atmospheric level can be selected multiple times. Some improvements were found on the score, both for the calibration and the validation periods, confirming that this additional information is beneficial for the quality of the forecast. We then tried with 4 predictors, and so on, up to 8. Every time we added a new predictor to optimize, the score on the calibration period increased, but always more in a smaller extent. However, the validation period dropped after 4 predictors, revealing an over-parametrization of the method, and thus a lack of robustness. Moreover, the complexity of the method increases, and its interpretation becomes more and more difficult. We thus found that considering 4 predictors is optimal for our case study, since the gain in CRPSS is significant. It can not be excluded that another number would prevail under other meteorological conditions.
 
 Finally, we added a weighting of these 4 predictors (atmospheric levels), which is also optimized by GAs. The weighting operates in the combination of the S1 criteria of every level, which were previously averaged with equal weights. The role of this new degree of freedom is to give more weight to the levels with greater predictive capacity, and to consider the geopotential variability changes with altitude. 
 
 
 \subsubsection{Which parameters are optimized ?}
 
-The method we finally optimized for the analogy of the atmospheric circulation, based on 4 levels of the geopotential, is made of the following degrees of freedom:
+The method we finally optimized for the analogy of the atmospheric circulation, based on 4 levels of the geopotential, and that we will name z4, is made of the following degrees of freedom:
 
 \begin{itemize}
 	\setlength\itemsep{-4px}
@@ -650,10 +661,12 @@ The method we finally optimized for the analogy of the atmospheric circulation, 
 
 This sums up to 29 degrees of freedom that are optimize simultaneously.
 
-\subsubsection{Results of the optimization of atmospheric circulation}
-...
+\subsubsection{Results for the atmospheric circulation}
 
-\subsubsection{Discussion}
+The resulting optimized parameters for z4 vary from one groupment to another. An example of the detailed parameters is provided for the Swiss Chablais in Table \ref{table:params_GA_z4}. The optimized spatial windows are given for every groupment in Figure \ref{fig:spatial_windows_z4}, and the selected atmospheric levels in Table \ref{table:levels_GA_z4}. The i
+
+
+\subsubsection{Analysis}
 ...
 
 
@@ -674,7 +687,7 @@ When we introduce 2 predictors for the humidity analogy, the number of degrees o
 %We tried first to optimize the humidity predictors while keeping the same parameters for the first level of analogy on the atmospheric circulation. The results were not really satisfying, mainly on the scores of the validation. -> POUR FLUX !
 
 
-\subsubsection{Results of the optimization on both analogy levels}
+\subsubsection{Results for both analogy levels}
 ...
 
 %Ces optimisations ont mené à des paramétrisations différentes de l'analogie de circulation par rapport à précédemment. Il existe donc bien des relations entre les paramètres des différents niveaux d'analogie, soit entre la circulation atmosphérique et le flux d'humidité. Ainsi, en connaissance de l'information du flux d'humidité, la méthode préférera une représentation différente de la circulation. Cet aspect n'a encore jamais été mis en évidence, car les outils habituels de calibration ne le permettent pas. 
@@ -682,7 +695,11 @@ When we introduce 2 predictors for the humidity analogy, the number of degrees o
 %Pour tenir compte des dépendances entre les paramètres des différents niveaux d'analogie, il est nécessaire d'utiliser une méthode d'optimisation globale telle que les AGs.
 
 
-\subsubsection{Discussion}
+\subsubsection{Analysis}
+...
+
+
+\subsection{Discussion}
 
 The optimization of the analogue method by means of genetic algorithms has been undertaken in stages by releasing progressively new degrees of freedom. This approach allowed us to differentiate contributions to performance gains, as well as to identify possible over-parametrization. The main improvements for our case study are due to the following factors:
 
@@ -834,7 +851,6 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 	\label{table:params_R1}
 \end{table}
 
-
 \begin{table}[htbp]
 	\footnotesize
 	\caption{Parameters of the reference method with humidity variables.}
@@ -855,10 +871,9 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 	\label{table:params_R2}
 \end{table}
 
-
 \begin{table}[htbp]
 	\footnotesize
-	\caption{Parameters of an analogy on the atmospheric circulation (4 levels) optimized for the Chablais region. The columns are the followings: L = level, V = variable, H = hour, D = domain, W = weight, C = criteria, N = number of analogues.}
+	\caption{Parameters of the z4 method (analogy on 4 levels of the atmospheric circulation) optimized for the Chablais region. The columns are the following: L = level, V = variable, H = hour, D = domain, W = weight, C = criteria, N = number of analogues.}
 	\begin{center}
 		\begin{tabular}{ccccccc}
 			\hline \textbf{L} & \textbf{V} & \textbf{H} & \textbf{D} & \textbf{W} & \textbf{C} & \textbf{N} \\ 
@@ -879,10 +894,9 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 	\label{table:params_GA_z4}
 \end{table}
 
-
 \begin{table}[htbp]
 	\footnotesize
-	\caption{Atmospheric levels automatically selected for the analogy of atmospheric circulation at the different groupments.}
+	\caption{Atmospheric levels automatically selected for the z4 method at the different groupments.}
 	\begin{center}
 		\begin{tabular}{ccccccccc}
 			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
@@ -903,10 +917,77 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 	\label{table:levels_GA_z4}
 \end{table}
 
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Improvement (\%) of the CRPSS of the three methods. For z4, the improvement is relative to the reference method on the atmospheric circulation. For z4-hi2 and z4-hi4, the improvement is relative to the reference method on the circulation and humidity variables.}
+	\begin{center}
+		\begin{tabular}{rrarara}
+			\hline 
+			\textbf{ID} & \multicolumn{2}{c}{\textbf{z4}} & \multicolumn{2}{c}{\textbf{z4-hi2}} & \multicolumn{2}{c}{\textbf{z4-hi4}} \\ 
+			\hline 
+			& calib & valid & calib & valid & calib & valid \\ 
+			\hline 
+			\textbf{1} & 13.6 & 13.0 & 11.9 & 9.9 & 12.8 & 9.6 \\ \hline
+			\textbf{2} & 13.3 & 7.5 & 11.2 & 9.4 & 12.5 & 10.8 \\ \hline
+			\textbf{3} & 12.2 & 9.0 & 13.2 & 12.0 & 14.1 & 13.5 \\ \hline
+			\textbf{4} & 14.2 & 10.5 & 12.4 & 10.6 & 14.5 & 12.5 \\ \hline
+			\textbf{5} & 14.5 & 8.8 & 12.5 & 9.1 & 14.1 & 10.0 \\ \hline
+			\textbf{6} & 13.3 & 8.6 & 11.5 & 8.2 & 14.1 & 8.4 \\ \hline
+			\textbf{7} & 22.8 & 10.6 & 19.7 & 15.7 & 21.7 & 16.3 \\ \hline
+			\textbf{8} & 20.7 & 11.9 & 19.2 & 13.5 & 20.8 & 14.0 \\ \hline
+			\textbf{9} & 14.4 & 9.5 & 15.8 & 15.2 & 16.7 & 14.1 \\ \hline
+			\textbf{10} & 14.2 & 9.4 & 12.9 & 11.2 & 14.6 & 11.8 \\ \hline
+			\textbf{av.} & \textbf{15.3} & \textbf{9.9} &\textbf{14.0} & \textbf{11.5} & \textbf{15.6} & \textbf{12.1} \\ \hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores}
+\end{table}
 
 \begin{table}[htbp]
 	\footnotesize
-	\caption{Parameters of an analogy on the atmospheric circulation (4 levels) and the humidity index (2 levels), optimized for the Chablais region. The columns are the followings: L = level, V = variable, H = hour, D = domain, W = weight, C = criteria, N = number of analogues.}
+	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized z4 method.}
+	\begin{center}
+		\begin{tabular}{rrarara}
+			\hline 
+			\textbf{ID} & \multicolumn{2}{c}{\textbf{P\(\geq\)1 mm}} & \multicolumn{2}{c}{\textbf{P\(\geq\)0.1\(\cdot\)P10}} & \multicolumn{2}{c}{\textbf{P\(\geq\)0.5\(\cdot\)P10}} \\ 
+			\hline 
+			& calib & valid & calib & valid & calib & valid \\ 
+			\hline 
+			\textbf{1} & 10.2 & 9.4 & 8.5 & 7.9 & 17.0 & 14.2 \\ \hline 
+			\textbf{2} & 9.9 & 3.4 & 10.2 & 7.3 & 19.3 & 13.7 \\ \hline 
+			\textbf{3} & 13.3 & 10.5 & 13.3 & 10.9 & 19.7 & 9.7 \\ \hline 
+			\textbf{4} & 11.0 & 7.4 & 12.9 & 10.0 & 23.2 & 23.8 \\ \hline 
+			\textbf{5} & 8.6 & 4.2 & 10.9 & 6.2 & 25.2 & 23.8 \\ \hline 
+			\textbf{6} & 10.5 & 5.1 & 11.1 & 7.1 & 21.2 & 41.1 \\ \hline 
+			\textbf{7} & 24.3 & 12.4 & 33.1 & 26.0 & 71.2 & 104.3 \\ \hline 
+			\textbf{8} & 19.0 & 12.7 & 26.2 & 19.2 & 39.4 & 34.9 \\ \hline 
+			\textbf{9} & 12.4 & 6.8 & 13.8 & 9.9 & 24.9 & 48.1 \\ \hline 
+			\textbf{10} & 13.6 & 6.8 & 14.4 & 6.9 & 29.9 & 31.5 \\ \hline 
+			\textbf{av.} &\textbf{ 13.3} & \textbf{7.9} & \textbf{15.4} & \textbf{11.1} & \textbf{29.1} & \textbf{34.5} \\ \hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores_z4}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4, calibration period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4_calib.pdf}}
+	\label{table:crossing_z4_calib}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4, validation period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4_valid.pdf}}
+	\label{table:crossing_z4_valid}
+\end{table}
+
+
+\clearpage
+
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Parameters of the z4-hi2 method (atmospheric circulation on 4 levels and humidity index on 2 levels), optimized for the Chablais region. The columns are the followings: L = level, V = variable, H = hour, D = domain, W = weight, C = criteria, N = number of analogues.}
 	\begin{center}
 		\begin{tabular}{ccccccc}
 			\hline \textbf{L} & \textbf{V} & \textbf{H} & \textbf{D} & \textbf{W} & \textbf{C} & \textbf{N} \\ 
@@ -934,7 +1015,7 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 
 \begin{table}[htbp]
 	\footnotesize
-	\caption{Atmospheric levels automatically selected for the analogy of atmospheric circulation at the different groupments.}
+	\caption{Atmospheric levels automatically selected for the analogy of the atmospheric circulation of the z4-hi2 method, at the different groupments.}
 	\begin{center}
 		\begin{tabular}{ccccccccc}
 			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
@@ -957,7 +1038,7 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 
 \begin{table}[htbp]
 	\footnotesize
-	\caption{Atmospheric levels automatically selected for the analogy of atmospheric circulation at the different groupments.}
+	\caption{Atmospheric levels automatically selected for the analogy of humidity of the z4-hi2 method, at the different groupments.}
 	\begin{center}
 		\begin{tabular}{ccccccccc}
 			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
@@ -980,7 +1061,49 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 
 \begin{table}[htbp]
 	\footnotesize
-	\caption{Parameters of an analogy on the atmospheric circulation (4 levels) and the humidity index (4 levels), optimized for the Chablais region. The columns are the followings: L = level, V = variable, H = hour, D = domain, W = weight, C = criteria, N = number of analogues.}
+	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized z4-hi2 method.}
+	\begin{center}
+		\begin{tabular}{rrarara}
+			\hline 
+			\textbf{ID} & \multicolumn{2}{c}{\textbf{P\(\geq\)1 mm}} & \multicolumn{2}{c}{\textbf{P\(\geq\)0.1\(\cdot\)P10}} & \multicolumn{2}{c}{\textbf{P\(\geq\)0.5\(\cdot\)P10}} \\ 
+			\hline 
+			& calib & valid & calib & valid & calib & valid \\ 
+			\hline 
+			\textbf{1} & 12.6 & 9.3 & 12.4 & 9.7 & 15.8 & 11.0 \\ \hline 
+			\textbf{2} & 10.4 & 7.7 & 11.2 & 10.5 & 18.9 & 16.6 \\ \hline 
+			\textbf{3} & 14.5 & 11.6 & 14.1 & 11.4 & 18.7 & 14.6 \\ \hline 
+			\textbf{4} & 11.4 & 9.4 & 11.5 & 11.6 & 14.9 & 22.7 \\ \hline 
+			\textbf{5} & 11.8 & 8.0 & 12.2 & 8.9 & 12.0 & 12.8 \\ \hline 
+			\textbf{6} & 11.3 & 7.1 & 11.2 & 8.0 & 15.3 & 29.1 \\ \hline 
+			\textbf{7} & 20.5 & 15.5 & 25.2 & 24.0 & 43.0 & 79.5 \\ \hline
+			\textbf{8} & 19.3 & 15.7 & 23.1 & 18.6 & 25.2 & 31.7 \\ \hline 
+			\textbf{9} & 17.0 & 15.4 & 17.4 & 16.5 & 23.7 & 39.4 \\ \hline 
+			\textbf{10} & 12.9 & 9.6 & 13.8 & 11.1 & 28.5 & 32.1 \\ \hline 
+			\textbf{av.} &\textbf{14.2} & \textbf{10.9} & \textbf{15.2} & \textbf{13.0} & \textbf{21.6} & \textbf{28.9} \\ \hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores_z4-hi2}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4-hi2, calibration period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi2_calib.pdf}}
+	\label{table:crossing_z4-hi2_calib}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4-hi2, validation period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi2_valid.pdf}}
+	\label{table:crossing_z4-hi2_valid}
+\end{table}
+
+
+\clearpage
+
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Parameters of the z4-hi4 method (atmospheric circulation on 4 levels and humidity index on 4 levels), optimized for the Chablais region. The columns are the followings: L = level, V = variable, H = hour, D = domain, W = weight, C = criteria, N = number of analogues.}
 	\begin{center}
 		\begin{tabular}{ccccccc}
 			\hline \textbf{L} & \textbf{V} & \textbf{H} & \textbf{D} & \textbf{W} & \textbf{C} & \textbf{N} \\ 
@@ -1012,7 +1135,7 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 
 \begin{table}[htbp]
 	\footnotesize
-	\caption{Atmospheric levels automatically selected for the analogy of atmospheric circulation at the different groupments.}
+	\caption{Atmospheric levels automatically selected for the analogy of atmospheric circulation of the z4-hi4 method, at the different groupments.}
 	\begin{center}
 		\begin{tabular}{ccccccccc}
 			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
@@ -1035,7 +1158,7 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 
 \begin{table}[htbp]
 	\footnotesize
-	\caption{Atmospheric levels automatically selected for the analogy of atmospheric circulation at the different groupments.}
+	\caption{Atmospheric levels automatically selected for the analogy of humidity of the z4-hi4 method,at the different groupments.}
 	\begin{center}
 		\begin{tabular}{ccccccccc}
 			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
@@ -1056,132 +1179,15 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 	\label{table:levels_GA_z4_hi4_H}
 \end{table}
 
-
-\clearpage
-
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 1, calibration period.}
-	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4_calib.pdf}}
-	\label{table:crossing_z4_calib}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 1, validation period.}
-	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4_valid.pdf}}
-	\label{table:crossing_z4_valid}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 2, calibration period.}
-	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi2_calib.pdf}}
-	\label{table:crossing_z4-hi2_calib}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 2, validation period.}
-	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi2_valid.pdf}}
-	\label{table:crossing_z4-hi2_valid}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 3, calibration period.}
-	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi4_calib.pdf}}
-	\label{table:crossing_z4-hi4_calib}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 3, validation period.}
-	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi4_valid.pdf}}
-	\label{table:crossing_z4-hi4_valid}
-\end{table}
-
 \begin{table}[htbp]
 	\footnotesize
-	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized analogy of atmospheric circulation.}
+	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized z4-hi4 method.}
 	\begin{center}
 		\begin{tabular}{rrarara}
 			\hline 
-			\textbf{ID} & \multicolumn{2}{c}{\textbf{z4}} & \multicolumn{2}{c}{\textbf{z4-hi2}} & \multicolumn{2}{c}{\textbf{z4-hi4}} \\ 
+			\textbf{ID} & \multicolumn{2}{c}{\textbf{P\(\geq\)1 mm}} & \multicolumn{2}{c}{\textbf{P\(\geq\)0.1\(\cdot\)P10}} & \multicolumn{2}{c}{\textbf{P\(\geq\)0.5\(\cdot\)P10}} \\ 
 			\hline 
-			 & calib & valid & calib & valid & calib & valid \\ 
-			\hline 
-			\textbf{1} & 13.6 & 13.0 & 11.9 & 9.9 & 12.8 & 9.6 \\ \hline
-			\textbf{2} & 13.3 & 7.5 & 11.2 & 9.4 & 12.5 & 10.8 \\ \hline
-			\textbf{3} & 12.2 & 9.0 & 13.2 & 12.0 & 14.1 & 13.5 \\ \hline
-			\textbf{4} & 14.2 & 10.5 & 12.4 & 10.6 & 14.5 & 12.5 \\ \hline
-			\textbf{5} & 14.5 & 8.8 & 12.5 & 9.1 & 14.1 & 10.0 \\ \hline
-			\textbf{6} & 13.3 & 8.6 & 11.5 & 8.2 & 14.1 & 8.4 \\ \hline
-			\textbf{7} & 22.8 & 10.6 & 19.7 & 15.7 & 21.7 & 16.3 \\ \hline
-			\textbf{8} & 20.7 & 11.9 & 19.2 & 13.5 & 20.8 & 14.0 \\ \hline
-			\textbf{9} & 14.4 & 9.5 & 15.8 & 15.2 & 16.7 & 14.1 \\ \hline
-			\textbf{10} & 14.2 & 9.4 & 12.9 & 11.2 & 14.6 & 11.8 \\ \hline
-			\textbf{av.} & \textbf{15.3} & \textbf{9.9} &\textbf{14.0} & \textbf{11.5} & \textbf{15.6} & \textbf{12.1} \\ \hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:scores}
-\end{table}
-
-\begin{table}[htbp]
-	\footnotesize
-	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized analogy of atmospheric circulation.}
-	\begin{center}
-		\begin{tabular}{rrarara}
-			\hline 
-			\textbf{ID} & \multicolumn{2}{c}{\textbf{$P\geq1 mm$}} & \multicolumn{2}{c}{\textbf{$P\geq1 0.1\cdot P10$}} & \multicolumn{2}{c}{\textbf{$P\geq1 0.5\cdot P10$}} \\ 
-			\hline 
-			 & calib & valid & calib & valid & calib & valid \\ 
-			\hline 
-			\textbf{1} & 10.2 & 9.4 & 8.5 & 7.9 & 17.0 & 14.2 \\ \hline 
-			\textbf{2} & 9.9 & 3.4 & 10.2 & 7.3 & 19.3 & 13.7 \\ \hline 
-			\textbf{3} & 13.3 & 10.5 & 13.3 & 10.9 & 19.7 & 9.7 \\ \hline 
-			\textbf{4} & 11.0 & 7.4 & 12.9 & 10.0 & 23.2 & 23.8 \\ \hline 
-			\textbf{5} & 8.6 & 4.2 & 10.9 & 6.2 & 25.2 & 23.8 \\ \hline 
-			\textbf{6} & 10.5 & 5.1 & 11.1 & 7.1 & 21.2 & 41.1 \\ \hline 
-			\textbf{7} & 24.3 & 12.4 & 33.1 & 26.0 & 71.2 & 104.3 \\ \hline 
-			\textbf{8} & 19.0 & 12.7 & 26.2 & 19.2 & 39.4 & 34.9 \\ \hline 
-			\textbf{9} & 12.4 & 6.8 & 13.8 & 9.9 & 24.9 & 48.1 \\ \hline 
-			\textbf{10} & 13.6 & 6.8 & 14.4 & 6.9 & 29.9 & 31.5 \\ \hline 
-			\textbf{av.} &\textbf{ 13.3} & \textbf{7.9} & \textbf{15.4} & \textbf{11.1} & \textbf{29.1} & \textbf{34.5} \\ \hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:scores_z4}
-\end{table}
-
-\begin{table}[htbp]
-	\footnotesize
-	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized analogy of atmospheric circulation and humidity variables (2 levels).}
-	\begin{center}
-		\begin{tabular}{rrarara}
-			\hline 
-			\textbf{ID} & \multicolumn{2}{c}{\textbf{$P\geq1 mm$}} & \multicolumn{2}{c}{\textbf{$P\geq1 0.1\cdot P10$}} & \multicolumn{2}{c}{\textbf{$P\geq1 0.5\cdot P10$}} \\ 
-			\hline 
-			 & calib & valid & calib & valid & calib & valid \\ 
-			\hline 
-			\textbf{1} & 12.6 & 9.3 & 12.4 & 9.7 & 15.8 & 11.0 \\ \hline 
-			\textbf{2} & 10.4 & 7.7 & 11.2 & 10.5 & 18.9 & 16.6 \\ \hline 
-			\textbf{3} & 14.5 & 11.6 & 14.1 & 11.4 & 18.7 & 14.6 \\ \hline 
-			\textbf{4} & 11.4 & 9.4 & 11.5 & 11.6 & 14.9 & 22.7 \\ \hline 
-			\textbf{5} & 11.8 & 8.0 & 12.2 & 8.9 & 12.0 & 12.8 \\ \hline 
-			\textbf{6} & 11.3 & 7.1 & 11.2 & 8.0 & 15.3 & 29.1 \\ \hline 
-			\textbf{7} & 20.5 & 15.5 & 25.2 & 24.0 & 43.0 & 79.5 \\ \hline
-			\textbf{8} & 19.3 & 15.7 & 23.1 & 18.6 & 25.2 & 31.7 \\ \hline 
-			\textbf{9} & 17.0 & 15.4 & 17.4 & 16.5 & 23.7 & 39.4 \\ \hline 
-			\textbf{10} & 12.9 & 9.6 & 13.8 & 11.1 & 28.5 & 32.1 \\ \hline 
-			\textbf{av.} &\textbf{14.2} & \textbf{10.9} & \textbf{15.2} & \textbf{13.0} & \textbf{21.6} & \textbf{28.9} \\ \hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:scores_z4-hi2}
-\end{table}
-
-\begin{table}[htbp]
-	\footnotesize
-	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized analogy of atmospheric circulation and humidity variables (4 levels).}
-	\begin{center}
-		\begin{tabular}{rrarara}
-			\hline 
-			\textbf{ID} & \multicolumn{2}{c}{\textbf{P$\geq1$ mm}} & \multicolumn{2}{c}{\textbf{P$\geq1$ 0.1$\cdot$ P10}} & \multicolumn{2}{c}{\textbf{$P\geq1 0.5\cdot P10$}} \\ 
-			\hline 
-			 & calib & valid & calib & valid & calib & valid \\ 
+			& calib & valid & calib & valid & calib & valid \\ 
 			\hline 
 			\textbf{1} & 21.2 & 17.9 & 13.4 & 9.3 & 17.8 & 13.3 \\ \hline 
 			\textbf{2} & 12.6 & 8.9 & 9.5 & 10.0 & 16.7 & 15.6 \\ \hline 
@@ -1199,8 +1205,21 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 	\label{table:scores_z4-hi4}
 \end{table}
 
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4-hi4, calibration period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi4_calib.pdf}}
+	\label{table:crossing_z4-hi4_calib}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4-hi4, validation period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi4_valid.pdf}}
+	\label{table:crossing_z4-hi4_valid}
+\end{table}
+
 
 \clearpage
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1217,16 +1236,16 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 
 
 \begin{figure}[htb]
-	\centerline{\includegraphics[width=8.3cm]{figures/figure_map.pdf}}
-	\caption{Location of the alpine Rhône catchment in Switzerland. (source: Swisstopo)}
-	\label{fig:map}
+	\centerline{\includegraphics[width=8.3cm]{figures/figure_structure_gas.pdf}}
+	\caption{Genetic algorithms operational flowchart}
+	\label{fig:structure_gas}
 \end{figure}
 
 
 \begin{figure}[htb]
-	\centerline{\includegraphics[width=8.3cm]{figures/figure_structure_gas.pdf}}
-	\caption{Genetic algorithms operational flowchart}
-	\label{fig:structure_gas}
+	\centerline{\includegraphics[width=8.3cm]{figures/figure_map.pdf}}
+	\caption{Location of the alpine Rh\^{o}ne catchment in Switzerland. (source: Swisstopo)}
+	\label{fig:map}
 \end{figure}
 
 
@@ -1276,7 +1295,7 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 		\centering
 		\includegraphics[width=3.9cm]{figures/spatial_win_z4/legend.png}
 	\end{subfigure}
-	\caption{Optimized spatial windows for the analogy of atmospheric circulation on 4 atmospheric levels. The atmospheric levels are ordered by increasing pressure and increasing time for the same levels.}
+	\caption{Optimized spatial windows for the z4 method (analogy of atmospheric circulation on 4 atmospheric levels). The atmospheric levels are ordered by increasing pressure and increasing time for the same levels.}
 	\label{fig:spatial_windows_z4}
 \end{figure}
 
@@ -1326,7 +1345,7 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 		\centering
 		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi2/legend.png}
 	\end{subfigure}
-	\caption{Optimized spatial windows for the analogy of atmospheric circulation on 4 atmospheric levels and the analogy on the humidity index on 2 atmospheric levels. The atmospheric levels are ordered by increasing pressure and increasing time for the same levels.}
+	\caption{Optimized spatial windows for the z4-hi2 method (analogy of atmospheric circulation on 4 atmospheric levels and the analogy on the humidity index on 2 atmospheric levels). The atmospheric levels are ordered by increasing pressure and increasing time for the same levels.}
 	\label{fig:spatial_windows_z4-hi2}
 \end{figure}
 
@@ -1376,7 +1395,7 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 		\centering
 		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi4/legend.png}
 	\end{subfigure}
-	\caption{Optimized spatial windows for the analogy of atmospheric circulation on 4 atmospheric levels and the analogy on the humidity index on 4 atmospheric levels. The atmospheric levels are ordered by increasing pressure and increasing time for the same levels.}
+	\caption{Optimized spatial windows for the z4-hi4 method (analogy of atmospheric circulation on 4 atmospheric levels and the analogy on the humidity index on 4 atmospheric levels). The atmospheric levels are ordered by increasing pressure and increasing time for the same levels.}
 	\label{fig:spatial_windows_z4-hi4}
 \end{figure}
 
