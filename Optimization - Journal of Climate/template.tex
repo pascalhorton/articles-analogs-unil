@@ -661,14 +661,26 @@ The method we finally optimized for the analogy of the atmospheric circulation, 
 
 This sums up to 29 degrees of freedom that are optimize simultaneously.
 
+
 \subsubsection{Results for the atmospheric circulation}
 
-The resulting optimized parameters for z4 vary from one groupment to another. An example of the detailed parameters is provided for the Swiss Chablais in Table \ref{table:params_GA_z4}. The optimized spatial windows are given for every groupment in Figure \ref{fig:spatial_windows_z4}, and the selected atmospheric levels in Table \ref{table:levels_GA_z4}. The i
+The resulting optimized parameters for z4 vary from one groupment to another. An example of the detailed parameters is provided for the Swiss Chablais in Table \ref{table:params_GA_z4}. The optimized spatial windows are given for every groupment in Figure \ref{fig:spatial_windows_z4}, and the selected atmospheric levels in Table \ref{table:levels_GA_z4}. 
+
+The improvement of the CRPSS score relatively to the reference method on the atmospheric circulation is provided in Table \ref{table:scores} and is in average of 15.3 \% in calibration and 9.9 \% in validation. The score was also calculated for three precipitation thresholds: P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10, P10 being the daily precipitation with a 10~year return period (Table \ref{table:scores_thresholds_z4}). The score increases with the precipitation threshold: in average, respectively, 13.3\%, 15.4\% and 29.1\% in calibration and 7.9\%, 11.1\% and 34.5\% for the validation period. The optimized method improves thus even more days with significant precipitation than standard days.
+
+To assess the cross-compatibility of the parameters, we applied those optimized for one groupment to the others. The resulting losses or gains of the CRPSS are displayed in Table \ref{table:crossing_z4_calib} for the calibration period and in Table \ref{table:crossing_z4_valid} for the validation period.
 
 
 \subsubsection{Analysis}
-...
 
+The choices of the atmospheric levels for the analogy of circulation show a great homogeneity and is spatially consistent (Table \ref{table:levels_GA_z4}). First of all, the level 1000~hPa is selected twice (the first time at 6 or 12~h, and the second always at 30~h) and the 700~hPa is selected once for every region (always at 24~h). The level which varies from one region to another is the upper level (always at 12~h), that is 300~hPa for the North-West part of the catchment, 500~hPa for most of the groupments, and 600~hPa for the Conches Valley. Its spatial distribution is however homogeneous. The optimizer thus provided consistent choices of atmospheric levels and temporal windows, which depicts a significant preference in the analogue method, and the success of our GAs to provide consistent results. The automatic choice of the atmospheric levels is a big advantage of a global optimization, as it was not possible to assess all combinations of 4 levels with the classic calibration procedure.
+
+The resulting spatial windows (Figure \ref{fig:spatial_windows_z4}) may look very diverse first, but there are significant similarities for groupments located within the same vicinity. The first 4 groupments are characterized by a large spatial window on the upper level, whereas it becomes smaller for the other regions. For most groupments, the second level (700~hPa) is represented by thin and longitudinally extended domains. The third level (1000~hPa at 6 or 12~h) also contains longitudinally extended domains, but a bit larger. The last one (1000~hPa at 30~h) is rather large and squared. Surprisingly, regions number 5 (Left side valleys) and 6 (Southern ridges) have exactly the same spatial windows, which suggest that they behave in a similar way and thus could have been merged. This similarity is a good sign for the accuracy of our optimized parameters.
+
+The scores show significant improvements for both the calibration and the validation period (Table \ref{table:scores}). Even more interestingly, the results for higher precipitation thresholds (Table \ref{table:scores_thresholds_z4}) show the largest improvements. This is of particular interest in the framework of flood forecasting.
+
+The analysis of the parameters cross-compatibility shows that obviously, the parameters are optimal on the calibration period when they are calibrated for the given groupment (Table \ref{table:crossing_z4_calib}). However, the losses in CRPSS are not of the same amplitude between the different regions. Indeed, the Upper Rhone Valley (7) and moreover the Southeast ridges (8) seem to behave significantly differently. Parameter sets from other regions perform poorly for these groupments, and vice versa. Nevertheless, both groupments seem quite inter-compatible. This points to the importance of taking into account leading meteorological influences during groupment creation, which is not always best represented by the distance separating them. Globally, the same pattern can be observed for the validation period (Table \ref{table:crossing_z4_valid}), but in this case, minor improvements may be observed when crossing the parameters. The reason being that the independant validation period contains other events that may be better forecasted by other parameters sets. The relative small differences in score between parametrizations indicate that even though the parameters may differ significantly, the performance may not be drastically affected. Even a change in the atmospheric level does not mean a radical drop of the score. A different parametrization leads to a different selection of the analogue days, and thus to an improvement of the forecast of certain weather conditions at the expense of others. This raises the question of optimizing more specifically for extreme weather conditions only. 
+ 
 
 %Nous avons cherché à identifier quelle part du gain est attribuable à quel nouveau degré de liberté par rapport à la méthode M6. De manière générale, nous avons remarqué qu'il y a une forte dépendance entre ces paramètres (fenêtres spatiales, fenêtres temporelles et pondération des niveaux atmosphériques), et qu'il n'est pas recommandable de les considérer séparément. Par exemple, l'introduction des poids (non réoptimisés) dans les paramètres de la méthode M6 a un effet en moyenne nul, mais peut engendrer des pertes non négligeables sur les scores de certains groupements.
 
@@ -966,7 +978,7 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 			\textbf{av.} &\textbf{ 13.3} & \textbf{7.9} & \textbf{15.4} & \textbf{11.1} & \textbf{29.1} & \textbf{34.5} \\ \hline 
 		\end{tabular} 
 	\end{center}
-	\label{table:scores_z4}
+	\label{table:scores_thresholds_z4}
 \end{table}
 
 \begin{table}[htb]
@@ -1082,7 +1094,7 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 			\textbf{av.} &\textbf{14.2} & \textbf{10.9} & \textbf{15.2} & \textbf{13.0} & \textbf{21.6} & \textbf{28.9} \\ \hline 
 		\end{tabular} 
 	\end{center}
-	\label{table:scores_z4-hi2}
+	\label{table:scores_thresholds_z4-hi2}
 \end{table}
 
 \begin{table}[htb]
@@ -1202,7 +1214,7 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 			\textbf{av.} &\textbf{17.7} & \textbf{13.0} & \textbf{15.8} & \textbf{12.9} & \textbf{23.7} & \textbf{29.2} \\ \hline 
 		\end{tabular} 
 	\end{center}
-	\label{table:scores_z4-hi4}
+	\label{table:scores_thresholds_z4-hi4}
 \end{table}
 
 \begin{table}[htb]
