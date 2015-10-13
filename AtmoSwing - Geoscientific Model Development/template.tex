@@ -114,6 +114,7 @@ The analogue method is being used for many years at EDF (\'{E}lectricit\'{e} de 
 
 
 \subsection{Its evolution}
+\label{sec:method:evolution}
 
 \citet{Lorenz1969} introduced the concept and established the basis of the method. He considered looking for analogues on the geopotential field (at 200, 500 and 850~hPa) with a corrected Euclidean distance averaged on the 3 levels. In addition, the analogue situations were to belong to the same period of the year to be comparable in terms of distribution of solar energy.
 
@@ -127,27 +128,64 @@ Thereafter, the geopotential was considered at 1000~hPa and 700~hPa and the anal
 
 Taking advantage of higher-performance IT tools \citet{Guilbaud1997} stopped using PCA in order to work directly with the raw data interpolated on grids, which was an improvement, especially when considering the S1 criterion (already used for analogues selection by\citealp{Wilson1980} and \citealp{Woodcock1980}) instead of the Euclidean distance. This score gives importance to the similarity of atmospheric circulation rather than absolute values of the pressure field. After comparing this criterion to other criteria from the literature, or combinations of these, \citet{Guilbaud1998} found that S1 is the most efficient. They also pointed out the benefit of using 2 atmospheric levels instead of one (also instead of the thickness), and to also consider 2 temporal windows \citep{Obled2002}. When using multiple predictors, they combined the criteria values calculated on each atmospheric level and each temporal window using an arithmetic mean. Finally, they also suggested using a second level of analogy on lower layers humidity and introduced the Ranked Probability Score \citep{Epstein1969} to assess the forecast quality, which was found to be more relevant that the Brier score \citep{Brier1950}.
 
+\citet{Bontron2004} could benefit from the newly available NCEP/NCAR reanalysis data. This dataset being more homogeneous, much longer, and contained more variables than what was previously used, he could systematically assess a large selection of variables in the analogue method combined with different criteria. He thus confirmed the interest of the geopotential height along with the S1 criterion for the first level of analogy. He has also shown that the choice of the temporal window (time of observation) has a higher importance than the atmospheric level for the performance of the method. By assessing multiple combinations of atmospheric levels and temporal windows, he concluded that the coupled geopotential heights at 1000~hPa \& 12~h and 500~hPa \& 24~h provided the best performance for the studied region.
+
+He also assessed several variables for the second level of analogy and identified the humidity variables (precipitable water and relative humidity) and vertical velocity to be the most relevant. Finally, he found that the product of relative humidity and precipitable water gave the best performance.
+
+He noted the relevance of defining different spatial windows for each region, rather than a single window to the entire territory. These windows are more able to represent the specific atmospheric influences for the region. In order to assess the forecast, he introduced the Continuous Ranked Probability Score \citep[CRPS, Eq. \ref{eq:CRPS}, ][]{Brown1974}, which discards the issue of determining classes as with the RPS previously in use.
+
+\citet{BenDaoud2010} applied the analogue method in the context of large flatter catchments, out of an Alpine environment (Sa\^{o}ne, Seine). He evaluated several variables usually used in weather forecasting, amongst them the air temperature and the vertical velocity that presented a potential interest. The temperature (at the nearest grid point, on the 925~hPa (36~h) and 600~hPa (12~h) levels) could replace the rigid selection of $\pm$ 60 days around the target date by a more dynamic screening of similar situations in terms of air masses. The seasonal effect is indeed also present in the temperature data. The vertical velocity was used as an additional level of analogy, between the analogy of atmospheric circulation and the one on humidity, to account for fronts. Finally, he selected the humidity variables at 700~hPa instead of 850~Pa. 
+
+\citet{Bliefernicht2010} proposed to add a weighting to the grid points of the predictor to overcome a comparison on a fixed-size window, and to give more importance to regions with relevant atmospheric circulation information. However, he noticed that there is a risk of overparametrization and a simplification of the weighting fields may be necessary, and that the performance was not stable between the calibration and the validation periods. He also compare the performance of the analogues method with a forecasting method based on a weather types approach, and concluded that the analogues method was more efficient.
+
+% TODO : Sabine
+% TODO : Jérémie Chardon
 
 
+\subsection{Present structure}
 
+Although multiple variations of the method exist, they generally share the same basics and the same structure. We want here to forecast the daily precipitation (the predictand) for a target day (at a defined lead time) and have long archives of both the predictand and predictor variables. The generic structure is the following:
 
-
-
-
-
-
-
-
-
+\begin{enumerate}
+	\item Preselection: to cope with seasonal effects, candidate dates are extracted from the archive within a period of four months centered around the target date, for every year of the archive. Alternatively, the candidate dates can be selected based on similar air temperature \citep{BenDaoud2010}.
+	
+	\item First level of analogy: we subsample $N_{1}$ dates within all the candidates provided by the preselection, by means of an analogy ranking. The first level of analogy is always the atmospheric circulation when it comes to precipitation forecasting. We thus assess the similarity of the atmospheric circulation of our target date with all the situations provided by the preselection by means of the S1 criteria \citep[Eq.\ref{eq:S1}, ][see also section \ref{sec:method:evolution}]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial window.
+	
+	\begin{equation}
+	\label{eq:S1}
+	S1=100 \frac {\displaystyle \sum_{i} \vert \Delta\hat{z}_{i} - \Delta z_{i} \vert}
+	{\displaystyle \sum_{i} max\left\lbrace \vert \Delta\hat{z}_{i} \vert , \vert \Delta z_{i} \vert \right\rbrace }
+	\end{equation}
+	where $\Delta \hat{z}_{i}$ is the forecast geopotential height difference between the \textit{i}th pair of adjacent points in the target situation, and $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation. The differences are processed separately in both directions. The smaller the S1 values are, the more similar the pressure fields.
+	
+	The $N_{1}$ dates with the lowest values of S1 are considered as analogues to the target day. The number of analogues, $N_{1}$, is a parameter to calibrate.
+	
+	\item Subsequent level(s) of analogy: we can then subsample once again the $N_{1}$ analogues on the basis of another variable in order to obtain a lower number of analogue dates, $N_{2}$. The S1 criterion is usually not relevant for other predictors that the atmospheric circulation. Other classic criteria represent absolute distances: Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE), the latest being most often used. These are more relevant to compare humidity variables for example.
+	
+	This process can be repeated, by subsampling a decreasing number of analogues, $N_{i}$, according to a ranking processed on various meteorological variables.
+	
+	\item Probabilistic forecast: then, the daily observed precipitation amount (or another predictand of interest) of the $N_{i}$ resulting dates provide the empirical conditional distribution considered as the probabilistic forecast for the target day. The empirical frequencies are processed for every value of the predictand, after classification, based on the Gringorten parameters (for a Gumbel or exponential law).
+	
+\end{enumerate}
 
 
 \subsection{References implementations}
 % TODO: write
 
-\subsection{Datasets}
+\subsection{Data}
 % TODO: write
 
+The analogue method relies on two types of data: predictors, that are atmospheric variables describing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather time series we want to forecast.
 
+Predictors are generally reanalysis datasets (and outputs of a global numerical weather prediction models for the target situation in operational forecasting, which is not the topic of this paper). We will work here with the NCEP/NCAR reanalysis \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996}, but it can be any other reanalysis dataset.
+
+The predictand (which is to be predicted) is in our case the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss' stations network, for the period 1961-2008. The time series from every available gauging station were averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}.
+
+%\citet{Djerboua2001} a également proposé de normaliser la pluie par la pluie décennale à la station (ou groupement), ce qui nous permet de mieux identifier les contributions les plus importantes en précipitations.
+
+%Par une étude de sensibilité, \citet{Bontron2004} a déterminé un plafonnement de la longueur de l'archive nécessaire à 30 ans pour la prévision en général, et à 40 ans pour les événements intenses. Il a également mis en lumière la dépendance entre le nombre d'analogues optimal et la taille de l'archive: plus l'archive est courte, plus le nombre d'analogues diminue. En faisant varier la résolution des grilles de prédicteurs, il en a conclu que l'augmentation en performance n'est pas significative pour l'analogie de circulation en deçà d'une résolution de 5\degres . Cependant, elle semble plus importante pour le second niveau d'analogie sur les humidités, qui sont des variables plus locales.
+
+%\citet{BenDaoud2010} a dans un premier temps évalué les réanalyses européennes ERA-40 \citep{Uppala1999}, avec une résolution de 1.125\degres, par rapport aux réanalyses américaines du NCEP/NCAR à 2.5\degres\ \citep{Kalnay1996} utilisées jusqu'alors. Il a identifié une légère amélioration des performances, mais pas assez substantielle pour vraiment justifier un changement d'archive \citep{BenDaoud2008}.
 
 \section{Software basics}
 % TODO: write
@@ -178,6 +216,15 @@ Taking advantage of higher-performance IT tools \citet{Guilbaud1997} stopped usi
 
 
 
+%\citet{Djerboua2001} a appliqué la méthode développée par \citet{Guilbaud1997} en prévision opérationnelle dans le cadre du projet MAP \citep[\textit{Mesoscale Alpine Programme}, voir][]{Binder1996}, lors de la période spéciale d'observation \citep{Bougeault2001}. Il a relevé que le quantile 60~\% prévoyait le mieux les quantités de précipitations pour les situations normales, mais que lorsque la pluie observée était forte à extrême, le quantile 90~\% s'avérait être un meilleur témoin. Il convient donc de porter une attention particulière au quantile 90~\% qui, lorsqu'il monte brutalement, peut être le signe d'une situation propice à un événement de nature extrême, par la présence de plusieurs analogues dans la distribution avec des cumuls observés significatifs \citep{Djerboua2001}. En opérationnel, les prévisionnistes doivent prêter attention à la distribution des meilleures analogues. Si, par exemple, celle-ci est décalée vers des valeurs plus élevées, il y a un risque de sous-estimer l'événement.
+
+%En comparant les performances des modèles de Météo France avec la méthode des analogues, il en a conclu que les modèles numériques sont meilleurs pour la prévision du jour même, alors que les analogues deviennent plus concurrentielles (et meilleures pour les bassins de taille moyenne) pour les échéances suivantes.
+
+% En opérationnel, ce second niveau est pertinent jusqu'à une échéance de 3~jours. Au-delà, les prévisions d'humidité ne sont pas assez performantes pour être utiles.
+
+%En analysant les distributions de précipitations issues des analogues, \citet{Bontron2004} a identifié le quantile 60~\% comme étant le plus informatif pour l'occurrence des précipitations, et le quantile 90~\% pour la prévision des précipitations moyennes à fortes ($P > P10/10$, soit un dixième de la pluie décennale).
+
+%En opérationnel, ces niveaux supplémentaires se sont montrés utiles pour les deux à trois premières échéances, mais au-delà, toutes les méthodes deviennent équivalentes à l'analogie sur la circulation, car les autres variables, comme la vitesse verticale, sont alors mal prévues.
 
 \section{The calibrator module}
 % TODO: write
@@ -597,6 +644,21 @@ In order to make an optimization of the analogue method with genetic algorithms,
 	\item 2x chromosome of adaptive search radius
 \end{itemize}
 
+
+\section{Perspectives}
+
+%\citet{Thevenot2004} a étudié plusieurs aspects de la méthode des analogues en utilisation opérationnelle. Le premier a consisté à intégrer les prévisions d'ensemble du Centre Européen de Prévision Météorologique à Moyen Terme (CEPMMT, ou \textit{European Centre for Medium-Range Weather Forecasts}, ECMWF). Cette approche permet de tenir compte des incertitudes sur les prédicteurs issus du modèle global. Son implémentation est une combinaison des journées analogues retenues, associées à chacune des traces. La distribution des précipitations est ensuite établie sur l'ensemble des analogues. Ainsi, certaines journées peuvent être représentées plusieurs fois. À partir d'une échéance de 4 jours, la prévision sur l'ensemble des traces se montre plus performante que celle effectuée sur le seul contrôle déterministe.
+
+%Il a aussi effectué une calibration du nombre d'analogues à retenir en fonction de l'échéance pour la prévision déterministe, ainsi que pour la prévision d'ensemble. Pour la prévision déterministe, le nombre d'analogues pour les deux premières échéances est identique à celui de la prévision parfaite \citep[calibration sur les réanalyses,][]{Klein1963}, puis croît de manière importante jusqu'à tendre vers l'ensemble de la climatologie. Cette optimisation a été effectuée sur la méthode à un niveau d'analogie (analogie de circulation), mais n'a pas pu être entreprise de manière aussi rigoureuse sur le second niveau d'analogie.
+
+
+%\citet{Marty2010} a appliqué plusieurs scores de validation aux quantiles de la distribution des prévisions opérationnelles de la méthode des analogues. Il en a conclu que la détection de l'occurrence des pluies était mieux prévue par les quantiles médians (50 à 70~\%), avec un optimum à 60~\%. Toutefois, pour les pluies significatives, le quantile 90~\% donnait les meilleures performances. En comparant les résultats des analogues et des prévisions d'ensemble, pour le quantile 90~\%, il a observé que, à partir de $P = 0.16 \cdot P10$, les analogues donnaient trop d'alertes, alors que les ensembles n'en émettaient pas assez. La prévision opérationnelle par analogie était meilleure que celle des ensembles considérés, et ceci particulièrement pour les forts cumuls \citep{Marty2010}. Le gain des analogues provient principalement d'une meilleure justesse, pour une moins bonne finesse. Au contraire, les prévisions d'ensemble sont très fines, mais manquent un peu de justesse.
+
+%Lors de l'analyse du biais des résultats de la méthode des analogues en opérationnel (également des ensembles), il a observé que la fréquence prévue des pluies nulles ($F(0)$) était biaisée et sous-estimait la fréquence réelle des précipitations nulles. Au contraire, les fréquences prévues des pluies positives ($F_{+}$) surestimaient les fréquences observées. Ainsi, par exemple, le quantile 50~\% de la distribution prévue correspondrait au quantile réel 32~\%, et le 90~\% prévu au 81~\% réel. Il a donc proposé une correction des biais.
+
+%En analysant le biais de la méthode des analogues en prévision parfaite (voir section \ref{sec:etat_art:calibration}), il a observé que $F(0)$ et $F_{+}$ n'étaient que très légèrement biaisés, et que les biais observés précédemment avaient donc une origine externe (l'échantillon des prévisions du modèle numérique global utilisé). Toutefois, en appliquant un conditionnement par $F(0)$, il est apparu que \og \textit{si la journée cible est prévue pour être plutôt humide ($F(0) \leq 0.10$), les fréquences de $F_{+}$ sont surestimées (et les quantiles de précipitations sont dès lors sous-estimés)}\fg{}, et au contraire, que \og \textit{si elle est prévue pour être plutôt sèche avec une probabilité moyenne ($F(0) > 0.20$), alors les fréquences $F_{+}$ sont sous-estimées (et les quantiles de précipitations sont dès lors surestimés)}\fg{}. Il a donc proposé une méthode de correction a priori en appliquant un coefficient correctif sur chaque fréquence quantilique en fonction de $F(0)$, puis en déterminant la distribution a posteriori, ajustée selon la loi Gamma à deux paramètres. Cette correction s'est avérer améliorer les performances des prévisions pour les journées à fortes précipitations.
+
+%Il a encore proposé une désagrégation temporelle à 6 et 12~h des prévisions de la méthode des analogues pour une utilisation opérationnelle dans une chaîne hydrométéorologique. La meilleure méthode identifiée consistait à utiliser les cumuls prévus par la méthode des analogues à un pas de temps journalier, et de leur appliquer la chronologie des prévisions d'ensemble, lesquels reproduisent bien la répartition infrajournalière.
 
 
 \conclusions  %% \conclusions[modified heading if necessary]
