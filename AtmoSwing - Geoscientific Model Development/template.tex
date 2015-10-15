@@ -114,7 +114,7 @@ Because of the chaotic nature of the atmosphere, two analogue situations quickly
 The analogue method is being used for many years at EDF (\'{E}lectricit\'{e} de France), to build precipitation and temperature scenarios \citep{Desaint2008a}. It is also operational at the Compagnie Nationale du Rh\^{o}ne (CNR, France) and some flood forecasting services (SPC) in France and Switzerland \citep{Marty2010,GarciaHernandez2009b,Horton2012}.
 
 
-\subsection{Its evolution}
+\subsection{Evolution of the method}
 \label{sec:method:evolution}
 
 The most common usage of the analogue method is for precipitation forecasting. Thus, the evolution presented hereafter focuses on this predictand.
@@ -173,56 +173,83 @@ Although multiple variations of the method exist, they generally share the same 
 \end{enumerate}
 
 
-\subsection{References implementations for precipitation forecasting}
+\subsection{Proposed nomenclature}
+
+Variants of the analogue method parameterization are numerous and it is not always easy to reference them in a short and descriptive way. We thus propose a basic nomenclature (Figure \ref{figure:nomenclature}) in order to give an idea of the structure in a simple identifier. This one cannot describe all the parameters of the method, but quickly illustrate the structure of the implementation. This is particularly useful when working with a global optimization method, where nothing is fixed but the very structure of the method.
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/nomenclature.pdf}
+	\caption{Proposed structure for naming the parameterizations of the analogue method.}
+	\label{figure:nomenclature}
+\end{figure}
+
+The naming contains different blocs (separated by an hyphen) for the various levels of analogy. It starts with the specification of the preselection (P; can be omitted when comparing methods with the same preselection approaches), which can be nowadays of 2 types:
+\begin{itemize}
+	\setlength\itemsep{-2px}
+	\item C: calendar period ($\pm 60$ days around the target date)
+	\item T: based on air temperature \citep{BenDaoud2010}
+\end{itemize}
+
+Then, the following levels of analogy are listed. They may start with an optional A (for analogy) when other methods are mixed into the parameterization \citep[see eg. ][]{Chardon2014}. For every level of analogy, we first provide the number of variables used (combination of atmospheric levels and time of observation) and then give the short name of the variable (according eg to ECMWF conventions; in upper case), for example:
+\begin{itemize}
+	\setlength\itemsep{-2px}
+	\item Z : geopotential (circulation)
+	\item HI : humidity index (TPW * RH)
+	\item HF : humidity flux (V * TPW * RH)
+	\item TPW : total precipitable water
+	\item V : wind velocity
+	\item W : vertical velocity
+\end{itemize}
+
+In order to keep the identifier simple, no value of atmospheric level neither time of observation is specified. Moreover, the analogy criterion is not specified and is supposed to be S1 for Z and RMSE for the other variables. If anything changes from these conventions, it can be noted as a flag. The flag (lower case) can also give other information, such as the optimization method:
+\begin{itemize}
+	\setlength\itemsep{-2px}
+	\item cc : classic calibration (can be omitted as considered as default, see section \ref{sec:classic})
+	\item go : global optimization (by means of genetic algorithms for example, see section \ref{sec:gas})
+\end{itemize}
+
+This nomenclature can be adapted to specific needs, or simplified for a better readability (eg. by removing the specification of the preselection). Examples are provided in the following section.
+
+
+\subsection{References for precipitation forecasting}
 
 The evolution of the analogue method for precipitation forecasting led to several improvements. However, some of these are specific for a certain region and are not relevant for others, and some perform better depending on the lead time. Thereby, we cannot provide a single best parameterization for the method, neither rank them from worst to best. We will thus provide the references implementations of the most recent method variant, in the chronological order they appeared.
 
-
-
-
-
-
-
-
-
-
-%\subsection{R0, les origines}
-%\label{sec:etat_art:R0}
-
-%Une référence préliminaire résulte des travaux de \citet{Guilbaud1997} et \citet{Obled2002}. Elle est constituée d'un seul niveau d'analogie sur la circulation atmosphérique considérée à 1000~hPa et 700~hPa (R0a, Table \ref{table:R0a}) ou 500~hPa (R0b, Table \ref{table:R0b}). Le critère S1 de Teweles-Wobus est alors utilisé pour comparer les champs de géopotentiel.
+The first parameterization comes from the work of \citet{Guilbaud1997} and \citet{Obled2002}. It consists of a single level of analogy on the atmospheric circulation. The score S1 (Teweles-Wobus, Eq. \ref{eq:S1}) is processed on the geopotential height at 1000~hPa (Z1000) and 700~hPa (Z700) (Table \ref{table:R0a}) or 500~hPa (Z500) (Table \ref{table:R0b}), both at 00~h and 24~h. The number of analogues considered is 50.
 
 \begin{table}[htbp]
-	\caption{R0a.}
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-			\hline
-			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-			\hline 
-			\multirow{2}{*}{1} & Z700 & 00, 24~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
-			& Z1000 & 00, 24~h & & \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
+	\caption{Method of type PC-4Z proposed by \citep{Guilbaud1997}.}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{2}{*}{1} & Z700 & 00, 24~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+		& Z1000 & 00, 24~h & & \\ 
+		\bottomhline 
+	\end{tabular} 
 	\label{table:R0a}
 \end{table}
 
 
 \begin{table}[htbp]
-	\caption{R0b.}
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-			\hline 
-			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-			\hline 
-			\multirow{2}{*}{1} & Z500 & 00, 24~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
-			& Z1000 & 00, 24~h & & \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
+	\caption{Variant of the PC-4Z method proposed by \citep{Guilbaud1997}.}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{2}{*}{1} & Z500 & 00, 24~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+		& Z1000 & 00, 24~h & & \\ 
+		\bottomhline 
+	\end{tabular} 
 	\label{table:R0b}
 \end{table}
+
+
+
 
 
 
@@ -233,18 +260,17 @@ The evolution of the analogue method for precipitation forecasting led to severa
 %Ce que nous considérerons comme notre première référence est l'analogie de circulation (R1, Table \ref{table:R1}) optimisée par \citet{Bontron2004}. Ce dernier a observé que le choix de l'heure était plus important que celui du niveau atmosphérique. La méthode est alors constituée du géopotentiel à deux niveaux atmosphériques et à des heures différentes.
 
 \begin{table}[htbp]
-	\caption{R1.}
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-			\hline 
-			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-			\hline 
-			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
-			& Z500 & 24~h & & \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
+	\caption{Method of type PC-2Z proposed by \citep{Bontron2004}.}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+		& Z500 & 24~h & & \\ 
+		\bottomhline 
+	\end{tabular} 
 	\label{table:R1}
 \end{table}
 
@@ -257,20 +283,19 @@ The evolution of the analogue method for precipitation forecasting led to severa
 %Toujours d'après les travaux de \citet{Bontron2004}, la référence suivante (R2, Table \ref{table:R2}) intègre un second niveau d'analogie sur un indice d'humidité: le produit de l'humidité relative à 850~hPa et de l'eau précipitable de la colonne. Cette variable ne représente pas une grandeur physique réelle, mais exprime le contenu en eau de la colonne et sa proximité ou son éloignement de la saturation (à 850~hPa).
 
 \begin{table}[htbp]
-	\caption{R2.}
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-			\hline 
-			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-			\hline 
-			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
-			& Z500 & 24~h & & \\ 
-			\hline
-			2 & TPW * RH850 & 12, 24~h & RMSE & 30 \\
-			\hline 
-		\end{tabular} 
-	\end{center}
+	\caption{Method of type PC-2Z-2HI proposed by \citep{Bontron2004}.}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+		& Z500 & 24~h & & \\ 
+		\middlehline
+		2 & TPW * RH850 & 12, 24~h & RMSE & 30 \\
+		\bottomhline 
+	\end{tabular} 
 	\label{table:R2}
 \end{table}
 
@@ -282,57 +307,54 @@ The evolution of the analogue method for precipitation forecasting led to severa
 
 
 \begin{table}[htbp]
-	\caption{R3a.}
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-			\hline 
-			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-			\hline 
-			\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{75} \\
-			& Z500 & 18~h & & \\ 
-			\hline
-			2 & TPW * RH925 & 06, 18~h & RMSE & 30 \\
-			\hline 
-		\end{tabular} 
-	\end{center}
+	\caption{Method of type PC-2Z-2HI proposed by \citep{Marty2010}.}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{75} \\
+		& Z500 & 18~h & & \\ 
+		\middlehline
+		2 & TPW * RH925 & 06, 18~h & RMSE & 30 \\
+		\bottomhline 
+	\end{tabular} 
 	\label{table:R3a}
 \end{table}
 
 
 \begin{table}[htbp]
-	\caption{R3b.}
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-			\hline 
-			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-			\hline 
-			\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{60} \\
-			& Z 500~hPa & 18~h & & \\ 
-			\hline
-			2 & V700 * TPW * RH700 & 06, 18~h & RMSE & 25 \\
-			\hline 
-		\end{tabular} 
-	\end{center}
+	\caption{Method of type PC-2Z-2HF proposed by \citep{Marty2010}.}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{60} \\
+		& Z 500~hPa & 18~h & & \\ 
+		\middlehline
+		2 & V700 * TPW * RH700 & 06, 18~h & RMSE & 25 \\
+		\bottomhline 
+	\end{tabular} 
 	\label{table:R3b}
 \end{table}
 
 \begin{table}[htbp]
-	\caption{R3c.}
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-			\hline 
-			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-			\hline 
-			\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{60} \\
-			& Z 500~hPa & 18~h & & \\ 
-			\hline
-			2 & V925 * TPW * RH925 & 06, 18~h & RMSE & 25 \\
-			\hline 
-		\end{tabular} 
-	\end{center}
+	\caption{Method of type PC-2Z-2HF proposed by \citep{Marty2010}.}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{60} \\
+		& Z 500~hPa & 18~h & & \\ 
+		\middlehline
+		2 & V925 * TPW * RH925 & 06, 18~h & RMSE & 25 \\
+		\bottomhline 
+	\end{tabular} 
 	\label{table:R3c}
 \end{table}
 
@@ -348,63 +370,60 @@ The evolution of the analogue method for precipitation forecasting led to severa
 %La quatrième référence reconsidère la sélection des journées candidates à l'analogie et utilise la présélection sur les températures introduite par \citet{BenDaoud2010}. Nous nous affranchissons donc de la sélection d'une période de 4 mois centrée sur la date pour une approche plus dynamique qui tient différemment compte de l'effet de saisonnalité. Le nombre d'analogues de la présélection est équivalent au nombre de jours que nous aurions retenus par la période de $\pm 60$ jours, soit $N_{0} = 60 \cdot 2 \cdot n_{a}$, où $n_{a}$ est le nombre d'années de la période de calibration. Mais la sélection est ici fondée sur un critère de similitude thermique au droit de la région cible.
 
 \begin{table}[htbp]
-	\caption{R4a.}
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-			\hline
-			\multirow{2}{*}{0} & T925 & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
-			& T600 & 12~h & & \\ 
-			\hline 
-			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
-			& Z 500~hPa & 24~h & & \\ 
-			\hline
-			2 & TPW * RH850 & 12, 24~h & RMSE & 25 \\
-			\hline 
-		\end{tabular} 
-	\end{center}
+	\caption{Method of type P2T-2Z-2HI proposed by \citep{BenDaoud2010}.}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline
+		\multirow{2}{*}{0} & T925 & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
+		& T600 & 12~h & & \\ 
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+		& Z 500~hPa & 24~h & & \\ 
+		\middlehline
+		2 & TPW * RH850 & 12, 24~h & RMSE & 25 \\
+		\bottomhline 
+	\end{tabular} 
 	\label{table:R4a}
 \end{table}
 
 
 \begin{table}[htbp]
-	\caption{R4b.}
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-			\hline
-			\multirow{2}{*}{0} & T925 & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
-			& T600 & 12~h & & \\ 
-			\hline 
-			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
-			& Z 500~hPa & 24~h & & \\ 
-			\hline
-			\multirow{2}{*}{2} & TPW * RH925 & 12, 24~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
-			& TPW * RH700 & 12, 24~h & & \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
+	\caption{Method of type P2T-2Z-4HI proposed by \citep{BenDaoud2010}.}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline
+		\multirow{2}{*}{0} & T925 & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
+		& T600 & 12~h & & \\ 
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+		& Z 500~hPa & 24~h & & \\ 
+		\middlehline
+		\multirow{2}{*}{2} & TPW * RH925 & 12, 24~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
+		& TPW * RH700 & 12, 24~h & & \\ 
+		\bottomhline 
+	\end{tabular} 
 	\label{table:R4b}
 \end{table}
 
 
 \begin{table}[htbp]
-	\caption{R4c.}
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-			\hline
-			\multirow{2}{*}{0} & T925 & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
-			& T600 & 12~h & & \\ 
-			\hline 
-			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
-			& Z 500~hPa & 24~h & & \\ 
-			\hline
-			\multirow{2}{*}{2} & TPW * RH925 & 06-30~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
-			& TPW * RH700 & 06-30~h & & \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
+	\caption{Method of type P2T-2Z-10HI proposed by \citep{BenDaoud2010}.}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline
+		\multirow{2}{*}{0} & T925 & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
+		& T600 & 12~h & & \\ 
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+		& Z 500~hPa & 24~h & & \\ 
+		\middlehline
+		\multirow{2}{*}{2} & TPW * RH925 & 06-30~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
+		& TPW * RH700 & 06-30~h & & \\ 
+		\bottomhline 
+	\end{tabular} 
 	\label{table:R4c}
 \end{table}
 
@@ -417,46 +436,61 @@ The evolution of the analogue method for precipitation forecasting led to severa
 %\citet{BenDaoud2010} a encore ajouté un niveau d'analogie sur les mouvements verticaux. Ce niveau vient s'insérer entre l'analogie de circulation et celle de l'humidité. À nouveau, nous considérons une première référence (R5a, Table \ref{table:R5a}) avec les paramètres d'humidité selon \citet{Bontron2004}, et une seconde (R5b, Table \ref{table:R5b}) avec les paramètres de \citet{BenDaoud2010}.
 
 \begin{table}[htbp]
-	\caption{R5a.}
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-			\hline
-			\multirow{2}{*}{0} & T925 (1 point) & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
-			& T600 (1 point) & 12~h & & \\ 
-			\hline 
-			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{170} \\
-			& Z 500~hPa & 24~h & & \\ 
-			\hline
-			2 & W850 & 06-24~h & RMSE & 70 \\
-			\hline
-			3 & TPW * RH850 & 12, 24~h & RMSE & 25 \\
-			\hline 
-		\end{tabular} 
-	\end{center}
+	\caption{Method of type P2T-2Z-4W-2HI proposed by \citep{BenDaoud2010}.}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline
+		\multirow{2}{*}{0} & T925 (1 point) & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
+		& T600 (1 point) & 12~h & & \\ 
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{170} \\
+		& Z 500~hPa & 24~h & & \\ 
+		\middlehline
+		2 & W850 & 06-24~h & RMSE & 70 \\
+		\middlehline
+		3 & TPW * RH850 & 12, 24~h & RMSE & 25 \\
+		\bottomhline 
+	\end{tabular} 
 	\label{table:R5a}
 \end{table}
 
 \begin{table}[htbp]
-	\caption{R5b.}
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-			\hline
-			\multirow{2}{*}{0} & T925 (1 point) & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
-			& T600 (1 point) & 12~h & & \\ 
-			\hline 
-			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{170} \\
-			& Z 500~hPa & 24~h & & \\ 
-			\hline
-			2 & W850 & 06-24~h & RMSE & 70 \\
-			\hline
-			\multirow{2}{*}{3} & TPW * RH925 & 12, 24~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
-			& TPW * RH700 & 12, 24~h & & \\
-			\hline 
-		\end{tabular} 
-	\end{center}
+	\caption{Method of type P2T-2Z-4W-4HI proposed by \citep{BenDaoud2010}.}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline
+		\multirow{2}{*}{0} & T925 (1 point) & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
+		& T600 (1 point) & 12~h & & \\ 
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{170} \\
+		& Z 500~hPa & 24~h & & \\ 
+		\middlehline
+		2 & W850 & 06-24~h & RMSE & 70 \\
+		\middlehline
+		\multirow{2}{*}{3} & TPW * RH925 & 12, 24~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
+		& TPW * RH700 & 12, 24~h & & \\
+		\bottomhline 
+	\end{tabular}
 	\label{table:R5b}
+\end{table}
+
+
+\begin{table}[htbp]
+	\caption{Method of type PC-4Zo proposed by \citep{Horton2012}.}
+	\begin{tabular}{ccccc}
+
+	\end{tabular}
+	\label{table:R6a}
+\end{table}
+
+\begin{table}[htbp]
+	\caption{Method of type PC-4Zo-2HIo proposed by \citep{Horton2012}.}
+	\begin{tabular}{ccccc}
+		
+	\end{tabular}
+	\label{table:R6b}
 \end{table}
 
 
@@ -578,6 +612,7 @@ where $CRPS_{r}$ is the CRPS value for the reference and $CRPS_{p}$ would be the
 % TODO: write
 
 \subsection{The classic calibration approach}
+\label{sec:classic}
 
 The calibration procedure that we call ''classic'' was developed by \citet{Bontron2004} at the LTHE laboratory (INPG, Grenoble). It determines the optimal parameters for the different variables of each level of analogy. The analogy levels (eg the atmospheric circulation or humidity index) are calibrated sequentially. The procedure consists of the following steps \citep{Bontron2004}:
 
@@ -612,6 +647,7 @@ These supplementary steps often result in spatial windows that are a bit differe
 
 
 \section{The global optimization tools}
+\label{sec:gas}
 
 Genetic algorithms (GAs) come from the world of stochastic optimization, more specifically from metaheuristic approaches. These are stochastic iterative algorithms that behave like search algorithms by exploiting the characteristics of a problem and are particularly suitable for complex parameter spaces.
 
