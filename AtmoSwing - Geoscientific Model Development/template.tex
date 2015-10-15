@@ -114,6 +114,18 @@ Because of the chaotic nature of the atmosphere, two analogue situations quickly
 The analogue method is being used for many years at EDF (\'{E}lectricit\'{e} de France), to build precipitation and temperature scenarios \citep{Desaint2008a}. It is also operational at the Compagnie Nationale du Rh\^{o}ne (CNR, France) and some flood forecasting services (SPC) in France and Switzerland \citep{Marty2010,GarciaHernandez2009b,Horton2012}.
 
 
+\subsection{Data}
+% TODO: write
+
+The analogue method relies on two types of data: predictors, that are atmospheric variables describing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather time series we want to forecast.
+
+Predictors are generally reanalysis datasets (as archive) and outputs of a global numerical weather prediction models for the target situation in operational forecasting. Reanalysis datasets, such as the NCEP/NCAR reanalysis I \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996}, the NCEP/DOE reanalysis II \citep{Kanamitsu2002}, ERA-40 \citep{Uppala2005} are often used and can be inputed in AtmoSwing. Other observed predictors can also be used, such as Sea Surface Temperature \citep[SST, ][]{Reynolds2007}. The predictors describing the target situation in operational forecasting can for example result from GFS \citep[Global Forecast System,][]{Kanamitsu1991,Kanamitsu1989}, which is operated by NCEP and NOAA.
+
+\citet{Bontron2004} determined that the length of the archive should be 30 years to forecast usual situations, and 40 years for intense events. He also highlighted the dependence between the optimal number of analogues and the archive size: the shorter the archive, the lower the number of analogues. By varying the resolution of the predictors grids, he concluded that the performance increase is not significant for the analogy of atmospheric circulation below a resolution of 5\textdegree. However, it seems more important for the second level of analogy on moisture, which are more local variables. \citet{BenDaoud2010} assessed the European reanalysis ERA-40 \citep{Uppala2005} with a resolution of 1.125\textdegree. He identified a slight performance improvement, but not substantial enough to really justify an archive change \citep{BenDaoud2008}.
+
+The predictand is the local meteorological variable of interest. It can be 6-houry data, or more often daily time series, but has to be consistent with the time step of the predictors (at least, not finer). The most used predictor is the daily precipitation, usually averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}. These time series are frequently normalized by the precipitation value for a return period of 10~years \citep{Djerboua2001}. This normalization allows for an easier comparison between subregions subject to different precipitation regimes, and thus to better identify the most important contributions.
+
+
 \subsection{Evolution of the method}
 \label{sec:method:evolution}
 
@@ -215,7 +227,7 @@ This nomenclature can be adapted to specific needs, or simplified for a better r
 
 The evolution of the analogue method for precipitation forecasting led to several improvements. However, some of these are specific for a certain region and are not relevant for others, and some perform better depending on the lead time. Thereby, we cannot provide a single best parameterization for the method, neither rank them from worst to best. We will thus provide the references implementations of the most recent method variant, in the chronological order they appeared.
 
-The first parameterization comes from the work of \citet{Guilbaud1997} and \citet{Obled2002}. It consists of a single level of analogy on the atmospheric circulation. The score S1 (Teweles-Wobus, Eq. \ref{eq:S1}) is processed on the geopotential height at 1000~hPa (Z1000) and 700~hPa (Z700) (Table \ref{table:R0a}) or 500~hPa (Z500) (Table \ref{table:R0b}), both at 00~h and 24~h. The number of analogues considered is 50.
+The first parameterization comes from the work of \citet{Guilbaud1997} and \citet{Obled2002}. It consists of a single level of analogy on the atmospheric circulation. The score S1 (Teweles-Wobus, Eq. \ref{eq:S1}) is processed on the geopotential height at 1000~hPa (Z1000) and 700~hPa (Z700) or 500~hPa (Z500) (Table \ref{table:R0}), both at 00~h and 24~h. The number of analogues considered is 50.
 
 \begin{table}[htbp]
 	\caption{Method of type PC-4Z proposed by \citet{Guilbaud1997}.}
@@ -225,26 +237,12 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 		\middlehline
 		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
 		\middlehline 
-		\multirow{2}{*}{1} & Z700 & 00, 24~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
-		& Z1000 & 00, 24~h & & \\ 
+		\multirow{2}{*}{1} & Z1000 & 00, 24~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+		& Z700 $^{\dagger}$ & 00, 24~h & & \\ 
 		\bottomhline 
 	\end{tabular} 
-	\label{table:R0a}
-\end{table}
-
-\begin{table}[htbp]
-	\caption{Variant of the PC-4Z method, by \citet{Guilbaud1997}.}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline 
-		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-		\middlehline 
-		\multirow{2}{*}{1} & Z500 & 00, 24~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
-		& Z1000 & 00, 24~h & & \\ 
-		\bottomhline 
-	\end{tabular} 
-	\label{table:R0b}
+	\belowtable{$\dagger$ or Z500 as an alternative}
+	\label{table:R0}
 \end{table}
 
 The analogy on the atmospheric circulation (Table \ref{table:R1}) proposed by \citet{Bontron2004} is still, at the time of writing, often used, and considered as a reference for benchmarking new parameterizations. He noticed that the choice of the temporal window was more important than the atmospheric level. The method consists of the geopotential height on two atmospheric levels : 1000~hPa (Z1000) at 12~h and 500~hPa (Z700) at 24~h.
@@ -267,7 +265,7 @@ The analogy on the atmospheric circulation (Table \ref{table:R1}) proposed by \c
 \citep{Bontron2004} then added a second level of analogy (Table \ref{table:R2}) on a moisture index : the product of relative humidity at 850~hPa (RH850) and total precipitable water (TPW). This index does not represent an actual physical quantity, but expresses the water content of the column and its proximity to saturation.
 
 \begin{table}[htbp]
-	\caption{Method of type PC-2Z-2HI proposed by \citet{Bontron2004}.}
+	\caption{Method of type PC-2Z-2MI proposed by \citet{Bontron2004}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -283,20 +281,10 @@ The analogy on the atmospheric circulation (Table \ref{table:R1}) proposed by \c
 	\label{table:R2}
 \end{table}
 
-\citet{Marty2010} tested other temporal windows for intraday application on the basis of a more comprehensive reanalysis dataset. He first proposed to change the hours of observation for both levels of analogy (both for 06~h and 18~h), and selected the 925~hPa level for the moisture analogy (Table \ref{table:R3a}).
-
-
-
-
-He proposed two models with a second level of analogy moisture (3a, Table \ ref {table: R3a}) or the moisture flux at ~ 700 hPa (3b, Table \ ref {table: 3b} ) or ~ 925 hPa (3c, Table \ ref {table: 3c}). The hours and levels change from those established by \ citet Bontron2004 {}, because they were not available then.
-
-
-
-%\citet{Marty2010} a recalibré les paramètres déterminés par \citet{Bontron2004} pour une application infrajournalière (résolution temporelle de 12~h), et sur la base d'un jeu de données de réanalyses plus complet. Il a proposé deux modèles avec un second niveau d'analogie sur l'humidité (R3a, Table \ref{table:R3a}) ou le flux d'humidité au niveau 700~hPa (R3b, Table \ref{table:R3b}) ou 925~hPa (R3c, Table \ref{table:R3c}). Les heures et les niveaux changent par rapport à ceux établis par \citet{Bontron2004}, car ceux-ci n'étaient alors pas disponibles.
-
+\citet{Marty2010} tested other temporal windows for intraday application on the basis of a more comprehensive reanalysis dataset. He first proposed to change the hours of observation for both levels of analogy (both for 06~h and 18~h), and selected the 925~hPa level for the moisture analogy (Table \ref{table:R3a}). The selected hours and atmospheric levels were not available before.
 
 \begin{table}[htbp]
-	\caption{Method of type PC-2Z-2HI proposed by \citet{Marty2010}.}
+	\caption{Method of type PC-2Z-2MI proposed by \citet{Marty2010}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -312,10 +300,10 @@ He proposed two models with a second level of analogy moisture (3a, Table \ ref 
 	\label{table:R3a}
 \end{table}
 
-Then, \citet{Marty2010} changed the humi
+Then, \citet{Marty2010} changed the moisture index into the moisture flux by adding the wind velocity (V700 or V925) component in the multiplication. He considered this flux at 700~hPa or 925~hPa (Table \ref{table:R3b}).
 
 \begin{table}[htbp]
-	\caption{Method of type PC-2Z-2HF proposed by \citet{Marty2010}.}
+	\caption{Method of type PC-2Z-2MF proposed by \citet{Marty2010}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -323,44 +311,21 @@ Then, \citet{Marty2010} changed the humi
 		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
 		\middlehline 
 		\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{60} \\
-		& Z 500~hPa & 18~h & & \\ 
+		& Z500 & 18~h & & \\ 
 		\middlehline
-		2 & V700 * TPW * RH700 & 06, 18~h & RMSE & 25 \\
+		2 & V700 * TPW * RH700 $^{\dagger}$ & 06, 18~h & RMSE & 25 \\
 		\bottomhline 
 	\end{tabular} 
+	\belowtable{$\dagger$ or V925 * TPW * RH925 as an alternative}
 	\label{table:R3b}
 \end{table}
 
-\begin{table}[htbp]
-	\caption{Method of type PC-2Z-2HF proposed by \citet{Marty2010}.}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline 
-		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-		\middlehline 
-		\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{60} \\
-		& Z 500~hPa & 18~h & & \\ 
-		\middlehline
-		2 & V925 * TPW * RH925 & 06, 18~h & RMSE & 25 \\
-		\bottomhline 
-	\end{tabular} 
-	\label{table:R3c}
-\end{table}
+The next reference method was developed by \citet{BenDaoud2010} and introduces a change in the preselection. The calendar selection ($\pm 60$ days around the target date) was then replaced by a preselection based on air temperature at 925~hPa (36~h) and 600~hPa (12h). The number of preselected dates is equivalent to the number of days we would have chosen with the calendar approach, and thus depends on the archive size: $N_{0} = 60 \cdot 2 \cdot n_{a}$ where $n_{a}$ is the number of years in the calibration period. This analogy on air temperature is performed at the closest point to the catchment
 
-
-
-%Le flux d'humidité est composé du produit de l'eau précipitable et de l'humidité relative, multiplié par la norme de la vitesse du vent ($V$).
-
-
-%\subsection{R4, présélection sur les températures}
-%\label{sec:etat_art:R4}
-%\review{6}
-
-%La quatrième référence reconsidère la sélection des journées candidates à l'analogie et utilise la présélection sur les températures introduite par \citet{BenDaoud2010}. Nous nous affranchissons donc de la sélection d'une période de 4 mois centrée sur la date pour une approche plus dynamique qui tient différemment compte de l'effet de saisonnalité. Le nombre d'analogues de la présélection est équivalent au nombre de jours que nous aurions retenus par la période de $\pm 60$ jours, soit $N_{0} = 60 \cdot 2 \cdot n_{a}$, où $n_{a}$ est le nombre d'années de la période de calibration. Mais la sélection est ici fondée sur un critère de similitude thermique au droit de la région cible.
+\citet{BenDaoud2010} also reconsidered the parameters of the moisture index and ended up with both 925~hPa and 700~hPa levels, at 12~h and 24~h, or at every time step (6~h) between 06~h and 30~h (Table \ref{table:R4b}).
 
 \begin{table}[htbp]
-	\caption{Method of type P2T-2Z-2HI proposed by \citet{BenDaoud2010}.}
+	\caption{Method of type P2T-2Z-4MI (or P2T-2Z-10MI for the alternative version), by \citet{BenDaoud2010}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -369,64 +334,20 @@ Then, \citet{Marty2010} changed the humi
 		& T600 & 12~h & & \\ 
 		\middlehline 
 		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
-		& Z 500~hPa & 24~h & & \\ 
+		& Z500 & 24~h & & \\ 
 		\middlehline
-		2 & TPW * RH850 & 12, 24~h & RMSE & 25 \\
+		\multirow{2}{*}{2} & TPW * RH925 & 12, 24~h $^{\dagger}$ & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
+		& TPW * RH700 & 12, 24~h $^{\dagger}$ & & \\ 
 		\bottomhline 
 	\end{tabular} 
-	\label{table:R4a}
-\end{table}
-
-
-\begin{table}[htbp]
-	\caption{Method of type P2T-2Z-4HI proposed by \citet{BenDaoud2010}.}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline
-		\multirow{2}{*}{0} & T925 & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
-		& T600 & 12~h & & \\ 
-		\middlehline 
-		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
-		& Z 500~hPa & 24~h & & \\ 
-		\middlehline
-		\multirow{2}{*}{2} & TPW * RH925 & 12, 24~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
-		& TPW * RH700 & 12, 24~h & & \\ 
-		\bottomhline 
-	\end{tabular} 
+	\belowtable{$\dagger$ or 06-30~h as an alternative}
 	\label{table:R4b}
 \end{table}
 
+Subsequently, \citet{BenDaoud2010} added an additionally level of analogy, between the circulation and the moisture analogy (Table \ref{table:R5}), based on vertical velocity at 850~hPa (W850). This method was developed for large plains in France, but was found to be not relevant for an Alpine environment where topography is mostly responsible for uplift of air masses \citep{Horton2012}. 
 
 \begin{table}[htbp]
-	\caption{Method of type P2T-2Z-10HI proposed by \citet{BenDaoud2010}.}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline
-		\multirow{2}{*}{0} & T925 & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
-		& T600 & 12~h & & \\ 
-		\middlehline 
-		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
-		& Z 500~hPa & 24~h & & \\ 
-		\middlehline
-		\multirow{2}{*}{2} & TPW * RH925 & 06-30~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
-		& TPW * RH700 & 06-30~h & & \\ 
-		\bottomhline 
-	\end{tabular} 
-	\label{table:R4c}
-\end{table}
-
-%Trois références sont donc retenues ici: la première (R4a, Table \ref{table:R4a}) considère le niveau d'analogie sur l'humidité tel que l'a défini \citet{Bontron2004}, la deuxième (R4b, Table \ref{table:R4b}) intègre les niveaux d'humidité calibrés par \citet{BenDaoud2010}, et la troisième (R4c, Table \ref{table:R4c}) considère toutes les heures d'observation disponibles pour ce dernier niveau d'analogie.
-
-
-%\subsection{R5, prise en compte des mouvements verticaux}
-%\label{sec:etat_art:R5}
-
-%\citet{BenDaoud2010} a encore ajouté un niveau d'analogie sur les mouvements verticaux. Ce niveau vient s'insérer entre l'analogie de circulation et celle de l'humidité. À nouveau, nous considérons une première référence (R5a, Table \ref{table:R5a}) avec les paramètres d'humidité selon \citet{Bontron2004}, et une seconde (R5b, Table \ref{table:R5b}) avec les paramètres de \citet{BenDaoud2010}.
-
-\begin{table}[htbp]
-	\caption{Method of type P2T-2Z-4W-2HI proposed by \citet{BenDaoud2010}.}
+	\caption{Method of type P2T-2Z-4W-4MI, by \citet{BenDaoud2010}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -435,27 +356,7 @@ Then, \citet{Marty2010} changed the humi
 		& T600 (1 point) & 12~h & & \\ 
 		\middlehline 
 		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{170} \\
-		& Z 500~hPa & 24~h & & \\ 
-		\middlehline
-		2 & W850 & 06-24~h & RMSE & 70 \\
-		\middlehline
-		3 & TPW * RH850 & 12, 24~h & RMSE & 25 \\
-		\bottomhline 
-	\end{tabular} 
-	\label{table:R5a}
-\end{table}
-
-\begin{table}[htbp]
-	\caption{Method of type P2T-2Z-4W-4HI proposed by \citet{BenDaoud2010}.}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline
-		\multirow{2}{*}{0} & T925 (1 point) & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
-		& T600 (1 point) & 12~h & & \\ 
-		\middlehline 
-		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{170} \\
-		& Z 500~hPa & 24~h & & \\ 
+		& Z500 & 24~h & & \\ 
 		\middlehline
 		2 & W850 & 06-24~h & RMSE & 70 \\
 		\middlehline
@@ -463,41 +364,55 @@ Then, \citet{Marty2010} changed the humi
 		& TPW * RH700 & 12, 24~h & & \\
 		\bottomhline 
 	\end{tabular}
-	\label{table:R5b}
+	\label{table:R5}
 \end{table}
 
+\citet{Horton2012} identified that the analogy on the atmospheric circulation may not be comprehensive, and that a significant gain was obtained by considering 4 atmospheric levels (1000, 850, 700, and 500~hPa at 12 or 24~h) instead of 2 (Table \ref{table:R6}). No number of analogues ($N_{1}$) was provided globally, as it was calibrated for every subregion. Considering a method only based on the atmospheric circulation has an interest for operational forecasting, where moisture variables are less well forecasted over a lead time of a few days. An equivalent structure was also optimized by means of generic algorithms (PC-4Zgo), which is the topic of another paper.
 
 \begin{table}[htbp]
-	\caption{Method of type PC-4Zgo proposed by \citet{Horton2012}.}
+	\caption{Method of type PC-4Z proposed by \citet{Horton2012}.}
 	\begin{tabular}{ccccc}
-
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{4}{*}{1} & Z1000 & 12~h & \multirow{4}{*}{S1} & \multirow{4}{*}{$N_{1}$} \\
+		& Z850 & 24~h & & \\ 
+		& Z700 & 12~h & & \\ 
+		& Z500 & 24~h & & \\ 
+		\bottomhline 
 	\end{tabular}
-	\label{table:R6a}
+	\label{table:R6}
 \end{table}
+
+\citet{Horton2012} also integrated an analogy on the moisture flux, after the circulation analogy on the 4 atmospheric levels (Table \ref{table:R7}). The number of analogues ($N_{1}$, $N_{2}$) were also calibrated for every subregion. Similarly, an equivalent structure was optimized (PC-4Zgo-2MIgo).
 
 \begin{table}[htbp]
-	\caption{Method of type PC-4Zgo-2HIgo proposed by \citet{Horton2012}.}
+	\caption{Method of type PC-4Z-2MI, by \citet{Horton2012}.}
 	\begin{tabular}{ccccc}
-		
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{4}{*}{1} & Z1000 & 12~h & \multirow{4}{*}{S1} & \multirow{4}{*}{$N_{1}$} \\
+		& Z850 & 24~h & & \\ 
+		& Z700 & 12~h & & \\ 
+		& Z500 & 24~h & & \\ 
+		\middlehline
+		2 & V700 * TPW * RH700 & 12, 24~h & RMSE & $N_{2}$ \\
+		\bottomhline 
 	\end{tabular}
-	\label{table:R6b}
+	\label{table:R7}
 \end{table}
 
 
-\subsection{Data}
-% TODO: write
+% TODO : Sabine
+% TODO : Jérémie Chardon
 
-The analogue method relies on two types of data: predictors, that are atmospheric variables describing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather time series we want to forecast.
 
-Predictors are generally reanalysis datasets (and outputs of a global numerical weather prediction models for the target situation in operational forecasting, which is not the topic of this paper). We will work here with the NCEP/NCAR reanalysis \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996}, but it can be any other reanalysis dataset.
 
-The predictand (which is to be predicted) is in our case the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss' stations network, for the period 1961-2008. The time series from every available gauging station were averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}.
-
-%\citet{Djerboua2001} a également proposé de normaliser la pluie par la pluie décennale à la station (ou groupement), ce qui nous permet de mieux identifier les contributions les plus importantes en précipitations.
-
-%Par une étude de sensibilité, \citet{Bontron2004} a déterminé un plafonnement de la longueur de l'archive nécessaire à 30 ans pour la prévision en général, et à 40 ans pour les événements intenses. Il a également mis en lumière la dépendance entre le nombre d'analogues optimal et la taille de l'archive: plus l'archive est courte, plus le nombre d'analogues diminue. En faisant varier la résolution des grilles de prédicteurs, il en a conclu que l'augmentation en performance n'est pas significative pour l'analogie de circulation en deçà d'une résolution de 5\degres . Cependant, elle semble plus importante pour le second niveau d'analogie sur les humidités, qui sont des variables plus locales.
-
-%\citet{BenDaoud2010} a dans un premier temps évalué les réanalyses européennes ERA-40 \citep{Uppala1999}, avec une résolution de 1.125\degres, par rapport aux réanalyses américaines du NCEP/NCAR à 2.5\degres\ \citep{Kalnay1996} utilisées jusqu'alors. Il a identifié une légère amélioration des performances, mais pas assez substantielle pour vraiment justifier un changement d'archive \citep{BenDaoud2008}.
 
 \subsection{Discussion}
 % TODO: write
