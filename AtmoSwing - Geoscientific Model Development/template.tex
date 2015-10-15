@@ -127,17 +127,17 @@ Thereafter, the geopotential was considered at 1000~hPa and 700~hPa and the anal
 
 \citet{Wilson1980} sought the 20 best analogues on the geopotential field at 500 and 1000~hPa using the Teweles-Wobus (S1) criterion (Eq. \ref{eq:S1}), which allows for a comparison of the gradients and thus an analogy of the atmospheric circulation. \citet{Woodcock1980} used the same criterion on the SLP fields to select 50~analogues in order to forecast maximum daily temperatures. \citet{Yacowar1975} considered the 20 best analogues on the maximum of the sum of correlations on the two fields. This work has demonstrated the best performance of the analogues method compared to regression methods, as well as the interest to search for analogues on two (500 and 1000~hPa) geopotential fields combined \citep{Guilbaud1997}.
 
-\citet{Mandon1985} introduced a second level of analogy and assessed different variables, such as wind, humidity, air temperature, surface temperature of the Mediterranean, the product of wind and the 700~hPa moisture, as well as a second barometric criteria differentiated according to the season. \citet{Vallee1986} continued to work on the second level of analogy and considered the wind at 700~hPa \& 12~h in order to improve heavy precipitation events for a region in France susceptible to southerly flows.
+\citet{Mandon1985} introduced a second level of analogy and assessed different variables, such as wind, moisture, air temperature, surface temperature of the Mediterranean, the product of wind and the 700~hPa moisture, as well as a second barometric criteria differentiated according to the season. \citet{Vallee1986} continued to work on the second level of analogy and considered the wind at 700~hPa \& 12~h in order to improve heavy precipitation events for a region in France susceptible to southerly flows.
 
-Taking advantage of higher-performance IT tools \citet{Guilbaud1997} stopped using PCA in order to work directly with the raw data interpolated on grids, which was an improvement, especially when considering the S1 criterion (already used for analogues selection by\citealp{Wilson1980} and \citealp{Woodcock1980}) instead of the Euclidean distance. This score gives importance to the similarity of atmospheric circulation rather than absolute values of the pressure field. After comparing this criterion to other criteria from the literature, or combinations of these, \citet{Guilbaud1998} found that S1 is the most efficient. They also pointed out the benefit of using 2 atmospheric levels instead of one (also instead of the thickness), and to also consider 2 temporal windows \citep{Obled2002}. When using multiple predictors, they combined the criteria values calculated on each atmospheric level and each temporal window using an arithmetic mean. Finally, they also suggested using a second level of analogy on lower layers humidity and introduced the Ranked Probability Score \citep{Epstein1969} to assess the forecast quality, which was found to be more relevant that the Brier score \citep{Brier1950}.
+Taking advantage of higher-performance IT tools \citet{Guilbaud1997} stopped using PCA in order to work directly with the raw data interpolated on grids, which was an improvement, especially when considering the S1 criterion (already used for analogues selection by\citealp{Wilson1980} and \citealp{Woodcock1980}) instead of the Euclidean distance. This score gives importance to the similarity of atmospheric circulation rather than absolute values of the pressure field. After comparing this criterion to other criteria from the literature, or combinations of these, \citet{Guilbaud1998} found that S1 is the most efficient. They also pointed out the benefit of using 2 atmospheric levels instead of one (also instead of the thickness), and to also consider 2 temporal windows \citep{Obled2002}. When using multiple predictors, they combined the criteria values calculated on each atmospheric level and each temporal window using an arithmetic mean. Finally, they also suggested using a second level of analogy on lower layers moisture and introduced the Ranked Probability Score \citep{Epstein1969} to assess the forecast quality, which was found to be more relevant that the Brier score \citep{Brier1950}.
 
 \citet{Bontron2004} could benefit from the newly available NCEP/NCAR reanalysis data. This dataset being more homogeneous, much longer, and contained more variables than what was previously used, he could systematically assess a large selection of variables in the analogue method combined with different criteria. He thus confirmed the interest of the geopotential height along with the S1 criterion for the first level of analogy. He has also shown that the choice of the temporal window (time of observation) has a higher importance than the atmospheric level for the performance of the method. By assessing multiple combinations of atmospheric levels and temporal windows, he concluded that the coupled geopotential heights at 1000~hPa \& 12~h and 500~hPa \& 24~h provided the best performance for the studied region.
 
-He also assessed several variables for the second level of analogy and identified the humidity variables (precipitable water and relative humidity) and vertical velocity to be the most relevant. Finally, he found that the product of relative humidity and precipitable water gave the best performance.
+He also assessed several variables for the second level of analogy and identified the moisture variables (precipitable water and relative humidity) and vertical velocity to be the most relevant. Finally, he found that the product of relative humidity and precipitable water gave the best performance.
 
 He noted the relevance of defining different spatial windows for each region, rather than a single window to the entire territory. These windows are more able to represent the specific atmospheric influences for the region. In order to assess the forecast, he introduced the Continuous Ranked Probability Score \citep[CRPS, Eq. \ref{eq:CRPS}, ][]{Brown1974}, which discards the issue of determining classes as with the RPS previously in use.
 
-\citet{BenDaoud2010} applied the analogue method in the context of large flatter catchments, out of an Alpine environment (Sa\^{o}ne, Seine). He evaluated several variables usually used in weather forecasting, amongst them the air temperature and the vertical velocity that presented a potential interest. The temperature (at the nearest grid point, on the 925~hPa (36~h) and 600~hPa (12~h) levels) could replace the rigid selection of $\pm$ 60 days around the target date by a more dynamic screening of similar situations in terms of air masses. The seasonal effect is indeed also present in the temperature data. The vertical velocity was used as an additional level of analogy, between the analogy of atmospheric circulation and the one on humidity, to account for fronts. Finally, he selected the humidity variables at 700~hPa instead of 850~Pa. 
+\citet{BenDaoud2010} applied the analogue method in the context of large flatter catchments, out of an Alpine environment (Sa\^{o}ne, Seine). He evaluated several variables usually used in weather forecasting, amongst them the air temperature and the vertical velocity that presented a potential interest. The temperature (at the nearest grid point, on the 925~hPa (36~h) and 600~hPa (12~h) levels) could replace the rigid selection of $\pm$ 60 days around the target date by a more dynamic screening of similar situations in terms of air masses. The seasonal effect is indeed also present in the temperature data. The vertical velocity was used as an additional level of analogy, between the analogy of atmospheric circulation and the one on moisture, to account for fronts. Finally, he selected the moisture variables at 700~hPa instead of 850~Pa. 
 
 \citet{Bliefernicht2010} proposed to add a weighting to the grid points of the predictor to overcome a comparison on a fixed-size window, and to give more importance to regions with relevant atmospheric circulation information. However, he noticed that there is a risk of overparametrization and a simplification of the weighting fields may be necessary, and that the performance was not stable between the calibration and the validation periods. He also compare the performance of the analogues method with a forecasting method based on a weather types approach, and concluded that the analogues method was more efficient.
 
@@ -164,7 +164,7 @@ Although multiple variations of the method exist, they generally share the same 
 	
 	The $N_{1}$ dates with the lowest values of S1 are considered as analogues to the target day. The number of analogues, $N_{1}$, is a parameter to calibrate.
 	
-	\item Subsequent level(s) of analogy: we can then subsample once again the $N_{1}$ analogues on the basis of another variable in order to obtain a lower number of analogue dates, $N_{2}$. The S1 criterion is usually not relevant for other predictors that the atmospheric circulation. Other classic criteria represent absolute distances: Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE), the latest being most often used. These are more relevant to compare humidity variables for example.
+	\item Subsequent level(s) of analogy: we can then subsample once again the $N_{1}$ analogues on the basis of another variable in order to obtain a lower number of analogue dates, $N_{2}$. The S1 criterion is usually not relevant for other predictors that the atmospheric circulation. Other classic criteria represent absolute distances: Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE), the latest being most often used. These are more relevant to compare moisture variables for example.
 	
 	This process can be repeated, by subsampling a decreasing number of analogues, $N_{i}$, according to a ranking processed on various meteorological variables.
 	
@@ -194,8 +194,8 @@ Then, the following levels of analogy are listed. They may start with an optiona
 \begin{itemize}
 	\setlength\itemsep{-2px}
 	\item Z : geopotential (circulation)
-	\item HI : humidity index (TPW * RH)
-	\item HF : humidity flux (V * TPW * RH)
+	\item MI : moisture index (TPW * RH)
+	\item MF : moisture flux (V * TPW * RH)
 	\item TPW : total precipitable water
 	\item V : wind velocity
 	\item W : vertical velocity
@@ -218,7 +218,7 @@ The evolution of the analogue method for precipitation forecasting led to severa
 The first parameterization comes from the work of \citet{Guilbaud1997} and \citet{Obled2002}. It consists of a single level of analogy on the atmospheric circulation. The score S1 (Teweles-Wobus, Eq. \ref{eq:S1}) is processed on the geopotential height at 1000~hPa (Z1000) and 700~hPa (Z700) (Table \ref{table:R0a}) or 500~hPa (Z500) (Table \ref{table:R0b}), both at 00~h and 24~h. The number of analogues considered is 50.
 
 \begin{table}[htbp]
-	\caption{Method of type PC-4Z proposed by \citep{Guilbaud1997}.}
+	\caption{Method of type PC-4Z proposed by \citet{Guilbaud1997}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -232,9 +232,8 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 	\label{table:R0a}
 \end{table}
 
-
 \begin{table}[htbp]
-	\caption{Variant of the PC-4Z method proposed by \citep{Guilbaud1997}.}
+	\caption{Variant of the PC-4Z method, by \citet{Guilbaud1997}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -248,19 +247,10 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 	\label{table:R0b}
 \end{table}
 
-
-
-
-
-
-%\subsection{R1, analogie de circulation}
-%\label{sec:etat_art:R1}
-%\review{6}
-
-%Ce que nous considérerons comme notre première référence est l'analogie de circulation (R1, Table \ref{table:R1}) optimisée par \citet{Bontron2004}. Ce dernier a observé que le choix de l'heure était plus important que celui du niveau atmosphérique. La méthode est alors constituée du géopotentiel à deux niveaux atmosphériques et à des heures différentes.
+The analogy on the atmospheric circulation (Table \ref{table:R1}) proposed by \citet{Bontron2004} is still, at the time of writing, often used, and considered as a reference for benchmarking new parameterizations. He noticed that the choice of the temporal window was more important than the atmospheric level. The method consists of the geopotential height on two atmospheric levels : 1000~hPa (Z1000) at 12~h and 500~hPa (Z700) at 24~h.
 
 \begin{table}[htbp]
-	\caption{Method of type PC-2Z proposed by \citep{Bontron2004}.}
+	\caption{Method of type PC-2Z proposed by \citet{Bontron2004}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -274,16 +264,10 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 	\label{table:R1}
 \end{table}
 
-
-
-%\subsection{R2, prise en compte de l'humidité}
-%\label{sec:etat_art:R2}
-%\review{6}
-
-%Toujours d'après les travaux de \citet{Bontron2004}, la référence suivante (R2, Table \ref{table:R2}) intègre un second niveau d'analogie sur un indice d'humidité: le produit de l'humidité relative à 850~hPa et de l'eau précipitable de la colonne. Cette variable ne représente pas une grandeur physique réelle, mais exprime le contenu en eau de la colonne et sa proximité ou son éloignement de la saturation (à 850~hPa).
+\citep{Bontron2004} then added a second level of analogy (Table \ref{table:R2}) on a moisture index : the product of relative humidity at 850~hPa (RH850) and total precipitable water (TPW). This index does not represent an actual physical quantity, but expresses the water content of the column and its proximity to saturation.
 
 \begin{table}[htbp]
-	\caption{Method of type PC-2Z-2HI proposed by \citep{Bontron2004}.}
+	\caption{Method of type PC-2Z-2HI proposed by \citet{Bontron2004}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -299,15 +283,20 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 	\label{table:R2}
 \end{table}
 
+\citet{Marty2010} tested other temporal windows for intraday application on the basis of a more comprehensive reanalysis dataset. He first proposed to change the hours of observation for both levels of analogy (both for 06~h and 18~h), and selected the 925~hPa level for the moisture analogy (Table \ref{table:R3a}).
 
-%\subsection{R3, prise en compte du flux d'humidité}
-%\label{sec:etat_art:R3}
+
+
+
+He proposed two models with a second level of analogy moisture (3a, Table \ ref {table: R3a}) or the moisture flux at ~ 700 hPa (3b, Table \ ref {table: 3b} ) or ~ 925 hPa (3c, Table \ ref {table: 3c}). The hours and levels change from those established by \ citet Bontron2004 {}, because they were not available then.
+
+
 
 %\citet{Marty2010} a recalibré les paramètres déterminés par \citet{Bontron2004} pour une application infrajournalière (résolution temporelle de 12~h), et sur la base d'un jeu de données de réanalyses plus complet. Il a proposé deux modèles avec un second niveau d'analogie sur l'humidité (R3a, Table \ref{table:R3a}) ou le flux d'humidité au niveau 700~hPa (R3b, Table \ref{table:R3b}) ou 925~hPa (R3c, Table \ref{table:R3c}). Les heures et les niveaux changent par rapport à ceux établis par \citet{Bontron2004}, car ceux-ci n'étaient alors pas disponibles.
 
 
 \begin{table}[htbp]
-	\caption{Method of type PC-2Z-2HI proposed by \citep{Marty2010}.}
+	\caption{Method of type PC-2Z-2HI proposed by \citet{Marty2010}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -323,9 +312,10 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 	\label{table:R3a}
 \end{table}
 
+Then, \citet{Marty2010} changed the humi
 
 \begin{table}[htbp]
-	\caption{Method of type PC-2Z-2HF proposed by \citep{Marty2010}.}
+	\caption{Method of type PC-2Z-2HF proposed by \citet{Marty2010}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -342,7 +332,7 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 \end{table}
 
 \begin{table}[htbp]
-	\caption{Method of type PC-2Z-2HF proposed by \citep{Marty2010}.}
+	\caption{Method of type PC-2Z-2HF proposed by \citet{Marty2010}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -370,7 +360,7 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 %La quatrième référence reconsidère la sélection des journées candidates à l'analogie et utilise la présélection sur les températures introduite par \citet{BenDaoud2010}. Nous nous affranchissons donc de la sélection d'une période de 4 mois centrée sur la date pour une approche plus dynamique qui tient différemment compte de l'effet de saisonnalité. Le nombre d'analogues de la présélection est équivalent au nombre de jours que nous aurions retenus par la période de $\pm 60$ jours, soit $N_{0} = 60 \cdot 2 \cdot n_{a}$, où $n_{a}$ est le nombre d'années de la période de calibration. Mais la sélection est ici fondée sur un critère de similitude thermique au droit de la région cible.
 
 \begin{table}[htbp]
-	\caption{Method of type P2T-2Z-2HI proposed by \citep{BenDaoud2010}.}
+	\caption{Method of type P2T-2Z-2HI proposed by \citet{BenDaoud2010}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -389,7 +379,7 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 
 
 \begin{table}[htbp]
-	\caption{Method of type P2T-2Z-4HI proposed by \citep{BenDaoud2010}.}
+	\caption{Method of type P2T-2Z-4HI proposed by \citet{BenDaoud2010}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -409,7 +399,7 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 
 
 \begin{table}[htbp]
-	\caption{Method of type P2T-2Z-10HI proposed by \citep{BenDaoud2010}.}
+	\caption{Method of type P2T-2Z-10HI proposed by \citet{BenDaoud2010}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -436,7 +426,7 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 %\citet{BenDaoud2010} a encore ajouté un niveau d'analogie sur les mouvements verticaux. Ce niveau vient s'insérer entre l'analogie de circulation et celle de l'humidité. À nouveau, nous considérons une première référence (R5a, Table \ref{table:R5a}) avec les paramètres d'humidité selon \citet{Bontron2004}, et une seconde (R5b, Table \ref{table:R5b}) avec les paramètres de \citet{BenDaoud2010}.
 
 \begin{table}[htbp]
-	\caption{Method of type P2T-2Z-4W-2HI proposed by \citep{BenDaoud2010}.}
+	\caption{Method of type P2T-2Z-4W-2HI proposed by \citet{BenDaoud2010}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -456,7 +446,7 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 \end{table}
 
 \begin{table}[htbp]
-	\caption{Method of type P2T-2Z-4W-4HI proposed by \citep{BenDaoud2010}.}
+	\caption{Method of type P2T-2Z-4W-4HI proposed by \citet{BenDaoud2010}.}
 	\begin{tabular}{ccccc}
 		\tophline
 		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
@@ -478,7 +468,7 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 
 
 \begin{table}[htbp]
-	\caption{Method of type PC-4Zo proposed by \citep{Horton2012}.}
+	\caption{Method of type PC-4Zgo proposed by \citet{Horton2012}.}
 	\begin{tabular}{ccccc}
 
 	\end{tabular}
@@ -486,7 +476,7 @@ The first parameterization comes from the work of \citet{Guilbaud1997} and \cite
 \end{table}
 
 \begin{table}[htbp]
-	\caption{Method of type PC-4Zo-2HIo proposed by \citep{Horton2012}.}
+	\caption{Method of type PC-4Zgo-2HIgo proposed by \citet{Horton2012}.}
 	\begin{tabular}{ccccc}
 		
 	\end{tabular}
@@ -614,7 +604,7 @@ where $CRPS_{r}$ is the CRPS value for the reference and $CRPS_{p}$ would be the
 \subsection{The classic calibration approach}
 \label{sec:classic}
 
-The calibration procedure that we call ''classic'' was developed by \citet{Bontron2004} at the LTHE laboratory (INPG, Grenoble). It determines the optimal parameters for the different variables of each level of analogy. The analogy levels (eg the atmospheric circulation or humidity index) are calibrated sequentially. The procedure consists of the following steps \citep{Bontron2004}:
+The calibration procedure that we call ''classic'' was developed by \citet{Bontron2004} at the LTHE laboratory (INPG, Grenoble). It determines the optimal parameters for the different variables of each level of analogy. The analogy levels (eg the atmospheric circulation or moisture index) are calibrated sequentially. The procedure consists of the following steps \citep{Bontron2004}:
 
 \begin{enumerate}
 	\item Manual selection of the following parameters:
@@ -627,10 +617,10 @@ The calibration procedure that we call ''classic'' was developed by \citet{Bontr
 	
 	\item For every level of analogy:
 	\begin{enumerate}
-		\item Identification of the most skilled unitary cell (1 point for humidity variables and 4 for the geopotential height when using the S1 criteria) over a large domain. Every point (or cell) of the full domain is assessed jointly on all predictors of the level of analogy (consisting generally of the same variable, but on different pressure levels and at different hours).
+		\item Identification of the most skilled unitary cell (1 point for moisture variables and 4 for the geopotential height when using the S1 criteria) over a large domain. Every point (or cell) of the full domain is assessed jointly on all predictors of the level of analogy (consisting generally of the same variable, but on different pressure levels and at different hours).
 		\item From this most skilled point, the spatial window is expanded by successive iterations in the direction of greater performance gain. The detailed stages are the followings: (i) The unitary spatial window is expanded in every 4 directions successively. The performance score is processed for these 4 windows. (ii) Only the direction providing the best improvement is applied to our spatial window. (iii) From this new spatial window, an increase in every 4 directions is once again assessed, and the best improvement is applied. (iv) The spatial window grows up by repeating the previous steps, until no improvement is reached.
 		\item The number of analogues is optimized for the current level of analogy.
-		\item A new level of analogy can be added, based on other variables (such as the humidity index) on predefined pressure levels and time frames. The number of analogues for the next level of analogy is initiated at a chosen value. Then, the procedure starts again from step (a) for the new level. The parameters calibrated on the previous analogue levels are fixed and do not change (except the number of analogues, at the final stage). 
+		\item A new level of analogy can be added, based on other variables (such as the moisture index) on predefined pressure levels and time frames. The number of analogues for the next level of analogy is initiated at a chosen value. Then, the procedure starts again from step (a) for the new level. The parameters calibrated on the previous analogue levels are fixed and do not change (except the number of analogues, at the final stage). 
 	\end{enumerate}
 	\item Finally, the numbers of analogues are re-assessed for the different levels of analogy. This is done iteratively by varying the number of analogues of each level in a systematic way.
 \end{enumerate}
@@ -899,7 +889,7 @@ The convergence check determines whether the solution is acceptable and if the a
 
 Some constraints need to be taken into account. For example, when a crossover or a mutation operation results in a parameter value standing out of the authorized bounds, it has to be brought back within the limits. Moreover, the parameters are of different nature: some are continuous, such as the weight, some are discretized, such as the analogues number, or the spatial windows, and finally, some are independent elements in an array, such as the selection of the meteorological variable. New values resulting from the optimizer need to respect the type of data it represents.
 
-Other constraints exist in between the parameters, such as the temporal window of the humidity index that has to be consistent in between the relative humidity and the precipitable water. Another example is the weighting of the different pressure levels which has to be normalized.
+Other constraints exist in between the parameters, such as the temporal window of the moisture index that has to be consistent in between the relative humidity and the precipitable water. Another example is the weighting of the different pressure levels which has to be normalized.
 
 GAs are very computationally intensive because they require many evaluations of the objective function. These assessments are very long in our application, as they require calculating and assessing a forecast for every day of the calibration period. In order to reduce the computation time, we avoid recalculating the score of an individual who has previously been evaluated and that has not changed. We keep the score of each individual living in the selection until it mutates.
 
@@ -939,7 +929,7 @@ This comparison required tens of thousands of optimizations that were performed 
 	
 	$N\approx200$ for a bit more complex method (1 level of analogy with 4 pressure levels, or 2 level of analogy with less pressure levels),
 	
-	$N\approx500$ for significantly more complex methods (2-3 levels of analogy with 4 pressure levels for the atmospheric circulation, and 2 to 4 levels for the humidity analogy),
+	$N\approx500$ for significantly more complex methods (2-3 levels of analogy with 4 pressure levels for the atmospheric circulation, and 2 to 4 levels for the moisture analogy),
 	
 	We didn't find any improvement with $N>500$, the results were even surprisingly of a lower quality. However, this cannot be generalized and depends on the analogue method to optimize, and supposedly on the characteristics of the processes generating the precipitations in a given region. 
 	
