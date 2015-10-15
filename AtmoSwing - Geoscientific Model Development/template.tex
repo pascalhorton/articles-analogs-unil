@@ -10,7 +10,8 @@
 
 
 %% 2-Column Papers and Discussion Papers
-\documentclass[gmd, manuscript]{copernicus}
+%\documentclass[gmd, manuscript]{copernicus}
+\documentclass[gmd]{copernicus}
 
 
 
@@ -116,6 +117,8 @@ The analogue method is being used for many years at EDF (\'{E}lectricit\'{e} de 
 \subsection{Its evolution}
 \label{sec:method:evolution}
 
+The most common usage of the analogue method is for precipitation forecasting. Thus, the evolution presented hereafter focuses on this predictand.
+
 \citet{Lorenz1969} introduced the concept and established the basis of the method. He considered looking for analogues on the geopotential field (at 200, 500 and 850~hPa) with a corrected Euclidean distance averaged on the 3 levels. In addition, the analogue situations were to belong to the same period of the year to be comparable in terms of distribution of solar energy.
 
 The use of the analogue method for operational forecasting of daily precipitation originates in the work of \citet{Duband1970,Duband1974,Duband1981}. It was then designed for operational forecasting at EDF (\'{E}lectricit\'{e} de France) in order to better manage water resources and flood risks. The geopotential height at 700~hPa and 00~h was used for its higher stability than the sea level pressure (SLP) field, and its sensitivity to the atmospheric disturbances \citep{Guilbaud1997}. However, the SLP at 06~h was also used for determining the intensity of precipitation, as well as the temperature at 700~hPa as indicator of the thermal state of the air mass \citep{Duband1974}. The data were then based on 37 radiosounding over Europe and condensed by a principal component analysis. The first 25 analogues on the geopotential at 700~hPa were considered, and multiple local regressions between precipitation, SLP, and the temperature at 700~hPa were established on these analogues before being applied to the target situation \citep{Guilbaud1997}. The archives were split by season to consider comparable situations in terms of distribution of solar energy \citep{Lorenz1969}. This initial rigid division into seasons was then transformed into a moving selection of more or less two months around the target date. The forecast was then performed only on the basis of observations and was temporally extrapolated to the following two days. After a few years, this statistical temporal extrapolation was abandoned in favor of a statistical adaptation using predictors resulting from an global numerical model, allowing a forecast over the following 4~days.
@@ -140,6 +143,7 @@ He noted the relevance of defining different spatial windows for each region, ra
 
 % TODO : Sabine
 % TODO : Jérémie Chardon
+% TODO : Horton
 
 
 \subsection{Present structure}
@@ -169,8 +173,292 @@ Although multiple variations of the method exist, they generally share the same 
 \end{enumerate}
 
 
-\subsection{References implementations}
-% TODO: write
+\subsection{References implementations for precipitation forecasting}
+
+The evolution of the analogue method for precipitation forecasting led to several improvements. However, some of these are specific for a certain region and are not relevant for others, and some perform better depending on the lead time. Thereby, we cannot provide a single best parameterization for the method, neither rank them from worst to best. We will thus provide the references implementations of the most recent method variant, in the chronological order they appeared.
+
+
+
+
+
+
+
+
+
+
+%\subsection{R0, les origines}
+%\label{sec:etat_art:R0}
+
+%Une référence préliminaire résulte des travaux de \citet{Guilbaud1997} et \citet{Obled2002}. Elle est constituée d'un seul niveau d'analogie sur la circulation atmosphérique considérée à 1000~hPa et 700~hPa (R0a, Table \ref{table:R0a}) ou 500~hPa (R0b, Table \ref{table:R0b}). Le critère S1 de Teweles-Wobus est alors utilisé pour comparer les champs de géopotentiel.
+
+\begin{table}[htbp]
+	\caption{R0a.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z700 & 00, 24~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+			& Z1000 & 00, 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:R0a}
+\end{table}
+
+
+\begin{table}[htbp]
+	\caption{R0b.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z500 & 00, 24~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+			& Z1000 & 00, 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:R0b}
+\end{table}
+
+
+
+%\subsection{R1, analogie de circulation}
+%\label{sec:etat_art:R1}
+%\review{6}
+
+%Ce que nous considérerons comme notre première référence est l'analogie de circulation (R1, Table \ref{table:R1}) optimisée par \citet{Bontron2004}. Ce dernier a observé que le choix de l'heure était plus important que celui du niveau atmosphérique. La méthode est alors constituée du géopotentiel à deux niveaux atmosphériques et à des heures différentes.
+
+\begin{table}[htbp]
+	\caption{R1.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+			& Z500 & 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:R1}
+\end{table}
+
+
+
+%\subsection{R2, prise en compte de l'humidité}
+%\label{sec:etat_art:R2}
+%\review{6}
+
+%Toujours d'après les travaux de \citet{Bontron2004}, la référence suivante (R2, Table \ref{table:R2}) intègre un second niveau d'analogie sur un indice d'humidité: le produit de l'humidité relative à 850~hPa et de l'eau précipitable de la colonne. Cette variable ne représente pas une grandeur physique réelle, mais exprime le contenu en eau de la colonne et sa proximité ou son éloignement de la saturation (à 850~hPa).
+
+\begin{table}[htbp]
+	\caption{R2.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+			& Z500 & 24~h & & \\ 
+			\hline
+			2 & TPW * RH850 & 12, 24~h & RMSE & 30 \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:R2}
+\end{table}
+
+
+%\subsection{R3, prise en compte du flux d'humidité}
+%\label{sec:etat_art:R3}
+
+%\citet{Marty2010} a recalibré les paramètres déterminés par \citet{Bontron2004} pour une application infrajournalière (résolution temporelle de 12~h), et sur la base d'un jeu de données de réanalyses plus complet. Il a proposé deux modèles avec un second niveau d'analogie sur l'humidité (R3a, Table \ref{table:R3a}) ou le flux d'humidité au niveau 700~hPa (R3b, Table \ref{table:R3b}) ou 925~hPa (R3c, Table \ref{table:R3c}). Les heures et les niveaux changent par rapport à ceux établis par \citet{Bontron2004}, car ceux-ci n'étaient alors pas disponibles.
+
+
+\begin{table}[htbp]
+	\caption{R3a.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{75} \\
+			& Z500 & 18~h & & \\ 
+			\hline
+			2 & TPW * RH925 & 06, 18~h & RMSE & 30 \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:R3a}
+\end{table}
+
+
+\begin{table}[htbp]
+	\caption{R3b.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{60} \\
+			& Z 500~hPa & 18~h & & \\ 
+			\hline
+			2 & V700 * TPW * RH700 & 06, 18~h & RMSE & 25 \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:R3b}
+\end{table}
+
+\begin{table}[htbp]
+	\caption{R3c.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{60} \\
+			& Z 500~hPa & 18~h & & \\ 
+			\hline
+			2 & V925 * TPW * RH925 & 06, 18~h & RMSE & 25 \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:R3c}
+\end{table}
+
+
+
+%Le flux d'humidité est composé du produit de l'eau précipitable et de l'humidité relative, multiplié par la norme de la vitesse du vent ($V$).
+
+
+%\subsection{R4, présélection sur les températures}
+%\label{sec:etat_art:R4}
+%\review{6}
+
+%La quatrième référence reconsidère la sélection des journées candidates à l'analogie et utilise la présélection sur les températures introduite par \citet{BenDaoud2010}. Nous nous affranchissons donc de la sélection d'une période de 4 mois centrée sur la date pour une approche plus dynamique qui tient différemment compte de l'effet de saisonnalité. Le nombre d'analogues de la présélection est équivalent au nombre de jours que nous aurions retenus par la période de $\pm 60$ jours, soit $N_{0} = 60 \cdot 2 \cdot n_{a}$, où $n_{a}$ est le nombre d'années de la période de calibration. Mais la sélection est ici fondée sur un critère de similitude thermique au droit de la région cible.
+
+\begin{table}[htbp]
+	\caption{R4a.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline
+			\multirow{2}{*}{0} & T925 & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
+			& T600 & 12~h & & \\ 
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+			& Z 500~hPa & 24~h & & \\ 
+			\hline
+			2 & TPW * RH850 & 12, 24~h & RMSE & 25 \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:R4a}
+\end{table}
+
+
+\begin{table}[htbp]
+	\caption{R4b.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline
+			\multirow{2}{*}{0} & T925 & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
+			& T600 & 12~h & & \\ 
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+			& Z 500~hPa & 24~h & & \\ 
+			\hline
+			\multirow{2}{*}{2} & TPW * RH925 & 12, 24~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
+			& TPW * RH700 & 12, 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:R4b}
+\end{table}
+
+
+\begin{table}[htbp]
+	\caption{R4c.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline
+			\multirow{2}{*}{0} & T925 & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
+			& T600 & 12~h & & \\ 
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+			& Z 500~hPa & 24~h & & \\ 
+			\hline
+			\multirow{2}{*}{2} & TPW * RH925 & 06-30~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
+			& TPW * RH700 & 06-30~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:R4c}
+\end{table}
+
+%Trois références sont donc retenues ici: la première (R4a, Table \ref{table:R4a}) considère le niveau d'analogie sur l'humidité tel que l'a défini \citet{Bontron2004}, la deuxième (R4b, Table \ref{table:R4b}) intègre les niveaux d'humidité calibrés par \citet{BenDaoud2010}, et la troisième (R4c, Table \ref{table:R4c}) considère toutes les heures d'observation disponibles pour ce dernier niveau d'analogie.
+
+
+%\subsection{R5, prise en compte des mouvements verticaux}
+%\label{sec:etat_art:R5}
+
+%\citet{BenDaoud2010} a encore ajouté un niveau d'analogie sur les mouvements verticaux. Ce niveau vient s'insérer entre l'analogie de circulation et celle de l'humidité. À nouveau, nous considérons une première référence (R5a, Table \ref{table:R5a}) avec les paramètres d'humidité selon \citet{Bontron2004}, et une seconde (R5b, Table \ref{table:R5b}) avec les paramètres de \citet{BenDaoud2010}.
+
+\begin{table}[htbp]
+	\caption{R5a.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline
+			\multirow{2}{*}{0} & T925 (1 point) & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
+			& T600 (1 point) & 12~h & & \\ 
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{170} \\
+			& Z 500~hPa & 24~h & & \\ 
+			\hline
+			2 & W850 & 06-24~h & RMSE & 70 \\
+			\hline
+			3 & TPW * RH850 & 12, 24~h & RMSE & 25 \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:R5a}
+\end{table}
+
+\begin{table}[htbp]
+	\caption{R5b.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline
+			\multirow{2}{*}{0} & T925 (1 point) & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
+			& T600 (1 point) & 12~h & & \\ 
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{170} \\
+			& Z 500~hPa & 24~h & & \\ 
+			\hline
+			2 & W850 & 06-24~h & RMSE & 70 \\
+			\hline
+			\multirow{2}{*}{3} & TPW * RH925 & 12, 24~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
+			& TPW * RH700 & 12, 24~h & & \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:R5b}
+\end{table}
+
 
 \subsection{Data}
 % TODO: write
@@ -186,6 +474,36 @@ The predictand (which is to be predicted) is in our case the daily precipitation
 %Par une étude de sensibilité, \citet{Bontron2004} a déterminé un plafonnement de la longueur de l'archive nécessaire à 30 ans pour la prévision en général, et à 40 ans pour les événements intenses. Il a également mis en lumière la dépendance entre le nombre d'analogues optimal et la taille de l'archive: plus l'archive est courte, plus le nombre d'analogues diminue. En faisant varier la résolution des grilles de prédicteurs, il en a conclu que l'augmentation en performance n'est pas significative pour l'analogie de circulation en deçà d'une résolution de 5\degres . Cependant, elle semble plus importante pour le second niveau d'analogie sur les humidités, qui sont des variables plus locales.
 
 %\citet{BenDaoud2010} a dans un premier temps évalué les réanalyses européennes ERA-40 \citep{Uppala1999}, avec une résolution de 1.125\degres, par rapport aux réanalyses américaines du NCEP/NCAR à 2.5\degres\ \citep{Kalnay1996} utilisées jusqu'alors. Il a identifié une légère amélioration des performances, mais pas assez substantielle pour vraiment justifier un changement d'archive \citep{BenDaoud2008}.
+
+\subsection{Discussion}
+% TODO: write
+
+%\citet{Bliefernicht2010} a observé que la performance de la méthode est plus élevée en hiver qu'en été. Ainsi, la relation entre les prédicteurs synoptiques et les précipitations locales est plus faible en été, en raison des pluies d'origine convective qui ont un caractère plus aléatoire.
+
+%La méthode des analogues, ou une forme proche, a également été utilisée pour la prévision à court ou moyen terme des températures journalières \citep{Radinovic1975, Woodcock1980, Kruizinga1983}, des vents \citep{Gordon1987}, des avalanches \citep{Obled1980, Bolognesi1993}, de l'insolation \citep{Bois1981}, et de la trajectoire de cyclones tropicaux \citep{Keenan1981, Sievers2000, Fraedrich2003}.
+
+%\citet{Guilbaud1997} a effectué une recherche bibliographique des utilisations de la méthode en prévision à long terme et a identifié des applications opérationnelles pour des prévisions mensuelles dans de nombreux pays, notamment au Canada \citep{Shabbar1986}, en Hongrie \citep{Toth1989}, aux Pays-Bas \citep{Nap1981}, et en Angleterre \citep{Murray1974}, ainsi que des prévisions saisonnières : \citet{Barnett1978}, \citet{Bergen1982} et \citet{Livezey1988}.
+
+%L'utilisation de la méthode des analogues en tant que technique d'adaptation de modèles climatiques fait l'objet d'un nombre croissant d'études \citep{Zorita1999,Wetterhall2005,Matulla2008}. \citet{Wetterhall2007} ont également utilisé la méthode des analogues en Suède, dans le cadre d'une étude sur le réchauffement climatique, et la trouvent simple, mais moins performante que d'autres méthodes plus complexes. Cependant, ils n'utilisent que la pression au niveau de la mer en tant que prédicteur, et considèrent uniquement la meilleure analogue. Ces deux aspects ne sont clairement pas optimaux, et une qualité médiocre de la méthode n'est alors pas surprenante. L'implémentation actuelle de la méthode (voir section \ref{sec:etat_art:implementation_actuelle}) fournit clairement des résultats plus pertinents.
+
+%Une version de la méthode a été évaluée dans le projet STARDEX \citep[\textit{STAtistical and Regional dynamical Downscaling of EXtremes for European regions}, voir][]{Goodess2003, Stardex2005}. Un des objectifs du projet étant de comparer différentes méthodes de descente d'échelle pour la détermination des extrêmes météorologiques, la méthode des analogues a été mise en concurrence avec d'autres techniques et a été sélectionnée parmi les plus intéressantes \citep{Maheras2005, Schmidli2007}.
+
+%\citet{GibergansBaguena2007} ont implémenté la méthode pour des prévisions de précipitations journalières en Catalogne. Ils ont considéré le géopotentiel à 700 et 1000~hPa, ainsi que l'épaisseur entre ces deux niveaux pour la recherche d'analogie de circulation, puis ont appliqué une seconde sélection sur la base de données locales obtenues par radiosondage: indices de stabilité, eau précipitable, température, etc...
+
+%\citet{Hamill2006} ont utilisé une approche par analogie sur les reprévisions du modèle global des États-Unis (GFS, voir sections \ref{sec:donnees:previsions_GFS} et \ref{sec:donnees:resimulations_GFS}). Cette application a permis de corriger des erreurs systématiques dans les prévisions d'ensemble des températures et des précipitations. En effet, l'approche statistique a mis en évidence certains biais dans les prévisions du modèle numérique, qui ont pu être ajustés par la prise en compte de la climatologie locale intrinsèque à la méthode des analogues. De plus, la dispersion des analogues étant plus importante que celle des prévisions d'ensemble, la sous-dispersion de ces dernières a pu être corrigée à l'aide des analogues \citep{Hamill2006}. Une des raisons invoquées pour la bonne performance de la méthode des analogues par rapport au modèle numérique global est le fait que ce dernier a une orographie lissée, qui ne tient pas compte des réelles spécificités locales, ce que permet l'approche par analogie.
+
+%La méthode présente cependant des limites dont il faut être conscient. La première est la nécessité de disposer d'une archive conséquente de la variable cible à un pas de temps pertinent, ici les précipitations. Sans une base de données de prédictands de plusieurs décennies, la méthode n'est pas applicable.
+
+%Les archives des prédicteurs sont également importantes et plus particulièrement leur homogénéité. Nous disposons actuellement de jeux de données de réanalyses (voir section \ref{sec:donnees:reanalyses1_ncep}) de bonne qualité, mais contenant tout de même des discontinuités significatives dues à la densification des réseaux de mesures et au déploiement de nouvelles techniques de mesure et de l'imagerie satellitaire. Nous ne pourrons a priori jamais complètement éliminer cette hétérogénéité, car les données demeureront manquantes. Toutefois, la qualité de ces données les rend tout à fait utilisables pour la méthode des analogues, et ceci partout sur le globe !
+
+%Un aspect supplémentaire concerne les différences entre les prédicteurs disponibles en temps réel et les archives de ces prédicteurs. En effet, les deux jeux de données n'ont généralement pas la même climatologie, car ils ne résultent pas du même modèle, et n'ont pas été élaborés de la même manière. Il existe des alternatives, telles que l'utilisation en opérationnel de prévisions émises par un modèle figé, conjointement à des archives élaborées par ce même modèle en reprévision. 
+
+
+%Toutefois, les prévisions que nous utiliserions de cette manière ne seraient pas à l'état de l'art, et les reprévisions (archives) contiendraient des erreurs et des incertitudes beaucoup plus importantes que des réanalyses. Il convient donc d'utiliser des prédicteurs robustes qui dépendent au minimum des spécificités du modèle numérique.
+
+%Une autre limite réside dans le fait que les événements extrêmes peuvent être sous-représentés dans l'échantillon d'analogues considéré. En effet, dans une archive météorologique d'une durée limitée, les événements correspondants à des temps de retour élevés ne sont pas très nombreux. Leur représentation est certainement inférieure au nombre d'analogues que nous retenons, ce qui peut biaiser la prévision.
+
+%Enfin, \citet{Bliefernicht2007} ont montré que les prévisions sont moins bonnes en été. Ceci est dû à la part plus importante de la convection durant les mois chauds. Les variables de la circulation synoptique ne sont en effet pas à même de prévoir la localisation des cellules orageuses. Ceci a également été constaté par \citet{BenDaoud2010}, qui avait mis en place un modèle spécifique pour les mois d'été (du 15 juin au 15 septembre). Nous pouvons estimer que les prédicteurs sont à reconsidérer (variables, niveaux, etc.), et que leur domaine peut être différent. Le problème est que, durant cette période, on peut également rencontrer situations classiques avec une circulation atmosphérique dominante comme dans les autres saisons, ou des situations de marais barométriques accompagnées d'un fort risque de convection locale, sans signature dans les variables synoptiques.
 
 \section{Software basics}
 % TODO: write
