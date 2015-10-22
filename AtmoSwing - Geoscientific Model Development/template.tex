@@ -115,7 +115,7 @@ The analogue method is being used for many years at EDF (\'{E}lectricit\'{e} de 
 
 
 \subsection{Data}
-% TODO: write
+\label{sec:data}
 
 The analogue method relies on two types of data: predictors, that are atmospheric variables describing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather time series we want to forecast.
 
@@ -123,7 +123,7 @@ Predictors are generally reanalysis datasets (as archive) and outputs of a globa
 
 \citet{Bontron2004} determined that the length of the archive should be 30 years to forecast usual situations, and 40 years for intense events. He also highlighted the dependence between the optimal number of analogues and the archive size: the shorter the archive, the lower the number of analogues. By varying the resolution of the predictors grids, he concluded that the performance increase is not significant for the analogy of atmospheric circulation below a resolution of 5\textdegree. However, it seems more important for the second level of analogy on moisture, which are more local variables. \citet{BenDaoud2010} assessed the European reanalysis ERA-40 \citep{Uppala2005} with a resolution of 1.125\textdegree. He identified a slight performance improvement, but not substantial enough to really justify an archive change \citep{BenDaoud2008}.
 
-The predictand is the local meteorological variable of interest. It can be 6-houry data, or more often daily time series, but has to be consistent with the time step of the predictors (at least, not finer). The most used predictor is the daily precipitation, usually averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}. These time series are frequently normalized by the precipitation value for a return period of 10~years \citep{Djerboua2001}. This normalization allows for an easier comparison between subregions subject to different precipitation regimes, and thus to better identify the most important contributions.
+The predictand is the local meteorological variable of interest. It can be 6-houry data, or more often daily time series, but has to be consistent with the time step of the predictors (at least, not finer). The most used predictor is the daily precipitation, usually averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}. These time series are frequently normalized by the precipitation value for a return period of 10~years \citep{Djerboua2001}. This normalization allows for an easier comparison between subregions subject to different precipitation regimes, and thus to better identify the most important contributions. Most users also apply a root square to this last ratio in order to reduce the weight of the extreme predictand values, but we generally don't.
 
 
 \subsection{Present structure}
@@ -410,33 +410,79 @@ It is legitimate to raise the question of the relevance of an approach based on 
 
 
 \section{Software basics}
-% TODO: write
 
-\subsection{Structure}
-% TODO: write
+AtmoSwing is made of 3 main modules (Figure \ref{figure:flowchart_modules_atmoswing}) that are standalone, but do share a common code basis: the Forecaster, to process the operational forecasting, the Viewer, to display the forecast in a GIS environment, and the Optimizer, to calibrate/optimize the statistical relationship defining the analogy for a given predictand time series. Separating the Forecaster and the Viewer allows to automate the forecast on a server and to quickly display the results locally. The code is written in object oriented C++ and relies on the wxWidgets \citep{Smart2006} library to provide a cross-platform native experience to users. The software can thus be compiled on MS Windows, Linux / Unix, Mac (OS X, iOS), both in 32-bit and 64-bit.
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/logo.pdf}
+	\caption{The AtmoSwing logo and its 3 modules: the Forecaster, the Viewer and the Optimizer.}
+	\label{figure:logo}
+\end{figure}
+
+The source code in under version control (with Mercurial), and is open source (on Bitbucket, www.atmoswing.org). Developments have been made with an approach of unit tests. A collection of 500+ tests are frequently evaluated and completed during development, in order to verify that code changes do not introduce regression. Every analogy criterion, prediction score, searching and sorting functions, data manipulation, and so on, is tested. The integration tests specific to the analogue method rely on the results of another analogue sorting software developed in Grenoble. They result from a comparison work done with the help of R. Marty in order to ensure that the results of AtmoSwing are exactly equivalent to their model, given the same parameters and data. These tests are part of the checks carried out regularly, so that these results are always reproducible.
+
 
 \subsection{Modular approach}
-% TODO: write
 
-\subsection{Technical specifications}
-% TODO: write
-% Language and libraries
+An AtmoSwing great strength is that it is designed to process analogy forecasting in a modular fashion. The structure of the analogy method (number of analogy levels, number of predictors) is built dynamically (Figure \ref{figure:flowchart_modules_atmoswing}), and nothing is fixed a priori. The software then performs successively as many analogy levels as the user specified, with all the predictors he wants. Each level of analogy processed results in an object containing target dates, analogue dates, values of the analogy criteria, and other data. This object can be saved in a NetCDF file and/or can be injected into a new analogy level. The whole structure of the method is defined in an XML file generated by the user.
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/flowchart_modules_atmoswing.pdf}
+	\caption{Simplified organizational chart of the analogue method implementation in AtmoSwing.}
+	\label{figure:flowchart_modules_atmoswing}
+\end{figure}
+
+Each implementation of the analogue method (see section \ref{sec:method:evolution}) may enter this scheme, even if it consists of manipulated variables (e.g. moisture index). Various preprocessing functions are implemented, as the calculation of the moisture index or flux, multiplication operations or calculation of the gradients. The user can specify the preprocessing method and the predictors to use, dynamically, in the XML file.
+
 
 \subsection{Performance}
+
+Although processing an analogue forecast for a given target date is fast, when optimizing the method, forecasts are processed over a long periods of several decades, which is time consuming. Thus, great effort has been made in order to reduce the processing time to a minimum. Waste of time were identified with profiling tools and cut down at different levels. The software also use the linear algebra library Eigen 3 \citep{Guennebaud2010} for calculations on vectors and matrices, which resulted in time saving. Obviously, multi-threading is also implemented.
+
+First, every identified redundancy has been removed. Then, when looking for a certain date or data, the search looks first in the proximity where it is likely to be found instead of exploring an entire array. Similar data are not loaded twice, but shared pointers are used. Many other improvements allowed saving time, for example the use of the quicksort method \citep{Hoare1962a} to sort the date vectors according to the values of analogy criteria. Different implementations were tested (many remain in the code as alternatives) in order to select the most efficient: for example, when storing analogue dates according to their criteria value, it is faster to insert them in a fixed-size array rather than storing them all and sorting the array subsequently.
+
+The major performance gains were obtained by:
+\vspace*{-2mm}
+\begin{itemize}
+	\setlength\itemsep{-2px}
+	\item reduction of the array sizes used in the calculations,
+	\item use of pointers (and therefore the decrease of data copies),
+	\item better search for dates in temporal vectors starting from the previous index,
+	\item better management of the analogue vectors,
+	\item preprocessed gradients on geopotential fields when using the S1 criteria,
+	\item and finally the implementation of parallel calculations (multi-threading).
+\end{itemize}
+
+
+\section{AtmoSwing Forecaster}
+
+The Forecaster module allows to process operational forecasts. This software processes a current or past forecasting, defined by an XML file. A list of parameterizations (defined by external XML files) is processed successively. The software can compiled with a GUI (), or without in order to be used on a headless server through a command line interface. Processing a forecast requires very low computing capabilities and can be done on a low-end computer. 
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/atmoswing-forecaster.png}
+	\caption{Graphical user interface of the Forecaster module. A list of different parameterizations is being processed.}
+	\label{figure:atmoswing-forecaster-gui}
+\end{figure}
+
+The software first downloads the predictor describing the target situation, such as GFS outputs \citep[Global Forecast System,][see section \ref{sec:data}]{Kanamitsu1991,Kanamitsu1989}. It then interpolates the gridded data to match the resolution of the archive (for example 2.5\textdegree\ in the case of the NCEP/NCAP reanalysis I). The analogues dates are next sought according to the provided parameterization, and the predictand data are associated with the corresponding dates. The results are finally saved in auto-describing NetCDF files. If required, a synthetic XML is generated for an easier integration on a web platform for example. Every step of the forecast, from the predictor downloading to the final results, is done in the software (and controlled through configuration), without use of external scripts (e.g. for data conversion).
+
+The command-line interface allows to start the process for the most recent date, a selected past date, or the last $x$ days (as long as the predictors are available on the provider server). When there is nothing to process (no new predictor data available), the execution just stops, leading to no loss of computing resources. The recommended use is thus to set up a cron task on a Linux server in order to trigger the forecast every 30 minutes. When using GFS outputs, this would provide 4 forecasts a day with a reduced delay between GFS outputs availability and the analogue forecast.
+
+
+\section{AtmoSwing Viewer}
 % TODO: write
 
-\subsection{Unit tests}
-% TODO: write
-
-\section{The forecaster module}
-% TODO: write
 
 
 
-\section{The viewer module}
-% TODO: write
+
+Automatically loads the most recent forecasts
+GIS layers
+Workspace
+Alarm panel
 
 
+%When working on a region with different parameterizations per subregion, these parameterizations are applied to the wh
 
 %\citet{Djerboua2001} a appliqué la méthode développée par \citet{Guilbaud1997} en prévision opérationnelle dans le cadre du projet MAP \citep[\textit{Mesoscale Alpine Programme}, voir][]{Binder1996}, lors de la période spéciale d'observation \citep{Bougeault2001}. Il a relevé que le quantile 60~\% prévoyait le mieux les quantités de précipitations pour les situations normales, mais que lorsque la pluie observée était forte à extrême, le quantile 90~\% s'avérait être un meilleur témoin. Il convient donc de porter une attention particulière au quantile 90~\% qui, lorsqu'il monte brutalement, peut être le signe d'une situation propice à un événement de nature extrême, par la présence de plusieurs analogues dans la distribution avec des cumuls observés significatifs \citep{Djerboua2001}. En opérationnel, les prévisionnistes doivent prêter attention à la distribution des meilleures analogues. Si, par exemple, celle-ci est décalée vers des valeurs plus élevées, il y a un risque de sous-estimer l'événement.
 
@@ -448,7 +494,7 @@ It is legitimate to raise the question of the relevance of an approach based on 
 
 %En opérationnel, ces niveaux supplémentaires se sont montrés utiles pour les deux à trois premières échéances, mais au-delà, toutes les méthodes deviennent équivalentes à l'analogie sur la circulation, car les autres variables, comme la vitesse verticale, sont alors mal prévues.
 
-\section{The calibrator module}
+\section{AtmoSwing Optimizer}
 % TODO: write
 
 \subsection{Calibration framework}
@@ -892,10 +938,9 @@ In order to make an optimization of the analogue method with genetic algorithms,
 
 
 \appendix
-\section{}    %% Appendix A
+\section{Appendix A}    %% Appendix A
 
 \subsection{}                               %% Appendix A1, A2, etc.
-
 
 
 
