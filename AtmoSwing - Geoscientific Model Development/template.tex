@@ -468,12 +468,44 @@ The software first downloads the predictor describing the target situation, such
 
 The command-line interface allows to start the process for the most recent date, a selected past date, or the last $x$ days (as long as the predictors are available on the provider server). When there is nothing to process (no new predictor data available), the execution just stops, leading to no loss of computing resources. The recommended use is thus to set up a cron task on a Linux server in order to trigger the forecast every 30 minutes. When using GFS outputs, this would provide 4 forecasts a day with a reduced delay between GFS outputs availability and the analogue forecast.
 
+A user interface allows the creation of the precipitation database. Its generation consists in extracting the time series from text files in order to process them and save a database in the NetCDF format. During the process, Gumbel adjustments are automatically calculated in order to determine the values of different return periods. The time series are normalized by a selected return period (default 10~years) and their square root is eventually processed. The final database file contains both the raw and the normalized series, as well as characteristics of the gauging stations and some metadata.
+
 
 \section{AtmoSwing Viewer}
-% TODO: write
+
+The Viewer module allows displaying the resulting forecast files in an interactive GIS environment (Figure \ref{figure:atmoswing-viewer-gui}). 
 
 
 
+
+
+\begin{figure*}[t]
+	\includegraphics[width=18cm]{figures/atmoswing-viewer.png}
+	\caption{Graphical user interface of the Viewer module.}
+	\label{figure:atmoswing-viewer-gui}
+\end{figure*}
+
+
+
+
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-snail.png}
+	\caption{Visualization of multiple lead times on the map.}
+	\label{figure:atmoswing-viewer-snail}
+\end{figure}
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-timeseries.png}
+	\caption{Visualization of the forecasted time series.}
+	\label{figure:atmoswing-viewer-timeseries}
+\end{figure}
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-distribution.png}
+	\caption{Visualization of the forecasted precipitation distribution for a given lead time.}
+	\label{figure:atmoswing-viewer-distribution}
+\end{figure}
 
 
 Automatically loads the most recent forecasts
@@ -481,6 +513,122 @@ GIS layers
 Workspace
 Alarm panel
 
+
+
+
+
+%
+%L'outil de visualisation présente plusieurs niveaux de synthèse des prévisions. L'utilisateur peut ainsi passer d'un aperçu très global des tendances au détail des analogues à la station. Les différents niveaux d'agrégation, du plus général au plus détaillé, sont les suivants:
+%
+%\begin{itemize}\addtolength{\itemsep}{0.5\baselineskip}
+%	\vspace{2mm}
+%	\item \textbf{Le panneau des alarmes}: après ouverture des fichiers de prévision, un panneau latéral (voir Figure \ref{fig:Atmoswing_viewer}) présente une grille synthétisant tous les modèles (lignes) et toutes les échéances (colonnes). La couleur affichée dans une cellule de la grille, correspondant donc à un modèle (paramétrisation de la méthode des analogues) et une échéance, est la valeur maximale prévue de toutes les stations (pour un temps de retour et un quantile choisi par l'utilisateur); ce panneau permet d'identifier en un coup d'?il si une situation critique est prévue pour au moins une station par un modèle et pour une échéance.
+%	
+%	\item \textbf{La carte des échéances}: la première carte proposée à l'utilisateur est une synthèse des prochaines échéances pour un modèle donné (Figure \ref{fig:Atmoswing_carte_echeances}). Nous avons conçu une représentation symbologique permettant un affichage synthétique: à l'emplacement de chaque station, une bande circulaire est affichée avec un casier par échéance. 
+%	
+%	\newpage
+%	\vspace*{-30mm}
+%	
+%	Le nombre de casiers est ajusté au nombre d'échéances. La couleur attribuée à chaque casier est proportionnelle à la valeur prévue pour l'échéance en question. Cette représentation offre un rapide aperçu des jours à venir et permet d'identifier facilement un éventuel événement prévu par une paramétrisation des analogues. Elle offre une visualisation spatio-temporelle globale avant d'entrer davantage dans les détails du modèle. L'utilisateur peut passer d'un modèle à un autre en les sélectionnant dans la barre latérale (voir Figure \ref{fig:Atmoswing_viewer}). Il peut également ajuster la représentation des prévisions en choisissant une normalisation par un des nombreux temps de retour proposés, et en sélectionnant un quantile spécifique (20~\%, 60~\% ou 90~\%).
+%	
+%	\item \textbf{La carte journalière}: l'utilisateur peut ensuite afficher la carte pour une échéance du modèle (voir Figure \ref{fig:Atmoswing_carte_echeance_unique}) afin de mieux visualiser la spatialisation des précipitations et d'accéder directement aux valeurs attendues (affichées à chaque station). Un curseur situé sur le haut de la carte permet de changer d'échéance.
+%	
+%	\item \textbf{Les séries temporelles}: lorsqu'une station est sélectionnée (sur la carte ou dans la liste déroulante de la barre latérale), le graphique de la série temporelle prévue s'affiche (Figure \ref{fig:Atmoswing_serie_temporelle}). Les options d'affichage sont les suivantes:
+%	\begin{itemize}
+%		\item les 3 quantiles classiques (20~\%, 60~\%, 90~\%) sous forme de lignes bleues épaisses;
+%		\item tous les dixièmes de quantiles par des surfaces grisées;
+%		\item toutes les analogues sous forme de petites croix grises;
+%		\item les 5 ou 10 meilleures analogues par des croix jaunes, oranges, ou rouges. Les couleurs sont proportionnelles aux rangs des analogues. Le rouge est pour la meilleure analogue et le jaune pour la 5\ieme\ ou 10\ieme\ ;
+%		\item la valeur du temps de retour de 10 ans, ou de tous les temps de retour, sous la forme de traits rouges;
+%		\item les traces des anciennes prévisions, afin d'évaluer la cohérence temporelle.
+%	\end{itemize}
+%	
+%	\item \textbf{Les distributions}: pour une station et une date choisie, l'utilisateur peut visualiser les distributions du critère d'analogie (Figure \ref{fig:Atmoswing_distrib_critere}) et des précipitations (Figure \ref{fig:Atmoswing_distrib_precip}). La distribution du critère d'analogie permet d'identifier d'éventuelles discontinuités dans les valeurs des critères et donc de porter plus de crédit aux meilleures analogues. Le graphique des précipitations permet de comparer la distribution de toutes les analogues et celle des 5 ou 10 meilleures.
+%	
+%	\item \textbf{Le détail des analogues}: le détail des dates analogues, des valeurs du critère et des précipitations associées peut être affiché dans un tableur interactif (Figure \ref{fig:Atmoswing_liste_analogues}).
+%	
+%\end{itemize}
+%
+%\vfill\vfill\vfill
+%
+%\begin{figure}[htbp]
+%	\vspace*{2mm}
+%	\begin{center}
+%		\begin{minipage}[c]{10cm}
+%			\includegraphics[width=10cm]{Atmoswing_carte_echeances.jpg}
+%		\end{minipage}
+%		\hspace{0.5cm}
+%		\begin{minipage}[c]{3.8cm}
+%			\includegraphics[width=3.8cm]{Atmoswing_bande_echeances.pdf}
+%		\end{minipage}
+%	\end{center}
+%	\vspace{-2mm}
+%	\caption[Carte avec toutes les échéances, et symbole élaboré à cette fin.]{Carte avec toutes les échéances, et symbole élaboré à cette fin.}
+%	\label{fig:Atmoswing_carte_echeances}
+%\end{figure}
+%
+%\vfill\vfill\vfill
+%
+%\begin{figure}[htbp]
+%	\vspace*{2mm}
+%	\begin{center}
+%		\includegraphics[width=10cm]{Atmoswing_carte_echeance_unique.jpg}
+%	\end{center}
+%	\vspace{-2mm}
+%	\caption[Carte pour une échéance.]{Carte pour une échéance.}
+%	\label{fig:Atmoswing_carte_echeance_unique}
+%\end{figure}
+%
+%\begin{figure}[htbp]
+%	\vspace*{2mm}
+%	\begin{center}
+%		\includegraphics[width=10cm]{Atmoswing_serie_temporelle.jpg}
+%	\end{center}
+%	\vspace{-2mm}
+%	\caption[Graphique de l'évolution temporelle pour une station.]{Graphique de l'évolution temporelle pour une station.}
+%	\label{fig:Atmoswing_serie_temporelle}
+%\end{figure}
+%
+%\begin{figure}[htbp]
+%	\vspace*{2mm}
+%	\begin{center}
+%		\includegraphics[width=10cm]{Atmoswing_distrib_critere.jpg}
+%	\end{center}
+%	\vspace{-2mm}
+%	\caption[Graphique de la distribution du critère d'analogie des journées analogues.]{Graphique de la distribution du critère d'analogie des journées analogues.}
+%	\label{fig:Atmoswing_distrib_critere}
+%\end{figure}
+%
+%\begin{figure}[htbp]
+%	\vspace*{2mm}
+%	\begin{center}
+%		\includegraphics[width=10cm]{Atmoswing_distrib_precip.jpg}
+%	\end{center}
+%	\vspace{-2mm}
+%	\caption[Graphique de la distribution des valeurs de précipitations des journées analogues.]{Graphique de la distribution des valeurs de précipitations des journées analogues.}
+%	\label{fig:Atmoswing_distrib_precip}
+%\end{figure}
+%
+%\begin{figure}[htbp]
+%	\vspace*{2mm}
+%	\begin{center}
+%		\includegraphics[width=9cm]{Atmoswing_liste_analogues.jpg}
+%	\end{center}
+%	\vspace{-2mm}
+%	\caption[Liste des journées analogues et de leurs précipitations associées.]{Liste des journées analogues et de leurs précipitations associées.}
+%	\label{fig:Atmoswing_liste_analogues}
+%\end{figure}
+%
+%
+%Lors de la calibration (section \ref{sec:implementation:calibration}), nous avons déterminé des paramètres de la méthode des analogues optimaux pour certaines régions. Ces paramètres sont donc certainement plus robustes que s'ils avaient été établis directement à la station. Toutefois, lors du calcul de prévision, nous appliquons ces paramètres à l'échelle de la station individuelle. Ce choix a été fait pour offrir la plus grande résolution possible à l'utilisateur, dans le cadre du projet MINERVE. De plus, alors que les paramètres sont optimaux pour une région précise, ils sont ici appliqués à l'ensemble des stations. Nous avons donc une carte complète par modèle (paramétrisation). Le but de cette approche est d'éviter de mélanger des dates sur une même carte, et donc d'amalgamer différentes influences atmosphériques. Les divers modèles présentent toujours une répartition des précipitations cohérente spatialement, avec des tendances claires. Il incombe à l'utilisateur de choisir le modèle approprié pour la région où semble se profiler un événement.
+%
+%En plus des librairies listées précédemment, le logiciel de visualisation intègre:
+%\begin{itemize}
+%	\item VroomGIS: une bibliothèque SIG pour l'affichage de données géoréférencées, développé par L. Schreiber au CREALP (\textit{Centre de recherche sur l'environnement alpin});
+%	\item wxPlotCtrl: une librairie permettant d'afficher des graphiques interactifs.
+%\end{itemize}
+
+% + check annexe D.6
 
 %When working on a region with different parameterizations per subregion, these parameterizations are applied to the wh
 
@@ -558,7 +706,7 @@ These supplementary steps often result in spatial windows that are a bit differe
 \subsection{Monte-Carlo analysis}
 
 
-\subsection{Optimization}
+\subsection{Global optimization}
 
 
 
@@ -592,7 +740,6 @@ The GAs optimize a population of individuals (parameter sets). Each individual c
 There are numerous implementation variants of GAs often optimal for a given problem \citep{Hart1991a,Schraudolph1992a}. However, the structure of the method (Figure \ref{fig:structure_gas}) resulting from the work of \citet{Holland1992b} is common to most applications \citep{Back1993b}. The divergences are the operators implementation, through significantly different algorithms, which has an important effect on the results \citep{Gaffney2010a}.
 
 All operators we used and their options, applied to real coding, are described in the following sections. Many other operators exist, but we will only present the ones we evaluated.
-
 
 \subsubsection{Genesis of the population}
 
