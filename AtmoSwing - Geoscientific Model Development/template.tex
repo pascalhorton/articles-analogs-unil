@@ -57,9 +57,9 @@
 
 
 
-\runningtitle{TEXT}
+\runningtitle{AtmoSwing}
 
-\runningauthor{TEXT}
+\runningauthor{P. Horton et al.}
 
 \correspondence{Pascal Horton (pascal.horton@alumnil.unil.ch)}
 
@@ -473,11 +473,9 @@ A user interface allows the creation of the precipitation database. Its generati
 
 \section{AtmoSwing Viewer}
 
-The Viewer module allows displaying the resulting forecast files in an interactive GIS environment (Figure \ref{figure:atmoswing-viewer-gui}). 
+\subsection{The graphical user interface }
 
-
-
-
+The Viewer module allows displaying the resulting forecast files in an interactive GIS environment (Figure \ref{figure:atmoswing-viewer-gui}). During the forecast, different parametrization variants of the same type of method may be applied to a region; the reason being that some parameterizations may be specific for a subregion, when its meteorological influences differ, which is often the case even in relatively small catchments \citep{Horton2012}. The Viewer automatically gathers the similar methods and provides a composite view of the optimal forecasts per subregion. The user can however choose to display a specific parameterization for the whole region, which is more consistent in terms of homogeneity of the analogue dates.
 
 \begin{figure*}[t]
 	\includegraphics[width=18cm]{figures/atmoswing-viewer.png}
@@ -485,15 +483,19 @@ The Viewer module allows displaying the resulting forecast files in an interacti
 	\label{figure:atmoswing-viewer-gui}
 \end{figure*}
 
+The software provides several levels of synthesis of the forecasts. When it is opened, it automatically loads the most recent forecasts. It first offers a quick overview of possible alerts by means of color codes on the lead time switcher (upper right in the GUI, see Figure \ref{figure:atmoswing-viewer-gui}), which synthesizes the worst case scenario, or in the alarms panel (on the left part of the GUI). The alarms panel offers a synthesis of the higher forecasted values over the region, for the different methods and the different lead times. By default, the colors are expressed relatively to 10-year return period values, for the $90^{th}$ percentile (can be changed in the preferences). This higher level of synthesis allows to quickly identify potential critical situations in the days ahead.
 
+Then, the user can explore the forecasts more in details, starting from the map provided by the GUI (Figure \ref{figure:atmoswing-viewer-gui}). The map display the forecast of the selected parameterization (upper left) and the selected lead time (upper right). The displayed method is by default a composite of the parameterization variants for the region, but the user can choose a specific parameterization for the whole region by opening the tree view and selecting a child element. We also allowed a display of all lead times on a single map by means of a symbolic representation on a circular band with a box for every lead time (Figure \ref{figure:atmoswing-viewer-snail}). The number of boxes is dynamically adjusted to the number of lead times. This representation offers a global spatiotemporal display for a chosen parameterization.
 
-
+Color scales in the map are easily controlled by choosing the predictand ratio (raw value or ratio to different return periods) and the quantile of the distribution (on the left part of the GUI). Representation relatively to a return time better expresses the meaning of a certain precipitation amount for a given region, as climatology can be drastically different between two locations in a mountainous area, even if they are close to each other. All information relative to a rain gauge station (or stations groups), such as its location, its name, or the values of different return periods, are stored in the forecast files, in order to be displayable for end users who do not have the predictand database.
 
 \begin{figure}[htbp]
 	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-snail.png}
 	\caption{Visualization of multiple lead times on the map.}
 	\label{figure:atmoswing-viewer-snail}
 \end{figure}
+
+By clicking on a station (forecast points) on the map (or by selection in a dropdown list on the left), a new window appears with a plot of the forecasted time series (Figure \ref{figure:atmoswing-viewer-timeseries}). By default, the plot contains the usual 3 considered percentiles (90$^{th}$, 60$^{th}$, and 20$^{th}$), along with the 10 best analogues with a color code from yellow (10$^{th}$) to red (1$^{st}$). The 10 year return period is also displayed in order to put the forecast in perspective. The user can choose to hide any data or to display supplementary information (all analogues, all 10$^{th}$ percentiles, or all return periods) in the left panel. Traces of old forecasts are also automatically loaded and displayed in order to inform on the stability of the forecasts. 
 
 \begin{figure}[htbp]
 	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-timeseries.png}
@@ -507,140 +509,21 @@ The Viewer module allows displaying the resulting forecast files in an interacti
 	\label{figure:atmoswing-viewer-distribution}
 \end{figure}
 
+The user can even go into further details and display the predictand cumulative distribution for a given lead time (Figure \ref{figure:atmoswing-viewer-distribution}). This information is useful when working on extreme precipitation, as comparing the distribution of all analogues versus the 10 best analogues provides information in order to interpret the forecast (trend to under/overestimation). Distribution of the analogy criteria can also be displayed in order to identify eventual discontinuities in the criteria values.
 
-Automatically loads the most recent forecasts
-GIS layers
-Workspace
-Alarm panel
+Finally, one can see the details of the analogue dates, along with the predictand and the criteria values in an interactive spreadsheet.
 
-
+AtmoSwing Viewer relies on workspaces to specify the path to the forecast directories and the GIS layers. Many GIS formats are supported thanks to the GDAL and VroomGIS libraries. One can have as many layers as desired, and can control their display properties. It is thus easy to switch from a forecast for a region to another by opening a workspace file (XML format).
 
 
+\subsection{Interpreting a forecast}
 
-%
-%L'outil de visualisation présente plusieurs niveaux de synthèse des prévisions. L'utilisateur peut ainsi passer d'un aperçu très global des tendances au détail des analogues à la station. Les différents niveaux d'agrégation, du plus général au plus détaillé, sont les suivants:
-%
-%\begin{itemize}\addtolength{\itemsep}{0.5\baselineskip}
-%	\vspace{2mm}
-%	\item \textbf{Le panneau des alarmes}: après ouverture des fichiers de prévision, un panneau latéral (voir Figure \ref{fig:Atmoswing_viewer}) présente une grille synthétisant tous les modèles (lignes) et toutes les échéances (colonnes). La couleur affichée dans une cellule de la grille, correspondant donc à un modèle (paramétrisation de la méthode des analogues) et une échéance, est la valeur maximale prévue de toutes les stations (pour un temps de retour et un quantile choisi par l'utilisateur); ce panneau permet d'identifier en un coup d'?il si une situation critique est prévue pour au moins une station par un modèle et pour une échéance.
-%	
-%	\item \textbf{La carte des échéances}: la première carte proposée à l'utilisateur est une synthèse des prochaines échéances pour un modèle donné (Figure \ref{fig:Atmoswing_carte_echeances}). Nous avons conçu une représentation symbologique permettant un affichage synthétique: à l'emplacement de chaque station, une bande circulaire est affichée avec un casier par échéance. 
-%	
-%	\newpage
-%	\vspace*{-30mm}
-%	
-%	Le nombre de casiers est ajusté au nombre d'échéances. La couleur attribuée à chaque casier est proportionnelle à la valeur prévue pour l'échéance en question. Cette représentation offre un rapide aperçu des jours à venir et permet d'identifier facilement un éventuel événement prévu par une paramétrisation des analogues. Elle offre une visualisation spatio-temporelle globale avant d'entrer davantage dans les détails du modèle. L'utilisateur peut passer d'un modèle à un autre en les sélectionnant dans la barre latérale (voir Figure \ref{fig:Atmoswing_viewer}). Il peut également ajuster la représentation des prévisions en choisissant une normalisation par un des nombreux temps de retour proposés, et en sélectionnant un quantile spécifique (20~\%, 60~\% ou 90~\%).
-%	
-%	\item \textbf{La carte journalière}: l'utilisateur peut ensuite afficher la carte pour une échéance du modèle (voir Figure \ref{fig:Atmoswing_carte_echeance_unique}) afin de mieux visualiser la spatialisation des précipitations et d'accéder directement aux valeurs attendues (affichées à chaque station). Un curseur situé sur le haut de la carte permet de changer d'échéance.
-%	
-%	\item \textbf{Les séries temporelles}: lorsqu'une station est sélectionnée (sur la carte ou dans la liste déroulante de la barre latérale), le graphique de la série temporelle prévue s'affiche (Figure \ref{fig:Atmoswing_serie_temporelle}). Les options d'affichage sont les suivantes:
-%	\begin{itemize}
-%		\item les 3 quantiles classiques (20~\%, 60~\%, 90~\%) sous forme de lignes bleues épaisses;
-%		\item tous les dixièmes de quantiles par des surfaces grisées;
-%		\item toutes les analogues sous forme de petites croix grises;
-%		\item les 5 ou 10 meilleures analogues par des croix jaunes, oranges, ou rouges. Les couleurs sont proportionnelles aux rangs des analogues. Le rouge est pour la meilleure analogue et le jaune pour la 5\ieme\ ou 10\ieme\ ;
-%		\item la valeur du temps de retour de 10 ans, ou de tous les temps de retour, sous la forme de traits rouges;
-%		\item les traces des anciennes prévisions, afin d'évaluer la cohérence temporelle.
-%	\end{itemize}
-%	
-%	\item \textbf{Les distributions}: pour une station et une date choisie, l'utilisateur peut visualiser les distributions du critère d'analogie (Figure \ref{fig:Atmoswing_distrib_critere}) et des précipitations (Figure \ref{fig:Atmoswing_distrib_precip}). La distribution du critère d'analogie permet d'identifier d'éventuelles discontinuités dans les valeurs des critères et donc de porter plus de crédit aux meilleures analogues. Le graphique des précipitations permet de comparer la distribution de toutes les analogues et celle des 5 ou 10 meilleures.
-%	
-%	\item \textbf{Le détail des analogues}: le détail des dates analogues, des valeurs du critère et des précipitations associées peut être affiché dans un tableur interactif (Figure \ref{fig:Atmoswing_liste_analogues}).
-%	
-%\end{itemize}
-%
-%\vfill\vfill\vfill
-%
-%\begin{figure}[htbp]
-%	\vspace*{2mm}
-%	\begin{center}
-%		\begin{minipage}[c]{10cm}
-%			\includegraphics[width=10cm]{Atmoswing_carte_echeances.jpg}
-%		\end{minipage}
-%		\hspace{0.5cm}
-%		\begin{minipage}[c]{3.8cm}
-%			\includegraphics[width=3.8cm]{Atmoswing_bande_echeances.pdf}
-%		\end{minipage}
-%	\end{center}
-%	\vspace{-2mm}
-%	\caption[Carte avec toutes les échéances, et symbole élaboré à cette fin.]{Carte avec toutes les échéances, et symbole élaboré à cette fin.}
-%	\label{fig:Atmoswing_carte_echeances}
-%\end{figure}
-%
-%\vfill\vfill\vfill
-%
-%\begin{figure}[htbp]
-%	\vspace*{2mm}
-%	\begin{center}
-%		\includegraphics[width=10cm]{Atmoswing_carte_echeance_unique.jpg}
-%	\end{center}
-%	\vspace{-2mm}
-%	\caption[Carte pour une échéance.]{Carte pour une échéance.}
-%	\label{fig:Atmoswing_carte_echeance_unique}
-%\end{figure}
-%
-%\begin{figure}[htbp]
-%	\vspace*{2mm}
-%	\begin{center}
-%		\includegraphics[width=10cm]{Atmoswing_serie_temporelle.jpg}
-%	\end{center}
-%	\vspace{-2mm}
-%	\caption[Graphique de l'évolution temporelle pour une station.]{Graphique de l'évolution temporelle pour une station.}
-%	\label{fig:Atmoswing_serie_temporelle}
-%\end{figure}
-%
-%\begin{figure}[htbp]
-%	\vspace*{2mm}
-%	\begin{center}
-%		\includegraphics[width=10cm]{Atmoswing_distrib_critere.jpg}
-%	\end{center}
-%	\vspace{-2mm}
-%	\caption[Graphique de la distribution du critère d'analogie des journées analogues.]{Graphique de la distribution du critère d'analogie des journées analogues.}
-%	\label{fig:Atmoswing_distrib_critere}
-%\end{figure}
-%
-%\begin{figure}[htbp]
-%	\vspace*{2mm}
-%	\begin{center}
-%		\includegraphics[width=10cm]{Atmoswing_distrib_precip.jpg}
-%	\end{center}
-%	\vspace{-2mm}
-%	\caption[Graphique de la distribution des valeurs de précipitations des journées analogues.]{Graphique de la distribution des valeurs de précipitations des journées analogues.}
-%	\label{fig:Atmoswing_distrib_precip}
-%\end{figure}
-%
-%\begin{figure}[htbp]
-%	\vspace*{2mm}
-%	\begin{center}
-%		\includegraphics[width=9cm]{Atmoswing_liste_analogues.jpg}
-%	\end{center}
-%	\vspace{-2mm}
-%	\caption[Liste des journées analogues et de leurs précipitations associées.]{Liste des journées analogues et de leurs précipitations associées.}
-%	\label{fig:Atmoswing_liste_analogues}
-%\end{figure}
-%
-%
-%Lors de la calibration (section \ref{sec:implementation:calibration}), nous avons déterminé des paramètres de la méthode des analogues optimaux pour certaines régions. Ces paramètres sont donc certainement plus robustes que s'ils avaient été établis directement à la station. Toutefois, lors du calcul de prévision, nous appliquons ces paramètres à l'échelle de la station individuelle. Ce choix a été fait pour offrir la plus grande résolution possible à l'utilisateur, dans le cadre du projet MINERVE. De plus, alors que les paramètres sont optimaux pour une région précise, ils sont ici appliqués à l'ensemble des stations. Nous avons donc une carte complète par modèle (paramétrisation). Le but de cette approche est d'éviter de mélanger des dates sur une même carte, et donc d'amalgamer différentes influences atmosphériques. Les divers modèles présentent toujours une répartition des précipitations cohérente spatialement, avec des tendances claires. Il incombe à l'utilisateur de choisir le modèle approprié pour la région où semble se profiler un événement.
-%
-%En plus des librairies listées précédemment, le logiciel de visualisation intègre:
-%\begin{itemize}
-%	\item VroomGIS: une bibliothèque SIG pour l'affichage de données géoréférencées, développé par L. Schreiber au CREALP (\textit{Centre de recherche sur l'environnement alpin});
-%	\item wxPlotCtrl: une librairie permettant d'afficher des graphiques interactifs.
-%\end{itemize}
+\citet{Djerboua2001} applied the method developed by \citet{Guilbaud1997} in operational forecasting as part of the MAP project \citep[\textit{Mesoscale Alpine Programme}, see][]{Binder1996} during the special observation period \citep{Bougeault2001}. He noted that the 60$^{th}$ percentile was better to forecast precipitation amounts for common situations, but for strong to extreme events, the 90$^{th}$ percentile turned out to be a better indicator. It is therefore necessary to pay particular attention to the 90$^{th}$ percentile which, when reaching high values, may be indicative of a situation related to extreme precipitations, due the presence of several analogue dates with significant observed precipitations amounts in the distribution \citep{Djerboua2001}. \citet{Bontron2004} made the same observation: he found the 60$^{th}$ percentile to be best for occurrence forecasting, but the 90$^{th}$ percentile to be the most informative in order to forecast medium to high precipitation amounts ($P > P10/10$, one tenth of the 10-year return period value). In this regard, operators should pay particular attention to the distribution of the best analogues. If, for example, it is shifted to higher values, there is a risk of under-estimating the event when considering the middle of the full distribution.
 
-% + check annexe D.6
+When comparing the performance of Meteo France numerical models along with the analogue method, \citet{Djerboua2001} concluded that the numerical models are better at predicting the current day, but the analogue method becomes more competitive for the following lead times. It is indeed very interesting in early warning approaches, as it is able to identify a potentially critical situation one week ahead.
 
-%When working on a region with different parameterizations per subregion, these parameterizations are applied to the wh
+All analogy methods rely on atmospheric circulation information, while some add subsequent levels of analogy on moisture or other thermodynamic predictors (see section \ref{sec:method:evolution}). However, these subsequent predictors were found to be relevant only on the first 3~lead times, and not much further, due to higher uncertainties in their forecast. This was found to be the case of moisture indexes and vertical velocity. The user has to keep this aspect in mind when interpreting forecasts over a range of lead times.
 
-%\citet{Djerboua2001} a appliqué la méthode développée par \citet{Guilbaud1997} en prévision opérationnelle dans le cadre du projet MAP \citep[\textit{Mesoscale Alpine Programme}, voir][]{Binder1996}, lors de la période spéciale d'observation \citep{Bougeault2001}. Il a relevé que le quantile 60~\% prévoyait le mieux les quantités de précipitations pour les situations normales, mais que lorsque la pluie observée était forte à extrême, le quantile 90~\% s'avérait être un meilleur témoin. Il convient donc de porter une attention particulière au quantile 90~\% qui, lorsqu'il monte brutalement, peut être le signe d'une situation propice à un événement de nature extrême, par la présence de plusieurs analogues dans la distribution avec des cumuls observés significatifs \citep{Djerboua2001}. En opérationnel, les prévisionnistes doivent prêter attention à la distribution des meilleures analogues. Si, par exemple, celle-ci est décalée vers des valeurs plus élevées, il y a un risque de sous-estimer l'événement.
-
-%En comparant les performances des modèles de Météo France avec la méthode des analogues, il en a conclu que les modèles numériques sont meilleurs pour la prévision du jour même, alors que les analogues deviennent plus concurrentielles (et meilleures pour les bassins de taille moyenne) pour les échéances suivantes.
-
-% En opérationnel, ce second niveau est pertinent jusqu'à une échéance de 3~jours. Au-delà, les prévisions d'humidité ne sont pas assez performantes pour être utiles.
-
-%En analysant les distributions de précipitations issues des analogues, \citet{Bontron2004} a identifié le quantile 60~\% comme étant le plus informatif pour l'occurrence des précipitations, et le quantile 90~\% pour la prévision des précipitations moyennes à fortes ($P > P10/10$, soit un dixième de la pluie décennale).
-
-%En opérationnel, ces niveaux supplémentaires se sont montrés utiles pour les deux à trois premières échéances, mais au-delà, toutes les méthodes deviennent équivalentes à l'analogie sur la circulation, car les autres variables, comme la vitesse verticale, sont alors mal prévues.
 
 \section{AtmoSwing Optimizer}
 % TODO: write
