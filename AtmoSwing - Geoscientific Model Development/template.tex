@@ -685,7 +685,7 @@ The sequential calibration cannot optimize all parameters of the AM, as several 
 We thus decided to explore optimization techniques that can handle all parameters fully automatically. We first assessed the \citet{Nelder1965a} method, which was found to be unsuitable for this purpose. Due to the complexity of the AM and its non-linearity, a technique of global optimization is required. We thus implemented Genetic algorithms in AtmoSwing Optimizer in order to perform a global optimization of the AM. This article is not about discussing the results of such a technique, but describing the details of the implementation. The demonstration of the benefit brought by such an approach is the topic of another article. The details of the implementation being numerous, the description is provided in the next dedicated section (\ref{sec:gas}).
 
 
-\section{Genetic algorithms}
+\section{Optimization using Genetic algorithms}
 \label{sec:gas}
 
 Genetic algorithms (GAs) come from the world of stochastic optimization, more specifically from metaheuristic approaches. These are stochastic iterative algorithms that behave like search algorithms by exploiting the characteristics of a problem and are particularly suitable for complex parameter spaces.
@@ -711,6 +711,12 @@ Two conditions guarantee in theory the convergence to the global optimum \citep{
 The GAs optimize a population of individuals (parameter sets). Each individual contains a chromosome (parameters of the AM in our case). We call gene every parameter that constitutes the chromosome. The parameters to optimize have long been coded in binary form and assembled as strings in the canonical GAs \citep{Goldberg1989}. Encoding and decoding steps were needed to transform the variable from its floating-point representation into its binary representation, and vice versa, which introduce quantification errors \citep{Haupt2004}. According to \citet{Holland1992b}, working with binary chromosomes was supposed to be more efficient \citep{Goldberg1990a, Back1993b}. However, more and more applications use floating-point representations, allowing to avoid the coding and decoding steps and the quantification errors \citep{Haupt2004}, and which also often resulted in a performance improvement \citep{Goldberg1990a}. It is thus now considered that for continuous variables, a floating-point representation is more suited \citep{Michalewicz1996, Herrera1998a, Haupt2004, Back1996b, Gaffney2010a}. 
 
 There are numerous implementation variants of GAs often optimal for a given problem \citep{Hart1991a,Schraudolph1992a}. However, the structure of the method (Figure \ref{fig:structure_gas}) resulting from the work of \citet{Holland1992b} is common to most applications \citep{Back1993b}. The divergences are the operators implementation, through significantly different algorithms, which has an important effect on the results \citep{Gaffney2010a}.
+
+\begin{figure}[htb]
+	\includegraphics[width=8.3cm]{figures/figure_structure_gas.pdf}
+	\caption{Genetic algorithms operational flowchart}
+	\label{fig:structure_gas}
+\end{figure}
 
 All operators we used and their options, applied to real coding, are described in the following sections. Many other operators exist, but we will only present the ones we evaluated.
 
@@ -975,7 +981,7 @@ This comparison required tens of thousands of optimizations that were performed 
 	
 	$N\approx200$ for a bit more complex AM (1 level of analogy with 4 pressure levels, or 2 level of analogy with less pressure levels),
 	
-	$N\approx500$ for significantly more complex AMS (2-3 levels of analogy with 4 pressure levels for the atmospheric circulation, and 2 to 4 levels for the moisture analogy),
+	$N\approx500$ for significantly more complex AMs (2-3 levels of analogy with 4 pressure levels for the atmospheric circulation, and 2 to 4 levels for the moisture analogy),
 	
 	We didn't find any improvement with $N>500$, the results were even surprisingly of a lower quality. However, this cannot be generalized and depends on the AM to optimize, and supposedly on the characteristics of the processes generating the precipitations in a given region. 
 	
@@ -1065,7 +1071,7 @@ In order to make an optimization of the AM with genetic algorithms, it may be wi
 
 
 \begin{acknowledgements}
-Thanks to Lucien Schreiber and Richard Metzger for their programming advices. Thanks to Renaud Marty for his active involvement in testing AtmoSwing against his code base.
+Thanks to Lucien Schreiber and Richard Metzger for their programming advices. Thanks to Renaud Marty for his active involvement in testing AtmoSwing against his code base. Thanks to Hamid Hussain-Khan of the University of Lausanne for his help and availability, and for the intensive use of the cluster he is in charge of.
 
 Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton and the Water, Land and Sanitation Service of the Vaud Canton who financed the MINERVE project which started this research. NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. Precipitation time series provided by MeteoSwiss. 
 \end{acknowledgements}

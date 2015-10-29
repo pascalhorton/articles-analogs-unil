@@ -207,6 +207,18 @@ Our ambition was then to assess the feasibility of an automatic optimization of 
 
 \citet{Horton2012a} assessed the ability of the \citet{Nelder1965a} method based on a simplex approach. This technique didn't provide satisfying results and failed at identifying the global optimum. Indeed, the results didn't converge and many local optimums came out. The parameter space of the analogue method is very complex and not appropriate for a linear optimization technique. Genetic algorithms were found to be much more relevant for such application.
 
+\section{Genetic algorithms}
+
+%TODO: write this section
+
+
+Practically, GAs allow rapidly approaching satisfactory solutions, but they do not provide the optimum solution for sure \citep{Zitzler2004a}. It is indeed mainly a matter of time. When the optimizer gets closer to the global optimum, any new improvement takes more time to appear (see figure \ref{fig:evolution}), and the final adjustment of the parameters is very time consuming \citep{Back1993a}. For problems that require a significant amount of time in order to evaluate the objective function, as in our case, we have to limit the number of generations to get reasonable processing time. Thus, different acceptable solutions can result from one or more optimizations \citep{Holland1992b}. This is a strength and a weakness of GAs: they are very good at exploring complex parameter spaces in order to identify the most promising areas, but they will not necessarily find the best solution with the optimal values of all parameters \citep{Holland1992b}.
+
+
+
+
+
+
 
 \section{Case study description}
 
@@ -853,13 +865,6 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 %  \caption{Enter the caption for your figure here.  Repeat as
 %  necessary for each of your figures. Figure from \protect\cite{Knutti2008}.}\label{f1}
 %\end{figure}
-
-
-\begin{figure}[htb]
-	\centerline{\includegraphics[width=7.9cm]{figures/figure_structure_gas.pdf}}
-	\caption{Genetic algorithms operational flowchart}
-	\label{fig:structure_gas}
-\end{figure}
 
 
 \begin{figure}[htb]
