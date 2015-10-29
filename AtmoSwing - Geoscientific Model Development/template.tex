@@ -622,10 +622,10 @@ The CRPS can be decomposed into several indicators, also implemented into AtmoSw
 Finally, the rank diagram \citep{Talagrand1997} and its accuracy as defined by \citet{Candille2005} are also available.
 
 
-\subsection{The classic calibration approach}
+\subsection{The sequential calibration}
 \label{sec:atmoswing-calibration}
 
-The calibration procedure that we call ''classic'', but which is also named optimization procedure \cite[eg. by ][]{BenDaoud2015}, was developed by \citet{Bontron2004} at the LTHE laboratory (INPG, Grenoble). It determines the optimal parameters for the different variables of each level of analogy. The analogy levels (eg. the atmospheric circulation or moisture index) are calibrated sequentially. The procedure consists of the following steps \citep{Bontron2004}:
+The calibration procedure that we call ''sequential'' or ''classic'', but which is also named ''optimization'' \cite[eg. by ][]{BenDaoud2015}, was developed by \citet{Bontron2004} at the LTHE laboratory (INPG, Grenoble). It is a semi-automatic procedure that determines the optimal parameters for the different variables of each level of analogy. The analogy levels (eg. the atmospheric circulation or moisture index) are calibrated sequentially. The procedure consists of the following steps \citep{Bontron2004}:
 
 \begin{enumerate}
 	\item Manual selection of the following parameters:
@@ -646,15 +646,43 @@ The calibration procedure that we call ''classic'', but which is also named opti
 	\item Finally, the numbers of analogues are re-assessed for the different levels of analogy. This is done iteratively by varying the number of analogues of each level in a systematic way.
 \end{enumerate}
 
-The calibration is thus done in successive steps. Previously calibrated parameters are generally not reassessed. The advantage of this method is that it is fast, it provides acceptable results, and it has low computing requirements. We added small improvements to this method by allowing the spatial windows to do other moves, such as: (1) increase in 2 simultaneous directions, (2) decrease in 1 or 2 simultaneous directions, (3) expansion or contraction (in every direction), (4) shift of the window (without resizing) in 8 directions (including diagonals), and finally (5) all the moves described above, but with a factor of 2, 3, or more. For example, we try to increase by 2 units in one (or more) direction. This allows to skip one size that may not be optimal.
+The calibration is thus done in successive steps, on a limited number of parameters. Previously calibrated parameters are generally not reassessed. The advantage of this method is that it is fast, it provides acceptable results, and it has low computing requirements. 
 
-These supplementary steps often result in spatial windows that are a bit different, but the performance gain is rather marginal. These methods are available in the open source software AtmoSwing (Analogue Technique MOdel for Statistical Weather forecastING, www.atmoswing.org).
+We added small improvements to this method, and named it ''classic+'', by allowing the spatial windows to do other moves, such as: (1) increase in 2 simultaneous directions, (2) decrease in 1 or 2 simultaneous directions, (3) expansion or contraction (in every direction), (4) shift of the window (without resizing) in 8 directions (including diagonals), and finally (5) all the moves described above, but with a factor of 2, 3, or more. For example, we try to increase by 2 units in one (or more) direction. This allows to skip one size that may not be optimal. These supplementary steps often result in spatial windows that are a bit different, but the performance gain is rather marginal.
 
 \subsection{Monte-Carlo analysis}
+
+A Monte-Carlo analysis is also implemented in AtmoSwing. It performs thousands assessments of random parameters within given ranges. This method is not efficient to find the best parameters set, but helps to better understand the sensitivity of the parameters.
+
+For example, a Monte-Carlo analysis was performed on the PC-2Z (Table \ref{table:R1}) method for the southeastern crests on the upper Rh\^{o}ne catchment in Switzerland, with 10,000 random selections of its parameters according to a uniform law (the analysis was also performed in other subregions of the upper Rh\^{o}ne catchment in Switzerland, but the conclusions depicted here are similar). Unlike conventional calibration, the spatial windows on Z500 and Z1000 were not necessarily overlapping. Thus, 9 parameters were varying together (8 for the spatial windows and 1 for the number of analogues)
+
+Figure \ref{figure:monte_carlo_r1} presents the resulting scatter of random exploration of the parameters space, along with the results of the sequential calibration (red cross). Results are illustrated here for the 4 parameters defining the spatial window on Z500. Despite the high number of simulations, the upper portion of the distributions seems incomplete, and the score of the sequential calibration is not matched. Although the method is poor to find efficiently the best parameters, it is informative as to the shape of the scatter plots.
+
+The shape of the scatter plots from Figure \ref{figure:monte_carlo_r1} reveals a low sensitivity as to the exact location of the spatial windows. There is a maximum threshold for minimum longitudes and latitudes and, conversely, a minimum threshold for maximum latitudes and longitudes, but outside of these limits, the distribution slope is more gentle. A spatial window can thus be a bit larger than its optimal size without a significant drop in performance, as long as it includes at least one critical region. This was also observed by \citet{Bontron2004}, who noted that ''\textit{performance slowly decrease if we consider a slightly too large window, while the use of too small windows results in strong performance loss}''. The dilution of a part of the relevant synoptic information has therefore not necessarily a significant negative impact on performance, while ignoring some of this information leads to undesirable loss of performance. It is the same for the analogues number (not shown), for which, past an optimum, the upper slope of the distribution decreases slowly.
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/monte_carlo_r1.png}
+	\caption{Example of a Monte Carlo analysis on the PC-2Z (Table \ref{table:R1}) method. Results are illustrated for the 4 parameters defining the spatial window on Z500, along with the results of the sequential calibration (red cross).}
+	\label{figure:monte_carlo_r1}
+\end{figure}
+
+The same analysis has been conducted on the method with 2 levels of analogy, PC-2Z-2MI (Table \ref{table:R2}), and the results on the number of analogues on the 1st and the 2nd level are illustrated in Figure \ref{figure:monte_carlo_r2}. One can see that the method is not very sensitive to the number of analogues on the first level of analogy, when considering a second level afterwards, as long as this number is not too small. The trend on the second level is more apparent, but a large tolerance seems possible.
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/monte_carlo_r2.png}
+	\caption{Example of a Monte Carlo analysis on the PC-2Z-2MI (Table \ref{table:R2}) method. Results are illustrated for the number of analogues on the 1st and 2nd level of analogy, along with the results of the sequential calibration (red cross).}
+	\label{figure:monte_carlo_r2}
+\end{figure}
+
+The use of such a random method allows informing on the parameters sensitivity, and so on the importance of the expected precision of the calibration results. It helps understanding how different parameterizations can end up to relatively similar performances. Using Mote Carlo analyses allows to easily display the parameters sensitivity while allowing a high degree of freedom to the method. 
 
 
 \subsection{Global optimization}
 \label{sec:atmoswing-optimization}
+
+The sequential calibration cannot optimize all parameters of the method, as several are manually selected, such as the meteorological variable, the pressure level and the temporal windows. Testing multiple combinations of these can be cumbersome, especially when considering multiple predictors within the same level of analogy. Moreover, the parameters are calibrated successively within the same level of analogy, and in-between them.
+
+We thus decided to explore optimization techniques that can handle all parameters fully automatically. We first assessed the \citet{Nelder1965a} method, which was found to be unsuitable for this purpose. Due to the complexity of the method and its non-linearity, a technique of global optimization is required. We thus implemented Genetic algorithms in AtmoSwing Optimizer in order to perform a global optimization of the analogue method. This article is not about discussing the results of such a technique, but describing the details of the implementation. The demonstration of the benefit brought by such an approach is the topic of another article. The details of the implementation being numerous, the description is provided in the next dedicated section (\ref{sec:gas}).
 
 
 \section{Genetic algorithms}
