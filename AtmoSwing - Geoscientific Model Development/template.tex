@@ -92,6 +92,29 @@
 
 
 
+
+
+
+
+
+%Reasoning by analogy is rather widespread in different domains of sciences or engineering. In hydrometeorology, it consists, given a certain situation, in looking into the past to retrieve situations that can be considered similar and therefore with consequences that may be expected similar to the situation at hand. By situation, we often think of the atmospheric situation over a rather wide domain, but it may also be the atmospheric profile at a radio-sounding station or the air-snow state at a given mountain observing station. And usually, by consequence, we often mean and focus on only one given variable of interest (but sometimes more than one), like the occurrence of  hail, storm, avalanches, or the wind, the radiation, or the precipitation over a given domain and duration period?
+
+%As a general setting, the required ingredient are a couple of archives, one describing the situation through as many variables as possible, called predictors, and another one giving, for those situations, the value of the variable of interest for engineering purpose, called predictand.  Obviously, one understands that the longest and the richest the candidate archive of predictors, the more chance there will be to extract good analogs for a target situation, and to derive what could be the resulting value of the predictand, or at least a conditional range constrained by the predictors values.
+
+%Usually, this predictand value could be derived in a rather physical-dynamic approach  by modelising the chain of processes linking the predictors to the predictand. However, the model may be extremely complex, time consuming, or some processes may be poorly known or parameterised. Conversely, the hope is that given the past archive of predictors, enough situations analog to a target one could be found so that a reasonable value, or set of values, will be found for the predictand, at a reasonable coding and computing-time costs. This is particularly true for  a predictand much required in hydrometeorological applications, namely the precipitation amount over a given domain and time duration. The processes involved range from large scale dynamical states of the atmosphere down to very small scale microphysical processes that are not all documented and still less monitored, so that models proposing such simulation are extremely complex, data-demanding, and time consuming. Therefore the idea that, with an appropriate set of archives, one may by pass all these modeling aspects by recuperating the predictang values observed from past analog situations?
+
+%The purpose of this paper is not to argue in favour or against this approach, which has proved to be used efficiently either in forecasting or more recently in climate studies, and capable of challenging more classical approaches based on meteorological modeling.  In forecasting, it has been used mainly by practitioners, notably hydropower companies or flood forecasting services, while in climate studies, it is more and more used to downscale the results of global climate model simulation runs. In this last case, although the GCM represents the large or regional scale evolutions of the atmosphere, it would be far too computer intensive to get down to variables such as precipitation at a rather small and representative scale. Therefore the idea to rely on past observations to bypass these unaffordable small scale simulations and to go from the large scale situation proposed by the GCM to the end variables like precipitation by searching anlogs in the past and present archive. 
+
+%However, how efficient, useful or promising it may seem, this approach is not straightforward. Usually the type of predictand is imposed by some practical needs or constraints. Considering a precipitation variable, ones has to decide upon the duration of accumulation, (e.g. from 6hourly to daily or several day totals) according for example to the size or response time of a the catchments to be managed. But we must also consider the availability and quality of a long enough time serie.
+
+%As for the predictors describing the large scale predictors, hopefully we can now rely on products elaborated collectively by the atmospheric community and called reanalyses, commonly available over 40 years or more, and easily accessible. However, many problems remain and choices to be done? Given the predictand selected, the different values of which are hypothetically associated with different large scale situations, how should we characterize such situation? Which predictors are the most important, over which spatial and time domains?. Obviously we known that looking for two meteorological situations that would be similar over the whole globe is hopeless (an argument used against the analog approch see vanderwool????) , but we feel, and verify, that there is no such need, and that similarity can be restricted to a rather small domain, but which, given our specific predictand? How many predictors should we use, given that they are often interelated, and many may ne useless for our purpose? How many analogs should be extracted to propose an appropriate predictand value? etc?
+
+%Therefore the approach appears predictand-specific but also dependent on the archive of predictors. And many choices have to be made, or many paremeters to be fixed, in order to try to optimise it. Up to now, this has be done partly manually,  essentially sequentially, one choice after another, without systematic calling into question? Therefore the risk of staying on a local optimum that does not fully exploit the potential of the method and of the archive.
+
+%This is the problem addressed by this paper : how could we hopefully get to or come closer to the optimum  that could be expected from the available data. 
+
+
+
 \section{The analogue method}
 
 As AtmoSwing does not rely heavily on one variant of the analogue method (AM), but can implement different parametrization, we gathered here several references of possible implementations as well as the main evolution steps of the AM. This latter summarizes the improvements that were brought, as well as discontinued approaches that were found less relevant (such as the use of PCA on the predictors).
@@ -184,7 +207,7 @@ Then, the following levels of analogy are listed. They may start with an optiona
 In order to keep the identifier simple, no value of atmospheric level neither time of observation is specified. Moreover, the analogy criterion is not specified and is supposed to be S1 for Z and RMSE for the other variables. If anything changes from these conventions, it can be noted as a flag. The flag (lower case) can also give other information, such as the optimization method:
 \begin{itemize}
 	\setlength\itemsep{-2px}
-	\item cc : classic calibration (can be omitted as considered as default, see section \ref{sec:classic})
+	\item sc : sequential calibration (can be omitted as considered as default, see section \ref{sec:atmoswing-calibration})
 	\item go : global optimization (by means of genetic algorithms for example, see section \ref{sec:gas})
 \end{itemize}
 
@@ -464,11 +487,25 @@ The Forecaster module allows to process operational forecasts. This software pro
 	\label{figure:atmoswing-forecaster-gui}
 \end{figure}
 
-The software first downloads the predictor describing the target situation, such as GFS outputs \citep[Global Forecast System,][see section \ref{sec:data}]{Kanamitsu1991,Kanamitsu1989}. It then interpolates the gridded data to match the resolution of the archive (for example 2.5\textdegree\ in the case of the NCEP/NCAP reanalysis I). The analogues dates are next sought according to the provided parameterization, and the predictand data are associated with the corresponding dates. The results are finally saved in auto-describing NetCDF files. If required, a synthetic XML is generated for an easier integration on a web platform for example. Every step of the forecast, from the predictor downloading to the final results, is done in the software (and controlled through configuration), without use of external scripts (e.g. for data conversion).
+The software first downloads the predictor describing the target situation, such as 1\textdegree\ GFS outputs \citep[Global Forecast System,][see section \ref{sec:data}]{Kanamitsu1991,Kanamitsu1989}. It then interpolates the gridded data to match the resolution of the archive (for example 2.5\textdegree\ in the case of the NCEP/NCAP reanalysis I). The analogues dates are next sought according to the provided parameterization, and the predictand data are associated with the corresponding dates. The results are finally saved in auto-describing NetCDF files. If required, a synthetic XML is generated for an easier integration on a web platform for example. Every step of the forecast, from the predictor downloading to the final results, is done in the software (and controlled through configuration), without use of external scripts (e.g. for data conversion).
 
 The command-line interface allows to start the process for the most recent date, a selected past date, or the last $x$ days (as long as the predictors are available on the provider server). When there is nothing to process (no new predictor data available), the execution just stops, leading to no loss of computing resources. The recommended use is thus to set up a cron task on a Linux server in order to trigger the forecast every 30 minutes. When using GFS outputs, this would provide 4 forecasts a day with a reduced delay between GFS outputs availability and the analogue forecast.
 
 A user interface allows the creation of the precipitation database. Its generation consists in extracting the time series from text files in order to process them and save a database in the NetCDF format. During the process, Gumbel adjustments are automatically calculated in order to determine the values of different return periods. The time series are normalized by a selected return period (default 10~years) and their square root is eventually processed. The final database file contains both the raw and the normalized series, as well as characteristics of the gauging stations and some metadata.
+
+
+
+%TODO: complete that:
+
+%Lors du passage de la prévision parfaite à la prévision opérationnelle, il faut tenir compte de l'incertitude croissante des données utilisées. Une option, pour en tenir compte, consiste à moduler le nombre d'analogues et à l'augmenter avec l'éloignement de l'échéance. En effet, pour des échéances lointaines, le modèle global n'est plus informatif, et la prévision des pluies devient la distribution climatologique, donc celle obtenue en prenant toutes les journées de l'archive comme analogues. Cela ne peut se faire que par apprentissage sur une archive suffisamment longue de prévisions du modèle considéré. La longueur de cette archive pose elle-même problème, car il faut au minimum 3 ou 4 ans d'archive pour que les résultats (le choix optimal du nombre d'analogues à utiliser pour chaque échéance) se stabilisent. De plus, sur de telles périodes, le modèle numérique a souvent évolué; une archive reconstituée des prévisions à l'aide d'une version actuelle du modèle est donc préférable (voir section \ref{sec:donnees:resimulations_GFS} sur les reprévisions).
+
+%Toutefois, cette analyse étant conséquente, elle n'a pas pu être réalisée dans le présent travail. Nous nous basons alors sur les travaux de \citet{Thevenot2004}, qui a réalisé cet exercice pour le territoire français en partant de l'archive de prévision du modèle européen (environ 5 années de prévision).
+
+%\citet{Thevenot2004} a calibré le nombre d'analogues pour les 5 premières échéances. Puisque, pour certains modèles, nous considérons une échéance jusqu'à 7 jours, nous avons cherché à extrapoler la courbe qu'il proposait. Afin de rester le plus objectif possible, nous avons calé une loi polynomiale du deuxième ordre sur ces valeurs. Nous considérons donc les deux premières échéances constantes, avec un nombre d'analogues égal à celui obtenu en prévision parfaite (lors de la calibration avec les réanalyses), puis nous calons la courbe sur les échéances suivantes. Sur cette base, nous extrapolons le nombre d'analogues à 7 jours (voir Figure \ref{fig:implementation:Ajustement_nb_analogues_echeances}).
+
+%Cette approche est certes discutable, une recalibration restant préférable, mais elle nous permet de nous approcher de nombres d'analogues bien plus adaptés en opérationnel que les nombres issus de la calibration en prévision parfaite. Ces courbes ne devraient pas non plus être extrapolées beaucoup plus loin, car les erreurs ainsi effectuées vont certainement croître.
+
+%À l'ère de la prévision d'ensemble, il serait également intéressant de considérer ce type de données pour la prévision par analogie, d'autant plus que \citet{Thevenot2004} en a obtenu un gain en performances. Les paramètres, plus particulièrement le nombre d'analogues, doivent être réévalués pour une application à un modèle ensembliste.
 
 
 \section{AtmoSwing Viewer}
@@ -522,7 +559,7 @@ AtmoSwing Viewer relies on workspaces to specify the path to the forecast direct
 
 When comparing the performance of Meteo France numerical models along with the AM, \citet{Djerboua2001} concluded that the numerical models are better at predicting the current day, but the AM becomes more competitive for the following lead times. It is indeed very interesting in early warning approaches, as it is able to identify a potentially critical situation one week ahead.
 
-All AMs rely on atmospheric circulation information, while some add subsequent levels of analogy on moisture or other thermodynamic predictors (see section \ref{sec:method:evolution}). However, these subsequent predictors were found to be relevant only on the first 3~lead times, and not much further, due to higher uncertainties in their forecast. This was found to be the case of moisture indexes and vertical velocity. The user has to keep this aspect in mind when interpreting forecasts over a range of lead times.
+All AMs rely on atmospheric circulation information, while some add subsequent levels of analogy on moisture or other thermodynamic predictors (see section \ref{sec:method:evolution}). However, these subsequent predictors were found to be relevant only on the first 3~days, and not much further, due to higher uncertainties in their forecast. This was found to be the case of moisture indexes and vertical velocity. The user has to keep this aspect in mind when interpreting forecasts over a range of lead times.
 
 
 \section{AtmoSwing Optimizer}
@@ -1055,6 +1092,40 @@ In order to make an optimization of the AM with genetic algorithms, it may be wi
 %En analysant le biais de la méthode des analogues en prévision parfaite (voir section \ref{sec:etat_art:calibration}), il a observé que $F(0)$ et $F_{+}$ n'étaient que très légèrement biaisés, et que les biais observés précédemment avaient donc une origine externe (l'échantillon des prévisions du modèle numérique global utilisé). Toutefois, en appliquant un conditionnement par $F(0)$, il est apparu que \og \textit{si la journée cible est prévue pour être plutôt humide ($F(0) \leq 0.10$), les fréquences de $F_{+}$ sont surestimées (et les quantiles de précipitations sont dès lors sous-estimés)}\fg{}, et au contraire, que \og \textit{si elle est prévue pour être plutôt sèche avec une probabilité moyenne ($F(0) > 0.20$), alors les fréquences $F_{+}$ sont sous-estimées (et les quantiles de précipitations sont dès lors surestimés)}\fg{}. Il a donc proposé une méthode de correction a priori en appliquant un coefficient correctif sur chaque fréquence quantilique en fonction de $F(0)$, puis en déterminant la distribution a posteriori, ajustée selon la loi Gamma à deux paramètres. Cette correction s'est avérer améliorer les performances des prévisions pour les journées à fortes précipitations.
 
 %Il a encore proposé une désagrégation temporelle à 6 et 12~h des prévisions de la méthode des analogues pour une utilisation opérationnelle dans une chaîne hydrométéorologique. La meilleure méthode identifiée consistait à utiliser les cumuls prévus par la méthode des analogues à un pas de temps journalier, et de leur appliquer la chronologie des prévisions d'ensemble, lesquels reproduisent bien la répartition infrajournalière.
+
+
+
+
+
+%La méthode des analogues est habituellement calibrée sur toute l'année, et la paramétrisation est identique pour chaque saison. Or les influences principales peuvent changer d'une saison à l'autre, et nous pourrions imaginer que les paramètres optimaux pour une période de l'année ne le soient pas pour une autre. Ainsi, une calibration par saison mérite d'être explorée. Cela amène néanmoins quelques difficultés dans les périodes de transition entre saisons, où nous pourrions ne pas être optimaux. De plus, nous pouvons parfois rencontrer des épisodes caractéristiques d'une certaine saison dans une autre.
+
+%Il nous semble nécessaire de poursuivre les recherches dans l'approche par analogie, spécifiquement pour les événements de fortes précipitations, afin d'être en mesure de bien les caractériser. L'élaboration de paramétrisations de la méthode des analogues optimisées pour les extrêmes nous semble intéressante, tant que celles-ci sont considérées en parallèle de méthodes optimales pour l'ensemble des situations.
+
+%Les méthodes que nous proposons, ainsi que les méthodes de référence, décrivent en premier lieu l'information de la circulation atmosphérique, puis en second, celle de l'humidité. Après les événements de 2011 en Ligurie, nous estimons qu'il serait intéressant d'ajouter un troisième niveau d'analogie pour caractériser le déclenchement des précipitations, et donc pour déterminer si les forts cumuls sont plus probables à proximité des côtes en raison d'une très forte convection, ou si les masses d'air humides sont en mesure d'atteindre le bassin du Rhône. \citet{BenDaoud2010} intègre les mouvements verticaux dans la recherche d'analogie, mais nous avons vu que cette variable n'est pas pertinente pour notre région. Des variables de nature thermique semblaient pouvoir améliorer la prévision dans le bassin supérieur du Rhône, particulièrement pour les crêtes du sud-est.
+
+%Nous avons travaillé ici avec des fenêtres spatiales rectangulaires, où tous les points ont le même poids. \citet{Bliefernicht2010} avait introduit une pondération des points de grille en adaptant des formes elliptiques sur les champs des variables synoptiques. La méthode des analogues qu'il a considérée étant différente de notre version, le succès de cette démarche n'est pas garanti. Toutefois, il serait intéressant de l'évaluer sur les différents niveaux d'analogie. De même, nous pourrions imaginer calculer les gradients réels en tenant compte des distances horizontales. Ceci pourrait permettre de tenir compte de la déformation de la grille, laquelle s'accentue lorsque l'on s'éloigne de l'équateur.
+
+%Les outils d'optimisation globale permettent d'explorer automatiquement des jeux de données pour en extraire les variables les plus pertinentes. Il devient ainsi possible de chercher à prévoir un autre prédictand, par exemple la température, la limite des chutes de neige, l'occurrence de grêle, ou le vent, en laissant les algorithmes choisir les meilleures variables et les paramètres associés.
+
+%Il semble que la méthode des analogues doive être adaptée spécifiquement à chaque région, et que cela n'est pas un défaut, mais est lié à une réalité physique. Ainsi, plusieurs études proposent des paramétrisations différentes en lien avec les processus météorologiques propres au lieu où elles ont été appliquées:
+
+\vspace{2mm}
+\begin{itemize}\addtolength{\itemsep}{0.5\baselineskip}
+	\item %Dans les Cévennes, \citet{Marty2010} a identifié le niveau 925~hPa comme étant optimal pour l'analogie d'humidité. Les masses d'air arrivant dans cette région par un flux de sud viennent en effet de se charger en humidité sur la Méditerranée, et cette humidité est vraisemblablement encore située dans les basses couches.
+	\item %Dans les grandes plaines de l'est de la France, \citet{BenDaoud2010} a au contraire trouvé que le niveau 700~hPa est préférable. Cette humidité provient de l'Atlantique et se trouve effectivement transportée à cette altitude par la circulation générale.
+	\item %Nous avons également identifié le niveau 700~hPa comme étant optimal pour la comparaison du flux d'humidité dans le bassin alpin du Rhône. Cette humidité, même si elle peut provenir en partie de la Méditerranée, doit franchir la barrière des Alpes pour être efficace en termes de précipitations. Le niveau 700~hPa doit donc correspondre à une certaine réalité liée à l'altitude moyenne des bassins versants affectés et aux observations des radiosondages réanalysées par le modèle numérique global.
+\end{itemize}
+\vspace{2mm}
+
+%De même, la taille optimale des bassins cibles dépend de leur environnement topogra-phique, ainsi que des principales influences météorologiques. Ainsi, l'optimum semble se situer entre 200 et 400~km$^{2}$ pour les Cévennes \citep{Bontron2004}, et entre 3000 et 6000~km$^{2}$ pour les grandes plaines de l'est de la France \citep{BenDaoud2010}. De même, certaines variables prédicteurs (p.ex. la vitesse verticale) n'ont un sens que pour ces grands bassins, en raison, entre autres, de leur résolution (2.5\degres). La vitesse verticale ne présente pas d'intérêt dans le bassin du Rhône en Suisse, en raison de sa petite taille relativement aux données synoptiques, et en raison du rôle dominant joué par la topographie. Il restera donc toujours des adaptations locales à faire pour utiliser la méthode dans une nouvelle région.
+
+
+%Il est également important d'introduire la technique de correction du biais développée par \citet{Marty2010}. De plus, il serait encore prudent de réoptimiser au moins le nombre d'analogues en fonction de l'échéance. En effet, celui-ci a été approximé sur la base de travaux réalisés dans un contexte différent.
+
+
+%Pour ce qui est de la méthode des analogues, des indicateurs issus des détails de la prévision, par exemple l'identification automatique d'une différence entre la distribution globale et celle des meilleures analogues, pourraient s'avérer utiles. Une autre information possible serait une interprétation semi-automatique proposant le quantile de la distribution qu'il est conseillé de considérer.
+
+%Une désagrégation temporelle des précipitations journalières serait nécessaire pour l'alimentation d'un modèle hydrologique. Il existe différentes techniques permettant de réaliser une série temporelle infrajournalière, dont celle présentée par \citet{Marty2010}, qui a l'avantage de se rapprocher de la chronologie attendue de l'événement. Nous pourrions également imaginer utiliser les cumuls prévus par les analogues pour mettre à l'échelle les grilles issues des prévisions du modèle COSMO-2, tout en exploitant leur cohérence spatiale.
 
 
 \conclusions  %% \conclusions[modified heading if necessary]
