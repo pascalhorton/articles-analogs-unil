@@ -88,30 +88,20 @@
 
 
 \introduction  %% \introduction[modified heading if necessary]
-% TODO: write
 
+Reasoning by analogy is rather widespread in different domains of sciences or engineering. In hydrometeorology, it consists, given a certain situation, in looking into the past to retrieve situations that can be considered similar and therefore with consequences that may be expected similar to the situation at hand. By situation, we often think of the atmospheric situation over a rather wide domain, but it may also be the atmospheric profile at a radio-sounding station or the air-snow state at a given mountain observing station. By consequence, we often focus on one (or more) local variable of interest, such as the occurrence of hail, storm, avalanches, or the amount of wind or precipitation over a given region.
 
+As a general setting, the required ingredient are a couple of archives, one describing the situation through different variables, called predictors, and another one giving, for those situations, the value of the local variable of interest for engineering purpose, called predictand.  Obviously, one understands that the longest and the richest the candidate archive of predictors, the more chance there will be to extract good analogues for a target situation in order to derive a conditional range of predictand values. As for the predictors, we can now hopefully rely on rich reanalysis products, commonly available over 40 years or more, and easily accessible. 
 
+Usually, the predictand values could be derived in a rather physical-dynamic approach  by modeling the chain of processes linking the predictors to the predictand. However, the model may be extremely complex, time consuming, or some processes may be poorly known or parameterised. Conversely, the hope is that given the past archive of predictors, enough situations analogues to a target one could be found so that reasonable values will be found for the predictand, at a reasonable coding and computing-time costs. This is particularly true for a predictand much required in hydrometeorological applications, namely the precipitation amount over a given domain and time duration. The processes involved range from large scale dynamical states of the atmosphere down to very small scale microphysical processes, requiring models that are extremely complex, data-demanding, and time consuming. Therefore, with an appropriate set of archives, one may bypass all these modeling aspects by obtaining the predictand values observed from past analogue situations.
 
+The purpose of this paper is not to argue in favour or against this approach, which has proved to be used efficiently either in operational forecasting or more recently in climate studies, and which is capable of challenging more classical approaches based on meteorological modeling. In operational forecasting, it has been used mainly by practitioners, notably hydropower companies or flood forecasting services, while in climate studies, it is more and more used to downscale the results of global climate model simulation runs. In operational, it should however not to be considered as a substitution for numerical weather prediction models, but as a complement in order to get a fast and independent forecast that is known to be accurate several days in advance. It therefore enriches the analysis of a potential critical situation for flood forecasting, for example, and is very interesting in early warning.
 
+However, how efficient and useful it may seem, this approach is not straightforward. Usually the type of predictand is imposed by some practical needs or constraints. Considering a precipitation variable, ones has to decide upon the duration of accumulation, (e.g. from 6-hourly to daily or several day totals) according for example to the size or response time of a the catchments to be managed. We must also consider the availability and quality of a long enough time series. Moreover, the analogy is restricted to a selection of variables at a specific time and over optimized spatial domains, that are compared by means of a chosen criteria that can rank the candidate days from the archive with a distance quantification. The approach appears predictand-specific but also dependent on the archive of predictors. Thus, the analogy is defined by many parameters (choice of the predictor variable, the temporal and spatial windows, and the number of analogues to consider) that are not straightforward to determine. 
 
+Up to now, the optimization of the method has been undertaken by semi-automatic calibration procedures. However, the choice of predictor variables, pressure levels and temporal windows were still to be chosen manually before optimizing the spatial windows and the number of analogues. Moreover, the semi-automatic technique proceeds to the optimization sequentially, ignoring potential dependencies between the parameters of the method. Thus, optimizing the method with the semi-automatic technique is laborious, as many combinations of predictors (variables, pressure levels, temporal windows) have to be assessed. Moreover, due to its sequential approach, the risk of ending in a local optimum is high and can not be avoided. We thus propose a global optimization approach by means of Genetic algorithms, tailored to the analogue method (AM).
 
-
-%Reasoning by analogy is rather widespread in different domains of sciences or engineering. In hydrometeorology, it consists, given a certain situation, in looking into the past to retrieve situations that can be considered similar and therefore with consequences that may be expected similar to the situation at hand. By situation, we often think of the atmospheric situation over a rather wide domain, but it may also be the atmospheric profile at a radio-sounding station or the air-snow state at a given mountain observing station. And usually, by consequence, we often mean and focus on only one given variable of interest (but sometimes more than one), like the occurrence of  hail, storm, avalanches, or the wind, the radiation, or the precipitation over a given domain and duration period?
-
-%As a general setting, the required ingredient are a couple of archives, one describing the situation through as many variables as possible, called predictors, and another one giving, for those situations, the value of the variable of interest for engineering purpose, called predictand.  Obviously, one understands that the longest and the richest the candidate archive of predictors, the more chance there will be to extract good analogs for a target situation, and to derive what could be the resulting value of the predictand, or at least a conditional range constrained by the predictors values.
-
-%Usually, this predictand value could be derived in a rather physical-dynamic approach  by modelising the chain of processes linking the predictors to the predictand. However, the model may be extremely complex, time consuming, or some processes may be poorly known or parameterised. Conversely, the hope is that given the past archive of predictors, enough situations analog to a target one could be found so that a reasonable value, or set of values, will be found for the predictand, at a reasonable coding and computing-time costs. This is particularly true for  a predictand much required in hydrometeorological applications, namely the precipitation amount over a given domain and time duration. The processes involved range from large scale dynamical states of the atmosphere down to very small scale microphysical processes that are not all documented and still less monitored, so that models proposing such simulation are extremely complex, data-demanding, and time consuming. Therefore the idea that, with an appropriate set of archives, one may by pass all these modeling aspects by recuperating the predictang values observed from past analog situations?
-
-%The purpose of this paper is not to argue in favour or against this approach, which has proved to be used efficiently either in forecasting or more recently in climate studies, and capable of challenging more classical approaches based on meteorological modeling.  In forecasting, it has been used mainly by practitioners, notably hydropower companies or flood forecasting services, while in climate studies, it is more and more used to downscale the results of global climate model simulation runs. In this last case, although the GCM represents the large or regional scale evolutions of the atmosphere, it would be far too computer intensive to get down to variables such as precipitation at a rather small and representative scale. Therefore the idea to rely on past observations to bypass these unaffordable small scale simulations and to go from the large scale situation proposed by the GCM to the end variables like precipitation by searching anlogs in the past and present archive. 
-
-%However, how efficient, useful or promising it may seem, this approach is not straightforward. Usually the type of predictand is imposed by some practical needs or constraints. Considering a precipitation variable, ones has to decide upon the duration of accumulation, (e.g. from 6hourly to daily or several day totals) according for example to the size or response time of a the catchments to be managed. But we must also consider the availability and quality of a long enough time serie.
-
-%As for the predictors describing the large scale predictors, hopefully we can now rely on products elaborated collectively by the atmospheric community and called reanalyses, commonly available over 40 years or more, and easily accessible. However, many problems remain and choices to be done? Given the predictand selected, the different values of which are hypothetically associated with different large scale situations, how should we characterize such situation? Which predictors are the most important, over which spatial and time domains?. Obviously we known that looking for two meteorological situations that would be similar over the whole globe is hopeless (an argument used against the analog approch see vanderwool????) , but we feel, and verify, that there is no such need, and that similarity can be restricted to a rather small domain, but which, given our specific predictand? How many predictors should we use, given that they are often interelated, and many may ne useless for our purpose? How many analogs should be extracted to propose an appropriate predictand value? etc?
-
-%Therefore the approach appears predictand-specific but also dependent on the archive of predictors. And many choices have to be made, or many paremeters to be fixed, in order to try to optimise it. Up to now, this has be done partly manually,  essentially sequentially, one choice after another, without systematic calling into question? Therefore the risk of staying on a local optimum that does not fully exploit the potential of the method and of the archive.
-
-%This is the problem addressed by this paper : how could we hopefully get to or come closer to the optimum  that could be expected from the available data. 
+We will first present the AM along with various implementations, as the optimal version of the method may vary with the location of interest, and as all these can be processed with AtmoSwing. The software will then be presented, and its modules detailed, such as the Forecaster and the Viewer that are tools for operational use, and the Optimizer that allows optimizing the method for a given predictand time series. Finally, a section will be dedicated to the optimization by means of Genetic algorithm, and our recommended usage.
 
 
 
@@ -447,7 +437,7 @@ The source code in under version control (with Mercurial), and is open source (o
 
 \subsection{Modular approach}
 
-An AtmoSwing great strength is that it is designed to process analogy forecasting in a modular fashion. The structure of the AM (number of analogy levels, number of predictors) is built dynamically (Figure \ref{figure:flowchart_modules_atmoswing}), and nothing is fixed a priori. The software then performs successively as many analogy levels as the user specified, with all the predictors he wants. Each level of analogy processed results in an object containing target dates, analogue dates, values of the analogy criteria, and other data. This object can be saved in a NetCDF file and/or can be injected into a new analogy level. The whole structure of the AM is defined in an XML file generated by the user.
+An AtmoSwing great strength is that it is designed to process analogy forecasting in a modular fashion. The structure of the AM (number of analogy levels, number of predictors) is built dynamically (Figure \ref{figure:flowchart_modules_atmoswing}), and nothing is fixed a priori. The software then performs successively as many analogy levels as the user specified, with all the predictors he wants. Each level of analogy processed results in an object containing target dates, analogue dates, values of the analogy criteria, and other data. This object can be saved in a NetCDF file and/or can be injected into a new analogy level. The whole structure of the AM is defined in an XML file generated by the user. Even the time step of the method (6 or 24~hours for example) is a dynamic parameter.
 
 \begin{figure}[htbp]
 	\includegraphics[width=8.3cm]{figures/flowchart_modules_atmoswing.pdf}
@@ -520,7 +510,7 @@ The Viewer module allows displaying the resulting forecast files in an interacti
 	\label{figure:atmoswing-viewer-gui}
 \end{figure*}
 
-The software provides several levels of synthesis of the forecasts. When it is opened, it automatically loads the most recent forecasts. It first offers a quick overview of possible alerts by means of color codes on the lead time switcher (upper right in the GUI, see Figure \ref{figure:atmoswing-viewer-gui}), which synthesizes the worst case scenario, or in the alarms panel (on the left part of the GUI). The alarms panel offers a synthesis of the higher forecasted values over the region, for the different AMs and the different lead times. By default, the colors are expressed relatively to 10-year return period values, for the $90^{th}$ percentile (can be changed in the preferences). This higher level of synthesis allows to quickly identify potential critical situations in the days ahead.
+The software provides several levels of synthesis of the forecasts. When it is opened, it automatically loads the most recent forecasts, eliminating the need to manually open files. It first offers a quick overview of possible alerts by means of color codes on the lead time switcher (upper right in the GUI, see Figure \ref{figure:atmoswing-viewer-gui}), which synthesizes the worst case scenario, or in the alarms panel (on the left part of the GUI). The alarms panel offers a synthesis of the higher forecasted values over the region, for the different AMs and the different lead times. By default, the colors are expressed relatively to 10-year return period values, for the $90^{th}$ percentile (can be changed in the preferences). This higher level of synthesis allows to quickly identify potential critical situations in the days ahead.
 
 Then, the user can explore the forecasts more in details, starting from the map provided by the GUI (Figure \ref{figure:atmoswing-viewer-gui}). The map display the forecast of the selected parameterization (upper left) and the selected lead time (upper right). The displayed AM is by default a composite of the parameterization variants for the region, but the user can choose a specific parameterization for the whole region by opening the tree view and selecting a child element. We also allowed a display of all lead times on a single map by means of a symbolic representation on a circular band with a box for every lead time (Figure \ref{figure:atmoswing-viewer-snail}). The number of boxes is dynamically adjusted to the number of lead times. This representation offers a global spatiotemporal display for a chosen parameterization.
 
@@ -932,11 +922,18 @@ The evaluated and developed mutation operators are the following:
 	\begin{equation}
 	g_{n}^{'} = 
 	\left\lbrace \begin{array}{l l} 
-	g_{n} + \left(b_{n}-g_{n}\right) r_{2} \left(1 - \min \left\lbrace \dfrac{G}{G_{m,r}}, 1 \right\rbrace \left(1-\omega\right) \right)^{2} & if \; r_{1} < 0.5 \\
-	g_{n} - \left(g_{n}-a_{n}\right) r_{2} \left(1 - \min \left\lbrace \dfrac{G}{G_{m,r}}, 1 \right\rbrace \left(1-\omega\right) \right)^{2} & if \; r_{1} \geq 0.5 \\
+	g_{n} + \left(b_{n}-g_{n}\right) r_{2} \varphi^{2} & if \; r_{1} < 0.5 \\
+	g_{n} - \left(g_{n}-a_{n}\right) r_{2} \varphi^{2} & if \; r_{1} \geq 0.5 \\
 	\end{array} \right.
 	\label{equation_mutation_nonuniform}
 	\end{equation}
+	
+	with 
+	
+	\begin{equation}
+		\varphi = 1 - \min \left\lbrace \dfrac{G}{G_{m,r}}, 1 \right\rbrace \left(1-\omega\right)
+	\end{equation}
+	
 	where $G_{m,r}$ is the maximum number of generations during which the magnitude of the research varies, and $\omega$ is a threshold chosen by the user to maintain a minimum search radius when $G>G_{m,r}$. During the first generations, the exploration extent covers the entire parameter space. However, this area is reduced over generations, allowing exploitation of local solutions.
 	
 	\item \textbf{Individual adaptive mutation rate} \citep{Back1992a}: based on the ideas of Evolution Strategies \citep[see][]{Rechenberg1973, Schwefel1981}, \citet{Back1992a} introduced a concept of self-adaptive genetic algorithms. The idea is to distribute control parameters within individuals themselves, which partially decentralize control of the evolution. It allows reducing the parametrization of GAs and introducing a notion of self-management. The first approach is the introduction of a mutation rate per individual, that mutates itself under its own probability \citep{Back1992a}. Then, the eventual new rate is used to mutate the genes of the individual. Thus, as this rate decreases, it will have less probability of being itself mutated. This approach is close to the natural adaptation phenomena. A population less suited to its environment is changing faster than better adapted populations. Mutations are performed according to a constant uniform distribution. The initial mutation rates are randomly chosen \citep{Back1992a} and the method has no parameter. Other approaches exist to introduce a self-adaptation \citep[see][]{Smith1997a,Deb1999,Deb2001a}.
@@ -1078,7 +1075,22 @@ In order to make an optimization of the AM with genetic algorithms, it may be wi
 \end{itemize}
 
 
-\section{Perspectives}
+\conclusions[Conclusions and perspectives]
+
+Processing operational forecasts by means of AtmoSwing requests very low computing infrastructure and can provide useful information, such as early warning for extreme precipitation, in the case of an application in flood forecasting. The Forecaster is very flexible as it builds the desired method in a dynamic way, and can thus implement multiple variants of the AM. The Viewer offers a user-friendly display of the forecast, with different levels of synthesis and details. 
+
+
+
+
+
+In order to automatically optimize the analogue method, we evaluated genetic algorithms, a global optimization technique, that is able to solve complex problems. Given the large number of existing operators and options, we had to evaluate systematically multiple variants to identify which operators are important, and which variant works best for the analogue method. We could thus identify that the mutation operator is a key element for our application, and provided new variants that were found to be efficient, such as the Chromosome of adaptive search radius that seems to be very reliable (no control parameter) and efficient . Recommendations were established for a relevant use of GAs for the optimization of the analogue method. However, there may still be possible improvements, through new operators, in order to improve the optimization performance and speed.
+
+
+
+
+
+
+
 
 %\citet{Thevenot2004} a étudié plusieurs aspects de la méthode des analogues en utilisation opérationnelle. Le premier a consisté à intégrer les prévisions d'ensemble du Centre Européen de Prévision Météorologique à Moyen Terme (CEPMMT, ou \textit{European Centre for Medium-Range Weather Forecasts}, ECMWF). Cette approche permet de tenir compte des incertitudes sur les prédicteurs issus du modèle global. Son implémentation est une combinaison des journées analogues retenues, associées à chacune des traces. La distribution des précipitations est ensuite établie sur l'ensemble des analogues. Ainsi, certaines journées peuvent être représentées plusieurs fois. À partir d'une échéance de 4 jours, la prévision sur l'ensemble des traces se montre plus performante que celle effectuée sur le seul contrôle déterministe.
 
@@ -1128,10 +1140,6 @@ In order to make an optimization of the AM with genetic algorithms, it may be wi
 %Une désagrégation temporelle des précipitations journalières serait nécessaire pour l'alimentation d'un modèle hydrologique. Il existe différentes techniques permettant de réaliser une série temporelle infrajournalière, dont celle présentée par \citet{Marty2010}, qui a l'avantage de se rapprocher de la chronologie attendue de l'événement. Nous pourrions également imaginer utiliser les cumuls prévus par les analogues pour mettre à l'échelle les grilles issues des prévisions du modèle COSMO-2, tout en exploitant leur cohérence spatiale.
 
 
-\conclusions  %% \conclusions[modified heading if necessary]
-% TODO: write
-
-
 
 
 \appendix
@@ -1144,7 +1152,7 @@ In order to make an optimization of the AM with genetic algorithms, it may be wi
 \begin{acknowledgements}
 Thanks to Lucien Schreiber and Richard Metzger for their programming advices. Thanks to Renaud Marty for his active involvement in testing AtmoSwing against his code base. Thanks to Hamid Hussain-Khan of the University of Lausanne for his help and availability, and for the intensive use of the cluster he is in charge of.
 
-Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton and the Water, Land and Sanitation Service of the Vaud Canton who financed the MINERVE project which started this research. NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. Precipitation time series provided by MeteoSwiss. 
+Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton and the Water, Land and Sanitation Service of the Vaud Canton who financed the MINERVE project which started this research. NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. 
 \end{acknowledgements}
 
 

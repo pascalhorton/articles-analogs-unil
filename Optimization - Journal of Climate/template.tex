@@ -162,6 +162,8 @@ The analogue method is a downscaling technique based on the idea expressed by \c
 
 The analogue method has to be adapted to every new location it is applied. We improved the analogue method for the Swiss Alps, by means of genetic algorithms. A summary of the main results are provided here \citep[see][for the details]{Horton2012a}. Even though the results may differ from one place to another, the applicability of GAs to the analogue method remains universal.
 
+%In operational forecasting, it has been used mainly by practitioners, notably hydropower companies or flood forecasting services, while in climate studies, it is more and more used to downscale the results of global climate model simulation runs. In this last case, although the GCM represents the large or regional scale evolutions of the atmosphere, it would be far too computer intensive to get down to variables such as precipitation at a rather small and representative scale. Therefore the idea to rely on past observations to bypass these unaffordable small scale simulations and to go from the large scale situation proposed by the GCM to the end variables like precipitation by searching anlogs in the past and present archive. 
+
 
 \section{The analogue method}
 \label{section_analog_method}
@@ -350,7 +352,12 @@ GAs are relatively heavy on processing and require an IT infrastructure capable 
 
 \section{Conclusions and perspectives}
 
-In order to automatically optimize the analogue method, we evaluated genetic algorithms, a global optimization technique, that is able to solve complex problems. Given the large number of existing operators and options, we had to evaluate systematically multiple variants to identify which operators are important, and which variant works best for the analogue method. We could thus identify that the mutation operator is a key element for our application, and provided new variants that were found to be efficient, such as the Chromosome of adaptive search radius that seems to be very reliable (no control parameter) and efficient . Recommendations were established for a relevant use of GAs for the optimization of the analogue method. However, there may still be possible improvements, through new operators, in order to improve the optimization performance and speed.
+
+
+
+
+
+
 
 The parameters resulting from the optimization are very consistent for the analogy of the atmospheric circulation, in terms of selection of the pressure levels, and the temporal and spatial windows. There are clear trends or even identical results for subregions under similar meteorological influences, which confirm that the optimized parameters are coherent, despite an eventual first impression of a great variability in the spatial windows. When adding moisture variables, the results show a higher variability, but remains highly acceptable and coherent. Indeed, the selection of the pressure level for the moisture index is for example very constant.
 
