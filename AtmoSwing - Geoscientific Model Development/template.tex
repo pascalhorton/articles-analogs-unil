@@ -81,7 +81,15 @@
 
 
 \begin{abstract}
-% TODO: write
+
+The analogue method allows forecasting local meteorological variables of interest (predictand), such as the daily precipitation, on the basis of synoptic variables (predictors). It relies on the fact that similar meteorological influences are likely to result in similar local effects. This statistical relationship is thus based on archive of observed data, and used in order to operationally forecast the coming days, or to evaluate future conditions under a changing climate.
+
+AtmoSwing is an open source software that implement the analogue method in a very flexible way, so that different variants can be handled dynamically, by parameterization. It is made of 3 tools: the Forecaster to perform operational forecasts, the Viewer to display the results, and the Optimizer to establish the statistical relationship between the predictand and predictors. 
+
+The Optimizer integrates the most used technique, that is a semi-automatic sequential approach, as well as Monte-Carlo analyses, and especially a global optimization technique by means of Genetic algorithms. The global optimization can optimize all parameters jointly and automatically, which is a breakthrough in the way the analogue method was calibrated until now. Indeed, it allows taking into account parameters inter-dependencies, adding new degrees of freedom, and choosing objectively some parameters that were manually selected beforehand (such as the pressure levels and the temporal windows of the predictor variables).
+
+These kind of optimization techniques need however to be tailored to the problem to solve. We had to assess multiple combinations of algorithms, and even to develop new operators, such as the \textit{chromosome of adaptive search radius} which was found to be very robust, in order to make recommendations for the use of genetic algorithms to optimize the analogue method. These recommendations are a consequent outcome of this work, as it opens new perspective for the improvement of the analogue method, and its application to new regions or to new predictands.
+
 
 \end{abstract}
 
@@ -1092,11 +1100,28 @@ The analogue method evolves, but there are still many possibilities to be assess
 The global optimization tools allow easily adapting the AM to new regions by taking into account local meteorological influences, and has thus a great potential of use. Moreover, it allows exploring automatically datasets in order to extract the most relevant variables. It is thus possible to try assessing other predictands, such as the temperature, the limit of snowfall, the occurrence of hail, or wind, while leaving the algorithms select the best variables and the associated parameters.
 
 
-\appendix
+%\appendix
 %\section{}    %% Appendix A
 
 %\subsection{}     %% Appendix A1, A2, etc.
 
+
+\section*{Code availability}
+
+AtmoSwing is developed under the Mercurial distributed revision control, and the source code can be found at:
+
+\begin{itemize}
+	\item http://www.atmoswing.org
+	\item https://bitbucket.org/atmoswing/atmoswing
+\end{itemize}
+
+To get access to the frozen version at the time of writing (v1.4.2), the following address can be used:
+
+\begin{itemize}
+	\item bitbucket.org/atmoswing/atmoswing/commits/tag/1.4.2
+\end{itemize}
+
+The Forecaster and the Viewer are fully available, whereas the open version of the Optimizer includes all methods but the Genetic algorithms. These are planed to be released in the future, but not at the time of writing, due to lacking documentation and necessary return on investment made by Terranum.
 
 
 \begin{acknowledgements}
