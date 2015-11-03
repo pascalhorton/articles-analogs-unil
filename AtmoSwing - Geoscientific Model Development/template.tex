@@ -86,9 +86,9 @@ The analogue method allows forecasting local meteorological variables of interes
 
 AtmoSwing is an open source software that implement the analogue method in a very flexible way, so that different variants can be handled dynamically, by parameterization. It is made of 3 tools: the Forecaster to perform operational forecasts, the Viewer to display the results, and the Optimizer to establish the statistical relationship between the predictand and predictors. 
 
-The Optimizer integrates the most used technique, that is a semi-automatic sequential approach, as well as Monte-Carlo analyses, and especially a global optimization technique by means of Genetic algorithms. The global optimization can optimize all parameters jointly and automatically, which is a breakthrough in the way the analogue method was calibrated until now. Indeed, it allows taking into account parameters inter-dependencies, adding new degrees of freedom, and choosing objectively some parameters that were manually selected beforehand (such as the pressure levels and the temporal windows of the predictor variables).
+The Optimizer integrates the most used technique, that is a semi-automatic sequential approach, as well as Monte-Carlo analyses, and especially a global optimization technique by means of Genetic algorithms. 
 
-These kind of optimization techniques need however to be tailored to the problem to solve. We had to assess multiple combinations of algorithms, and even to develop new operators, such as the \textit{chromosome of adaptive search radius} which was found to be very robust, in order to make recommendations for the use of genetic algorithms to optimize the analogue method. These recommendations are a consequent outcome of this work, as it opens new perspective for the improvement of the analogue method, and its application to new regions or to new predictands.
+%TODO: rewrite
 
 
 \end{abstract}
@@ -107,9 +107,7 @@ The purpose of this paper is not to argue in favour or against this approach, wh
 
 However, how efficient and useful it may seem, this approach is not straightforward. Usually the type of predictand is imposed by some practical needs or constraints. Considering a precipitation variable, ones has to decide upon the duration of accumulation, (e.g. from 6-hourly to daily or several day totals) according for example to the size or response time of a the catchments to be managed. We must also consider the availability and quality of a long enough time series. Moreover, the analogy is restricted to a selection of variables at a specific time and over optimized spatial domains, that are compared by means of a chosen criteria that can rank the candidate days from the archive with a distance quantification. The approach appears predictand-specific but also dependent on the archive of predictors. Thus, the analogy is defined by many parameters (choice of the predictor variable, the temporal and spatial windows, and the number of analogues to consider) that are not straightforward to determine. 
 
-Up to now, the optimization of the method has been undertaken by semi-automatic calibration procedures. However, the choice of predictor variables, pressure levels and temporal windows were still to be chosen manually before optimizing the spatial windows and the number of analogues. Moreover, the semi-automatic technique proceeds to the optimization sequentially, ignoring potential dependencies between the parameters of the method. Thus, optimizing the method with the semi-automatic technique is laborious, as many combinations of predictors (variables, pressure levels, temporal windows) have to be assessed. Moreover, due to its sequential approach, the risk of ending in a local optimum is high and can not be avoided. We thus propose a global optimization approach by means of Genetic algorithms, tailored to the analogue method (AM).
-
-We will first present the AM along with various implementations, as the optimal version of the method may vary with the location of interest, and as all these can be processed with AtmoSwing. The software will then be presented, and its modules detailed, such as the Forecaster and the Viewer that are tools for operational use, and the Optimizer that allows optimizing the method for a given predictand time series. Finally, a section will be dedicated to the optimization by means of Genetic algorithm, and our recommended usage.
+We will first present the AM along with various implementations, as the optimal version of the method may vary with the location of interest, and as all these can be processed with AtmoSwing. The software will then be presented, and its modules detailed, such as the Forecaster and the Viewer that are tools for operational use, and the Optimizer that allows optimizing the method for a given predictand time series.
 
 
 
@@ -206,7 +204,7 @@ In order to keep the identifier simple, no value of atmospheric level neither ti
 \begin{itemize}
 	\setlength\itemsep{-2px}
 	\item sc : sequential calibration (can be omitted as considered as default, see section \ref{sec:atmoswing-calibration})
-	\item go : global optimization (by means of genetic algorithms for example, see section \ref{sec:gas})
+	\item go : global optimization (by means of genetic algorithms for example)
 \end{itemize}
 
 This nomenclature can be adapted to specific needs, or simplified for a better readability (eg. by removing the specification of the preselection). Examples are provided in the following section.
@@ -709,390 +707,12 @@ The use of such a random method allows informing on the parameters sensitivity, 
 \subsection{Global optimization}
 \label{sec:atmoswing-optimization}
 
-The sequential calibration cannot optimize all parameters of the AM, as several are manually selected, such as the meteorological variable, the pressure level and the temporal windows. Testing multiple combinations of these can be cumbersome, especially when considering multiple predictors within the same level of analogy. Moreover, the parameters are calibrated successively within the same level of analogy, and in-between them.
-
-We thus decided to explore optimization techniques that can handle all parameters fully automatically. We first assessed the \citet{Nelder1965a} method, which was found to be unsuitable for this purpose. Due to the complexity of the AM and its non-linearity, a technique of global optimization is required. We thus implemented Genetic algorithms in AtmoSwing Optimizer in order to perform a global optimization of the AM. This article is not about discussing the results of such a technique, but describing the details of the implementation. The demonstration of the benefit brought by such an approach is the topic of another article. The details of the implementation being numerous, the description is provided in the next dedicated section (\ref{sec:gas}).
-
-
-\section{Optimization using Genetic algorithms}
-\label{sec:gas}
-
-Genetic algorithms (GAs) come from the world of stochastic optimization, more specifically from metaheuristic approaches. These are stochastic iterative algorithms that behave like search algorithms by exploiting the characteristics of a problem and are particularly suitable for complex parameter spaces.
-
-Genetic algorithms are part of the family of evolutionary algorithms \citep{Back1993b, Schwefel1993}, which get inspiration from some mechanisms of biological evolution, such as reproduction, genetic mutations, chromosomal crossovers, and natural selection. GAs are the most used technique from evolutionary algorithms \citep{Back1993b}, and they are constantly improving \citep{Haupt2004}. However, with time, the different methods of evolutionary algorithms tend to be similar and share many commonalities \citep{Back1996b, Haupt2004}.
-
-The method was originally developed by \citet{Holland1992b} and popularized by \citet{Goldberg1989}. Unlike a linear or local optimization, GAs seek the global optimum on a complex surface, theoretically without restriction, but with no guarantee to reach it.
-
-
-\subsection{Basic concepts of the genetic algorithms}
-
-GAs mimic the evolution of a population of individuals in a new environment, by applying rules based on natural processes, such as DNA mutation, chromosomes crossover, natural selection, etc. It simulates the fact that in a natural environment, the most suitable individuals tend to survive longer, to reproduce more easily, and so to influence coming generations by providing genes that provide some good performance in a certain domain. Generation after generation, the DNA mixes and the strong genes cumulate in some individuals \citep{Beasley1996a}. Globally, the fitness of the population to its environment increases, while retaining enough variety to not converge too quickly to a local optimum.
-
-Applications of GAs are very diversified as they can handle many parameters of various types \citep{Joines1996a}, even with very complex cost surfaces \citep{Haupt2004}. GAs work remarkably well with intervariable dependences \citep{Haupt2004}. The objective function to optimize (often named fitness function in this context) can be of different types (mathematical function, experimental or numerical modeling). Only the resulting value is used for optimization. Indeed, these algorithms do not require any knowledge of the problem, which can be used as black-box, but they must be adapted in order to perform optimally.
-
-By means of the reproduction operator and the natural selection, the GAs focus on the most promising regions of the parameter space \citep{Holland1992b}. Points (parameter sets) are densified in these areas because the strong genes of the best individuals propagate from generation to generation.
-
-Two conditions guarantee in theory the convergence to the global optimum \citep{Zitzler2004a}: (1) Parameters mutations that can allow to explore the entire parameter space, thereby ensures that any value can be achieved with a non-zero probability. (2) A rule of elitism ensuring that an optimal solution cannot be lost or damaged.
-
-
-\subsection{Structure and operators}
-
-The GAs optimize a population of individuals (parameter sets). Each individual contains a chromosome (parameters of the AM in our case). We call gene every parameter that constitutes the chromosome. The parameters to optimize have long been coded in binary form and assembled as strings in the canonical GAs \citep{Goldberg1989}. Encoding and decoding steps were needed to transform the variable from its floating-point representation into its binary representation, and vice versa, which introduce quantification errors \citep{Haupt2004}. According to \citet{Holland1992b}, working with binary chromosomes was supposed to be more efficient \citep{Goldberg1990a, Back1993b}. However, more and more applications use floating-point representations, allowing to avoid the coding and decoding steps and the quantification errors \citep{Haupt2004}, and which also often resulted in a performance improvement \citep{Goldberg1990a}. It is thus now considered that for continuous variables, a floating-point representation is more suited \citep{Michalewicz1996, Herrera1998a, Haupt2004, Back1996b, Gaffney2010a}. 
-
-There are numerous implementation variants of GAs often optimal for a given problem \citep{Hart1991a,Schraudolph1992a}. The divergences are the operators implementation, through significantly different algorithms, which has an important effect on the results \citep{Gaffney2010a}. However, the structure of the method (Figure \ref{fig:structure_gas}) resulting from the work of \citet{Holland1992b} is common to most applications \citep{Back1993b}, and consists in the following steps:
-
-\begin{enumerate}
-	\item A population of $N$ individuals (parameter sets of the AM) is randomly generated, which constitutes the initial population.
-	\item The fitness (performance score or objective function) of every individual is assessed.
-	\item A natural selection is applied, after which only the best individuals remain, which constitutes the intermediate generation.
-	\item From this intermediate generation, couples are formed according to given rules.
-	\item These couples proceed to reproduction, or chromosome crossover, in order to mix their genes (parameters) according to the operator version. New children are generated in order to fill the intermediate generation back to $N$ individuals.
-	\item Parents and children are then subject to mutation, where some genes get affected, meaning some parameter values are randomly changed.
-	\item The new formed generation is then re-assessed.
-	\item According to the ending criteria, the optimization ends or starts again for another iteration.
-\end{enumerate}
-
-\begin{figure}[htb]
-	\includegraphics[width=8.3cm]{figures/figure_structure_gas.pdf}
-	\caption{Genetic algorithms operational flowchart}
-	\label{fig:structure_gas}
-\end{figure}
-
-All operators we used and their options, applied to real coding, are described in the following sections. Many other operators exist, but we will only present the ones we evaluated.
-
-\subsubsection{Genesis of the population}
-
-The first step of the optimization is to generate the initial population. A population is a set of $N$ individuals (each of which represents a point in the space of potential solutions, a parameter set of the AM in our application) that we are going to make evolve. A generation is the population at a given time. 
-
-A random initialization based on a uniform distribution is the most current version. The size $N$ of the population is often a compromise between the computation time and the quality of the solution. $N$ must allow sufficient sampling of the solutions field \citep{Beasley1996a}, and should thus vary as a function of chromosome size (ie the number of parameters to be optimized). 
-
-
-\subsubsection{Natural selection}
-
-Natural selection is performed on the basis of the values of the objective function. The selection allows to only keep a certain part of the population, usually half ($N/2$), which can access the mating pool (intermediate generation with $N_{mp}$ members). If $N_{mp}$ is too high, the reproduction rate is too low, whereas if it is too small, the strong traits of individuals do not have the ability to accumulate in the same chromosome \citep{Haupt2004}. Several techniques exist, such as:
-
-\begin{itemize}
-	\item \textbf{$N_{mp}$-elitism} \citep{Michalewicz1996}: the population is sorted according to the value of the objective function and only the better half is preserved. 
-	
-	\item \textbf{Tournament selection} \citep{Michalewicz1996, Zitzler2004a}: two individuals are randomly selected and fight. The one with the highest performance score is chosen, but with a certain probability, in order to reduce the selection pressure. This procedure is repeated until the mating pool is full. Individuals can be selected several times, and thus be represented several times in the mating pool.
-\end{itemize}
-
-
-\subsubsection{Selection of the couples}
-
-Individuals of the mating pool can reproduce. It begins with the selection of pairs (the parents). The techniques implemented in this work are the following:
-
-
-\begin{itemize}
-	\item \textbf{Rank pairing}: individuals are gathered in pairs according to their rank (classified on the performance scores). Consecutive ranks are put together (odd rows are associated with even rows). This approach is easy to achieve, but does not look like a natural process.
-	
-	\item \textbf{Random pairing}: two individuals are randomly selected to form a couple, according to a uniform law.
-	
-	\item \textbf{Roulette wheel weighting}: the roulette technique refers to gambling. But unlike casino roulette, this one is biased. Each individual is associated with a sector of the wheel with a certain opening angle, which is its probability of selection \citep{Haupt2004}. The probability assigned to the individuals is proportional to their fitness (objective function), so that the most adapted individuals have the greatest probability of reproduction. There are two techniques for weighting the individuals of the mating pool:
-	
-	\textit{Roulette wheel weighting on rank}: the probability of each individual depends on its rank $n$:
-	\begin{equation}
-	p_{n}=\dfrac{N_{mp}-n+1}{\sum^{N_{mp}}_{n=1}n}
-	\label{equation_mating_rank_weighting}
-	\end{equation}
-	
-	\textit{Roulette wheel weighting on fitness}: the selection probability is calculated based on the value of the objective function. This approach gives more weight to the best individuals when the distribution of performance scores is wide, while the weight is almost similar when all individuals have approximately the same performance score \citep{Haupt2004}. The probability $p_{n}$ of each individual is calculated by the equation \ref{equation_mating_score_weighting}:
-	\begin{equation}
-	p_{n}=\frac{score_{n}-score_{N_{mp}}}{\sum_{n=1}^{N_{mp}} (score_{n}-score_{N_{mp}})}
-	\label{equation_mating_score_weighting}
-	\end{equation}
-	In our application, the last individual ($N_{mp}$) has zero probability of being selected.
-	
-	
-	\item \textbf{Tournament selection}: This operator is similar to the one used in natural selection, but is applied here for the successive selection of each parent. To select a parent, a number of individuals (2 or 3) are randomly picked and the best is kept. This operation is performed twice, once for each partner. This approach imitates the breeding competition in nature \citep{Haupt2004}.
-\end{itemize}
-
-
-\subsubsection{Chromosome crossover}
-
-Once the two parents are selected for breeding, they combine their chromosomes and produce two children, bringing the number of individuals in the population back to $N$ (the parents also return back in the total population in order to complement the next generation). The combination of chromosomes is carried out using a crossover operator, thereby generating two offspring having characteristics derived from both parents. Chromosome crossover widens the search space and favours the combination of strong genes, which can result in more suited children. It allows a mixing of genes and accumulation of positive mutations.
-
-The evaluated crossover operators are the following:
-
-\begin{itemize}
-	\item \textbf{Single-point crossover}: a crossover point is randomly chosen for the pair. The genes (our parameters) located after that point are exchanged in between the two chromosomes.
-	
-	\item \textbf{Two-point crossover}: works like the single-point crossover, but there are two intersections defining the segments to exchange. This approach, which significantly extends the search space for the children, is considered more efficient than the previous \citep{Beasley1993a, Haupt2004}.
-	
-	\item \textbf{Multiple-point crossover} \citep{DeJong1975a}: it is a generalization of the previous, with a number of crossover points up to the number of genes.
-	
-	\item \textbf{Uniform crossover} \citep{Syswerda1989}: for each gene of the chromosome, it is randomly chosen to exchange or not the values between the parents.
-	
-	\item \textbf{Binary-like crossover} \citep{Haupt2004}: chromosome crossover on a binary coding can generate new values for variables located at intersection points, since the crossovers are applied at the bit level, thus often within a gene. This is not the case for the floating-point representation, since the crossover is performed between the genes. To reproduce the behaviour present in the original algorithms, which introduces new information, \citet{Haupt2004} propose an operator that combines standard crossover with an interpolation approach. The genes located after a crossover point are exchanged, but the gene located at the intersection is modified as follows (equation \ref{equation_mating_as_binary}):
-	\begin{equation}
-	\left\lbrace \begin{array}{l} 
-	g_{o1,n} = g_{p1,n} - \beta (g_{p1,n} - g_{p2,n}) \\
-	g_{o2,n} = g_{p2,n} + \beta (g_{p1,n} - g_{p2,n}) \\
-	\end{array} \right.
-	\label{equation_mating_as_binary}
-	\end{equation}
-	where $g_{o1,n}$ and $g_{o2,n}$ are the $n$-th gene of the two new offspring, and $g_{p1,n}$ and $g_{p2,n}$ are those of the two parents. $\beta$ is a random value between 0 and 1.
-	
-	\item \textbf{Blending method} \citep{Radcliffe1991a}: in this approach, instead of exchanging the genes in between the chromosomes after one or multiple crossover points, these are combined by linear combination (equation \ref{equation_mating_blending_method}). The genes of the parents are blended together using a random value ($\beta$) that can be unique for the whole chromosome, or that can change for every gene. The genes of the offspring are bounded by the genes of the parents, no value can be out of their range.
-	\begin{equation}
-	\left\lbrace \begin{array}{l} 
-	g_{o1,n} = \beta g_{p1,n} + (1-\beta)g_{p2,n} \\ 
-	g_{o2,n} = (1-\beta) g_{p1,n} + \beta g_{p2,n} \\
-	\end{array} \right.
-	\label{equation_mating_blending_method}
-	\end{equation}
-	
-	\item \textbf{Linear crossover} \citep{Wright1991a}: in order to allow the genes to take values outside the interval defined by the parents, a method of extrapolation is necessary. Linear crossover introduces such an approach, and produces three children from two parents, following equation \ref{equation_mating_linear_crossover}. Less couples are required in order to fill up the generation.
-	\begin{equation}
-	\left\lbrace \begin{array}{l} 
-	g_{o1,n} = 0.5 g_{p1,n} + 0.5 g_{p2,n} \\ 
-	g_{o2,n} = 1.5 g_{p1,n} - 0.5 g_{p2,n} \\ 
-	g_{e3,n} = - 0.5 g_{p1,n} + 1.5 g_{p2,n} \\ 
-	\end{array} \right.
-	\label{equation_mating_linear_crossover}
-	\end{equation}
-	
-	\item \textbf{Heuristic crossover} \citep{Michalewicz1996}: it is a variation of the latter methods that relies on the following equation:
-	\begin{equation}
-	\left\lbrace \begin{array}{l} 
-	g_{o1,n} = \beta (g_{p1,n} - g_{p2,n}) + g_{p1,n} \\
-	g_{o2,n} = \beta (g_{p2,n} - g_{p1,n}) + g_{p2,n} \\
-	\end{array} \right.
-	\label{equation_mating_heuristic_crossover}
-	\end{equation}
-	
-	\item \textbf{Linear interpolation}: unlike previous techniques, this technique does not rely on crossover points, but on a linear interpolation on every gene of the couple (equation \ref{equation_mating_linear_interpolation}).
-	\begin{equation}
-	\left\lbrace \begin{array}{l} 
-	c_{o1} = c_{p1} - \beta (c_{p1} - c_{p2}) \\
-	c_{o2} = c_{p2} + \beta (c_{p1} - c_{p2}) \\
-	\end{array} \right.
-	\label{equation_mating_linear_interpolation}
-	\end{equation}
-	where $c_{o1}$ and $c_{o2}$ are the full chromosomes of the offspring, and $c_{p1}$ an $c_{p2}$ are the ones of the parents. As before, $\beta$ is a random value between 0 and 1, and is here the same for every gene.
-	
-	\item \textbf{Free interpolation}: this technique performs interpolation on each gene, like the previous one; but in this case, the weighting factor changes for each gene:
-	\begin{equation}
-	\left\lbrace \begin{array}{l} 
-	c_{o1} = c_{p1} - [\beta_{1} (g_{p1,1} - g_{p2,1}), \beta_{2} (g_{p1,2}\\
-	~~~~~~~~~~~~ - g_{p2,2}), ..., \beta_{Ng} (g_{p1,N_{g}} - g_{p2,N_{g}})] \\
-	c_{o2} = c_{p2} + [\beta_{1} (g_{p1,1} - g_{p2,1}), \beta_{2} (g_{p1,2}\\
-	~~~~~~~~~~~~ - g_{p2,2}), ..., \beta_{Ng} (g_{p1,N_{g}} - g_{p2,N_{g}})] \\
-	\end{array} \right.
-	\label{equation_mating_free_interpolation}
-	\end{equation}
-	where $N_{g}$ is the number of genes, and $\beta$ is here independent between the genes.
-	
-\end{itemize}
-
-Many other methods or variations exist, combining the advantages of different approaches. The performance of the variants being related to the problem to be addressed, we can not identify a priori the best technique for our application.
-
-
-\subsubsection{Mutation}
-
-The combination of strong genes by the operator of chromosomes crossover is theoretically the most important operating mechanism in the conventional GAs \citep{Holland1992b,Back1993b}. However, many studies identify the mutation process as main operator, and crossovers as secondary \citep[see][]{Back1992a,Back1996a,Back1996b,Smith1997a,Deb1999,Haupt2004,Costa2005a,Costa2007a}.
-
-The mutation operator is a direct modification of genes. In a binary coding, it is implemented as an inversion of some bits in a chromosome, while in real coding, it is done by changing the gene values. Mutations add diversity to the population and prevent a freeze of the evolution, or a genetic drift to a local optimum. Thus, it makes the convergence to the global optimum theoretically possible \citep{Beasley1993a}, as they allow exploring beyond the current region of the parameter space. They therefore help preventing the algorithm to converge too quickly to a local optimum and bring new characteristics that were not present in the original population \citep{Haupt2004}. 
-
-The evaluated and developed mutation operators are the following:
-
-\begin{itemize}
-	\item \textbf{Uniform mutation}: The mutation rate is constant and equal for every gene of each individual; they all have the same probability to mutate. When a gene is selected for mutation, a new random value is assigned, according to a uniform law.
-	
-	\item \textbf{Variable uniform mutation} \citep{Fogarty1989}: a variable mutation rate over the generations was first suggested by \citet{Holland1992b} and evaluated by \citet{Fogarty1989}. It improved significantly the performance of GAs. In most applications, the mutation rate decreases with the generations, in a deterministic and global (for all individuals) manner \citep{Back1992b}. Its optimum configuration depends on the size of the chromosomes, of the properties of the objective function, and of the population size \citep{Back1992b}. We implemented this operator according to equation \ref{equation_mutation_uniformvariable}.
-	\begin{equation}
-	p_{n,G} = p_{G_{0}}+\left( \dfrac{p_{G_{0}}-p_{G_{m,p}}}{G_{m,p}} \right) min\left\lbrace G,G_{m,p}\right\rbrace 
-	\label{equation_mutation_uniformvariable}
-	\end{equation}
-	where $p_{n,G}$ is the mutation rate (probability) of the gene $n$ for generation number $G$, $G_{m,p}$ is the maximum number of generations during which the mutation rate varies. $p_{G_{0}}$ is the initial mutation probability, and $p_{G_{m,p}}$ is the final one. $p_{G_{0}}$, $p_{G_{m,p}}$ and $G_{m,p}$ are the three controlling parameters of the operator. The evolution of the mutation rate is linear.
-	
-	\item \textbf{Constant normal mutation}: many use normal distributions to generate new values. The gene $g$ that mutate becomes:
-	\begin{equation}
-	g' = N(g,\sigma^{2})
-	\label{equation_mutating_normal_distribution}
-	\end{equation}
-	where $\sigma$ is the standard deviation of the distribution. The disadvantage of this technique is that an accurate value of $\sigma$ must be chosen \citep{Haupt2004}, which is impossible to know beforehand.
-	
-	\item \textbf{Variable normal mutation}: with the same logic that the variable uniform mutation, we tested a mutation operator using a normal distribution with a variable mutation rate and standard deviation. The mutation rate is calculated with equation \ref{equation_mutation_uniformvariable}. On the same principle, we decrease linearly the standard deviation over the generations:
-	\begin{equation}
-	\sigma_{n,G} = \sigma_{G_{0}}+\left( \dfrac{\sigma_{G_{0}}-\sigma_{G_{m,\sigma}}}{G_{m,\sigma}} \right) min\left\lbrace G,G_{m,\sigma}\right\rbrace 
-	\label{equation_mutation_normalvariable}
-	\end{equation}
-	where $\sigma_{n,G}$ is the standard deviation of gene $n$ et generation number $G$, $\sigma_{G_{0}}$ is the initial standard deviation, $\sigma_{G_{m,\sigma}}$ is the final standard deviation, $G_{m,\sigma}$ is the maximum number of generations during which the standard deviation varies. $p_{G_{0}}$, $p_{G_{m,p}}$, $G_{m,p}$, $\sigma_{G_{0}}$, $\sigma_{G_{m,\sigma}}$ and $G_{m,\sigma}$ are the six parameters of the method.
-	
-	\item \textbf{Non-uniform mutation} \citep{Michalewicz1996}: two random numbers are picked based on a uniform law: $r_{1}$, which determines the direction of the change, and $r_{2}$, which determines its magnitude. The new value of the gene is given by the following equation:
-	\begin{equation}
-	g_{n}^{'} = 
-	\left\lbrace \begin{array}{l l} 
-	g_{n} + \left(b_{n}-g_{n}\right) r_{2} \left(1 - \dfrac{G}{G_{m}} \right)^{2} & if \; r_{1} < 0.5 \\
-	g_{n} - \left(g_{n}-a_{n}\right) r_{2} \left(1 - \dfrac{G}{G_{m}} \right)^{2} & if \; r_{1} \geq 0.5 \\
-	\end{array} \right.
-	\label{equation_mutation_nonuniform_original}
-	\end{equation}
-	where $a_{n}$ is the is the lower bound of the $n$-th gene, $b_{n}$ its upper bound, $G$ the present generation, and $G_{m}$ the maximum number of generations.
-	
-	We adapted this operator for our application, which is not based on a predefined number of generations:
-	\begin{equation}
-	g_{n}^{'} = 
-	\left\lbrace \begin{array}{l l} 
-	g_{n} + \left(b_{n}-g_{n}\right) r_{2} \varphi^{2} & if \; r_{1} < 0.5 \\
-	g_{n} - \left(g_{n}-a_{n}\right) r_{2} \varphi^{2} & if \; r_{1} \geq 0.5 \\
-	\end{array} \right.
-	\label{equation_mutation_nonuniform}
-	\end{equation}
-	
-	with 
-	
-	\begin{equation}
-		\varphi = 1 - \min \left\lbrace \dfrac{G}{G_{m,r}}, 1 \right\rbrace \left(1-\omega\right)
-	\end{equation}
-	
-	where $G_{m,r}$ is the maximum number of generations during which the magnitude of the research varies, and $\omega$ is a threshold chosen by the user to maintain a minimum search radius when $G>G_{m,r}$. During the first generations, the exploration extent covers the entire parameter space. However, this area is reduced over generations, allowing exploitation of local solutions.
-	
-	\item \textbf{Individual adaptive mutation rate} \citep{Back1992a}: based on the ideas of Evolution Strategies \citep[see][]{Rechenberg1973, Schwefel1981}, \citet{Back1992a} introduced a concept of self-adaptive genetic algorithms. The idea is to distribute control parameters within individuals themselves, which partially decentralize control of the evolution. It allows reducing the parametrization of GAs and introducing a notion of self-management. The first approach is the introduction of a mutation rate per individual, that mutates itself under its own probability \citep{Back1992a}. Then, the eventual new rate is used to mutate the genes of the individual. Thus, as this rate decreases, it will have less probability of being itself mutated. This approach is close to the natural adaptation phenomena. A population less suited to its environment is changing faster than better adapted populations. Mutations are performed according to a constant uniform distribution. The initial mutation rates are randomly chosen \citep{Back1992a} and the method has no parameter. Other approaches exist to introduce a self-adaptation \citep[see][]{Smith1997a,Deb1999,Deb2001a}.
-	
-	\item \textbf{Individual adaptive search radius} (new): based on the ideas of the non-uniform mutation, we introduce a search radius in the approach of individual adaptive mutation rates. This search radius $r_{a}$, bounded between 0 and 1, is also adaptive and behaves similarly to the adaptive mutation rates. In order to separate its evolution from the one of the mutation rate, its own value is considered initially as a self-mutation rate to eventually mutate before being used as a normalized search radius. The value of a mutated gene is given by the following equation, which is a simplification of the non-uniform mutation:
-	\begin{equation}
-	g_{n}^{'} = 
-	\left\lbrace \begin{array}{l l} 
-	g_{n} + \left(b_{n}-g_{n}\right) r_{2} r_{a} & if \; r_{1} < 0.5 \\
-	g_{n} - \left(g_{n}-a_{n}\right) r_{2} r_{a} & if \; r_{1} \geq 0.5 \\
-	\end{array} \right.
-	\label{equation_mutation_rayon_adaptatif}
-	\end{equation}
-	where $r_{1}$ and $r_{2}$ are randomly selected, in the same way as for the non-uniform mutation. No external parameter is therefore necessary.
-	
-	\item \textbf{Chromosome of adaptive mutation rate} \citep[\textit{n adaptative mutation rate},][]{Back1992a}: analogously to the individual adaptive mutation rate, this approach leaves the control of the evolution rate to the individuals themselves. The difference here is that each gene has a specific mutation rate. The main advantage is that the tuning of the mutation can be much more precise \citep{Smith1997a}. We therefore consider a second chromosome containing the mutation rate for each gene of the first chromosome. The operations of mutation and self-mutation are similar to the case of the individual adaptive mutation rate, but in a distributed way, within the chromosome. Another difference is that we apply the same crossover operations as those applied to the first chromosome, and this for the same crossing points. Thus, during an exchange of genes, children also inherit the mutation rates specific for each of these genes.
-	
-	\item \textbf{Chromosome of adaptive search radius} (new): we introduced this operator that combines the operations of the chromosome of adaptive mutation rate to our adaptive search radius approach. Similarly, an individual has 3 chromosomes: the first containing the values to be optimized, the second containing the distributed mutation rate, and the last one, the distributed search radius. Again, no external parameters are required.
-	
-	\item \textbf{Multi-scale mutation} (new): finally, we developed another approach, that is also based on the search radius concept. However, the latter is not decreasing with time. Methods based on a reduction of the mutation rate or radius simulate a transition from the exploration phase to the exploitation one. The idea is consistent as long as we are confident that the algorithm will converge towards the global optimum. Indeed, once the algorithm is in the exploitation mode, it is very unlikely to go out of the region it converges to. We wanted to test an approach that combines both exploration and exploitation during the whole optimization. Thus, we considered the search radius $r_{a}$ of equation \ref{equation_mutation_rayon_adaptatif} as a random value for each individual, but restricted to 4 equiprobable values: 1, 0.5, 0.1, 0.02, which range from full exploration to fine exploitation. The only external parameter is the mutation rate which is fixed.
-	
-	
-\end{itemize}
-
-When the gene to mutate is represented by a list of distinct values (eg meteorological variable or analogy criterion), the random choice of a new value is always based on a uniform distribution, without notion of search radius. There is indeed no meaning to use operators based on principles of proximity when the latter does not exist.
-
-
-\subsubsection{Elitism}
-
-We used a process of elitism on the natural selection as well as on mutations. This ensures the survival of the best individual so that we do not lose a better solution. This approach is very common in the field of GAs \citep{Haupt2004}. After the natural selection operator, if the best individual has not been selected, it is copied to the mating pool instead of an individual randomly picked. After mutation, if the best individual has mutated and if its new version has a lower performance score than the original, the latter is also reinserted in the mating pool instead of an individual randomly chosen.
-
-
-\subsubsection{Ending the optimization}
-
-The convergence check determines whether the solution is acceptable and if the algorithm may stop. The stopping criteria are not often well documented in GAs case studies. We chose to stop the optimization if the best individual does not change for $x$ generations. This value should not be too low to allow the algorithm to escape from a local optima. In addition, the rate of improvement decreases with the progression of the optimization. It is thus common that the best individual does not evolve over several generations when we get closer to the global solution. We chose a value of $x=20$ generations.
-
-
-\subsection{Implementation and constraints}
-
-Some constraints need to be taken into account. For example, when a crossover or a mutation operation results in a parameter value standing out of the authorized bounds, it has to be brought back within the limits. Moreover, the parameters are of different nature: some are continuous, such as the weight, some are discretized, such as the analogues number, or the spatial windows, and finally, some are independent elements in an array, such as the selection of the meteorological variable. New values resulting from the optimizer need to respect the type of data it represents.
-
-Other constraints exist in between the parameters, such as the temporal window of the moisture index that has to be consistent in between the relative humidity and the precipitable water. Another example is the weighting of the different pressure levels which has to be normalized.
-
-GAs are very computationally intensive because they require many evaluations of the objective function. These assessments are very long in our application, as they require calculating and assessing a forecast for every day of the calibration period. In order to reduce the computation time, we avoid recalculating the performance score of an individual who has previously been evaluated and that has not changed. We keep the score of each individual living in the selection until it mutates.
-
-The assessment (calculation of the objective function) of each member of the population of a generation is completely independent and can be performed in parallel on different processors of a computer \citep{Alliot2005}. We implemented this technique and the resulting time savings was very important. In order to perform optimizations for multiple time series, the use of a cluster is a necessity, which our code allows.
-
-
-\subsection{Recommendations of parametrization}
-
-The GAs parametrization, such as the mutation rate, population size, natural selection options, and so on, is difficult given the high number of existing variants, each developed for a specific problem \citep{Haupt2004, Costa2007a}. This parametrization depends on the objective function, implementation variants, the range of the parameters to be optimized, and performance indicators. Thus, different studies suggest very different parametrization.
-
-A key element of the parametrization of GAs is finding the right balance between exploration and exploitation \citep{Back1992a, Smith1997a}. Exploration is characterized by a relatively high probability to assess the regions of the parameter space that have not yet been visited. This probability must be sufficiently large at the beginning of the optimization, so that the algorithm is capable of identifying the region where the global optimum is located. Exploitation is characterized by a local search in an area of interest, and generally makes small movements. The latter is interesting to refine the results at the end of the optimization.
-
-\citet{DeJong1975a} and \citet{Grefenstette1986} compared different implementations and parametrizations of GAs on functions of varying complexity. They observed that a small population size improves the initial performance, while a large population improves long-term performance. They also observed that the ratio of the population to keep for the mating pool is around 50\% (45\% to 60\%).
-
-Values of the mutation rate varies broadly between the studies: from 0.001 \citep{DeJong1975a} to 0.2 \citep{Haupt2004}. \citet{Back1996b} showed that mutation rates higher than the usual ranges are more optimal at the beginning of the optimization, allowing further exploration. The combination of a small population and a high mutation rate works best for the first generations \citep{DeJong1975a, Back1996b, Haupt2004}, but as we could observe, it does not guarantee the quality of the final result. Incremental approaches with varying mutation rates are certainly more optimal but more complex to implement \citep{Back1996a, Back1996b}.
-
-
-\subsubsection{Comparison process and results}
-
-One of our goals being to make recommendations of parametrization in order to optimize the AM, we proceeded systematically. The results are summarized hereafter \citep[see][for the details]{Horton2012a}. We used concepts from the factorial design approach \citep[see eg.][]{Costa2005a,Costa2007a,Mariano2010a}, which is sometimes used for comparative analysis of different parametrizations of GAs. We processed by stages, analysing in details and in a systematic way every variants of the implemented operators, in combination with multiple other options and parameters in order to take into account eventual co-dependencies. 
-
-In order to evaluate a combination of operators/options, we processed 10 optimizations for one parametrization of GAs. The performances were characterized by four indicators:
-
-\begin{itemize}
-	\item mean performance score: average of the final scores of the 10 optimizations,
-	\item convergence: the number of optimizations that converged to a supposed global optimum,
-	\item number of generations: characterization of the convergence speed,
-	\item number of evaluations of the objective function: characterization of the required calculation time (more realistic than the number of generations).
-\end{itemize}
-
-This comparison required tens of thousands of optimizations that were performed on a cluster of the University of Lausanne. The results, detailed in \citet{Horton2012a} are synthesized hereafter:
-
-\begin{itemize}
-	\item \textbf{Population size $N$}: we found the following ranges to be accurate in average for the population size (number of parameter sets of the AM):
-	
-	$50<N<100$ for a very simple implementation of the AM (1 level of analogy with 2 pressure levels),
-	
-	$N\approx200$ for a bit more complex AM (1 level of analogy with 4 pressure levels, or 2 level of analogy with less pressure levels),
-	
-	$N\approx500$ for significantly more complex AMs (2-3 levels of analogy with 4 pressure levels for the atmospheric circulation, and 2 to 4 levels for the moisture analogy),
-	
-	We didn't find any improvement with $N>500$, the results were even surprisingly of a lower quality. However, this cannot be generalized and depends on the AM to optimize, and supposedly on the characteristics of the processes generating the precipitations in a given region. 
-	
-	\item \textbf{Natural selection}: this operator has no significant influence, and both tested implementations work fine, with a slightly better performance for the ratio-elitism.
-	
-	\item \textbf{Selection of couples}: 6 variants of the couples selection were assessed. The performance of these variants are relatively close, both in terms of performance score, convergence, and number of evaluations. The random pairing performed the most poorly, when the tournament selection with 3 candidates was slightly superior. The roulette wheel weighting is not far behind, but it is less effective in terms of convergence and number of evaluations. This operator has not a significant role in our application. 
-	
-	\item \textbf{Chromosomes crossover}: we compared 21 different options of the crossover operators. This analysis revealed some slightly better options, some bad ones, and many averages. Among the bad operators, we find first the heuristic crossover, which is also more demanding in number of evaluations, as well as the linear crossover. Binary-like crossovers (especially with 2 points of intersection, whether $\beta$ is shared or not) are significantly better than the others, especially in terms of convergence. The two points crossover is relatively close. Other operators can be considered usable, yet may not be optimal. Once again, this operator is not the key of the GAs parametrization.
-	
-	\item \textbf{Mutation}: we compared the 10 mutation operators with different options, bringing the number of variations of this operator up to 110. We immediately observed that the mutation operator has a very important role on the performance of the optimizations of the AM, and that the other reproduction operators seem of secondary importance. This observation is in line with the work of \citet{Back1996a}, who argues for the importance of mutation over reproduction. He even suggests, in opposition with the theory of \citet{Holland1992a}, that chromosomes crossovers have mostly a corrective role of mutation operations. Various studies have also identified the importance of the mutation operator relatively to reproduction \citep[see eg.][]{Back1992a, Back1996b, Smith1997a, Deb1999, Haupt2004, Costa2005a, Costa2007a}.
-	
-	The mutation operators based on a variable normal or uniform law work very poorly and are difficult to configure. We then observe many operators more or less with the same performance scores and requiring a variable amount of assessments. The convergence analysis allows us to highlight three best operators:
-	
-	\textit{Non-uniform mutation} \citep{Michalewicz1996}: this operator is good in terms of convergence, mainly when the number of parameters to optimize is rather low. The number of required evaluations, however, can be quite substantial. The main disadvantage of the non-uniform mutation is the complexity of its parametrization, which is difficult to estimate a priori. These parameters must be carefully chosen to be in line with the evolution rate of the population, and are therefore dependent on the problem being treated. We could observe that the $\omega$ coefficient does not influence performance. The role of $G_{m}$ is rather difficult to judge, but does not seem essential. The mutation rate was found to be important. The difficulty is that the optimal value seems to be very case-related. Indeed, by even changing the precipitation time series (ie optimizing for another subregion), but not the complexity of the AM, the optimal mutation rate changes, making it impossible to estimate in advance.
-	
-	\textit{Chromosome of adaptive search radius}: unlike the previous one, our new operator is very robust, as it requires no option and is auto-adapting. It may be sometimes a little bit slower for simple problems, but does not require parametrization, which is an important advantage. It is interesting to notice that our insertion of an extra chromosome representing the search radius gives better performance than other self-adaptive operators (such as, for example, the chromosome of adaptive mutation rate).
-	
-	\textit{Multi-scale mutation}: finally, our multi-scale mutation, which also performs pretty well, can as well be seen as fairly robust, since it requires only one parameter, the mutation rate. However, it can also be difficult to estimate a correct value a priori.
-	
-	It may be wise to perform multiple optimizations and to consider these three operators in parallel in order to obtain results from algorithms that are either sometimes more efficient or more robust. It is interesting to note that the three best techniques incorporate a notion of search distance. It is likely that this notion is the key to these algorithms, for our application, and allows them to initially explore the parameter domain, and then to converge. The search radius in fact directly represents the notion of transition between exploration and exploitation, in our opinion more than a possible evolution of mutation rates.
-	
-	\item \textbf{Other options}: A ratio of 50\% for the mating pool seems to be a good choice.
-	
-\end{itemize}
-
-
-\subsubsection{Recommended parametrization of GAs}
-
-We evaluated the optimization by genetic algorithms on AMs of varying complexity, with a large number of combinations of operators to be able to make recommendations for optimizing the AM. Our conclusions are:
-
-\begin{itemize}
-	\item The optimization does not systematically converge to the global optimum  (but still often nearby), which is why we recommend doing several optimizations in parallel in order to compare the results, analyse the convergence, and keep the best.
-	
-	\item The population size should be in accordance with the complexity of the AM to optimize: from 50 for the simple ones, up to 500 for the most complex AMs.
-	
-	\item The value of the ratio for the intermediate population is not so important, and value of 50\% seems quite appropriate.
-	
-	\item Ratio-elitism is slightly better than tournaments for the natural selection operator, but it is not decisive.
-	
-	\item The performance of the operators for the couples selection perform relatively similarly. The roulette wheel weighting and the tournament selection are more efficient in terms of convergence and required number of evaluations.
-	
-	\item Most crossover operators have relatively similar performance. Binary-like crossover with two points of intersection are better than others, especially for convergence.
-	
-	\item Mutation has a clearly dominant influence. Three mutation operators stand out, two of which we have developed: the non-uniform mutation, the multi-scale mutation, and the chromosome of adaptive search radius. The latter is the most robust as it has no controlling parameter.
-	
-\end{itemize}
-
-In order to make an optimization of the AM with genetic algorithms, it may be wise to consider these three mutation operators in parallel. We would then combine algorithms that are sometimes faster to other that are more robust. In order to be confident in the optimized AMs, we propose using a set of the following mutation operators:
-
-\begin{itemize}
-	\setlength\itemsep{-4px}
-	\item 1x non-uniform, $p_{mut}=0.1$, $G_{m}=50$, $\omega=0.1$
-	\item 1x non-uniform, $p_{mut}=0.1$, $G_{m}=100$, $\omega=0.1$
-	\item 1x non-uniform, $p_{mut}=0.2$, $G_{m}=100$, $\omega=0.1$
-	\item 1x multi-scale,  $p_{mut}=0.1$
-	\item 2x chromosome of adaptive search radius
-\end{itemize}
+Due to the limitation of the sequential approach, we implemented a global optimization technique based on Genetic algorithms. This allows for a fully automatic and objective optimization of the AM. However, as this topic is rather consequent, it will be the subject of another publication.
 
 
 \conclusions[Conclusions and perspectives]
 
 Processing operational forecasts by means of AtmoSwing requests very low computing infrastructure and can provide useful information, such as early warning for extreme precipitation, in the case of an application in flood forecasting. The Forecaster is very flexible as it builds the desired method in a dynamic way, and can thus implement multiple variants of the AM. The Viewer offers a user-friendly display of the forecast, with different levels of synthesis and details. The Optimizer implements different optimization techniques, such as the sequential approach, a Monte-Carlo method, and a global optimization technique.
-
-In order to automatically optimize the analogue method, we evaluated genetic algorithms, a global optimization technique, that is able to solve complex problems. Given the large number of existing operators and options, we had to evaluate systematically multiple variants to identify which operators are important, and which variant works best for the analogue method. We could thus identify that the mutation operator is a key element for our application, and provided new variants that were found to be efficient, such as the Chromosome of adaptive search radius that seems to be very reliable (no control parameter) and efficient . Recommendations were established for a relevant use of GAs for the optimization of the analogue method. However, there may still be possible improvements, through new operators, in order to improve the optimization performance and speed. Usage of this global optimization greatly eases the adaptation of the AM to new regions (with different leading meteorological processes) or to new predictands, as the optimization is performed automatically and globally.
 
 Several additions would be nice to have in AtmoSwing for operational forecasting. The first one would be using outputs from multiple global NWP models within one forecast, namely making multi-models forecasts, in order to take into account the variability between various providers. In the same direction, \citet{Thevenot2004} showed the benefit of using ensembles of global NWP forecasts as input for the method. This approach takes into account the uncertainties on predictors from the global model. Its implementation is a combination of the selected analogue days associated with each of the traces. Rainfall distribution is then established on all analogues. The forecast on the ensemble was found to be more accurate than the deterministic control for a lead time of 4 days and more \citep{Thevenot2004}. 
 
@@ -1108,7 +728,7 @@ The analogue method evolves, but there are still many possibilities to be assess
 	\item assessment of the relevance of an automatic interpretation of the distribution in order to provide the most likely expected value;
 \end{itemize}
 
-The global optimization tools allow easily adapting the AM to new regions by taking into account local meteorological influences, and has thus a great potential of use. Moreover, it allows exploring automatically datasets in order to extract the most relevant variables. It is thus possible to try assessing other predictands, such as the temperature, the limit of snowfall, the occurrence of hail, or wind, while leaving the algorithms select the best variables and the associated parameters.
+%TODO: rework
 
 
 %\appendix
@@ -1119,7 +739,7 @@ The global optimization tools allow easily adapting the AM to new regions by tak
 
 \section*{Code availability}
 
-AtmoSwing is developed under the Mercurial distributed revision control, and the source code can be found at:
+AtmoSwing is open source, under the CDDL license. It is developed under the Mercurial distributed revision control, and the source code can be found at:
 
 \begin{itemize}
 	\item http://www.atmoswing.org
@@ -1132,11 +752,9 @@ To get access to the frozen version at the time of writing (v1.4.2), the followi
 	\item bitbucket.org/atmoswing/atmoswing/commits/tag/1.4.2
 \end{itemize}
 
-The Forecaster and the Viewer are fully available, whereas the open version of the Optimizer includes all methods but the Genetic algorithms. These are planed to be released in the future, but not at the time of writing.
-
 
 \begin{acknowledgements}
-Thanks to Lucien Schreiber and Richard Metzger for their programming advices. Thanks to Renaud Marty for his active involvement in testing AtmoSwing against his code base. Thanks to Hamid Hussain-Khan of the University of Lausanne for his help and availability, and for the intensive use of the cluster he is in charge of.
+Thanks to Lucien Schreiber and Richard Metzger for their programming advices. Thanks to Renaud Marty for his active involvement in testing AtmoSwing against his code base.
 
 Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton and the Water, Land and Sanitation Service of the Vaud Canton who financed the MINERVE project which started this research. NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. 
 \end{acknowledgements}
