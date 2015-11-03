@@ -82,7 +82,7 @@
 
 \begin{abstract}
 
-The analogue method allows forecasting local meteorological variables of interest (predictand), such as the daily precipitation, on the basis of synoptic variables (predictors). It relies on the fact that similar meteorological influences are likely to result in similar local effects. This statistical relationship is thus based on archive of observed data, and used in order to operationally forecast the coming days, or to evaluate future conditions under a changing climate.
+The analogue method allows forecasting local meteorological variables of interest (predictand), such as the daily precipitation, on the basis of synoptic variables (predictors). It relies on the fact that similar meteorological influences are likely to result in similar local effects. This statistical relationship is thus based on archives of observed data, and used in order to operationally forecast the coming days, or to evaluate future conditions under a changing climate.
 
 AtmoSwing is an open source software that implement the analogue method in a very flexible way, so that different variants can be handled dynamically, by parameterization. It is made of 3 tools: the Forecaster to perform operational forecasts, the Viewer to display the results, and the Optimizer to establish the statistical relationship between the predictand and predictors. 
 
@@ -608,7 +608,7 @@ In the case of discrete probabilistic forecasts, we work with probabilities of o
 
 \begin{itemize}
 	\setlength\itemsep{-1mm}
-	\item Brier Score \citep{Brier1950, Toth2003}
+	\item Brier Score \citep{Brier1950}
 	\item ROC diagramm \citep[Relative Operating Characteristic or Receiver Operating Characteristic,][]{Mason1982}
 	\item RPS \citep[Ranked Probability Score,][]{Epstein1969}
 	\item SEEPS \citep[Stable Equitable Error in Probability Space,][]{Rodwell2010,Rodwell2011}
@@ -707,7 +707,7 @@ The use of such a random method allows informing on the parameters sensitivity, 
 \subsection{Global optimization}
 \label{sec:atmoswing-optimization}
 
-Due to the limitation of the sequential approach, we implemented a global optimization technique based on Genetic algorithms. This allows for a fully automatic and objective optimization of the AM. However, as this topic is rather consequent, it will be the subject of another publication.
+Due to limitations of the sequential approach, we decided to explore optimization techniques that can handle all parameters fully automatically. We first assessed the \citet{Nelder1965a} method, which was found to be unsuitable for this purpose. Because of the complexity of the AM and its non-linearity, a technique of global optimization is required. We thus implemented Genetic algorithms in AtmoSwing Optimizer in order to perform a global optimization of the AM. This allows for a fully automatic and objective optimization of the AM. However, as this topic is rather consequent and the code base is not yet released, it will be the subject of another publication.
 
 
 \conclusions[Conclusions and perspectives]

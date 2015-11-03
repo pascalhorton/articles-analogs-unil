@@ -16,11 +16,11 @@
 
 %% Start with one of the following:
 % DOUBLE-SPACED VERSION FOR SUBMISSION TO THE AMS
-\documentclass{ametsoc}
+%\documentclass{ametsoc}
 
 
 % TWO-COLUMN JOURNAL PAGE LAYOUT---FOR AUTHOR USE ONLY
-%\documentclass[twocol]{ametsoc}
+\documentclass[twocol]{ametsoc}
 
 \usepackage{multirow}
 \usepackage{gensymb}
@@ -114,17 +114,8 @@
 % For BAMS authors only: If your article requires a Capsule Summary, please place the capsule text at the end of your abstract
 % and identify it as the capsule. Example: This is the end of the abstract. (Capsule Summary) This is the capsule summary. 
 
-\abstract{
-	
-	
-	
-	The global optimization can optimize all parameters jointly and automatically, which is a breakthrough in the way the analogue method was calibrated until now. Indeed, it allows taking into account parameters inter-dependencies, adding new degrees of freedom, and choosing objectively some parameters that were manually selected beforehand (such as the pressure levels and the temporal windows of the predictor variables).
-	
+\abstract{The global optimization can optimize all parameters jointly and automatically, which is a breakthrough in the way the analogue method was calibrated until now. Indeed, it allows taking into account parameters inter-dependencies, adding new degrees of freedom, and choosing objectively some parameters that were manually selected beforehand (such as the pressure levels and the temporal windows of the predictor variables).
 	These kind of optimization techniques need however to be tailored to the problem to solve. We had to assess multiple combinations of algorithms, and even to develop new operators, such as the \textit{chromosome of adaptive search radius} which was found to be very robust, in order to make recommendations for the use of genetic algorithms to optimize the analogue method. These recommendations are a consequent outcome of this work, as it opens new perspective for the improvement of the analogue method, and its application to new regions or to new predictands.
-	
-	
-	
-	
 	}
 
 \begin{document}
@@ -173,7 +164,7 @@
 
 The sequential calibration cannot optimize all parameters of the AM, as several are manually selected, such as the meteorological variable, the pressure level and the temporal windows. Testing multiple combinations of these can be cumbersome, especially when considering multiple predictors within the same level of analogy. Moreover, the parameters are calibrated successively within the same level of analogy, and in-between them.
 
-We thus decided to explore optimization techniques that can handle all parameters fully automatically. We first assessed the \citet{Nelder1965a} method, which was found to be unsuitable for this purpose. Due to the complexity of the AM and its non-linearity, a technique of global optimization is required. We thus implemented Genetic algorithms in AtmoSwing Optimizer in order to perform a global optimization of the AM. This article is not about discussing the results of such a technique, but describing the details of the implementation. The demonstration of the benefit brought by such an approach is the topic of another article. The details of the implementation being numerous, the description is provided in the next dedicated section (\ref{sec:gas}).
+ This article is not about discussing the results of such a technique, but describing the details of the implementation. The demonstration of the benefit brought by such an approach is the topic of another article. 
 
 
 
