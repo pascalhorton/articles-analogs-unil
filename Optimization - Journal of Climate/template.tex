@@ -16,11 +16,11 @@
 
 %% Start with one of the following:
 % DOUBLE-SPACED VERSION FOR SUBMISSION TO THE AMS
-\documentclass{ametsoc}
+%\documentclass{ametsoc}
 
 
 % TWO-COLUMN JOURNAL PAGE LAYOUT---FOR AUTHOR USE ONLY
-%\documentclass[twocol]{ametsoc}
+\documentclass[twocol]{ametsoc}
 
 \usepackage{multirow}
 \usepackage{gensymb}
@@ -114,11 +114,8 @@
 % For BAMS authors only: If your article requires a Capsule Summary, please place the capsule text at the end of your abstract
 % and identify it as the capsule. Example: This is the end of the abstract. (Capsule Summary) This is the capsule summary. 
 
-\abstract{The analogues method is based on a statistical relationship between synoptic atmospheric variables and local weather, which we aim at forecasting. This relationship is expressed through many parameters that are usually calibrated by means of a semi-automatic procedure. This sequential calibration is relatively fast and provide acceptable results, but it has strong constraints, is made of successive steps and thus cannot handle parameters dependencies, and mainly, it cannot calibrate automatically some parameters, such as the selection of the pressure levels and the temporal windows on which the predictors are compared. In order to surpass these limitations, we assessed a global optimization technique, namely genetic algorithms, that can optimize jointly all parameters of the method and thus provide a global optimum by taking into account the parameters dependencies. Moreover, it can calibrate parameters that were previously manually assessed, and can take into account new degrees of freedom that were unthinkable before. 
-
-
+\abstract{
 We then applied the optimizer to the Rh\^{o}e catchment in the Swiss Alps and obtained coherent results which significantly improve the performance of the forecasting by analogy. The optimizer allowed us to calibrate jointly all parameters of the method and to add a weighting of the criteria per pressure level, as well as non-overlapping spatial windows.}
-
 \begin{document}
 
 %% Necessary!
@@ -196,19 +193,7 @@ The predictand (which is to be predicted) is in our case the daily precipitation
 
 
 
-\section{Motivation for a global optimization}
 
-The classic calibration is fast to optimize one spatial window for a given pressure level and temporal window. However, it doesn't provide an objective selection of the pressure level and temporal window. The only option is to try systematically every combination, which may be acceptable for no more than 2 levels. However, \citet{Horton2012a} showed that additional pressure levels may improve the method.
-
-We observed during the calibration of the analogue method that the resulting parameters vary with the initial choices (such as the number of analogues). In addition, the different levels of analogy (eg on the atmospheric circulation and the moisture index) are always calibrated sequentially. However, we can not exclude any dependency between them, which could lead us to select another parametrization if we calibrate them together. Simultaneous calibration of all parameters has never been undertaken so far. Only a global optimization technique can be able to optimize all parameters of all analogy levels simultaneously.
-
-When creating the classic calibration procedure, \citet{Bontron2004} was aware of the problem of dependencies between parameters and wrote: '' \textit{We perceive here the combinatorial aspect of our problem: variables and spatial windows are not independent. We will present our results by first searching the best variable [note: e.g. selection of the pressure level and the temporal window for the geopotential height] on a chosen spatial window, and next, the best window for the chosen variable. However, even by repeating the process, are we sure to obtain the optimal combination?} ''. And later in his work: '' \textit{Our approach, which is again to vary the parameters one by one -- the others being fixed in a more or less arbitrary manner -- may therefore not exactly lead us to the optimal solution} ''. \citet{Bliefernicht2010} has also faced the combinatorial issue of the parameters of the analogue method and concludes that one needs to be an expert to know their respective influence, their sensitivity and their nonlinear interactions. \citet{BenDaoud2010}, when calibrating the analogue method, also stated that '' \textit{the combinatory aspect related to the calibration was found to be too high for all the parameters to be calibrated simultaneously } ''.
-
-The analogue method needs to be adapted to every new region it is applied, because the leading meteorological influences are specific to this region. Even the selection of the pressure level and the temporal window should be reconsidered, when not the variable itself. For example, \citet{BenDaoud2010} found the vertical velocity relevant for the great plains in France, when \citet{Horton2012a} found no interest in this variable in an Alpine environment, because in the Alps, the vertical motion is mainly controlled by orographic effects, and was thus already well related to the atmospheric circulation itself. So, when adapting the analogue method to a new region, we should assess systematically every combination of pressure levels, time and spatial windows, which is an intensive task. This procedure can be automatized by a global optimization technique.
-
-Our ambition was then to assess the feasibility of an automatic optimization of the analogue method through various techniques. The objective was to find an approach to optimize all parameters simultaneously, and thus be able to identify the global optimum in the parameter space. In addition, it can overcome the systematic manual assessments of certain parameters such as the selection of the pressure levels and time windows. Finally, it can open new perspectives by allowing the addition of new degrees of freedom, such as a weighting of the criteria values between the pressure levels, and the consideration of non-overlapping spatial windows between the pressure levels.
-
-\citet{Horton2012a} assessed the ability of the \citet{Nelder1965a} method based on a simplex approach. This technique didn't provide satisfying results and failed at identifying the global optimum. Indeed, the results didn't converge and many local optimums came out. The parameter space of the analogue method is very complex and not appropriate for a linear optimization technique. Genetic algorithms were found to be much more relevant for such application.
 
 \section{Genetic algorithms}
 
