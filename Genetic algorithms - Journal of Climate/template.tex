@@ -185,10 +185,10 @@ Our ambition was then to assess the feasibility of an automatic optimization of 
 \citet{Horton2012a} assessed the ability of the \citet{Nelder1965a} method based on a simplex approach. This technique didn't provide satisfying results and failed at identifying the global optimum. Indeed, the results didn't converge and many local optimums came out. The parameter space of the analogue method is very complex and not appropriate for a linear optimization technique. Genetic algorithms were found to be much more relevant for such application.
 
 
-\section{Optimization using Genetic algorithms}
+\section{Assessed Genetic Algorithms variants}
 \label{sec:gas}
 
-Genetic algorithms (GAs) come from the world of stochastic optimization, more specifically from metaheuristic approaches. These are stochastic iterative algorithms that behave like search algorithms by exploiting the characteristics of a problem and are particularly suitable for complex parameter spaces.
+Genetic Algorithms (GAs) come from the world of stochastic optimization, more specifically from metaheuristic approaches. These are stochastic iterative algorithms that behave like search algorithms by exploiting the characteristics of a problem and are particularly suitable for complex parameter spaces.
 
 Genetic algorithms are part of the family of evolutionary algorithms \citep{Back1993b, Schwefel1993}, which get inspiration from some mechanisms of biological evolution, such as reproduction, genetic mutations, chromosomal crossovers, and natural selection. GAs are the most used technique from evolutionary algorithms \citep{Back1993b}, and they are constantly improving \citep{Haupt2004}. However, with time, the different methods of evolutionary algorithms tend to be similar and share many commonalities \citep{Back1996b, Haupt2004}.
 
@@ -224,7 +224,7 @@ There are numerous implementation variants of GAs often optimal for a given prob
 \end{enumerate}
 
 \begin{figure}[htb]
-	\includegraphics[width=8.3cm]{figures/figure_structure_gas.pdf}
+	\noindent\includegraphics[width=19pc,angle=0]{figures/figure_structure_gas.pdf}\\
 	\caption{Genetic algorithms operational flowchart}
 	\label{fig:structure_gas}
 \end{figure}
@@ -466,7 +466,7 @@ GAs are very computationally intensive because they require many evaluations of 
 The assessment (calculation of the objective function) of each member of the population of a generation is completely independent and can be performed in parallel on different processors of a computer \citep{Alliot2005}. We implemented this technique and the resulting time savings was very important. In order to perform optimizations for multiple time series, the use of a cluster is a necessity, which our code allows.
 
 
-\subsection{Recommendations of parametrization}
+\section{Recommendations of parametrization}
 
 The GAs parametrization, such as the mutation rate, population size, natural selection options, and so on, is difficult given the high number of existing variants, each developed for a specific problem \citep{Haupt2004, Costa2007a}. This parametrization depends on the objective function, implementation variants, the range of the parameters to be optimized, and performance indicators. Thus, different studies suggest very different parametrization.
 
@@ -477,7 +477,7 @@ A key element of the parametrization of GAs is finding the right balance between
 Values of the mutation rate varies broadly between the studies: from 0.001 \citep{DeJong1975a} to 0.2 \citep{Haupt2004}. \citet{Back1996b} showed that mutation rates higher than the usual ranges are more optimal at the beginning of the optimization, allowing further exploration. The combination of a small population and a high mutation rate works best for the first generations \citep{DeJong1975a, Back1996b, Haupt2004}, but as we could observe, it does not guarantee the quality of the final result. Incremental approaches with varying mutation rates are certainly more optimal but more complex to implement \citep{Back1996a, Back1996b}.
 
 
-\subsubsection{Comparison process and results}
+\subsection{Comparison process and results}
 
 One of our goals being to make recommendations of parametrization in order to optimize the AM, we proceeded systematically. The results are summarized hereafter \citep[see][for the details]{Horton2012a}. We used concepts from the factorial design approach \citep[see eg.][]{Costa2005a,Costa2007a,Mariano2010a}, which is sometimes used for comparative analysis of different parametrizations of GAs. We processed by stages, analysing in details and in a systematic way every variants of the implemented operators, in combination with multiple other options and parameters in order to take into account eventual co-dependencies. 
 
@@ -526,7 +526,7 @@ This comparison required tens of thousands of optimizations that were performed 
 \end{itemize}
 
 
-\subsubsection{Recommended parametrization of GAs}
+\subsection{Recommended parametrization of GAs}
 
 We evaluated the optimization by genetic algorithms on AMs of varying complexity, with a large number of combinations of operators to be able to make recommendations for optimizing the AM. Our conclusions are:
 
