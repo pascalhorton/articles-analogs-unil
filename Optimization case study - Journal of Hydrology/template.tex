@@ -1,0 +1,1041 @@
+%% Version 4.3.2, 25 August 2014
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template.tex --  LaTeX-based template for submissions to the 
+% American Meteorological Society
+%
+% Template developed by Amy Hendrickson, 2013, TeXnology Inc., 
+% amyh@texnology.com, http://www.texnology.com
+% following earlier work by Brian Papa, American Meteorological Society
+%
+% Email questions to latex@ametsoc.org.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PREAMBLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Start with one of the following:
+% DOUBLE-SPACED VERSION FOR SUBMISSION TO THE AMS
+%\documentclass{ametsoc}
+
+
+% TWO-COLUMN JOURNAL PAGE LAYOUT---FOR AUTHOR USE ONLY
+\documentclass[twocol]{ametsoc}
+
+\usepackage{multirow}
+\usepackage{gensymb}
+\usepackage{subcaption}
+\usepackage{xcolor,colortbl}
+
+% After http://tex.stackexchange.com/questions/94799/how-do-i-color-table-columns-and-rows
+\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
+\definecolor{Gray}{gray}{0.85}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\newcolumntype{a}{>{\columncolor{Gray}}c}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% To be entered only if twocol option is used
+
+\journal{jcli}
+
+%  Please choose a journal abbreviation to use above from the following list:
+% 
+%   jamc     (Journal of Applied Meteorology and Climatology)
+%   jtech     (Journal of Atmospheric and Oceanic Technology)
+%   jhm      (Journal of Hydrometeorology)
+%   jpo     (Journal of Physical Oceanography)
+%   jas      (Journal of Atmospheric Sciences)	
+%   jcli      (Journal of Climate)
+%   mwr      (Monthly Weather Review)
+%   wcas      (Weather, Climate, and Society)
+%   waf       (Weather and Forecasting)
+%   bams (Bulletin of the American Meteorological Society)
+%   ei    (Earth Interactions)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Citations should be of the form ``author year''  not ``author, year''
+\bibpunct{(}{)}{;}{a}{}{,}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% To be entered by author:
+
+%% May use \\ to break lines in title:
+
+\title{Global Optimization of the Analogue Method by Means of Genetic Algorithms}
+
+%%% Enter authors' names, as you see in this example:
+%%% Use \correspondingauthor{} and \thanks{Current Affiliation:...}
+%%% immediately following the appropriate author.
+%%%
+%%% Note that the \correspondingauthor{} command is NECESSARY.
+%%% The \thanks{} commands are OPTIONAL.
+
+    %\authors{Author One\correspondingauthor{Author One, 
+    % American Meteorological Society, 
+    % 45 Beacon St., Boston, MA 02108.}
+% and Author Two\thanks{Current affiliation: American Meteorological Society, 
+    % 45 Beacon St., Boston, MA 02108.}}
+
+\authors{Pascal Horton\correspondingauthor{Terranum, Rue de l'industrie 35 bis, 1030 Bussigny, Switzerland.}}
+
+%% Follow this form:
+    % \affiliation{American Meteorological Society, 
+    % Boston, Massachusetts.}
+
+\affiliation{University of Lausanne and Terranum, Lausanne, Switzerland}
+
+%% Follow this form:
+    %\email{latex@ametsoc.org}
+
+\email{pascal.horton@alumnil.unil.ch}
+
+%% If appropriate, add additional authors, different affiliations:
+    %\extraauthor{Extra Author}
+    %\extraaffil{Affiliation, City, State/Province, Country}
+
+\extraauthor{Michel Jaboyedoff}
+\extraaffil{University of Lausanne, Lausanne, Switzerland}
+
+%% May repeat for a additional authors/affiliations:
+
+%\extraauthor{}
+%\extraaffil{}
+
+\extraauthor{Charles Obled}
+\extraaffil{Universit\'{e} de Grenoble-Alpes, LTHE, Grenoble, France}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ABSTRACT
+%
+% Enter your abstract here
+% Abstracts should not exceed 250 words in length!
+%
+% For BAMS authors only: If your article requires a Capsule Summary, please place the capsule text at the end of your abstract
+% and identify it as the capsule. Example: This is the end of the abstract. (Capsule Summary) This is the capsule summary. 
+
+\abstract{
+We then applied the optimizer to the Rh\^{o}e catchment in the Swiss Alps and obtained coherent results which significantly improve the performance of the forecasting by analogy. The optimizer allowed us to calibrate jointly all parameters of the method and to add a weighting of the criteria per pressure level, as well as non-overlapping spatial windows.}
+\begin{document}
+
+%% Necessary!
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN BODY OF PAPER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+%% In all cases, if there is only one entry of this type within
+%% the higher level heading, use the star form: 
+%%
+% \section{Section title}
+% \subsection*{subsection}
+% text...
+% \section{Section title}
+
+%vs
+
+% \section{Section title}
+% \subsection{subsection one}
+% text...
+% \subsection{subsection two}
+% \section{Section title}
+
+%%%
+% \section{First primary heading}
+
+% \subsection{First secondary heading}
+
+% \subsubsection{First tertiary heading}
+
+% \paragraph{First quaternary heading}
+
+
+\section{Introduction}
+\label{section_intro}
+
+The analogue method is a downscaling technique based on the idea expressed by \citet{Lorenz1969}, that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Bontron2005}. It aims at forecasting a predictand, often the daily precipitation, on the basis of predictor variables describing the synoptic atmospheric circulation. Many parameters define this relationship, which are usually calibrated by means of a semi-automatic procedure.
+
+The analogue method has to be adapted to every new location it is applied. We improved the analogue method for the Swiss Alps, by means of genetic algorithms. A summary of the main results are provided here \citep[see][for the details]{Horton2012a}. Even though the results may differ from one place to another, the applicability of GAs to the analogue method remains universal.
+
+%In operational forecasting, it has been used mainly by practitioners, notably hydropower companies or flood forecasting services, while in climate studies, it is more and more used to downscale the results of global climate model simulation runs. In this last case, although the GCM represents the large or regional scale evolutions of the atmosphere, it would be far too computer intensive to get down to variables such as precipitation at a rather small and representative scale. Therefore the idea to rely on past observations to bypass these unaffordable small scale simulations and to go from the large scale situation proposed by the GCM to the end variables like precipitation by searching anlogs in the past and present archive. 
+
+
+\section{The analogue method}
+\label{section_analog_method}
+
+Multiple variations of the methods exist, and some aspects and parameters will not be detailed hereafter. There are mainly 2 parametrizations that are used most often: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on moisture variables \citep{Obled2002, Bontron2005, Marty2012}.
+
+The method based on the analogy of the synoptic circulation consists in the following steps (Table \ref{table:params_R1}): We assess the similarity of the atmospheric circulation of a target date with every day of the archive by processing the S1 criteria \citep[Eq.\ (\ref{eq:S1}), ][]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial window. \citet{Bontron2005} showed that the geopotential height at 500~hPa and 1000~hPa are the best first predictors of the NCEP/NCAR reanalysis dataset, and that the S1 criteria performs better than scores based on absolute distances. The reason for such better results is that the S1 criteria allows comparing the circulation pattern, by means of the gradients, rather than the absolute value of the geopotential height. To cope with seasonal effects, candidate dates are extracted within a period of 4 months centred around the target date, for every year of the archive.
+
+\begin{equation}
+\label{eq:S1}
+S1=100 \frac {\displaystyle \sum_{i} \vert \Delta\hat{z}_{i} - \Delta z_{i} \vert}
+{\displaystyle \sum_{i} max\left\lbrace \vert \Delta\hat{z}_{i} \vert , \vert \Delta z_{i} \vert \right\rbrace }
+\end{equation}
+where $\Delta \hat{z}_{i}$ is the forecast geopotential height difference between the \textit{i}th pair of adjacent points in the target situation, and $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation. The differences are processed separately in both directions. The smaller the S1 values are, the more similar the pressure fields.
+
+The $N_{1}$ dates with the lowest values of S1 are considered as analogues to the target day. The number of analogues, $N_{1}$, is a parameter to calibrate. Then, the daily observed precipitation amount of the $N_{1}$ resulting dates provide the empirical conditional distribution considered as the probabilistic forecast for the target day.
+
+The other most know parametrization adds a second level of analogy on moisture variables (Table \ref{table:params_R2}). The predictor that \citet{Bontron2004} found optimal for the France territory is a moisture index made of the product of the precipitable water with the relative humidity at 850~hPa. \cite{Horton2012a} confirmed that this index is better for the Swiss Alps than any other variable from the NCEP/NCAR reanalysis considered independently. When adding a second level of analogy, we subsample $N_{2}$ dates in the $N_{1}$ analogues on the atmospheric circulation, to end up with a smaller number of analogue situations. When we add a second level of analogy, we keep a higher number of analogues on the first level.
+
+
+\subsection{Data}
+\label{section_data}
+
+The analogue method relies on two types of data: predictors, that are atmospheric variables describing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather time series we want to forecast.
+
+Predictors are generally reanalysis datasets. We will work here with the NCEP/NCAR reanalysis \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996}, but it can be any other reanalysis dataset.
+
+The predictand (which is to be predicted) is in our case the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss' stations network, for the period 1961-2008. The time series from every available gauging station were averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}.
+
+
+
+
+
+\section{Genetic algorithms}
+
+%TODO: write this section
+
+
+Practically, GAs allow rapidly approaching satisfactory solutions, but they do not provide the optimum solution for sure \citep{Zitzler2004a}. It is indeed mainly a matter of time. When the optimizer gets closer to the global optimum, any new improvement takes more time to appear (see figure \ref{fig:evolution}), and the final adjustment of the parameters is very time consuming \citep{Back1993a}. For problems that require a significant amount of time in order to evaluate the objective function, as in our case, we have to limit the number of generations to get reasonable processing time. Thus, different acceptable solutions can result from one or more optimizations \citep{Holland1992b}. This is a strength and a weakness of GAs: they are very good at exploring complex parameter spaces in order to identify the most promising areas, but they will not necessarily find the best solution with the optimal values of all parameters \citep{Holland1992b}.
+
+
+
+
+
+
+
+\section{Case study description}
+
+The study area is the alpine upper Rh\^{o}ne catchment in Switzerland (Fig.\ \ref{fig:map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region is the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project that aims at providing a real-time flood management on the upper Rh\^{o}ne catchment \citep{GarciaHernandez2009b}. Even thought the region is rather small, the meteorological influences related to extreme weather conditions varies substantially within it \citep[see][]{Horton2012}. Based on different climatological analyses, the gauging stations in the catchment were clustered in 10~subregions (Fig.\ \ref{fig:map}) :
+
+\begin{enumerate}
+	\setlength\itemsep{-4px}
+	\item Swiss Chablais
+	\item Trient Valley
+	\item West Bernese Alps
+	\item Lower Rhone Valley
+	\item Left side valleys
+	\item Southern ridges
+	\item Upper Rhone Valley
+	\item Southeast ridges
+	\item East Bernese Alps
+	\item Conches Valley
+\end{enumerate}
+
+The 48 years precipitation dataset (see section \ref{section_intro}.\ref{section_data}) was divided into a calibration period and a validation period. Using data independent from the calibration period to validate our results is very important in order to assess the robustness of the improvements and to avoid overparametrization of the method.
+
+In order to reduce potential bias related to trends in the climate change or to the evolution in measurement techniques, the selection of the validation period is evenly distributed over the entire series \citep{BenDaoud2010}. Thus, we selected one year every six years for validation, which represents a total of 8 years for the validation and 40 for calibration. The choice of the sequence was made in order to have similar statistical characteristics between the calibration and the validation periods.
+
+
+\section{Optimization of the analogy of atmospheric circulation}
+
+We first optimized the analogy of atmospheric circulation alone, without moisture variables, for our 10 subregions. We started from the most simple analogue method, and increased the complexity in order to identify the degrees of freedom that are of particular interest. Thus, the tested parametrization evolved iteratively in complexity. We do not provide the detailed results of the intermediate stages \citep[see][for the details]{Horton2012a}, but only the main conclusions.
+
+We first considered the reference method for the analogy of the atmospheric circulation, based on the 500 and 1000~hPa levels. We let the optimizer choose the number of analogues, both spatial windows with no overlapping constraint, as well as the temporal window (hours of observation of the geopotential). The classic calibration cannot automatically choose the temporal window, neither handle non-overlapping spatial windows, and finally it cannot optimize all parameters simultaneously. With these improvements, we could gain a relative improvement of the CRPSS of 3.97\% and 2.45\% in average for the calibration and the validation periods respectively. Some tests showed that most of the gains are due to the non-overlapping spatial windows.
+
+Then, we provided an additional degree of freedom to the AGs by letting them choose the pressure levels along with the other parameters. Evaluation of pressure levels is also a non-automated process in the classic calibration. We could observe that this degree of freedom increases the optimization time and may decrease the number of simulations that converge to a single solution. However, most solutions were very close in terms of score. The averaged relative improvement of the CRPSS is 5.63\% for the calibration and 3.82\% for the validation periods. The pressure levels that were chosen are 500~hPa or 700~hPa for the upper level, and 925~hPa or 1000~hPa (most often) for the lower level.
+
+Parallel analyses showed that the analogy of circulation is incomplete, and that the geopotential still contains relevant data that can improve the statistical relationship. Therefore, we added a third predictor (still the geopotential height) that the optimizer could use along with the previous parameters. There was no constraint on the predictors, so that the same pressure level could be selected multiple times. Some improvements were found on the score, both for the calibration and the validation periods, confirming that this additional information is beneficial for the quality of the forecast. We then tried with 4 predictors, and so on, up to 8. Every time we added a new predictor to optimize, the score on the calibration period increased, but always more to a smaller extent. However, the score on the validation period dropped after 4 predictors, revealing an over-parametrization of the method, and thus a lack of robustness. We thus found that considering 4 predictors is optimal for our case study, since the gain in CRPSS is significant. It can not be excluded that another number would prevail under other meteorological conditions.
+
+Finally, we added a weighting of these 4 predictors (pressure levels), which is also optimized by GAs. The weighting operates in the combination of the S1 criteria processed on every level, which were previously averaged with equal weights. The role of this new degree of freedom is to give more weight to the levels with greater predictive capacity, and to consider the geopotential variability changes with altitude. 
+
+
+\subsection{Which parameters are optimized ?}
+
+The method we finally optimized for the analogy of the atmospheric circulation, based on 4 levels of the geopotential, and that we will name z4, is made of the following degrees of freedom:
+
+\begin{itemize}
+	\setlength\itemsep{-4px}
+	\item the selection of the pressure levels (4 degrees)
+	\item the temporal windows (4 degrees)
+	\item the spatial windows (16 degrees)
+	\item the weights (4 degrees)
+	\item the number of analogues (1 degrees).
+\end{itemize}
+
+This sums up to 29 degrees of freedom that are optimize simultaneously.
+
+
+\subsection{Results for the z4 method}
+
+The resulting optimized parameters for z4 vary from one subregion to another. An example of the detailed parameters is provided for the Swiss Chablais in Table \ref{table:params_GA_z4}. The optimized spatial windows are given for every subregion in Figure \ref{fig:spatial_windows_z4}, and the selected pressure levels in Table~\ref{table:levels_GA_z4}. 
+
+The resulting CRPSS scores are provided in Table \ref{table:scores} and is in average 35.8 \% in calibration and 35.5 \% in validation. The improvement of the CRPSS score relatively to the reference method on the atmospheric circulation is provided in Table \ref{table:scores_diff} and is in average 15.3 \% in calibration and 9.9 \% in validation. The score was also calculated for three precipitation thresholds: P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10, P10 being the daily precipitation with a 10~year return period (Table \ref{table:scores_thresholds_z4}). The gain in score increases with the precipitation threshold: in average, respectively for the different thresholds, 13.3\%, 15.4\% and 29.1\% in calibration and 7.9\%, 11.1\% and 34.5\% for the validation period. The optimized method improves thus even more the forecasts for days with significant precipitation than usual days.
+
+To assess the cross-compatibility of the parameters, we applied those optimized for one subregion to the others. The resulting losses or gains of the CRPSS are displayed in Table \ref{table:crossing_z4_calib} for the calibration period and in Table \ref{table:crossing_z4_valid} for the validation period.
+
+
+\subsection{Analysis}
+
+The selections of the pressure levels for the analogy of circulation show a great homogeneity and is spatially consistent (Table \ref{table:levels_GA_z4}). First of all, the level 1000~hPa is selected twice (the first time at 6 or 12~h, and the second always at 30~h) and the 700~hPa is selected once for every subregion (always at 24~h). The level which varies from one subregion to another is the upper level (always at 12~h), that is 300~hPa for the North-West part of the catchment, 500~hPa for most of the subregions, and 600~hPa for the Conches Valley. Its spatial distribution is however homogeneous. The optimizer thus provided consistent selections of pressure levels and temporal windows, which depicts a significant preference in the analogue method, and the success of our GAs to provide consistent results. The automatic selection of the pressure levels is a big advantage of a global optimization, as it is not possible to assess all combinations of 4 levels with the classic calibration procedure.
+
+The resulting spatial windows (Figure \ref{fig:spatial_windows_z4}) may look very diverse first, but there are significant similarities for subregions located within the same vicinity. The first 4 subregions are characterized by a large spatial window on the upper level, whereas it becomes smaller for the other subregions. For most subregions, the second level (700~hPa) is represented by thin and longitudinally extended domains. The third level (1000~hPa at 6 or 12~h) also contains longitudinally extended domains, but a bit larger. The last one (1000~hPa at 30~h) is rather large and squared. Surprisingly, subregions number 5 (Left side valleys) and 6 (Southern ridges) have exactly the same spatial windows, which suggest that they behave in a similar way and thus could have been merged. This similarity is a good sign for the accuracy of our optimized parameters.
+
+The scores show significant improvements for both the calibration and the validation period (Table \ref{table:scores_diff}). Even more interestingly, the results for higher precipitation thresholds (Table \ref{table:scores_thresholds_z4}) show the largest improvements. This is of particular interest in the framework of flood forecasting.
+
+The analysis of the parameters cross-compatibility shows that obviously, the parameters are optimal on the calibration period when they are calibrated for the given subregion (Table \ref{table:crossing_z4_calib}). However, the losses in CRPSS are not of the same amplitude between the different subregions. Indeed, the Upper Rhone Valley (7) and moreover the Southeast ridges (8) seem to behave significantly differently. This is indeed a climatological reality, as this subregion is the most sensitive to southerly flows \citep{Horton2012}. Parameter sets from other subregions perform poorly for these subregions, and vice versa. Nevertheless, both subregions seem quite inter-compatible. This points to the importance of taking into account leading meteorological influences during subregion creation, which is not always best represented by the geographical distance separating them. Globally, the same pattern can be observed for the validation period (Table \ref{table:crossing_z4_valid}), but in this case, minor improvements may be observed when crossing the parameters. The reason being that the independant validation period contains other events that may be better forecasted by other parameter sets. The relative small differences in score between parametrizations indicate that even though the parameters may differ significantly, the performance may not be drastically affected. Even a change in the pressure level does not mean a radical drop of the score. A different parametrization leads to a different selection of the analogue days, and thus to an improvement of the forecast of certain weather conditions at the expense of others. This raises the question of optimizing more specifically for extreme weather conditions only. 
+ 
+
+\section{Optimization of the analogy with moisture variables}
+
+We previously worked with a method based on a unique level of analogy. However, we know that moisture variables in a second level of analogy do provide improvements to the method (section \ref{section_intro}.\ref{section_analog_method}). So we also wanted to optimize the moisture index, which is a combination of the relative humidity and the precipitable water. In order to do so, we had to introduce a constraint to the optimizer, so that it selects the same temporal window for both variables. 
+
+Two methods were assessed: one with 2 moisture predictors (moisture index on 2 pressure levels or at 2 different hours) named z4-hi2, and one with 4 moisture predictors named z4-hi4. When we introduce 2 predictors for the moisture analogy, the number of degrees of freedom raises to 42, and to 54 when we add 4 predictors.
+
+We proceeded to an optimization of both levels of analogy simultaneously. This implies that the analogy of the atmospheric circulation may change due to the new moisture information.
+
+
+\subsection{Results for z4-hi2 and z4-hi4 methods}
+
+As previously, the optimized parameters differ from one subregion to another, and this event to a greater extent. Detailed examples are still provided for the Swiss Chablais subregion in Table \ref{table:params_GA_z4_hi2} for z4-hi2 and in Table \ref{table:params_GA_z4_hi4} for z4-hi4. The resulting spatial windows are displayed in Figure \ref{fig:spatial_windows_z4-hi2} for z4-hi2, along with the selected pressure levels for the circulation analogy (Table \ref{table:levels_GA_z4_hi2}) and the moisture analogy (Table \ref{table:levels_GA_z4_hi2_H}). Correspondingly, for the method z4-hi4, the spatial windows are shown in Figure \ref{fig:spatial_windows_z4-hi4} and the selected pressure levels are presented in Tables \ref{table:levels_GA_z4_hi4} and \ref{table:levels_GA_z4_hi4_H}.
+
+The CRPSS scores of the optimized methods are provided in Table \ref{table:scores} and amounts to slightly more than 40 \% for both methods and for both periods. This results in a relative improvements that ranges from 11.5 \% to 15.6 \% compared to the reference method on the moisture analogy (Table \ref{table:scores_diff}). As for z4, the z4-hi2 and z4-hi4 methods present improvements of the forecast of significant rainfall (thresholds P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10). The improvement are relatively similar for z4-hi2 (Table \ref{table:scores_thresholds_z4-hi2}) and z4-hi4 (Table \ref{table:scores_thresholds_z4-hi4}), with slightly superior scores for the latter on small precipitation (P\(\geq\)1 mm) and extremes (P\(\geq\)0.5\(\cdot\)P10).
+
+The parameters cross-compatibility has also been assessed for the methods with moisture variables, and are shown in Tables \ref{table:crossing_z4-hi2_calib} and \ref{table:crossing_z4-hi2_valid} for the method z4-hi2, and Tables \ref{table:crossing_z4-hi4_calib} and \ref{table:crossing_z4-hi4_valid} for z4-hi4.
+
+
+\subsection{Analysis}
+
+When optimizing a method made of 2 levels of analogy, the introduction of moisture variables in the second level has an influence on the parameter values of the first level. This is first visible on the selection of the pressure levels for the circulation analogy, where the 1000~hPa that was previously systematically selected twice (Table \ref{table:levels_GA_z4}) is now less chosen (once or even not at all) for both za-hi2 (Table \ref{table:levels_GA_z4_hi2}) and za-hi4 (Table \ref{table:levels_GA_z4_hi4}). There is indeed a shift of the previously selected 1000~hPa for higher levels, which is even slightly stronger with 4 moisture predictors than with 2. This change is likely due to the fact that when considering only the circulation analogy, the method tries to take into account information that can serve as proxy for moisture assessment, whereas it doesn't need it with the moisture index. This aspect has never been demonstrated, as classic calibration tools do not allow it. It can only be assessed by a global optimization technique that can tune jointly both levels of analogy. 
+
+The selected pressure levels for the analogy on the moisture index are strongly centred around 700~hPa and 600~hPa. No other value has been selected when considering 2 pressure levels (Table \ref{table:levels_GA_z4_hi2_H}), and when considering 4 levels, the 850~hPa and 500~hPa levels are additionally selected. However, even in this latter method, the 700~hPa and 600~hPa levels still hold 78 \% of the selection. It is thus more efficient, in terms of forecasting performance, to consider one of this level multiple times at different hours rather than using another pressure level. Besides, the optimizer never chose the same pressure level at the same hour for any variable, even though it was allowed to do so.
+
+The selection of the temporal windows for the atmospheric circulation is similar to the preceding optimization (in the order of increasing pressure: 12~h, 24/30~h, 12~h, 30~h), but sometimes with a bit more variability. When it comes to the moisture analogy, there is a clear trend to select 12~h and 24~h when considering 2 predictors. The z4-hi4 method presents more variability on the selection of the temporal windows for the moisture index.
+
+The optimized spatial windows for the atmospheric circulation have also changed (Figures \ref{fig:spatial_windows_z4-hi2} and \ref{fig:spatial_windows_z4-hi4}). The very large domains on the upper level of the 4 first subregions are not present anymore, and more variability can be observed. The selected points for the analogy on the moisture index are always located nearby the catchment, including at least 1 of the nearest points from the reanalysis dataset, and the spatial windows are relatively small. Thus, for our case study, there is no need to look for distant moisture information and the search could be reduced to a smaller domain. 
+
+The CRPSS scores were improved by considering the moisture information (Table \ref{table:scores}). The optimized methods also perform better than the reference method based on the moisture index (Table \ref{table:scores_diff}). However, there is no drastic difference between both z4-hi2 and z4-hi4 methods, which suggests that considering 4 moisture predictors is not absolutely necessary. When it comes to improvements for days with precipitation above our 3 thresholds (P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10), the conclusion is the same as before, that is a significant improvement of the forecast, mainly for heavy rainfall.
+
+The analysis of the parameters cross-compatibility (Tables \ref{table:crossing_z4-hi2_calib} to \ref{table:crossing_z4-hi4_valid}) is also very similar to the one on the circulation analogy only. The same pattern can be observed, with a drop of performance for the subregions under different meteorological influences. However, the losses of performance are globally more important than before, suggesting that more complex methods with moisture variables are less transposable to another subregion, even though it is located within the same grid of the reanalysis dataset.
+
+
+\section{Discussion}
+
+The optimization of the analogue method by means of genetic algorithms has been undertaken in stages by releasing progressively new degrees of freedom. This approach allowed us to differentiate the contributions to performance gains, as well as to identify possible over-parametrization. The main improvements for our case study are due to the following factors:
+
+\begin{itemize}
+	\item Using 4 pressure levels for the analogy of circulation. It seems to be the optimal number for the studied region. Beyond that value the validation score drops, revealing a lost in robustness due to over-parametrization.
+	\item The automatic and joint optimization of all parameters: the analogues number, the selection of the pressure levels and the time windows, and the spatial windows. These parameters are highly interdependent, so we need to optimize them jointly in order to identify optimal combinations. Traditional calibration procedures based on a systematic assessment of every combination is no more possible when considering more than 2 pressure levels.
+	\item The introduction of distinct spatial windows between pressure levels. Indeed, the synoptic circulation is characterized by features with very different scales depending on the height, and important information for predicting rainfall is not necessarily located in the same area from one level to another. The optimized spatial windows are consistent in between the subregions.
+	\item The weighting of the analogy criteria between different pressure levels. It can be influenced by the variability of the geopotential with altitude, and the change of some levels significance with the targeted region. There is a trend for the weighting of circulation predictors to decrease with the increase in pressure, as one can see in Figure \ref{fig:levels_weights} for the method z4, and in Figure \ref{fig:levels_weights_average} for the averages over the 3 methods. However, the values stay around equity. This may not be the most influencing factor, and we may suggest to remove it first when trying to reduce the number of degrees of freedom.
+	\item The joint optimization of the circulation and moisture analogy levels, that are usually calibrated successively. We have been able to demonstrate that there is a dependency between the analogy levels, and that in order to approach the optimal parameters, we must consider them jointly.
+\end{itemize}
+	
+GAs are very useful to optimize complex variants of the analogue method, and to assess new degrees of freedom that were not available so far. However, it can be dangerous to add too many parameters to optimize. Indeed, the optimizer will probably use them to successfully improve the calibration score, but the validation control remains very important in order to determine if we are actually improving the method, or if we are over-parametrizing it.
+
+The convergence of parallel optimizations decreases when the method to optimize becomes more and more complex. The optimizer do not always converge to the exact global optimum, but to its surroundings. This is related to the fact that the optimization slows down when it gets closer to the global optimum, and that we have to stop it before the end, due to the required processing time (see Figure \ref{fig:evolution} as example). The resulting parameters may sometimes present significant differences, even though the score is almost similar. Through some Monte-Carlo analyses of the parameter space properties of the analogue method, \citet{Horton2012a} showed that some parameters of the method have a wide range of acceptable values. The spatial windows, for example, can be larger than the optimal size without much impact on the score, while they cannot be smaller \citep[see also][]{Bontron2004}. We could also observe that the selection of the pressure level is not a parameter as discrete as we would have thought, and that choosing another level may have reduced consequences on the performance. This is particularly true for higher pressure levels and can be more critical for lower layers. It was thus interesting to sometimes get several sets of near-optimal parameters, but with some nuances, in order to have an idea of the sensitivity of the parameters for a given region, and to compare the score on the validation period. In this regard, a cross-validation technique may be advisable. An approach that can also be recommended, and that we use, is to first explore a wide range of the parameter space with some optimizations, and to narrow it according to the results for more targeted optimizations that are likely to go faster and to perform better.
+
+We tried to optimize the preselection period (the 4-months window) jointly with the other parameters, but we did not get improvement. We also tried optimizing the moisture flux, which is composed of the moisture index multiplied with the wind flux. However, the results were not better than when we considered the moisture index alone. This may be related to the fact that the optimizer tries to provide the best analogy of the atmospheric circulation in the first place, which makes the wind information less relevant in the second level of analogy.
+
+As we could observe, methods with a higher complexity that integrate moisture predictors are less transposable than simpler ones. We also noticed in another unpublished work, that it is by far better to optimize for 2 subregions jointly rather than to optimize on one and to apply its parametrization to the other. Finally, the creation of the subregions is an important process and should be handled with care. Indeed, the geographical proximity is not always the leading factor to define a subregion. For example, the Southeast ridges subregion do not behave like its surrounding and differ in its parametrization, due to different leading meteorological influences.
+
+GAs are relatively heavy on processing and require an IT infrastructure capable of performing thousands hours of calculations. However, they automatically optimize all parameters of the analogue method, what the classic calibration does not allow. We therefore save much human time that was required to assess successively numerous combinations of parameters (particularly the selection of the pressure levels and the temporal windows). The ability to optimize jointly all parameters is important given the strong dependencies between them and between the levels of analogy.
+
+
+\section{Conclusions and perspectives}
+
+
+
+%TODO: complete
+
+
+
+
+The parameters resulting from the optimization are very consistent for the analogy of the atmospheric circulation, in terms of selection of the pressure levels, and the temporal and spatial windows. There are clear trends or even identical results for subregions under similar meteorological influences, which confirm that the optimized parameters are coherent, despite an eventual first impression of a great variability in the spatial windows. When adding moisture variables, the results show a higher variability, but remains highly acceptable and coherent. Indeed, the selection of the pressure level for the moisture index is for example very constant.
+
+We could observe strong dependencies between the parameters of the analogue method. Thus, the classic calibration, which optimizes the parameters successively, may not lead to the optimal combination. Moreover, it contains several manual systematic assessment, such as the selection of the pressure levels and the temporal windows. GAs, however, can select the pressure levels and the time windows automatically, which can save a considerable amount of human time. A great advantage of a global optimization is its ability to approach or reach optimal parameter values when they are considered jointly. 
+
+We were able to identify that there is a parametric dependence between the analogy of circulation and the moisture. When we consider the two levels together, the optimal parameters of the analogy of circulation are different. This complexity can only be exploited in a suitable manner by global optimization methods.
+
+For our case study, there seems to be an optimum number of pressure levels to consider for the analogy of circulation, which is four, before losing performance in validation. We have also been able to improve the analogy of circulation by introducing a weighting between pressure levels, and considering independent spatial windows between levels.
+
+GAs provide parametrizations of the analogue method that exceed the performance of the classic calibration. In addition, we could observe that the forecasts for days with strong precipitation were significantly more improved, which is clearly interesting in the framework of flood forecasting.
+
+This work is by far not exhaustive and means to open a door for new explorations with the analogues methods. It becomes possible to even let the optimizer chose the meteorological variable to be used as predictor, as well as the analogy criteria. It is already possible to undertake such data mining with our code. Moreover, the analogue method has been explored for decades for precipitation forecasting, but very few work analysis its potential for other predictands. A global optimizer, such as GAs, can speed up this assessment significantly.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ACKNOWLEDGMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\acknowledgments
+Thanks to Hamid Hussain-Khan of the University of Lausanne for his help and availability, and for the intensive use of the cluster he is in charge of. Thanks to Renaud Marty for his fruitful collaboration over the years.
+
+Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton and the Water, Land and Sanitation Service of the Vaud Canton who financed the MINERVE project which started this research. NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. Precipitation time series provided by MeteoSwiss. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIXES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Use \appendix if there is only one appendix.
+%\appendix
+
+% Use \appendix[A], \appendix}[B], if you have multiple appendixes.
+%\appendix[A]
+
+%% Appendix title is necessary! For appendix title:
+%\appendixtitle{}
+
+%%% Appendix section numbering (note, skip \section and begin with \subsection)
+% \subsection{First primary heading}
+
+% \subsubsection{First secondary heading}
+
+% \paragraph{First tertiary heading}
+
+%% Important!
+%\appendcaption{<appendix letter and number>}{<caption>} 
+%must be used for figures and tables in appendixes, e.g.,
+%
+%\begin{figure}
+%\noindent\includegraphics[width=19pc,angle=0]{figure01.pdf}\\
+%\appendcaption{A1}{Caption here.}
+%\end{figure}
+%
+% All appendix figures/tables should be placed in order AFTER the main figures/tables, i.e., tables, appendix tables, figures, appendix figures.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Make your BibTeX bibliography by using these commands:
+% \bibliographystyle{ametsoc2014}
+% \bibliography{references}
+
+\bibliographystyle{ametsoc2014_no_url}
+% \bibliography{references}
+\bibliography{../_refs/_articles-optimization}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Enter tables at the end of the document, before figures.
+%%
+%
+%\begin{table}[t]
+%\caption{This is a sample table caption and table layout.  Enter as many tables as
+%  necessary at the end of your manuscript. Table from Lorenz (1963).}\label{t1}
+%\begin{center}
+%\begin{tabular}{ccccrrcrc}
+%\hline\hline
+%$N$ & $X$ & $Y$ & $Z$\\
+%\hline
+% 0000 & 0000 & 0010 & 0000 \\
+% 0005 & 0004 & 0012 & 0000 \\
+% 0010 & 0009 & 0020 & 0000 \\
+% 0015 & 0016 & 0036 & 0002 \\
+% 0020 & 0030 & 0066 & 0007 \\
+% 0025 & 0054 & 0115 & 0024 \\
+%\hline
+%\end{tabular}
+%\end{center}
+%\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Parameters of the reference method on the atmospheric circulation.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z 1000~hPa & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+			& Z 500~hPa & 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:params_R1}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Parameters of the reference method with moisture variables.}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline \textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z 1000~hPa & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+			& Z 500~hPa & 24~h & & \\ 
+			\hline
+			\multirow{2}{*}{2} & TPW * RH 850~hPa & 12~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{30} \\
+			& TPW * RH 850~hPa & 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:params_R2}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Parameters of the z4 method (analogy on 4 levels of the atmospheric circulation) optimized for the Chablais subregion. The columns are the following: L = level, V = variable, H = hour, D = domain, W = weight, C = criteria, N = number of analogues.}
+	\begin{center}
+		\begin{tabular}{ccccccc}
+			\hline \textbf{L} & \textbf{V} & \textbf{H} & \textbf{D} & \textbf{W} & \textbf{C} & \textbf{N} \\ 
+			\hline 
+			0 & \multicolumn{6}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{8}{*}{1} &  \multirow{2}{*}{Z300} & \multirow{2}{*}{12~h} & -2.5 - 15.0 \degree E & \multirow{2}{*}{32\%} & \multirow{8}{*}{S1} & \multirow{8}{*}{28} \\
+			& & & 37.5 - 57.5 \degree N & & & \\ 
+			& \multirow{2}{*}{Z700} & \multirow{2}{*}{24~h} & 2.5 - 10.0 \degree E & \multirow{2}{*}{22\%} & & \\ 
+			& & & 42.5 - 45.0 \degree N & & & \\ 
+			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{6~h} & -5.0 - 15.0 \degree E & \multirow{2}{*}{24\%} & & \\ 
+			& & & 42.5 - 47.5 \degree N & & & \\ 
+			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{30~h} & 2.5 - 15.0 \degree E & \multirow{2}{*}{22\%} & & \\ 
+			& & & 40.0 - 50.0 \degree N & & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:params_GA_z4}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Atmospheric levels automatically selected for the z4 method at the different subregions.}
+	\begin{center}
+		\begin{tabular}{ccccccccc}
+			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
+			\hline 
+			1  & Z &   &   &   & Z &   &   & ZZ \\
+			2  & Z &   &   &   & Z &   &   & ZZ \\
+			3  & Z &   &   &   & Z &   &   & ZZ \\
+			4  & Z &   &   &   & Z &   &   & ZZ \\
+			5  &   &   & Z &   & Z &   &   & ZZ \\
+			6  &   &   & Z &   & Z &   &   & ZZ \\
+			7  &   &   & Z &   & Z &   &   & ZZ \\
+			8  &   &   & Z &   & Z &   &   & ZZ \\
+			9  &   &   & Z &   & Z &   &   & ZZ \\
+			10 &   &   &   & Z & Z &   &   & ZZ \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:levels_GA_z4}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{CRPSS score (\%) of the three optimized methods.}
+	\begin{center}
+		\begin{tabular}{rrarara}
+			\hline 
+			\textbf{ID} & \multicolumn{2}{c}{\textbf{z4}} & \multicolumn{2}{c}{\textbf{z4-hi2}} & \multicolumn{2}{c}{\textbf{z4-hi4}} \\ 
+			\hline 
+			& calib & valid & calib & valid & calib & valid \\ 
+			\hline 
+			\textbf{1} & 40.3 & 38.5 & 45.5 & 43.8 & 45.9 & 43.6 \\ \hline
+			\textbf{2} & 37.8 & 34.9 & 42.4 & 40.8 & 42.9 & 41.3 \\ \hline
+			\textbf{3} & 36.6 & 33.9 & 41.4 & 39.0 & 41.8 & 39.5 \\ \hline
+			\textbf{4} & 31.2 & 30.8 & 36.1 & 36.4 & 36.8 & 37.1 \\ \hline
+			\textbf{5} & 34.4 & 36.5 & 38.6 & 41.4 & 39.2 & 41.8 \\ \hline
+			\textbf{6} & 37.0 & 39.9 & 41.0 & 44.5 & 41.9 & 44.6 \\ \hline
+			\textbf{7} & 30.0 & 30.1 & 33.8 & 34.6 & 34.4 & 34.8 \\ \hline
+			\textbf{8} & 37.7 & 40.1 & 40.7 & 43.1 & 41.2 & 43.3 \\ \hline
+			\textbf{9} & 33.1 & 30.0 & 38.4 & 36.6 & 38.7 & 36.3 \\ \hline
+			\textbf{10} & 40.0 & 40.0 & 42.6 & 42.9 & 43.3 & 43.2 \\ \hline
+			\textbf{av.} & \textbf{35.8} & \textbf{35.5} &\textbf{40.1} & \textbf{40.3} & \textbf{40.6} & \textbf{40.5} \\ \hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Improvement (\%) of the CRPSS of the three methods. For z4, the improvement is relative to the reference method on the atmospheric circulation. For z4-hi2 and z4-hi4, the improvement is relative to the reference method on the circulation and moisture variables.}
+	\begin{center}
+		\begin{tabular}{rrarara}
+			\hline 
+			\textbf{ID} & \multicolumn{2}{c}{\textbf{z4}} & \multicolumn{2}{c}{\textbf{z4-hi2}} & \multicolumn{2}{c}{\textbf{z4-hi4}} \\ 
+			\hline 
+			& calib & valid & calib & valid & calib & valid \\ 
+			\hline 
+			\textbf{1} & 13.6 & 13.0 & 11.9 & 9.9 & 12.8 & 9.6 \\ \hline
+			\textbf{2} & 13.3 & 7.5 & 11.2 & 9.4 & 12.5 & 10.8 \\ \hline
+			\textbf{3} & 12.2 & 9.0 & 13.2 & 12.0 & 14.1 & 13.5 \\ \hline
+			\textbf{4} & 14.2 & 10.5 & 12.4 & 10.6 & 14.5 & 12.5 \\ \hline
+			\textbf{5} & 14.5 & 8.8 & 12.5 & 9.1 & 14.1 & 10.0 \\ \hline
+			\textbf{6} & 13.3 & 8.6 & 11.5 & 8.2 & 14.1 & 8.4 \\ \hline
+			\textbf{7} & 22.8 & 10.6 & 19.7 & 15.7 & 21.7 & 16.3 \\ \hline
+			\textbf{8} & 20.7 & 11.9 & 19.2 & 13.5 & 20.8 & 14.0 \\ \hline
+			\textbf{9} & 14.4 & 9.5 & 15.8 & 15.2 & 16.7 & 14.1 \\ \hline
+			\textbf{10} & 14.2 & 9.4 & 12.9 & 11.2 & 14.6 & 11.8 \\ \hline
+			\textbf{av.} & \textbf{15.3} & \textbf{9.9} &\textbf{14.0} & \textbf{11.5} & \textbf{15.6} & \textbf{12.1} \\ \hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores_diff}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized z4 method.}
+	\begin{center}
+		\begin{tabular}{rrarara}
+			\hline 
+			\textbf{ID} & \multicolumn{2}{c}{\textbf{P\(\geq\)1 mm}} & \multicolumn{2}{c}{\textbf{P\(\geq\)0.1\(\cdot\)P10}} & \multicolumn{2}{c}{\textbf{P\(\geq\)0.5\(\cdot\)P10}} \\ 
+			\hline 
+			& calib & valid & calib & valid & calib & valid \\ 
+			\hline 
+			\textbf{1} & 10.2 & 9.4 & 8.5 & 7.9 & 17.0 & 14.2 \\ \hline 
+			\textbf{2} & 9.9 & 3.4 & 10.2 & 7.3 & 19.3 & 13.7 \\ \hline 
+			\textbf{3} & 13.3 & 10.5 & 13.3 & 10.9 & 19.7 & 9.7 \\ \hline 
+			\textbf{4} & 11.0 & 7.4 & 12.9 & 10.0 & 23.2 & 23.8 \\ \hline 
+			\textbf{5} & 8.6 & 4.2 & 10.9 & 6.2 & 25.2 & 23.8 \\ \hline 
+			\textbf{6} & 10.5 & 5.1 & 11.1 & 7.1 & 21.2 & 41.1 \\ \hline 
+			\textbf{7} & 24.3 & 12.4 & 33.1 & 26.0 & 71.2 & 104.3 \\ \hline 
+			\textbf{8} & 19.0 & 12.7 & 26.2 & 19.2 & 39.4 & 34.9 \\ \hline 
+			\textbf{9} & 12.4 & 6.8 & 13.8 & 9.9 & 24.9 & 48.1 \\ \hline 
+			\textbf{10} & 13.6 & 6.8 & 14.4 & 6.9 & 29.9 & 31.5 \\ \hline 
+			\textbf{av.} &\textbf{ 13.3} & \textbf{7.9} & \textbf{15.4} & \textbf{11.1} & \textbf{29.1} & \textbf{34.5} \\ \hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores_thresholds_z4}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4, calibration period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4_calib.pdf}}
+	\label{table:crossing_z4_calib}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4, validation period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4_valid.pdf}}
+	\label{table:crossing_z4_valid}
+\end{table}
+
+
+\clearpage
+
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Parameters of the z4-hi2 method (atmospheric circulation on 4 levels and moisture index on 2 levels), optimized for the Chablais subregion. Same conventions as Table \ref{table:params_GA_z4}.}
+	\begin{center}
+		\begin{tabular}{ccccccc}
+			\hline \textbf{L} & \textbf{V} & \textbf{H} & \textbf{D} & \textbf{W} & \textbf{C} & \textbf{N} \\ 
+			\hline 
+			0 & \multicolumn{6}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{8}{*}{1} &  \multirow{2}{*}{Z300} & \multirow{2}{*}{12~h} & 0.0 - 15.0 \degree E & \multirow{2}{*}{23\%} & \multirow{8}{*}{S1} & \multirow{8}{*}{74} \\
+			& & & 42.5 - 55.0 \degree N & & & \\ 
+			& \multirow{2}{*}{Z500} & \multirow{2}{*}{30~h} & 0.0 - 10.0 \degree E & \multirow{2}{*}{25\%} & & \\ 
+			& & & 40.0 - 45.0 \degree N & & & \\ 
+			& \multirow{2}{*}{Z850} & \multirow{2}{*}{12~h} & 0.0 - 10.0 \degree E & \multirow{2}{*}{26\%} & & \\ 
+			& & & 42.5 - 47.5 \degree N & & & \\ 
+			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{30~h} & 0.0 - 20.0 \degree E & \multirow{2}{*}{26\%} & & \\ 
+			& & & 40.0 - 47.5 \degree N & & & \\ 
+			\hline 
+			\multirow{4}{*}{2} & TPW & \multirow{2}{*}{12~h} & 5.0 - 10.0 \degree E & \multirow{2}{*}{57\%} & \multirow{4}{*}{RMSE} & \multirow{4}{*}{25} \\
+			& *RH700 & & 45.0 - 47.5 \degree N & & & \\ 
+			& TPW & \multirow{2}{*}{24~h} & 5.0 - 10.0 \degree E & \multirow{2}{*}{43\%} & & \\ 
+			& *RH700 & & 45.0 - 47.5 \degree N & & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:params_GA_z4_hi2}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Parameters of the z4-hi4 method (atmospheric circulation on 4 levels and moisture index on 4 levels), optimized for the Chablais subregion. Same conventions as Table \ref{table:params_GA_z4}.}
+	\begin{center}
+		\begin{tabular}{ccccccc}
+			\hline \textbf{L} & \textbf{V} & \textbf{H} & \textbf{D} & \textbf{W} & \textbf{C} & \textbf{N} \\ 
+			\hline 
+			0 & \multicolumn{6}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{8}{*}{1} &  \multirow{2}{*}{Z400} & \multirow{2}{*}{6~h} & -5.0 - 12.5 \degree E & \multirow{2}{*}{20\%} & \multirow{8}{*}{S1} & \multirow{8}{*}{74} \\
+			& & & 45.0 - 52.5 \degree N & & & \\ 
+			& \multirow{2}{*}{Z500} & \multirow{2}{*}{30~h} & 0.0 - 12.5 \degree E & \multirow{2}{*}{28\%} & & \\ 
+			& & & 40.0 - 45.0 \degree N & & & \\ 
+			& \multirow{2}{*}{Z850} & \multirow{2}{*}{12~h} & 0.0 - 12.5 \degree E & \multirow{2}{*}{28\%} & & \\ 
+			& & & 42.5 - 47.5 \degree N & & & \\ 
+			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{30~h} & 0.0 - 20.0 \degree E & \multirow{2}{*}{24\%} & & \\ 
+			& & & 40.0 - 47.5 \degree N & & & \\ 
+			\hline 
+			\multirow{8}{*}{2} & TPW & \multirow{2}{*}{24~h} & 7.5 - 10.0 \degree E & \multirow{2}{*}{27\%} & \multirow{8}{*}{RMSE} & \multirow{8}{*}{25} \\
+			& *RH500 & & 45.0 - 47.5 \degree N & & & \\ 
+			& TPW & \multirow{2}{*}{12~h} & 5.0 - 7.5 \degree E & \multirow{2}{*}{41\%} & & \\ 
+			& *RH700 & & 45.0 - 47.5 \degree N & & & \\ 
+			& TPW & \multirow{2}{*}{18~h} & 0.0 - 7.5 \degree E & \multirow{2}{*}{19\%} & & \\ 
+			& *RH700 & & 45.0 - 47.5 \degree N & & & \\ 
+			& TPW & \multirow{2}{*}{24~h} & 2.5 - 15.0 \degree E & \multirow{2}{*}{13\%} & & \\ 
+			& *RH850 & & 45.0 - 47.5 \degree N & & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:params_GA_z4_hi4}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Atmospheric levels automatically selected for the analogy of the atmospheric circulation of the z4-hi2 method, at the different subregions.}
+	\begin{center}
+		\begin{tabular}{ccccccccc}
+			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
+			\hline 
+			1  & Z &   & Z &   &   & Z &   & Z \\
+			2  & Z &   &   &   & Z & Z &   & Z \\
+			3  & Z &   &   &   & Z & Z & Z &   \\
+			4  &   &   & Z &   & Z & Z &   & Z \\
+			5  &   & Z &   &   & Z &   & ZZ &   \\
+			6  &   & Z &   &   & Z & Z &   & Z \\
+			7  &   & Z &   &   & Z & Z &   & Z \\
+			8  &   &   & Z &   & Z &   & ZZ &   \\
+			9  &   & Z &   &   & Z & Z & Z &   \\
+			10 &   & Z &   &   & Z & Z &   & Z \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:levels_GA_z4_hi2}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Atmospheric levels automatically selected for the analogy of moisture of the z4-hi2 method, at the different subregions.}
+	\begin{center}
+		\begin{tabular}{ccccccccc}
+			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
+			\hline 
+			1  &   &   &   &   & HH &   &   &   \\
+			2  &   &   &   &   & HH &   &   &   \\
+			3  &   &   &   &   & HH &   &   &   \\
+			4  &   &   &   & H & H &   &   &   \\
+			5  &   &   &   &   & HH &   &   &   \\
+			6  &   &   &   & H & H &   &   &   \\
+			7  &   &   &   & H & H &   &   &   \\
+			8  &   &   &   & H & H &   &   &   \\
+			9  &   &   &   & H & H &   &   &   \\
+			10 &   &   &   & H & H &   &   &   \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:levels_GA_z4_hi2_H}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Atmospheric levels automatically selected for the analogy of atmospheric circulation of the z4-hi4 method, at the different subregions.}
+	\begin{center}
+		\begin{tabular}{ccccccccc}
+			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
+			\hline 
+			1  &   & Z & Z &   &   & Z &   & Z \\
+			2  &   & Z &   &   & ZZ &   &   & Z \\
+			3  &   & Z &   &   & Z & Z & Z &   \\
+			4  &   &   & Z &   & Z & Z &   & Z \\
+			5  &   & Z & Z &   &   & Z &   & Z \\
+			6  &   & Z & Z &   &   & Z &   & Z \\
+			7  &   & Z &   &   & ZZ &   &   & Z \\
+			8  &   &   & Z & Z &   & Z &   & Z \\
+			9  &   & Z &   &   & Z & Z & Z &   \\
+			10 &   & Z & Z &   &   & ZZ &   &   \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:levels_GA_z4_hi4}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Atmospheric levels automatically selected for the analogy of moisture of the z4-hi4 method,at the different subregions.}
+	\begin{center}
+		\begin{tabular}{ccccccccc}
+			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
+			\hline 
+			1  &   &   & H &   & HH & H &   &   \\
+			2  &   &   &   & H & HH & H &   &   \\
+			3  &   &   &   & H & HHH &   &   &   \\
+			4  &   &   &   & HH & HH &   &   &   \\
+			5  &   &   &   & HH & HH &   &   &   \\
+			6  &   &   &   & HH & H & H &   &   \\
+			7  &   &   &   & HH & H & H &   &   \\
+			8  &   &   &   & HH & H & H &   &   \\
+			9  &   &   & H & H & H & H &   &   \\
+			10 &   &   &   & H & HH & H &   &   \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:levels_GA_z4_hi4_H}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized z4-hi2 method.}
+	\begin{center}
+		\begin{tabular}{rrarara}
+			\hline 
+			\textbf{ID} & \multicolumn{2}{c}{\textbf{P\(\geq\)1 mm}} & \multicolumn{2}{c}{\textbf{P\(\geq\)0.1\(\cdot\)P10}} & \multicolumn{2}{c}{\textbf{P\(\geq\)0.5\(\cdot\)P10}} \\ 
+			\hline 
+			& calib & valid & calib & valid & calib & valid \\ 
+			\hline 
+			\textbf{1} & 12.6 & 9.3 & 12.4 & 9.7 & 15.8 & 11.0 \\ \hline 
+			\textbf{2} & 10.4 & 7.7 & 11.2 & 10.5 & 18.9 & 16.6 \\ \hline 
+			\textbf{3} & 14.5 & 11.6 & 14.1 & 11.4 & 18.7 & 14.6 \\ \hline 
+			\textbf{4} & 11.4 & 9.4 & 11.5 & 11.6 & 14.9 & 22.7 \\ \hline 
+			\textbf{5} & 11.8 & 8.0 & 12.2 & 8.9 & 12.0 & 12.8 \\ \hline 
+			\textbf{6} & 11.3 & 7.1 & 11.2 & 8.0 & 15.3 & 29.1 \\ \hline 
+			\textbf{7} & 20.5 & 15.5 & 25.2 & 24.0 & 43.0 & 79.5 \\ \hline
+			\textbf{8} & 19.3 & 15.7 & 23.1 & 18.6 & 25.2 & 31.7 \\ \hline 
+			\textbf{9} & 17.0 & 15.4 & 17.4 & 16.5 & 23.7 & 39.4 \\ \hline 
+			\textbf{10} & 12.9 & 9.6 & 13.8 & 11.1 & 28.5 & 32.1 \\ \hline 
+			\textbf{av.} &\textbf{14.2} & \textbf{10.9} & \textbf{15.2} & \textbf{13.0} & \textbf{21.6} & \textbf{28.9} \\ \hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores_thresholds_z4-hi2}
+\end{table}
+
+\begin{table}[htbp]
+	\footnotesize
+	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized z4-hi4 method.}
+	\begin{center}
+		\begin{tabular}{rrarara}
+			\hline 
+			\textbf{ID} & \multicolumn{2}{c}{\textbf{P\(\geq\)1 mm}} & \multicolumn{2}{c}{\textbf{P\(\geq\)0.1\(\cdot\)P10}} & \multicolumn{2}{c}{\textbf{P\(\geq\)0.5\(\cdot\)P10}} \\ 
+			\hline 
+			& calib & valid & calib & valid & calib & valid \\ 
+			\hline 
+			\textbf{1} & 21.2 & 17.9 & 13.4 & 9.3 & 17.8 & 13.3 \\ \hline 
+			\textbf{2} & 12.6 & 8.9 & 9.5 & 10.0 & 16.7 & 15.6 \\ \hline 
+			\textbf{3} & 17.0 & 16.1 & 14.0 & 12.4 & 21.3 & 15.9 \\ \hline 
+			\textbf{4} & 9.4 & 6.1 & 13.3 & 12.4 & 19.8 & 22.7 \\ \hline 
+			\textbf{5} & 16.4 & 8.7 & 13.3 & 9.9 & 15.5 & 19.8 \\ \hline 
+			\textbf{6} & 22.6 & 12.2 & 11.9 & 6.7 & 17.0 & 26.9 \\ \hline 
+			\textbf{7} & 14.6 & 4.9 & 24.7 & 23.5 & 42.7 & 87.6 \\ \hline 
+			\textbf{8} & 21.8 & 21.6 & 25.7 & 19.3 & 32.3 & 26.6 \\ \hline 
+			\textbf{9} & 20.2 & 18.9 & 17.4 & 14.2 & 24.5 & 33.9 \\ \hline 
+			\textbf{10} & 21.7 & 14.8 & 14.8 & 11.7 & 29.2 & 29.1 \\ \hline 
+			\textbf{av.} &\textbf{17.7} & \textbf{13.0} & \textbf{15.8} & \textbf{12.9} & \textbf{23.7} & \textbf{29.2} \\ \hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores_thresholds_z4-hi4}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4-hi2, calibration period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi2_calib.pdf}}
+	\label{table:crossing_z4-hi2_calib}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4-hi2, validation period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi2_valid.pdf}}
+	\label{table:crossing_z4-hi2_valid}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4-hi4, calibration period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi4_calib.pdf}}
+	\label{table:crossing_z4-hi4_calib}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4-hi4, validation period.}
+	\centerline{\includegraphics[width=8.3cm]{figures/table_crossing_z4-hi4_valid.pdf}}
+	\label{table:crossing_z4-hi4_valid}
+\end{table}
+
+
+\clearpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FIGURES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Enter figures at the end of the document, after tables.
+%%
+%
+%\begin{figure}[t]
+%  \noindent\includegraphics[width=19pc,angle=0]{figure01.pdf}\\
+%  \caption{Enter the caption for your figure here.  Repeat as
+%  necessary for each of your figures. Figure from \protect\cite{Knutti2008}.}\label{f1}
+%\end{figure}
+
+
+\begin{figure}[htb]
+	\centerline{\includegraphics[width=7.9cm]{figures/figure_map.pdf}}
+	\caption{Location of the alpine Rh\^{o}ne catchment in Switzerland. (source: Swisstopo)}
+	\label{fig:map}
+\end{figure}
+
+
+\begin{figure}[htb]
+	\centering
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4/Spatial_windows_1.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4/Spatial_windows_2.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4/Spatial_windows_3.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4/Spatial_windows_4.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4/Spatial_windows_5.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4/Spatial_windows_6.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4/Spatial_windows_7.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4/Spatial_windows_8.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4/Spatial_windows_9.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4/Spatial_windows_10.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4/legend.png}
+	\end{subfigure}
+	\caption{Optimized spatial windows for the z4 method (analogy of atmospheric circulation on 4 pressure levels). The pressure levels are ordered by increasing pressure and increasing time for the same levels.}
+	\label{fig:spatial_windows_z4}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi2/Spatial_windows_1.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi2/Spatial_windows_2.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi2/Spatial_windows_3.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi2/Spatial_windows_4.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi2/Spatial_windows_5.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi2/Spatial_windows_6.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi2/Spatial_windows_7.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi2/Spatial_windows_8.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi2/Spatial_windows_9.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi2/Spatial_windows_10.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi2/legend.png}
+	\end{subfigure}
+	\caption{Optimized spatial windows for the z4-hi2 method (analogy of atmospheric circulation on 4 pressure levels and the analogy on the moisture index on 2 pressure levels). The pressure levels are ordered by increasing pressure and increasing time for the same levels.}
+	\label{fig:spatial_windows_z4-hi2}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi4/Spatial_windows_1.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi4/Spatial_windows_2.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi4/Spatial_windows_3.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi4/Spatial_windows_4.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi4/Spatial_windows_5.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi4/Spatial_windows_6.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi4/Spatial_windows_7.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi4/Spatial_windows_8.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi4/Spatial_windows_9.png}
+	\end{subfigure}%
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi4/Spatial_windows_10.png}
+	\end{subfigure}
+	\begin{subfigure}{.5\columnwidth}
+		\centering
+		\includegraphics[width=3.9cm]{figures/spatial_win_z4-hi4/legend.png}
+	\end{subfigure}
+	\caption{Optimized spatial windows for the z4-hi4 method (analogy of atmospheric circulation on 4 pressure levels and the analogy on the moisture index on 4 pressure levels). The pressure levels are ordered by increasing pressure and increasing time for the same levels.}
+	\label{fig:spatial_windows_z4-hi4}
+\end{figure}
+
+
+\begin{figure}[htb]
+	\centerline{\includegraphics[width=7.9cm]{figures/figure_levels_weights.pdf}}
+	\caption{Optimized weighting for the pressure levels of the z4 method.}
+	\label{fig:levels_weights}
+\end{figure}
+
+\begin{figure}[htb]
+	\centerline{\includegraphics[width=7.9cm]{figures/figure_levels_weights_average.pdf}}
+	\caption{Averaged weighting for the pressure levels of the circulation analogy of the three methods.}
+	\label{fig:levels_weights_average}
+\end{figure}
+
+\begin{figure}[htb]
+	\centerline{\includegraphics[width=7.9cm]{figures/figure_evolution.pdf}}
+	\caption{Example of the best individuals evolution of 8 independent optimizations.}
+	\label{fig:evolution}
+\end{figure}
+
+
+
+\end{document}
