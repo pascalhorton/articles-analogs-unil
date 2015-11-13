@@ -360,6 +360,7 @@ Many other methods or variations exist, combining the advantages of different ap
 
 
 \subsubsection{Mutation}
+\label{sec:gas:mutation}
 
 The combination of strong genes by the operator of chromosomes crossover is theoretically the most important operating mechanism in the conventional GAs \citep{Holland1992b,Back1993b}. However, many studies identify the mutation process as main operator, and crossovers as secondary \citep[see][]{Back1992a,Back1996a,Back1996b,Smith1997a,Deb1999,Haupt2004,Costa2005a,Costa2007a}.
 
@@ -466,7 +467,7 @@ GAs are very computationally intensive because they require many evaluations of 
 The assessment (calculation of the objective function) of each member of the population of a generation is completely independent and can be performed in parallel on different processors of a computer \citep{Alliot2005}. We implemented this technique and the resulting time savings was very important. In order to perform optimizations for multiple time series, the use of a cluster is a necessity, which our code allows.
 
 
-\section{Recommendations of parametrization}
+\section{Assessment process and results}
 
 The GAs parametrization, such as the mutation rate, population size, natural selection options, and so on, is difficult given the high number of existing variants, each developed for a specific problem \citep{Haupt2004, Costa2007a}. This parametrization depends on the objective function, implementation variants, the range of the parameters to be optimized, and performance indicators. Thus, different studies suggest very different parametrization.
 
@@ -477,9 +478,9 @@ A key element of the parametrization of GAs is finding the right balance between
 Values of the mutation rate varies broadly between the studies: from 0.001 \citep{DeJong1975a} to 0.2 \citep{Haupt2004}. \citet{Back1996b} showed that mutation rates higher than the usual ranges are more optimal at the beginning of the optimization, allowing further exploration. The combination of a small population and a high mutation rate works best for the first generations \citep{DeJong1975a, Back1996b, Haupt2004}, but as we could observe, it does not guarantee the quality of the final result. Incremental approaches with varying mutation rates are certainly more optimal but more complex to implement \citep{Back1996a, Back1996b}.
 
 
-\subsection{Comparison process and results}
+\subsection{Comparison process}
 
-One of our goals being to make recommendations of parametrization in order to optimize the AM, we proceeded systematically. The results are summarized hereafter \citep[see][for the details]{Horton2012a}. We used concepts from the factorial design approach \citep[see eg.][]{Costa2005a,Costa2007a,Mariano2010a}, which is sometimes used for comparative analysis of different parametrizations of GAs. We processed by stages, analysing in details and in a systematic way every variants of the implemented operators, in combination with multiple other options and parameters in order to take into account eventual co-dependencies. 
+One of our goals being to make recommendations of parametrization in order to optimize the AM, we proceeded systematically. The results are summarized hereafter \citep[see][for the details]{Horton2012a}. We used concepts from the factorial design approach \citep[see eg.][]{Costa2005a,Costa2007a,Mariano2010a}, which is sometimes used for comparative analysis of different parametrizations of GAs. It allows isolating the effect of a parameter under different combinations of the other options. We processed by stages, analysing in details and in a systematic way every variants of the implemented operators, in combination with multiple other options and parameters in order to take into account eventual co-dependencies. 
 
 In order to evaluate a combination of operators/options, we processed 10 optimizations for one parametrization of GAs. The performances were characterized by four indicators:
 
@@ -489,6 +490,212 @@ In order to evaluate a combination of operators/options, we processed 10 optimiz
 	\item number of generations: characterization of the convergence speed,
 	\item number of evaluations of the objective function: characterization of the required calculation time (more realistic than the number of generations).
 \end{itemize}
+
+Given the large number of operators and options of the method, it is not possible to systematically assess each combination. We thus proceeded in stages, but for each comprehensive comparison of an operator type, two very different variants of other operators are considered to take account of indirect effects.
+
+\begin{enumerate}
+	\item Assessment of all breeding operators, thus every combination of selection of couples and chromosome crossover variants, along with variants of the other options.
+	\item Assessment of the mutation operator
+	\item Evaluation of other options of the method
+\end{enumerate}
+
+
+\subsection{Success of the approach}
+
+After a short first overview of the results, GAs have quicky been proven successful at optimizing the AM. Indeed, the performance score of the sequential approach has been quickly exceeded without adding any new parameter to the method (Figure \ref{fig:gas_evolution_good}). Even GAs parametrization that we will consider further as inadequate (Figure \ref{fig:gas_evolution_bad}) did significantly better that the sequential approach.
+
+
+\begin{figure}[htb]
+	\begin{center}
+		\noindent\includegraphics[width=19pc,angle=0]{figures/gas_evolution_good.pdf}\\
+	\end{center}
+	\caption{Evolution of the score of the best individuals over generations for the 10 optimizations processed for a given parametrization. The green line represents the score of the sequential approach and the blue one, the supposed global optimum.}
+	\label{fig:gas_evolution_good}
+\end{figure}
+
+
+\begin{figure}[htb]
+	\begin{center}
+		\noindent\includegraphics[width=19pc,angle=0]{figures/gas_evolution_bad.pdf}\\
+	\end{center}
+	\caption{Same as Figure \ref{fig:gas_evolution_good}, but for a GAs parametrization considered as less relevant.}
+	\label{fig:gas_evolution_bad}
+\end{figure}
+
+
+
+\subsection{Results}
+
+The results illustrate the effect of an operator when its contribution is isolated from the other operators. It means that we compare the effect of the studied operator when all the other operators are equivalent, while assessing multiple combinations. We then summarizes this contribution relatively to the other options, as a percentage of gain/loss regarding the mean of all variants. For example, to evaluate the performance of the uniform crossover operator, we compare some indicators between its performance and the average of performance of all crossover operators while retaining the same population size, the same mutation operators, natural selection, and selection of couples.
+
+\subsubsection{Breeding operators}
+
+We evaluated every combination of 6 options for the couples selection (Table \ref{tab:assessed_couples_selection_operators}) and 21 for the chromosome crossover operators (Table \ref{tab:assessed_crossover_operators}), along with variants of the other operators. This results in 1,008 combinations, requiring 10,080 optimizations.
+
+\begin{table}[htbp]
+	\caption{Assessed operator for couples selection.}
+	\begin{center}
+		\begin{tabular}{ll}
+			\hline\hline  & \textbf{Couples selection operators} \\ 
+			\hline 
+			A & Rank pairing \\ 
+			B & Random pairing \\ 
+			C & Roulette wheel weighting on rank \\ 
+			D & Roulette wheel weighting on fitness \\ 
+			E & Tournament selection (3 candidates) \\ 
+			F & Tournament selection (4 candidates) \\ 
+			\hline 
+		\end{tabular}
+	\end{center}
+	\label{tab:assessed_couples_selection_operators}
+\end{table}
+
+\begin{table}[htbp]
+	\caption{Assessed operators for chromosome crossover.}
+	\begin{center}
+		\begin{tabular}{ll}
+			\hline\hline  & \textbf{Chromosome crossover operators} \\ 
+			\hline 
+			1 & Single-point crossover \\
+			2 & Two-point crossover \\
+			3 & Multiple-point crossover (3 points) \\
+			4 & Multiple-point crossover (5 points) \\
+			5 & Uniform crossover \\
+			6 & Blending method (2 points, unshared $\beta$) \\
+			7 & Blending method (4 points, unshared $\beta$) \\
+			8 & Blending method (2 points, shared $\beta$) \\
+			9 & Blending method (4 points, shared $\beta$) \\
+			10 & Linear crossover (2 points) \\
+			11 & Linear crossover (4 points) \\
+			12 & Heuristic crossover (2 points, unshared $\beta$) \\
+			13 & Heuristic crossover (4 points, unshared $\beta$) \\
+			14 & Heuristic crossover (2 points, shared $\beta$) \\
+			15 & Heuristic crossover (4 points, shared $\beta$) \\
+			16 & Binary-like crossover (2 points, unshared $\beta$) \\
+			17 & Binary-like crossover (4 points, unshared $\beta$) \\
+			18 & Binary-like crossover (2 points, shared $\beta$) \\
+			19 & Binary-like crossover (4 points, shared $\beta$) \\
+			20 & Linear interpolation \\
+			21 & Free interpolation \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\label{tab:assessed_crossover_operators}
+\end{table}
+
+After this first assessment, the importance of the mutation operator was obvious \cite[see][for the details]{Horton2012a}, and its leading influence on the optimization performance was evident. However, the effect of the operators and options other than the ones related to breeding will be detailed later.
+
+\begin{figure}[htb]
+	\begin{center}
+		\noindent\includegraphics[width=7cm,angle=0]{figures/operator_selectcoupl_score.pdf}\\
+	\end{center}
+	\caption{Influence of the couples selection operators on the optimization performance. The box extends from the lower to upper quartile values of the data, with a line at the median. The whiskers extend from the box to 1.5 times the interquartile range. Flier points are those past the end of the whiskers. The star represents the median.}
+	\label{fig:operator_selectcoupl_score}
+\end{figure}
+
+
+\begin{figure*}[htb]
+	\begin{center}
+		\noindent\includegraphics[width=16cm,angle=0]{figures/operator_crossover_score.pdf}\\
+	\end{center}
+	\caption{Influence of the chromosome crossover operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\label{fig:operator_crossover_score}
+\end{figure*}
+
+The performance of the couples selection operator are relatively close (Figure \ref{fig:operator_selectcoupl_score}). Overall, we observe that the random pairing is the least good operator and the tournament selection with 3~candidates is slightly superior to others. Convergence analysis (not shown) presents similar trends to the scores. The influence on the number of assessments (not shown) reveals that the operators providing the worst scores are also those who need a higher number of evaluations. This analysis invites us to reject the rank and random pairing, and to consider the roulette wheel weighting or tournament selections, these being substantially better in terms of convergence and number of necessary evaluations.
+
+Analysis of crossover operators (Figure \ref{fig:operator_crossover_score}) reveal some slightly superior options, some inappropriate, and many averages. Among the inappropriate operators, we find first the heuristic crossover, which is also more demanding in terms of evaluation number, and the linear crossover. Binary-like crossover (especially with 2 points of intersection, whether $\beta$ is shared or not) are significantly better than the others, especially in terms of convergence (not shown). The two-point intersection is also relatively close. Other operators can also be considered usable.
+
+
+\subsubsection{Mutation operator}
+
+Having identified the leading role of the mutation operator, we strongly focused the sensitivity analysis on this operator. Each of the 10 different implementations (see section \ref{sec:gas:mutation}) was tested, with different parameters for those who require some (Table \ref{tab:assessed_mutation_operators}), bringing the number of variations of this operator up to 109. We also did some optimizations without any mutation as a reference. Along with variants of the other operators \citep[see][for the details]{Horton2012a}, it resulted in 660 combinations (so 6,600 optimizations).
+
+\begin{table}[htbp]
+	\caption{Assessed mutation operators with the number of variants considered (combination of parameters).}
+	\begin{center}
+		\begin{tabular}{llc}
+			\hline\hline  & \textbf{Mutation operator} & \textbf{Variants}\\ 
+			\hline 
+			1 & Uniform mutation & 3 \\
+			2 & Variable uniform mutation & 27 \\
+			3 & Constant normal mutation & 9 \\
+			4 & Variable normal mutation & 36 \\
+			5 & Non-uniform mutation & 27 \\
+			6 & Individual adaptive mutation rate & 1 \\
+			7 & Individual adaptive search radius & 1 \\
+			8 & Chromosome of adaptive mutation rate & 1 \\
+			9 & Chromosome of adaptive search radius & 1 \\
+			10 & Mutli-scale mutation & 3 \\
+			11 & No mutation & 1 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\label{tab:assessed_mutation_operators}
+\end{table}
+
+
+\begin{figure}[htb]
+	\begin{center}
+		\noindent\includegraphics[width=7cm,angle=0]{figures/operator_mutation_score.pdf}\\
+	\end{center}
+	\caption{Influence of the mutation operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\label{fig:operator_mutation_score}
+\end{figure}
+
+
+Figure \ref{fig:operator_mutation_score} show the results of this analysis and illustrates the important role of the mutation on the performance of the optimizations. Optimizations without mutation (last box on the Figure) are inferior to most mutation operators, and the scale of the influence of the mutation operators is significantly more important than those for the other options. The details of the analysis \citep[see][]{Horton2012a} show that the other reproduction operators seem of secondary importance. This observation is in line with the work of \citet{Back1996a}, who argues for the importance of mutation over reproduction. He even suggests, in opposition with the theory of \citet{Holland1992a}, that chromosomes crossovers have mostly a corrective role of mutation operations. Various studies have also identified the importance of the mutation operator relatively to reproduction \citep[see eg.][]{Back1992a, Back1996b, Smith1997a, Deb1999, Haupt2004, Costa2005a, Costa2007a}.
+
+The mutation operators based on a variable normal or uniform law work very poorly and are difficult to configure. We then observe many operators more or less with the same performance scores and requiring a variable amount of assessments. The convergence analysis \citep[see][]{Horton2012a} allows us to highlight three best operators:
+
+\begin{itemize}
+
+	\item \textit{Non-uniform mutation} \citep{Michalewicz1996}: this operator is good in terms of convergence, mainly when the number of parameters to optimize is rather low. The number of required evaluations, however, can be quite substantial. The main disadvantage of the non-uniform mutation is the complexity of its parametrization, which is difficult to estimate a priori. These parameters must be carefully chosen to be in line with the evolution rate of the population, and are therefore dependent on the problem being treated. We could observe that the $\omega$ coefficient does not influence performance. The role of $G_{m}$ is rather difficult to judge, but does not seem essential. The mutation rate was found to be important. The difficulty is that the optimal value seems to be very case-related. Indeed, by even changing the precipitation time series (ie optimizing for another subregion), but not the complexity of the AM, the optimal mutation rate changes, making it impossible to estimate in advance.
+	
+	\item \textit{Chromosome of adaptive search radius} (new): unlike the previous one, our new operator is very robust, as it requires no option and is auto-adapting. It may be sometimes a little bit slower for simple problems, but does not require parametrization, which is an important advantage. It is interesting to notice that our insertion of an extra chromosome representing the search radius gives better performance than other self-adaptive operators (such as, for example, the chromosome of adaptive mutation rate).
+	
+	\item \textit{Multi-scale mutation} (new): finally, our multi-scale mutation, which also performs pretty well, requires one parameter, the mutation rate. However, it can also be difficult to estimate a correct value a priori.
+
+\end{itemize}
+
+
+
+
+
+\subsubsection{Other options}
+
+The analysis of the natural selection operator (Figure \ref{fig:operator_selectnat_score}) reveals a slight preference for the ratio-elitism compared to the tournament selection, but not so significant. Furthermore, the number of evaluations is similar. This operator, or at least the two assessed versions, do not appear to significantly influence the optimization performances.
+
+\begin{figure}[htb]
+	\begin{center}
+		\noindent\includegraphics[width=4cm,angle=0]{figures/operator_selectnat_score.pdf}\\
+	\end{center}
+	\caption{Influence of the natural selection operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\label{fig:operator_selectnat_score}
+\end{figure}
+
+The size of the population has an effect on the performance of the optimization (Figure \ref{fig:option_taillepop_score}). A bigger population leads to better results, but also to significantly longer optimizations. Indeed, the required number of evaluation, and thus the required time, is approximately proportional to the population size. The optimal size seems to depend on the complexity of the AM to optimize: a more complex AM (ie. with more degrees of freedom) requires a bigger population size. A rule of thumb based on different experiences is provided in the next section.
+
+\begin{figure}[htb]
+	\begin{center}
+		\noindent\includegraphics[width=4cm,angle=0]{figures/option_taillepop_score.pdf}\\
+	\end{center}
+	\caption{Influence of the population size on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\label{fig:option_taillepop_score}
+\end{figure}
+
+We also assessed the influence of the size of the intermediate population (ratio of the total population) selected for mating (Figure \ref{fig:option_popratio_score}). It appears that a big ratio is not optimal. However, it does not appear that this parameter is critical to the quality of the optimizations, provided it is not too big. A value of 50~\% seems a wise choice.
+
+\begin{figure}[htb]
+	\begin{center}
+		\noindent\includegraphics[width=4cm,angle=0]{figures/option_popratio_score.pdf}\\
+	\end{center}
+	\caption{Influence of the intermediate population ratio on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\label{fig:option_popratio_score}
+\end{figure}
+
+
+\subsection{Synthesis}
 
 This comparison required tens of thousands of optimizations that were performed on a cluster of the University of Lausanne. The results, detailed in \citet{Horton2012a} are synthesized hereafter:
 
@@ -509,15 +716,7 @@ This comparison required tens of thousands of optimizations that were performed 
 	
 	\item \textbf{Chromosomes crossover}: we compared 21 different options of the crossover operators. This analysis revealed some slightly better options, some bad ones, and many averages. Among the bad operators, we find first the heuristic crossover, which is also more demanding in number of evaluations, as well as the linear crossover. Binary-like crossovers (especially with 2 points of intersection, whether $\beta$ is shared or not) are significantly better than the others, especially in terms of convergence. The two points crossover is relatively close. Other operators can be considered usable, yet may not be optimal. Once again, this operator is not the key of the GAs parametrization.
 	
-	\item \textbf{Mutation}: we compared the 10 mutation operators with different options, bringing the number of variations of this operator up to 110. We immediately observed that the mutation operator has a very important role on the performance of the optimizations of the AM, and that the other reproduction operators seem of secondary importance. This observation is in line with the work of \citet{Back1996a}, who argues for the importance of mutation over reproduction. He even suggests, in opposition with the theory of \citet{Holland1992a}, that chromosomes crossovers have mostly a corrective role of mutation operations. Various studies have also identified the importance of the mutation operator relatively to reproduction \citep[see eg.][]{Back1992a, Back1996b, Smith1997a, Deb1999, Haupt2004, Costa2005a, Costa2007a}.
-	
-	The mutation operators based on a variable normal or uniform law work very poorly and are difficult to configure. We then observe many operators more or less with the same performance scores and requiring a variable amount of assessments. The convergence analysis allows us to highlight three best operators:
-	
-	\textit{Non-uniform mutation} \citep{Michalewicz1996}: this operator is good in terms of convergence, mainly when the number of parameters to optimize is rather low. The number of required evaluations, however, can be quite substantial. The main disadvantage of the non-uniform mutation is the complexity of its parametrization, which is difficult to estimate a priori. These parameters must be carefully chosen to be in line with the evolution rate of the population, and are therefore dependent on the problem being treated. We could observe that the $\omega$ coefficient does not influence performance. The role of $G_{m}$ is rather difficult to judge, but does not seem essential. The mutation rate was found to be important. The difficulty is that the optimal value seems to be very case-related. Indeed, by even changing the precipitation time series (ie optimizing for another subregion), but not the complexity of the AM, the optimal mutation rate changes, making it impossible to estimate in advance.
-	
-	\textit{Chromosome of adaptive search radius}: unlike the previous one, our new operator is very robust, as it requires no option and is auto-adapting. It may be sometimes a little bit slower for simple problems, but does not require parametrization, which is an important advantage. It is interesting to notice that our insertion of an extra chromosome representing the search radius gives better performance than other self-adaptive operators (such as, for example, the chromosome of adaptive mutation rate).
-	
-	\textit{Multi-scale mutation}: finally, our multi-scale mutation, which also performs pretty well, can as well be seen as fairly robust, since it requires only one parameter, the mutation rate. However, it can also be difficult to estimate a correct value a priori.
+	\item \textbf{Mutation}: In our application, the mutation operator has a leading effect and should be chosen with care. We identified 3 more efficient variants: \textit{Non-uniform mutation} \citep{Michalewicz1996} that performs well but is difficult to parametrize, the \textit{Multi-scale mutation} (new) which needs only 1 parameter, and the \textit{Chromosome of adaptive search radius} (new), which is the most robust option as it has no parameter and always performed well.
 	
 	It may be wise to perform multiple optimizations and to consider these three operators in parallel in order to obtain results from algorithms that are either sometimes more efficient or more robust. It is interesting to note that the three best techniques incorporate a notion of search distance. It is likely that this notion is the key to these algorithms, for our application, and allows them to initially explore the parameter domain, and then to converge. The search radius in fact directly represents the notion of transition between exploration and exploitation, in our opinion more than a possible evolution of mutation rates.
 	
@@ -526,7 +725,7 @@ This comparison required tens of thousands of optimizations that were performed 
 \end{itemize}
 
 
-\subsection{Recommended parametrization of GAs}
+\section{Recommended parametrization of GAs}
 
 We evaluated the optimization by genetic algorithms on AMs of varying complexity, with a large number of combinations of operators to be able to make recommendations for optimizing the AM. Our conclusions are:
 
@@ -551,7 +750,7 @@ In order to make an optimization of the AM with genetic algorithms, it may be wi
 
 \begin{itemize}
 	\setlength\itemsep{-4px}
-	\item 1x non-uniform, $p_{mut}=0.1$, $G_{m}=50$, $\omega=0.1$
+	\item 1x non-uniform, $p_{mut}=0.05$, $G_{m}=100$, $\omega=0.1$
 	\item 1x non-uniform, $p_{mut}=0.1$, $G_{m}=100$, $\omega=0.1$
 	\item 1x non-uniform, $p_{mut}=0.2$, $G_{m}=100$, $\omega=0.1$
 	\item 1x multi-scale,  $p_{mut}=0.1$
