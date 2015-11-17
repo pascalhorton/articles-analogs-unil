@@ -659,7 +659,65 @@ The mutation operators based on a variable normal or uniform law work very poorl
 \end{itemize}
 
 
+\begin{table}[htbp]
+	\caption{Further assessments of mutation operators.}
+	\begin{center}
+		\begin{tabular}{llrrr}
+			\hline\hline  & \textbf{Mutation operator} & \textbf{$p_{mut}$} & \textbf{$G_{max}$} & \textbf{$\omega$}\\ 
+			\hline 1 & Non-uniform mutation & 0.01 & 50 & 0.1 \\
+			2 & Non-uniform mutation & 0.05 & 50 & 0.1 \\
+			3 & Non-uniform mutation & 0.1 & 50 & 0.1 \\
+			4 & Non-uniform mutation & 0.2 & 50 & 0.1 \\
+			5 & Non-uniform mutation & 0.4 & 50 & 0.1 \\
+			6 & Non-uniform mutation & 0.01 & 100 & 0.1 \\
+			7 & Non-uniform mutation & 0.05 & 100 & 0.1 \\
+			8 & Non-uniform mutation & 0.1 & 100 & 0.1 \\
+			9 & Non-uniform mutation & 0.2 & 100 & 0.1 \\
+			10 & Non-uniform mutation & 0.4 & 100 & 0.1 \\
+			11 & Mutli-scale mutation &  0.01 &&\\
+			12 & Mutli-scale mutation &  0.05 && \\
+			13 & Mutli-scale mutation &  0.1 && \\
+			14 & Mutli-scale mutation &  0.2 && \\
+			15 & Mutli-scale mutation &  0.4 && \\
+			16 & \multicolumn{4}{l}{Chromosome of adaptive search radius} \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\label{tab:assessed_mutation_operators_bis}
+\end{table}
 
+
+\begin{figure*}[htb]
+	\begin{center}
+		\noindent\includegraphics[width=14cm,angle=0]{figures/operator_mutation_score_atmlevel.pdf}\\
+	\end{center}
+	\caption{Influence of the mutation operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\label{fig:operator_mutation_score_atmlevel}
+\end{figure*}
+
+\begin{figure*}[htb]
+	\begin{center}
+		\noindent\includegraphics[width=14cm,angle=0]{figures/operator_mutation_score_rhoneamont.pdf}\\
+	\end{center}
+	\caption{Influence of the mutation operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\label{fig:operator_mutation_score_rhoneamont}
+\end{figure*}
+
+\begin{figure*}[htb]
+	\begin{center}
+		\noindent\includegraphics[width=14cm,angle=0]{figures/operator_mutation_score_r2.pdf}\\
+	\end{center}
+	\caption{Influence of the mutation operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\label{fig:operator_mutation_score_r2}
+\end{figure*}
+
+\begin{figure*}[htb]
+	\begin{center}
+		\noindent\includegraphics[width=14cm,angle=0]{figures/operator_mutation_score_r4.pdf}\\
+	\end{center}
+	\caption{Influence of the mutation operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\label{fig:operator_mutation_score_r4}
+\end{figure*}
 
 
 \subsubsection{Other options}
