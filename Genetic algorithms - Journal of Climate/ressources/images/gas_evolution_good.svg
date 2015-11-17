@@ -19,7 +19,7 @@
    sodipodi:docname="gas_evolution_good.svg"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath20"><path
@@ -148,8 +148,8 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="0.65555556"
-     inkscape:cx="348.69073"
-     inkscape:cy="374.54128"
+     inkscape:cx="389.95922"
+     inkscape:cy="434.09679"
      inkscape:window-x="428"
      inkscape:window-y="70"
      inkscape:window-maximized="0"
@@ -442,27 +442,6 @@
          y="0"
          sodipodi:role="line"
          id="tspan298">70</tspan></text>
-<text
-       transform="matrix(1,0,0,-1,255.09844,27.641242)"
-       style="font-variant:normal;font-size:14.94396019px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       id="text300"><tspan
-         x="0"
-         y="0"
-         id="tspan302">G</tspan><tspan
-         x="12.492931"
-         y="-0.037396386"
-         id="tspan304">´</tspan><tspan
-         x="11.402051 18.545263"
-         y="0"
-         sodipodi:role="line"
-         id="tspan306">en</tspan><tspan
-         x="28.348269"
-         y="-0.037396386"
-         id="tspan308">´</tspan><tspan
-         x="27.257389 34.4006 40.288521 47.760502 52.61729 56.951038 65.095497 73.777939"
-         y="0"
-         sodipodi:role="line"
-         id="tspan310">erations</tspan></text>
 <path
        d="m 72,57.6 4,0"
        style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -616,14 +595,29 @@
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
        id="path386"
        inkscape:connector-curvature="0" /><text
-       transform="matrix(1,0,0,-1,162.92989,536.72256)"
-       style="font-variant:normal;font-size:17.93275261px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       id="text388"><tspan
-         x="0"
-         y="0"
-         id="tspan390">´</tspan><tspan
-         x="-2.4926817 8.4462967 18.560369 28.333719 33.534218 44.329735 50.157879 55.358376 65.131729 80.033844 90.972824 99.544678 111.61342 127.43011 136.00197 141.20247 146.40295 151.60345 160.17531 170.97083 178.03633 190.10507 195.30557 205.7245 216.66348 221.86398 231.97806 237.17856 248.11752 258.91306"
-         y="4.106564"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:32px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="167.10419"
+       y="-532.80725"
+       id="text3523"
+       sodipodi:linespacing="125%"
+       transform="scale(1,-1)"><tspan
          sodipodi:role="line"
-         id="tspan392">Evolutiondesmeilleursindividus</tspan></text>
+         id="tspan3525"
+         x="167.10419"
+         y="-532.80725"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18px;font-family:'URW Palladio L';-inkscape-font-specification:'URW Palladio L'">Evolution of the best individuals</tspan></text>
+<text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:32px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="245.629"
+       y="-28.20528"
+       id="text3527"
+       sodipodi:linespacing="125%"
+       transform="scale(1,-1)"><tspan
+         sodipodi:role="line"
+         id="tspan3529"
+         x="245.629"
+         y="-28.20528"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;font-family:'URW Palladio L';-inkscape-font-specification:'URW Palladio L'">Generations</tspan></text>
 </g></svg>
