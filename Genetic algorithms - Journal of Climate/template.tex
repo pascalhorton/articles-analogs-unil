@@ -480,16 +480,9 @@ Values of the mutation rate varies broadly between the studies: from 0.001 \cite
 
 \subsection{Comparison process}
 
-One of our goals being to make recommendations of parametrization in order to optimize the AM, we proceeded systematically. The results are summarized hereafter \citep[see][for the details]{Horton2012a}. We used concepts from the factorial design approach \citep[see eg.][]{Costa2005a,Costa2007a,Mariano2010a}, which is sometimes used for comparative analysis of different parametrizations of GAs. It allows isolating the effect of a parameter under different combinations of the other options. We processed by stages, analysing in details and in a systematic way every variants of the implemented operators, in combination with multiple other options and parameters in order to take into account eventual co-dependencies. 
+One of our goals being to make recommendations of parametrization in order to optimize the AM, we proceeded systematically. The results are summarized hereafter \citep[see][for the details]{Horton2012a}. We used concepts from the factorial design approach \citep[see eg.][]{Costa2005a,Costa2007a,Mariano2010a}, which is sometimes used for comparative analysis of different parametrizations of GAs. It allows isolating the effect of a parameter under different combinations of the other options. We processed by stages, analysing in details and in a systematic way every variants of the implemented operators, in combination with multiple other options and parameters in order to take into account eventual co-dependencies. Our goal here is not to focus on the performance score we obtain through optimization, neither the values of the new optimized parameters \citep[covered in][]{Horton2016b}, but to explain how to use GAs to optimize AMs in an efficient way.
 
-In order to evaluate a combination of operators/options, we processed 10 optimizations for one parametrization of GAs. The performances were characterized by four indicators:
-
-\begin{itemize}
-	\item mean performance score: average of the final scores of the 10 optimizations,
-	\item convergence: the number of optimizations that converged to a supposed global optimum,
-	\item number of generations: characterization of the convergence speed,
-	\item number of evaluations of the objective function: characterization of the required calculation time (more realistic than the number of generations).
-\end{itemize}
+In order to evaluate a combination of operators/options, we processed 10 optimizations for one parametrization of GAs. The performances were characterized by four indicators: (i) mean performance score: average of the final scores of the 10 optimizations, (ii) convergence: the number of optimizations that converged to a supposed global optimum, (iii) number of generations: characterization of the convergence speed, and (iv) number of evaluations of the objective function: characterization of the required calculation time (more realistic than the number of generations).
 
 Given the large number of operators and options of the method, it is not possible to systematically assess each combination. We thus proceeded in stages, but for each comprehensive comparison of an operator type, two very different variants of other operators are considered to take account of indirect effects.
 
@@ -589,7 +582,7 @@ After this first assessment, the importance of the mutation operator was obvious
 	\begin{center}
 		\noindent\includegraphics[width=7cm,angle=0]{figures/operator_selectcoupl_score.pdf}\\
 	\end{center}
-	\caption{Influence of the couples selection operators on the optimization performance. The box extends from the lower to upper quartile values of the data, with a line at the median. The whiskers extend from the box to 1.5 times the interquartile range. Flier points are those past the end of the whiskers. The star represents the median.}
+	\caption{Influence of the couples selection operators (Table \ref{tab:assessed_couples_selection_operators}) on the optimization performance. The box extends from the lower to upper quartile values of the data, with a line at the median. The whiskers extend from the box to 1.5 times the interquartile range. Flier points are those past the end of the whiskers. The star represents the median. The gray box highlights the best options.}
 	\label{fig:operator_selectcoupl_score}
 \end{figure}
 
@@ -598,7 +591,7 @@ After this first assessment, the importance of the mutation operator was obvious
 	\begin{center}
 		\noindent\includegraphics[width=16cm,angle=0]{figures/operator_crossover_score.pdf}\\
 	\end{center}
-	\caption{Influence of the chromosome crossover operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the chromosome crossover operators (Table \ref{tab:assessed_crossover_operators}) on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_crossover_score}
 \end{figure*}
 
@@ -639,25 +632,14 @@ Having identified the leading role of the mutation operator, we strongly focused
 	\begin{center}
 		\noindent\includegraphics[width=7cm,angle=0]{figures/operator_mutation_score.pdf}\\
 	\end{center}
-	\caption{Influence of the mutation operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the mutation operators (Table \ref{tab:assessed_mutation_operators}) on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score}
 \end{figure}
 
 
 Figure \ref{fig:operator_mutation_score} show the results of this analysis and illustrates the important role of the mutation on the performance of the optimizations. Optimizations without mutation (last box on the Figure) are inferior to most mutation operators, and the scale of the influence of the mutation operators is significantly more important than those for the other options. The details of the analysis \citep[see][]{Horton2012a} show that the other reproduction operators seem of secondary importance. This observation is in line with the work of \citet{Back1996a}, who argues for the importance of mutation over reproduction. He even suggests, in opposition with the theory of \citet{Holland1992a}, that chromosomes crossovers have mostly a corrective role of mutation operations. Various studies have also identified the importance of the mutation operator relatively to reproduction \citep[see eg.][]{Back1992a, Back1996b, Smith1997a, Deb1999, Haupt2004, Costa2005a, Costa2007a}.
 
-The mutation operators based on a variable normal or uniform law work very poorly and are difficult to configure. We then observe many operators more or less with the same performance scores and requiring a variable amount of assessments. The convergence analysis \citep[see][]{Horton2012a} allows us to highlight three best operators:
-
-\begin{itemize}
-
-	\item \textit{Non-uniform mutation} \citep{Michalewicz1996}: this operator is good in terms of convergence, mainly when the number of parameters to optimize is rather low. The number of required evaluations, however, can be quite substantial. The main disadvantage of the non-uniform mutation is the complexity of its parametrization, which is difficult to estimate a priori. These parameters must be carefully chosen to be in line with the evolution rate of the population, and are therefore dependent on the problem being treated. We could observe that the $\omega$ coefficient does not influence performance. The role of $G_{m}$ is rather difficult to judge, but does not seem essential. The mutation rate was found to be important. The difficulty is that the optimal value seems to be very case-related. Indeed, by even changing the precipitation time series (ie optimizing for another subregion), but not the complexity of the AM, the optimal mutation rate changes, making it impossible to estimate in advance.
-	
-	\item \textit{Chromosome of adaptive search radius} (new): unlike the previous one, our new operator is very robust, as it requires no option and is auto-adapting. It may be sometimes a little bit slower for simple problems, but does not require parametrization, which is an important advantage. It is interesting to notice that our insertion of an extra chromosome representing the search radius gives better performance than other self-adaptive operators (such as, for example, the chromosome of adaptive mutation rate).
-	
-	\item \textit{Multi-scale mutation} (new): finally, our multi-scale mutation, which also performs pretty well, requires one parameter, the mutation rate. However, it can also be difficult to estimate a correct value a priori.
-
-\end{itemize}
-
+The mutation operators based on a variable normal or uniform law work very poorly and are difficult to configure. We then observe many operators more or less with the same performance scores and requiring a variable amount of assessments. The convergence analysis \citep[see][]{Horton2012a} allows us to highlight three best operators: non-uniform mutation, chromosome of adaptive search radius, and multi-scale mutation. Because of the importance of the mutation operator on the resulting performance, we studied its role and parametrization in more detail. Thus, we performed different optimizations using variants of these 3 operators (Table \ref{tab:assessed_mutation_operators_bis}).
 
 \begin{table}[htbp]
 	\caption{Further assessments of mutation operators.}
@@ -686,12 +668,11 @@ The mutation operators based on a variable normal or uniform law work very poorl
 	\label{tab:assessed_mutation_operators_bis}
 \end{table}
 
-
 \begin{figure*}[htb]
 	\begin{center}
 		\noindent\includegraphics[width=14cm,angle=0]{figures/operator_mutation_score_atmlevel.pdf}\\
 	\end{center}
-	\caption{Influence of the mutation operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the mutation operators (Table \ref{tab:assessed_mutation_operators_bis}) on the optimization performance, leaving the optimizer choose the pressure level of the atmospheric circulation analogy (single level of analogy). The predictand is precipitation over a subcatchment in the Swiss Alps (Binn-Simplon region). The red line represents the score of the sequential calibration and the blue line, the score of the optimization without automatic selection of the pressure levels. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score_atmlevel}
 \end{figure*}
 
@@ -699,7 +680,7 @@ The mutation operators based on a variable normal or uniform law work very poorl
 	\begin{center}
 		\noindent\includegraphics[width=14cm,angle=0]{figures/operator_mutation_score_rhoneamont.pdf}\\
 	\end{center}
-	\caption{Influence of the mutation operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\caption{Same as Figure \ref{fig:operator_mutation_score_atmlevel}, but for another region in the Swiss Alps (Bottom Rhone valley), with different atmospheric influences.}
 	\label{fig:operator_mutation_score_rhoneamont}
 \end{figure*}
 
@@ -707,7 +688,7 @@ The mutation operators based on a variable normal or uniform law work very poorl
 	\begin{center}
 		\noindent\includegraphics[width=14cm,angle=0]{figures/operator_mutation_score_r2.pdf}\\
 	\end{center}
-	\caption{Influence of the mutation operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\caption{Same as Figure \ref{fig:operator_mutation_score_atmlevel}, but with a second level of analogy on moisture variables.}
 	\label{fig:operator_mutation_score_r2}
 \end{figure*}
 
@@ -715,9 +696,29 @@ The mutation operators based on a variable normal or uniform law work very poorl
 	\begin{center}
 		\noindent\includegraphics[width=14cm,angle=0]{figures/operator_mutation_score_r4.pdf}\\
 	\end{center}
-	\caption{Influence of the mutation operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\caption{Same as Figure \ref{fig:operator_mutation_score_r2}, but with a preselection on air temperature rather than a fixed calendar window.}
 	\label{fig:operator_mutation_score_r4}
 \end{figure*}
+
+The first analysis was the optimization of the precipitation forecasting over a subcatchment (Binn-Simplon region) in the Swiss Alps (Figure \ref{fig:operator_mutation_score_atmlevel}). The optimizer could choose the 2 pressure levels of the atmospheric circulation analogy (method with a single level of analogy). The resulting performance score is obviously superior to the one from the sequential calibration (red line on Figure \ref{fig:operator_mutation_score_atmlevel}). For most options, it is also slightly better than the results from the optimization without selection of the pressure levels (blue line). A clear breakthrough of the performances was not expected, as the former selection of pressure levels results from intensive work \citep{Bontron2004}. This application however demonstrates that, when correctly parametrized, GAs can automatically and successfully choose the pressure levels. However, some less relevant optimizations do not match the previous results. We could clearly observe, through different applications, that the automatic selection of the pressure level significantly increases the difficulty for GAs to converge to a unique solution, ideally the global optimum. A difficulty is that the pressure levels are considered within the optimization without continuity between values, and thus the approaches relying on distance in the parameters space, such as the search radius, cannot fully exploit the properties that make them efficient. However, even though the results show a certain variability, most of them present very good performance scores, despite different parameters of the AM. As illustrated in \cite{Horton2016}, the surface response of the parameters space of the AM is rather gentle in certain regions, meaning it allows for different values of some parameters without significantly impacting the performance score.
+
+Then, we performed the same optimization, but for another region, sensitive to other meteorological influences (Figure \ref{fig:operator_mutation_score_rhoneamont}), in order to assess eventual dependencies of the operator with the predictand. Even though we can observe differences with Figure \ref{fig:operator_mutation_score_atmlevel}, it is globally the same options that perform better.
+
+Next, we added a second level of analogy on moisture variables (Figure \ref{fig:operator_mutation_score_r2}). The optimizer had to optimize both levels of analogy simultaneously. Once again, despite the difficulty to optimize simultaneously both levels of analogy, the results were better than the sequential calibration (red line on Figure \ref{fig:operator_mutation_score_r2}). And finally, we added a preselection on air temperature instead of the fixed calendar window, as proposed by \cite{BenDaoud2010}. The results show generally higher scores (Figure \ref{fig:operator_mutation_score_r4}), demonstrating the success of the optimizer to take advantage of this new degree of liberty, and its capacity to handle optimization of 3 analogy levels jointly. Again, the most relevant options are generally the same.
+
+After analysis of the most relevant mutation operators, we can raise the following advice:
+
+\begin{itemize}
+	
+	\item \textit{Non-uniform mutation} \citep{Michalewicz1996}: this operator is good in terms of convergence, mainly when the number of parameters to optimize is rather low. The number of required evaluations, however, can be quite substantial. The main disadvantage of the non-uniform mutation is the complexity of its parametrization, which is difficult to estimate a priori. These parameters must be carefully chosen to be in line with the evolution rate of the population, and are therefore dependent on the problem being treated. We could observe that the $\omega$ coefficient does not influence performance. The role of $G_{m}$ is rather difficult to judge, but does not seem essential. The mutation rate was found to be important. The difficulty is that the optimal value seems to be very case-related. Indeed, by even changing the precipitation time series (ie optimizing for another subregion), but not the complexity of the AM, the optimal mutation rate changes, making it impossible to estimate in advance.
+	
+	\item \textit{Chromosome of adaptive search radius} (new): unlike the previous one, our new operator is very robust, as it requires no option and is auto-adapting. It may be sometimes a little bit slower for simple problems, but does not require parametrization, which is an important advantage. It is interesting to notice that our insertion of an extra chromosome representing the search radius gives better performance than other self-adaptive operators (such as, for example, the chromosome of adaptive mutation rate).
+	
+	\item \textit{Multi-scale mutation} (new): finally, our multi-scale mutation, which also performs pretty well, requires one parameter, the mutation rate. However, it can also be difficult to estimate a correct value a priori.
+	
+\end{itemize}
+
+
 
 
 \subsubsection{Other options}
@@ -808,9 +809,9 @@ In order to make an optimization of the AM with genetic algorithms, it may be wi
 
 \begin{itemize}
 	\setlength\itemsep{-4px}
+	\item 1x non-uniform, $p_{mut}=0.05$, $G_{m}=50$, $\omega=0.1$
 	\item 1x non-uniform, $p_{mut}=0.05$, $G_{m}=100$, $\omega=0.1$
 	\item 1x non-uniform, $p_{mut}=0.1$, $G_{m}=100$, $\omega=0.1$
-	\item 1x non-uniform, $p_{mut}=0.2$, $G_{m}=100$, $\omega=0.1$
 	\item 1x multi-scale,  $p_{mut}=0.1$
 	\item 2x chromosome of adaptive search radius
 \end{itemize}
