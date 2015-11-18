@@ -243,9 +243,9 @@ A random initialization based on a uniform distribution is the most current vers
 Natural selection is performed on the basis of the values of the objective function. The selection allows to only keep a certain part of the population, usually half ($N/2$), which can access the mating pool (intermediate generation with $N_{mp}$ members). If $N_{mp}$ is too high, the reproduction rate is too low, whereas if it is too small, the strong traits of individuals do not have the ability to accumulate in the same chromosome \citep{Haupt2004}. Several techniques exist, such as:
 
 \begin{itemize}
-	\item \textbf{$N_{mp}$-elitism} \citep{Michalewicz1996}: the population is sorted according to the value of the objective function and only the better half is preserved. 
+	\item $N_{mp}$-elitism \citep{Michalewicz1996}: the population is sorted according to the value of the objective function and only the better half is preserved. 
 	
-	\item \textbf{Tournament selection} \citep{Michalewicz1996, Zitzler2004a}: two individuals are randomly selected and fight. The one with the highest performance score is chosen, but with a certain probability, in order to reduce the selection pressure. This procedure is repeated until the mating pool is full. Individuals can be selected several times, and thus be represented several times in the mating pool.
+	\item Tournament selection \citep{Michalewicz1996, Zitzler2004a}: two individuals are randomly selected and fight. The one with the highest performance score is chosen, but with a certain probability, in order to reduce the selection pressure. This procedure is repeated until the mating pool is full. Individuals can be selected several times, and thus be represented several times in the mating pool.
 \end{itemize}
 
 
@@ -255,11 +255,11 @@ Individuals of the mating pool can reproduce. It begins with the selection of pa
 
 
 \begin{itemize}
-	\item \textbf{Rank pairing}: individuals are gathered in pairs according to their rank (classified on the performance scores). Consecutive ranks are put together (odd rows are associated with even rows). This approach is easy to achieve, but does not look like a natural process.
+	\item Rank pairing: individuals are gathered in pairs according to their rank (classified on the performance scores). Consecutive ranks are put together (odd rows are associated with even rows). This approach is easy to achieve, but does not look like a natural process.
 	
-	\item \textbf{Random pairing}: two individuals are randomly selected to form a couple, according to a uniform law.
+	\item Random pairing: two individuals are randomly selected to form a couple, according to a uniform law.
 	
-	\item \textbf{Roulette wheel weighting}: the roulette technique refers to gambling. But unlike casino roulette, this one is biased. Each individual is associated with a sector of the wheel with a certain opening angle, which is its probability of selection \citep{Haupt2004}. The probability assigned to the individuals is proportional to their fitness (objective function), so that the most adapted individuals have the greatest probability of reproduction. There are two techniques for weighting the individuals of the mating pool:
+	\item Roulette wheel weighting: the roulette technique refers to gambling. But unlike casino roulette, this one is biased. Each individual is associated with a sector of the wheel with a certain opening angle, which is its probability of selection \citep{Haupt2004}. The probability assigned to the individuals is proportional to their fitness (objective function), so that the most adapted individuals have the greatest probability of reproduction. There are two techniques for weighting the individuals of the mating pool:
 	
 	\textit{Roulette wheel weighting on rank}: the probability of each individual depends on its rank $n$:
 	\begin{equation}
@@ -275,7 +275,7 @@ Individuals of the mating pool can reproduce. It begins with the selection of pa
 	In our application, the last individual ($N_{mp}$) has zero probability of being selected.
 	
 	
-	\item \textbf{Tournament selection}: This operator is similar to the one used in natural selection, but is applied here for the successive selection of each parent. To select a parent, a number of individuals (2 or 3) are randomly picked and the best is kept. This operation is performed twice, once for each partner. This approach imitates the breeding competition in nature \citep{Haupt2004}.
+	\item Tournament selection: This operator is similar to the one used in natural selection, but is applied here for the successive selection of each parent. To select a parent, a number of individuals (2 or 3) are randomly picked and the best is kept. This operation is performed twice, once for each partner. This approach imitates the breeding competition in nature \citep{Haupt2004}.
 \end{itemize}
 
 
@@ -286,15 +286,15 @@ Once the two parents are selected for breeding, they combine their chromosomes a
 The evaluated crossover operators are the following:
 
 \begin{itemize}
-	\item \textbf{Single-point crossover}: a crossover point is randomly chosen for the pair. The genes (our parameters) located after that point are exchanged in between the two chromosomes.
+	\item Single-point crossover: a crossover point is randomly chosen for the pair. The genes (our parameters) located after that point are exchanged in between the two chromosomes.
 	
-	\item \textbf{Two-point crossover}: works like the single-point crossover, but there are two intersections defining the segments to exchange. This approach, which significantly extends the search space for the children, is considered more efficient than the previous \citep{Beasley1993a, Haupt2004}.
+	\item Two-point crossover: works like the single-point crossover, but there are two intersections defining the segments to exchange. This approach, which significantly extends the search space for the children, is considered more efficient than the previous \citep{Beasley1993a, Haupt2004}.
 	
-	\item \textbf{Multiple-point crossover} \citep{DeJong1975a}: it is a generalization of the previous, with a number of crossover points up to the number of genes.
+	\item Multiple-point crossover \citep{DeJong1975a}: it is a generalization of the previous, with a number of crossover points up to the number of genes.
 	
-	\item \textbf{Uniform crossover} \citep{Syswerda1989}: for each gene of the chromosome, it is randomly chosen to exchange or not the values between the parents.
+	\item Uniform crossover \citep{Syswerda1989}: for each gene of the chromosome, it is randomly chosen to exchange or not the values between the parents.
 	
-	\item \textbf{Binary-like crossover} \citep{Haupt2004}: chromosome crossover on a binary coding can generate new values for variables located at intersection points, since the crossovers are applied at the bit level, thus often within a gene. This is not the case for the floating-point representation, since the crossover is performed between the genes. To reproduce the behaviour present in the original algorithms, which introduces new information, \citet{Haupt2004} propose an operator that combines standard crossover with an interpolation approach. The genes located after a crossover point are exchanged, but the gene located at the intersection is modified as follows (equation \ref{equation_mating_as_binary}):
+	\item Binary-like crossover \citep{Haupt2004}: chromosome crossover on a binary coding can generate new values for variables located at intersection points, since the crossovers are applied at the bit level, thus often within a gene. This is not the case for the floating-point representation, since the crossover is performed between the genes. To reproduce the behaviour present in the original algorithms, which introduces new information, \citet{Haupt2004} propose an operator that combines standard crossover with an interpolation approach. The genes located after a crossover point are exchanged, but the gene located at the intersection is modified as follows (equation \ref{equation_mating_as_binary}):
 	\begin{equation}
 	\left\lbrace \begin{array}{l} 
 	g_{o1,n} = g_{p1,n} - \beta (g_{p1,n} - g_{p2,n}) \\
@@ -304,7 +304,7 @@ The evaluated crossover operators are the following:
 	\end{equation}
 	where $g_{o1,n}$ and $g_{o2,n}$ are the $n$-th gene of the two new offspring, and $g_{p1,n}$ and $g_{p2,n}$ are those of the two parents. $\beta$ is a random value between 0 and 1.
 	
-	\item \textbf{Blending method} \citep{Radcliffe1991a}: in this approach, instead of exchanging the genes in between the chromosomes after one or multiple crossover points, these are combined by linear combination (equation \ref{equation_mating_blending_method}). The genes of the parents are blended together using a random value ($\beta$) that can be unique for the whole chromosome, or that can change for every gene. The genes of the offspring are bounded by the genes of the parents, no value can be out of their range.
+	\item Blending method \citep{Radcliffe1991a}: in this approach, instead of exchanging the genes in between the chromosomes after one or multiple crossover points, these are combined by linear combination (equation \ref{equation_mating_blending_method}). The genes of the parents are blended together using a random value ($\beta$) that can be unique for the whole chromosome, or that can change for every gene. The genes of the offspring are bounded by the genes of the parents, no value can be out of their range.
 	\begin{equation}
 	\left\lbrace \begin{array}{l} 
 	g_{o1,n} = \beta g_{p1,n} + (1-\beta)g_{p2,n} \\ 
@@ -313,7 +313,7 @@ The evaluated crossover operators are the following:
 	\label{equation_mating_blending_method}
 	\end{equation}
 	
-	\item \textbf{Linear crossover} \citep{Wright1991a}: in order to allow the genes to take values outside the interval defined by the parents, a method of extrapolation is necessary. Linear crossover introduces such an approach, and produces three children from two parents, following equation \ref{equation_mating_linear_crossover}. Less couples are required in order to fill up the generation.
+	\item Linear crossover \citep{Wright1991a}: in order to allow the genes to take values outside the interval defined by the parents, a method of extrapolation is necessary. Linear crossover introduces such an approach, and produces three children from two parents, following equation \ref{equation_mating_linear_crossover}. Less couples are required in order to fill up the generation.
 	\begin{equation}
 	\left\lbrace \begin{array}{l} 
 	g_{o1,n} = 0.5 g_{p1,n} + 0.5 g_{p2,n} \\ 
@@ -323,7 +323,7 @@ The evaluated crossover operators are the following:
 	\label{equation_mating_linear_crossover}
 	\end{equation}
 	
-	\item \textbf{Heuristic crossover} \citep{Michalewicz1996}: it is a variation of the latter methods that relies on the following equation:
+	\item Heuristic crossover \citep{Michalewicz1996}: it is a variation of the latter methods that relies on the following equation:
 	\begin{equation}
 	\left\lbrace \begin{array}{l} 
 	g_{o1,n} = \beta (g_{p1,n} - g_{p2,n}) + g_{p1,n} \\
@@ -332,7 +332,7 @@ The evaluated crossover operators are the following:
 	\label{equation_mating_heuristic_crossover}
 	\end{equation}
 	
-	\item \textbf{Linear interpolation}: unlike previous techniques, this technique does not rely on crossover points, but on a linear interpolation on every gene of the couple (equation \ref{equation_mating_linear_interpolation}).
+	\item Linear interpolation: unlike previous techniques, this technique does not rely on crossover points, but on a linear interpolation on every gene of the couple (equation \ref{equation_mating_linear_interpolation}).
 	\begin{equation}
 	\left\lbrace \begin{array}{l} 
 	c_{o1} = c_{p1} - \beta (c_{p1} - c_{p2}) \\
@@ -342,7 +342,7 @@ The evaluated crossover operators are the following:
 	\end{equation}
 	where $c_{o1}$ and $c_{o2}$ are the full chromosomes of the offspring, and $c_{p1}$ an $c_{p2}$ are the ones of the parents. As before, $\beta$ is a random value between 0 and 1, and is here the same for every gene.
 	
-	\item \textbf{Free interpolation}: this technique performs interpolation on each gene, like the previous one; but in this case, the weighting factor changes for each gene:
+	\item Free interpolation: this technique performs interpolation on each gene, like the previous one; but in this case, the weighting factor changes for each gene:
 	\begin{equation}
 	\left\lbrace \begin{array}{l} 
 	c_{o1} = c_{p1} - [\beta_{1} (g_{p1,1} - g_{p2,1}), \beta_{2} (g_{p1,2}\\
@@ -369,30 +369,30 @@ The mutation operator is a direct modification of genes. In a binary coding, it 
 The evaluated and developed mutation operators are the following:
 
 \begin{itemize}
-	\item \textbf{Uniform mutation}: The mutation rate is constant and equal for every gene of each individual; they all have the same probability to mutate. When a gene is selected for mutation, a new random value is assigned, according to a uniform law.
+	\item Uniform mutation: The mutation rate is constant and equal for every gene of each individual; they all have the same probability to mutate. When a gene is selected for mutation, a new random value is assigned, according to a uniform law.
 	
-	\item \textbf{Variable uniform mutation} \citep{Fogarty1989}: a variable mutation rate over the generations was first suggested by \citet{Holland1992b} and evaluated by \citet{Fogarty1989}. It improved significantly the performance of GAs. In most applications, the mutation rate decreases with the generations, in a deterministic and global (for all individuals) manner \citep{Back1992b}. Its optimum configuration depends on the size of the chromosomes, of the properties of the objective function, and of the population size \citep{Back1992b}. We implemented this operator according to equation \ref{equation_mutation_uniformvariable}.
+	\item Variable uniform mutation \citep{Fogarty1989}: a variable mutation rate over the generations was first suggested by \citet{Holland1992b} and evaluated by \citet{Fogarty1989}. It improved significantly the performance of GAs. In most applications, the mutation rate decreases with the generations, in a deterministic and global (for all individuals) manner \citep{Back1992b}. Its optimum configuration depends on the size of the chromosomes, of the properties of the objective function, and of the population size \citep{Back1992b}. We implemented this operator according to equation \ref{equation_mutation_uniformvariable}.
 	\begin{equation}
 	p_{n,G} = p_{G_{0}}+\left( \dfrac{p_{G_{0}}-p_{G_{m,p}}}{G_{m,p}} \right) min\left\lbrace G,G_{m,p}\right\rbrace 
 	\label{equation_mutation_uniformvariable}
 	\end{equation}
 	where $p_{n,G}$ is the mutation rate (probability) of the gene $n$ for generation number $G$, $G_{m,p}$ is the maximum number of generations during which the mutation rate varies. $p_{G_{0}}$ is the initial mutation probability, and $p_{G_{m,p}}$ is the final one. $p_{G_{0}}$, $p_{G_{m,p}}$ and $G_{m,p}$ are the three controlling parameters of the operator. The evolution of the mutation rate is linear.
 	
-	\item \textbf{Constant normal mutation}: many use normal distributions to generate new values. The gene $g$ that mutate becomes:
+	\item Constant normal mutation: many use normal distributions to generate new values. The gene $g$ that mutate becomes:
 	\begin{equation}
 	g' = N(g,\sigma^{2})
 	\label{equation_mutating_normal_distribution}
 	\end{equation}
 	where $\sigma$ is the standard deviation of the distribution. The disadvantage of this technique is that an accurate value of $\sigma$ must be chosen \citep{Haupt2004}, which is impossible to know beforehand.
 	
-	\item \textbf{Variable normal mutation}: with the same logic that the variable uniform mutation, we tested a mutation operator using a normal distribution with a variable mutation rate and standard deviation. The mutation rate is calculated with equation \ref{equation_mutation_uniformvariable}. On the same principle, we decrease linearly the standard deviation over the generations:
+	\item Variable normal mutation: with the same logic that the variable uniform mutation, we tested a mutation operator using a normal distribution with a variable mutation rate and standard deviation. The mutation rate is calculated with equation \ref{equation_mutation_uniformvariable}. On the same principle, we decrease linearly the standard deviation over the generations:
 	\begin{equation}
 	\sigma_{n,G} = \sigma_{G_{0}}+\left( \dfrac{\sigma_{G_{0}}-\sigma_{G_{m,\sigma}}}{G_{m,\sigma}} \right) min\left\lbrace G,G_{m,\sigma}\right\rbrace 
 	\label{equation_mutation_normalvariable}
 	\end{equation}
 	where $\sigma_{n,G}$ is the standard deviation of gene $n$ et generation number $G$, $\sigma_{G_{0}}$ is the initial standard deviation, $\sigma_{G_{m,\sigma}}$ is the final standard deviation, $G_{m,\sigma}$ is the maximum number of generations during which the standard deviation varies. $p_{G_{0}}$, $p_{G_{m,p}}$, $G_{m,p}$, $\sigma_{G_{0}}$, $\sigma_{G_{m,\sigma}}$ and $G_{m,\sigma}$ are the six parameters of the method.
 	
-	\item \textbf{Non-uniform mutation} \citep{Michalewicz1996}: two random numbers are picked based on a uniform law: $r_{1}$, which determines the direction of the change, and $r_{2}$, which determines its magnitude. The new value of the gene is given by the following equation:
+	\item Non-uniform mutation \citep{Michalewicz1996}: two random numbers are picked based on a uniform law: $r_{1}$, which determines the direction of the change, and $r_{2}$, which determines its magnitude. The new value of the gene is given by the following equation:
 	\begin{equation}
 	g_{n}^{'} = 
 	\left\lbrace \begin{array}{l l} 
@@ -421,9 +421,9 @@ The evaluated and developed mutation operators are the following:
 	
 	where $G_{m,r}$ is the maximum number of generations during which the magnitude of the research varies, and $\omega$ is a threshold chosen by the user to maintain a minimum search radius when $G>G_{m,r}$. During the first generations, the exploration extent covers the entire parameter space. However, this area is reduced over generations, allowing exploitation of local solutions.
 	
-	\item \textbf{Individual adaptive mutation rate} \citep{Back1992a}: based on the ideas of Evolution Strategies \citep[see][]{Rechenberg1973, Schwefel1981}, \citet{Back1992a} introduced a concept of self-adaptive genetic algorithms. The idea is to distribute control parameters within individuals themselves, which partially decentralize control of the evolution. It allows reducing the parametrization of GAs and introducing a notion of self-management. The first approach is the introduction of a mutation rate per individual, that mutates itself under its own probability \citep{Back1992a}. Then, the eventual new rate is used to mutate the genes of the individual. Thus, as this rate decreases, it will have less probability of being itself mutated. This approach is close to the natural adaptation phenomena. A population less suited to its environment is changing faster than better adapted populations. Mutations are performed according to a constant uniform distribution. The initial mutation rates are randomly chosen \citep{Back1992a} and the method has no parameter. Other approaches exist to introduce a self-adaptation \citep[see][]{Smith1997a,Deb1999,Deb2001a}.
+	\item Individual adaptive mutation rate \citep{Back1992a}: based on the ideas of Evolution Strategies \citep[see][]{Rechenberg1973, Schwefel1981}, \citet{Back1992a} introduced a concept of self-adaptive genetic algorithms. The idea is to distribute control parameters within individuals themselves, which partially decentralize control of the evolution. It allows reducing the parametrization of GAs and introducing a notion of self-management. The first approach is the introduction of a mutation rate per individual, that mutates itself under its own probability \citep{Back1992a}. Then, the eventual new rate is used to mutate the genes of the individual. Thus, as this rate decreases, it will have less probability of being itself mutated. This approach is close to the natural adaptation phenomena. A population less suited to its environment is changing faster than better adapted populations. Mutations are performed according to a constant uniform distribution. The initial mutation rates are randomly chosen \citep{Back1992a} and the method has no parameter. Other approaches exist to introduce a self-adaptation \citep[see][]{Smith1997a,Deb1999,Deb2001a}.
 	
-	\item \textbf{Individual adaptive search radius} (new): based on the ideas of the non-uniform mutation, we introduce a search radius in the approach of individual adaptive mutation rates. This search radius $r_{a}$, bounded between 0 and 1, is also adaptive and behaves similarly to the adaptive mutation rates. In order to separate its evolution from the one of the mutation rate, its own value is considered initially as a self-mutation rate to eventually mutate before being used as a normalized search radius. The value of a mutated gene is given by the following equation, which is a simplification of the non-uniform mutation:
+	\item Individual adaptive search radius (new): based on the ideas of the non-uniform mutation, we introduce a search radius in the approach of individual adaptive mutation rates. This search radius $r_{a}$, bounded between 0 and 1, is also adaptive and behaves similarly to the adaptive mutation rates. In order to separate its evolution from the one of the mutation rate, its own value is considered initially as a self-mutation rate to eventually mutate before being used as a normalized search radius. The value of a mutated gene is given by the following equation, which is a simplification of the non-uniform mutation:
 	\begin{equation}
 	g_{n}^{'} = 
 	\left\lbrace \begin{array}{l l} 
@@ -434,11 +434,11 @@ The evaluated and developed mutation operators are the following:
 	\end{equation}
 	where $r_{1}$ and $r_{2}$ are randomly selected, in the same way as for the non-uniform mutation. No external parameter is therefore necessary.
 	
-	\item \textbf{Chromosome of adaptive mutation rate} \citep[\textit{n adaptative mutation rate},][]{Back1992a}: analogously to the individual adaptive mutation rate, this approach leaves the control of the evolution rate to the individuals themselves. The difference here is that each gene has a specific mutation rate. The main advantage is that the tuning of the mutation can be much more precise \citep{Smith1997a}. We therefore consider a second chromosome containing the mutation rate for each gene of the first chromosome. The operations of mutation and self-mutation are similar to the case of the individual adaptive mutation rate, but in a distributed way, within the chromosome. Another difference is that we apply the same crossover operations as those applied to the first chromosome, and this for the same crossing points. Thus, during an exchange of genes, children also inherit the mutation rates specific for each of these genes.
+	\item Chromosome of adaptive mutation rate \citep[\textit{n adaptative mutation rate},][]{Back1992a}: analogously to the individual adaptive mutation rate, this approach leaves the control of the evolution rate to the individuals themselves. The difference here is that each gene has a specific mutation rate. The main advantage is that the tuning of the mutation can be much more precise \citep{Smith1997a}. We therefore consider a second chromosome containing the mutation rate for each gene of the first chromosome. The operations of mutation and self-mutation are similar to the case of the individual adaptive mutation rate, but in a distributed way, within the chromosome. Another difference is that we apply the same crossover operations as those applied to the first chromosome, and this for the same crossing points. Thus, during an exchange of genes, children also inherit the mutation rates specific for each of these genes.
 	
-	\item \textbf{Chromosome of adaptive search radius} (new): we introduced this operator that combines the operations of the chromosome of adaptive mutation rate to our adaptive search radius approach. Similarly, an individual has 3 chromosomes: the first containing the values to be optimized, the second containing the distributed mutation rate, and the last one, the distributed search radius. Again, no external parameters are required.
+	\item Chromosome of adaptive search radius (new): we introduced this operator that combines the operations of the chromosome of adaptive mutation rate to our adaptive search radius approach. Similarly, an individual has 3 chromosomes: the first containing the values to be optimized, the second containing the distributed mutation rate, and the last one, the distributed search radius. Again, no external parameters are required.
 	
-	\item \textbf{Multi-scale mutation} (new): finally, we developed another approach, that is also based on the search radius concept. However, the latter is not decreasing with time. Methods based on a reduction of the mutation rate or radius simulate a transition from the exploration phase to the exploitation one. The idea is consistent as long as we are confident that the algorithm will converge towards the global optimum. Indeed, once the algorithm is in the exploitation mode, it is very unlikely to go out of the region it converges to. We wanted to test an approach that combines both exploration and exploitation during the whole optimization. Thus, we considered the search radius $r_{a}$ of equation \ref{equation_mutation_rayon_adaptatif} as a random value for each individual, but restricted to 4 equiprobable values: 1, 0.5, 0.1, 0.02, which range from full exploration to fine exploitation. The only external parameter is the mutation rate which is fixed.
+	\item Multi-scale mutation (new): finally, we developed another approach, that is also based on the search radius concept. However, the latter is not decreasing with time. Methods based on a reduction of the mutation rate or radius simulate a transition from the exploration phase to the exploitation one. The idea is consistent as long as we are confident that the algorithm will converge towards the global optimum. Indeed, once the algorithm is in the exploitation mode, it is very unlikely to go out of the region it converges to. We wanted to test an approach that combines both exploration and exploitation during the whole optimization. Thus, we considered the search radius $r_{a}$ of equation \ref{equation_mutation_rayon_adaptatif} as a random value for each individual, but restricted to 4 equiprobable values: 1, 0.5, 0.1, 0.02, which range from full exploration to fine exploitation. The only external parameter is the mutation rate which is fixed.
 	
 	
 \end{itemize}
