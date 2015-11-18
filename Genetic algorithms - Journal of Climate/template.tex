@@ -790,14 +790,11 @@ In order to make an optimization of the AM with genetic algorithms, it may be wi
 
 \section{Conclusions}
 
+In order to automatically optimize the analogue method and to get rid of the limitations of the usual sequential calibration, genetic algorithms were evaluated. Given the large number of existing operators and options, we had to evaluate systematically multiple variants to identify which operators are important, and which variant works best for the AM. We could thus identify that the mutation operator is a key element for our application, and provided new variants that were found to be efficient, such as the chromosome of adaptive search radius that seems to be very reliable (no control parameter) and efficient. Recommendations were established for a relevant use of GAs for the optimization of AMs. 
 
-In order to automatically optimize the analogue method, we evaluated genetic algorithms, a global optimization technique, that is able to solve complex problems. Given the large number of existing operators and options, we had to evaluate systematically multiple variants to identify which operators are important, and which variant works best for the analogue method. We could thus identify that the mutation operator is a key element for our application, and provided new variants that were found to be efficient, such as the Chromosome of adaptive search radius that seems to be very reliable (no control parameter) and efficient . Recommendations were established for a relevant use of GAs for the optimization of the analogue method. However, there may still be possible improvements, through new operators, in order to improve the optimization performance and speed. Usage of this global optimization greatly eases the adaptation of the AM to new regions (with different leading meteorological processes) or to new predictands, as the optimization is performed automatically and globally.
+We do not exclude that another global optimization methods or other operators of GAs may perform better. The relevance of such approach has now been proven as it results in parametrization of AMs that are relevant and fully automatically established. A global optimization is the only way to take into account all the dependencies between parameters and levels of analogy.
 
-
-
-
-
-The global optimization tools allow easily adapting the AM to new regions by taking into account local meteorological influences, and has thus a great potential of use. Moreover, it allows exploring automatically datasets in order to extract the most relevant variables. It is thus possible to try assessing other predictands, such as the temperature, the limit of snowfall, the occurrence of hail, or wind, while leaving the algorithms select the best variables and the associated parameters.
+The global optimization approach allow easily adapting the AM to new regions by taking into account local meteorological influences, and has thus a great potential of use. Moreover, it allows exploring automatically datasets in order to extract the most relevant variables. It is thus possible to try assessing other predictands, such as the temperature, the limit of snowfall, the occurrence of hail, or wind, while leaving the algorithms select the best variables and the associated parameters.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
