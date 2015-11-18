@@ -149,28 +149,21 @@ These kind of optimization techniques need however to be tailored to the problem
 \section{Introduction}
 \label{section_intro}
 
+The analogue method (AM) relies on the hypothesis that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Lorenz1956, Lorenz1969, Duband1970, Bontron2005}. The principle is sampling a certain number of past situations based on different atmospheric variables (predictors) in order to build a probabilistic forecast for a local weather variable (predictand). The most common usage of the AM is for precipitation forecasting \citep[eg.]{Guilbaud1997, Bontron2005, Bliefernicht2010, Marty2012, Horton2012, Radanovics2013, BenDaoud2015}, but AMs, or equivalent, were also used for short to medium term forecasting of daily temperatures \citep{Radinovic1975, Woodcock1980, Kruizinga1983}, wind \citep{Gordon1987}, snow avalanches \citep{Obled1980, Bolognesi1993}, insolation \citep{Bois1981}, and the trajectory of tropical cyclones \citep{Keenan1981, Sievers2000, Fraedrich2003}. Applications for monthly forecasts in many countries also exist, including Canada \citep{Shabbar1986},  Hungary \citep{Toth1989}, the Netherlands \citep{Nap1981}, and England \citep{Murray1974}, as well as seasonal forecasts: \citet{Barnett1978}, \citet{Bergen1982} and \citet{Livezey1988}.
 
+The purpose of this paper is not to present in details the AM and its different parametrizations, which can be found in \citet{Horton2016} or \citet{BenDaoud2015}. The concepts one needs to understand here are the following: the AM consists in searching $N$ past situations in a meteorological archive (typically reanalysis) that are the most similar, according to an analogy criteria, and to extract the observed values of the local weather variable of interest from another archive (typically local time series) in order to build the cumulative distribution considered as the probabilistic forecast for the target day. Predictors can be multiple, for example the geopotential height at different pressure levels on different temporal windows (time of observation). The method is usually made of multiple levels of analogy, leading to successive subsampling on predictors of different nature (eg. atmospheric circulation, moisture variables, vertical motion, and air temperature).
 
+Even though the method is rather simple compared to numerical weather prediction models, it contains a certain number of parameters one needs to determine, such as the choice of the predictor variable, its pressure level and temporal window to consider, the spatial domain to use for the comparison, as well as the analogy criteria itself, and finally the number of analogue situations to keep at each subsampling level. Up to now, the optimization of the method has been undertaken by semi-automatic sequential calibration procedures \citep[see][for its definition]{Bontron2004, Horton2016}. However, the choice of predictor variables, pressure levels and temporal windows were still to be chosen manually before optimizing the spatial windows and the number of analogues. Testing multiple combinations of these can be cumbersome, especially when considering multiple predictors within the same level of analogy. Moreover, the sequential technique proceeds to the optimization sequentially, ignoring potential dependencies between the parameters of the method, may they be within a single level of analogy or between them. Thus, optimizing the method with the sequential technique is laborious, as many combinations of predictors (variables, pressure levels, temporal windows) have to be assessed. Moreover, due to its sequential approach, the risk of ending in a local optimum is high and can not be avoided.
 
+In order to overcome these limitations, two optimization techniques were assessed. First, \citet{Horton2012a} assessed the ability of the \citet{Nelder1965a} method based on a simplex approach. This technique didn't provide satisfying results and failed at identifying the global optimum. Indeed, the results didn't converge and many local optimums came out. The parameter space of the analogue method is very complex and not appropriate for a linear optimization technique. The conclusion was that global optimization techniques were necessary in order to calibrate AMs. The relevance of Genetic Algorithms (GAs) is presented here, which doesn't exclude that other global optimization techniques could also be successful. 
 
-The sequential calibration cannot optimize all parameters of the AM, as several are manually selected, such as the meteorological variable, the pressure level and the temporal windows. Testing multiple combinations of these can be cumbersome, especially when considering multiple predictors within the same level of analogy. Moreover, the parameters are calibrated successively within the same level of analogy, and in-between them.
+This article is not about discussing the details of the results of an optimization with GAs, but describing how to use GAs in order to successfully optimize AMs. Indeed, GAs variants are numerous and they always need to be tailored to the problem to be addressed. This requires intensive and systematic comparisons of operators and options in order to identify the key factors leading the optimization and the respective sensitivity of the options. These analyses are presented here and result in recommendations for the use of GAs when applied to AMs. The demonstration of the benefit brought by such an approach in a specific case study is the topic of \cite{Horton2016b}. 
 
- This article is not about discussing the results of such a technique, but describing the details of the implementation. The demonstration of the benefit brought by such an approach is the topic of another article. 
-
-
-
-
-
-Up to now, the optimization of the method has been undertaken by semi-automatic calibration procedures. However, the choice of predictor variables, pressure levels and temporal windows were still to be chosen manually before optimizing the spatial windows and the number of analogues. Moreover, the semi-automatic technique proceeds to the optimization sequentially, ignoring potential dependencies between the parameters of the method. Thus, optimizing the method with the semi-automatic technique is laborious, as many combinations of predictors (variables, pressure levels, temporal windows) have to be assessed. Moreover, due to its sequential approach, the risk of ending in a local optimum is high and can not be avoided. We thus propose a global optimization approach by means of Genetic algorithms, tailored to the analogue method (AM).
-
-
-
-\section{The analogue method}
-\label{section_analog_method}
-
+We will begin with a motivation for a global optimization (section \ref{sec:motivation}) and then present the concepts of GAs as well as the assessed operators (section \ref{sec:gas}). The comparative analyses of the operators and their results are presented in section \ref{sec:assessment}, which lead us to the recommendations in section \ref{sec:recommendations}.
 
 
 \section{Motivation for a global optimization}
+\label{sec:motivation}
 
 The sequential calibration is fast to optimize one spatial window for a given pressure level and temporal window. However, it doesn't provide an objective selection of the pressure level and temporal window. The only option is to try systematically every combination, which may be acceptable for no more than 2 levels. However, \citet{Horton2012a} showed that additional pressure levels may improve the method.
 
@@ -181,8 +174,6 @@ When creating the sequential calibration procedure, \citet{Bontron2004} was awar
 The analogue method needs to be adapted to every new region it is applied, because the leading meteorological influences are specific to this region. Even the selection of the pressure level and the temporal window should be reconsidered, when not the variable itself. For example, \citet{BenDaoud2010} found the vertical velocity relevant for the great plains in France, when \citet{Horton2012a} found no interest in this variable in an Alpine environment, because in the Alps, the vertical motion is mainly controlled by orographic effects, and was thus already well related to the atmospheric circulation itself. So, when adapting the analogue method to a new region, we should assess systematically every combination of pressure levels, time and spatial windows, which is an intensive task. This procedure can be automatized by a global optimization technique.
 
 Our ambition was then to assess the feasibility of an automatic optimization of the analogue method through various techniques. The objective was to find an approach to optimize all parameters simultaneously, and thus be able to identify the global optimum in the parameter space. In addition, it can overcome the systematic manual assessments of certain parameters such as the selection of the pressure levels and time windows. Finally, it can open new perspectives by allowing the addition of new degrees of freedom, such as a weighting of the criteria values between the pressure levels, and the consideration of non-overlapping spatial windows between the pressure levels.
-
-\citet{Horton2012a} assessed the ability of the \citet{Nelder1965a} method based on a simplex approach. This technique didn't provide satisfying results and failed at identifying the global optimum. Indeed, the results didn't converge and many local optimums came out. The parameter space of the analogue method is very complex and not appropriate for a linear optimization technique. Genetic algorithms were found to be much more relevant for such application.
 
 
 \section{Assessed Genetic Algorithms variants}
@@ -468,6 +459,7 @@ The assessment (calculation of the objective function) of each member of the pop
 
 
 \section{Assessment process and results}
+\label{sec:assessment}
 
 The GAs parametrization, such as the mutation rate, population size, natural selection options, and so on, is difficult given the high number of existing variants, each developed for a specific problem \citep{Haupt2004, Costa2007a}. This parametrization depends on the objective function, implementation variants, the range of the parameters to be optimized, and performance indicators. Thus, different studies suggest very different parametrization.
 
