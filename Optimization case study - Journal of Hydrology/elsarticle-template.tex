@@ -85,19 +85,23 @@ Alpine climate
 \section{Introduction}
 \label{sec:intro}
 
-The analogue method (AM) is a downscaling technique based on the idea expressed by \citet{Lorenz1969}, that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Bontron2005}. It aims at forecasting a predictand, often the daily precipitation, on the basis of predictor variables describing the synoptic atmospheric circulation. Many parameters define this relationship, which are usually calibrated by means of a semi-automatic procedure.
+The analogue method (AM) is a downscaling technique based on the idea expressed by \citet{Lorenz1956, Lorenz1969}, that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Duband1970, Bontron2005}. It aims at forecasting a predictand, often the daily precipitation \citep[eg.]{Guilbaud1997, Bontron2005, Bliefernicht2010, Marty2012, Horton2012, Radanovics2013, BenDaoud2015}, on the basis of predictor variables describing the synoptic atmospheric circulation. Other predictands are also often considered \citep[see][for a non-exhaustive list]{Horton2016}.
 
-The AM has to be adapted to every new location it is applied. We improved the AM for the Swiss Alps, by means of Genetic Algorithms (GAs). A summary of the main results are provided here \citep[see][for the details]{Horton2012a}. Even though the results may differ from one place to another, the applicability of GAs to the AM remains universal.
+In operational forecasting, it has been used mainly by practitioners, notably hydropower companies or flood forecasting services, while in climate studies, it is newly used to downscale the results of global climate model (GCM) simulation runs. In this last case, although the GCM represents the large or regional scale evolutions of the atmosphere, it would be far too computer intensive to get down to variables such as precipitation at a rather small and representative scale. Therefore the idea to rely on past observations to bypass these unaffordable small scale simulations and to go from the large scale situation proposed by the GCM to the end variables like precipitation by searching anlogs in the past and present archive. 
 
-%In operational forecasting, it has been used mainly by practitioners, notably hydropower companies or flood forecasting services, while in climate studies, it is more and more used to downscale the results of global climate model simulation runs. In this last case, although the GCM represents the large or regional scale evolutions of the atmosphere, it would be far too computer intensive to get down to variables such as precipitation at a rather small and representative scale. Therefore the idea to rely on past observations to bypass these unaffordable small scale simulations and to go from the large scale situation proposed by the GCM to the end variables like precipitation by searching anlogs in the past and present archive. 
+The method can be made of multiple successive subsampling steps, each of them relying on different meteorological variables. A certain number of parameters define the relationship between predictors and predictands, such as the choice of the predictor variable, its pressure level and temporal window to consider, the spatial domain to use for the comparison, as well as the analogy criteria itself, and finally the number of analogue situations to keep at each subsampling level. These parameters are usually calibrated by means of a semi-automatic sequential procedure \citep[see][for the details]{Bontron2004, Horton2016}. This sequential approach has strong limitations: (i) it cannot automatically choose the pressure levels and the temporal windows for a given meteorological variable, (ii) it cannot handle dependencies between the parameters within a level of analogy, and even less between them, and (iii) it could not handle new degrees of freedom, such as a weighting between the pressure levels. Thus, even if the processing involved is relatively fast, the sequential approach requires laborious assessments of predictors combinations (variables, pressure levels, temporal windows), and present a high risk of ending in a local optimum due to subjective initial choices and lack of consideration of parameters dependencies.
+
+With the perspective to overcome these limitations, a global optimization technique, namely Genetic Algorithms (GAs) was introduced by \citet{Horton2016a}. An intensive assessment work resulted in recommendations of parametrization of GAs in order to optimize AMs successfully. The present paper is based on these recommendations and apply them to precipitation forecasting for the upper Rh\^{o}e catchment in the Swiss Alps. It aims at proving the relevance of a fully-automatic, objective, and global, optimization technique for AMs. The applications are indeed numerous, as the AM has to be adapted to every new location it is applied, or to any new predictand it should forecast.
+
+A short overview of AMs is presented in section \ref{sec:analog_method}, as well as a summary of Genetic Algorithms in section \ref{sec:gas}. Section \ref{sec:case_study} describes the case study area. The results are first detailed for the optimization of the analogy on the atmospheric circulation only (section \ref{sec:optim_circul}), before being extended to a method adding a second level of analogy on moisture variables (section \ref{sec:optim_moisture}). General discussions (section \ref{sec:discussion}) and conclusions (section \ref{sec:conclusions}) follow.
 
 
 \section{The analogue method}
 \label{sec:analog_method}
 
-Multiple variations of the methods exist, and some aspects and parameters will not be detailed hereafter. There are mainly 2 parametrizations that are used most often: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on moisture variables \citep{Obled2002, Bontron2005, Marty2012}.
+Multiple variations of the methods exist, and most of them will not be detailed hereafter \cite[see][for more comprehensive listings]{Horton2016, BenDaoud2015}. However, there are mainly 2 parametrizations that are most often used for precipitation forecasting: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on moisture variables \citep{Obled2002, Bontron2005, Marty2012}.
 
-The method based on the analogy of the synoptic circulation consists in the following steps (Table \ref{table:params_R1}): We assess the similarity of the atmospheric circulation of a target date with every day of the archive by processing the S1 criteria \citep[Eq.\ (\ref{eq:S1}), ][]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial window. \citet{Bontron2005} showed that the geopotential height at 500~hPa and 1000~hPa are the best first predictors of the NCEP/NCAR reanalysis dataset, and that the S1 criteria performs better than scores based on absolute distances. The reason for such better results is that the S1 criteria allows comparing the circulation pattern, by means of the gradients, rather than the absolute value of the geopotential height. To cope with seasonal effects, candidate dates are extracted within a period of 4 months centred around the target date, for every year of the archive.
+The method based on the analogy of the synoptic circulation consists in the following steps (Table \ref{table:params_R1}): The similarity of the atmospheric circulation of a target date with every day of the archive is assessed by processing the S1 criteria \citep[Eq.\ (\ref{eq:S1}), ][]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial window. \citet{Bontron2005} showed that the geopotential height at 500~hPa and 1000~hPa are the best first predictors of the NCEP/NCAR reanalysis dataset, and that the S1 criteria performs better than scores based on absolute distances. The reason for such better results is that the S1 criteria allows comparing the circulation pattern, by means of the gradients, rather than the absolute value of the geopotential height. To cope with seasonal effects, candidate dates are extracted within a period of 4 months centred around the target date, for every year of the archive.
 
 \begin{equation}
 \label{eq:S1}
@@ -163,6 +167,7 @@ The predictand (which is to be predicted) is in our case the daily precipitation
 
 
 \section{Genetic algorithms}
+\label{sec:gas}
 
 %TODO: write this section
 
@@ -176,6 +181,7 @@ Practically, GAs allow rapidly approaching satisfactory solutions, but they do n
 
 
 \section{Case study description}
+\label{sec:case_study}
 
 The study area is the alpine upper Rh\^{o}ne catchment in Switzerland (Fig.\ \ref{fig:map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region is the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project that aims at providing a real-time flood management on the upper Rh\^{o}ne catchment \citep{GarciaHernandez2009b}. Even thought the region is rather small, the meteorological influences related to extreme weather conditions varies substantially within it \citep[see][]{Horton2012}. Based on different climatological analyses, the gauging stations in the catchment were clustered in 10~subregions (Fig.\ \ref{fig:map}) :
 
@@ -198,6 +204,7 @@ In order to reduce potential bias related to trends in the climate change or to 
 
 
 \section{Optimization of the circulation analogy}
+\label{sec:optim_circul}
 
 We first optimized the analogy of atmospheric circulation alone, without moisture variables, for our 10 subregions. We started from the most simple AM, and increased the complexity in order to identify the degrees of freedom that are of particular interest. Thus, the tested parametrization evolved iteratively in complexity. We do not provide the detailed results of the intermediate stages \citep[see][for the details]{Horton2012a}, but only the main conclusions.
 
@@ -387,6 +394,7 @@ The analysis of the parameters cross-compatibility shows that obviously, the par
 
 
 \section{Optimization of the moisture analogy}
+\label{sec:optim_moisture}
 
 We previously worked with a method based on a unique level of analogy. However, we know that moisture variables in a second level of analogy do provide improvements to the method (section \ref{sec:intro}.\ref{sec:analog_method}). So we also wanted to optimize the moisture index, which is a combination of the relative humidity and the precipitable water. In order to do so, we had to introduce a constraint to the optimizer, so that it selects the same temporal window for both variables. 
 
@@ -517,6 +525,7 @@ The analysis of the parameters cross-compatibility (Tables \ref{table:crossing_z
 
 
 \section{Discussion}
+\label{sec:discussion}
 
 The optimization of the AM by means of GAs has been undertaken in stages by releasing progressively new degrees of freedom. This approach allowed us to differentiate the contributions to performance gains, as well as to identify possible over-parametrization. The main improvements for our case study are due to the following factors:
 
@@ -541,7 +550,7 @@ GAs are relatively heavy on processing and require an IT infrastructure capable 
 
 
 \section{Conclusions and perspectives}
-
+\label{sec:conclusions}
 
 
 %TODO: complete
