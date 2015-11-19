@@ -48,7 +48,7 @@
 
 \begin{frontmatter}
 
-\title{Using Genetic Algorithms to Optimize the Analogue Method for Precipitation forecasting in the Swiss Alps}
+\title{Using Genetic Algorithms to Optimize the Analogue Method for Precipitation Forecasting in the Swiss Alps}
 
 %% Group authors per affiliation:
 \author[unil,terranum]{Pascal Horton\corref{mycorrespondingauthor}}
@@ -63,8 +63,11 @@
 \address[lthe]{Universit\'{e} de Grenoble-Alpes, LTHE, Grenoble, France}
 
 \begin{abstract}
-The global optimization can optimize all parameters jointly and automatically, which is a breakthrough in the way the analogue method was calibrated until now. Indeed, it allows taking into account parameters inter-dependencies, adding new degrees of freedom, and choosing objectively some parameters that were manually selected beforehand (such as the pressure levels and the temporal windows of the predictor variables).
-We then applied the optimizer to the Rh\^{o}e catchment in the Swiss Alps and obtained coherent results which significantly improve the performance of the forecasting by analogy. The optimizer allowed us to calibrate jointly all parameters of the method and to add a weighting of the criteria per pressure level, as well as non-overlapping spatial windows.
+The analogue method is often used to forecast precipitation based on predictors variables provided by global models. The method samples a selection of days in the archives that are similar to the target day to forecast, and consider the corresponding observed precipitation (the predictand) as the conditional distribution for the target day. The statistical relationship between predictors and predictands relies on some parameters that characterize how and where the similitude between two atmospheric situations has to be defined.
+
+This relationship is usually established by a semi-automatic sequential procedure that has strong limitations. A new global optimization approach relying on Genetic Algorithms can optimize all parameters jointly and automatically, which is a breakthrough in the way the analogue method was calibrated until now. It allows taking into account parameters inter-dependencies, adding new degrees of freedom, and choosing objectively some parameters that were manually selected beforehand (such as the pressure levels and the temporal windows of the predictor variables).
+
+In this work, the global optimization is applied to the Rh\^{o}e catchment in the Swiss Alps in order to show its interest and the relevance of the resulting parameters. Indeed, not only the performance increases, but the parameters are obtained automatically and objectively, which reduces effort-hours when adapting the method to a new region or for a new predictand. Moreover, the approach allows for new degrees of freedom, such as a weighting between the pressure levels and non overlapping spatial windows.
 \end{abstract}
 
 \begin{keyword}
