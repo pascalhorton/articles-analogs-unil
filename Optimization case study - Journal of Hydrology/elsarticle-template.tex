@@ -394,7 +394,9 @@ We proceeded to an optimization of both levels of analogy simultaneously. This i
 
 \subsection{Results for z4-hi2 and z4-hi4 methods}
 
-As previously, the optimized parameters differ from one subregion to another, and this event to a greater extent. Detailed examples are still provided for the Swiss Chablais subregion in Table \ref{table:params_GA_z4_hi2} for z4-hi2 and in Table \ref{table:params_GA_z4_hi4} for z4-hi4. The resulting spatial windows are displayed in Figure \ref{fig:spatial_windows_z4-hi2} for z4-hi2, along with the selected pressure levels for both the circulation and the moisture analogy (Table \ref{table:levels_GA_z4_hi2}). Correspondingly, for the method z4-hi4, the spatial windows are shown in Figure \ref{fig:spatial_windows_z4-hi4} and the selected pressure levels are presented in Tables \ref{table:levels_GA_z4_hi4}.
+Due to significant similarities between the results from z4-hi2 and z4-hi4, the latter will only be partly shown in order to improve readability.
+
+As previously, the optimized parameters differ from one subregion to another, and this event to a greater extent. Detailed examples are still provided for the Swiss Chablais subregion in Table \ref{table:params_GA_z4_hi2} for z4-hi2. The resulting spatial windows are displayed in Figure \ref{fig:spatial_windows_z4-hi2} for z4-hi2, along with the selected pressure levels for both the circulation and the moisture analogy (Table \ref{table:levels_GA_z4_hi2}). 
 
 \begin{table}[htbp]
 	\caption{Parameters of the z4-hi2 method (atmospheric circulation on 4 levels and moisture index on 2 levels), optimized for the Chablais subregion. Same conventions as Table \ref{table:params_GA_z4}.}
@@ -424,38 +426,6 @@ As previously, the optimized parameters differ from one subregion to another, an
 	\label{table:params_GA_z4_hi2}
 \end{table}
 
-\begin{table}[htbp]
-	\caption{Parameters of the z4-hi4 method (atmospheric circulation on 4 levels and moisture index on 4 levels), optimized for the Chablais subregion. Same conventions as Table \ref{table:params_GA_z4}.}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccccc}
-			\hline L & V & H & D & W & C & N \\ 
-			\hline 
-			0 & \multicolumn{6}{l}{$\pm 60$ days around the target date} \\
-			\hline 
-			\multirow{8}{*}{1} &  \multirow{2}{*}{Z400} & \multirow{2}{*}{6~h} & -5.0 - 12.5 \degree E & \multirow{2}{*}{20\%} & \multirow{8}{*}{S1} & \multirow{8}{*}{74} \\
-			& & & 45.0 - 52.5 \degree N & & & \\ 
-			& \multirow{2}{*}{Z500} & \multirow{2}{*}{30~h} & 0.0 - 12.5 \degree E & \multirow{2}{*}{28\%} & & \\ 
-			& & & 40.0 - 45.0 \degree N & & & \\ 
-			& \multirow{2}{*}{Z850} & \multirow{2}{*}{12~h} & 0.0 - 12.5 \degree E & \multirow{2}{*}{28\%} & & \\ 
-			& & & 42.5 - 47.5 \degree N & & & \\ 
-			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{30~h} & 0.0 - 20.0 \degree E & \multirow{2}{*}{24\%} & & \\ 
-			& & & 40.0 - 47.5 \degree N & & & \\ 
-			\hline 
-			\multirow{8}{*}{2} & TPW & \multirow{2}{*}{24~h} & 7.5 - 10.0 \degree E & \multirow{2}{*}{27\%} & \multirow{8}{*}{RMSE} & \multirow{8}{*}{25} \\
-			& *RH500 & & 45.0 - 47.5 \degree N & & & \\ 
-			& TPW & \multirow{2}{*}{12~h} & 5.0 - 7.5 \degree E & \multirow{2}{*}{41\%} & & \\ 
-			& *RH700 & & 45.0 - 47.5 \degree N & & & \\ 
-			& TPW & \multirow{2}{*}{18~h} & 0.0 - 7.5 \degree E & \multirow{2}{*}{19\%} & & \\ 
-			& *RH700 & & 45.0 - 47.5 \degree N & & & \\ 
-			& TPW & \multirow{2}{*}{24~h} & 2.5 - 15.0 \degree E & \multirow{2}{*}{13\%} & & \\ 
-			& *RH850 & & 45.0 - 47.5 \degree N & & & \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:params_GA_z4_hi4}
-\end{table}
-
 
 \begin{table}[htbp]
 	\caption{Atmospheric levels automatically selected for the analogy of the atmospheric circulation ($\sim$) and the analogy of moisture ($\bullet$) of the z4-hi2 method, at the different subregions.}
@@ -480,31 +450,8 @@ As previously, the optimized parameters differ from one subregion to another, an
 	\label{table:levels_GA_z4_hi2}
 \end{table}
 
-\begin{table}[htbp]
-	\caption{Atmospheric levels automatically selected for the analogy of atmospheric circulation ($\sim$) and the analogy of moisture ($\bullet$) of the z4-hi4 method, at the different subregions.}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccccccc}
-			\hline ID & 300 & 400 & 500 & 600 & 700 & 850 & 925 & 1000 \\ 
-			\hline 
-			1  &   & $\sim$ & $\sim \bullet$ &   & $\bullet \bullet$ & $\sim \bullet$ &   & $\sim$ \\
-			2  &   & $\sim$ &   & $\bullet$ & $\sim \sim \bullet \bullet$ & $\bullet$ &   & $\sim$ \\
-			3  &   & $\sim$ &   & $\bullet$ & $\sim \bullet \bullet \bullet$ & $\sim$ & $\sim$ &   \\
-			4  &   &   & $\sim$ & $\bullet \bullet$ & $\sim \bullet \bullet$ & $\sim$ &   & $\sim$ \\
-			5  &   & $\sim$ & $\sim$ & $\bullet \bullet$ & $\bullet \bullet$ & $\sim$ &   & $\sim$ \\
-			6  &   & $\sim$ & $\sim$ & $\bullet \bullet$ & $\bullet$ & $\sim \bullet$ &   & $\sim$ \\
-			7  &   & $\sim$ &   & $\bullet \bullet$ & $\sim \sim \bullet$ & $\bullet$ &   & $\sim$ \\
-			8  &   &   & $\sim$ & $\sim \bullet \bullet$ & $\bullet$ & $\sim \bullet$ &   & $\sim$ \\
-			9  &   & $\sim$ &  $\bullet$ & $\bullet$ & $\sim \bullet$ & $\sim \bullet$ & $\sim$ &   \\
-			10 &   & $\sim$ & $\sim$ & $\bullet$ & $\bullet \bullet$ & $\sim \sim \bullet$ &   &   \\
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:levels_GA_z4_hi4}
-\end{table}
 
-
-The CRPSS scores of the optimized methods are provided in Table \ref{table:scores} and amounts to slightly more than 40 \% for both methods and for both periods. This results in a relative improvements that ranges from 11.5 \% to 15.6 \% compared to the reference method on the moisture analogy (Table \ref{table:scores_diff}). As for z4, the z4-hi2 and z4-hi4 methods present improvements of the forecast of significant rainfall (thresholds P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10). The improvement are relatively similar for z4-hi2 (Table \ref{table:scores_thresholds_z4-hi2}) and z4-hi4 (Table \ref{table:scores_thresholds_z4-hi4}), with slightly superior scores for the latter on small precipitation (P\(\geq\)1 mm) and extremes (P\(\geq\)0.5\(\cdot\)P10).
+The CRPSS scores of the optimized methods are provided in Table \ref{table:scores} and amounts to slightly more than 40 \% for both methods and for both periods. This results in a relative improvements that ranges from 11.5 \% to 15.6 \% compared to the reference method on the moisture analogy (Table \ref{table:scores_diff}). As for z4, the z4-hi2 and z4-hi4 methods present improvements of the forecast of significant rainfall (thresholds P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10). The improvement are relatively similar for z4-hi2 (Table \ref{table:scores_thresholds_z4-hi2}) and z4-hi4 (not shown), with slightly superior scores for the latter on small precipitation (P\(\geq\)1 mm : 17.7\% and 13.0\%) and extremes (P\(\geq\)0.5\(\cdot\)P10 : 23.7\% and 29.2\%).
 
 
 \begin{table}[htbp]
@@ -534,34 +481,7 @@ The CRPSS scores of the optimized methods are provided in Table \ref{table:score
 	\label{table:scores_thresholds_z4-hi2}
 \end{table}
 
-\begin{table}[htbp]
-	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized z4-hi4 method.}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccccc}
-			\hline 
-			ID & \multicolumn{2}{c}{P\(\geq\)1 mm} & \multicolumn{2}{c}{P\(\geq\)0.1\(\cdot\)P10} & \multicolumn{2}{c}{P\(\geq\)0.5\(\cdot\)P10} \\ 
-			& calib & valid & calib & valid & calib & valid \\ 
-			\hline 
-			1 & 21.2 & 17.9 & 13.4 & 9.3 & 17.8 & 13.3 \\ 
-			2 & 12.6 & 8.9 & 9.5 & 10.0 & 16.7 & 15.6 \\ 
-			3 & 17.0 & 16.1 & 14.0 & 12.4 & 21.3 & 15.9 \\ 
-			4 & 9.4 & 6.1 & 13.3 & 12.4 & 19.8 & 22.7 \\ 
-			5 & 16.4 & 8.7 & 13.3 & 9.9 & 15.5 & 19.8 \\ 
-			6 & 22.6 & 12.2 & 11.9 & 6.7 & 17.0 & 26.9 \\ 
-			7 & 14.6 & 4.9 & 24.7 & 23.5 & 42.7 & 87.6 \\ 
-			8 & 21.8 & 21.6 & 25.7 & 19.3 & 32.3 & 26.6 \\ 
-			9 & 20.2 & 18.9 & 17.4 & 14.2 & 24.5 & 33.9 \\ 
-			10 & 21.7 & 14.8 & 14.8 & 11.7 & 29.2 & 29.1 \\ 
-			\hline 
-			av. & 17.7 & 13.0 & 15.8 & 12.9 & 23.7 & 29.2 \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:scores_thresholds_z4-hi4}
-\end{table}
-
-The parameters cross-compatibility has also been assessed for the methods with moisture variables, and are shown in Tables \ref{table:crossing_z4-hi2_calib} and \ref{table:crossing_z4-hi2_valid} for the method z4-hi2, and Tables \ref{table:crossing_z4-hi4_calib} and \ref{table:crossing_z4-hi4_valid} for z4-hi4.
+The parameters cross-compatibility has also been assessed for the methods with moisture variables, and are shown in Tables \ref{table:crossing_z4-hi2_calib} and \ref{table:crossing_z4-hi2_valid} for the method z4-hi2 (not shown for z4-hi4, but similar).
 
 
 \begin{table}[htb]
@@ -576,32 +496,21 @@ The parameters cross-compatibility has also been assessed for the methods with m
 	\label{table:crossing_z4-hi2_valid}
 \end{table}
 
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4-hi4, calibration period.}
-	\centerline{\includegraphics[width=\linewidth]{figures/table_crossing_z4-hi4_calib.pdf}}
-	\label{table:crossing_z4-hi4_calib}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method z4-hi4, validation period.}
-	\centerline{\includegraphics[width=\linewidth]{figures/table_crossing_z4-hi4_valid.pdf}}
-	\label{table:crossing_z4-hi4_valid}
-\end{table}
 
 
 \subsection{Analysis}
 
-When optimizing a method made of 2 levels of analogy, the introduction of moisture variables in the second level has an influence on the parameter values of the first level. This is first visible on the selection of the pressure levels for the circulation analogy, where the 1000~hPa that was previously systematically selected twice (Table \ref{table:levels_GA_z4}) is now less chosen (once or even not at all) for both za-hi2 (Table \ref{table:levels_GA_z4_hi2}) and za-hi4 (Table \ref{table:levels_GA_z4_hi4}). There is indeed a shift of the previously selected 1000~hPa for higher levels, which is even slightly stronger with 4 moisture predictors than with 2. This change is likely due to the fact that when considering only the circulation analogy, the method tries to take into account information that can serve as proxy for moisture assessment, whereas it doesn't need it with the moisture index. This aspect has never been demonstrated, as classic calibration tools do not allow it. It can only be assessed by a global optimization technique that can tune jointly both levels of analogy. 
+When optimizing a method made of 2 levels of analogy, the introduction of moisture variables in the second level has an influence on the parameter values of the first level. This is first visible on the selection of the pressure levels for the circulation analogy, where the 1000~hPa that was previously systematically selected twice (Table \ref{table:levels_GA_z4}) is now less chosen (once or even not at all) for both za-hi2 (Table \ref{table:levels_GA_z4_hi2}) and za-hi4 (not shown). There is indeed a shift of the previously selected 1000~hPa for higher levels, which is even slightly stronger with 4 moisture predictors than with 2. This change is likely due to the fact that when considering only the circulation analogy, the method tries to take into account information that can serve as proxy for moisture assessment, whereas it doesn't need it with the moisture index. This aspect has never been demonstrated, as classic calibration tools do not allow it. It can only be assessed by a global optimization technique that can tune jointly both levels of analogy. 
 
 The selected pressure levels for the analogy on the moisture index are strongly centred around 700~hPa and 600~hPa. No other value has been selected when considering 2 pressure levels (Table \ref{table:levels_GA_z4_hi2}), and when considering 4 levels, the 850~hPa and 500~hPa levels are additionally selected. However, even in this latter method, the 700~hPa and 600~hPa levels still hold 78 \% of the selection. It is thus more efficient, in terms of forecasting performance, to consider one of this level multiple times at different hours rather than using another pressure level. Besides, the optimizer never chose the same pressure level at the same hour for any variable, even though it was allowed to do so.
 
 The selection of the temporal windows for the atmospheric circulation is similar to the preceding optimization (in the order of increasing pressure: 12~h, 24/30~h, 12~h, 30~h), but sometimes with a bit more variability. When it comes to the moisture analogy, there is a clear trend to select 12~h and 24~h when considering 2 predictors. The z4-hi4 method presents more variability on the selection of the temporal windows for the moisture index.
 
-The optimized spatial windows for the atmospheric circulation have also changed (Figures \ref{fig:spatial_windows_z4-hi2} and \ref{fig:spatial_windows_z4-hi4}). The very large domains on the upper level of the 4 first subregions are not present anymore, and more variability can be observed. The selected points for the analogy on the moisture index are always located nearby the catchment, including at least 1 of the nearest points from the reanalysis dataset, and the spatial windows are relatively small. Thus, for our case study, there is no need to look for distant moisture information and the search could be reduced to a smaller domain. 
+The optimized spatial windows for the atmospheric circulation have also changed (Figure \ref{fig:spatial_windows_z4-hi2}; results of z4-hi4 are not shown but present the same trends). The very large domains on the upper level of the 4 first subregions are not present anymore, and more variability can be observed. The selected points for the analogy on the moisture index are always located nearby the catchment, including at least 1 of the nearest points from the reanalysis dataset, and the spatial windows are relatively small. Thus, for our case study, there is no need to look for distant moisture information and the search could be reduced to a smaller domain. 
 
-The CRPSS scores were improved by considering the moisture information (Table \ref{table:scores}). The optimized methods also perform better than the reference method based on the moisture index (Table \ref{table:scores_diff}). However, there is no drastic difference between both z4-hi2 and z4-hi4 methods, which suggests that considering 4 moisture predictors is not absolutely necessary. When it comes to improvements for days with precipitation above our 3 thresholds (P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10), the conclusion is the same as before, that is a significant improvement of the forecast, mainly for heavy rainfall.
+The CRPSS scores were improved by considering the moisture information (Table \ref{table:scores}). The optimized methods also perform better than the reference method based on the moisture index (Table \ref{table:scores_diff}). However, there is no drastic difference between both z4-hi2 and z4-hi4 methods, which suggests that considering 4 moisture predictors is not necessary. When it comes to improvements for days with precipitation above our 3 thresholds (P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10), the conclusion is the same as before, that is a significant improvement of the forecast, mainly for heavy rainfall.
 
-The analysis of the parameters cross-compatibility (Tables \ref{table:crossing_z4-hi2_calib} to \ref{table:crossing_z4-hi4_valid}) is also very similar to the one on the circulation analogy only. The same pattern can be observed, with a drop of performance for the subregions under different meteorological influences. However, the losses of performance are globally more important than before, suggesting that more complex methods with moisture variables are less transposable to another subregion, even though it is located within the same grid of the reanalysis dataset.
+The analysis of the parameters cross-compatibility (Tables \ref{table:crossing_z4-hi2_calib} and \ref{table:crossing_z4-hi2_valid}) is also very similar to the one on the circulation analogy only (results for z4-hi4 not shown as very similar). The same pattern can be observed, with a drop of performance for the subregions under different meteorological influences. However, the losses of performance are globally more important than before, suggesting that more complex methods with moisture variables are less transposable to another subregion, even though it is located within the same grid of the reanalysis dataset.
 
 
 \section{Discussion}
@@ -773,56 +682,6 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 	\label{fig:spatial_windows_z4-hi2}
 \end{figure}
 
-
-\begin{figure}[htb]
-	\centering
-	\begin{subfigure}{.5\columnwidth}
-		\centering
-		\includegraphics[ width=4.2cm]{figures/spatial_win_z4-hi4/Spatial_windows_1.png}
-	\end{subfigure}%
-	\begin{subfigure}{.5\columnwidth}
-		\centering
-		\includegraphics[ width=4.2cm]{figures/spatial_win_z4-hi4/Spatial_windows_2.png}
-	\end{subfigure}
-	\begin{subfigure}{.5\columnwidth}
-		\centering
-		\includegraphics[ width=4.2cm]{figures/spatial_win_z4-hi4/Spatial_windows_3.png}
-	\end{subfigure}%
-	\begin{subfigure}{.5\columnwidth}
-		\centering
-		\includegraphics[ width=4.2cm]{figures/spatial_win_z4-hi4/Spatial_windows_4.png}
-	\end{subfigure}
-	\begin{subfigure}{.5\columnwidth}
-		\centering
-		\includegraphics[ width=4.2cm]{figures/spatial_win_z4-hi4/Spatial_windows_5.png}
-	\end{subfigure}%
-	\begin{subfigure}{.5\columnwidth}
-		\centering
-		\includegraphics[ width=4.2cm]{figures/spatial_win_z4-hi4/Spatial_windows_6.png}
-	\end{subfigure}
-	\begin{subfigure}{.5\columnwidth}
-		\centering
-		\includegraphics[ width=4.2cm]{figures/spatial_win_z4-hi4/Spatial_windows_7.png}
-	\end{subfigure}%
-	\begin{subfigure}{.5\columnwidth}
-		\centering
-		\includegraphics[ width=4.2cm]{figures/spatial_win_z4-hi4/Spatial_windows_8.png}
-	\end{subfigure}
-	\begin{subfigure}{.5\columnwidth}
-		\centering
-		\includegraphics[ width=4.2cm]{figures/spatial_win_z4-hi4/Spatial_windows_9.png}
-	\end{subfigure}%
-	\begin{subfigure}{.5\columnwidth}
-		\centering
-		\includegraphics[ width=4.2cm]{figures/spatial_win_z4-hi4/Spatial_windows_10.png}
-	\end{subfigure}
-	\begin{subfigure}{.5\columnwidth}
-		\centering
-		\includegraphics[ width=4.2cm]{figures/spatial_win_z4-hi4/legend.png}
-	\end{subfigure}
-	\caption{Optimized spatial windows for the z4-hi4 method (analogy of atmospheric circulation on 4 pressure levels and the analogy on the moisture index on 4 pressure levels). The pressure levels are ordered by increasing pressure and increasing time for the same levels.}
-	\label{fig:spatial_windows_z4-hi4}
-\end{figure}
 
 \begin{figure}[htb]
 	\centerline{\includegraphics[width=\linewidth]{figures/figure_levels_weights.pdf}}
