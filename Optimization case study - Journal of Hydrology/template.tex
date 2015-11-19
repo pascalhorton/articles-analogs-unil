@@ -176,7 +176,7 @@ The method based on the analogy of the synoptic circulation consists in the foll
 S1=100 \frac {\displaystyle \sum_{i} \vert \Delta\hat{z}_{i} - \Delta z_{i} \vert}
 {\displaystyle \sum_{i} max\left\lbrace \vert \Delta\hat{z}_{i} \vert , \vert \Delta z_{i} \vert \right\rbrace }
 \end{equation}
-where $\Delta \hat{z}_{i}$ is the forecast geopotential height difference between the \textit{i}th pair of adjacent points in the target situation, and $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation. The differences are processed separately in both directions. The smaller the S1 values are, the more similar the pressure fields.
+where $\Delta \hat{z}_{i}$ is the forecast geopotential height difference between the \textit{i}th pair of adjacent points of the grid describing the target situation, and $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation. The differences are processed separately in both directions. The smaller the S1 values are, the more similar the pressure fields.
 
 The $N_{1}$ dates with the lowest values of S1 are considered as analogues to the target day. The number of analogues, $N_{1}$, is a parameter to calibrate. Then, the daily observed precipitation amount of the $N_{1}$ resulting dates provide the empirical conditional distribution considered as the probabilistic forecast for the target day.
 
@@ -497,21 +497,21 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 
 \begin{table}[htbp]
 	\footnotesize
-	\caption{Atmospheric levels automatically selected for the z4 method at the different subregions.}
+	\caption{Pressure levels ($\sim$) automatically selected for the z4 method at the different subregions.}
 	\begin{center}
 		\begin{tabular}{ccccccccc}
 			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
 			\hline 
-			1  & Z &   &   &   & Z &   &   & ZZ \\
-			2  & Z &   &   &   & Z &   &   & ZZ \\
-			3  & Z &   &   &   & Z &   &   & ZZ \\
-			4  & Z &   &   &   & Z &   &   & ZZ \\
-			5  &   &   & Z &   & Z &   &   & ZZ \\
-			6  &   &   & Z &   & Z &   &   & ZZ \\
-			7  &   &   & Z &   & Z &   &   & ZZ \\
-			8  &   &   & Z &   & Z &   &   & ZZ \\
-			9  &   &   & Z &   & Z &   &   & ZZ \\
-			10 &   &   &   & Z & Z &   &   & ZZ \\
+			1  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
+			2  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
+			3  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
+			4  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
+			5  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			6  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			7  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			8  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			9  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			10 &   &   &   & $\sim$ & $\sim$ &   &   & $\sim \sim$ \\
 			\hline 
 		\end{tabular} 
 	\end{center}
@@ -674,21 +674,21 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 
 \begin{table}[htbp]
 	\footnotesize
-	\caption{Atmospheric levels automatically selected for the analogy of the atmospheric circulation of the z4-hi2 method, at the different subregions.}
+	\caption{Atmospheric levels automatically selected for the analogy of the atmospheric circulation ($\sim$) and the analogy of moisture ($\bullet$) of the z4-hi2 method, at the different subregions.}
 	\begin{center}
 		\begin{tabular}{ccccccccc}
 			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
 			\hline 
-			1  & Z &   & Z &   &   & Z &   & Z \\
-			2  & Z &   &   &   & Z & Z &   & Z \\
-			3  & Z &   &   &   & Z & Z & Z &   \\
-			4  &   &   & Z &   & Z & Z &   & Z \\
-			5  &   & Z &   &   & Z &   & ZZ &   \\
-			6  &   & Z &   &   & Z & Z &   & Z \\
-			7  &   & Z &   &   & Z & Z &   & Z \\
-			8  &   &   & Z &   & Z &   & ZZ &   \\
-			9  &   & Z &   &   & Z & Z & Z &   \\
-			10 &   & Z &   &   & Z & Z &   & Z \\
+			1  & $\sim$ &   & $\sim$ &   & $\bullet \bullet$  & $\sim$ &   & $\sim$ \\
+			2  & $\sim$ &   &   &   & $\sim \bullet \bullet$ & $\sim$ &   & $\sim$ \\
+			3  & $\sim$ &   &   &   & $\sim \bullet \bullet$ & $\sim$ & $\sim$ &   \\
+			4  &   &   & $\sim$ & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
+			5  &   & $\sim$ &   &   & $\sim \bullet \bullet$ &   & $\sim \sim$ &   \\
+			6  &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
+			7  &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
+			8  &   &   & $\sim$ & $\bullet$ & $\sim \bullet$ &   & $\sim \sim$ &   \\
+			9  &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ & $\sim$ &   \\
+			10 &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
 			\hline 
 		\end{tabular} 
 	\end{center}
@@ -697,71 +697,25 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 
 \begin{table}[htbp]
 	\footnotesize
-	\caption{Atmospheric levels automatically selected for the analogy of moisture of the z4-hi2 method, at the different subregions.}
+	\caption{Atmospheric levels automatically selected for the analogy of atmospheric circulation ($\sim$) and the analogy of moisture ($\bullet$) of the z4-hi4 method, at the different subregions.}
 	\begin{center}
 		\begin{tabular}{ccccccccc}
 			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
 			\hline 
-			1  &   &   &   &   & HH &   &   &   \\
-			2  &   &   &   &   & HH &   &   &   \\
-			3  &   &   &   &   & HH &   &   &   \\
-			4  &   &   &   & H & H &   &   &   \\
-			5  &   &   &   &   & HH &   &   &   \\
-			6  &   &   &   & H & H &   &   &   \\
-			7  &   &   &   & H & H &   &   &   \\
-			8  &   &   &   & H & H &   &   &   \\
-			9  &   &   &   & H & H &   &   &   \\
-			10 &   &   &   & H & H &   &   &   \\
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:levels_GA_z4_hi2_H}
-\end{table}
-
-\begin{table}[htbp]
-	\footnotesize
-	\caption{Atmospheric levels automatically selected for the analogy of atmospheric circulation of the z4-hi4 method, at the different subregions.}
-	\begin{center}
-		\begin{tabular}{ccccccccc}
-			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
-			\hline 
-			1  &   & Z & Z &   &   & Z &   & Z \\
-			2  &   & Z &   &   & ZZ &   &   & Z \\
-			3  &   & Z &   &   & Z & Z & Z &   \\
-			4  &   &   & Z &   & Z & Z &   & Z \\
-			5  &   & Z & Z &   &   & Z &   & Z \\
-			6  &   & Z & Z &   &   & Z &   & Z \\
-			7  &   & Z &   &   & ZZ &   &   & Z \\
-			8  &   &   & Z & Z &   & Z &   & Z \\
-			9  &   & Z &   &   & Z & Z & Z &   \\
-			10 &   & Z & Z &   &   & ZZ &   &   \\
+			1  &   & $\sim$ & $\sim \bullet$ &   & $\bullet \bullet$ & $\sim \bullet$ &   & $\sim$ \\
+			2  &   & $\sim$ &   & $\bullet$ & $\sim \sim \bullet \bullet$ & $\bullet$ &   & $\sim$ \\
+			3  &   & $\sim$ &   & $\bullet$ & $\sim \bullet \bullet \bullet$ & $\sim$ & $\sim$ &   \\
+			4  &   &   & $\sim$ & $\bullet \bullet$ & $\sim \bullet \bullet$ & $\sim$ &   & $\sim$ \\
+			5  &   & $\sim$ & $\sim$ & $\bullet \bullet$ & $\bullet \bullet$ & $\sim$ &   & $\sim$ \\
+			6  &   & $\sim$ & $\sim$ & $\bullet \bullet$ & $\bullet$ & $\sim \bullet$ &   & $\sim$ \\
+			7  &   & $\sim$ &   & $\bullet \bullet$ & $\sim \sim \bullet$ & $\bullet$ &   & $\sim$ \\
+			8  &   &   & $\sim$ & $\sim \bullet \bullet$ & $\bullet$ & $\sim \bullet$ &   & $\sim$ \\
+			9  &   & $\sim$ &  $\bullet$ & $\bullet$ & $\sim \bullet$ & $\sim \bullet$ & $\sim$ &   \\
+			10 &   & $\sim$ & $\sim$ & $\bullet$ & $\bullet \bullet$ & $\sim \sim \bullet$ &   &   \\
 			\hline 
 		\end{tabular} 
 	\end{center}
 	\label{table:levels_GA_z4_hi4}
-\end{table}
-
-\begin{table}[htbp]
-	\footnotesize
-	\caption{Atmospheric levels automatically selected for the analogy of moisture of the z4-hi4 method,at the different subregions.}
-	\begin{center}
-		\begin{tabular}{ccccccccc}
-			\hline \textbf{ID} & \textbf{300} & \textbf{400} & \textbf{500} & \textbf{600} & \textbf{700} & \textbf{850} & \textbf{925} & \textbf{1000} \\ 
-			\hline 
-			1  &   &   & H &   & HH & H &   &   \\
-			2  &   &   &   & H & HH & H &   &   \\
-			3  &   &   &   & H & HHH &   &   &   \\
-			4  &   &   &   & HH & HH &   &   &   \\
-			5  &   &   &   & HH & HH &   &   &   \\
-			6  &   &   &   & HH & H & H &   &   \\
-			7  &   &   &   & HH & H & H &   &   \\
-			8  &   &   &   & HH & H & H &   &   \\
-			9  &   &   & H & H & H & H &   &   \\
-			10 &   &   &   & H & HH & H &   &   \\
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:levels_GA_z4_hi4_H}
 \end{table}
 
 \begin{table}[htbp]
@@ -1030,7 +984,7 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 
 \begin{figure}[htb]
 	\centerline{\includegraphics[width=7.9cm]{figures/figure_evolution.pdf}}
-	\caption{Example of the best individuals evolution of 8 independent optimizations.}
+	\caption{Example of the evolution of the performance score of the best individual over 8 independent optimizations.}
 	\label{fig:evolution}
 \end{figure}
 
