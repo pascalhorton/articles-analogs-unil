@@ -1,10 +1,6 @@
 syntax: glob
-*.log
-*.aux
-*.gz
-Optimization - Journal of Climate\template.pdf
-Optimization - Journal of Climate/AMS docs/
 _refs/
+_ressources/
 *.bbl
 *.blg
 *.fff
@@ -12,11 +8,13 @@ _refs/
 *.lot
 *.ttt
 *.orig
-Optimization - Journal of Climate\Optimization - draft.pdf
-Optimization - Journal of Climate\Optimization - preview.pdf
+*.log
+*.aux
+*.gz
+*.spl
+*.out
 AtmoSwing - Geoscientific Model Development\template.pdf
 Genetic algorithms - Journal of Climate\template.pdf
+Optimization case study - Journal of Hydrology\elsarticle-template.pdf
 Optimization - draft.pdf
 Optimization - preview.pdf
-_ressources/
-template.pdf
