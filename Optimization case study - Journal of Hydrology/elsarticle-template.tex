@@ -10,6 +10,7 @@
 \usepackage{multirow}
 \usepackage{gensymb}
 \usepackage{subcaption}
+%\usepackage{amsmath}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -99,7 +100,10 @@ A short overview of AMs is presented in section \ref{sec:analog_method}, as well
 \section{The analogue method}
 \label{sec:analog_method}
 
-Multiple variations of the methods exist, and most of them will not be detailed hereafter \cite[see][for more comprehensive listings]{Horton2016, BenDaoud2015}. However, there are mainly 2 parametrizations that are most often used for precipitation forecasting: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on moisture variables \citep{Obled2002, Bontron2005, Marty2012}.
+\subsection{References}
+\label{sec:references}
+
+Multiple variations of the methods exist, and most of them will not be detailed hereafter \cite[see][for more comprehensive listings]{Horton2016, BenDaoud2015}. However, there are mainly 2 parametrizations that are most often used for precipitation forecasting and that will be considered as reference: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on moisture variables \citep{Obled2002, Bontron2005, Marty2012}.
 
 The method based on the analogy of the synoptic circulation consists in the following steps (Table \ref{table:params_R1}): the similarity of the atmospheric circulation of a target date with every day of the archive is assessed by processing the S1 criteria \citep[Eq.\ (\ref{eq:S1}), ][]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial window. \citet{Bontron2005} showed that the geopotential height at 500~hPa and 1000~hPa are the best first predictors of the NCEP/NCAR reanalysis dataset, and that the S1 criteria performs better than scores based on absolute distances. The reason for such better results is that the S1 criteria allows comparing the circulation pattern, by means of the gradients, rather than the absolute value of the geopotential height. To cope with seasonal effects, candidate dates are extracted within a period of 4 months centred around the target date, for every year of the archive. Following the nomenclature proposed by \citet{Horton2016}, this method will be named 2Z.
 
@@ -130,7 +134,7 @@ where $\Delta \hat{z}_{i}$ is the forecast geopotential height difference betwee
 
 The $N_{1}$ dates with the lowest values of S1 are considered as analogues to the target day. The number of analogues, $N_{1}$, is a parameter to calibrate. Then, the daily observed precipitation amount of the $N_{1}$ resulting dates provide the empirical conditional distribution considered as the probabilistic forecast for the target day.
 
-The other most know parametrization adds a second level of analogy on moisture variables (Table \ref{table:params_R2}). The predictor that \citet{Bontron2004} found optimal for the France territory is a moisture index made of the product of the precipitable water with the relative humidity at 850~hPa. \cite{Horton2012a} confirmed that this index is better for the Swiss Alps than any other variable from the NCEP/NCAR reanalysis considered independently. When adding a second level of analogy, we subsample $N_{2}$ dates in the $N_{1}$ analogues on the atmospheric circulation, to end up with a smaller number of analogue situations. When we add a second level of analogy, we keep a higher number of analogues on the first level.
+The other most know parametrization adds a second level of analogy on moisture variables (method 2Z-2MI, Table \ref{table:params_R2}). The predictor that \citet{Bontron2004} found optimal for the France territory is a moisture index made of the product of the precipitable water with the relative humidity at 850~hPa. \cite{Horton2012a} confirmed that this index is better for the Swiss Alps than any other variable from the NCEP/NCAR reanalysis considered independently. When adding a second level of analogy, we subsample $N_{2}$ dates in the $N_{1}$ analogues on the atmospheric circulation, to end up with a smaller number of analogue situations. When we add a second level of analogy, we keep a higher number of analogues on the first level.
 
 \begin{table}[htbp]
 	\caption{Parameters of the reference method with moisture variables (2Z-2MI).}
@@ -153,17 +157,35 @@ The other most know parametrization adds a second level of analogy on moisture v
 	\label{table:params_R2}
 \end{table}
 
+
 \subsection{Data}
 \label{sec:data}
 
 The AM relies on two types of data: predictors, that are atmospheric variables describing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather time series we want to forecast.
 
-Predictors are generally reanalysis datasets. We will work here with the NCEP/NCAR reanalysis \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996}, but it can be any other reanalysis dataset.
+Predictors are generally reanalysis datasets. The NCEP/NCAR reanalysis \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996} are used here, but it can be any other reanalysis dataset.
 
-The predictand (which is to be predicted) is in our case the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss' stations network, for the period 1961-2008. The time series from every available gauging station were averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}.
+The predictand (which is to be predicted) is in here the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss' stations network, for the period 1961-2008. The time series from every available gauging station were averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}.
 
 
+\subsection{Performance assessment}
+\label{sec:score}
 
+The most used score to assess an AM performance is the CRPS \citep[Continuous Ranked Probability Score,][]{Brown1974, Matheson1976, Hersbach2000}. It allows assessing the predicted cumulative distribution functions $F(y)$, for example of the precipitation values $y$ from analogue situations, compared to the observed value $y^{0}$. The better the forecast, the smaller the score. The mean CRPS of a forecast series of length $n$ can be written:
+
+\begin{equation}
+\label{eq:CRPS}
+CRPS = \frac{1}{n} \sum_{i=1}^{n} \left(  \int_{-\infty}^{+\infty} \left[ F_{i}(y)-H_{i}(y-y_{i}^{0})\right]^{2} dy \right) 
+\end{equation}
+where $H(y-y_{i}^{0})$ is the Heaviside function that is null when $y-y_{i}^{0}<0$, and has the value 1 otherwise. The mean CRPS is averaged on the calibration, respectively the validation periods, on all days.
+
+This score is now commonly used for the evaluation of continuous variables prediction systems \citep{Casati2008, Marty2010}. To compare the value of the score in regard to a reference, we often consider its skill score value, and use the climatological distribution as the reference. The CRPSS (\textit{Continuous Ranked Probability Skill Score}) is thus defined as following:
+
+\begin{equation}
+\label{eq:CRPSS}
+CRPSS = \frac{CRPS-CRPS_{r}}{CRPS_{p}-CRPS_{r}} = 1-\frac{CRPS}{CRPS_{r}}
+\end{equation}
+where $CRPS_{r}$ is the CRPS value for the reference and $CRPS_{p}$ would be the one for a perfect forecast (which implies $CRPS_{p}~=~0$).
 
 
 \section{Genetic algorithms}
