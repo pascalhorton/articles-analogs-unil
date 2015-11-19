@@ -163,7 +163,7 @@ The other most know parametrization adds a second level of analogy on moisture v
 
 The AM relies on two types of data: predictors, that are atmospheric variables describing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather time series we want to forecast.
 
-Predictors are generally reanalysis datasets. The NCEP/NCAR reanalysis \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996} are used here, but it can be any other reanalysis dataset.
+Predictors are generally reanalysis datasets. NCEP-NCAR reanalysis \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996} are used here, but it can be any other reanalysis dataset.
 
 The predictand (which is to be predicted) is in here the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss' stations network, for the period 1961-2008. The time series from every available gauging station were averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}.
 
@@ -191,15 +191,17 @@ where $CRPS_{r}$ is the CRPS value for the reference and $CRPS_{p}$ would be the
 \section{Genetic algorithms}
 \label{sec:gas}
 
-%TODO: write this section
+Genetic Algorithms (GAs) were developed by \citet{Holland1992b} and popularized by \citet{Goldberg1989}. They are part of evolutionary algorithms \citep{Back1993b, Schwefel1993}, which get inspiration from some mechanisms of biological evolution, such as reproduction, genetic mutations, chromosomal crossovers, and natural selection. GAs seek the global optimum on a complex surface, theoretically without restriction. Practically, GAs allow rapidly approaching satisfactory solutions, but they do not provide the optimum solution for sure \citep{Zitzler2004a}. It is indeed mainly a matter of time. When the optimizer gets closer to the global optimum, any new improvement takes more time to appear (see figure \ref{fig:evolution}), and the final adjustment of the parameters is very time consuming \citep{Back1993a}. For problems that require a significant amount of time in order to evaluate the objective function, as in our case, we have to limit the number of generations to get reasonable processing time. Thus, different acceptable solutions can result from one or more optimizations \citep{Holland1992b}. This is a strength and a weakness of GAs: they are very good at exploring complex parameter spaces in order to identify the most promising areas, but they will not necessarily find the best solution with the optimal values of all parameters \citep{Holland1992b}.
 
+The optimizations were performed based on the recommended GAs parametrization for AMs as described in \citet{Horton2016a}. As the optimization is mostly sensitive to the mutation operator (that randomly changes some values in the parameters sets), we consider parallel optimizations with variants of this operator, according to \citet{Horton2016a}:
 
-Practically, GAs allow rapidly approaching satisfactory solutions, but they do not provide the optimum solution for sure \citep{Zitzler2004a}. It is indeed mainly a matter of time. When the optimizer gets closer to the global optimum, any new improvement takes more time to appear (see figure \ref{fig:evolution}), and the final adjustment of the parameters is very time consuming \citep{Back1993a}. For problems that require a significant amount of time in order to evaluate the objective function, as in our case, we have to limit the number of generations to get reasonable processing time. Thus, different acceptable solutions can result from one or more optimizations \citep{Holland1992b}. This is a strength and a weakness of GAs: they are very good at exploring complex parameter spaces in order to identify the most promising areas, but they will not necessarily find the best solution with the optimal values of all parameters \citep{Holland1992b}.
+\begin{itemize}
+	\item 3x non-uniform mutation \citep{Michalewicz1996} with varying parameters,
+	\item 1x multi-scale mutation \citep{Horton2016a},
+	\item 2x chromosome of adaptive search radius \citep{Horton2016a}
+\end{itemize}
 
-
-
-
-
+A population size of 500 individuals (parameters sets of the AM) was considered, and the optimization was stopped when the best individual (with the highest CRPSS performance score) did not evolve for 20 generations (cycles of the optimization).
 
 
 \section{Case study description}
