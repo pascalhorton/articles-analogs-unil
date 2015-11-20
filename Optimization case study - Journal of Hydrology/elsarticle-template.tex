@@ -222,9 +222,9 @@ The study area is the alpine upper Rh\^{o}ne catchment in Switzerland (Fig.\ \re
 	\item Conches Valley
 \end{enumerate}
 
-The 48 years precipitation dataset (see section \ref{sec:intro}.\ref{sec:data}) was divided into a calibration period and a validation period. Using data independent from the calibration period to validate our results is very important in order to assess the robustness of the improvements and to avoid overparametrization of the method.
+The 48 years precipitation dataset (see section \ref{sec:intro}.\ref{sec:data}) was divided into a calibration period (CP) and a validation period (VP). Using data independent from the CP to validate our results is very important in order to assess the robustness of the improvements and to avoid overparametrization of the method.
 
-In order to reduce potential bias related to trends in the climate change or to the evolution in measurement techniques, the selection of the validation period is evenly distributed over the entire series \citep{BenDaoud2010}. Thus, we selected one year every six years for validation, which represents a total of 8 years for the validation and 40 for calibration. The choice of the sequence was made in order to have similar statistical characteristics between the calibration and the validation periods.
+In order to reduce potential bias related to trends in the climate change or to the evolution in measurement techniques, the selection of the VP is evenly distributed over the entire series \citep{BenDaoud2010}. Thus, we selected one year every six years for validation, which represents a total of 8 years for the VP and 40 for CP. The choice of the sequence was made in order to have similar statistical characteristics between the CP and the VP.
 
 
 \section{Optimization of the circulation analogy}
@@ -232,11 +232,11 @@ In order to reduce potential bias related to trends in the climate change or to 
 
 We first optimized the analogy of atmospheric circulation alone, without moisture variables, for the 10 subregions. We started from the most simple AM, and increased the complexity in order to identify the degrees of freedom that are of particular interest. Thus, the tested parametrization evolved iteratively in complexity. We do not provide the detailed results of the intermediate stages \citep[see][for the details]{Horton2012a}, but only the main conclusions.
 
-We first considered the reference method for the analogy of the atmospheric circulation (2Z, Table \ref{table:params_R1}), based on the 500 and 1000~hPa levels. We let the optimizer choose the number of analogues, both spatial windows with no overlapping constraint, as well as the temporal window (hours of observation of the geopotential), what the sequential calibration cannot do. With these degrees of freedom, we could gain a relative CRPSS improvement of 3.97\% and 2.45\% in average for the calibration and the validation periods respectively. Some tests showed that most of the gains are due to the non-overlapping spatial windows. This is not a tremendous improvement, but it demonstrated that the optimizer was able to get relevant parameters.
+We first considered the reference method for the analogy of the atmospheric circulation (2Z, Table \ref{table:params_R1}), based on the 500 and 1000~hPa levels. We let the optimizer choose the number of analogues, both spatial windows with no overlapping constraint, as well as the temporal window (hours of observation of the geopotential), what the sequential calibration cannot do. With these degrees of freedom, we could gain a relative CRPSS improvement of 3.97\% and 2.45\% in average for the CP and the VP respectively. Some tests showed that most of the gains are due to the non-overlapping spatial windows. This is not a tremendous improvement, but it demonstrated that the optimizer was able to get relevant parameters.
 
-Then, we provided an additional degree of freedom to the AGs by letting them choose the pressure levels along with the other parameters, which is also a non-automated process in the sequential calibration. We could observe that this degree of freedom increases the optimization time and may decrease the number of simulations that converge to a single solution. However, most solutions were very close in terms of score. The averaged relative improvement of the CRPSS is 5.63\% for the calibration and 3.82\% for the validation periods. The pressure levels that were chosen are 500~hPa or 700~hPa for the upper level, and 925~hPa or 1000~hPa (most often) for the lower level.
+Then, we provided an additional degree of freedom to the AGs by letting them choose the pressure levels along with the other parameters, which is also a non-automated process in the sequential calibration. We could observe that this degree of freedom increases the optimization time and may decrease the number of simulations that converge to a single solution. However, most solutions were very close in terms of score. The averaged relative improvement of the CRPSS is 5.63\% for the CP and 3.82\% for the VP. The pressure levels that were chosen are 500~hPa or 700~hPa for the upper level, and 925~hPa or 1000~hPa (most often) for the lower level.
 
-Parallel analyses showed that the analogy of circulation is incomplete, and that the geopotential still contains relevant data that can improve the statistical relationship. Therefore, we added a third predictor (still the geopotential height) that the optimizer could use along with the previous parameters. There was no constraint on the predictors, so that the same pressure level could be selected multiple times. Some improvements were found on the score, both for the calibration and the validation periods, confirming that this additional information is beneficial for the quality of the forecast. We then tried with 4 predictors, and so on, up to 8. Every time we added a new predictor to optimize, the score on the calibration period increased, but always more to a smaller extent. However, the score value on the validation period dropped after 4 predictors, revealing an over-parametrization of the method, and thus a lack of robustness. Thus, considering 4 predictors is optimal for our case study, since the gain in CRPSS is significant. It cannot be excluded that another number would prevail in another region under other meteorological conditions.
+Parallel analyses showed that the analogy of circulation is incomplete, and that the geopotential still contains relevant data that can improve the statistical relationship. Therefore, we added a third predictor (still the geopotential height) that the optimizer could use along with the previous parameters. There was no constraint on the predictors, so that the same pressure level could be selected multiple times. Some improvements were found on the score, both for the CP and the VP, confirming that this additional information is beneficial for the quality of the forecast. We then tried with 4 predictors, and so on, up to 8. Every time we added a new predictor to optimize, the score on the CP increased, but always more to a smaller extent. However, the score value on the VP dropped after 4 predictors, revealing an over-parametrization of the method, and thus a lack of robustness. Thus, considering 4 predictors is optimal for our case study, since the gain in CRPSS is significant. It cannot be excluded that another number would prevail in another region under other meteorological conditions.
 
 Finally, we added a weighting of these 4 predictors (pressure levels), which is also optimized by GAs. The weighting operates in the combination of the S1 criteria processed on every level, which were previously averaged with equal weights. The role of this new degree of freedom is to give more weight to the levels with greater predictive capacity, and to consider the geopotential variability changes with altitude. 
 
@@ -259,9 +259,9 @@ This sums up to 29 degrees of freedom that are optimize simultaneously.
 
 \subsection{Results for the 4Zo method}
 
-The resulting optimized parameters for 4Zo vary from one subregion to another. An example of the detailed parameters is provided for the Swiss Chablais in Table \ref{table:params_GA_4Zo}. The optimized spatial windows are given for every subregion in Figure \ref{fig:spatial_windows_4Zo}, and the selected pressure levels in Table \ref{table:levels_GA_4Zo}. 
+The resulting optimized parameters for 4Zo vary from one subregion to another. An example of the detailed parameters is provided for the Swiss Chablais in Table \ref{table:params_GA_4Zo}. The optimized spatial windows are given for every subregion in Figure \ref{fig:spatial_windows_4Zo}, and the selected pressure levels in Table~\ref{table:levels_GA_4Zo}. 
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\caption{Parameters of the 4Zo method (analogy on 4 levels of the atmospheric circulation) optimized for the Chablais subregion. The columns are the following: L = level of analogy, V = meteorological variable, H = hour of observation or temporal window, D = domain or spatial window, W = weighting of the score for the selected pressure levels, C = criteria, N = number of analogues.}
 	\footnotesize
 	\begin{center}
@@ -284,7 +284,7 @@ The resulting optimized parameters for 4Zo vary from one subregion to another. A
 	\label{table:params_GA_4Zo}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\caption{Pressure levels ($\sim$) automatically selected for the 4Zo method at the different subregions.}
 	\footnotesize
 	\begin{center}
@@ -307,17 +307,14 @@ The resulting optimized parameters for 4Zo vary from one subregion to another. A
 	\label{table:levels_GA_4Zo}
 \end{table}
 
-
-The resulting CRPSS scores are provided in Table \ref{table:scores} and is in average 35.8 \% in calibration and 35.5 \% in validation. The improvement of the CRPSS score relatively to the reference method on the atmospheric circulation is provided in Table \ref{table:scores_diff} and is in average 15.3 \% in calibration and 9.9 \% in validation. The score was also calculated for three precipitation thresholds: P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10, P10 being the daily precipitation with a 10~year return period (Table \ref{table:scores_thresholds_4Zo}). The gain in score increases with the precipitation threshold: in average, respectively for the different thresholds, 13.3\%, 15.4\% and 29.1\% in calibration and 7.9\%, 11.1\% and 34.5\% for the validation period. The optimized method improves thus even more the forecasts for days with significant precipitation than usual days.
-
-\begin{table}[htbp]
+\begin{table}[htb]
 	\caption{CRPSS score (\%) of the three optimized methods (4Zo is the atmospheric circulation analogy detailed in the present section; 4Zo-2MIo and 4Zo-4MIo add a second level of analogy on moisture indexes, as explained in section \ref{sec:optim_moisture}).}
 	\footnotesize
 	\begin{center}
 		\begin{tabular}{ccccccc}
 			\hline 
 			ID & \multicolumn{2}{c}{4Zo} & \multicolumn{2}{c}{4Zo-2MIo} & \multicolumn{2}{c}{4Zo-4MIo} \\ 
-			& calib & valid & calib & valid & calib & valid \\ 
+			& CP & VP & CP & VP & CP & VP \\ 
 			\hline 
 			1 & 40.3 & 38.5 & 45.5 & 43.8 & 45.9 & 43.6 \\
 			2 & 37.8 & 34.9 & 42.4 & 40.8 & 42.9 & 41.3 \\
@@ -337,14 +334,14 @@ The resulting CRPSS scores are provided in Table \ref{table:scores} and is in av
 	\label{table:scores}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\caption{Same as Table \ref{table:scores}, but expressed as the CRPSS improvement (\%) compared to the reference methods. For 4Zo, the improvement is relative to the reference method on the atmospheric circulation (2Z, Table \ref{table:params_R1}). For 4Zo-2MIo and 4Zo-4MIo, the improvement is relative to the reference method on the circulation and moisture variables (2Z-2MI, Table \ref{table:params_R2}).}
 	\footnotesize
 	\begin{center}
 		\begin{tabular}{ccccccc}
 			\hline 
 			ID & \multicolumn{2}{c}{4Zo} & \multicolumn{2}{c}{4Zo-2MIo} & \multicolumn{2}{c}{4Zo-4MIo} \\ 
-			& calib & valid & calib & valid & calib & valid \\ 
+			& CP & VP & CP & VP & CP & VP \\ 
 			\hline 
 			1 & 13.6 & 13.0 & 11.9 & 9.9 & 12.8 & 9.6 \\
 			2 & 13.3 & 7.5 & 11.2 & 9.4 & 12.5 & 10.8 \\
@@ -364,14 +361,14 @@ The resulting CRPSS scores are provided in Table \ref{table:scores} and is in av
 	\label{table:scores_diff}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[htb]
 	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized 4Zo method.}
 	\footnotesize
 	\begin{center}
 		\begin{tabular}{ccccccc}
 			\hline 
 			ID & \multicolumn{2}{c}{P\(\geq\)1 mm} & \multicolumn{2}{c}{P\(\geq\)0.1\(\cdot\)P10} & \multicolumn{2}{c}{P\(\geq\)0.5\(\cdot\)P10} \\ 
-			& calib & valid & calib & valid & calib & valid \\ 
+			& CP & VP & CP & VP & CP & VP \\ 
 			\hline 
 			1 & 10.2 & 9.4 & 8.5 & 7.9 & 17.0 & 14.2 \\ 
 			2 & 9.9 & 3.4 & 10.2 & 7.3 & 19.3 & 13.7 \\ 
@@ -391,7 +388,9 @@ The resulting CRPSS scores are provided in Table \ref{table:scores} and is in av
 	\label{table:scores_thresholds_4Zo}
 \end{table}
 
-To assess the cross-compatibility of the parameters, we applied those optimized for one subregion to the others. The resulting losses or gains of the CRPSS are displayed in Table \ref{table:crossing_4Zo_calib} for the calibration period and in Table \ref{table:crossing_4Zo_valid} for the validation period.
+The resulting CRPSS scores are provided in Table \ref{table:scores} and are in average 35.8 \% for the CP and 35.5 \% for the VP. The improvement of the CRPSS score relatively to the reference method on the atmospheric circulation is provided in Table \ref{table:scores_diff} and is in average 15.3 \% for the CP and 9.9 \% for the VP. The score was also calculated for three precipitation thresholds: P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10, P10 being the daily precipitation with a 10~year return period (Table \ref{table:scores_thresholds_4Zo}). The gain in score increases with the precipitation threshold: in average, respectively for the different thresholds, 13.3\%, 15.4\% and 29.1\% for the CP and 7.9\%, 11.1\% and 34.5\% for the VP. The optimized method improves thus even more the forecasts for days with significant precipitation than usual days.
+
+To assess the cross-compatibility of the parameters, we applied those optimized for one subregion to the others. The resulting losses or gains of the CRPSS are displayed in Table \ref{table:crossing_4Zo_calib} for the CP and in Table \ref{table:crossing_4Zo_valid} for the VP.
 
 \begin{table}[htbp]
 	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 4Zo, calibration period.}
@@ -412,9 +411,9 @@ The selections of the pressure levels for the analogy of circulation show a grea
 
 The resulting spatial windows (Figure \ref{fig:spatial_windows_4Zo}) may look very diverse first, but there are significant similarities for subregions located within the same vicinity. The first 4 subregions are characterized by a large spatial window on the upper level, whereas it becomes smaller for the other subregions. For most subregions, the second level (700~hPa) is represented by thin and longitudinally extended domains. The third level (1000~hPa at 6 or 12~h) also contains longitudinally extended domains, but a bit larger. The last one (1000~hPa at 30~h) is rather large and squared. Surprisingly, subregions number 5 (Left side valleys) and 6 (Southern ridges) have exactly the same spatial windows, which suggest that they behave in a similar way and thus could have been merged. This similarity is a good sign for the accuracy of our optimized parameters.
 
-The scores show significant improvements for both the calibration and the validation period (Table \ref{table:scores_diff}). Even more interestingly, the results for higher precipitation thresholds (Table \ref{table:scores_thresholds_4Zo}) show the largest improvements. This is of particular interest in the framework of flood forecasting.
+The scores show significant improvements for both the CP and the VP (Table \ref{table:scores_diff}). Even more interestingly, the results for higher precipitation thresholds (Table \ref{table:scores_thresholds_4Zo}) show the largest improvements. This is of particular interest in the framework of flood forecasting.
 
-The analysis of the parameters cross-compatibility shows that obviously, the parameters are optimal on the calibration period when they are calibrated for the given subregion (Table \ref{table:crossing_4Zo_calib}). However, the losses in CRPSS are not of the same amplitude between the different subregions. Indeed, the Upper Rhone Valley (7) and moreover the Southeast ridges (8) seem to behave significantly differently. This is indeed a climatological reality, as this subregion is the most sensitive to southerly flows \citep{Horton2012}. Parameter sets from other subregions perform poorly for these subregions, and vice versa. Nevertheless, both subregions seem quite inter-compatible. This points to the importance of taking into account leading meteorological influences during subregion creation, which is not always best represented by the geographical distance separating them. Globally, the same pattern can be observed for the validation period (Table \ref{table:crossing_4Zo_valid}), but in this case, minor improvements may be observed when crossing the parameters. The reason being that the independant validation period contains other events that may be better forecasted by other parameter sets. The relative small differences in score between parametrizations indicate that even though the parameters may differ significantly, the performance may not be drastically affected. Even a change in the pressure level does not mean a radical drop of the score. A different parametrization leads to a different selection of the analogue days, and thus to an improvement of the forecast of certain weather conditions at the expense of others. This raises the question of optimizing more specifically for extreme weather conditions only. 
+The analysis of the parameters cross-compatibility shows that obviously, the parameters are optimal on the CP when they are calibrated for the given subregion (Table \ref{table:crossing_4Zo_calib}). However, the losses in CRPSS are not of the same amplitude between the different subregions. Indeed, the Upper Rhone Valley (7) and moreover the Southeast ridges (8) seem to behave significantly differently. This is indeed a climatological reality, as this subregion is the most sensitive to southerly flows \citep{Horton2012}. Parameter sets from other subregions perform poorly for these subregions, and vice versa. Nevertheless, both subregions seem quite inter-compatible. This points to the importance of taking into account leading meteorological influences during subregion creation, which is not always best represented by the geographical distance separating them. Globally, the same pattern can be observed for the VP (Table \ref{table:crossing_4Zo_valid}), but in this case, minor improvements may be observed when crossing the parameters. The reason being that the independant VP contains other events that may be better forecasted by other parameter sets. The relative small differences in score between parametrizations indicate that even though the parameters may differ significantly, the performance may not be drastically affected. Even a change in the pressure level does not mean a radical drop of the score. A different parametrization leads to a different selection of the analogue days, and thus to an improvement of the forecast of certain weather conditions at the expense of others. This raises the question of optimizing more specifically for extreme weather conditions only. 
 
 
 \section{Optimization of the moisture analogy}
@@ -496,7 +495,7 @@ The CRPSS scores of the optimized methods are provided in Table \ref{table:score
 		\begin{tabular}{ccccccc}
 			\hline 
 			ID & \multicolumn{2}{c}{P\(\geq\)1 mm} & \multicolumn{2}{c}{P\(\geq\)0.1\(\cdot\)P10} & \multicolumn{2}{c}{P\(\geq\)0.5\(\cdot\)P10} \\  
-			& calib & valid & calib & valid & calib & valid \\ 
+			& CP & VP & CP & VP & CP & VP \\ 
 			\hline 
 			1 & 12.6 & 9.3 & 12.4 & 9.7 & 15.8 & 11.0 \\
 			2 & 10.4 & 7.7 & 11.2 & 10.5 & 18.9 & 16.6 \\ 
@@ -564,7 +563,7 @@ The optimization of the AM by means of GAs has been undertaken in stages by rele
 
 GAs are very useful to optimize complex variants of the AM, and to assess new degrees of freedom that were not available so far. However, it can be dangerous to add too many parameters to optimize. Indeed, the optimizer will probably use them to successfully improve the calibration score, but the validation control remains very important in order to determine if we are actually improving the method, or if we are over-parametrizing it.
 
-The convergence of parallel optimizations decreases when the method to optimize becomes more and more complex. The optimizer do not always converge to the exact global optimum, but to its surroundings. This is related to the fact that the optimization slows down when it gets closer to the global optimum, and that we have to stop it before the end, due to the required processing time (see Figure \ref{fig:evolution} as example). The resulting parameters may sometimes present significant differences, even though the score is almost similar. Through some Monte-Carlo analyses of the parameter space properties of the AM, \citet{Horton2012a} showed that some parameters of the method have a wide range of acceptable values. The spatial windows, for example, can be larger than the optimal size without much impact on the score, while they cannot be smaller \citep[see also][]{Bontron2004}. We could also observe that the selection of the pressure level is not a parameter as discrete as we would have thought, and that choosing another level may have reduced consequences on the performance. This is particularly true for higher pressure levels and can be more critical for lower layers. It was thus interesting to sometimes get several sets of near-optimal parameters, but with some nuances, in order to have an idea of the sensitivity of the parameters for a given region, and to compare the score on the validation period. In this regard, a cross-validation technique may be advisable. An approach that can also be recommended, and that we use, is to first explore a wide range of the parameter space with some optimizations, and to narrow it according to the results for more targeted optimizations that are likely to go faster and to perform better.
+The convergence of parallel optimizations decreases when the method to optimize becomes more and more complex. The optimizer do not always converge to the exact global optimum, but to its surroundings. This is related to the fact that the optimization slows down when it gets closer to the global optimum, and that we have to stop it before the end, due to the required processing time (see Figure \ref{fig:evolution} as example). The resulting parameters may sometimes present significant differences, even though the score is almost similar. Through some Monte-Carlo analyses of the parameter space properties of the AM, \citet{Horton2012a} showed that some parameters of the method have a wide range of acceptable values. The spatial windows, for example, can be larger than the optimal size without much impact on the score, while they cannot be smaller \citep[see also][]{Bontron2004}. We could also observe that the selection of the pressure level is not a parameter as discrete as we would have thought, and that choosing another level may have reduced consequences on the performance. This is particularly true for higher pressure levels and can be more critical for lower layers. It was thus interesting to sometimes get several sets of near-optimal parameters, but with some nuances, in order to have an idea of the sensitivity of the parameters for a given region, and to compare the score on the VP. In this regard, a cross-validation technique may be advisable. An approach that can also be recommended, and that we use, is to first explore a wide range of the parameter space with some optimizations, and to narrow it according to the results for more targeted optimizations that are likely to go faster and to perform better.
 
 We tried to optimize the preselection period (the 4-months window) jointly with the other parameters, but we did not get improvement. We also tried optimizing the moisture flux, which is composed of the moisture index multiplied with the wind flux. However, the results were not better than when we considered the moisture index alone. This may be related to the fact that the optimizer tries to provide the best analogy of the atmospheric circulation in the first place, which makes the wind information less relevant in the second level of analogy.
 
