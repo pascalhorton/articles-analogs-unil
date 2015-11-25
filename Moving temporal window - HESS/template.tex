@@ -10,7 +10,8 @@
 
 
 %% 2-Column Papers and Discussion Papers
-\documentclass[journal abbreviation, manuscript]{copernicus}
+%\documentclass[hess, manuscript]{copernicus}
+\documentclass[hess]{copernicus}
 
 
 
@@ -71,27 +72,28 @@
 
 \linenumbers
 
-\title{TEXT}
+\title{Introducing a Moving Temporal Window in the Analogue Method for Precipitation Forecasting}
 
 
 % \Author[affil]{given_name}{surname}
 
-\Author[]{}{}
-\Author[]{}{}
-\Author[]{}{}
+\Author[1,2]{Pascal}{Horton}
+\Author[3]{Charles}{Obled}
+\Author[1]{Michel}{Jaboyedoff}
 
-\affil[]{ADDRESS}
-\affil[]{ADDRESS}
+\affil[1]{University of Lausanne, Lausanne, Switzerland}
+\affil[2]{Terranum, Lausanne, Switzerland}
+\affil[3]{Universit\'{e} de Grenoble-Alpes, LTHE, Grenoble, France}
 
 %% The [] brackets identify the author with the corresponding affiliation. 1, 2, 3, etc. should be inserted.
 
 
 
-\runningtitle{TEXT}
+\runningtitle{Moving Temporal Window in the AM}
 
-\runningauthor{TEXT}
+\runningauthor{P. Horton et al.}
 
-\correspondence{NAME (EMAIL)}
+\correspondence{Pascal Horton (pascal.horton@alumnil.unil.ch)}
 
 
 
@@ -148,7 +150,7 @@ TEXT
 
 
 \begin{acknowledgements}
-TEXT
+Thanks to Dominique B\'{e}rod for his support and to Renaud Marty for his fruitful collaboration over the years. Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton and the Water, Land and Sanitation Service of the Vaud Canton who financed the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me des Rivi\`{e}res Valaisannes et de leurs Effets) project which started this research. The fruitful collaboration with the Laboratoire d'Etude des Transferts en Hydrologie et Environnement of the Grenoble Institute of Technology (G-INP) was made possible thanks to the Herbette Foundation. NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. Precipitation time series provided by MeteoSwiss. 
 \end{acknowledgements}
 
 
@@ -156,15 +158,8 @@ TEXT
 
 %% The reference list is compiled as follows:
 
-\begin{thebibliography}{}
-
-\bibitem[AUTHOR(YEAR)]{LABEL}
-REFERENCE 1
-
-\bibitem[AUTHOR(YEAR)]{LABEL}
-REFERENCE 2
-
-\end{thebibliography}
+\bibliographystyle{copernicus}
+\bibliography{../_refs/_articles-movingwindow}
 
 %% Since the Copernicus LaTeX package includes the BibTeX style file copernicus.bst,
 %% authors experienced with BibTeX only have to include the following two lines:
