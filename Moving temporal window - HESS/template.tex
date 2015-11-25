@@ -67,6 +67,8 @@
 %\usepackage{subfig}
 %\usepackage{rotating}
 
+\usepackage[utf8]{inputenc}
+
 
 \begin{document}
 
@@ -123,20 +125,440 @@ TEXT
 
 
 
-\section{HEADING}
-TEXT
+La méthode des analogues est habituellement implémentée avec un pas de temps journalier, la disponibilité de longues archives de données pluviométriques journalières n'ayant pas d'équivalent à une résolution plus fine. Ce pas de temps nous contraint à chercher des situations analogues aux mêmes heures fixes de la journée, sans quoi nous ne saurions pas quelles valeurs de précipitations leur attribuer. Nous pouvons néanmoins nous attendre à ce que l'analogie des situations météorologiques n'ait pas lieu systématiquement à la même heure de la journée, et que de meilleures candidates soient trouvées en autorisant un certain décalage.
 
-\subsection{HEADING}
-TEXT
+\begin{figure*}[htb]
+	\begin{center}
+		\includegraphics[width=14cm]{figures/Illustration_fenetre_glissante.pdf}
+	\end{center}
+	\caption[Illustration du principe de la fenêtre temporelle glissante.]{Illustration du principe de la fenêtre temporelle glissante. }
+	\label{fig:Illustration_fenetre_glissante}
+\end{figure*}
 
-\subsubsection{HEADING}
-TEXT
+De premiers essais \citep{Finet2008} avaient porté sur la seule recherche de situations synoptiques analogues à une situation cible. Ils avaient montré que pour une situation cible 0-24~h~UTC, on pouvait obtenir de meilleures analogies synoptiques en acceptant des situations  ''glissées'' 6-30~h, 12-36~h ou 18-42~h plutôt que de se limiter à 0-24~h. Mais il n'avait pas été possible de constituer les archives pluviométriques correspondantes, c'est-à-dire qui soient décalées, elles-aussi, dans le but de quantifier d'éventuelles améliorations de la prévision de précipitations.
+
+Afin d'évaluer ce gain potentiel, nous avons donc d'abord traité les mesures des stations automatiques de résolution 10~minutes (voir section \ref{sec:donnees:reseau}) ayant une durée respectable (1982-2007), pour élaborer des séries de précipitations représentant des cumuls de 24~h, mais sur une fenêtre temporelle glissante. Cela veut dire que nous constituons une série de 24~h centrée sur chaque tranche de 6~h de la journée, ce dernier pas de temps étant la résolution des prédicteurs synoptiques (voir section \ref{sec:donnees:reanalyses1_ncep}). 
+
+Une telle série présente certains avantages. Le premier étant que la compétence résultant de ce modèle sera comparable à celle établie précédemment, et que le gain d'une telle modification peut donc être directement évalué. Le second s'inscrit dans la perspective de création de ce genre de séries à partir de données journalières désagrégées (en 6~h) puis recomposées (en 24~h glissées), où les erreurs seront alors réduites par rapport à une série à pas de temps de 6~h.
+
+Nous ne disposons pas de séries temporelles sur des bassins à ces pas de temps infrajournalier, ni de stations automatiques suffisamment proches pour être regroupées. Nous travaillons donc sur les séries issues de 6 stations automatiques, à savoir Ulrichen, Zermatt, Visp, Montana, Sion et Aigle. La station du col du Grand-Saint-Bernard n'est pas intégrée à l'étude en raison de forts doutes émis par Jean-Michel Fallot (Université de Lausanne) sur l'homogénéité de ces données.
+
+Les situations cibles et leurs valeurs de précipitations observées (utilisées pour la validation) ne changent pas, puisque nous effectuons toujours la prévision pour une période fixe de la journée cible (6-30~h), comme précédemment. Ce sont les situations candidates qui, elles, deviennent 4~fois plus nombreuses (Figure \ref{fig:Illustration_fenetre_glissante}).
+
+La logique voudrait a priori que nous ne retenions qu'une tranche horaire, la meilleure, par date candidate. C'est-à-dire, si pour la date cible du 15 novembre 2006 (0-24~h), la meilleure analogue est le 5 décembre 1988 (12-36~h), alors, très certainement les périodes les plus proches (5 décembre 6-30~h et 18-42~h) sont aussi des analogues, certes inférieures en qualité, mais acceptables. La question se pose alors de les prendre ou de les rejeter. Une exclusion des mêmes dates a été testée de deux manières différentes:
+\begin{itemize}
+	\item par exclusion des moins bonnes analogues dans une période de $\pm$ 24~h;
+	\item par exclusion des moins bonnes analogues avec la même date.
+\end{itemize}
+Après plusieurs essais, il s'est avéré que n'imposer aucune restriction menait à de meilleures compétences, et ceci de manière significative et récurrente. Dans la suite de cette analyse, aucune de ces contraintes ne sera donc imposée.
 
 
+\section{Conséquences de la réduction de l'archive sur la compétence}
+
+La première étape consiste à évaluer la perte de compétence due à la simple réduction en durée de l'archive pour la méthode standard (donc avec des analogues 0-24~h fixes) lorsque l'on passe de 47~ans (1961-2008) à 25~ans (1982-2007). Les paramètres sont calibrés pour les méthodes R1 et R2 (Tables \ref{tab:fenetre_glissante:Resultats_R1_originaux} et \ref{tab:fenetre_glissante:Resultats_R2_originaux}) sur l'archive originale et sont conservés pour la suite des calculs. 
+
+
+\begin{table}[htb]
+	\caption{Paramètres retenus pour l'analogie sur le géopotentiel à 500~hPa et 1000~hPa, et compétence de la méthode standard R1 sur l'archive complète.}
+	\begin{center}
+		\begin{tabular}{l c c c c c c }
+			\hline
+			\multirow{2}{*}{\textbf{Station}} & \textbf{Lon} & \textbf{Taille} & \textbf{Lat} & \textbf{Taille} & \multirow{2}{*}{\textbf{N$_{1}$}} & \textbf{CRPSS} \\ 
+			& \textbf{min} & \textbf{lon} & \textbf{min} & \textbf{lat} & & \textbf{(\%)} \\ 
+			\hline
+			Ulrichen & 0 & 17.5 & 42.5 & 5 & 40 & 30.73 \\ \hline
+			Zermatt & 0 & 20 & 37.5 & 12.5 & 35 & 23.87 \\ \hline
+			Visp & -2.5 & 22.5 & 40 & 7.5 & 30 & 25.11 \\ \hline
+			Montana & -2.5 & 20 & 40 & 7.5 & 40 & 32.55 \\ \hline
+			Sion & -2.5 & 20 & 40 & 7.5 & 40 & 26.23 \\ \hline
+			Aigle & -5 & 22.5 & 40 & 10 & 50 & 30.59 \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{tab:fenetre_glissante:Resultats_R1_originaux}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Paramètres pour l'humidité et compétence de la méthode standard R2 sur l'archive complète. Les paramètres de circulation de la Table \ref{tab:fenetre_glissante:Resultats_R1_originaux} sont également valables pour cette méthode, exception faite du nombre d'analogues du premier niveau d'analogie dont les nouvelles valeurs sont données dans la 6ieme colonne du présent tableau (N$_{1}$). La 7ieme colonne (N$_{2}$) est ici le nombre d'analogues du deuxième niveau.}
+	\begin{center}
+		\begin{tabular}{l c c c c c c c }
+			\hline
+			\multirow{2}{*}{\textbf{Station}} & \textbf{Lon} & \textbf{Taille} & \textbf{Lat} & \textbf{Taille} & \multirow{2}{*}{\textbf{N$_{1}$}} & \multirow{2}{*}{\textbf{N$_{2}$}} & \textbf{CRPSS} \\ 
+			& \textbf{min} & \textbf{lon} & \textbf{min} & \textbf{lat} & & & \textbf{(\%)} \\ 
+			\hline
+			Ulrichen & 5 & 5 & 45 & 2.5 & 60 & 25 & 34.31 \\ \hline
+			Zermatt & 5 & 5 & 45 & 2.5 & 55 & 25 & 28.28 \\ \hline
+			Vis & 5 & 5 & 45 & 2.5 & 45 & 25 & 28.85 \\ \hline
+			Montana & 5 & 2.5 & 45 & 2.5 & 55 & 30 & 36.11 \\ \hline
+			Sion & 5 & 5 & 45 & 2.5 & 90 & 30 & 31.16 \\ \hline
+			Aigle & 7.5 & 0 & 45 & 2.5 & 100 & 35 & 35.82 \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{tab:fenetre_glissante:Resultats_R2_originaux}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Influence de la réduction de l'archive sur la compétence en CRPS. Les résultats sont présentés pour les deux méthodes R1 et R2, et les différences sont exprimées en valeur absolue, ainsi que relativement au score de la période 1961-2008.}
+	\begin{center}
+		\begin{tabular}{l r r r r r r r r}
+			\hline
+			\multirow{3}{*}{\textbf{Station}} & \multicolumn{ 4}{c}{\textbf{CRPSS (\%) R1}} & \multicolumn{ 4}{c}{\textbf{CRPSS (\%) R2}} \\
+			& \multicolumn{ 2}{c}{\textbf{périodes}} & \multirow{2}{*}{\textbf{$\Delta$}} & \multirow{2}{*}{\textbf{Gain}} & \multicolumn{ 2}{c}{\textbf{périodes}} & \multirow{2}{*}{\textbf{$\Delta$}} & \multirow{2}{*}{\textbf{Gain}} \\
+			& \multicolumn{1}{c}{\textbf{61-08}} & \multicolumn{1}{c}{\textbf{82-07}} &  &  & \textbf{61-08} & \textbf{82-07} &  &  \\ 
+			\hline
+			Ulrichen & 30.73 & 29.37 & -1.36 & \textbf{-4.42} & 34.31 & 33.24 & -1.08 & \textbf{-3.13} \\ \hline
+			Zermatt & 23.87 & 22.20 & -1.67 & \textbf{-7.01} & 28.28 & 26.95 & -1.32 & \textbf{-4.68} \\ \hline
+			Visp & 25.11 & 23.23 & -1.89 & \textbf{-7.51} & 28.85 & 27.77 & -1.08 & \textbf{-3.74} \\ \hline
+			Montana & 32.55 & 30.79 & -1.76 & \textbf{-5.42} & 36.11 & 34.77 & -1.34 & \textbf{-3.71} \\ \hline
+			Sion & 26.23 & 24.78 & -1.45 & \textbf{-5.52} & 31.16 & 29.36 & -1.80 & \textbf{-5.77} \\ \hline
+			Aigle & 30.59 & 30.57 & -0.01 & \textbf{-0.05} & 35.82 & 35.95 & 0.13 & \textbf{0.35} \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{tab:fenetre_glissante:Pertes_CRPSS}
+\end{table}
+
+L'impact du changement de la période de l'archive est résumé dans la Table \ref{tab:fenetre_glissante:Pertes_CRPSS} pour les méthodes R1 et R2. Comme attendu, une perte de compétence peut être observée pour chaque station, excepté pour celle d'Aigle, qui semble relativement indifférente à ce changement. Cette perte est significative, avec un maximum pour la méthode R1 de -1.89 points à Visp, soit une perte de 7.51~\%, et pour la méthode R2 de -1.80 points à Sion, soit -5.77~\%. Malgré cette diminution, les scores restent acceptables et constitueront la référence en fenêtre d'analogie fixe (0-24~h).
+
+
+\section{Influence de la fenêtre glissante sur les critères d'analogie}
+
+
+\subsection{Changements du critère du premier niveau d'analogie}
+
+
+La recherche d'analogues sur les champs de géopotentiel de la méthode R1 a donc à présent 4 fois plus de candidats possibles qu'auparavant, ce qui permet évidemment de trouver de meilleures analogues. 
+
+\begin{figure*}[htb]
+	\begin{center}
+		\includegraphics[width=15cm]{figures/Graphique_fenetre_glissante_chmts_S1_analogues.pdf}
+	\end{center}
+	\caption{Changements dans les distributions du critère S1 de certaines analogues (la 1iere, la 5ieme, la 20ieme et la 40ieme), à la station d'Ulrichen, dû à la fenêtre temporelle glissante.}
+	\label{fig:Graphique_fenetre_glissante_chmts_S1_analogues}
+\end{figure*}
+
+La Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1_analogues} présente les changements dans les distributions du critère S1 pour la 1iere, la 5ieme, la 20ieme et la 40ieme analogue à la station d'Ulrichen, avec une période cible de précipitations correspondant à celle d'origine, soit centrée sur 18~h~UTC (de 6~h~UTC à 6~h~UTC le lendemain). Les formes des distributions de l'approche classique et de la fenêtre temporelle glissante sont semblables, mais les valeurs du critère d'analogie sont réduites, donc meilleures. Une augmentation de la différence entre fenêtre fixe et fenêtre glissante de la première à la dernière analogue est identifiable, ce qui signifie que nous améliorons davantage les dernières analogues. Ce dernier effet est dû à l'accumulation des améliorations apportées par les nouvelles analogues dans la sélection.
+
+\begin{figure}[htb]
+	\begin{center}$
+		\begin{array}{c}
+		\includegraphics[width=8cm]{figures/Graphique_fenetre_glissante_chmts_S1_val.pdf} \\
+		\includegraphics[width=8cm]{figures/Graphique_fenetre_glissante_chmts_S1_gain.pdf}
+		\end{array}$
+	\end{center}
+	\caption{Synthèse du gain sur le critère S1 à la station d'Ulrichen, pour les différentes analogues, dû à la fenêtre temporelle glissante. (gauche) Quantiles de la distribution des valeurs de S1 avec (06h) et sans (24h) la fenêtre glissante. (droite) Quantiles des gains sur le critère S1 par l'utilisation de la fenêtre glissante.}
+	\label{fig:Graphique_fenetre_glissante_chmts_S1}
+\end{figure}
+
+Ces gains sont synthétisés dans la Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1}, qui illustre les valeurs, pour S1, des quantiles pour toutes les analogues avec et sans la fenêtre glissante, ainsi que la distribution des gains réalisés pour l'ensemble des dates. Cela confirme que tous les quantiles semblent réduits de manière semblable (les distributions de S1 conservent leur forme) et que ce gain augmente constamment de la première à la dernière analogue (Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1} gauche). 
+
+Les statistiques des gains pour chaque date (Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1} droite) présentent une médiane de la réduction qui démarre approximativement à 5~\% pour les premières analogues et termine à plus de 10~\% pour les dernières. Cette tendance à l'augmentation du gain sur le critère S1 avec le rang de l'analogue peut être expliquée par le fait que chaque gain effectué sur les premières analogues se répercute sur les suivantes. Inversement, le gain maximal décroît de 50~\% à 25~\%. Le gain minimal part de 0 pour atteindre une valeur située entre 2~\% et 3~\%, signifiant que tous les critères ont été améliorés. Les dates sélectionnées précédemment étant toujours disponibles, le critère S1 ne peut en effet que s'améliorer ou rester identique, mais en aucun cas se détériorer. Toutes les autres stations présentent une amélioration du critère S1 très proche, tant pour la forme des distributions que pour leur amplitude.
+
+
+
+\subsection{Influence du dynamisme de la situation atmosphérique}
+\label{sec:ameliorations:fenetre:S1_pluie}
+
+Nous pouvons supposer que des circulations peu dynamiques, telles que les fréquentes situations anticycloniques, ne seront pas radicalement améliorées par l'approche de la fenêtre temporelle glissante. À l'opposé, les situations dynamiques, telles que le passage d'une perturbation, ont une évolution temporelle bien marquée. En effet, la position des centres actifs et des courants évoluent de manière significative durant une journée. Nous pouvons donc nous attendre à améliorer ces journées-ci en autorisant la fenêtre d'analogie à glisser pour mieux correspondre à la situation cible.
+
+Nous allons chercher à vérifier cette assertion, mais nous ne pouvons pas aisément quantifier le dynamisme de la circulation atmosphérique d'une journée. Nous faisons donc l'hypothèse que plus un jour est pluvieux, plus la situation est dynamique. Les résultats de cette approche sont synthétisés dans la Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1_seuils_precip} par les médianes de la réduction du critère S1 pour les jours avec une pluviométrie comprise entre deux seuils. Le nombre d'analogues étant réduit, les courbes ne sont pas aussi lisses que lors des analyses précédentes. Il en ressort néanmoins que le gain tend à augmenter pour les jours à plus forte pluviométrie. Cette observation est valable pour toutes nos stations et cela confirme notre intuition.
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=12cm]{figures/Graphique_fenetre_glissante_chmts_S1_seuils_precip.pdf}
+	\end{center}
+	\caption{Distribution des gains sur la médiane du critère S1, dus à la fenêtre temporelle glissante, en fonction de seuils de précipitations à la station d'Ulrichen.}
+	\label{fig:Graphique_fenetre_glissante_chmts_S1_seuils_precip}
+\end{figure}
+
+
+\subsection{Effet saisonnier}
+\label{sec:ameliorations:fenetre:S1_saisons}
+
+La dynamique atmosphérique varie fortement d'une saison à l'autre, ce qui rejaillit sur les performances de la méthode des analogues, généralement moindres entre juin et août \citep{Bliefernicht2010}. Il fait donc sens de vérifier l'effet de l'introduction de la fenêtre temporelle glissante de manière distincte par saison.
+
+\begin{figure}[htb]
+	\begin{center}$
+		\begin{array}{c}
+		\includegraphics[width=8cm]{figures/Graphique_fenetre_glissante_chmts_S1_saisons_val.pdf} \\
+		\includegraphics[width=6cm]{figures/Graphique_fenetre_glissante_chmts_S1_saisons_gain.pdf}
+		\end{array}$
+	\end{center}
+	\caption{Effet saisonnier sur le critère S1 original pour la station d'Ulrichen et son gain dû à la fenêtre temporelle glissante. DJF: hiver, MAM: printemps, JJA: été, SON: automne. (gauche) Quantiles de la distribution des valeurs de S1 pour les différentes saisons avec la fenêtre temporelle originale de 24~h. (droite) Médianes des gains sur le critère S1 par l'utilisation de la fenêtre glissante pour les différentes saisons.}
+	\label{fig:Graphique_fenetre_glissante_chmts_S1_saisons}
+\end{figure}
+
+\begin{figure}[htb]
+	\includegraphics[width=8.3cm]{figures/Graphique_fenetre_glissante_heures_fct_saison.pdf}
+	\caption{Répartition des tranches horaires dans les dates analogues en fonction de la saison pour la station d'Ulrichen.}
+	\label{fig:Graphique_fenetre_glissante_heures_fct_saison}
+\end{figure}
+
+Un effet saisonnier peut être observé autant sur les distributions des critères que sur leurs gains (Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1_saisons}). Les gains sont plus importants pour l'hiver que pour l'été. Une hypothèse est que les effets diurnes des mois d'été ont une influence notable sur la circulation atmosphérique, du moins dans les basses couches. Cet effet est donc calé sur le cycle journalier et nous trouvons déjà de bonnes analogues aux mêmes heures. 
+
+Cette hypothèse a été vérifiée et est confirmée par la Figure \ref{fig:Graphique_fenetre_glissante_heures_fct_saison} qui démontre que le choix des différentes tranches horaires pour les mois d'hiver est relativement équilibré, ce qui change la sélection de 75~\% des dates analogues par rapport au 0-24~h initial, augmentant ainsi l'amélioration du critère S1. 
+
+Au contraire, les mois d'été ont une préférence pour la tranche horaire initiale (hgt 500 24h \& hgt 1000 12h), dû aux effets diurnes plus marqués, ce qui diminue le potentiel d'amélioration des critères. Les autres saisons se situent entre ces deux extrêmes, de manière cohérente avec leurs gains observés (Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1_saisons}). Cet effet saisonnier a pu être observé pour chaque station de manière très similaire et généralement encore plus marquée que pour Ulrichen.
+
+
+\subsection{Changements du critère du second niveau d'analogie}
+
+Lorsque nous considérons le second niveau d'analogie de la méthode R2, les situations candidates retenues ne sont pas plus nombreuses, mais les dates peuvent avoir changé. Ainsi, une réduction, mais également une augmentation du critère RMSE sont possibles. La Figure \ref{fig:Graphique_fenetre_glissante_chmts_RMSE}, pour la station d'Ulrichen, présente une très légère amélioration du critère de manière globale. Contrairement au critère S1, les quantiles des gains du RMSE sont répartis de manière relativement symétrique autour de zéro, ce qui révèle l'occurrence de pertes. À nouveau, les résultats des autres stations sont proches, avec un gain médian à zéro pour les premières analogues et croissant par la suite, mais jamais négatif.
+
+\begin{figure}[htb]
+	\begin{center}$
+		\begin{array}{c}
+		\includegraphics[width=8cm]{figures/Graphique_fenetre_glissante_chmts_RMSE_val.pdf} \\
+		\includegraphics[width=8cm]{figures/Graphique_fenetre_glissante_chmts_RMSE_gain.pdf}
+		\end{array}$
+	\end{center}
+	\caption{Synthèse des changements sur le critère RMSE à la station d'Ulrichen, pour les différentes analogues du second niveau d'analogie, dû à la fenêtre temporelle glissante. (gauche) Quantiles de la distribution des valeurs de RMSE avec (06h) et sans (24h) la fenêtre glissante. (droite) Quantiles des gains sur le critère RMSE par l'utilisation de la fenêtre glissante.}
+	\label{fig:Graphique_fenetre_glissante_chmts_RMSE}
+\end{figure}
+
+
+\section{Conséquences sur les scores de performance}
+
+Nous avons pu observer précédemment un gain systématique sur le critère d'analogie S1. Il nous reste donc à évaluer la conséquence de l'introduction de la fenêtre temporelle glissante sur les scores de performance de la nouvelle distribution de pluie prévue. Nous utilisons donc des séries temporelles de précipitations créées à cet effet. Celles-ci ont été établies par une moyenne mobile sur une durée de 24~h avec un pas de temps de 6~h. En conservant toujours les mêmes paramètres que précédemment (même domaine et même nombre d'analogues), ces valeurs sont attribuées à chaque date analogue. La série des dates cibles reste inchangée, puisque nous conservons la tranche horaire d'origine (6~h~UTC - 6~h~UTC le lendemain). 
+
+Les CRPSS étant calculés sur la base de la même climatologie que précédemment, ils peuvent être comparés directement. Les gains en performance ainsi obtenus (Table \ref{tab:fenetre_glissante:Gains_CRPSS}) s'étalent de 2.31~\% à 9.31~\% pour le premier niveau d'analogie. Lorsque nous considérons le second niveau d'analogie, les gains sont globalement un peu supérieurs. Nous n'avons pas trouvé de relation entre l'amélioration du score et les gains du critère S1, ni avec la saison.
+
+
+\begin{table}[htb]
+	\caption{Gain en compétence du CRPS sur les deux niveaux d'analogie dû à l'introduction de la fenêtre temporelle glissante.}
+	\begin{center}
+		\begin{tabular}{l r r r r r r r r}
+			\hline
+			\multirow{3}{*}{\textbf{Station}} & \multicolumn{ 4}{c}{\textbf{CRPSS (\%) R1}} & \multicolumn{ 4}{c}{\textbf{CRPSS (\%) R2}} \\
+			& \multicolumn{ 2}{c}{\textbf{fenêtre temp}} & \multirow{2}{*}{\textbf{$\Delta$}} & \multirow{2}{*}{\textbf{Gain}} & \multicolumn{ 2}{c}{\textbf{fenêtre temp}} & \multirow{2}{*}{\textbf{$\Delta$}} & \multirow{2}{*}{\textbf{Gain}} \\
+			& \multicolumn{1}{c}{\textbf{std}} & \multicolumn{1}{c}{\textbf{gliss.}} &  &  & \textbf{std} & \textbf{gliss.} &  & \\ 
+			\hline
+			Ulrichen & 29.37 & 31.12 & 1.74 & \textbf{5.93} & 33.24 & 35.44 & 2.20 & \textbf{6.63} \\ \hline
+			Zermatt & 22.20 & 24.34 & 2.14 & \textbf{9.64} & 26.95 & 28.92 & 1.97 & \textbf{7.31} \\ \hline
+			Visp & 23.23 & 24.39 & 1.16 & \textbf{5.00} & 27.77 & 29.42 & 1.64 & \textbf{5.92} \\ \hline
+			Montana & 30.79 & 31.59 & 0.80 &\textbf{ 2.60} & 34.77 & 36.30 & 1.53 & \textbf{4.39} \\ \hline
+			Sion & 24.78 & 25.35 & 0.57 & \textbf{2.31} & 29.36 & 31.07 & 1.71 & \textbf{5.82} \\ \hline
+			Aigle & 30.57 & 31.78 & 1.21 & \textbf{3.95} & 35.95 & 38.11 & 2.16 & \textbf{6.00} \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{tab:fenetre_glissante:Gains_CRPSS}
+\end{table}
+
+
+\subsection{Amélioration de différentes gammes de précipitations}
+\label{sec:ameliorations:fenetre:gammes_precip}
+
+\begin{figure}[htb]
+	\includegraphics[width=6cm]{figures/Graphique_fenetre_glissante_chmts_CRPS_seuils_precip.pdf}
+	\caption{Distribution des différences sur le score CRPSS dues à l'introduction de la fenêtre temporelle glissante en fonction de seuils de précipitations à la station d'Ulrichen. Les étoiles sont les moyennes des distributions.}
+	\label{fig:Graphique_fenetre_glissante_chmts_CRPS_seuils_precip}
+\end{figure}
+
+Nous avions observé dans la section \ref{sec:ameliorations:fenetre:S1_pluie} une amélioration du critère S1 pour les situations plus dynamiques, soit avec des valeurs de précipitations supérieures. Nous allons à présent mettre en relation les gains en CRPSS et les cumuls précipités.
+
+La Figure \ref{fig:Graphique_fenetre_glissante_chmts_CRPS_seuils_precip} synthétise ces gains pour la station d'Ulrichen, les autres stations se comportant de la même manière. Un étalement de la distribution avec l'augmentation du seuil de précipitations peut être observé. Cet effet s'explique en premier lieu par le fait que la valeur du CRPS est dépendante des quantités de précipitations des journées cibles. 
+
+Un résultat plus intéressant est la tendance positive croissante de toute la distribution avec l'augmentation du seuil des précipitations. À partir du seuil de 10~mm, la moyenne et les quantiles du gain en CRPSS tendent à augmenter de manière significative. Il semble donc que nous améliorons les scores de performance des événements davantage pluvieux, en plus de leurs critères d'analogie. Le fait que les jours non pluvieux et les petits cumuls ne sont pas améliorés semble expliquer le gain peu probant lorsque nous considérons l'ensemble de la période.
+
+
+
+\subsection{Recalibration des paramètres}
+\label{sec:ameliorations:fenetre:recalibration}
+
+L'évaluation précédente du gain en score de performance a été établie avec les paramètres originaux. Nous pouvons néanmoins supposer que l'introduction de la fenêtre temporelle glissante modifie peut-être le choix optimal de la position et de la taille de la fenêtre spatiale idéale et change le nombre d'analogues comparativement à la méthode standard. La calibration a donc été effectuée à nouveau.
+
+
+\begin{table}[htb]
+	\caption{Paramètres pour les champs de géopotentiel à 500~hPa et 1000~hPa et compétence de la méthode R1 après calibration pour la fenêtre temporelle glissante.}
+	\begin{center}
+		\begin{tabular}{l c c c c c c c c }
+			\hline
+			\multirow{2}{*}{\textbf{Station}} & \textbf{Lon} & \textbf{Taille} & \textbf{Lat} & \textbf{Taille} & \multirow{2}{*}{\textbf{N$_{1}$}} & \textbf{CRPSS} & \multirow{2}{*}{\textbf{$\Delta$}} & \textbf{Gain} \\ 
+			& \textbf{min} & \textbf{lon} & \textbf{min} & \textbf{lat} &  & \textbf{(\%)} & & \textbf{(\%)} \\ 
+			\hline
+			Ulrichen & 0 & 17.5 & 42.5 & 7.5 & 50 & 31.58 & 2.20 & \textbf{7.50} \\ \hline
+			Zermatt & 0 & 17.5 & 40 & 10 & 55 & 24.71 & 2.51 & \textbf{11.32} \\ \hline
+			Visp & -2.5 & 22.5 & 40 & 10 & 55 & 25.08 & 1.85 & \textbf{7.96} \\ \hline
+			Montana & -2.5 & 17.5 & 42.5 & 5 & 55 & 32.22 & 1.43 & \textbf{4.65} \\ \hline
+			Sion & -2.5 & 17.5 & 37.5 & 12.5 & 55 & 26.07 & 1.29 & \textbf{5.19} \\ \hline
+			Aigle & -2.5 & 17.5 & 40 & 10 & 75 & 32.21 & 1.64 & \textbf{5.36} \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{tab:fenetre_glissante:Resultats_R1_recalibration_fen_gliss}
+\end{table}
+
+
+\begin{table}[htb]
+	\caption{Paramètres pour l'humidité et compétence de la méthode R2 après calibration pour la fenêtre temporelle glissante. Le nombre d'analogues du premier niveau d'analogie est donné dans la 6ieme colonne (N$_{1}$) et celui du second niveau dans la 7ieme colonne (N$_{2}$).}
+	\begin{center}
+		\begin{tabular}{l c c c c c c c c c }
+			\hline
+			\multirow{2}{*}{\textbf{Station}} & \textbf{Lon} & \textbf{Taille} & \textbf{Lat} & \textbf{Taille} & \multirow{2}{*}{\textbf{N$_{1}$}} & \multirow{2}{*}{\textbf{N$_{2}$}} & \textbf{CRPSS} &  \multirow{2}{*}{\textbf{$\Delta$}} & \textbf{Gain}\\ 
+			& \textbf{min} & \textbf{lon} & \textbf{min} & \textbf{lat} &  &  & \textbf{(\%)} & & \textbf{(\%)} \\ 
+			\hline
+			Ulrichen & 5 & 5 & 45 & 2.5 & 110 & 35 & 35.72 & 2.48 & \textbf{7.46} \\ \hline
+			Zermatt & 7.5 & 0 & 45 & 2.5 & 80 & 30 & 29.63 & 2.68 & \textbf{9.94} \\ \hline
+			Visp & 7.5 & 0 & 45 & 2.5 & 135 & 35 & 30.29 & 2.52 & \textbf{9.07} \\ \hline
+			Montana & 5 & 2.5 & 45 & 0 & 110 & 40 & 37.15 & 2.38 & \textbf{6.85} \\ \hline
+			Sion & 5 & 5 & 45 & 2.5 & 140 & 50 & 31.68 & 2.32 & \textbf{7.91} \\ \hline
+			Aigle & 5 & 2.5 & 45 & 0 & 135 & 45 & 38.50 & 2.55 & \textbf{7.10} \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{tab:fenetre_glissante:Resultats_R2_recalibration_fen_gliss}
+\end{table}
+
+Des changements dans les paramètres optimaux des méthodes R1 (Table \ref{tab:fenetre_glissante:Resultats_R1_recalibration_fen_gliss}) et R2 (Table \ref{tab:fenetre_glissante:Resultats_R2_recalibration_fen_gliss}) peuvent être observés. Parmi ceux-ci, la dimension ouest-est des fenêtres spatiales du premier niveau tend à diminuer, les autres paramètres variant de diverses manières. Une constance est l'augmentation du nombre d'analogues après introduction de la fenêtre glissante, qui croît de 25~\% à 83~\% pour la méthode R1, et de 20~\% à 67~\% pour la méthode R2. Le nombre d'analogues du premier niveau de la méthode R2 atteint même le triple de sa valeur précédente pour la station de Visp. Le fait de pouvoir sélectionner des analogues de la même journée explique que nous sommes conduits à augmenter le nombre optimal d'analogues. La Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1} nous a révélé que l'amélioration du critère d'analogie est croissante avec le rang des analogues. Nous accroissons donc le nombre de bonnes analogues de manière globale, tout en conservant certaines analogues dont le rang a augmenté.
+
+Cette augmentation du nombre d'analogues a un léger effet sur les performances des différentes classes de précipitations. L'analyse par classes (section \ref{sec:ameliorations:fenetre:gammes_precip}) a été effectuée à nouveau sur les analogues après recalibration. Les résultats sont globalement très semblables, mais nous pouvons distinguer une légère augmentation des performances des petites pluies au détriment des précipitations plus importantes. L'accroissement du nombre d'analogues est vraisemblablement responsable de cette différence dans la répartition des gains.
+
+Les valeurs des scores des méthodes R1 (Table \ref{tab:fenetre_glissante:Resultats_R1_recalibration_fen_gliss}) et R2 (Table \ref{tab:fenetre_glissante:Resultats_R2_recalibration_fen_gliss}) ont significativement augmenté après la recalibration. Avec l'introduction de la fenêtre temporelle glissante, nous regagnons en performance ce que nous avions alors perdu par la réduction de la longueur de l'archive. Dans notre cas, cette amélioration correspond approximativement à un doublement de la taille de l'archive.
+
+
+\subsection{Décomposition du score en finesse et justesse}
+
+Le score CRPS pouvant être décomposé en deux composantes, à savoir la finesse et la justesse, nous allons analyser l'effet de la fenêtre temporelle glissante sur chacune d'elles. Les résultats de la Table \ref{tab:fenetre_glissante:Resultats_justesse_finesse} étant exprimés par rapport au CRPS total, un changement de la finesse est donc quantifié par rapport à la somme de la finesse et de la justesse. En effet, ces deux composantes n'ont pas les mêmes gammes de valeurs, la justesse étant dans notre cas presque deux fois supérieure à la finesse. Puisque nous travaillons ici sur le CRPS et non le CRPSS, une amélioration de la prévision se traduit par une baisse du score.
+
+\begin{table}[h]
+	\caption{Changements en finesse (Fin.) et en justesse (Just.) relatifs au CRPS total, dus à l'introduction de la fenêtre temporelle glissante. Les changements sont présentés pour les méthodes R1 et R2, et pour les résultats sans et avec recalibration des paramètres.}
+	\begin{center}
+		\begin{tabular}{|l|r r|r r|r r|r r|}
+			\cline{2-9}
+			\multicolumn{1}{l}{} & \multicolumn{ 4}{|c|}{\textbf{Fenêtre glissante}} & \multicolumn{ 4}{c|}{\textbf{Fenêtre glissante}} \\
+			\multicolumn{1}{l}{} & \multicolumn{ 4}{|c|}{\textbf{sans recalibration}} & \multicolumn{ 4}{c|}{\textbf{avec recalibration}} \\
+			\multicolumn{1}{l}{} & \multicolumn{ 2}{|c|}{\textbf{R1}} & \multicolumn{ 2}{c|}{\textbf{R2}} & \multicolumn{ 2}{c|}{\textbf{R1}} & \multicolumn{ 2}{c|}{\textbf{R2}} \\
+			\multicolumn{1}{l}{} & \multicolumn{1}{|l}{\textbf{Fin.}} & \multicolumn{1}{l|}{\textbf{Just.}} & \multicolumn{1}{l}{\textbf{Fin.}} & \multicolumn{1}{l|}{\textbf{Just.}} & \multicolumn{1}{l}{\textbf{Fin.}} & \multicolumn{1}{l|}{\textbf{Just.}} & \multicolumn{1}{l}{\textbf{Fin.}} & \multicolumn{1}{l|}{\textbf{Just.}} \\
+			\multicolumn{1}{l}{} & \multicolumn{1}{|l}{\textbf{(\%)}} & \multicolumn{1}{l|}{\textbf{(\%)}} & \multicolumn{1}{l}{\textbf{(\%)}} & \multicolumn{1}{l|}{\textbf{(\%)}} & \multicolumn{1}{l}{\textbf{(\%)}} & \multicolumn{1}{l|}{\textbf{(\%)}} & \multicolumn{1}{l}{\textbf{(\%)}} & \multicolumn{1}{l|}{\textbf{(\%)}} \\ \hline
+			Ulrichen & 2.82 & -5.29 & 1.00 & -4.30 & 1.44 & -4.56 & -0.37 & -3.34 \\ \hline
+			Zermatt & 2.26 & -5.01 & 0.88 & -3.58 & 0.80 & -4.03 & 0.75 & -4.42 \\ \hline
+			Visp & 3.66 & -5.18 & 2.67 & -4.94 & 1.53 & -3.94 & 1.47 & -4.96 \\ \hline
+			Montana & 1.62 & -2.78 & 0.57 & -2.91 & -0.27 & -1.80 & 0.06 & -3.71 \\ \hline
+			Sion & 2.02 & -2.78 & 0.33 & -2.75 & 0.95 & -2.66 & -0.10 & -3.19 \\ \hline
+			Aigle & 0.52 & -2.26 & -1.20 & -2.17 & -0.35 & -2.01 & -2.08 & -1.90 \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{tab:fenetre_glissante:Resultats_justesse_finesse}
+\end{table}
+
+
+\begin{figure*}[h]
+	\begin{center}$
+		\begin{array}{cccc}
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_justesse.pdf} & \hspace{-5mm}
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_finesse.pdf} & \hspace{-5mm}
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_justesse.pdf} & \hspace{-5mm}
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_finesse.pdf} \\
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_justesse_recalib.pdf} & \hspace{-5mm}
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_finesse_recalib.pdf} & \hspace{-5mm}
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_justesse_recalib.pdf} & \hspace{-5mm}
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_finesse_recalib.pdf} 
+		\end{array}$
+	\end{center}
+	\caption{Influence de la fenêtre temporelle glissante sur les composantes du CRPS (justesse et finesse), pour les méthodes R1 et R2. Les résultats sont présentés pour (haut) les paramètres originaux et (bas) recalibrés. Une amélioration de la prévision se traduit par une baisse du score.}
+	\label{fig:Graphique_fenetre_glissante_crps_comp}
+\end{figure*}
+
+Il apparaît que la finesse est moins bonne avec la fenêtre temporelle glissante, au profit de la justesse, et ceci pour les mêmes paramètres que la méthode standard, alors qu'elle décroît avec l'augmentation du nombre d'analogues après recalibration. La Figure \ref{fig:Graphique_fenetre_glissante_crps_comp}, illustrant les changements en finesse et justesse pour différentes gammes de précipitations à la station d'Ulrichen, présente cette même tendance. Nous y voyons également que le plus grand gain en justesse concerne les gammes de précipitations les plus importantes, que ce soit pour R1 ou R2.  La fenêtre temporelle glissante ne permet donc pas d'améliorer la finesse, mais l'amélioration de la justesse est significative, et ceci notamment pour les jours de fortes précipitations. Cela signifie donc que le quantile 50~\% de la distribution prévue se rapproche des cumuls observés, mais que la distribution n'est pas plus condensée que précédemment.
+
+
+
+\section{Tentatives d'application à l'archive complète}
+
+L'amélioration apportée par la fenêtre temporelle glissante est intéressante, il serait donc profitable de pouvoir l'appliquer à notre archive complète. Malheureusement, il n'existe pas de données horaires avant 1982 nous permettant de disposer d'une archive compatible et correcte. Nous allons donc chercher à répartir les cumuls précipités sur la journée par une simple moyenne mobile ou en utilisant la chronologie d'un prédicteur lié à l'humidité en tant que proxy.
+
+\subsection{Série par moyenne mobile}
+
+La moyenne mobile est certainement la répartition la plus simple que nous pouvons effectuer. Elle consiste à distribuer les précipitations journalières concernées de manière proportionnelle dans les différentes tranches de la série 24~heures glissée (Figure \ref{fig:Illustration_series_6h_moyennes_mobiles}). Les résultats présentés dans la Table \ref{tab:fenetre_glissante:Resultats_moyenne_mobile} montrent clairement qu'une telle archive ne présente aucun intérêt, puisque les performances sont même inférieures à la méthode classique sans fenêtre temporelle glissante (Table \ref{tab:fenetre_glissante:Gains_CRPSS}). Nous perdons le gain d'une sélection plus fine des situations analogues du fait d'une archive pluviométrique de qualité médiocre.
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=12cm]{figures/Illustration_series_6h_moyennes_mobiles.pdf}
+	\end{center}
+	\caption{Illustration de la création de séries de cumuls sur 24h glissés par moyenne mobile.}
+	\label{fig:Illustration_series_6h_moyennes_mobiles}
+\end{figure}
+
+\begin{table}[htb]
+	\caption{Performances de la fenêtre temporelle glissante avec une archive pluviométrique générée par moyenne mobile. Les résultats sont présentés pour les paramètres initiaux, ainsi que ceux issus de la recalibration de la section \ref{sec:ameliorations:fenetre:recalibration}}
+	\begin{center}
+		\begin{tabular*}{10cm}{@{\extracolsep{\fill}}lcccc}
+			\hline
+			\multirow{2}{*}{\textbf{Station}} & \multicolumn{ 2}{c}{\textbf{Fenêtre glissante}} & \multicolumn{ 2}{c}{\textbf{Avec recalibration}} \\
+			& \multicolumn{1}{c}{\textbf{R1}} & \multicolumn{1}{c}{\textbf{R2}} & \multicolumn{1}{c}{\textbf{R1}} & \multicolumn{1}{c}{\textbf{R2}} \\ \hline
+			Ulrichen & 29.13~\% & 33.15~\% & 29.61~\% & 33.45~\% \\ \hline
+			Zermatt & 22.17~\% & 26.72~\% & 22.80~\% & 27.43~\% \\ \hline
+			Visp & 22.32~\% & 27.01~\% & 22.89~\% & 28.04~\% \\ \hline
+			Montana & 29.41~\% & 33.83~\% & 30.24~\% & 34.55~\% \\ \hline
+			Sion & 22.98~\% & 28.57~\% & 23.41~\% & 29.15~\% \\ \hline
+			Aigle & 29.07~\% & 34.66~\% & 29.46~\% & 35.09~\% \\ \hline
+		\end{tabular*}
+	\end{center}
+	\label{tab:fenetre_glissante:Resultats_moyenne_mobile}
+\end{table}
+
+
+
+\subsection{Utilisation d'un proxy pour reconstituer la chronologie}
+
+Comme nous l'avons vu dans la section précédente, une série de précipitations reconstituée de manière simpliste nous fait perdre tout le gain de performance de la fenêtre temporelle glissante et ne présente alors aucun intérêt. Nous devons donc trouver un moyen de nous approcher de la chronologie réelle, pour une période (1961-1981) où nous ne disposons d'aucune série de précipitations continue avec une résolution plus fine. Il nous faut donc extraire de l'information de la répartition intrajournalière des pluies à partir d'une autre source de données. Un modèle de prévision météorologique régional serait en mesure d'apporter de l'information permettant de générer des séries de précipitations plus pertinentes. Malheureusement, de tels résultats ne sont pas disponibles sous forme de longues archives. Une alternative aux modèles régionaux est donnée par les réanalyses. Bien que celles-ci ont une résolution plus faible et n'intègrent que grossièrement les processus locaux, nous allons évaluer si elles rendent possible la transposition de la fenêtre temporelle glissante sur toute l'archive. 
+
+La première étape consiste à déterminer quelle variable, de l'eau précipitable ou de l'humidité relative, est la plus corrélée avec la série de précipitations sur la période 1982-2007, et en quel point. Nous considérons les niveaux 1000~hPa, 925~hPa et 850~hPa pour l'humidité relative, et les points les plus proches du bassin (5\textdegree\ - 7.5\textdegree\ de longitude et 45\textdegree\ - 47.5\textdegree\ de latitude). Finalement, les points de grille des réanalyses étant relativement éloignés de nos stations, il est pertinent de rechercher la présence probable d'un décalage temporel entre les séries. 
+
+Le point le plus pertinent ne sera probablement pas le même pour toutes les stations, puisque nous pouvons nous attendre à trouver l'optimum dans la direction des apports d'humidité principaux pour la station. Cette recherche doit donc être effectuée pour chacune de nos stations. Nous illustrons le principe avec la station de Zermatt.
+
+
+\begin{table}[htb]
+	\caption{Valeur du coefficient de détermination entre les séries reconstituées à l'aide d'un proxy et la série réelle à pas de temps de 6~h. Les proxys évalués sont l'eau précipitable et l'humidité relative à différents niveaux atmosphériques, en 4 points proches du bassin. Le coefficient de détermination le plus élevé est indiqué en gras.}
+	\begin{center}
+		\begin{tabular}{|l|rr|rrrrr|}
+			\cline{ 2- 8}
+			\multicolumn{1}{l}{} & \multicolumn{2}{|c|}{\textbf{Position}} &  \multicolumn{5}{c|}{\textbf{Décalage temporel}} \\
+			\multicolumn{1}{l}{} & \multicolumn{1}{|c}{\textbf{Lon}} & \multicolumn{1}{c|}{\textbf{Lat}} & \multicolumn{1}{c}{\textbf{-12h}} & \multicolumn{1}{c}{\textbf{-6h}} & \multicolumn{1}{c}{\textbf{0h}} & \multicolumn{1}{c}{\textbf{+6h}} & \multicolumn{1}{c|}{\textbf{+12h}} \\ \hline
+			\multirow{ 4}{*}{RHum 1000 hPa} & 5.0 & 47.5 & 0.668 & 0.669 & 0.684 & 0.683 & 0.670 \\
+			& 5.0 & 45.0 & 0.669 & 0.669 & 0.683 & 0.681 & 0.669 \\
+			& 7.5 & 47.5 & 0.662 & 0.673 & 0.691 & 0.682 & 0.673 \\
+			& 7.5 & 45.0 & 0.666 & 0.671 & 0.688 & 0.681 & 0.668 \\ \hline
+			\multirow{ 4}{*}{RHum 925 hPa} & 5.0 & 47.5 & 0.672 & 0.673 & 0.684 & 0.684 & 0.675 \\
+			& 5.0 & 45.0 & 0.674 & 0.674 & 0.683 & 0.682 & 0.672 \\
+			& 7.5 & 47.5 & 0.662 & 0.673 & 0.691 & 0.682 & 0.673 \\
+			& 7.5 & 45.0 & 0.666 & 0.671 & 0.689 & 0.681 & 0.668 \\ \hline
+			\multirow{ 4}{*}{RHum 850 hPa} & 5.0 & 47.5 & 0.675 & 0.675 & 0.679 & 0.678 & 0.671 \\
+			& 5.0 & 45.0 & 0.681 & 0.690 & 0.691 & 0.677 & 0.664 \\
+			& 7.5 & 47.5 & 0.665 & 0.680 & 0.693 & 0.683 & 0.675 \\
+			& 7.5 & 45.0 & 0.675 & 0.694 & 0.706 & 0.681 & 0.659 \\ \hline
+			\multirow{ 4}{*}{Eau precipitable} & 5.0 & 47.5 & 0.688 & 0.687 & 0.667 & 0.655 & 0.652 \\
+			& 5.0 & 45.0 & 0.697 & 0.699 & 0.669 & 0.644 & 0.644 \\
+			& 7.5 & 47.5 & 0.686 & 0.708 & 0.689 & 0.655 & 0.648 \\
+			& 7.5 & 45.0 & 0.696 & \textbf{0.721} & 0.696 & 0.643 & 0.636 \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{tab:fenetre_glissante:Serie_proxy_correlations}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Valeurs des scores CRPSS pour Zermatt avec la série glissée reconstituée à l'aide d'un proxy météorologique. Les résultats sont présentés pour les deux périodes 1982-2007 et 1961-2008, pour les paramètres sans et avec recalibration, ainsi que pour les deux méthodes R1 et R2.}
+	\begin{center}
+		\begin{tabular*}{10cm}{@{\extracolsep{\fill}}lcccc}
+			\hline
+			\multirow{2}{*}{\textbf{Période}} & \multicolumn{ 2}{c}{\textbf{Sans recalibration}} & \multicolumn{ 2}{c}{\textbf{Avec recalibration}} \\
+			& \multicolumn{1}{c}{\textbf{R1}} & \textbf{R2} & \multicolumn{1}{c}{\textbf{R1}} & \textbf{R2} \\ \hline
+			1982-2007 & 22.57~\% & 27.11~\% & 23.14~\% & 27.71~\% \\ \hline
+			1961-2008 & 23.81~\% & 28.42~\% & 24.38~\% & 28.86~\% \\ \hline
+		\end{tabular*}
+	\end{center}
+	\label{tab:fenetre_glissante:Resultats_proxy_Zermatt}
+\end{table}
+
+
+Afin de déterminer quelle variable météorologique considérer, en quel point, et avec quel décalage horaire, chacune des séries générées doit être comparée à la série réelle. La Table \ref{tab:fenetre_glissante:Serie_proxy_correlations} présente les coefficients de détermination sur les valeurs non nulles entre les nouvelles séries reconstituées à l'aide du proxy et la série réelle de la station de Zermatt à pas de temps de 6~h sur la période 1982-2007. Le meilleur proxy est l'eau précipitable à 45\textdegree\ de latitude et 7.5\textdegree\ de longitude, avec un décalage temporel de -6~h; cela signifie que nous devons retarder de 6~h la chronologie du prédicteur afin de l'appliquer aux précipitations. Le coefficient de détermination de 0.721 est supérieur à celui de la série par moyenne mobile (0.698), ce qui nous confirme que nous avons ajouté un peu d'information à la série de précipitations, sans toutefois savoir si celle-ci est suffisante.
+
+La Table \ref{tab:fenetre_glissante:Resultats_proxy_Zermatt} présente les scores CRPSS obtenus par la série reconstituée à l'aide du proxy de l'eau précipitable au point optimal (Table \ref{tab:fenetre_glissante:Serie_proxy_correlations}). Nous observons une légère amélioration par rapport aux résultats obtenus avec la série de moyennes mobiles (Table \ref{tab:fenetre_glissante:Resultats_moyenne_mobile}), mais celle-ci est toujours relativement petite, et la plus grande partie du gain de la fenêtre temporelle glissante est perdue.
+
+Ces tentatives de transposition de la fenêtre temporelle glissante sur l'archive totale mettent en évidence l'importance de la temporalité réelle des précipitations. La fenêtre glissante est un gain, à condition que les séries de précipitations soient proches de l'observé. Sans information sur la chronologie des précipitations, il n'est pas pertinent d'appliquer cette modification à la méthode. Nous pouvons espérer que, dans le futur, des reprévisions par des modèles régionaux seront en mesure de nous apporter une chronologie des précipitations s'approchant de la réalité.
 
 
 \conclusions  %% \conclusions[modified heading if necessary]
-TEXT
+
+Comme \citet{Finet2008} l'avaient déjà été montré précédemment, nous gagnons en analogie synoptique en introduisant la fenêtre temporelle glissante. Pour ce qui est de la prévision des précipitations, nous regagnons en fenêtre glissante sur période réduite ce que nous avions perdu par rapport à la fenêtre fixe en raison de la réduction de l'archive. Dans notre cas, ce gain correspond au doublement de la taille de l'archive.
+
+Nous avons également démontré l'importance de la qualité de l'archive pluviométrique: nous gagnons en prévision des précipitations pour autant que la chronologie des pluies y soit proche de la réalité. Pour une archive reconstituée de manière grossière, les gains en performances de la fenêtre glissante ne se répercutent pas sur la prévision des pluies, bien que l'analogie synoptique soit meilleure. Il conviendra donc de maintenir l'objectif qui consiste à reconstruire des séries de précipitations passées de manière la plus réaliste possible, par exemple à l'aide d'un modèle météorologique régional. Lorsque de telles archives pluviométriques seront disponibles, l'ajout d'une fenêtre temporelle glissante en prévision par analogie montrera tout son intérêt.
 
 
 
@@ -159,7 +581,7 @@ Thanks to Dominique B\'{e}rod for his support and to Renaud Marty for his fruitf
 %% The reference list is compiled as follows:
 
 \bibliographystyle{copernicus}
-\bibliography{../_refs/_articles-movingwindow}
+\bibliography{../_refs/_articles-moving-window}
 
 %% Since the Copernicus LaTeX package includes the BibTeX style file copernicus.bst,
 %% authors experienced with BibTeX only have to include the following two lines:
@@ -296,10 +718,10 @@ Thanks to Dominique B\'{e}rod for his support and to Renaud Marty for his fruitf
 %%% ALGORITHM
 %
 %\begin{algorithm}
-%\caption{�}
+%\caption{…}
 %\label{a1}
 %\begin{algorithmic}
-%�
+%…
 %\end{algorithmic}
 %\end{algorithm}
 %
