@@ -227,13 +227,13 @@ In order to assess the benefit of searching analogue situations at a sub-daily t
 
 The target situations and their corresponding observed precipitation values (used for validation) do not change, because the forecast is always established for a fixed period of the target day (6-30~h), as before. The difference is that the candidates are 4~times more numerous (Figure \ref{fig:principle}).
 
-\begin{figure*}[htb]
+\begin{figure}[htb]
 	\begin{center}
-		\includegraphics[width=14cm]{figures/Illustration_fenetre_glissante.pdf}
+		\includegraphics[width=8.3cm]{figures/illustration_moving_window.pdf}
 	\end{center}
 	\caption{Illustration of the principle of a sliding time window. }
 	\label{fig:principle}
-\end{figure*}
+\end{figure}
 
 Logic suggests a priori that only one situation (the best) is selected per candidate day. An exclusion of the same dates was tested in two different ways: (1)
 by excluding the worse analogues in a period of $\pm$ 24~h, and (2) by excluding the worse analogues with the same date. After several tests, it turned out that no restrictions led to better skills, and this on a significant and recurring basis. Thus, no constraint was further used.
@@ -306,38 +306,39 @@ Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI
 The impact of the change in the archive length is summarized in Table \ref{table:loss_reduction} for both 2Z and 2Z-2MI methods. As expected, a loss of performance can be observed for each station, except for that of Aigle, which seems relatively indifferent to this change. This loss is globally significant, with up to -1.89 points for Visp and the 2Z method. 
 
 
-\section{Influence de la fenêtre glissante sur les critères d'analogie}
+\section{Influence on the analogy criteria}
 
+\subsection{Changes in the atmospheric circulation analogy}
 
-\subsection{Changements du critère du premier niveau d'analogie}
-
-
-La recherche d'analogues sur les champs de géopotentiel de la méthode R1 a donc à présent 4 fois plus de candidats possibles qu'auparavant, ce qui permet évidemment de trouver de meilleures analogues. 
+When searching for analogues on the geopotential heights, as in the 2Z method, there are now 4 times more candidates than before, which obviously allows to find better matches.
 
 \begin{figure*}[htb]
 	\begin{center}
-		\includegraphics[width=15cm]{figures/Graphique_fenetre_glissante_chmts_S1_analogues.pdf}
+		\includegraphics[width=15cm]{figures/changes_S1_analogues.png}
 	\end{center}
-	\caption{Changements dans les distributions du critère S1 de certaines analogues (la 1iere, la 5ieme, la 20ieme et la 40ieme), à la station d'Ulrichen, dû à la fenêtre temporelle glissante.}
-	\label{fig:Graphique_fenetre_glissante_chmts_S1_analogues}
+	\caption{Changes in the S1 criteria distributions of the $1^{st}$, $5^{th}$, $20^{th}$ and $40^{th}$ analogue ranks for the Ulrichen station, due to the STW.}
+	\label{fig:changes_S1_analogues}
 \end{figure*}
 
-La Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1_analogues} présente les changements dans les distributions du critère S1 pour la 1iere, la 5ieme, la 20ieme et la 40ieme analogue à la station d'Ulrichen, avec une période cible de précipitations correspondant à celle d'origine, soit centrée sur 18~h~UTC (de 6~h~UTC à 6~h~UTC le lendemain). Les formes des distributions de l'approche classique et de la fenêtre temporelle glissante sont semblables, mais les valeurs du critère d'analogie sont réduites, donc meilleures. Une augmentation de la différence entre fenêtre fixe et fenêtre glissante de la première à la dernière analogue est identifiable, ce qui signifie que nous améliorons davantage les dernières analogues. Ce dernier effet est dû à l'accumulation des améliorations apportées par les nouvelles analogues dans la sélection.
+Figure \ref{fig:changes_S1_analogues} presents the changes in the distributions of the S1 criterion for the $1^{st}$, $5^{th}$, $20^{th}$ and $40^{th}$ analogues for the Ulrichen station on the whole calibration period, due to introduction of the STW. The precipitation target remains at before, that is centered on 18~h~UTC (6~h~UTC to 6~h~UTC the next day). The shapes of the distributions of the conventional approach and the STW are similar, but the values of the analogy criteria are now reduced, therefore better. An increase in the difference between a fixed window and a sliding window is identifiable, which means that the last analogues are further improved. The latter effect is due to the accumulation of improvements brought by the new analogue situations in the selection.
 
 \begin{figure}[htb]
 	\begin{center}$
 		\begin{array}{c}
-		\includegraphics[width=8cm]{figures/Graphique_fenetre_glissante_chmts_S1_val.pdf} \\
-		\includegraphics[width=8cm]{figures/Graphique_fenetre_glissante_chmts_S1_gain.pdf}
+		\includegraphics[width=8.3cm]{figures/changes_S1_value.pdf} \\
+		\includegraphics[width=8.3cm]{figures/changes_S1_gain.pdf}
 		\end{array}$
 	\end{center}
-	\caption{Synthèse du gain sur le critère S1 à la station d'Ulrichen, pour les différentes analogues, dû à la fenêtre temporelle glissante. (gauche) Quantiles de la distribution des valeurs de S1 avec (06h) et sans (24h) la fenêtre glissante. (droite) Quantiles des gains sur le critère S1 par l'utilisation de la fenêtre glissante.}
-	\label{fig:Graphique_fenetre_glissante_chmts_S1}
+	\caption{Synthesis of the changes in the S1 criterion, due to the STW, for the Ulrichen station, depending on the ranks of the analogue. (top) Quantiles of the S1 distributions with (06h) and without (24h) the sliding window. (bottom) Quantiles of the relative improvements of the S1 criteria when using the sliding window.}
+	\label{fig:changes_S1}
 \end{figure}
 
-Ces gains sont synthétisés dans la Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1}, qui illustre les valeurs, pour S1, des quantiles pour toutes les analogues avec et sans la fenêtre glissante, ainsi que la distribution des gains réalisés pour l'ensemble des dates. Cela confirme que tous les quantiles semblent réduits de manière semblable (les distributions de S1 conservent leur forme) et que ce gain augmente constamment de la première à la dernière analogue (Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1} gauche). 
 
-Les statistiques des gains pour chaque date (Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1} droite) présentent une médiane de la réduction qui démarre approximativement à 5~\% pour les premières analogues et termine à plus de 10~\% pour les dernières. Cette tendance à l'augmentation du gain sur le critère S1 avec le rang de l'analogue peut être expliquée par le fait que chaque gain effectué sur les premières analogues se répercute sur les suivantes. Inversement, le gain maximal décroît de 50~\% à 25~\%. Le gain minimal part de 0 pour atteindre une valeur située entre 2~\% et 3~\%, signifiant que tous les critères ont été améliorés. Les dates sélectionnées précédemment étant toujours disponibles, le critère S1 ne peut en effet que s'améliorer ou rester identique, mais en aucun cas se détériorer. Toutes les autres stations présentent une amélioration du critère S1 très proche, tant pour la forme des distributions que pour leur amplitude.
+
+
+Ces gains sont synthétisés dans la Figure \ref{fig:changes_S1}, qui illustre les valeurs, pour S1, des quantiles pour toutes les analogues avec et sans la fenêtre glissante, ainsi que la distribution des gains réalisés pour l'ensemble des dates. Cela confirme que tous les quantiles semblent réduits de manière semblable (les distributions de S1 conservent leur forme) et que ce gain augmente constamment de la première à la dernière analogue (Figure \ref{fig:changes_S1} gauche). 
+
+Les statistiques des gains pour chaque date (Figure \ref{fig:changes_S1} droite) présentent une médiane de la réduction qui démarre approximativement à 5~\% pour les premières analogues et termine à plus de 10~\% pour les dernières. Cette tendance à l'augmentation du gain sur le critère S1 avec le rang de l'analogue peut être expliquée par le fait que chaque gain effectué sur les premières analogues se répercute sur les suivantes. Inversement, le gain maximal décroît de 50~\% à 25~\%. Le gain minimal part de 0 pour atteindre une valeur située entre 2~\% et 3~\%, signifiant que tous les critères ont été améliorés. Les dates sélectionnées précédemment étant toujours disponibles, le critère S1 ne peut en effet que s'améliorer ou rester identique, mais en aucun cas se détériorer. Toutes les autres stations présentent une amélioration du critère S1 très proche, tant pour la forme des distributions que pour leur amplitude.
 
 
 
@@ -350,7 +351,7 @@ Nous allons chercher à vérifier cette assertion, mais nous ne pouvons pas ais�
 
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[width=12cm]{figures/Graphique_fenetre_glissante_chmts_S1_seuils_precip.pdf}
+		\includegraphics[width=8.3cm]{figures/changes_S1_precip_threshold.pdf}
 	\end{center}
 	\caption{Distribution des gains sur la médiane du critère S1, dus à la fenêtre temporelle glissante, en fonction de seuils de précipitations à la station d'Ulrichen.}
 	\label{fig:Graphique_fenetre_glissante_chmts_S1_seuils_precip}
@@ -365,8 +366,8 @@ La dynamique atmosphérique varie fortement d'une saison à l'autre, ce qui reja
 \begin{figure}[htb]
 	\begin{center}$
 		\begin{array}{c}
-		\includegraphics[width=8cm]{figures/Graphique_fenetre_glissante_chmts_S1_saisons_val.pdf} \\
-		\includegraphics[width=6cm]{figures/Graphique_fenetre_glissante_chmts_S1_saisons_gain.pdf}
+		\includegraphics[width=8.3cm]{figures/Graphique_fenetre_glissante_chmts_S1_saisons_val.pdf} \\
+		\includegraphics[width=6.5cm]{figures/Graphique_fenetre_glissante_chmts_S1_saisons_gain.pdf}
 		\end{array}$
 	\end{center}
 	\caption{Effet saisonnier sur le critère S1 original pour la station d'Ulrichen et son gain dû à la fenêtre temporelle glissante. DJF: hiver, MAM: printemps, JJA: été, SON: automne. (gauche) Quantiles de la distribution des valeurs de S1 pour les différentes saisons avec la fenêtre temporelle originale de 24~h. (droite) Médianes des gains sur le critère S1 par l'utilisation de la fenêtre glissante pour les différentes saisons.}
@@ -393,8 +394,8 @@ Lorsque nous considérons le second niveau d'analogie de la méthode R2, les sit
 \begin{figure}[htb]
 	\begin{center}$
 		\begin{array}{c}
-		\includegraphics[width=8cm]{figures/Graphique_fenetre_glissante_chmts_RMSE_val.pdf} \\
-		\includegraphics[width=8cm]{figures/Graphique_fenetre_glissante_chmts_RMSE_gain.pdf}
+		\includegraphics[width=8.3cm]{figures/Graphique_fenetre_glissante_chmts_RMSE_val.pdf} \\
+		\includegraphics[width=8.3cm]{figures/Graphique_fenetre_glissante_chmts_RMSE_gain.pdf}
 		\end{array}$
 	\end{center}
 	\caption{Synthèse des changements sur le critère RMSE à la station d'Ulrichen, pour les différentes analogues du second niveau d'analogie, dû à la fenêtre temporelle glissante. (gauche) Quantiles de la distribution des valeurs de RMSE avec (06h) et sans (24h) la fenêtre glissante. (droite) Quantiles des gains sur le critère RMSE par l'utilisation de la fenêtre glissante.}
