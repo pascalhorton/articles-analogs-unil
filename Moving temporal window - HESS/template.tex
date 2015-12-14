@@ -553,14 +553,14 @@ L'amélioration apportée par la fenêtre temporelle glissante est intéressante
 
 \subsection{Série par moyenne mobile}
 
-La moyenne mobile est certainement la répartition la plus simple que nous pouvons effectuer. Elle consiste à distribuer les précipitations journalières concernées de manière proportionnelle dans les différentes tranches de la série 24~heures glissée (Figure \ref{fig:Illustration_series_6h_moyennes_mobiles}). Les résultats présentés dans la Table \ref{tab:fenetre_glissante:Resultats_moyenne_mobile} montrent clairement qu'une telle archive ne présente aucun intérêt, puisque les performances sont même inférieures à la méthode classique sans fenêtre temporelle glissante (Table \ref{tab:fenetre_glissante:Gains_CRPSS}). Nous perdons le gain d'une sélection plus fine des situations analogues du fait d'une archive pluviométrique de qualité médiocre.
+La moyenne mobile est certainement la répartition la plus simple que nous pouvons effectuer. Elle consiste à distribuer les précipitations journalières concernées de manière proportionnelle dans les différentes tranches de la série 24~heures glissée (Figure \ref{fig:illustration_disaggregation}). Les résultats présentés dans la Table \ref{tab:fenetre_glissante:Resultats_moyenne_mobile} montrent clairement qu'une telle archive ne présente aucun intérêt, puisque les performances sont même inférieures à la méthode classique sans fenêtre temporelle glissante (Table \ref{tab:fenetre_glissante:Gains_CRPSS}). Nous perdons le gain d'une sélection plus fine des situations analogues du fait d'une archive pluviométrique de qualité médiocre.
 
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[width=12cm]{figures/Illustration_series_6h_moyennes_mobiles.pdf}
+		\includegraphics[width=12cm]{figures/illustration_disaggregation.pdf}
 	\end{center}
 	\caption{Illustration de la création de séries de cumuls sur 24h glissés par moyenne mobile.}
-	\label{fig:Illustration_series_6h_moyennes_mobiles}
+	\label{fig:illustration_disaggregation}
 \end{figure}
 
 \begin{table}[htb]
