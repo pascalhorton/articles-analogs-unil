@@ -74,7 +74,7 @@
 
 \linenumbers
 
-\title{Introducing a Moving Temporal Window in the Analogue Method for Precipitation Forecasting}
+\title{The Analogue Method for Precipitation Forecasting: Finding Better Analogue Situations at a Sub-Daily Time Step}
 
 
 % \Author[affil]{given_name}{surname}
@@ -121,102 +121,189 @@ TEXT
 
 
 \introduction  %% \introduction[modified heading if necessary]
-TEXT
 
 
 
-La méthode des analogues est habituellement implémentée avec un pas de temps journalier, la disponibilité de longues archives de données pluviométriques journalières n'ayant pas d'équivalent à une résolution plus fine. Ce pas de temps nous contraint à chercher des situations analogues aux mêmes heures fixes de la journée, sans quoi nous ne saurions pas quelles valeurs de précipitations leur attribuer. Nous pouvons néanmoins nous attendre à ce que l'analogie des situations météorologiques n'ait pas lieu systématiquement à la même heure de la journée, et que de meilleures candidates soient trouvées en autorisant un certain décalage.
+
+
+%REWRITE
+
+Multiple variations of the methods exist, and most of them will not be detailed hereafter \cite[see][for more comprehensive listings]{Horton2016, BenDaoud2015}. However, there are mainly 2 parameterizations that are most often used for precipitation forecasting and that will be considered as reference: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on moisture variables \citep{Obled2002, Bontron2005, Marty2012}.
+
+The method based on the analogy of the synoptic circulation consists in the following steps (Table \ref{table:method_2Z}): the similarity of the atmospheric circulation of a target date with every day of the archive is assessed by processing the S1 criteria \citep[Eq.\ \ref{eq:S1}, ][]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial window. \citet{Bontron2005} showed that the geopotential height at 500~hPa (Z500) and 1000~hPa (Z1000) are the best first predictors of the NCEP/NCAR reanalysis dataset, and that the S1 criteria performs better than scores based on absolute distances. The reason for such better results is that the S1 criteria allows comparing the circulation pattern, by means of the gradients, rather than the absolute value of the geopotential height. To cope with seasonal effects, candidate dates are extracted within a period of 4 months centered around the target date, for every year of the archive. Following the nomenclature proposed by \citet{Horton2016}, this method will be named 2Z.
+
+\begin{equation}
+\label{eq:S1}
+S1=100 \frac {\displaystyle \sum_{i} \vert \Delta\hat{z}_{i} - \Delta z_{i} \vert}
+{\displaystyle \sum_{i} max\left\lbrace \vert \Delta\hat{z}_{i} \vert , \vert \Delta z_{i} \vert \right\rbrace }
+\end{equation}
+where $\Delta \hat{z}_{i}$ is the forecast geopotential height difference between the \textit{i}th pair of adjacent points of the gridded data describing the target situation, and $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation. The differences are processed separately in both directions. The smaller the S1 values, the more similar the pressure fields.
+
+\begin{table}[htb]
+	\caption{Parameters of the reference method on the atmospheric circulation (2Z). The first column is the level of analogy (0 for preselection), then comes the meteorological variable and its hour of observation (temporal window). The criteria used for the current level of analogy is then provided, as well as the number of analogues.}
+	\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline
+			Level & Variable & Hour & Criteria & Nb \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+			& Z500 & 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:method_2Z}
+\end{table}
+
+The $N_{1}$ dates with the lowest values of S1 are considered as analogues to the target day. The number of analogues, $N_{1}$, is a parameter to calibrate. Then, the daily observed precipitation amount of the $N_{1}$ resulting dates provide the empirical conditional distribution considered as the probabilistic forecast for the target day.
+
+The other most know parametrization adds a second level of analogy on moisture variables (method 2Z-2MI, Table \ref{table:method_2Z-2MI}). The predictor that \citet{Bontron2004} found optimal for the France territory is a moisture index made of the product of the precipitable water with the relative humidity at 850~hPa (RH850). \cite{Horton2012a} confirmed that this index is also better for the Swiss Alps than any other variable from the NCEP/NCAR reanalysis considered independently. When adding a second level of analogy, $N_{2}$ dates are subsampled in the $N_{1}$ analogues on the atmospheric circulation, to end up with a smaller number of analogue situations. When a second level of analogy is added, a higher number of analogues is kept on the first level.
+
+\begin{table}[htb]
+	\caption{Parameters of the reference method with moisture variables (2Z-2MI). Same conventions as Table \ref{table:method_2Z}}
+	\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline 
+			Level & Variable & Hour & Criteria & Nb \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+			& Z500 & 24~h & & \\ 
+			\hline
+			\multirow{2}{*}{2} & TPW * RH850 & 12~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{30} \\
+			& TPW * RH850 & 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:method_2Z-2MI}
+\end{table}
+
+%REWRITE
+
+
+
+
+%COMPLETE
+
+
+
+sliding time window (STW)
+
+
+
+The analogue method (AM) is usually implemented with a daily time step, due to the availability of long precipitation archives that have no equivalent to a finer resolution. Therefore, the analogues situations are compared on the basis of a daily time step, by comparing predictors at fixed hours of the day, otherwise we would not know what precipitation values to assign to them. However, we can expect that the analogy of the synoptic situations do not occur systematically at the same time of the day, and that better candidates can be found at different times.
+
+Previous tests showed the benefit, in terms of analogy criteria values, of searching for analogue synoptic situations at a finer time step, but without assessing the impact on the forecast skills \citep{Finet2008}. Archives of sub-daily precipitation datasets were not available on a long period in order to assess the improvement of the prediction. In order to assess this potential gain, precipitation data with a resolution of 10 minutes on a respectable archive length was used (section \ref{sec:data}). It was then aggregated in the form of 24~h totals, but at a 6-hourly time step, by means of a moving average (section \ref{sec:method}).
+
+One can question the interest of using daily totals when a 6-hourly precipitation series can be used. The first reason is that the 6-hourly time series generated by the AM may not represent well the dynamic of the accurate precipitation (results not shown), due to a smoothed signal. Then, sometimes we just don't need finer resolution than the daily time step. Finally, when using a reconstructed precipitation archive, the errors in intra-day precipitation distributions have a lesser impact.
+
+
+
+
+
+%COMPLETE
+
+
+
+\section{Study area and data}
+\label{sec:data}
+
+The study area is the upper Rh\^{o}ne catchment in Switzerland. Due to the low density of weather stations with high temporal resolution and long archives, no aggregation or catchment rainfall was processed. The time series (on the period 1982-2007) come from 6 automatic weather stations, namely Ulrichen, Zermatt, Visp, Montana, Sion and Aigle.
+
+
+%WRITE
+
+%FIGURE
+
+
+\section{Method}
+\label{sec:method}
+
+In order to assess the benefit of searching analogue situations at a sub-daily time step, an appropriate time series is required. On the basis of high resolution time series (section \ref{sec:data}), 24~h totals were processed, but at a 6-hourly time step (temporal resolution of the reanalysis dataset), by means of a moving average. 
+
+The target situations and their corresponding observed precipitation values (used for validation) do not change, because the forecast is always established for a fixed period of the target day (6-30~h), as before. The difference is that the candidates are 4~times more numerous (Figure \ref{fig:principle}).
 
 \begin{figure*}[htb]
 	\begin{center}
 		\includegraphics[width=14cm]{figures/Illustration_fenetre_glissante.pdf}
 	\end{center}
-	\caption[Illustration du principe de la fenêtre temporelle glissante.]{Illustration du principe de la fenêtre temporelle glissante. }
-	\label{fig:Illustration_fenetre_glissante}
+	\caption{Illustration of the principle of a sliding time window. }
+	\label{fig:principle}
 \end{figure*}
 
-De premiers essais \citep{Finet2008} avaient porté sur la seule recherche de situations synoptiques analogues à une situation cible. Ils avaient montré que pour une situation cible 0-24~h~UTC, on pouvait obtenir de meilleures analogies synoptiques en acceptant des situations  ''glissées'' 6-30~h, 12-36~h ou 18-42~h plutôt que de se limiter à 0-24~h. Mais il n'avait pas été possible de constituer les archives pluviométriques correspondantes, c'est-à-dire qui soient décalées, elles-aussi, dans le but de quantifier d'éventuelles améliorations de la prévision de précipitations.
-
-Afin d'évaluer ce gain potentiel, nous avons donc d'abord traité les mesures des stations automatiques de résolution 10~minutes (voir section \ref{sec:donnees:reseau}) ayant une durée respectable (1982-2007), pour élaborer des séries de précipitations représentant des cumuls de 24~h, mais sur une fenêtre temporelle glissante. Cela veut dire que nous constituons une série de 24~h centrée sur chaque tranche de 6~h de la journée, ce dernier pas de temps étant la résolution des prédicteurs synoptiques (voir section \ref{sec:donnees:reanalyses1_ncep}). 
-
-Une telle série présente certains avantages. Le premier étant que la compétence résultant de ce modèle sera comparable à celle établie précédemment, et que le gain d'une telle modification peut donc être directement évalué. Le second s'inscrit dans la perspective de création de ce genre de séries à partir de données journalières désagrégées (en 6~h) puis recomposées (en 24~h glissées), où les erreurs seront alors réduites par rapport à une série à pas de temps de 6~h.
-
-Nous ne disposons pas de séries temporelles sur des bassins à ces pas de temps infrajournalier, ni de stations automatiques suffisamment proches pour être regroupées. Nous travaillons donc sur les séries issues de 6 stations automatiques, à savoir Ulrichen, Zermatt, Visp, Montana, Sion et Aigle. La station du col du Grand-Saint-Bernard n'est pas intégrée à l'étude en raison de forts doutes émis par Jean-Michel Fallot (Université de Lausanne) sur l'homogénéité de ces données.
-
-Les situations cibles et leurs valeurs de précipitations observées (utilisées pour la validation) ne changent pas, puisque nous effectuons toujours la prévision pour une période fixe de la journée cible (6-30~h), comme précédemment. Ce sont les situations candidates qui, elles, deviennent 4~fois plus nombreuses (Figure \ref{fig:Illustration_fenetre_glissante}).
-
-La logique voudrait a priori que nous ne retenions qu'une tranche horaire, la meilleure, par date candidate. C'est-à-dire, si pour la date cible du 15 novembre 2006 (0-24~h), la meilleure analogue est le 5 décembre 1988 (12-36~h), alors, très certainement les périodes les plus proches (5 décembre 6-30~h et 18-42~h) sont aussi des analogues, certes inférieures en qualité, mais acceptables. La question se pose alors de les prendre ou de les rejeter. Une exclusion des mêmes dates a été testée de deux manières différentes:
-\begin{itemize}
-	\item par exclusion des moins bonnes analogues dans une période de $\pm$ 24~h;
-	\item par exclusion des moins bonnes analogues avec la même date.
-\end{itemize}
-Après plusieurs essais, il s'est avéré que n'imposer aucune restriction menait à de meilleures compétences, et ceci de manière significative et récurrente. Dans la suite de cette analyse, aucune de ces contraintes ne sera donc imposée.
+Logic suggests a priori that only one situation (the best) is selected per candidate day. An exclusion of the same dates was tested in two different ways: (1)
+by excluding the worse analogues in a period of $\pm$ 24~h, and (2) by excluding the worse analogues with the same date. After several tests, it turned out that no restrictions led to better skills, and this on a significant and recurring basis. Thus, no constraint was further used.
 
 
-\section{Conséquences de la réduction de l'archive sur la compétence}
+\section{Consequences of the archive reduction}
 
-La première étape consiste à évaluer la perte de compétence due à la simple réduction en durée de l'archive pour la méthode standard (donc avec des analogues 0-24~h fixes) lorsque l'on passe de 47~ans (1961-2008) à 25~ans (1982-2007). Les paramètres sont calibrés pour les méthodes R1 et R2 (Tables \ref{tab:fenetre_glissante:Resultats_R1_originaux} et \ref{tab:fenetre_glissante:Resultats_R2_originaux}) sur l'archive originale et sont conservés pour la suite des calculs. 
+As sub-daily precipitation time series are usually available on a shorter period than traditional daily time steps, the first assessment consists in assessing the loss of performance resulting from a reduction a 47~years archive (1961 to 2008) to 25~years (1982 to 2007). This change is assessed with the original method, without STW.
 
+Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated on the original archive (Tables \ref{table:method_2Z} and \ref{table:method_2Z-2MI}) and will be used thereafter.
 
 \begin{table}[htb]
-	\caption{Paramètres retenus pour l'analogie sur le géopotentiel à 500~hPa et 1000~hPa, et compétence de la méthode standard R1 sur l'archive complète.}
+	\caption{Calibrated parameters (spatial windows and number of analogues) for the analogy on the geopotential at 500~hPa and 1000~hPa (method 2Z) and skill score (\%) of the method on the full archive.}
 	\begin{center}
-		\begin{tabular}{l c c c c c c }
+		\begin{tabular}{l c c c c }
 			\hline
-			\multirow{2}{*}{\textbf{Station}} & \textbf{Lon} & \textbf{Taille} & \textbf{Lat} & \textbf{Taille} & \multirow{2}{*}{\textbf{N$_{1}$}} & \textbf{CRPSS} \\ 
-			& \textbf{min} & \textbf{lon} & \textbf{min} & \textbf{lat} & & \textbf{(\%)} \\ 
+			\textbf{Station} & \textbf{Longitudes} & \textbf{Latitudes} & \textbf{N$_{1}$} & \textbf{CRPSS} \\
 			\hline
-			Ulrichen & 0 & 17.5 & 42.5 & 5 & 40 & 30.73 \\ \hline
-			Zermatt & 0 & 20 & 37.5 & 12.5 & 35 & 23.87 \\ \hline
-			Visp & -2.5 & 22.5 & 40 & 7.5 & 30 & 25.11 \\ \hline
-			Montana & -2.5 & 20 & 40 & 7.5 & 40 & 32.55 \\ \hline
-			Sion & -2.5 & 20 & 40 & 7.5 & 40 & 26.23 \\ \hline
-			Aigle & -5 & 22.5 & 40 & 10 & 50 & 30.59 \\ \hline
+			Ulrichen & 0 $\rightarrow$ 17.5 & 42.5 $\rightarrow$ 47.5 & 40 & 30.73 \\
+			Zermatt & 0 $\rightarrow$ 20 & 37.5 $\rightarrow$ 50 & 35 & 23.87 \\
+			Visp & -2.5 $\rightarrow$ 20 & 40 $\rightarrow$ 47.5 & 30 & 25.11 \\
+			Montana & -2.5 $\rightarrow$ 17.5 & 40 $\rightarrow$ 47.5 & 40 & 32.55 \\
+			Sion & -2.5 $\rightarrow$ 17.5 & 40 $\rightarrow$ 47.5 & 40 & 26.23 \\
+			Aigle & -5 $\rightarrow$ 17.5 & 40 $\rightarrow$ 50 & 50 & 30.59 \\ 
+			\hline
 		\end{tabular}
 	\end{center}
-	\label{tab:fenetre_glissante:Resultats_R1_originaux}
+	\label{table:params_2Z}
 \end{table}
 
 \begin{table}[htb]
-	\caption{Paramètres pour l'humidité et compétence de la méthode standard R2 sur l'archive complète. Les paramètres de circulation de la Table \ref{tab:fenetre_glissante:Resultats_R1_originaux} sont également valables pour cette méthode, exception faite du nombre d'analogues du premier niveau d'analogie dont les nouvelles valeurs sont données dans la 6ieme colonne du présent tableau (N$_{1}$). La 7ieme colonne (N$_{2}$) est ici le nombre d'analogues du deuxième niveau.}
+	\caption{Parameters of the moisture variables from the 2Z-2MI method and the corresponding skill score (\%) on the complete archive. The parameters for the atmospheric circulation are the same as in Table \ref{table:params_2Z}, except the number of analogues of the first analogy level (N$_{1}$), which are here different. The $5^{th}$ column is the number of analogues for the second level (N$_{2}$).}
 	\begin{center}
-		\begin{tabular}{l c c c c c c c }
+		\begin{tabular}{l c c c c c }
 			\hline
-			\multirow{2}{*}{\textbf{Station}} & \textbf{Lon} & \textbf{Taille} & \textbf{Lat} & \textbf{Taille} & \multirow{2}{*}{\textbf{N$_{1}$}} & \multirow{2}{*}{\textbf{N$_{2}$}} & \textbf{CRPSS} \\ 
-			& \textbf{min} & \textbf{lon} & \textbf{min} & \textbf{lat} & & & \textbf{(\%)} \\ 
+			\textbf{Station} & \textbf{Longitudes} & \textbf{Latitudes} & \textbf{N$_{1}$} & \textbf{N$_{2}$} & \textbf{CRPSS} \\
 			\hline
-			Ulrichen & 5 & 5 & 45 & 2.5 & 60 & 25 & 34.31 \\ \hline
-			Zermatt & 5 & 5 & 45 & 2.5 & 55 & 25 & 28.28 \\ \hline
-			Vis & 5 & 5 & 45 & 2.5 & 45 & 25 & 28.85 \\ \hline
-			Montana & 5 & 2.5 & 45 & 2.5 & 55 & 30 & 36.11 \\ \hline
-			Sion & 5 & 5 & 45 & 2.5 & 90 & 30 & 31.16 \\ \hline
-			Aigle & 7.5 & 0 & 45 & 2.5 & 100 & 35 & 35.82 \\ \hline
+			Ulrichen & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 60 & 25 & 34.31 \\
+			Zermatt & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 55 & 25 & 28.28 \\
+			Visp & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 45 & 25 & 28.85 \\
+			Montana & 5 $\rightarrow$ 7.5 & 45 $\rightarrow$ 47.5 & 55 & 30 & 36.11 \\
+			Sion & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 90 & 30 & 31.16 \\
+			Aigle & 7.5 $\rightarrow$ 7.5 & 45 $\rightarrow$ 47.5 & 100 & 35 & 35.82 \\ 
+			\hline
 		\end{tabular}
 	\end{center}
-	\label{tab:fenetre_glissante:Resultats_R2_originaux}
+	\label{table:params_2Z-2MI}
 \end{table}
 
 \begin{table}[htb]
-	\caption{Influence de la réduction de l'archive sur la compétence en CRPS. Les résultats sont présentés pour les deux méthodes R1 et R2, et les différences sont exprimées en valeur absolue, ainsi que relativement au score de la période 1961-2008.}
+	\caption{Influence of the archive reduction on the CRPSS. CRPSS values are provided for both considered methods and the differences are expressed in absolute value.}
 	\begin{center}
-		\begin{tabular}{l r r r r r r r r}
+		\begin{tabular}{l c c c c }
 			\hline
-			\multirow{3}{*}{\textbf{Station}} & \multicolumn{ 4}{c}{\textbf{CRPSS (\%) R1}} & \multicolumn{ 4}{c}{\textbf{CRPSS (\%) R2}} \\
-			& \multicolumn{ 2}{c}{\textbf{périodes}} & \multirow{2}{*}{\textbf{$\Delta$}} & \multirow{2}{*}{\textbf{Gain}} & \multicolumn{ 2}{c}{\textbf{périodes}} & \multirow{2}{*}{\textbf{$\Delta$}} & \multirow{2}{*}{\textbf{Gain}} \\
-			& \multicolumn{1}{c}{\textbf{61-08}} & \multicolumn{1}{c}{\textbf{82-07}} &  &  & \textbf{61-08} & \textbf{82-07} &  &  \\ 
+			\multirow{2}{*}{\textbf{Station}} & \multicolumn{2}{c}{\textbf{2Z}} & \multicolumn{2}{c}{\textbf{2Z-2MI}} \\
+			& \textbf{82-07} & \textbf{$\Delta$} & \textbf{82-07} & \textbf{$\Delta$} \\ 
 			\hline
-			Ulrichen & 30.73 & 29.37 & -1.36 & \textbf{-4.42} & 34.31 & 33.24 & -1.08 & \textbf{-3.13} \\ \hline
-			Zermatt & 23.87 & 22.20 & -1.67 & \textbf{-7.01} & 28.28 & 26.95 & -1.32 & \textbf{-4.68} \\ \hline
-			Visp & 25.11 & 23.23 & -1.89 & \textbf{-7.51} & 28.85 & 27.77 & -1.08 & \textbf{-3.74} \\ \hline
-			Montana & 32.55 & 30.79 & -1.76 & \textbf{-5.42} & 36.11 & 34.77 & -1.34 & \textbf{-3.71} \\ \hline
-			Sion & 26.23 & 24.78 & -1.45 & \textbf{-5.52} & 31.16 & 29.36 & -1.80 & \textbf{-5.77} \\ \hline
-			Aigle & 30.59 & 30.57 & -0.01 & \textbf{-0.05} & 35.82 & 35.95 & 0.13 & \textbf{0.35} \\ \hline
+			Ulrichen & 29.37 & -1.36 & 33.24 & -1.08 \\
+			Zermatt & 22.20 & -1.67 & 26.95 & -1.32 \\
+			Visp & 23.23 & -1.89 & 27.77 & -1.08 \\
+			Montana & 30.79 & -1.76 & 34.77 & -1.34 \\
+			Sion & 24.78 & -1.45 & 29.36 & -1.80 \\
+			Aigle & 30.57 & -0.01 & 35.95 & 0.13 \\ 
+			\hline
 		\end{tabular}
 	\end{center}
-	\label{tab:fenetre_glissante:Pertes_CRPSS}
+	\label{table:loss_reduction}
 \end{table}
 
-L'impact du changement de la période de l'archive est résumé dans la Table \ref{tab:fenetre_glissante:Pertes_CRPSS} pour les méthodes R1 et R2. Comme attendu, une perte de compétence peut être observée pour chaque station, excepté pour celle d'Aigle, qui semble relativement indifférente à ce changement. Cette perte est significative, avec un maximum pour la méthode R1 de -1.89 points à Visp, soit une perte de 7.51~\%, et pour la méthode R2 de -1.80 points à Sion, soit -5.77~\%. Malgré cette diminution, les scores restent acceptables et constitueront la référence en fenêtre d'analogie fixe (0-24~h).
+The impact of the change in the archive length is summarized in Table \ref{table:loss_reduction} for both 2Z and 2Z-2MI methods. As expected, a loss of performance can be observed for each station, except for that of Aigle, which seems relatively indifferent to this change. This loss is globally significant, with up to -1.89 points for Visp and the 2Z method. 
 
 
 \section{Influence de la fenêtre glissante sur les critères d'analogie}
