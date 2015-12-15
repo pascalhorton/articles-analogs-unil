@@ -212,7 +212,7 @@ One can question the interest of using daily totals when a 6-hourly precipitatio
 \section{Study area and data}
 \label{sec:data}
 
-The study area is the upper Rh\^{o}ne catchment in Switzerland. Due to the low density of weather stations with high temporal resolution and long archives, no aggregation or catchment rainfall was processed. The time series (on the period 1982-2007) come from 6 automatic weather stations, namely Ulrichen, Zermatt, Visp, Montana, Sion and Aigle.
+The study area is the upper Rh\^{o}ne catchment in Switzerland. Due to the low density of weather stations with high temporal resolution and long archives, no aggregation or catchment rainfall was processed. The time series (on the period 1982-2007) come from 6 automatic weather stations, namely Ulrichen, Zermatt, Visp, Montana, Sion and Aigle. The results will often be presented arbitrarily for the Ulrichen station, but the results are exactly the same for all stations.
 
 
 %WRITE
@@ -323,68 +323,61 @@ When searching for analogues on the geopotential heights, as in the 2Z method, t
 Figure \ref{fig:changes_S1_analogues} presents the changes in the distributions of the S1 criterion for the $1^{st}$, $5^{th}$, $20^{th}$ and $40^{th}$ analogues for the Ulrichen station on the whole calibration period, due to introduction of the STW. The precipitation target remains at before, that is centered on 18~h~UTC (6~h~UTC to 6~h~UTC the next day). The shapes of the distributions of the conventional approach and the STW are similar, but the values of the analogy criteria are now reduced, therefore better. An increase in the difference between a fixed window and a sliding window is identifiable, which means that the last analogues are further improved. The latter effect is due to the accumulation of improvements brought by the new analogue situations in the selection.
 
 \begin{figure}[htb]
-	\begin{center}$
-		\begin{array}{c}
-		\includegraphics[width=8.3cm]{figures/changes_S1_value.pdf} \\
+	\begin{center}
+		\includegraphics[width=8.2cm]{figures/changes_S1_value.pdf} \\
 		\includegraphics[width=8.3cm]{figures/changes_S1_gain.pdf}
-		\end{array}$
 	\end{center}
-	\caption{Synthesis of the changes in the S1 criterion, due to the STW, for the Ulrichen station, depending on the ranks of the analogue. (top) Quantiles of the S1 distributions with (06h) and without (24h) the sliding window. (bottom) Quantiles of the relative improvements of the S1 criteria when using the sliding window.}
+	\caption{Synthesis of the changes in the mean S1 criteria, due to the STW, for the Ulrichen station, depending on the ranks of the analogue. (top) Quantiles of the S1 distributions with (06h) and without (24h) the sliding window. (bottom) Quantiles of the relative improvements of the S1 criteria when using the sliding window.}
 	\label{fig:changes_S1}
 \end{figure}
 
+The improvements of the S1 criteria are summarized in Figure \ref{fig:changes_S1}, which shows (top) quantiles of the S1 criteria according to the analogue rank for the conventional method and the STW, and (bottom) quantiles of the relative reduction. This confirms that all quantile seem similarly reduced (S1 distributions keep their shape), and that this improvement is constantly increasing from the first to the last analogue (Figure \ref{fig:changes_S1} bottom).
+
+The median of the S1 values reduction (Figure \ref{fig:changes_S1} bottom) starts approximately at 5~\% for the first analogue and reaches more than 10~\% for the last. This increasing trend with the analogue rank can be explained by the accumulation of better analogues in the distribution. The minimum improvement starts from 0 and reaches 2-3\%, meaning that the criteria has been improved for all analogue ranks of the distribution end. All other stations have a similar improvement of the S1 criteria, both in terms of distribution shape and amplitude.
 
 
+\subsection{Influence of the weather situation}
+\label{sec:influence_precip}
 
-Ces gains sont synthétisés dans la Figure \ref{fig:changes_S1}, qui illustre les valeurs, pour S1, des quantiles pour toutes les analogues avec et sans la fenêtre glissante, ainsi que la distribution des gains réalisés pour l'ensemble des dates. Cela confirme que tous les quantiles semblent réduits de manière semblable (les distributions de S1 conservent leur forme) et que ce gain augmente constamment de la première à la dernière analogue (Figure \ref{fig:changes_S1} gauche). 
+It can be assumed that the atmospheric conditions with a low dynamism, such as the frequent anticyclonic situations, will not be radically improved by the introduction of the STW. Conversely, dynamic situations, such as weather disturbances, have a well marked temporal evolution. Indeed, the position of the driving elements such as the low-pressure area and the fronts change significantly during a day. We can therefore expect to improve particularly these situations with a higher dynamism when introducing a STW, as we may find better matches to the target situation.
 
-Les statistiques des gains pour chaque date (Figure \ref{fig:changes_S1} droite) présentent une médiane de la réduction qui démarre approximativement à 5~\% pour les premières analogues et termine à plus de 10~\% pour les dernières. Cette tendance à l'augmentation du gain sur le critère S1 avec le rang de l'analogue peut être expliquée par le fait que chaque gain effectué sur les premières analogues se répercute sur les suivantes. Inversement, le gain maximal décroît de 50~\% à 25~\%. Le gain minimal part de 0 pour atteindre une valeur située entre 2~\% et 3~\%, signifiant que tous les critères ont été améliorés. Les dates sélectionnées précédemment étant toujours disponibles, le critère S1 ne peut en effet que s'améliorer ou rester identique, mais en aucun cas se détériorer. Toutes les autres stations présentent une amélioration du critère S1 très proche, tant pour la forme des distributions que pour leur amplitude.
-
-
-
-\subsection{Influence du dynamisme de la situation atmosphérique}
-\label{sec:ameliorations:fenetre:S1_pluie}
-
-Nous pouvons supposer que des circulations peu dynamiques, telles que les fréquentes situations anticycloniques, ne seront pas radicalement améliorées par l'approche de la fenêtre temporelle glissante. À l'opposé, les situations dynamiques, telles que le passage d'une perturbation, ont une évolution temporelle bien marquée. En effet, la position des centres actifs et des courants évoluent de manière significative durant une journée. Nous pouvons donc nous attendre à améliorer ces journées-ci en autorisant la fenêtre d'analogie à glisser pour mieux correspondre à la situation cible.
-
-Nous allons chercher à vérifier cette assertion, mais nous ne pouvons pas aisément quantifier le dynamisme de la circulation atmosphérique d'une journée. Nous faisons donc l'hypothèse que plus un jour est pluvieux, plus la situation est dynamique. Les résultats de cette approche sont synthétisés dans la Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1_seuils_precip} par les médianes de la réduction du critère S1 pour les jours avec une pluviométrie comprise entre deux seuils. Le nombre d'analogues étant réduit, les courbes ne sont pas aussi lisses que lors des analyses précédentes. Il en ressort néanmoins que le gain tend à augmenter pour les jours à plus forte pluviométrie. Cette observation est valable pour toutes nos stations et cela confirme notre intuition.
+The dynamism of a given atmospheric condition cannot be easily quantified. We thus consider here the basic assumption that the more a day is rainy, the more dynamic the situation is. The results of this analysis are summarized in Figure \ref{fig:changes_S1_precip_threshold} by the median reduction of S1 for days with precipitation between two thresholds. The number of analogues being reduced, the curves are not as smooth as in previous analyzes. It is nevertheless clear that the improvement tends to increase on days with higher precipitation. This is true for all our stations and confirms our intuition.
 
 \begin{figure}[htb]
 	\begin{center}
 		\includegraphics[width=8.3cm]{figures/changes_S1_precip_threshold.pdf}
 	\end{center}
-	\caption{Distribution des gains sur la médiane du critère S1, dus à la fenêtre temporelle glissante, en fonction de seuils de précipitations à la station d'Ulrichen.}
-	\label{fig:Graphique_fenetre_glissante_chmts_S1_seuils_precip}
+	\caption{Distribution of the median improvements of the S1 criteria, due to the STW, depending on precipitation thresholds at the Ulrichen station.}
+	\label{fig:changes_S1_precip_threshold}
 \end{figure}
 
 
-\subsection{Effet saisonnier}
-\label{sec:ameliorations:fenetre:S1_saisons}
+\subsection{Seasonal effect}
+\label{sec:seasonal_effect}
 
-La dynamique atmosphérique varie fortement d'une saison à l'autre, ce qui rejaillit sur les performances de la méthode des analogues, généralement moindres entre juin et août \citep{Bliefernicht2010}. Il fait donc sens de vérifier l'effet de l'introduction de la fenêtre temporelle glissante de manière distincte par saison.
+Atmospheric dynamics varies greatly from one season to another, which reflects on the performance of the AM that is generally lower between June and August \citep{Bliefernicht2010}. It therefore makes sense to verify the effect of the STW separately per season.
 
 \begin{figure}[htb]
-	\begin{center}$
-		\begin{array}{c}
-		\includegraphics[width=8.3cm]{figures/Graphique_fenetre_glissante_chmts_S1_saisons_val.pdf} \\
-		\includegraphics[width=6.5cm]{figures/Graphique_fenetre_glissante_chmts_S1_saisons_gain.pdf}
-		\end{array}$
+	\begin{center}
+		\includegraphics[width=7cm]{figures/changes_S1_seasons.pdf}
 	\end{center}
-	\caption{Effet saisonnier sur le critère S1 original pour la station d'Ulrichen et son gain dû à la fenêtre temporelle glissante. DJF: hiver, MAM: printemps, JJA: été, SON: automne. (gauche) Quantiles de la distribution des valeurs de S1 pour les différentes saisons avec la fenêtre temporelle originale de 24~h. (droite) Médianes des gains sur le critère S1 par l'utilisation de la fenêtre glissante pour les différentes saisons.}
-	\label{fig:Graphique_fenetre_glissante_chmts_S1_saisons}
+	\caption{Seasonal effect on the median reduction of the S1 criteria for the Ulrichen station due to the sliding time window. DJF: winter, MAM: spring, JJA: summer SON: fall.}
+	\label{fig:changes_S1_seasons}
 \end{figure}
 
 \begin{figure}[htb]
-	\includegraphics[width=8.3cm]{figures/Graphique_fenetre_glissante_heures_fct_saison.pdf}
-	\caption{Répartition des tranches horaires dans les dates analogues en fonction de la saison pour la station d'Ulrichen.}
-	\label{fig:Graphique_fenetre_glissante_heures_fct_saison}
+	\includegraphics[width=8.3cm]{figures/hours_selection_per_season.pdf}
+	\caption{Distribution of the predictors hours in the selected analogue dates depending on the season, for the Ulrichen station.}
+	\label{fig:hours_selection_per_season}
 \end{figure}
 
-Un effet saisonnier peut être observé autant sur les distributions des critères que sur leurs gains (Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1_saisons}). Les gains sont plus importants pour l'hiver que pour l'été. Une hypothèse est que les effets diurnes des mois d'été ont une influence notable sur la circulation atmosphérique, du moins dans les basses couches. Cet effet est donc calé sur le cycle journalier et nous trouvons déjà de bonnes analogues aux mêmes heures. 
+A seasonal effect can be observed on the reduction of the S1 criteria due to the STW (Figure \ref{fig:changes_S1_seasons}). The improvements are greater for winter than summer. One hypothesis is that the diurnal effects of the summer months have an influence on the atmospheric circulation, at least in the lower layers. This effect is based on the daily cycle and good analogues for the same hours are already selected.
 
-Cette hypothèse a été vérifiée et est confirmée par la Figure \ref{fig:Graphique_fenetre_glissante_heures_fct_saison} qui démontre que le choix des différentes tranches horaires pour les mois d'hiver est relativement équilibré, ce qui change la sélection de 75~\% des dates analogues par rapport au 0-24~h initial, augmentant ainsi l'amélioration du critère S1. 
+An analysis of the selected hours for the geopotential predictor seems to confirm this assumption (Figure \ref{fig:hours_selection_per_season}). It was found that the new choice of the temporal window in winter, when using the STW approach, is well balanced between the 4 options. This means a change of 75\% of the analogues selection compared to the conventional approach, which improves the circulation analogy.
 
-Au contraire, les mois d'été ont une préférence pour la tranche horaire initiale (hgt 500 24h \& hgt 1000 12h), dû aux effets diurnes plus marqués, ce qui diminue le potentiel d'amélioration des critères. Les autres saisons se situent entre ces deux extrêmes, de manière cohérente avec leurs gains observés (Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1_saisons}). Cet effet saisonnier a pu être observé pour chaque station de manière très similaire et généralement encore plus marquée que pour Ulrichen.
+On the contrary, the summer months have a preference for the initial temporal window (Z500 24h \& Z1000 12h), due to more pronounced diurnal effects which reduces the potential for improvement of the criteria. Other seasons are between these two extremes, which is consistent with their respective improvements. This seasonal effect was observed for each station in a very similar way, and generally even with a larger amplitude than for Ulrichen.
+
+
 
 
 \subsection{Changements du critère du second niveau d'analogie}
