@@ -91,7 +91,7 @@
 
 
 
-\runningtitle{Moving Temporal Window in the AM}
+\runningtitle{Finding Better Analogue Situations at a Sub-Daily Time Step}
 
 \runningauthor{P. Horton et al.}
 
@@ -276,7 +276,7 @@ Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI
 			Visp & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 45 & 25 & 28.85 \\
 			Montana & 5 $\rightarrow$ 7.5 & 45 $\rightarrow$ 47.5 & 55 & 30 & 36.11 \\
 			Sion & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 90 & 30 & 31.16 \\
-			Aigle & 7.5 $\rightarrow$ 7.5 & 45 $\rightarrow$ 47.5 & 100 & 35 & 35.82 \\ 
+			Aigle & 7.5 & 45 $\rightarrow$ 47.5 & 100 & 35 & 35.82 \\ 
 			\hline
 		\end{tabular}
 	\end{center}
@@ -327,7 +327,7 @@ Figure \ref{fig:changes_S1_analogues} presents the changes in the distributions 
 		\includegraphics[width=8.2cm]{figures/changes_S1_value.pdf} \\
 		\includegraphics[width=8.3cm]{figures/changes_S1_gain.pdf}
 	\end{center}
-	\caption{Synthesis of the changes in the mean S1 criteria, due to the STW, for the Ulrichen station, depending on the ranks of the analogue. (top) Quantiles of the S1 distributions with (06h) and without (24h) the sliding window. (bottom) Quantiles of the relative improvements of the S1 criteria when using the sliding window.}
+	\caption{Synthesis of the changes in the S1 criteria, due to the STW, for the Ulrichen station, depending on the ranks of the analogue. (top) Quantiles of the S1 distributions with and without the sliding window. (bottom) Quantiles of the relative improvements of the S1 criteria when using the sliding window.}
 	\label{fig:changes_S1}
 \end{figure}
 
@@ -378,25 +378,23 @@ An analysis of the selected hours for the geopotential predictor seems to confir
 On the contrary, the summer months have a preference for the initial temporal window (Z500 24h \& Z1000 12h), due to more pronounced diurnal effects which reduces the potential for improvement of the criteria. Other seasons are between these two extremes, which is consistent with their respective improvements. This seasonal effect was observed for each station in a very similar way, and generally even with a larger amplitude than for Ulrichen.
 
 
+\subsection{Changes in the moisture analogy}
 
-
-\subsection{Changements du critère du second niveau d'analogie}
-
-Lorsque nous considérons le second niveau d'analogie de la méthode R2, les situations candidates retenues ne sont pas plus nombreuses, mais les dates peuvent avoir changé. Ainsi, une réduction, mais également une augmentation du critère RMSE sont possibles. La Figure \ref{fig:Graphique_fenetre_glissante_chmts_RMSE}, pour la station d'Ulrichen, présente une très légère amélioration du critère de manière globale. Contrairement au critère S1, les quantiles des gains du RMSE sont répartis de manière relativement symétrique autour de zéro, ce qui révèle l'occurrence de pertes. À nouveau, les résultats des autres stations sont proches, avec un gain médian à zéro pour les premières analogues et croissant par la suite, mais jamais négatif.
+When considering the second level of analogy of the 2Z-2MI method (Table \ref{table:method_2Z-2MI}), the candidates situations are not more numerous, as we subsample in the previously $N_{1}$ selected analogues, but the dates may have changed. In contrast to earlier, both a reduction and an increase of the RMSE criterion values are possible. Figure \ref{fig:changes_RMSE} shows an almost insignificant improvement of the RMSE values. Unlike for the first level of analogy, the relative improvement of the RMSE values are distributed relatively symmetrically around zero, with improvements and losses of the same amplitude. Once again, the results for the other stations are similar.
 
 \begin{figure}[htb]
-	\begin{center}$
-		\begin{array}{c}
-		\includegraphics[width=8.3cm]{figures/Graphique_fenetre_glissante_chmts_RMSE_val.pdf} \\
-		\includegraphics[width=8.3cm]{figures/Graphique_fenetre_glissante_chmts_RMSE_gain.pdf}
-		\end{array}$
+	\begin{center}
+		\includegraphics[width=8.1cm]{figures/changes_RMSE_value.pdf} \\
+		\includegraphics[width=8.3cm]{figures/changes_RMSE_gain.pdf}
 	\end{center}
-	\caption{Synthèse des changements sur le critère RMSE à la station d'Ulrichen, pour les différentes analogues du second niveau d'analogie, dû à la fenêtre temporelle glissante. (gauche) Quantiles de la distribution des valeurs de RMSE avec (06h) et sans (24h) la fenêtre glissante. (droite) Quantiles des gains sur le critère RMSE par l'utilisation de la fenêtre glissante.}
-	\label{fig:Graphique_fenetre_glissante_chmts_RMSE}
+	\caption{Synthesis of the changes in the RMSE criteria, due to the STW, for the Ulrichen station, depending on the ranks of the analogue. (top) Quantiles of the RMSE distributions with and without the sliding window. (bottom) Quantiles of the relative improvements of the RMSE criteria when using the sliding window.}
+	\label{fig:changes_RMSE}
 \end{figure}
 
+This result of a globally null improvement of the RMSE values does not mean that the 2Z-2MI method cannot be improved by the STW. It means that after the selection of the analogues situations in terms of the synoptic circulation, the new candidate dates do not allow to find better analogues in terms of moisture. However, the selected dates have changed in the first level of analogy, and thus also in the final selection, which can potentially improve the performance scores.
 
-\section{Conséquences sur les scores de performance}
+
+\section{Impact on performance scores}
 
 Nous avons pu observer précédemment un gain systématique sur le critère d'analogie S1. Il nous reste donc à évaluer la conséquence de l'introduction de la fenêtre temporelle glissante sur les scores de performance de la nouvelle distribution de pluie prévue. Nous utilisons donc des séries temporelles de précipitations créées à cet effet. Celles-ci ont été établies par une moyenne mobile sur une durée de 24~h avec un pas de temps de 6~h. En conservant toujours les mêmes paramètres que précédemment (même domaine et même nombre d'analogues), ces valeurs sont attribuées à chaque date analogue. La série des dates cibles reste inchangée, puisque nous conservons la tranche horaire d'origine (6~h~UTC - 6~h~UTC le lendemain). 
 
@@ -406,18 +404,18 @@ Les CRPSS étant calculés sur la base de la même climatologie que précédemme
 \begin{table}[htb]
 	\caption{Gain en compétence du CRPS sur les deux niveaux d'analogie dû à l'introduction de la fenêtre temporelle glissante.}
 	\begin{center}
-		\begin{tabular}{l r r r r r r r r}
+		\begin{tabular}{l c c c c}
 			\hline
-			\multirow{3}{*}{\textbf{Station}} & \multicolumn{ 4}{c}{\textbf{CRPSS (\%) R1}} & \multicolumn{ 4}{c}{\textbf{CRPSS (\%) R2}} \\
-			& \multicolumn{ 2}{c}{\textbf{fenêtre temp}} & \multirow{2}{*}{\textbf{$\Delta$}} & \multirow{2}{*}{\textbf{Gain}} & \multicolumn{ 2}{c}{\textbf{fenêtre temp}} & \multirow{2}{*}{\textbf{$\Delta$}} & \multirow{2}{*}{\textbf{Gain}} \\
-			& \multicolumn{1}{c}{\textbf{std}} & \multicolumn{1}{c}{\textbf{gliss.}} &  &  & \textbf{std} & \textbf{gliss.} &  & \\ 
+			\multirow{2}{*}{\textbf{Station}} & \multicolumn{2}{c}{\textbf{2Z}} & \multicolumn{ 2}{c}{\textbf{2Z-2MI}} \\
+			& \textbf{STW} & \textbf{$\Delta$} & \textbf{STW} & \textbf{$\Delta$} \\
 			\hline
-			Ulrichen & 29.37 & 31.12 & 1.74 & \textbf{5.93} & 33.24 & 35.44 & 2.20 & \textbf{6.63} \\ \hline
-			Zermatt & 22.20 & 24.34 & 2.14 & \textbf{9.64} & 26.95 & 28.92 & 1.97 & \textbf{7.31} \\ \hline
-			Visp & 23.23 & 24.39 & 1.16 & \textbf{5.00} & 27.77 & 29.42 & 1.64 & \textbf{5.92} \\ \hline
-			Montana & 30.79 & 31.59 & 0.80 &\textbf{ 2.60} & 34.77 & 36.30 & 1.53 & \textbf{4.39} \\ \hline
-			Sion & 24.78 & 25.35 & 0.57 & \textbf{2.31} & 29.36 & 31.07 & 1.71 & \textbf{5.82} \\ \hline
-			Aigle & 30.57 & 31.78 & 1.21 & \textbf{3.95} & 35.95 & 38.11 & 2.16 & \textbf{6.00} \\ \hline
+			Ulrichen & 31.12 & 1.74 & 35.44 & 2.20 \\
+			Zermatt & 24.34 & 2.14 & 28.92 & 1.97 \\
+			Visp & 24.39 & 1.16 & 29.42 & 1.64 \\
+			Montana & 31.59 & 0.80 & 36.30 & 1.53 \\
+			Sion & 25.35 & 0.57 & 31.07 & 1.71 \\
+			Aigle & 31.78 & 1.21 & 38.11 & 2.16 \\ 
+			\hline
 		\end{tabular}
 	\end{center}
 	\label{tab:fenetre_glissante:Gains_CRPSS}
@@ -448,43 +446,50 @@ L'évaluation précédente du gain en score de performance a été établie avec
 
 
 \begin{table}[htb]
-	\caption{Paramètres pour les champs de géopotentiel à 500~hPa et 1000~hPa et compétence de la méthode R1 après calibration pour la fenêtre temporelle glissante.}
+	\caption{Calibrated parameters (spatial windows and number of analogues) for the analogy on the geopotential at 500~hPa and 1000~hPa (method 2Z) and skill score (\%) of the method with the STW approach.}
 	\begin{center}
-		\begin{tabular}{l c c c c c c c c }
+		\begin{tabular}{l c c c c c }
 			\hline
-			\multirow{2}{*}{\textbf{Station}} & \textbf{Lon} & \textbf{Taille} & \textbf{Lat} & \textbf{Taille} & \multirow{2}{*}{\textbf{N$_{1}$}} & \textbf{CRPSS} & \multirow{2}{*}{\textbf{$\Delta$}} & \textbf{Gain} \\ 
-			& \textbf{min} & \textbf{lon} & \textbf{min} & \textbf{lat} &  & \textbf{(\%)} & & \textbf{(\%)} \\ 
+			\textbf{Station} & \textbf{Longitudes} & \textbf{Latitudes} & \textbf{N$_{1}$} & \textbf{CRPSS} & \textbf{$\Delta$} \\
 			\hline
-			Ulrichen & 0 & 17.5 & 42.5 & 7.5 & 50 & 31.58 & 2.20 & \textbf{7.50} \\ \hline
-			Zermatt & 0 & 17.5 & 40 & 10 & 55 & 24.71 & 2.51 & \textbf{11.32} \\ \hline
-			Visp & -2.5 & 22.5 & 40 & 10 & 55 & 25.08 & 1.85 & \textbf{7.96} \\ \hline
-			Montana & -2.5 & 17.5 & 42.5 & 5 & 55 & 32.22 & 1.43 & \textbf{4.65} \\ \hline
-			Sion & -2.5 & 17.5 & 37.5 & 12.5 & 55 & 26.07 & 1.29 & \textbf{5.19} \\ \hline
-			Aigle & -2.5 & 17.5 & 40 & 10 & 75 & 32.21 & 1.64 & \textbf{5.36} \\ \hline
+			Ulrichen & 0 $\rightarrow$ 17.5 & 42.5 $\rightarrow$ 50 & 50 & 31.58 & 2.20 \\
+			Zermatt & 0 $\rightarrow$ 17.5 & 40 $\rightarrow$ 50 & 55 & 24.71 & 2.51 \\
+			Visp & -2.5 $\rightarrow$ 20 & 40 $\rightarrow$ 50 & 55 & 25.08 & 1.85 \\
+			Montana & -2.5 $\rightarrow$ 15 & 42.5 $\rightarrow$ 47.5 & 55 & 32.22 & 1.43 \\
+			Sion & -2.5 $\rightarrow$ 15 & 37.5 $\rightarrow$ 50 & 55 & 26.07 & 1.29 \\
+			Aigle & -2.5 $\rightarrow$ 15 & 40 $\rightarrow$ 50 & 75 & 32.21 & 1.64 \\
+			\hline
 		\end{tabular}
 	\end{center}
-	\label{tab:fenetre_glissante:Resultats_R1_recalibration_fen_gliss}
+	\label{table:params_2Z_new}
 \end{table}
+
+
+
+
 
 
 \begin{table}[htb]
-	\caption{Paramètres pour l'humidité et compétence de la méthode R2 après calibration pour la fenêtre temporelle glissante. Le nombre d'analogues du premier niveau d'analogie est donné dans la 6ieme colonne (N$_{1}$) et celui du second niveau dans la 7ieme colonne (N$_{2}$).}
+	\caption{Parameters of the moisture variables from the 2Z-2MI method and the corresponding skill score (\%) with the STW approach. The parameters for the atmospheric circulation are the same as in Table \ref{table:params_2Z_new}, except the number of analogues of the first analogy level (N$_{1}$), which are here different. The $5^{th}$ column is the number of analogues for the second level (N$_{2}$).}
 	\begin{center}
-		\begin{tabular}{l c c c c c c c c c }
+		\begin{tabular}{l c c c c c c }
 			\hline
-			\multirow{2}{*}{\textbf{Station}} & \textbf{Lon} & \textbf{Taille} & \textbf{Lat} & \textbf{Taille} & \multirow{2}{*}{\textbf{N$_{1}$}} & \multirow{2}{*}{\textbf{N$_{2}$}} & \textbf{CRPSS} &  \multirow{2}{*}{\textbf{$\Delta$}} & \textbf{Gain}\\ 
-			& \textbf{min} & \textbf{lon} & \textbf{min} & \textbf{lat} &  &  & \textbf{(\%)} & & \textbf{(\%)} \\ 
+			\textbf{Station} & \textbf{Longitudes} & \textbf{Latitudes} & \textbf{N$_{1}$} & \textbf{N$_{2}$} & \textbf{CRPSS} & \textbf{$\Delta$} \\
 			\hline
-			Ulrichen & 5 & 5 & 45 & 2.5 & 110 & 35 & 35.72 & 2.48 & \textbf{7.46} \\ \hline
-			Zermatt & 7.5 & 0 & 45 & 2.5 & 80 & 30 & 29.63 & 2.68 & \textbf{9.94} \\ \hline
-			Visp & 7.5 & 0 & 45 & 2.5 & 135 & 35 & 30.29 & 2.52 & \textbf{9.07} \\ \hline
-			Montana & 5 & 2.5 & 45 & 0 & 110 & 40 & 37.15 & 2.38 & \textbf{6.85} \\ \hline
-			Sion & 5 & 5 & 45 & 2.5 & 140 & 50 & 31.68 & 2.32 & \textbf{7.91} \\ \hline
-			Aigle & 5 & 2.5 & 45 & 0 & 135 & 45 & 38.50 & 2.55 & \textbf{7.10} \\ \hline
+			Ulrichen & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 110 & 35 & 35.72 & 2.48 \\
+			Zermatt & 7.5 & 45 $\rightarrow$ 47.5 & 80 & 30 & 29.63 & 2.68 \\
+			Visp & 7.5 & 45 $\rightarrow$ 47.5 & 135 & 35 & 30.29 & 2.52 \\
+			Montana & 5 $\rightarrow$ 7.5 & 45 & 110 & 40 & 37.15 & 2.38 \\
+			Sion & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 140 & 50 & 31.68 & 2.32 \\
+			Aigle & 5 $\rightarrow$ 7.5 & 45 & 135 & 45 & 38.50 & 2.55 \\ 
+			\hline
 		\end{tabular}
 	\end{center}
-	\label{tab:fenetre_glissante:Resultats_R2_recalibration_fen_gliss}
+	\label{table:params_2Z-2MI_new}
 \end{table}
+
+
+
 
 Des changements dans les paramètres optimaux des méthodes R1 (Table \ref{tab:fenetre_glissante:Resultats_R1_recalibration_fen_gliss}) et R2 (Table \ref{tab:fenetre_glissante:Resultats_R2_recalibration_fen_gliss}) peuvent être observés. Parmi ceux-ci, la dimension ouest-est des fenêtres spatiales du premier niveau tend à diminuer, les autres paramètres variant de diverses manières. Une constance est l'augmentation du nombre d'analogues après introduction de la fenêtre glissante, qui croît de 25~\% à 83~\% pour la méthode R1, et de 20~\% à 67~\% pour la méthode R2. Le nombre d'analogues du premier niveau de la méthode R2 atteint même le triple de sa valeur précédente pour la station de Visp. Le fait de pouvoir sélectionner des analogues de la même journée explique que nous sommes conduits à augmenter le nombre optimal d'analogues. La Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1} nous a révélé que l'amélioration du critère d'analogie est croissante avec le rang des analogues. Nous accroissons donc le nombre de bonnes analogues de manière globale, tout en conservant certaines analogues dont le rang a augmenté.
 
