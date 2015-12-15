@@ -250,7 +250,7 @@ Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI
 	\begin{center}
 		\begin{tabular}{l c c c c }
 			\hline
-			\textbf{Station} & \textbf{Longitudes} & \textbf{Latitudes} & \textbf{N$_{1}$} & \textbf{CRPSS} \\
+			Station & Longitudes & Latitudes & N$_{1}$ & CRPSS \\
 			\hline
 			Ulrichen & 0 $\rightarrow$ 17.5 & 42.5 $\rightarrow$ 47.5 & 40 & 30.73 \\
 			Zermatt & 0 $\rightarrow$ 20 & 37.5 $\rightarrow$ 50 & 35 & 23.87 \\
@@ -269,7 +269,7 @@ Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI
 	\begin{center}
 		\begin{tabular}{l c c c c c }
 			\hline
-			\textbf{Station} & \textbf{Longitudes} & \textbf{Latitudes} & \textbf{N$_{1}$} & \textbf{N$_{2}$} & \textbf{CRPSS} \\
+			Station & Longitudes & Latitudes & N$_{1}$ & N$_{2}$ & CRPSS \\
 			\hline
 			Ulrichen & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 60 & 25 & 34.31 \\
 			Zermatt & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 55 & 25 & 28.28 \\
@@ -288,8 +288,8 @@ Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI
 	\begin{center}
 		\begin{tabular}{l c c c c }
 			\hline
-			\multirow{2}{*}{\textbf{Station}} & \multicolumn{2}{c}{\textbf{2Z}} & \multicolumn{2}{c}{\textbf{2Z-2MI}} \\
-			& \textbf{82-07} & \textbf{$\Delta$} & \textbf{82-07} & \textbf{$\Delta$} \\ 
+			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{2}{c}{2Z-2MI} \\
+			& 82-07 & $\Delta$ & 82-07 & $\Delta$ \\ 
 			\hline
 			Ulrichen & 29.37 & -1.36 & 33.24 & -1.08 \\
 			Zermatt & 22.20 & -1.67 & 26.95 & -1.32 \\
@@ -396,18 +396,17 @@ This result of a globally null improvement of the RMSE values does not mean that
 
 \section{Impact on performance scores}
 
-Nous avons pu observer précédemment un gain systématique sur le critère d'analogie S1. Il nous reste donc à évaluer la conséquence de l'introduction de la fenêtre temporelle glissante sur les scores de performance de la nouvelle distribution de pluie prévue. Nous utilisons donc des séries temporelles de précipitations créées à cet effet. Celles-ci ont été établies par une moyenne mobile sur une durée de 24~h avec un pas de temps de 6~h. En conservant toujours les mêmes paramètres que précédemment (même domaine et même nombre d'analogues), ces valeurs sont attribuées à chaque date analogue. La série des dates cibles reste inchangée, puisque nous conservons la tranche horaire d'origine (6~h~UTC - 6~h~UTC le lendemain). 
+A systematic improvement of the S1 values was previously observed. However, finding better analogue situations does not obligatory imply better forecast skills. Therefore, we have to assess the impact of the introduction of the sliding time window, and thus the selection of other analogue dates, on the performance scores. In order to perform this assessment, the 24~h-totals (moving average) at a 6-hourly time step were used (see section \ref{sec:data}). The target dates remain unchanged, since we keep the original time slot (6~h~UTC - 6~h~UTC the next day), and thus the performance scores can be directly compared with the former ones.
 
-Les CRPSS étant calculés sur la base de la même climatologie que précédemment, ils peuvent être comparés directement. Les gains en performance ainsi obtenus (Table \ref{tab:fenetre_glissante:Gains_CRPSS}) s'étalent de 2.31~\% à 9.31~\% pour le premier niveau d'analogie. Lorsque nous considérons le second niveau d'analogie, les gains sont globalement un peu supérieurs. Nous n'avons pas trouvé de relation entre l'amélioration du score et les gains du critère S1, ni avec la saison.
-
+The new performance scores are provided in Table \ref{table:CRPSS_STW}, along with the differences regarding the conventional method with the same archive length. The differences ranges from 0.57 to 2.14 points for the 2Z method and from 1.53 to 2.20 points for the 2Z-2MI method. The introduction of the STW brings an improvement of the performance that is not very large, but that is nevertheless significant. Moreover, it requires no additional predictor. No relationship was found between the improvement of the score and the reduction of the S1 criteria, neither with the season.
 
 \begin{table}[htb]
-	\caption{Gain en compétence du CRPS sur les deux niveaux d'analogie dû à l'introduction de la fenêtre temporelle glissante.}
+	\caption{New CRPSS performance scores for both 2Z and 2Z-2MI methods obtained by the STW approach. The differences are expressed regarding the conventional method with the same archive length.}
 	\begin{center}
 		\begin{tabular}{l c c c c}
 			\hline
-			\multirow{2}{*}{\textbf{Station}} & \multicolumn{2}{c}{\textbf{2Z}} & \multicolumn{ 2}{c}{\textbf{2Z-2MI}} \\
-			& \textbf{STW} & \textbf{$\Delta$} & \textbf{STW} & \textbf{$\Delta$} \\
+			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{ 2}{c}{2Z-2MI} \\
+			& STW & $\Delta$ & STW & $\Delta$ \\
 			\hline
 			Ulrichen & 31.12 & 1.74 & 35.44 & 2.20 \\
 			Zermatt & 24.34 & 2.14 & 28.92 & 1.97 \\
@@ -418,84 +417,92 @@ Les CRPSS étant calculés sur la base de la même climatologie que précédemme
 			\hline
 		\end{tabular}
 	\end{center}
-	\label{tab:fenetre_glissante:Gains_CRPSS}
+	\label{table:CRPSS_STW}
 \end{table}
 
 
-\subsection{Amélioration de différentes gammes de précipitations}
-\label{sec:ameliorations:fenetre:gammes_precip}
+\subsection{Improvement by precipitation threshold}
+\label{sec:improvement_CRPSS_precip_threshold}
+
+The S1 criteria was previously found to be improved to a greater extent for the most dynamic situations related with higher precipitation values (section \ref{sec:influence_precip}). The changes in terms of performance scores will now be assessed regarding precipitation thresholds. Figure \ref{fig:changes_CRPS_precip_threshold} synthesizes these differences for the Ulrichen station, other stations having the same behavior.
+
+The increasing positive trend of skill improvements regarding the precipitation threshold is significant and shows that the prediction of higher precipitation totals is further improved. Thus both the analogy criteria and the performance scores are improved to a greater extent for heavier precipitation events. On the contrary, the non-rainy days and small accumulations are not improved.
 
 \begin{figure}[htb]
-	\includegraphics[width=6cm]{figures/Graphique_fenetre_glissante_chmts_CRPS_seuils_precip.pdf}
-	\caption{Distribution des différences sur le score CRPSS dues à l'introduction de la fenêtre temporelle glissante en fonction de seuils de précipitations à la station d'Ulrichen. Les étoiles sont les moyennes des distributions.}
-	\label{fig:Graphique_fenetre_glissante_chmts_CRPS_seuils_precip}
+	\includegraphics[width=5cm]{figures/changes_CRPS_precip_threshold.pdf}
+	\caption{Differences of the CRPSS performance score, due to the introduction of the sliding time window, as a function of precipitation thresholds at the Ulrichen station. The stars represent averages.}
+	\label{fig:changes_CRPS_precip_threshold}
 \end{figure}
 
-Nous avions observé dans la section \ref{sec:ameliorations:fenetre:S1_pluie} une amélioration du critère S1 pour les situations plus dynamiques, soit avec des valeurs de précipitations supérieures. Nous allons à présent mettre en relation les gains en CRPSS et les cumuls précipités.
 
-La Figure \ref{fig:Graphique_fenetre_glissante_chmts_CRPS_seuils_precip} synthétise ces gains pour la station d'Ulrichen, les autres stations se comportant de la même manière. Un étalement de la distribution avec l'augmentation du seuil de précipitations peut être observé. Cet effet s'explique en premier lieu par le fait que la valeur du CRPS est dépendante des quantités de précipitations des journées cibles. 
+\subsection{Recalibrating the parameters}
+\label{sec:recalibration}
 
-Un résultat plus intéressant est la tendance positive croissante de toute la distribution avec l'augmentation du seuil des précipitations. À partir du seuil de 10~mm, la moyenne et les quantiles du gain en CRPSS tendent à augmenter de manière significative. Il semble donc que nous améliorons les scores de performance des événements davantage pluvieux, en plus de leurs critères d'analogie. Le fait que les jours non pluvieux et les petits cumuls ne sont pas améliorés semble expliquer le gain peu probant lorsque nous considérons l'ensemble de la période.
-
-
-
-\subsection{Recalibration des paramètres}
-\label{sec:ameliorations:fenetre:recalibration}
-
-L'évaluation précédente du gain en score de performance a été établie avec les paramètres originaux. Nous pouvons néanmoins supposer que l'introduction de la fenêtre temporelle glissante modifie peut-être le choix optimal de la position et de la taille de la fenêtre spatiale idéale et change le nombre d'analogues comparativement à la méthode standard. La calibration a donc été effectuée à nouveau.
-
+The previous assessment of the performance improvement was established with the original parameters. However, one can assume that the introduction of the STW may change the optimum of some parameters. The calibration has then been performed again.
 
 \begin{table}[htb]
-	\caption{Calibrated parameters (spatial windows and number of analogues) for the analogy on the geopotential at 500~hPa and 1000~hPa (method 2Z) and skill score (\%) of the method with the STW approach.}
+	\caption{Calibrated parameters (spatial windows and number of analogues) for the analogy on the geopotential at 500~hPa and 1000~hPa (method 2Z) with the STW approach.}
 	\begin{center}
-		\begin{tabular}{l c c c c c }
+		\begin{tabular}{l c c c }
 			\hline
-			\textbf{Station} & \textbf{Longitudes} & \textbf{Latitudes} & \textbf{N$_{1}$} & \textbf{CRPSS} & \textbf{$\Delta$} \\
+			Station & Longitudes & Latitudes & N$_{1}$ \\
 			\hline
-			Ulrichen & 0 $\rightarrow$ 17.5 & 42.5 $\rightarrow$ 50 & 50 & 31.58 & 2.20 \\
-			Zermatt & 0 $\rightarrow$ 17.5 & 40 $\rightarrow$ 50 & 55 & 24.71 & 2.51 \\
-			Visp & -2.5 $\rightarrow$ 20 & 40 $\rightarrow$ 50 & 55 & 25.08 & 1.85 \\
-			Montana & -2.5 $\rightarrow$ 15 & 42.5 $\rightarrow$ 47.5 & 55 & 32.22 & 1.43 \\
-			Sion & -2.5 $\rightarrow$ 15 & 37.5 $\rightarrow$ 50 & 55 & 26.07 & 1.29 \\
-			Aigle & -2.5 $\rightarrow$ 15 & 40 $\rightarrow$ 50 & 75 & 32.21 & 1.64 \\
+			Ulrichen & 0 $\rightarrow$ 17.5 & 42.5 $\rightarrow$ 50 & 50 \\
+			Zermatt & 0 $\rightarrow$ 17.5 & 40 $\rightarrow$ 50 & 55 \\
+			Visp & -2.5 $\rightarrow$ 20 & 40 $\rightarrow$ 50 & 55 \\
+			Montana & -2.5 $\rightarrow$ 15 & 42.5 $\rightarrow$ 47.5 & 55 \\
+			Sion & -2.5 $\rightarrow$ 15 & 37.5 $\rightarrow$ 50 & 55 \\
+			Aigle & -2.5 $\rightarrow$ 15 & 40 $\rightarrow$ 50 & 75 \\
 			\hline
 		\end{tabular}
 	\end{center}
 	\label{table:params_2Z_new}
 \end{table}
 
-
-
-
-
-
 \begin{table}[htb]
-	\caption{Parameters of the moisture variables from the 2Z-2MI method and the corresponding skill score (\%) with the STW approach. The parameters for the atmospheric circulation are the same as in Table \ref{table:params_2Z_new}, except the number of analogues of the first analogy level (N$_{1}$), which are here different. The $5^{th}$ column is the number of analogues for the second level (N$_{2}$).}
+	\caption{Parameters of the moisture variables from the 2Z-2MI method with the STW approach. The parameters for the atmospheric circulation are the same as in Table \ref{table:params_2Z_new}, except the number of analogues of the first analogy level (N$_{1}$), which are here different. The $5^{th}$ column is the number of analogues for the second level (N$_{2}$).}
 	\begin{center}
-		\begin{tabular}{l c c c c c c }
+		\begin{tabular}{l c c c c }
 			\hline
-			\textbf{Station} & \textbf{Longitudes} & \textbf{Latitudes} & \textbf{N$_{1}$} & \textbf{N$_{2}$} & \textbf{CRPSS} & \textbf{$\Delta$} \\
+			Station & Longitudes & Latitudes & N$_{1}$ & N$_{2}$ \\
 			\hline
-			Ulrichen & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 110 & 35 & 35.72 & 2.48 \\
-			Zermatt & 7.5 & 45 $\rightarrow$ 47.5 & 80 & 30 & 29.63 & 2.68 \\
-			Visp & 7.5 & 45 $\rightarrow$ 47.5 & 135 & 35 & 30.29 & 2.52 \\
-			Montana & 5 $\rightarrow$ 7.5 & 45 & 110 & 40 & 37.15 & 2.38 \\
-			Sion & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 140 & 50 & 31.68 & 2.32 \\
-			Aigle & 5 $\rightarrow$ 7.5 & 45 & 135 & 45 & 38.50 & 2.55 \\ 
+			Ulrichen & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 110 & 35 \\
+			Zermatt & 7.5 & 45 $\rightarrow$ 47.5 & 80 & 30 \\
+			Visp & 7.5 & 45 $\rightarrow$ 47.5 & 135 & 35 \\
+			Montana & 5 $\rightarrow$ 7.5 & 45 & 110 & 40 \\
+			Sion & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 140 & 50 \\
+			Aigle & 5 $\rightarrow$ 7.5 & 45 & 135 & 45 \\ 
 			\hline
 		\end{tabular}
 	\end{center}
 	\label{table:params_2Z-2MI_new}
 \end{table}
 
+After recalibrating, some changes in the optimal parameters can be observed for both 2Z (Table \ref{table:params_2Z_new}) and 2Z-2MI methods (Table \ref{table:params_2Z-2MI_new}). Among these, the east-west dimension of the spatial windows of the circulation analogy tends to decrease. More significantly, the optimal number of analogues increases after introducing the STW, of a significant order of magnitude: 25~\% to 83~\% for the 2Z method and 20~\% 67~\% for the 2Z-2MI method. The number of analogues of the first analogy level of the 2Z-2MI method even reached three times its previous value for the Visp station. As we saw in Figure \ref{fig:changes_S1}, the improvement of the S1 criteria grows along with the rank of the analogue, which shows an accumulation of better analogue situations in the distributions. It seems thus profitable to widen the selection of analogues in order to keep also some whose rank has increased, as they appear to be also relevant to predict precipitation values. The number of good analogues is thus globally increased.
 
+This increase in number of analogues has a slight effect on the performance of the different precipitation classes. The same analysis as in section \ref{sec:improvement_CRPSS_precip_threshold} has been performed again on the basis of the newly calibrated parameters. The results are generally very similar, but a slight performance increase of small precipitation values can be observed at the expense of higher amounts. The change in the analogues numbers is likely to be responsible for this difference in the performance distributions.
 
+\begin{table}[htb]
+	\caption{Values of the CRPSS (\%) skill score for the newly calibrated parameters using the STW approach. The differences are expressed regarding the conventional method with the same archive length.}
+	\begin{center}
+		\begin{tabular}{l c c c c}
+			\hline
+			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{ 2}{c}{2Z-2MI} \\
+			& STW & $\Delta$ & STW & $\Delta$ \\
+			\hline
+			Ulrichen & 31.58 & 2.20 & 35.72 & 2.48  \\
+			Zermatt & 24.71 & 2.51 & 29.63 & 2.68 \\
+			Visp & 25.08 & 1.85 & 30.29 & 2.52 \\
+			Montana & 32.22 & 1.43 & 37.15 & 2.38 \\
+			Sion & 26.07 & 1.29 & 31.68 & 2.32 \\
+			Aigle & 32.21 & 1.64 & 38.50 & 2.55 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\label{table:CRPSS_recalibration}
+\end{table}
 
-Des changements dans les paramètres optimaux des méthodes R1 (Table \ref{tab:fenetre_glissante:Resultats_R1_recalibration_fen_gliss}) et R2 (Table \ref{tab:fenetre_glissante:Resultats_R2_recalibration_fen_gliss}) peuvent être observés. Parmi ceux-ci, la dimension ouest-est des fenêtres spatiales du premier niveau tend à diminuer, les autres paramètres variant de diverses manières. Une constance est l'augmentation du nombre d'analogues après introduction de la fenêtre glissante, qui croît de 25~\% à 83~\% pour la méthode R1, et de 20~\% à 67~\% pour la méthode R2. Le nombre d'analogues du premier niveau de la méthode R2 atteint même le triple de sa valeur précédente pour la station de Visp. Le fait de pouvoir sélectionner des analogues de la même journée explique que nous sommes conduits à augmenter le nombre optimal d'analogues. La Figure \ref{fig:Graphique_fenetre_glissante_chmts_S1} nous a révélé que l'amélioration du critère d'analogie est croissante avec le rang des analogues. Nous accroissons donc le nombre de bonnes analogues de manière globale, tout en conservant certaines analogues dont le rang a augmenté.
-
-Cette augmentation du nombre d'analogues a un léger effet sur les performances des différentes classes de précipitations. L'analyse par classes (section \ref{sec:ameliorations:fenetre:gammes_precip}) a été effectuée à nouveau sur les analogues après recalibration. Les résultats sont globalement très semblables, mais nous pouvons distinguer une légère augmentation des performances des petites pluies au détriment des précipitations plus importantes. L'accroissement du nombre d'analogues est vraisemblablement responsable de cette différence dans la répartition des gains.
-
-Les valeurs des scores des méthodes R1 (Table \ref{tab:fenetre_glissante:Resultats_R1_recalibration_fen_gliss}) et R2 (Table \ref{tab:fenetre_glissante:Resultats_R2_recalibration_fen_gliss}) ont significativement augmenté après la recalibration. Avec l'introduction de la fenêtre temporelle glissante, nous regagnons en performance ce que nous avions alors perdu par la réduction de la longueur de l'archive. Dans notre cas, cette amélioration correspond approximativement à un doublement de la taille de l'archive.
+The values of the CRPSS scores for both methods (Table \ref{table:CRPSS_recalibration}) have significantly increased after recalibration. With the introduction of the sliding time window, we get back the performance loss related to the reduction of the archive length. In our case, this improvement is approximately a doubling of the archive size.
 
 
 \subsection{Décomposition du score en finesse et justesse}
