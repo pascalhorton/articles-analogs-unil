@@ -505,42 +505,66 @@ This increase in number of analogues has a slight effect on the performance of t
 The values of the CRPSS scores for both methods (Table \ref{table:CRPSS_recalibration}) have significantly increased after recalibration. With the introduction of the sliding time window, we get back the performance loss related to the reduction of the archive length. In our case, this improvement is approximately a doubling of the archive size.
 
 
-\subsection{Décomposition du score en finesse et justesse}
+\subsection{Changes in sharpness and accuracy}
 
-Le score CRPS pouvant être décomposé en deux composantes, à savoir la finesse et la justesse, nous allons analyser l'effet de la fenêtre temporelle glissante sur chacune d'elles. Les résultats de la Table \ref{tab:fenetre_glissante:Resultats_justesse_finesse} étant exprimés par rapport au CRPS total, un changement de la finesse est donc quantifié par rapport à la somme de la finesse et de la justesse. En effet, ces deux composantes n'ont pas les mêmes gammes de valeurs, la justesse étant dans notre cas presque deux fois supérieure à la finesse. Puisque nous travaillons ici sur le CRPS et non le CRPSS, une amélioration de la prévision se traduit par une baisse du score.
+The CRPS score can be decomposed into two components, namely sharpness and accuracy. The impact of the STW has been analyzed on these components and the results can be found in Table \ref{table:CRPSS_decomposition_no_recalibration} for the original parameters and in Table \ref{table:CRPSS_decomposition_recalibration} for the re-calibrated methods. The changes are expressed relative to the total CRPS. Both components do not have the same value ranges: accuracy is in our case almost twice the sharpness values. Since the CRPS is considered here and not the CRPSS, improved prediction capacity results in a lower score. A decrease of the score is thus desirable.
 
 \begin{table}[h]
-	\caption{Changements en finesse (Fin.) et en justesse (Just.) relatifs au CRPS total, dus à l'introduction de la fenêtre temporelle glissante. Les changements sont présentés pour les méthodes R1 et R2, et pour les résultats sans et avec recalibration des paramètres.}
+	\caption{Changes in sharpness and accuracy relatively to the total CRPS, due to the introduction of the sliding time window. The changes are presented for both 2Z and 2Z-2MI methods with the original parameters. A decrease of the score is desirable.}
 	\begin{center}
-		\begin{tabular}{|l|r r|r r|r r|r r|}
-			\cline{2-9}
-			\multicolumn{1}{l}{} & \multicolumn{ 4}{|c|}{\textbf{Fenêtre glissante}} & \multicolumn{ 4}{c|}{\textbf{Fenêtre glissante}} \\
-			\multicolumn{1}{l}{} & \multicolumn{ 4}{|c|}{\textbf{sans recalibration}} & \multicolumn{ 4}{c|}{\textbf{avec recalibration}} \\
-			\multicolumn{1}{l}{} & \multicolumn{ 2}{|c|}{\textbf{R1}} & \multicolumn{ 2}{c|}{\textbf{R2}} & \multicolumn{ 2}{c|}{\textbf{R1}} & \multicolumn{ 2}{c|}{\textbf{R2}} \\
-			\multicolumn{1}{l}{} & \multicolumn{1}{|l}{\textbf{Fin.}} & \multicolumn{1}{l|}{\textbf{Just.}} & \multicolumn{1}{l}{\textbf{Fin.}} & \multicolumn{1}{l|}{\textbf{Just.}} & \multicolumn{1}{l}{\textbf{Fin.}} & \multicolumn{1}{l|}{\textbf{Just.}} & \multicolumn{1}{l}{\textbf{Fin.}} & \multicolumn{1}{l|}{\textbf{Just.}} \\
-			\multicolumn{1}{l}{} & \multicolumn{1}{|l}{\textbf{(\%)}} & \multicolumn{1}{l|}{\textbf{(\%)}} & \multicolumn{1}{l}{\textbf{(\%)}} & \multicolumn{1}{l|}{\textbf{(\%)}} & \multicolumn{1}{l}{\textbf{(\%)}} & \multicolumn{1}{l|}{\textbf{(\%)}} & \multicolumn{1}{l}{\textbf{(\%)}} & \multicolumn{1}{l|}{\textbf{(\%)}} \\ \hline
-			Ulrichen & 2.82 & -5.29 & 1.00 & -4.30 & 1.44 & -4.56 & -0.37 & -3.34 \\ \hline
-			Zermatt & 2.26 & -5.01 & 0.88 & -3.58 & 0.80 & -4.03 & 0.75 & -4.42 \\ \hline
-			Visp & 3.66 & -5.18 & 2.67 & -4.94 & 1.53 & -3.94 & 1.47 & -4.96 \\ \hline
-			Montana & 1.62 & -2.78 & 0.57 & -2.91 & -0.27 & -1.80 & 0.06 & -3.71 \\ \hline
-			Sion & 2.02 & -2.78 & 0.33 & -2.75 & 0.95 & -2.66 & -0.10 & -3.19 \\ \hline
-			Aigle & 0.52 & -2.26 & -1.20 & -2.17 & -0.35 & -2.01 & -2.08 & -1.90 \\ \hline
+		\begin{tabular}{l c c c c}
+			\hline
+			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{2}{c}{2Z-2MI} \\
+			& Sharpness & Accuracy & Sharpness & Accuracy \\
+			\hline
+			Ulrichen & 2.82 & -5.29 & 1.00 & -4.30 \\
+			Zermatt & 2.26 & -5.01 & 0.88 & -3.58 \\
+			Visp & 3.66 & -5.18 & 2.67 & -4.94 \\
+			Montana & 1.62 & -2.78 & 0.57 & -2.91 \\
+			Sion & 2.02 & -2.78 & 0.33 & -2.75 \\
+			Aigle & 0.52 & -2.26 & -1.20 & -2.17 \\ 
+			\hline
 		\end{tabular}
 	\end{center}
-	\label{tab:fenetre_glissante:Resultats_justesse_finesse}
+	\label{table:CRPSS_decomposition_no_recalibration}
 \end{table}
+
+
+\begin{table}[h]
+	\caption{Same as Table \ref{table:CRPSS_decomposition_no_recalibration} but with the re-calibrated parameters.}
+	\begin{center}
+		\begin{tabular}{l c c c c}
+			\hline
+			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{2}{c}{2Z-2MI} \\
+			& Sharpness & Accuracy & Sharpness & Accuracy \\
+			\hline
+			Ulrichen & 1.44 & -4.56 & -0.37 & -3.34 \\
+			Zermatt & 0.80 & -4.03 & 0.75 & -4.42 \\
+			Visp & 1.53 & -3.94 & 1.47 & -4.96 \\
+			Montana & -0.27 & -1.80 & 0.06 & -3.71 \\
+			Sion & 0.95 & -2.66 & -0.10 & -3.19 \\
+			Aigle & -0.35 & -2.01 & -2.08 & -1.90 \\ 
+			\hline
+		\end{tabular}
+	\end{center}
+	\label{table:CRPSS_decomposition_recalibration}
+\end{table}
+
+
+
+
 
 
 \begin{figure*}[h]
 	\begin{center}$
 		\begin{array}{cccc}
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_justesse.pdf} & \hspace{-5mm}
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_finesse.pdf} & \hspace{-5mm}
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_justesse.pdf} & \hspace{-5mm}
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_justesse.pdf} &
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_finesse.pdf} &
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_justesse.pdf} &
 		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_finesse.pdf} \\
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_justesse_recalib.pdf} & \hspace{-5mm}
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_finesse_recalib.pdf} & \hspace{-5mm}
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_justesse_recalib.pdf} & \hspace{-5mm}
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_justesse_recalib.pdf} &
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_finesse_recalib.pdf} &
+		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_justesse_recalib.pdf} &
 		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_finesse_recalib.pdf} 
 		\end{array}$
 	\end{center}
