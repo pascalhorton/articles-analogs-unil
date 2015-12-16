@@ -13,8 +13,8 @@
    height="1052.3622047"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.1 "
-   sodipodi:docname="Illustration séries 6h moyennes glissantes.svg">
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="illustration_disaggregation.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,15 +25,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="234.33673"
-     inkscape:cy="877.54578"
+     inkscape:cx="299.40263"
+     inkscape:cy="876.21073"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1102"
-     inkscape:window-height="642"
-     inkscape:window-x="63"
-     inkscape:window-y="36"
+     inkscape:window-width="1501"
+     inkscape:window-height="806"
+     inkscape:window-x="139"
+     inkscape:window-y="236"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
@@ -52,68 +52,68 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:none;stroke:#969696;stroke-width:0.99999994000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 220.5625,93.674682 0,159.687498"
+       style="fill:none;stroke:#969696;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 220.5625,93.67468 0,173.82963"
        id="path4382"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#969696;stroke-width:0.99999994000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 200.5625,93.674683 0,159.687497"
+       style="fill:none;stroke:#969696;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 200.5625,93.674681 0,173.829629"
        id="path4382-2"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#969696;stroke-width:0.99999994000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 240.5625,93.674683 0,159.687497"
+       style="fill:none;stroke:#969696;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 240.5625,93.674681 0,173.829629"
        id="path4382-2-5"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#969696;stroke-width:0.99999994000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 260.5625,93.674683 0,159.687497"
+       style="fill:none;stroke:#969696;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 260.5625,93.674681 0,173.829629"
        id="path4382-2-5-1"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#969696;stroke-width:0.99999994000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 280.5625,93.674683 0,159.687497"
+       style="fill:none;stroke:#969696;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 280.5625,93.674681 0,173.829629"
        id="path4382-2-5-1-9"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#969696;stroke-width:0.99999994000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 300.5625,93.674683 0,159.687497"
+       style="fill:none;stroke:#969696;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 300.5625,93.674681 0,173.829629"
        id="path4382-2-5-1-3"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#969696;stroke-width:0.99999994000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 320.5625,93.674683 0,159.687497"
+       style="fill:none;stroke:#969696;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 320.5625,93.674681 0,173.829629"
        id="path4382-2-5-1-2"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#969696;stroke-width:0.99999994000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 340.5625,93.674683 0,159.687497"
+       style="fill:none;stroke:#969696;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 340.5625,93.674681 0,173.829629"
        id="path4382-2-5-1-94"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#969696;stroke-width:0.99999994000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 360.5625,93.674683 0,159.687497"
+       style="fill:none;stroke:#969696;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 360.5625,93.674681 0,173.829629"
        id="path4382-2-5-1-7"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#969696;stroke-width:0.99999994000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 380.5625,93.674683 0,159.687497"
+       style="fill:none;stroke:#969696;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 380.5625,93.674681 0,173.829629"
        id="path4382-2-5-1-6"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#969696;stroke-width:0.99999994000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 400.5625,93.674683 0,159.687497"
+       style="fill:none;stroke:#969696;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 400.5625,93.674681 0,173.829629"
        id="path4382-2-5-1-4"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#969696;stroke-width:0.99999994000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 420.5625,93.674683 0,159.687497"
+       style="fill:none;stroke:#969696;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 420.5625,93.674681 0,173.829629"
        id="path4382-2-5-1-0"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#969696;stroke-width:0.99999994000000003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0"
-       d="m 440.5625,93.674683 0,159.687497"
+       style="fill:none;stroke:#969696;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 440.5625,93.674681 0,173.829629"
        id="path4382-2-5-1-48"
        inkscape:connector-curvature="0" />
     <path
@@ -143,7 +143,7 @@
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';font-stretch:normal;font-variant:normal;"
        x="197.99925"
        y="86.070473"
        id="text3118"
@@ -152,10 +152,10 @@
          x="197.99925"
          y="86.070473"
          id="tspan3122"
-         style="font-size:8px">0</tspan></text>
+         style="font-size:8px;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">0</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';font-stretch:normal;font-variant:normal;"
        x="217.99925"
        y="86.070473"
        id="text3118-5"
@@ -164,10 +164,10 @@
          x="217.99925"
          y="86.070473"
          id="tspan3122-8"
-         style="font-size:8px">6</tspan></text>
+         style="font-size:8px;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">6</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';font-stretch:normal;font-variant:normal;"
        x="235.28316"
        y="86.070473"
        id="text3118-7"
@@ -176,10 +176,10 @@
          x="235.28316"
          y="86.070473"
          id="tspan3122-7"
-         style="font-size:8px">12</tspan></text>
+         style="font-size:8px;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">12</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';font-stretch:normal;font-variant:normal;"
        x="255.10638"
        y="86.070473"
        id="text3118-7-1"
@@ -188,7 +188,7 @@
          x="255.10638"
          y="86.070473"
          id="tspan3122-7-6"
-         style="font-size:8px">18</tspan></text>
+         style="font-size:8px;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">18</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 280.61425,99.967857 0,-12.50064"
@@ -236,52 +236,40 @@
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="98.225403"
-       y="97.060921"
-       id="text3328"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3330"
-         x="98.225403"
-         y="97.060921"
-         style="font-size:10px">Tranches horaires</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
        x="219.49419"
-       y="68.398872"
+       y="70.398872"
        id="text3332"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3334"
          x="219.49419"
-         y="68.398872"
-         style="font-size:10px">jour j-1</tspan></text>
+         y="70.398872"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';">day d-1</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
        x="305.4942"
-       y="68.398872"
+       y="70.398872"
        id="text3332-7"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3334-6"
          x="305.4942"
-         y="68.398872"
-         style="font-size:10px">jour j</tspan></text>
+         y="70.398872"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';">day d</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
        x="377.4942"
-       y="68.398872"
+       y="70.398872"
        id="text3332-7-0"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3334-6-3"
          x="377.4942"
-         y="68.398872"
-         style="font-size:10px">jour j+1</tspan></text>
+         y="70.398872"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';">day d+1</tspan></text>
     <g
        id="1"
        transform="translate(243.90621,57.309889)">
@@ -296,7 +284,7 @@
          y="13.057754"
          x="6.9000001"
          xml:space="preserve"
-         id="3"> </text>
+         id="3" />
     </g>
     <g
        id="1-2"
@@ -312,7 +300,7 @@
          y="13.057754"
          x="6.9000001"
          xml:space="preserve"
-         id="3-3"> </text>
+         id="3-3" />
     </g>
     <g
        id="1-6"
@@ -328,11 +316,11 @@
          y="13.057754"
          x="6.9000001"
          xml:space="preserve"
-         id="3-6"> </text>
+         id="3-6" />
     </g>
     <text
        xml:space="preserve"
-       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';font-stretch:normal;font-variant:normal;"
        x="277.99927"
        y="86.070473"
        id="text3118-1"
@@ -341,10 +329,10 @@
          x="277.99927"
          y="86.070473"
          id="tspan3122-5"
-         style="font-size:8px">0</tspan></text>
+         style="font-size:8px;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">0</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';font-stretch:normal;font-variant:normal;"
        x="297.99927"
        y="86.070473"
        id="text3118-5-2"
@@ -353,10 +341,10 @@
          x="297.99927"
          y="86.070473"
          id="tspan3122-8-7"
-         style="font-size:8px">6</tspan></text>
+         style="font-size:8px;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">6</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';font-stretch:normal;font-variant:normal;"
        x="315.28314"
        y="86.070473"
        id="text3118-7-6"
@@ -365,10 +353,10 @@
          x="315.28314"
          y="86.070473"
          id="tspan3122-7-1"
-         style="font-size:8px">12</tspan></text>
+         style="font-size:8px;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">12</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';font-stretch:normal;font-variant:normal;"
        x="335.10638"
        y="86.070473"
        id="text3118-7-1-4"
@@ -377,10 +365,10 @@
          x="335.10638"
          y="86.070473"
          id="tspan3122-7-6-2"
-         style="font-size:8px">18</tspan></text>
+         style="font-size:8px;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">18</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';font-stretch:normal;font-variant:normal;"
        x="357.99927"
        y="86.070473"
        id="text3118-1-9"
@@ -389,10 +377,10 @@
          x="357.99927"
          y="86.070473"
          id="tspan3122-5-1"
-         style="font-size:8px">0</tspan></text>
+         style="font-size:8px;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">0</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';font-stretch:normal;font-variant:normal;"
        x="377.99927"
        y="86.070473"
        id="text3118-5-2-2"
@@ -401,10 +389,10 @@
          x="377.99927"
          y="86.070473"
          id="tspan3122-8-7-5"
-         style="font-size:8px">6</tspan></text>
+         style="font-size:8px;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">6</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';font-stretch:normal;font-variant:normal;"
        x="395.28314"
        y="86.070473"
        id="text3118-7-6-0"
@@ -413,10 +401,10 @@
          x="395.28314"
          y="86.070473"
          id="tspan3122-7-1-8"
-         style="font-size:8px">12</tspan></text>
+         style="font-size:8px;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">12</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';font-stretch:normal;font-variant:normal;"
        x="415.10638"
        y="86.070473"
        id="text3118-7-1-4-3"
@@ -425,10 +413,10 @@
          x="415.10638"
          y="86.070473"
          id="tspan3122-7-6-2-9"
-         style="font-size:8px">18</tspan></text>
+         style="font-size:8px;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">18</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:8.7883215px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';font-stretch:normal;font-variant:normal;"
        x="437.99927"
        y="86.070473"
        id="text3118-1-9-7"
@@ -437,373 +425,421 @@
          x="437.99927"
          y="86.070473"
          id="tspan3122-5-1-0"
-         style="font-size:8px">0</tspan></text>
+         style="font-size:8px;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">0</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="58.225403"
-       y="117.06092"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
+       x="207.42493"
+       y="117.26193"
        id="text3328-8"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3330-0"
-         x="58.225403"
-         y="117.06092"
-         style="font-size:10px">Précipitations journalières</tspan></text>
+         x="207.42493"
+         y="117.26193"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';">Daily time series</tspan></text>
     <path
-       style="color:#000000;fill:none;stroke:#0000c2;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       d="m 380.84115,113.72742 79.77507,0"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;stroke:#0000c2;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate"
+       d="m 380.84115,133.72742 79.77507,0"
        id="path2985-0"
        inkscape:connector-curvature="0" />
-    <text
-       xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="24.225403"
-       y="157.06091"
-       id="text3328-8-8"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3330-0-6"
-         x="24.225403"
-         y="157.06091"
-         style="font-size:10px">Moyenne mobile pour jour j</tspan></text>
     <path
-       style="fill:none;stroke:#00a900;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 220.61425,113.72742 79.75963,0"
+       style="fill:none;stroke:#00a900;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 220.61425,133.72742 79.75963,0"
        id="path2985-0-6"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 300.88546,113.72742 79.46961,0"
+       style="fill:none;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 300.88546,133.72742 79.46961,0"
        id="path2985-0-0"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 220.61425,119.96786 0,-12.50064"
+       d="m 220.61425,139.96786 0,-12.50064"
        id="path2987-6"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 300.61425,119.96786 0,-12.50064"
+       d="m 300.61425,139.96786 0,-12.50064"
        id="path2987-1-3"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 380.61425,119.96786 0,-12.50064"
+       d="m 380.61425,139.96786 0,-12.50064"
        id="path2987-4-5"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 460.61425,119.96785 0,-12.50064"
+       d="m 460.61425,139.96785 0,-12.50064"
        id="path2987-7-4-0-9-9"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#00a900;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 240.37075,153.72742 60.37878,0"
+       style="fill:none;stroke:#00a900;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 240.37075,173.72742 60.37878,0"
        id="path2985-0-6-7"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 300.62029,153.72742 19.79954,0"
+       style="fill:none;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 300.62029,173.72742 19.79954,0"
        id="path2985-0-0-4"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#00a900;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 260.37421,173.72742 40.37532,0"
+       style="fill:none;stroke:#00a900;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 260.37421,193.72742 40.37532,0"
        id="path2985-0-6-7-8"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 300.62029,173.72742 40.05569,0"
+       style="fill:none;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 300.62029,193.72742 40.05569,0"
        id="path2985-0-0-4-6"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#00a900;stroke-width:1.99999988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 280.87157,193.72742 19.87795,0"
+       style="fill:none;stroke:#00a900;stroke-width:1.99999988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 280.87157,213.72742 19.87795,0"
        id="path2985-0-6-7-6"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 300.62029,193.72742 60.13723,0"
+       style="fill:none;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 300.62029,213.72742 60.13723,0"
        id="path2985-0-0-4-9"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 300.62029,213.72742 80.04414,0"
+       style="fill:none;stroke:#ff0000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 300.62029,233.72742 80.04414,0"
        id="path2985-0-0-4-8"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
-       style="color:#000000;fill:none;stroke:#0000c2;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
-       d="m 380.39921,233.72742 20.14547,0"
+       style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;stroke:#0000c2;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate"
+       d="m 380.39921,253.72742 20.14547,0"
        id="path2985-0-4-2-6"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:1.99999988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 320.70113,233.72742 59.9633,0"
+       style="fill:none;stroke:#ff0000;stroke-width:1.99999988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 320.70113,253.72742 59.9633,0"
        id="path2985-0-0-4-8-8"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="176.2254"
-       y="157.06091"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="227.1004"
+       y="177.06091"
        id="text3328-8-8-3"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3330-0-6-5"
-         x="176.2254"
-         y="157.06091"
-         style="font-size:10px">0h</tspan></text>
+         x="227.1004"
+         y="177.06091"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype'">0h</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="176.2254"
-       y="177.06091"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="227.1004"
+       y="197.06091"
        id="text3328-8-8-3-6"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3330-0-6-5-6"
-         x="176.2254"
-         y="177.06091"
-         style="font-size:10px">6h</tspan></text>
+         x="227.1004"
+         y="197.06091"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype'">6h</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="170.2254"
-       y="197.06091"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="222.7254"
+       y="217.06091"
        id="text3328-8-8-3-6-3"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3330-0-6-5-6-6"
-         x="170.2254"
-         y="197.06091"
-         style="font-size:10px">12h</tspan></text>
+         x="222.7254"
+         y="217.06091"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype'">12h</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="170.2254"
-       y="217.06091"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="222.7254"
+       y="237.06091"
        id="text3328-8-8-3-6-3-7"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3330-0-6-5-6-6-0"
-         x="170.2254"
-         y="217.06091"
-         style="font-size:10px">18h</tspan></text>
+         x="222.7254"
+         y="237.06091"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype'">18h</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="176.2254"
-       y="237.06091"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="227.1004"
+       y="257.06091"
        id="text3328-8-8-3-6-3-7-2"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3330-0-6-5-6-6-0-7"
-         x="176.2254"
-         y="237.06091"
-         style="font-size:10px">0h</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="10.93251"
-       y="237.06091"
-       id="text3328-8-8-5"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3330-0-6-1"
-         x="10.93251"
-         y="237.06091"
-         style="font-size:10px">Moyenne mobile pour jour j+1</tspan></text>
+         x="227.1004"
+         y="257.06091"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype'">0h</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 240.61425,159.96786 0,-12.50064"
+       d="m 240.61425,179.96786 0,-12.50064"
        id="path2987-6-2"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 260.61425,179.96786 0,-12.50064"
+       d="m 260.61425,199.96786 0,-12.50064"
        id="path2987-6-2-9"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 280.61425,199.96786 0,-12.50064"
+       d="m 280.61425,219.96786 0,-12.50064"
        id="path2987-6-2-5"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 300.61425,219.96786 0,-12.50064"
+       d="m 300.61425,239.96786 0,-12.50064"
        id="path2987-6-2-1"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 320.61425,239.96786 0,-12.50064"
+       d="m 320.61425,259.96786 0,-12.50064"
        id="path2987-6-2-1-4"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 320.61425,159.96786 0,-12.50064"
+       d="m 320.61425,179.96786 0,-12.50064"
        id="path2987-1-3-3"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 340.61425,179.96786 0,-12.50064"
+       d="m 340.61425,199.96786 0,-12.50064"
        id="path2987-1-3-3-2"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 360.61425,199.96786 0,-12.50064"
+       d="m 360.61425,219.96786 0,-12.50064"
        id="path2987-1-3-3-6"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 380.61425,219.96786 0,-12.50064"
+       d="m 380.61425,239.96786 0,-12.50064"
        id="path2987-1-3-3-5"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 400.61425,239.96786 0,-12.50064"
+       d="m 400.61425,259.96786 0,-12.50064"
        id="path2987-1-3-3-5-3"
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="152.93251"
-       y="257.06091"
-       id="text3328-8-8-5-0"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3330-0-6-1-5"
-         x="152.93251"
-         y="257.06091"
-         style="font-size:10px">...</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="179.46283"
-       y="257.06091"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="228.50128"
+       y="277.06091"
        id="text3328-8-8-5-0-2"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3330-0-6-1-5-8"
-         x="179.46283"
-         y="257.06091"
-         style="font-size:10px">...</tspan></text>
+         x="228.50128"
+         y="277.06091"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype'">...</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="264.57925"
-       y="150.64418"
+       y="170.64418"
        id="text4512"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4514"
          x="264.57925"
-         y="150.64418"
-         style="font-size:8px">3/4</tspan></text>
+         y="170.64418"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic'">3/4</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="304.57925"
-       y="150.64418"
+       y="170.64418"
        id="text4512-7"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4514-0"
          x="304.57925"
-         y="150.64418"
-         style="font-size:8px">1/4</tspan></text>
+         y="170.64418"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic'">1/4</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="273.87216"
-       y="170.64418"
+       y="190.64418"
        id="text4512-3"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4514-9"
          x="273.87216"
-         y="170.64418"
-         style="font-size:8px">1/2</tspan></text>
+         y="190.64418"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic'">1/2</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="313.87216"
-       y="170.64418"
+       y="190.64418"
        id="text4512-3-8"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4514-9-6"
          x="313.87216"
-         y="170.64418"
-         style="font-size:8px">1/2</tspan></text>
+         y="190.64418"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic'">1/2</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="284.57925"
-       y="190.64418"
+       y="210.64418"
        id="text4512-7-5"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4514-0-4"
          x="284.57925"
-         y="190.64418"
-         style="font-size:8px">1/4</tspan></text>
+         y="210.64418"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic'">1/4</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="324.57925"
-       y="190.64418"
+       y="210.64418"
        id="text4512-79"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4514-1"
          x="324.57925"
-         y="190.64418"
-         style="font-size:8px">3/4</tspan></text>
+         y="210.64418"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic'">3/4</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="337.76117"
-       y="210.64418"
+       y="230.64418"
        id="text4512-79-5"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4514-1-5"
          x="337.76117"
-         y="210.64418"
-         style="font-size:8px">1</tspan></text>
+         y="230.64418"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic'">1</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="344.57925"
-       y="230.64418"
+       y="250.64418"
        id="text4512-4"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4514-5"
          x="344.57925"
-         y="230.64418"
-         style="font-size:8px">3/4</tspan></text>
+         y="250.64418"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic'">3/4</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="384.57925"
-       y="230.64418"
+       y="250.64418"
        id="text4512-7-51"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4514-0-1"
          x="384.57925"
-         y="230.64418"
-         style="font-size:8px">1/4</tspan></text>
+         y="250.64418"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Italic'">1/4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
+       x="207.42493"
+       y="157.26192"
+       id="text3328-8-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3330-0-4"
+         x="207.42493"
+         y="157.26192"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';">Proportional distribution</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
+       x="207.97638"
+       y="177.06091"
+       id="text3328-8-8-3-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3330-0-6-5-9"
+         x="207.97638"
+         y="177.06091"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';">d</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
+       x="207.97638"
+       y="197.06091"
+       id="text3328-8-8-3-6-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3330-0-6-5-6-1"
+         x="207.97638"
+         y="197.06091"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';">d</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
+       x="207.97638"
+       y="217.06091"
+       id="text3328-8-8-3-6-3-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3330-0-6-5-6-6-6"
+         x="207.97638"
+         y="217.06091"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';">d</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
+       x="207.97638"
+       y="237.06091"
+       id="text3328-8-8-3-6-3-7-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3330-0-6-5-6-6-0-5"
+         x="207.97638"
+         y="237.06091"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';">d</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
+       x="203.2254"
+       y="257.06091"
+       id="text3328-8-8-3-6-3-7-2-8"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3330-0-6-5-6-6-0-7-1"
+         x="203.2254"
+         y="257.06091"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';">d+1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
+       x="207.31964"
+       y="277.06091"
+       id="text3328-8-8-5-0-2-8"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3330-0-6-1-5-8-7"
+         x="207.31964"
+         y="277.06091"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.75px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';">...</tspan></text>
   </g>
 </svg>

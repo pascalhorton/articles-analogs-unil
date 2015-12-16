@@ -572,36 +572,38 @@ It appears that the sharpness is a bit inferior with the STW in favor of accurac
 
 \section{Application attempts on the full archive}
 
-L'amélioration apportée par la fenêtre temporelle glissante est intéressante, il serait donc profitable de pouvoir l'appliquer à notre archive complète. Malheureusement, il n'existe pas de données horaires avant 1982 nous permettant de disposer d'une archive compatible et correcte. Nous allons donc chercher à répartir les cumuls précipités sur la journée par une simple moyenne mobile ou en utilisant la chronologie d'un prédicteur lié à l'humidité en tant que proxy.
+The improvement provided by the STW is interesting, mainly for heavy precipitation events, and thus it would be profitable to be able to apply it to the complete archive. Unfortunately, there is no long precipitation time series available with a sub-daily time step. In order to reconstruct a longer archive of moving averages of 24~h-totals, different disaggregation approaches of the daily time series were assessed and are presented in the following sections.
 
-\subsection{Série par moyenne mobile}
+\subsection{Proportional distribution}
 
-La moyenne mobile est certainement la répartition la plus simple que nous pouvons effectuer. Elle consiste à distribuer les précipitations journalières concernées de manière proportionnelle dans les différentes tranches de la série 24~heures glissée (Figure \ref{fig:illustration_disaggregation}). Les résultats présentés dans la Table \ref{tab:fenetre_glissante:Resultats_moyenne_mobile} montrent clairement qu'une telle archive ne présente aucun intérêt, puisque les performances sont même inférieures à la méthode classique sans fenêtre temporelle glissante (Table \ref{tab:fenetre_glissante:Gains_CRPSS}). Nous perdons le gain d'une sélection plus fine des situations analogues du fait d'une archive pluviométrique de qualité médiocre.
+A proportional distribution is certainly the simplest approach that can be performed. It consists in allocating proportional parts of the original daily time series into a new moving average of 24~h-totals (Figure \ref{fig:illustration_disaggregation}). When using this reconstructed time series on the shorter period, the method performance was degraded (Table \ref{table:disaggregation_proportional} to compare to Table \ref{table:CRPSS_STW}) and was even below the conventional method without STW (Table \ref{table:loss_reduction}). The benefit of a better selection of the analogue situations is lost due to a precipitation archive of poor quality.
 
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[width=12cm]{figures/illustration_disaggregation.pdf}
+		\includegraphics[width=8cm]{figures/illustration_disaggregation.pdf}
 	\end{center}
-	\caption{Illustration de la création de séries de cumuls sur 24h glissés par moyenne mobile.}
+	\caption{Illustration of the generation of 24~h-totals moving averages by means of a proportional distribution.}
 	\label{fig:illustration_disaggregation}
 \end{figure}
 
 \begin{table}[htb]
-	\caption{Performances de la fenêtre temporelle glissante avec une archive pluviométrique générée par moyenne mobile. Les résultats sont présentés pour les paramètres initiaux, ainsi que ceux issus de la recalibration de la section \ref{sec:ameliorations:fenetre:recalibration}}
+	\caption{Values of the CRPSS (\%) skill score for the original and the recalibrated parameters using the STW approach on the disaggregated precipitation time series (short period) by means of the proportional distribution.}
 	\begin{center}
-		\begin{tabular*}{10cm}{@{\extracolsep{\fill}}lcccc}
+		\begin{tabular}{l c c c c}
 			\hline
-			\multirow{2}{*}{\textbf{Station}} & \multicolumn{ 2}{c}{\textbf{Fenêtre glissante}} & \multicolumn{ 2}{c}{\textbf{Avec recalibration}} \\
-			& \multicolumn{1}{c}{\textbf{R1}} & \multicolumn{1}{c}{\textbf{R2}} & \multicolumn{1}{c}{\textbf{R1}} & \multicolumn{1}{c}{\textbf{R2}} \\ \hline
-			Ulrichen & 29.13~\% & 33.15~\% & 29.61~\% & 33.45~\% \\ \hline
-			Zermatt & 22.17~\% & 26.72~\% & 22.80~\% & 27.43~\% \\ \hline
-			Visp & 22.32~\% & 27.01~\% & 22.89~\% & 28.04~\% \\ \hline
-			Montana & 29.41~\% & 33.83~\% & 30.24~\% & 34.55~\% \\ \hline
-			Sion & 22.98~\% & 28.57~\% & 23.41~\% & 29.15~\% \\ \hline
-			Aigle & 29.07~\% & 34.66~\% & 29.46~\% & 35.09~\% \\ \hline
-		\end{tabular*}
+			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{ 2}{c}{2Z-2MI} \\
+			& original & recalib. & original & recalib. \\
+			\hline
+			Ulrichen & 29.13 & 29.61 & 33.15 & 33.45 \\
+			Zermatt & 22.17 & 22.80 & 26.72 & 27.43 \\
+			Visp & 22.32 & 22.89 & 27.01 & 28.04 \\
+			Montana & 29.41 & 30.24 & 33.83 & 34.55 \\
+			Sion & 22.98 & 23.41 & 28.57 & 29.15 \\
+			Aigle & 29.07 & 29.46 & 34.66 & 35.09 \\
+			\hline
+		\end{tabular}
 	\end{center}
-	\label{tab:fenetre_glissante:Resultats_moyenne_mobile}
+	\label{table:disaggregation_proportional}
 \end{table}
 
 
