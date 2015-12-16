@@ -509,7 +509,7 @@ The values of the CRPSS scores for both methods (Table \ref{table:CRPSS_recalibr
 
 The CRPS score can be decomposed into two components, namely sharpness and accuracy. The impact of the STW has been analyzed on these components and the results can be found in Table \ref{table:CRPSS_decomposition_no_recalibration} for the original parameters and in Table \ref{table:CRPSS_decomposition_recalibration} for the re-calibrated methods. The changes are expressed relative to the total CRPS. Both components do not have the same value ranges: accuracy is in our case almost twice the sharpness values. Since the CRPS is considered here and not the CRPSS, improved prediction capacity results in a lower score. A decrease of the score is thus desirable.
 
-\begin{table}[h]
+\begin{table}[htb]
 	\caption{Changes in sharpness and accuracy relatively to the total CRPS, due to the introduction of the sliding time window. The changes are presented for both 2Z and 2Z-2MI methods with the original parameters. A decrease of the score is desirable.}
 	\begin{center}
 		\begin{tabular}{l c c c c}
@@ -530,7 +530,7 @@ The CRPS score can be decomposed into two components, namely sharpness and accur
 \end{table}
 
 
-\begin{table}[h]
+\begin{table}[htb]
 	\caption{Same as Table \ref{table:CRPSS_decomposition_no_recalibration} but with the re-calibrated parameters.}
 	\begin{center}
 		\begin{tabular}{l c c c c}
@@ -550,33 +550,27 @@ The CRPS score can be decomposed into two components, namely sharpness and accur
 	\label{table:CRPSS_decomposition_recalibration}
 \end{table}
 
-
-
-
-
-
-\begin{figure*}[h]
+\begin{figure*}[htb]
 	\begin{center}$
 		\begin{array}{cccc}
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_justesse.pdf} &
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_finesse.pdf} &
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_justesse.pdf} &
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_finesse.pdf} \\
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_justesse_recalib.pdf} &
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R1_finesse_recalib.pdf} &
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_justesse_recalib.pdf} &
-		\includegraphics[width=4cm]{figures/Graphique_fenetre_glissante_comp_R2_finesse_recalib.pdf} 
+		\includegraphics[width=4cm]{figures/component_2Z_accuracy.pdf} &
+		\includegraphics[width=4cm]{figures/component_2Z_sharpness.pdf} &
+		\includegraphics[width=4cm]{figures/component_2Z-2MI_accuracy.pdf} &
+		\includegraphics[width=4cm]{figures/component_2Z-2MI_sharpness.pdf} \\ \\
+		\includegraphics[width=4cm]{figures/component_2Z_accuracy_recalib.pdf} &
+		\includegraphics[width=4cm]{figures/component_2Z_sharpness_recalib.pdf} &
+		\includegraphics[width=4cm]{figures/component_2Z-2MI_accuracy_recalib.pdf} &
+		\includegraphics[width=4cm]{figures/component_2Z-2MI_sharpness_recalib.pdf} 
 		\end{array}$
 	\end{center}
-	\caption{Influence de la fenêtre temporelle glissante sur les composantes du CRPS (justesse et finesse), pour les méthodes R1 et R2. Les résultats sont présentés pour (haut) les paramètres originaux et (bas) recalibrés. Une amélioration de la prévision se traduit par une baisse du score.}
-	\label{fig:Graphique_fenetre_glissante_crps_comp}
+	\caption{Influence (\%) of the STW on the CRPS components (accuracy and sharpness) relatively to the total CRPS, for the 2Z and 2Z-2MI methods, according to different precipitation thresholds. The results are presented for (top) the original parameters, and (bottom) the recalibrated parameters. Improved prediction results in a lower score.}
+	\label{fig:CRPSS_decomposition_precip_thresholds}
 \end{figure*}
 
-Il apparaît que la finesse est moins bonne avec la fenêtre temporelle glissante, au profit de la justesse, et ceci pour les mêmes paramètres que la méthode standard, alors qu'elle décroît avec l'augmentation du nombre d'analogues après recalibration. La Figure \ref{fig:Graphique_fenetre_glissante_crps_comp}, illustrant les changements en finesse et justesse pour différentes gammes de précipitations à la station d'Ulrichen, présente cette même tendance. Nous y voyons également que le plus grand gain en justesse concerne les gammes de précipitations les plus importantes, que ce soit pour R1 ou R2.  La fenêtre temporelle glissante ne permet donc pas d'améliorer la finesse, mais l'amélioration de la justesse est significative, et ceci notamment pour les jours de fortes précipitations. Cela signifie donc que le quantile 50~\% de la distribution prévue se rapproche des cumuls observés, mais que la distribution n'est pas plus condensée que précédemment.
+It appears that the sharpness is a bit inferior with the STW in favor of accuracy (Table \ref{table:CRPSS_decomposition_no_recalibration}). When using the recalibrated parameters, the components are a bit more balanced, but still the accuracy prevails on the sharpness (Table \ref{table:CRPSS_decomposition_recalibration}). Figure \ref{fig:CRPSS_decomposition_precip_thresholds} illustrates the changes (relative to the total CRPS) in sharpness and accuracy for different precipitation thresholds at the Ulrichen station. Be it for the 2Z or 2Z-2MI method, the original or the recalibrated parameters, the changes are similar: the improvements concern the accuracy over the sharpness, and this to a greater extent for significant precipitation events. The STW does not allow to improve the sharpness, but the improvement in accuracy is significant, and this especially for the days with heavy precipitation. In terms of the predicted precipitation distribution, it means that the median of the prediction is closer to the observed values, but the distribution is not more condensed than previously.
 
 
-
-\section{Tentatives d'application à l'archive complète}
+\section{Application attempts on the full archive}
 
 L'amélioration apportée par la fenêtre temporelle glissante est intéressante, il serait donc profitable de pouvoir l'appliquer à notre archive complète. Malheureusement, il n'existe pas de données horaires avant 1982 nous permettant de disposer d'une archive compatible et correcte. Nous allons donc chercher à répartir les cumuls précipités sur la journée par une simple moyenne mobile ou en utilisant la chronologie d'un prédicteur lié à l'humidité en tant que proxy.
 
