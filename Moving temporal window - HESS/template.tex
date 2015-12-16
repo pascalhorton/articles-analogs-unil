@@ -115,22 +115,27 @@
 
 
 \begin{abstract}
-TEXT
+The Analogue Method (AM) aims at forecasting local weather variables (predictands), such as the precipitation, by means of a statistical relationship with predictors at a synoptic scale. The analogy is assessed in the first place on the geopotential field by mean of a comparison of the gradients, in order to sample the days with a similar atmospheric circulation. 
+
+The search for candidates situations, for a given target day, is usually undertaken by comparing the state of the atmosphere at fixed hours of the day. The constraint being the use of daily time series, due to the length of available archives they provide. However, it is unlikely that the best analogues happen at the very same hour, but may occur at different time of the day. In order to assess the potential of finding better analogues at a different times, a sliding time window (STW) has been introduced.
+
+The STW resulted in a better analogy of the atmospheric circulation, with improved values of the analogy criteria on the whole distribution of analogue dates. The improvement was found to grow with the analogue ranks due to an accumulation of more similar situations in the predicted distribution. Moreover, the improvement is even more important for days with heavy precipitation events, which are generally related to more dynamic atmospheric situations, where timing is more specific. 
+
+A seasonal effect has also been identified, with larger improvements in winter that in summer, supposedly due to the stronger effect of the diurnal cycle in summer, which favors predictors at the same hours.
+
+The impact of the STW on the prediction performance has been assessed by means of a sub-daily precipitation series transformed into moving 24~h-totals at a 6-hourly time step. This resulted in an improvement of the prediction skills, which were even larger after recalibrating the AM parameters.
+
+Attempts to reconstruct longer precipitation series of running 24~h-totals by means of simple methods failed. It empathized the need to use time series with an accurate chronology. These should be available in a near future, either by means of growing observed time series, or by the establishment of precipitation reanalysis through regional modeling. Then, the use of a STW in the AM should be considered for any application, especially when the prediction quality of extreme events is important.
+
 \end{abstract}
 
 
 
 \introduction  %% \introduction[modified heading if necessary]
 
+The Analogue Method (AM) is based on the principle that two relatively similar synoptic situations may produce relatively similar local effects, and can be called analogues \citep{Lorenz1956, Lorenz1969}. Multiple variations of the methods exist and listings can be found in \citet{Horton2016} or \citet{BenDaoud2015}. The versions that will be considered here are often used as references or benchmarks for various improvements. The first implementation relies on an analogy of the atmospheric circulation, and the other adds a second level of analogy on moisture variables \citep{Obled2002, Bontron2005, Marty2012}.
 
-
-
-
-%REWRITE
-
-Multiple variations of the methods exist, and most of them will not be detailed hereafter \cite[see][for more comprehensive listings]{Horton2016, BenDaoud2015}. However, there are mainly 2 parameterizations that are most often used for precipitation forecasting and that will be considered as reference: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on moisture variables \citep{Obled2002, Bontron2005, Marty2012}.
-
-The method based on the analogy of the synoptic circulation consists in the following steps (Table \ref{table:method_2Z}): the similarity of the atmospheric circulation of a target date with every day of the archive is assessed by processing the S1 criteria \citep[Eq.\ \ref{eq:S1}, ][]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial window. \citet{Bontron2005} showed that the geopotential height at 500~hPa (Z500) and 1000~hPa (Z1000) are the best first predictors of the NCEP/NCAR reanalysis dataset, and that the S1 criteria performs better than scores based on absolute distances. The reason for such better results is that the S1 criteria allows comparing the circulation pattern, by means of the gradients, rather than the absolute value of the geopotential height. To cope with seasonal effects, candidate dates are extracted within a period of 4 months centered around the target date, for every year of the archive. Following the nomenclature proposed by \citet{Horton2016}, this method will be named 2Z.
+The first method is based on the analogy of the synoptic circulation (Table \ref{table:method_2Z}). When searching analogue situations for a target day, it starts by a preselection step, which is a selection of the 4 months centered around the target date for every year of the archive, in order to cope with seasonal effects. Then, the similarity of the atmospheric circulation of a target date with every day of the preselection is assessed by processing the S1 criteria \citep[Eq.\ \ref{eq:S1}, ][]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial window. The considered pressure levels are 500~hPa (Z500) and 1000~hPa (Z1000) \citep{Bontron2005}. The $N_{1}$ dates, which is a parameter to calibrate, with the lowest values of S1 are considered as analogues to the target day. Then, the daily observed precipitation amount of the corresponding dates provide the empirical conditional distribution considered as the probabilistic forecast for the target day. Following the nomenclature proposed by \citet{Horton2016}, this method will be named 2Z.
 
 \begin{equation}
 \label{eq:S1}
@@ -149,7 +154,7 @@ where $\Delta \hat{z}_{i}$ is the forecast geopotential height difference betwee
 			\hline 
 			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
 			\hline 
-			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{$N_{1}$} \\
 			& Z500 & 24~h & & \\ 
 			\hline 
 		\end{tabular} 
@@ -157,9 +162,7 @@ where $\Delta \hat{z}_{i}$ is the forecast geopotential height difference betwee
 	\label{table:method_2Z}
 \end{table}
 
-The $N_{1}$ dates with the lowest values of S1 are considered as analogues to the target day. The number of analogues, $N_{1}$, is a parameter to calibrate. Then, the daily observed precipitation amount of the $N_{1}$ resulting dates provide the empirical conditional distribution considered as the probabilistic forecast for the target day.
-
-The other most know parametrization adds a second level of analogy on moisture variables (method 2Z-2MI, Table \ref{table:method_2Z-2MI}). The predictor that \citet{Bontron2004} found optimal for the France territory is a moisture index made of the product of the precipitable water with the relative humidity at 850~hPa (RH850). \cite{Horton2012a} confirmed that this index is also better for the Swiss Alps than any other variable from the NCEP/NCAR reanalysis considered independently. When adding a second level of analogy, $N_{2}$ dates are subsampled in the $N_{1}$ analogues on the atmospheric circulation, to end up with a smaller number of analogue situations. When a second level of analogy is added, a higher number of analogues is kept on the first level.
+The second reference method adds a subsequent level of analogy on moisture variables (method 2Z-2MI, Table \ref{table:method_2Z-2MI}). This second predictor is a moisture index made of the product of the total precipitable water (TPW) with the relative humidity at 850~hPa (RH850) \citep{Bontron2004}. When adding a second level of analogy, $N_{2}$ dates are subsampled in the $N_{1}$ analogues on the atmospheric circulation, to end up with a smaller number of analogue situations. When a second level of analogy is added, a higher number of $N_{1}$ analogues is kept on the first level.
 
 \begin{table}[htb]
 	\caption{Parameters of the reference method with moisture variables (2Z-2MI). Same conventions as Table \ref{table:method_2Z}}
@@ -171,10 +174,10 @@ The other most know parametrization adds a second level of analogy on moisture v
 			\hline 
 			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
 			\hline 
-			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{$N_{1}$} \\
 			& Z500 & 24~h & & \\ 
 			\hline
-			\multirow{2}{*}{2} & TPW * RH850 & 12~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{30} \\
+			\multirow{2}{*}{2} & TPW * RH850 & 12~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{2}$} \\
 			& TPW * RH850 & 24~h & & \\ 
 			\hline 
 		\end{tabular} 
@@ -182,45 +185,41 @@ The other most know parametrization adds a second level of analogy on moisture v
 	\label{table:method_2Z-2MI}
 \end{table}
 
-%REWRITE
+To calibrate the method, the commonly used technique is a semi-automatic sequential procedure elaborated by \citet{Bontron2004}. AtmoSwing \citep{Horton2016}, which implements this technique was used in order to calibrate the parameters in the present study. The score that is most often used to assess an AM performance is the CRPS \citep[Continuous Ranked Probability Score,][]{Brown1974, Matheson1976, Hersbach2000}. It allows evaluating the predicted cumulative distribution functions $F(y)$, for example of the precipitation values $y$ from analogue situations, compared to the observed value $y^{0}$. The better the forecast, the smaller the score. The mean CRPS of a forecast series of length $n$ can be written:
 
+\begin{equation}
+\label{eq:CRPS}
+CRPS = \frac{1}{n} \sum_{i=1}^{n} \left(  \int_{-\infty}^{+\infty} \left[ F_{i}(y)-H_{i}(y-y_{i}^{0})\right]^{2} dy \right) 
+\end{equation}
+where $H(y-y_{i}^{0})$ is the Heaviside function that is null when $y-y_{i}^{0}<0$, and has the value 1 otherwise. The mean CRPS is averaged on the calibration, respectively the validation periods, on all days. \citet{Bontron2004} proposed a decomposition of this score into a sharpness and an accuracy terms.
 
+In order to compare the value of the score in regard to a reference, one often considers its skill score expression, and use the climatological distribution as the reference. The CRPSS (\textit{Continuous Ranked Probability Skill Score}) is thus defined as following:
 
+\begin{equation}
+\label{eq:CRPSS}
+CRPSS = \frac{CRPS-CRPS_{r}}{CRPS_{p}-CRPS_{r}} = 1-\frac{CRPS}{CRPS_{r}}
+\end{equation}
+where $CRPS_{r}$ is the CRPS value for the reference and $CRPS_{p}$ would be the one for a perfect forecast (which implies $CRPS_{p}~=~0$). A better forecast is characterized by an increase in CRPSS. 
 
-%COMPLETE
+The AM is usually implemented with a daily time step, due to the availability of long precipitation archives that have no equivalent to a finer resolution. Therefore, the analogues situations are assessed on the basis of a daily time step, by comparing predictors at fixed hours of the day, otherwise we would not know what precipitation values to assign to them. However, we can expect that the analogy of the synoptic situations do not occur systematically at the same time of the day, and that better candidates can be found at different times. On this assumption, we introduced a sliding time window (STW) to allow searching for candidates at different hours of the day.
 
-
-
-sliding time window (STW)
-
-
-
-The analogue method (AM) is usually implemented with a daily time step, due to the availability of long precipitation archives that have no equivalent to a finer resolution. Therefore, the analogues situations are compared on the basis of a daily time step, by comparing predictors at fixed hours of the day, otherwise we would not know what precipitation values to assign to them. However, we can expect that the analogy of the synoptic situations do not occur systematically at the same time of the day, and that better candidates can be found at different times.
-
-Previous tests showed the benefit, in terms of analogy criteria values, of searching for analogue synoptic situations at a finer time step, but without assessing the impact on the forecast skills \citep{Finet2008}. Archives of sub-daily precipitation datasets were not available on a long period in order to assess the improvement of the prediction. In order to assess this potential gain, precipitation data with a resolution of 10 minutes on a respectable archive length was used (section \ref{sec:data}). It was then aggregated in the form of 24~h totals, but at a 6-hourly time step, by means of a moving average (section \ref{sec:method}).
+Previous tests showed the benefit, in terms of analogy criteria values, of searching for analogue synoptic situations at a finer time step, but without assessing the impact on the forecast skills \citep{Finet2008}. In order to assess this potential improvement of the prediction, precipitation data with a resolution of 10 minutes on a respectable archive length was used (section \ref{sec:data}). It was then aggregated in the form of 24~h totals, but at a 6-hourly time step, by means of a moving average (section \ref{sec:method}).
 
 One can question the interest of using daily totals when a 6-hourly precipitation series can be used. The first reason is that the 6-hourly time series generated by the AM may not represent well the dynamic of the accurate precipitation (results not shown), due to a smoothed signal. Then, sometimes we just don't need finer resolution than the daily time step. Finally, when using a reconstructed precipitation archive, the errors in intra-day precipitation distributions have a lesser impact.
-
-
-
-
-
-%COMPLETE
-
 
 
 \section{Study area and data}
 \label{sec:data}
 
-The study area is the upper Rh\^{o}ne catchment in Switzerland. Due to the low density of weather stations with high temporal resolution and long archives, no aggregation or catchment rainfall was processed. The time series (on the period 1982-2007) come from 6 automatic weather stations, namely Ulrichen, Zermatt, Visp, Montana, Sion and Aigle. The results will often be presented arbitrarily for the Ulrichen station, but the results are exactly the same for all stations.
+The study area is the upper Rh\^{o}ne catchment in Switzerland \cite[study area of][]{Horton2012a}. Due to the low density of weather stations with high temporal resolution and long archives, no aggregation or catchment rainfall was processed. The time series (on the period 1982-2007) come from 6 automatic weather stations, namely Ulrichen, Zermatt, Visp, Montana, Sion and Aigle, which are subject to various meteorological influences \citep{Horton2012}. The results will thereafter be presented arbitrarily for the Ulrichen station, but they are equivalent for all stations.
+
+Predictors are extracted from the NCEP/NCAR reanalysis I \citep{Kalnay1996} dataset with a 6-hourly temporal resolution, 17 pressure levels, and a spatial resolution of 2.5\degree.
 
 
-%WRITE
-
-%FIGURE
+% FIGURE (MAP)
 
 
-\section{The sliding time window approach}
+\section{The sliding time window (STW) approach}
 \label{sec:method}
 
 In order to assess the benefit of searching analogue situations at a sub-daily time step, an appropriate time series is required. On the basis of high resolution time series (section \ref{sec:data}), 24~h totals were processed, but at a 6-hourly time step (temporal resolution of the reanalysis dataset), by means of a moving average. 
@@ -327,7 +326,7 @@ Figure \ref{fig:changes_S1_analogues} presents the changes in the distributions 
 		\includegraphics[width=8.2cm]{figures/changes_S1_value.pdf} \\
 		\includegraphics[width=8.3cm]{figures/changes_S1_gain.pdf}
 	\end{center}
-	\caption{Synthesis of the changes in the S1 criteria, due to the STW, for the Ulrichen station, depending on the ranks of the analogue. (top) Quantiles of the S1 distributions with and without the sliding window. (bottom) Quantiles of the relative improvements of the S1 criteria when using the sliding window.}
+	\caption{Synthesis of the changes in the S1 criteria, due to the STW, for the Ulrichen station, depending on the ranks of the analogue. (top) Quantiles of the S1 distributions with and without the STW. (bottom) Quantiles of the relative improvements of the S1 criteria when using the STW.}
 	\label{fig:changes_S1}
 \end{figure}
 
@@ -361,7 +360,7 @@ Atmospheric dynamics varies greatly from one season to another, which reflects o
 	\begin{center}
 		\includegraphics[width=7cm]{figures/changes_S1_seasons.pdf}
 	\end{center}
-	\caption{Seasonal effect on the median reduction of the S1 criteria for the Ulrichen station due to the sliding time window. DJF: winter, MAM: spring, JJA: summer SON: fall.}
+	\caption{Seasonal effect on the median reduction of the S1 criteria for the Ulrichen station due to the STW. DJF: winter, MAM: spring, JJA: summer SON: fall.}
 	\label{fig:changes_S1_seasons}
 \end{figure}
 
@@ -387,7 +386,7 @@ When considering the second level of analogy of the 2Z-2MI method (Table \ref{ta
 		\includegraphics[width=8.1cm]{figures/changes_RMSE_value.pdf} \\
 		\includegraphics[width=8.3cm]{figures/changes_RMSE_gain.pdf}
 	\end{center}
-	\caption{Synthesis of the changes in the RMSE criteria, due to the STW, for the Ulrichen station, depending on the ranks of the analogue. (top) Quantiles of the RMSE distributions with and without the sliding window. (bottom) Quantiles of the relative improvements of the RMSE criteria when using the sliding window.}
+	\caption{Synthesis of the changes in the RMSE criteria, due to the STW, for the Ulrichen station, depending on the ranks of the analogue. (top) Quantiles of the RMSE distributions with and without the STW. (bottom) Quantiles of the relative improvements of the RMSE criteria when using the STW.}
 	\label{fig:changes_RMSE}
 \end{figure}
 
@@ -396,7 +395,7 @@ This result of a globally null improvement of the RMSE values does not mean that
 
 \section{Impact on performance scores}
 
-A systematic improvement of the S1 values was previously observed. However, finding better analogue situations does not obligatory imply better forecast skills. Therefore, we have to assess the impact of the introduction of the sliding time window, and thus the selection of other analogue dates, on the performance scores. In order to perform this assessment, the 24~h-totals (moving average) at a 6-hourly time step were used (see section \ref{sec:data}). The target dates remain unchanged, since we keep the original time slot (6~h~UTC - 6~h~UTC the next day), and thus the performance scores can be directly compared with the former ones.
+A systematic improvement of the S1 values was previously observed. However, finding better analogue situations does not obligatory imply better forecast skills. Therefore, we have to assess the impact of the introduction of the STW, and thus the selection of other analogue dates, on the performance scores. In order to perform this assessment, the 24~h-totals (moving average) at a 6-hourly time step were used (see section \ref{sec:data}). The target dates remain unchanged, since we keep the original time slot (6~h~UTC - 6~h~UTC the next day), and thus the performance scores can be directly compared with the former ones.
 
 The new performance scores are provided in Table \ref{table:CRPSS_STW}, along with the differences regarding the conventional method with the same archive length. The differences ranges from 0.57 to 2.14 points for the 2Z method and from 1.53 to 2.20 points for the 2Z-2MI method. The introduction of the STW brings an improvement of the performance that is not very large, but that is nevertheless significant. Moreover, it requires no additional predictor. No relationship was found between the improvement of the score and the reduction of the S1 criteria, neither with the season.
 
@@ -430,7 +429,7 @@ The increasing positive trend of skill improvements regarding the precipitation 
 
 \begin{figure}[htb]
 	\includegraphics[width=5cm]{figures/changes_CRPS_precip_threshold.pdf}
-	\caption{Differences of the CRPSS performance score, due to the introduction of the sliding time window, as a function of precipitation thresholds at the Ulrichen station. The stars represent averages.}
+	\caption{Differences of the CRPSS performance score, due to the introduction of the STW, as a function of precipitation thresholds at the Ulrichen station. The stars represent averages.}
 	\label{fig:changes_CRPS_precip_threshold}
 \end{figure}
 
@@ -502,7 +501,7 @@ This increase in number of analogues has a slight effect on the performance of t
 	\label{table:CRPSS_recalibration}
 \end{table}
 
-The values of the CRPSS scores for both methods (Table \ref{table:CRPSS_recalibration}) have significantly increased after recalibration. With the introduction of the sliding time window, we get back the performance loss related to the reduction of the archive length. In our case, this improvement is approximately a doubling of the archive size.
+The values of the CRPSS scores for both methods (Table \ref{table:CRPSS_recalibration}) have significantly increased after recalibration. With the introduction of the STW, we get back the performance loss related to the reduction of the archive length. In our case, this improvement is approximately a doubling of the archive size.
 
 
 \subsection{Changes in sharpness and accuracy}
@@ -510,7 +509,7 @@ The values of the CRPSS scores for both methods (Table \ref{table:CRPSS_recalibr
 The CRPS score can be decomposed into two components, namely sharpness and accuracy. The impact of the STW has been analyzed on these components and the results can be found in Table \ref{table:CRPSS_decomposition_no_recalibration} for the original parameters and in Table \ref{table:CRPSS_decomposition_recalibration} for the re-calibrated methods. The changes are expressed relative to the total CRPS. Both components do not have the same value ranges: accuracy is in our case almost twice the sharpness values. Since the CRPS is considered here and not the CRPSS, improved prediction capacity results in a lower score. A decrease of the score is thus desirable.
 
 \begin{table}[htb]
-	\caption{Changes in sharpness and accuracy relatively to the total CRPS, due to the introduction of the sliding time window. The changes are presented for both 2Z and 2Z-2MI methods with the original parameters. A decrease of the score is desirable.}
+	\caption{Changes in sharpness and accuracy relatively to the total CRPS, due to the introduction of the STW. The changes are presented for both 2Z and 2Z-2MI methods with the original parameters. A decrease of the score is desirable.}
 	\begin{center}
 		\begin{tabular}{l c c c c}
 			\hline
@@ -662,14 +661,14 @@ The results of the correlation analyses (on non-zero values) between the new ser
 
 Table \ref{table:proxy_CRPSS} presents the CRPSS scores obtained by the reconstituted series using the proxy of precipitable water at the optimal point (Table \ref{table:proxy_correlations}). A slight improvement can be obtained compared to the proportional distribution method, but it is still relatively small, and most of the benefit of the STW is lost.
 
-These attempts to transpose the STW on the total archive highlight the importance of the actual chronology of rainfall. The sliding window is profitable, provided that the precipitation series are close to the observed one. Without precipitation series with an accurate sub-daily chronology, the introduction of a STW is not appropriate.
+These attempts to transpose the STW on the total archive highlight the importance of the actual chronology of rainfall. The STW is profitable, provided that the precipitation series are close to the observed one. Without precipitation series with an accurate sub-daily chronology, the introduction of a STW is not appropriate.
 
 
 \conclusions  %% \conclusions[modified heading if necessary]
 
 The AM is most often based on a daily time step, due to the availability of long precipitation archives. However, it is unlikely that two analogue synoptic situations, that evolve relatively quickly, would correspond optimally at the same hour of the day. It is thus more likely that a better match can be found at another time, which can change the selection of the analogues dates.
 
-As \citet{Finet2008} had previously shown, the introduction of a sliding time window allows finding better analogue situations in terms of the atmospheric circulation. It has been here demonstrated that the improvement of the S1 criteria values is growing with the rank of the analogue. This is due to the accumulation of better analogues within the predicted distributions.
+As \citet{Finet2008} had previously shown, the introduction of a STW allows finding better analogue situations in terms of the atmospheric circulation. It has been here demonstrated that the improvement of the S1 criteria values is growing with the rank of the analogue. This is due to the accumulation of better analogues within the predicted distributions.
 
 The improvement of the circulation analogy was found to be more important for heavy precipitation events, which are generally related to more dynamic atmospheric situations. This dynamism implies more specific circulation patterns that are evolving more rapidly. Thus, a STW is found to be of particular interest in this kind of situation, and benefits the prediction of extreme precipitation events.
 
@@ -681,7 +680,7 @@ The parameters were then calibrated again, using the STW. Some parameters change
 
 The importance of the quality of the precipitation archive was also demonstrated, as too simplistic reconstructions of 6-hourly time series lead to a loss of all the improvement brought by better analogue situations identified by the STW. The precipitation prediction is improved only when the precipitation chronology is close to the accurate one. Attempts to reconstruct longer time series based on a simplistic proportional distribution or using meteorological variables from the NCEP reanalysis 1 dataset as proxy did not succeed.
 
-Perspectives of using the STW rely on the availability of long precipitation series at a sub-daily time step and with high accuracy. The first source of such data is the simple fact that with time, these archives of high temporal resolution precipitation data are getting longer. The second source is the establishment of precipitation reanalysis at a country scale, or the use of reanalysis-driven RCMs (Regional Climate Models) or LAMs (Limited Area Models) on a long period. When such precipitation data will be available, the use of a STW in the AM should be considered for any application, especially when the prediction quality of extreme events are important.
+Perspectives of using the STW rely on the availability of long precipitation series at a sub-daily time step and with high accuracy. The first source of such data is the simple fact that with time, these archives of high temporal resolution precipitation data are getting longer. The second source is the establishment of precipitation reanalysis at a country scale, or the use of reanalysis-driven RCMs (Regional Climate Models) or LAMs (Limited Area Models) on a long period. When such precipitation data will be available, the use of a STW in the AM should be considered for any application, especially when the prediction quality of extreme events is important.
 
 
 
