@@ -607,64 +607,62 @@ A proportional distribution is certainly the simplest approach that can be perfo
 \end{table}
 
 
+\subsection{Use of a proxy variable}
 
-\subsection{Utilisation d'un proxy pour reconstituer la chronologie}
+As we saw in the previous section, the performance improvement brought by the STW is lost when using a simplistic precipitation time series. In order to get closer to the chronology of the accurate precipitation, the reconstruction procedure must rely on some informative variable. Data from the NCEP/NCAR reanalysis 1 (section \ref{sec:data}) was used in this perspective, despite their rough resolution. 
 
-Comme nous l'avons vu dans la section précédente, une série de précipitations reconstituée de manière simpliste nous fait perdre tout le gain de performance de la fenêtre temporelle glissante et ne présente alors aucun intérêt. Nous devons donc trouver un moyen de nous approcher de la chronologie réelle, pour une période (1961-1981) où nous ne disposons d'aucune série de précipitations continue avec une résolution plus fine. Il nous faut donc extraire de l'information de la répartition intrajournalière des pluies à partir d'une autre source de données. Un modèle de prévision météorologique régional serait en mesure d'apporter de l'information permettant de générer des séries de précipitations plus pertinentes. Malheureusement, de tels résultats ne sont pas disponibles sous forme de longues archives. Une alternative aux modèles régionaux est donnée par les réanalyses. Bien que celles-ci ont une résolution plus faible et n'intègrent que grossièrement les processus locaux, nous allons évaluer si elles rendent possible la transposition de la fenêtre temporelle glissante sur toute l'archive. 
-
-La première étape consiste à déterminer quelle variable, de l'eau précipitable ou de l'humidité relative, est la plus corrélée avec la série de précipitations sur la période 1982-2007, et en quel point. Nous considérons les niveaux 1000~hPa, 925~hPa et 850~hPa pour l'humidité relative, et les points les plus proches du bassin (5\textdegree\ - 7.5\textdegree\ de longitude et 45\textdegree\ - 47.5\textdegree\ de latitude). Finalement, les points de grille des réanalyses étant relativement éloignés de nos stations, il est pertinent de rechercher la présence probable d'un décalage temporel entre les séries. 
-
-Le point le plus pertinent ne sera probablement pas le même pour toutes les stations, puisque nous pouvons nous attendre à trouver l'optimum dans la direction des apports d'humidité principaux pour la station. Cette recherche doit donc être effectuée pour chacune de nos stations. Nous illustrons le principe avec la station de Zermatt.
-
+The first step consisted in determining which variables from the precipitable water or the relative humidity (at 1000~hPa, 925~hPa or 850~hPa) produces the precipitation chronology that is the most correlated (on non-zero values) with the accurate 6-hourly precipitation time series on the period 1982-2007. The location of the most predictive point from the reanalysis grid had to be assessed (closest points: 5\textdegree\ - 7.5\textdegree\ longitude and 45\textdegree\ - 47.5\textdegree\ latitude), as well an eventual time lapse between both series, due to the significant distance separating the weather stations and the reanalysis grid point. The most relevant point will probably not be the same for all stations, since we can expect to find the optimum in the direction of the main moisture inflows for the station. This assessment must be carried out for each station. 
 
 \begin{table}[htb]
-	\caption{Valeur du coefficient de détermination entre les séries reconstituées à l'aide d'un proxy et la série réelle à pas de temps de 6~h. Les proxys évalués sont l'eau précipitable et l'humidité relative à différents niveaux atmosphériques, en 4 points proches du bassin. Le coefficient de détermination le plus élevé est indiqué en gras.}
+	\caption{Value of the coefficient of determination between the reconstructed 6-hourly precipitation time series using the listed variables, and the accurate time series on the period 1982-2007. The grid points are the following (lon/lat): 1) 5\textdegree/47.5\textdegree, 2) 5\textdegree/45\textdegree, 3) 7.5\textdegree/47.5\textdegree, 4) 7.5\textdegree/45\textdegree. The highest coefficient of determination is indicated in bold.}
 	\begin{center}
-		\begin{tabular}{|l|rr|rrrrr|}
-			\cline{ 2- 8}
-			\multicolumn{1}{l}{} & \multicolumn{2}{|c|}{\textbf{Position}} &  \multicolumn{5}{c|}{\textbf{Décalage temporel}} \\
-			\multicolumn{1}{l}{} & \multicolumn{1}{|c}{\textbf{Lon}} & \multicolumn{1}{c|}{\textbf{Lat}} & \multicolumn{1}{c}{\textbf{-12h}} & \multicolumn{1}{c}{\textbf{-6h}} & \multicolumn{1}{c}{\textbf{0h}} & \multicolumn{1}{c}{\textbf{+6h}} & \multicolumn{1}{c|}{\textbf{+12h}} \\ \hline
-			\multirow{ 4}{*}{RHum 1000 hPa} & 5.0 & 47.5 & 0.668 & 0.669 & 0.684 & 0.683 & 0.670 \\
-			& 5.0 & 45.0 & 0.669 & 0.669 & 0.683 & 0.681 & 0.669 \\
-			& 7.5 & 47.5 & 0.662 & 0.673 & 0.691 & 0.682 & 0.673 \\
-			& 7.5 & 45.0 & 0.666 & 0.671 & 0.688 & 0.681 & 0.668 \\ \hline
-			\multirow{ 4}{*}{RHum 925 hPa} & 5.0 & 47.5 & 0.672 & 0.673 & 0.684 & 0.684 & 0.675 \\
-			& 5.0 & 45.0 & 0.674 & 0.674 & 0.683 & 0.682 & 0.672 \\
-			& 7.5 & 47.5 & 0.662 & 0.673 & 0.691 & 0.682 & 0.673 \\
-			& 7.5 & 45.0 & 0.666 & 0.671 & 0.689 & 0.681 & 0.668 \\ \hline
-			\multirow{ 4}{*}{RHum 850 hPa} & 5.0 & 47.5 & 0.675 & 0.675 & 0.679 & 0.678 & 0.671 \\
-			& 5.0 & 45.0 & 0.681 & 0.690 & 0.691 & 0.677 & 0.664 \\
-			& 7.5 & 47.5 & 0.665 & 0.680 & 0.693 & 0.683 & 0.675 \\
-			& 7.5 & 45.0 & 0.675 & 0.694 & 0.706 & 0.681 & 0.659 \\ \hline
-			\multirow{ 4}{*}{Eau precipitable} & 5.0 & 47.5 & 0.688 & 0.687 & 0.667 & 0.655 & 0.652 \\
-			& 5.0 & 45.0 & 0.697 & 0.699 & 0.669 & 0.644 & 0.644 \\
-			& 7.5 & 47.5 & 0.686 & 0.708 & 0.689 & 0.655 & 0.648 \\
-			& 7.5 & 45.0 & 0.696 & \textbf{0.721} & 0.696 & 0.643 & 0.636 \\ \hline
+		\begin{tabular}{l c c c c c c}
+			\hline
+			\multirow{2}{*}{Variable} & \multirow{2}{*}{Point} &  \multicolumn{5}{c}{Time lapse} \\
+			&  & -12h & -6h & 0h & +6h & +12h \\ 
+			\hline
+			\multirow{ 4}{*}{RH1000} & 1 & 0.668 & 0.669 & 0.684 & 0.683 & 0.670 \\
+			& 2 & 0.669 & 0.669 & 0.683 & 0.681 & 0.669 \\
+			& 3 & 0.662 & 0.673 & 0.691 & 0.682 & 0.673 \\
+			& 4 & 0.666 & 0.671 & 0.688 & 0.681 & 0.668 \\ \hline
+			\multirow{ 4}{*}{RH925} & 1 & 0.672 & 0.673 & 0.684 & 0.684 & 0.675 \\
+			& 2 & 0.674 & 0.674 & 0.683 & 0.682 & 0.672 \\
+			& 3 & 0.662 & 0.673 & 0.691 & 0.682 & 0.673 \\
+			& 4 & 0.666 & 0.671 & 0.689 & 0.681 & 0.668 \\ \hline
+			\multirow{ 4}{*}{RH850} & 1 & 0.675 & 0.675 & 0.679 & 0.678 & 0.671 \\
+			& 2 & 0.681 & 0.690 & 0.691 & 0.677 & 0.664 \\
+			& 3 & 0.665 & 0.680 & 0.693 & 0.683 & 0.675 \\
+			& 4 & 0.675 & 0.694 & 0.706 & 0.681 & 0.659 \\ \hline
+			\multirow{ 4}{*}{TCW} & 1 & 0.688 & 0.687 & 0.667 & 0.655 & 0.652 \\
+			& 2 & 0.697 & 0.699 & 0.669 & 0.644 & 0.644 \\
+			& 3 & 0.686 & 0.708 & 0.689 & 0.655 & 0.648 \\
+			& 4 & 0.696 & \textbf{0.721} & 0.696 & 0.643 & 0.636 \\ \hline
 		\end{tabular}
 	\end{center}
-	\label{tab:fenetre_glissante:Serie_proxy_correlations}
+	\label{table:proxy_correlations}
 \end{table}
 
 \begin{table}[htb]
-	\caption{Valeurs des scores CRPSS pour Zermatt avec la série glissée reconstituée à l'aide d'un proxy météorologique. Les résultats sont présentés pour les deux périodes 1982-2007 et 1961-2008, pour les paramètres sans et avec recalibration, ainsi que pour les deux méthodes R1 et R2.}
+	\caption{Values of the CRPSS (\%) skill score for Zermatt, for the original and the recalibrated parameters using the STW approach on the disaggregated precipitation time series (short and long periods) by means of variables from the reanalysis.}
 	\begin{center}
-		\begin{tabular*}{10cm}{@{\extracolsep{\fill}}lcccc}
+		\begin{tabular}{l c c c c}
 			\hline
-			\multirow{2}{*}{\textbf{Période}} & \multicolumn{ 2}{c}{\textbf{Sans recalibration}} & \multicolumn{ 2}{c}{\textbf{Avec recalibration}} \\
-			& \multicolumn{1}{c}{\textbf{R1}} & \textbf{R2} & \multicolumn{1}{c}{\textbf{R1}} & \textbf{R2} \\ \hline
-			1982-2007 & 22.57~\% & 27.11~\% & 23.14~\% & 27.71~\% \\ \hline
-			1961-2008 & 23.81~\% & 28.42~\% & 24.38~\% & 28.86~\% \\ \hline
-		\end{tabular*}
+			\multirow{2}{*}{Period} & \multicolumn{2}{c}{2Z} & \multicolumn{ 2}{c}{2Z-2MI} \\
+			& original & recalib. & original & recalib. \\
+			\hline
+			1982-2007 & 22.57 & 23.14 & 27.11 & 27.71 \\
+			1961-2008 & 23.81 & 24.38 & 28.42 & 28.86 \\
+			\hline
+		\end{tabular}
 	\end{center}
-	\label{tab:fenetre_glissante:Resultats_proxy_Zermatt}
+	\label{table:proxy_CRPSS}
 \end{table}
 
+The results of the correlation analyses (on non-zero values) between the new series reconstituted using the proxy and the actual series are illustrated in Table \ref{table:proxy_correlations} for Zermatt (on the short period, 1982-2007). The best proxy is the precipitable water at 45\textdegree\ latitude and 7.5\textdegree\ longitude, with a time offset of -6~h. The determination coefficient of 0.721 is higher than that of the series from the proportional distribution (0.698), which confirms that a little information was added to the series of precipitation.
 
-Afin de déterminer quelle variable météorologique considérer, en quel point, et avec quel décalage horaire, chacune des séries générées doit être comparée à la série réelle. La Table \ref{tab:fenetre_glissante:Serie_proxy_correlations} présente les coefficients de détermination sur les valeurs non nulles entre les nouvelles séries reconstituées à l'aide du proxy et la série réelle de la station de Zermatt à pas de temps de 6~h sur la période 1982-2007. Le meilleur proxy est l'eau précipitable à 45\textdegree\ de latitude et 7.5\textdegree\ de longitude, avec un décalage temporel de -6~h; cela signifie que nous devons retarder de 6~h la chronologie du prédicteur afin de l'appliquer aux précipitations. Le coefficient de détermination de 0.721 est supérieur à celui de la série par moyenne mobile (0.698), ce qui nous confirme que nous avons ajouté un peu d'information à la série de précipitations, sans toutefois savoir si celle-ci est suffisante.
+Table \ref{table:proxy_CRPSS} presents the CRPSS scores obtained by the reconstituted series using the proxy of precipitable water at the optimal point (Table \ref{table:proxy_correlations}). A slight improvement can be obtained compared to the proportional distribution method, but it is still relatively small, and most of the benefit of the STW is lost.
 
-La Table \ref{tab:fenetre_glissante:Resultats_proxy_Zermatt} présente les scores CRPSS obtenus par la série reconstituée à l'aide du proxy de l'eau précipitable au point optimal (Table \ref{tab:fenetre_glissante:Serie_proxy_correlations}). Nous observons une légère amélioration par rapport aux résultats obtenus avec la série de moyennes mobiles (Table \ref{tab:fenetre_glissante:Resultats_moyenne_mobile}), mais celle-ci est toujours relativement petite, et la plus grande partie du gain de la fenêtre temporelle glissante est perdue.
-
-Ces tentatives de transposition de la fenêtre temporelle glissante sur l'archive totale mettent en évidence l'importance de la temporalité réelle des précipitations. La fenêtre glissante est un gain, à condition que les séries de précipitations soient proches de l'observé. Sans information sur la chronologie des précipitations, il n'est pas pertinent d'appliquer cette modification à la méthode. Nous pouvons espérer que, dans le futur, des reprévisions par des modèles régionaux seront en mesure de nous apporter une chronologie des précipitations s'approchant de la réalité.
+These attempts to transpose the STW on the total archive highlight the importance of the actual chronology of rainfall. The sliding window is profitable, provided that the precipitation series are close to the observed one. Without precipitation series with an accurate sub-daily chronology, the introduction of a STW is not appropriate.
 
 
 \conclusions  %% \conclusions[modified heading if necessary]
