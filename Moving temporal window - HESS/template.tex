@@ -220,7 +220,7 @@ The study area is the upper Rh\^{o}ne catchment in Switzerland. Due to the low d
 %FIGURE
 
 
-\section{Method}
+\section{The sliding time window approach}
 \label{sec:method}
 
 In order to assess the benefit of searching analogue situations at a sub-daily time step, an appropriate time series is required. On the basis of high resolution time series (section \ref{sec:data}), 24~h totals were processed, but at a 6-hourly time step (temporal resolution of the reanalysis dataset), by means of a moving average. 
@@ -243,7 +243,7 @@ by excluding the worse analogues in a period of $\pm$ 24~h, and (2) by excluding
 
 As sub-daily precipitation time series are usually available on a shorter period than traditional daily time steps, the first assessment consists in assessing the loss of performance resulting from a reduction a 47~years archive (1961 to 2008) to 25~years (1982 to 2007). This change is assessed with the original method, without STW.
 
-Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated on the original archive (Tables \ref{table:method_2Z} and \ref{table:method_2Z-2MI}) and will be used thereafter.
+Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated using AtmoSwing \citep{Horton2016} on the original archive (Tables \ref{table:method_2Z} and \ref{table:method_2Z-2MI}) and will be used thereafter.
 
 \begin{table}[htb]
 	\caption{Calibrated parameters (spatial windows and number of analogues) for the analogy on the geopotential at 500~hPa and 1000~hPa (method 2Z) and skill score (\%) of the method on the full archive.}
@@ -611,7 +611,7 @@ A proportional distribution is certainly the simplest approach that can be perfo
 
 As we saw in the previous section, the performance improvement brought by the STW is lost when using a simplistic precipitation time series. In order to get closer to the chronology of the accurate precipitation, the reconstruction procedure must rely on some informative variable. Data from the NCEP/NCAR reanalysis 1 (section \ref{sec:data}) was used in this perspective, despite their rough resolution. 
 
-The first step consisted in determining which variables from the precipitable water or the relative humidity (at 1000~hPa, 925~hPa or 850~hPa) produces the precipitation chronology that is the most correlated (on non-zero values) with the accurate 6-hourly precipitation time series on the period 1982-2007. The location of the most predictive point from the reanalysis grid had to be assessed (closest points: 5\textdegree\ - 7.5\textdegree\ longitude and 45\textdegree\ - 47.5\textdegree\ latitude), as well an eventual time lapse between both series, due to the significant distance separating the weather stations and the reanalysis grid point. The most relevant point will probably not be the same for all stations, since we can expect to find the optimum in the direction of the main moisture inflows for the station. This assessment must be carried out for each station. 
+The first step consisted in determining which variables from the precipitable water or the relative humidity (at 1000~hPa, 925~hPa or 850~hPa) produces the precipitation chronology that is the most correlated (on non-zero values) with the accurate 6-hourly precipitation time series on the period 1982-2007. The location of the most predictive point from the reanalysis grid had to be assessed (closest points: 5\textdegree\~-~7.5\textdegree\ longitude and 45\textdegree\~-~47.5\textdegree\ latitude), as well an eventual time lapse between both series, due to the significant distance separating the weather stations and the reanalysis grid point. The most relevant point will probably not be the same for all stations, since we can expect to find the optimum in the direction of the main moisture inflows for the station. This assessment must be carried out for each station. 
 
 \begin{table}[htb]
 	\caption{Value of the coefficient of determination between the reconstructed 6-hourly precipitation time series using the listed variables, and the accurate time series on the period 1982-2007. The grid points are the following (lon/lat): 1) 5\textdegree/47.5\textdegree, 2) 5\textdegree/45\textdegree, 3) 7.5\textdegree/47.5\textdegree, 4) 7.5\textdegree/45\textdegree. The highest coefficient of determination is indicated in bold.}
@@ -667,23 +667,32 @@ These attempts to transpose the STW on the total archive highlight the importanc
 
 \conclusions  %% \conclusions[modified heading if necessary]
 
-Comme \citet{Finet2008} l'avaient déjà été montré précédemment, nous gagnons en analogie synoptique en introduisant la fenêtre temporelle glissante. Pour ce qui est de la prévision des précipitations, nous regagnons en fenêtre glissante sur période réduite ce que nous avions perdu par rapport à la fenêtre fixe en raison de la réduction de l'archive. Dans notre cas, ce gain correspond au doublement de la taille de l'archive.
+The AM is most often based on a daily time step, due to the availability of long precipitation archives. However, it is unlikely that two analogue synoptic situations, that evolve relatively quickly, would correspond optimally at the same hour of the day. It is thus more likely that a better match can be found at another time, which can change the selection of the analogues dates.
 
-Nous avons également démontré l'importance de la qualité de l'archive pluviométrique: nous gagnons en prévision des précipitations pour autant que la chronologie des pluies y soit proche de la réalité. Pour une archive reconstituée de manière grossière, les gains en performances de la fenêtre glissante ne se répercutent pas sur la prévision des pluies, bien que l'analogie synoptique soit meilleure. Il conviendra donc de maintenir l'objectif qui consiste à reconstruire des séries de précipitations passées de manière la plus réaliste possible, par exemple à l'aide d'un modèle météorologique régional. Lorsque de telles archives pluviométriques seront disponibles, l'ajout d'une fenêtre temporelle glissante en prévision par analogie montrera tout son intérêt.
+As \citet{Finet2008} had previously shown, the introduction of a sliding time window allows finding better analogue situations in terms of the atmospheric circulation. It has been here demonstrated that the improvement of the S1 criteria values is growing with the rank of the analogue. This is due to the accumulation of better analogues within the predicted distributions.
 
+The improvement of the circulation analogy was found to be more important for heavy precipitation events, which are generally related to more dynamic atmospheric situations. This dynamism implies more specific circulation patterns that are evolving more rapidly. Thus, a STW is found to be of particular interest in this kind of situation, and benefits the prediction of extreme precipitation events.
 
+A seasonal effect has been highlighted, as the STW is more profitable for winter months than summer. The reason is likely that the diurnal cycle has a bigger effect in summer than in winter, which results in better analogues at the same time of the day. The preference for the same hours in summer has been demonstrated, whereas 75\% of the analogue situations are selected at a different time in winter.
 
+The impact of the STW on the prediction performance has never been assessed before, due to the shortcoming of long precipitation series at a sub-daily time step. We could evaluate the impact of the STW approach on a 25 years time series with a high temporal resolution. After the introduction of the STW, the performance scores increased of the same order of magnitude as if we doubled the length of the archive, in this case study.
 
-\appendix
-\section{}    %% Appendix A
+The parameters were then calibrated again, using the STW. Some parameters changed, the main difference being the number of analogues that was found optimal, which systematically and significantly increased compared to the original set. A wider selection of analogue situations, containing those whose rank decreased, seemed profitable for the prediction performance. The number of good analogues is thus globally increased. This change seems to benefit mainly the prediction of days with small precipitation totals.
 
-\subsection{}                               %% Appendix A1, A2, etc.
+The importance of the quality of the precipitation archive was also demonstrated, as too simplistic reconstructions of 6-hourly time series lead to a loss of all the improvement brought by better analogue situations identified by the STW. The precipitation prediction is improved only when the precipitation chronology is close to the accurate one. Attempts to reconstruct longer time series based on a simplistic proportional distribution or using meteorological variables from the NCEP reanalysis 1 dataset as proxy did not succeed.
 
+Perspectives of using the STW rely on the availability of long precipitation series at a sub-daily time step and with high accuracy. The first source of such data is the simple fact that with time, these archives of high temporal resolution precipitation data are getting longer. The second source is the establishment of precipitation reanalysis at a country scale, or the use of reanalysis-driven RCMs (Regional Climate Models) or LAMs (Limited Area Models) on a long period. When such precipitation data will be available, the use of a STW in the AM should be considered for any application, especially when the prediction quality of extreme events are important.
 
 
 
 \begin{acknowledgements}
-Thanks to Dominique B\'{e}rod for his support and to Renaud Marty for his fruitful collaboration over the years. Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton and the Water, Land and Sanitation Service of the Vaud Canton who financed the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me des Rivi\`{e}res Valaisannes et de leurs Effets) project which started this research. The fruitful collaboration with the Laboratoire d'Etude des Transferts en Hydrologie et Environnement of the Grenoble Institute of Technology (G-INP) was made possible thanks to the Herbette Foundation. NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. Precipitation time series provided by MeteoSwiss. 
+Thanks to Dominique B\'{e}rod for his support and to Renaud Marty for his fruitful collaboration over the years. 
+
+Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton and the Water, Land and Sanitation Service of the Vaud Canton who financed the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me des Rivi\`{e}res Valaisannes et de leurs Effets) project which started this research. 
+
+The fruitful collaboration with the Laboratoire d'Etude des Transferts en Hydrologie et Environnement of the Grenoble Institute of Technology (G-INP) was made possible thanks to the Herbette Foundation. 
+
+NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. Precipitation time series provided by MeteoSwiss. 
 \end{acknowledgements}
 
 
