@@ -28,15 +28,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="331.6515"
+     inkscape:cx="324.15794"
      inkscape:cy="802.68717"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1456"
      inkscape:window-height="967"
-     inkscape:window-x="1723"
-     inkscape:window-y="14"
+     inkscape:window-x="1992"
+     inkscape:window-y="9"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
@@ -46,7 +46,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1011,5 +1011,22 @@
          y="106.07047"
          id="tspan3122-5-1-73"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype'">48</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:'Bitstream Vera Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="391.2254"
+       y="71.060921"
+       id="text3328-9-08"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3330-5-9"
+         x="391.2254"
+         y="71.060921"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.25px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Bold'">Corresponding </tspan><tspan
+         sodipodi:role="line"
+         x="391.2254"
+         y="85.123421"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.25px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype Bold'"
+         id="tspan4325">predictors</tspan></text>
   </g>
 </svg>
