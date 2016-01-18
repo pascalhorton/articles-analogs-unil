@@ -112,7 +112,7 @@ The method based on the analogy of the synoptic circulation consists in the foll
 S1=100 \frac {\displaystyle \sum_{i} \vert \Delta\hat{z}_{i} - \Delta z_{i} \vert}
 {\displaystyle \sum_{i} max\left\lbrace \vert \Delta\hat{z}_{i} \vert , \vert \Delta z_{i} \vert \right\rbrace }
 \end{equation}
-where $\Delta \hat{z}_{i}$ is the forecast geopotential height difference between the \textit{i}th pair of adjacent points of the gridded data describing the target situation, and $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation. The differences are processed separately in both directions. The smaller the S1 values, the more similar the pressure fields.
+where $\Delta \hat{z}_{i}$ is the difference in geopotential height between the \textit{i}th pair of adjacent points of the gridded data describing the target situation, and $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation. The differences are processed separately in both directions. The smaller the S1 values, the more similar the pressure fields.
 
 \begin{table}[htb]
 	\caption{Parameters of the reference method on the atmospheric circulation (2Z). The first column is the level of analogy (0 for preselection), then comes the meteorological variable and its hour of observation (temporal window). The criteria used for the current level of analogy is then provided, as well as the number of analogues.}
@@ -222,7 +222,7 @@ The study area is the alpine upper Rh\^{o}ne catchment in Switzerland (Fig.\ \re
 	\item Conches Valley
 \end{enumerate}
 
-The 48 years precipitation dataset (see section \ref{sec:intro}.\ref{sec:data}) was divided into a calibration period (CP) and a validation period (VP). Using data independent from the CP to validate the results is very important in order to assess the robustness of the improvements and to avoid over-parametrization of the method.
+The 48 years precipitation dataset (see section \ref{sec:intro}.\ref{sec:data}) was divided into a calibration period (CP) and a validation period (VP). Using data independent from the CP to validate the results is very important in order to assess the robustness of the improvements and to avoid over-parametrization of the method. Parameters determined on the CP are then applied to the VP in order to obtain a performance score for the independent period.
 
 In order to reduce potential bias related to trends linked to climate change or to the evolution in measurement techniques, the selection of the VP is evenly distributed over the entire series \citep{BenDaoud2010}. Thus, one year every six years were selected for validation, which represents a total of 8 years for the VP and 40 for CP. The choice of the sequence was made in order to have similar statistical characteristics between the CP and the VP.
 
@@ -388,7 +388,7 @@ The resulting optimized parameters for 4Zo vary from one subregion to another. A
 	\label{table:scores_thresholds_4Zo}
 \end{table}
 
-The resulting CRPSS scores are provided in Table \ref{table:scores} and are in average 35.8 \% for the CP and 35.5 \% for the VP. The improvement of the CRPSS score relatively to the reference method on the atmospheric circulation is provided in Table \ref{table:scores_diff} and is in average 15.3 \% for the CP and 9.9 \% for the VP. The score was also calculated for three precipitation thresholds: P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10, P10 being the daily precipitation with a 10~year return period (Table \ref{table:scores_thresholds_4Zo}). The gain in score increases with the precipitation threshold: in average, respectively for the different thresholds, 13.3\%, 15.4\% and 29.1\% for the CP and 7.9\%, 11.1\% and 34.5\% for the VP. The optimization improves thus even more the forecasts for days with significant precipitation than usual days.
+The resulting CRPSS scores are provided in Table \ref{table:scores} and are in average 35.8 \% for the CP and 35.5 \% for the VP. The improvement of the CRPSS score relatively to the reference method on the atmospheric circulation is provided in Table \ref{table:scores_diff} and is in average 15.3 \% for the CP and 9.9 \% for the VP. The score was also calculated for three precipitation thresholds: P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10, P10 being the daily precipitation with a 10~year return period (Table \ref{table:scores_thresholds_4Zo}). The gain in score increases with the precipitation threshold: the relative improvement of the CRPSS is in average, respectively for the different thresholds, 13.3\%, 15.4\% and 29.1\% for the CP and 7.9\%, 11.1\% and 34.5\% for the VP. The optimization improves thus even more the forecasts for days with significant precipitation than usual days.
 
 To assess the parameters cross-compatibility, those optimized for one subregion were applied to the others. The resulting losses or gains of the CRPSS are displayed in Figure \ref{fig:crossing_4Zo_calib} for the CP and in Figure \ref{fig:crossing_4Zo_valid} for the VP.
 
