@@ -36,16 +36,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="367.0919"
-     inkscape:cy="562.84833"
+     inkscape:cx="436.3916"
+     inkscape:cy="568.09792"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1680"
-     inkscape:window-height="987"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1458"
+     inkscape:window-height="747"
+     inkscape:window-x="408"
+     inkscape:window-y="184"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -184,7 +184,7 @@
            inkscape:connector-curvature="0"
            id="path4194"
            style="fill:#4f81bd;fill-opacity:1;fill-rule:evenodd;stroke:none"
-           d="m 3861,2045.9208 78,0 0,78 -78,0 0,-78 z" />
+           d="m 3861,1859.2543 78,0 0,78 -78,0 0,-78 z" />
         <g
            transform="scale(8.33333,8.33333)"
            id="g4196">
@@ -192,14 +192,14 @@
              id="text4198"
              style="font-variant:normal;font-weight:normal;font-size:17.03210068px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
              transform="matrix(0,1,1,0,0,0)"
-             x="258.83087"
+             x="236.43085"
              y="472.92001">
             <tspan
                id="tspan4200"
                sodipodi:role="line"
-               x="258.83087"
+               x="236.43085"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.00000763px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';fill:#000000;fill-opacity:1"
-               y="472.92001">Method z4</tspan>
+               y="472.92001">Method 4Zo</tspan>
           </text>
         </g>
         <path
@@ -225,7 +225,7 @@
            inkscape:connector-curvature="0"
            id="path4210"
            style="fill:#9bbb59;fill-opacity:1;fill-rule:evenodd;stroke:none"
-           d="m 3861,4269.9194 78,0 0,78 -78,0 0,-78 z" />
+           d="m 3861,4536.586 78,0 0,78 -78,0 0,-78 z" />
         <g
            transform="scale(8.33333,8.33333)"
            id="g4212">
@@ -300,19 +300,19 @@
          sodipodi:role="line"
          x="334.62885"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';fill:#000000;fill-opacity:1"
-         y="760.30841">Method z4-hi2</tspan>
+         y="760.30841">Method 4Zo-2HIo</tspan>
     </text>
     <text
        id="text4198-0-8"
        style="font-variant:normal;font-weight:normal;font-size:21.29011726px;font-family:Calibri;-inkscape-font-specification:Calibri;writing-mode:lr-tb;fill:#595959;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       x="522.62885"
+       x="562.62885"
        y="760.30841">
       <tspan
          id="tspan4200-1-9"
          sodipodi:role="line"
-         x="522.62885"
+         x="562.62885"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';fill:#000000;fill-opacity:1"
-         y="760.30841">Method z4-hi4</tspan>
+         y="760.30841">Method 4Zo-4HIo</tspan>
     </text>
   </g>
 </svg>
