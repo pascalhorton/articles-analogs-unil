@@ -286,7 +286,7 @@ The resulting optimized parameters for 4Zo vary from one subregion to another. A
 \end{table}
 
 \begin{table}[htb]
-	\caption{Pressure levels ($\sim$) automatically selected for the 4Zo method at the different subregions.}
+	\caption{Pressure levels ($\sim$) automatically selected for the 4Zo method at the different subregions. R represents the reference method (Table \ref{table:params_R1}).}
 	\footnotesize
 	\begin{center}
 		\begin{tabular}{ccccccccc}
@@ -302,6 +302,8 @@ The resulting optimized parameters for 4Zo vary from one subregion to another. A
 			8  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
 			9  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
 			10 &   &   &   & $\sim$ & $\sim$ &   &   & $\sim \sim$ \\
+			\hline 	
+			R  &   &   & $\sim$ &   &   &   &   & $\sim$ \\
 			\hline 
 		\end{tabular} 
 	\end{center}
@@ -389,7 +391,7 @@ The resulting optimized parameters for 4Zo vary from one subregion to another. A
 	\label{table:scores_thresholds_4Zo}
 \end{table}
 
-The resulting CRPSS scores are provided in Table \ref{table:scores} and are in average 35.8 \% for the CP and 35.5 \% for the VP. The improvement of the CRPSS score relatively to the reference method on the atmospheric circulation is provided in Table \ref{table:scores_diff} and is in average 15.3 \% for the CP and 9.9 \% for the VP. The score was also calculated for three precipitation thresholds: P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10, P10 being the daily precipitation with a 10~year return period (Table \ref{table:scores_thresholds_4Zo}). The gain in score increases with the precipitation threshold: the relative improvement of the CRPSS is in average, respectively for the different thresholds, 13.3\%, 15.4\% and 29.1\% for the CP and 7.9\%, 11.1\% and 34.5\% for the VP. The optimization improves thus even more the forecasts for days with significant precipitation than usual days.
+The resulting CRPSS scores are provided in Table \ref{table:scores} and are in average 35.8 \% for the CP and 35.5 \% for the VP. The improvement of the CRPSS score relatively to the reference method on the atmospheric circulation (optimized by the sequential procedure) is provided in Table \ref{table:scores_diff} and is in average 15.3 \% for the CP and 9.9 \% for the VP. The score was also calculated for three precipitation thresholds: P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10, P10 being the daily precipitation with a 10~year return period (Table \ref{table:scores_thresholds_4Zo}). The gain in score increases with the precipitation threshold: the relative improvement of the CRPSS is in average, respectively for the different thresholds, 13.3\%, 15.4\% and 29.1\% for the CP and 7.9\%, 11.1\% and 34.5\% for the VP. The optimization improves thus even more the forecasts for days with significant precipitation than usual days.
 
 To assess the parameters cross-compatibility, those optimized for one subregion were applied to the others. The resulting losses or gains of the CRPSS are displayed in Figure \ref{fig:crossing_4Zo_calib} for the CP and in Figure \ref{fig:crossing_4Zo_valid} for the VP.
 
@@ -400,7 +402,7 @@ The automatic selections of the pressure levels (Table \ref{table:levels_GA_4Zo}
 
 The resulting spatial windows (Figure \ref{fig:spatial_windows_4Zo}) may look very diverse first, but there are significant similarities for subregions located within the same vicinity. The first 4 subregions are characterized by a large spatial window on the upper level, whereas it becomes smaller for the other subregions. For most subregions, the second level (700~hPa) is represented by thin and longitudinally extended domains. The third level (1000~hPa at 6 or 12~h) also contains longitudinally extended domains, but a bit larger. The last one (1000~hPa at 30~h) is rather large and squared. Subregions number 5 (Left side valleys) and 6 (Southern ridges) have exactly the same spatial windows, which suggest that they behave in a similar way and thus could have been merged. This similarity is a good sign for the accuracy of the optimized parameters.
 
-The scores show significant improvements for both the CP and the VP (Table \ref{table:scores_diff}). Even more interestingly, the results for higher precipitation thresholds (Table \ref{table:scores_thresholds_4Zo}) show the largest improvements. This is of particular interest in the framework of flood forecasting.
+The scores show significant improvements for both the CP and the VP (Table \ref{table:scores_diff}) compared to the reference method optimized by the sequential procedure. Even more interestingly, the results for higher precipitation thresholds (Table \ref{table:scores_thresholds_4Zo}) show the largest improvements. This is of particular interest in the framework of flood forecasting.
 
 The analysis of the parameters cross-compatibility shows that obviously, the parameters are optimal on the CP when they are calibrated for the given subregion (Figure \ref{fig:crossing_4Zo_calib}). However, the losses in CRPSS when exchanging the parameters are not of the same magnitude between the different subregions. Indeed, the Upper Rhone Valley (7) and moreover the Southeast ridges (8) seem to behave significantly differently. This is indeed a climatological reality, as this subregion is the most sensitive to southerly flows \citep{Horton2012}. Parameter sets from other subregions perform poorly for these subregions, and vice versa. This points at the importance of taking into account leading meteorological influences during discretization, that are not always best represented by the physical distance. Globally, the same pattern can be observed for the VP (Figure \ref{fig:crossing_4Zo_valid}), but in this case, minor improvements may be observed when crossing the parameters. The reason being that the independent VP contains other events that may be better forecasted by other parameter sets. The relatively small differences in score between parameterizations indicate that even though the parameters may differ significantly, the performance may not be drastically affected. Even a change in the pressure level does not mean a radical drop of the score value. A different parametrization may lead to a different selection of the analogue days, and thus to an improvement of the forecast under certain weather conditions at the expense of others.
 
@@ -451,7 +453,7 @@ As previously, the optimized parameters differ from one subregion to another, an
 
 
 \begin{table}[htb]
-	\caption{Atmospheric levels automatically selected for the analogy of the atmospheric circulation ($\sim$) and the analogy of moisture ($\bullet$) of the 4Zo-2MIo method, at the different subregions.}
+	\caption{Atmospheric levels automatically selected for the analogy of the atmospheric circulation ($\sim$) and the analogy of moisture ($\bullet$) of the 4Zo-2MIo method, at the different subregions.  R represents the reference method (Table \ref{table:params_R2})}
 	\footnotesize
 	\begin{center}
 		\begin{tabular}{ccccccccc}
@@ -467,6 +469,8 @@ As previously, the optimized parameters differ from one subregion to another, an
 			8  &   &   & $\sim$ & $\bullet$ & $\sim \bullet$ &   & $\sim \sim$ &   \\
 			9  &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ & $\sim$ &   \\
 			10 &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
+			\hline 
+			R &   &   & $\sim$ &   &   & $\bullet \bullet$ &   & $\sim$ \\
 			\hline 
 		\end{tabular} 
 	\end{center}
@@ -500,22 +504,24 @@ As previously, the optimized parameters differ from one subregion to another, an
 	\label{table:scores_thresholds_4Zo-2MIo}
 \end{table}
 
-The CRPSS scores of the optimized methods are provided in Table \ref{table:scores} and amounts to slightly more than 40 \% for both methods and for both periods. This results in a relative improvements that ranges from 11.5 \% to 15.6 \% compared to the reference method on the moisture analogy (Table \ref{table:scores_diff}). As for 4Zo, the 4Zo-2MIo and 4Zo-4MIo methods present larger improvements in the forecast for significant rainfall (thresholds P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10). The improvement are relatively similar for 4Zo-2MIo (Table \ref{table:scores_thresholds_4Zo-2MIo}) and 4Zo-4MIo (not shown), with slightly superior scores for the latter on small precipitation (P\(\geq\)1 mm : 17.7\% and 13.0\%) and extremes (P\(\geq\)0.5\(\cdot\)P10 : 23.7\% and 29.2\%).
+The CRPSS scores of the optimized methods are provided in Table \ref{table:scores} and amounts to slightly more than 40 \% for both methods and for both periods. This results in a relative improvements that ranges from 11.5 \% to 15.6 \% compared to the reference method on the moisture analogy (Table \ref{table:scores_diff}) optimized with the sequential procedure. As for 4Zo, the 4Zo-2MIo and 4Zo-4MIo methods present larger improvements in the forecast for significant rainfall (thresholds P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10). The improvement are relatively similar for 4Zo-2MIo (Table \ref{table:scores_thresholds_4Zo-2MIo}) and 4Zo-4MIo (not shown), with slightly superior scores for the latter on small precipitation (P\(\geq\)1 mm : 17.7\% and 13.0\%) and extremes (P\(\geq\)0.5\(\cdot\)P10 : 23.7\% and 29.2\%).
 
 The parameters cross-compatibility has also been assessed for the methods with moisture variables, and are shown in Figures \ref{fig:crossing_4Zo-2MIo_calib} and \ref{fig:crossing_4Zo-2MIo_valid} for the method 4Zo-2MIo (not shown for 4Zo-4MIo, but similar).
 
 
 \subsection{Analysis}
 
-When optimizing a method made of 2 levels of analogy, the introduction of moisture variables in the second level has an influence on the parameter values of the first level. This is first visible on number $N_{1}$ of analogues to be selected on the first level, and on the selection of the pressure levels for the circulation analogy, where the 1000~hPa that was previously systematically selected twice (Table \ref{table:levels_GA_4Zo}) is now less chosen (once or even not at all) for both 4Zo-2MIo (Table \ref{table:levels_GA_4Zo_2MIo}) and 4Zo-4MIo (not shown). There is indeed a shift of the previously selected 1000~hPa for higher levels, which is even slightly stronger with 4 moisture predictors than with 2. This change is likely due to the fact that when considering only the circulation analogy, the method tries to take into account information that can serve as proxy for moisture assessment, whereas it does not need it with the moisture index. This aspect has never been demonstrated before, as sequential calibration tools do not allow it. It can only be assessed by a global optimization technique that can tune jointly both levels of analogy. 
+When optimizing a method made of 2 levels of analogy, the introduction of moisture variables in the second level has an influence on the parameter values of the first level. This is first visible on number $N_{1}$ of analogues to be selected on the first level, and on the selection of the pressure levels for the circulation analogy. As for the sequential procedure, the optimal value of $N_{1}$ increases when adding a second level of analogy (Figure \ref{fig:figure_nb_analogues}). One can also notice that the optimal number of analogues $N_{2}$ for the second level of analogy of 4Zo-2HIo is slightly inferior to $N_{1}$ from 4Zo, but very close. There is a relationship between the optimal values of $N_{1}$ from both methods: the higher the $N_{1}$ of the first method, the higher $N_{1}$ and $N_{2}$ of the second is (Figure \ref{fig:figure_nb_analogues_relationships}). This relationship is not to be considered perfectly robust and should not be transposed to another case study, but in this case, it relates the magnitudes of the numbers on the various levels and methods. The optimal final number of analogues do not vary much: $23 \leq N_{1} \leq 33$ for 4Zo and $21 \leq N_{2} \leq 28$ for 4Zo-2HIo. However, the optimal number of $N_{1}$ analogues of the first level of 4Zo-2HIo varies to a greater extent: $48 \leq N_{1} \leq 84$. In this latter, it may be problematic to consider a fixed and unique value for all regions.
 
-The selected pressure levels for the analogy on the moisture index are strongly centered around 700~hPa and 600~hPa. No other value has been selected when considering 2 pressure levels (Table \ref{table:levels_GA_4Zo_2MIo}), and when considering 4 levels, 850~hPa and 500~hPa are sometimes also selected (not shown). However, even in this latter method, the 700~hPa and 600~hPa levels still hold 78 \% of the selection. It is thus more efficient, in terms of forecasting performance, to consider one of this level several times at different hours rather than using another pressure level. Besides, the optimizer never chose the same pressure level at the same hour for any variable, even though it was allowed to do so.
+As for the pressure levels, the 1000~hPa that was previously systematically selected twice (Table \ref{table:levels_GA_4Zo}) is now less chosen (once or even not at all) for both 4Zo-2MIo (Table \ref{table:levels_GA_4Zo_2MIo}) and 4Zo-4MIo (not shown). There is indeed a shift of the previously selected 1000~hPa for higher levels, which is even slightly stronger with 4 moisture predictors than with 2. This change is likely due to the fact that when considering only the circulation analogy, the method tries to take into account information that can serve as proxy for moisture assessment, whereas it does not need it with the moisture index. This aspect has never been demonstrated before, as sequential calibration tools do not allow it. It can only be assessed by a global optimization technique that can tune jointly both levels of analogy. 
+
+The selected pressure levels for the analogy on the moisture index are strongly centered around 700~hPa and 600~hPa. No other value has been selected when considering 2 pressure levels (Table \ref{table:levels_GA_4Zo_2MIo}), and when considering 4 levels, 850~hPa and 500~hPa are sometimes also selected (not shown). However, even in this latter method, the 700~hPa and 600~hPa levels still hold 78 \% of the selection. It is thus more efficient, in terms of forecasting performance, to consider one of this level several times at different hours rather than using another pressure level. Besides, the optimizer never chose the same pressure level at the same hour for any variable, even though it was allowed to do so. The selected pressure levels for the analogy on the moisture index differ from the parameters resulting from the reference method optimized by the sequential procedure (Tables \ref{table:params_R2} and \ref{table:levels_GA_4Zo_2MIo}, last row). It is possible that the level 850~hPa is more optimal for the region for which the reference parameterization was established. However, this selection is usually not reconsidered when applying the sequential procedure.
 
 The selection of the temporal windows for the atmospheric circulation is similar to the preceding optimization (in the order of increasing pressure: 12~h, 24/30~h, 12~h, 30~h), but sometimes with a bit more variability. When it comes to the moisture analogy, there is a clear trend to select 12~h and 24~h when considering 2 predictors.
 
 The optimized spatial windows for the atmospheric circulation have also changed (Figure \ref{fig:spatial_windows_4Zo-2MIo}; results of 4Zo-4MIo are not shown but present the same trends). The very large domains on the upper level of the 4 first subregions are not present anymore, and more variability can be observed. The selected points for the analogy on the moisture index are always located nearby the catchment, including at least 1 of the nearest points from the reanalysis dataset, and the spatial windows are relatively small. Thus, for this case study, there is no need to look for distant moisture information and the search could be reduced to a smaller domain. 
 
-The CRPSS scores were improved by considering the moisture information (Table \ref{table:scores}). The optimized methods also perform better than the reference method based on the moisture index (Table \ref{table:scores_diff}). However, there is no drastic difference between both 4Zo-2MIo and 4Zo-4MIo methods, which suggests that considering 4 moisture predictors is not necessary. When it comes to improvements for days with precipitation above the 3 thresholds (P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10), the conclusion is the same as before, that is a significant improvement of the forecast, mainly for heavy rainfall.
+The CRPSS scores were improved by considering the moisture information (Table \ref{table:scores}). The optimized methods also perform significantly better than the reference method based on the moisture index (Table \ref{table:scores_diff}) and optimized by the sequential procedure. However, there is no drastic difference between both 4Zo-2MIo and 4Zo-4MIo methods, which suggests that considering 4 moisture predictors is not necessary. When it comes to improvements for days with precipitation above the 3 thresholds (P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10), the conclusion is the same as before, that is a significant improvement of the forecast compared to reference method, mainly for heavy rainfall.
 
 The analysis of the parameters cross-compatibility (Figures \ref{fig:crossing_4Zo-2MIo_calib} and \ref{fig:crossing_4Zo-2MIo_valid}) is also very similar to the one on the circulation analogy only (results for 4Zo-4MIo not shown as very similar). The same pattern can be observed, with a drop of performance for the subregions submitted to several different meteorological influences. However, the losses of performance are globally more important than before, suggesting that more complex methods with moisture variables are less transposable to another subregion, even though it is located within the same grid cell of the reanalysis dataset. The meteorological influences should be taken into account.
 
@@ -646,6 +652,17 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 	\label{fig:crossing_4Zo_valid}
 \end{figure}
 
+\begin{figure}[htb]
+	\centerline{\includegraphics[width=\linewidth]{figures/figure_nb_analogues.pdf}}
+	\caption{Number of analogues for the different regions and the various methods resulting from the optimization. Method 4Zo is made of a single level of analogy with $N_{1}$ analogues, whereas 4Zo-2HIo has two levels of analogy with respectively $N_{1}$ and $N_{2}$ analogues.}
+	\label{fig:figure_nb_analogues}
+\end{figure}
+
+\begin{figure}[htb]
+	\centerline{\includegraphics[width=\linewidth]{figures/figure_nb_analogues_relationships.pdf}}
+	\caption{Relationships between the optimal number of analogues for both levels of the 4Zo-2HIo method and the corresponding ones for the unique level of the 4Zo method.}
+	\label{fig:figure_nb_analogues_relationships}
+\end{figure}
 
 \begin{figure}[htb]
 	\centering
