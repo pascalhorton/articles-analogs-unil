@@ -338,33 +338,6 @@ The resulting optimized parameters for 4Zo vary from one subregion to another. A
 \end{table}
 
 \begin{table}[htb]
-	\caption{Same as Table \ref{table:scores}, but expressed as the CRPSS improvement (\%) compared to the reference methods. For 4Zo, the improvement is relative to the reference method on the atmospheric circulation (2Z, Table \ref{table:params_R1}). For 4Zo-2MIo and 4Zo-4MIo, the improvement is relative to the reference method on the circulation and moisture variables (2Z-2MI, Table \ref{table:params_R2}).}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccccc}
-			\hline 
-			ID & \multicolumn{2}{c}{4Zo} & \multicolumn{2}{c}{4Zo-2MIo} & \multicolumn{2}{c}{4Zo-4MIo} \\ 
-			& CP & VP & CP & VP & CP & VP \\ 
-			\hline 
-			1 & 13.6 & 13.0 & 11.9 & 9.9 & 12.8 & 9.6 \\
-			2 & 13.3 & 7.5 & 11.2 & 9.4 & 12.5 & 10.8 \\
-			3 & 12.2 & 9.0 & 13.2 & 12.0 & 14.1 & 13.5 \\
-			4 & 14.2 & 10.5 & 12.4 & 10.6 & 14.5 & 12.5 \\
-			5 & 14.5 & 8.8 & 12.5 & 9.1 & 14.1 & 10.0 \\
-			6 & 13.3 & 8.6 & 11.5 & 8.2 & 14.1 & 8.4 \\
-			7 & 22.8 & 10.6 & 19.7 & 15.7 & 21.7 & 16.3 \\
-			8 & 20.7 & 11.9 & 19.2 & 13.5 & 20.8 & 14.0 \\
-			9 & 14.4 & 9.5 & 15.8 & 15.2 & 16.7 & 14.1 \\
-			10 & 14.2 & 9.4 & 12.9 & 11.2 & 14.6 & 11.8 \\
-			\hline
-			av. & 15.3 & 9.9 & 14.0 & 11.5 & 15.6 & 12.1 \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:scores_diff}
-\end{table}
-
-\begin{table}[htb]
 	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized 4Zo method.}
 	\footnotesize
 	\begin{center}
@@ -641,6 +614,18 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 \end{figure}
 
 \begin{figure}[htb]
+	\centerline{\includegraphics[width=\linewidth]{figures/figure_dcrpss_4Zo.pdf}}
+	\caption{CRPSS relative improvement of 4Zo compared to the reference methods 2Z (Table \ref{table:params_R1}) for the CP and the VP.}
+	\label{fig:figure_dcrpss_4Zo}
+\end{figure}
+
+\begin{figure}[htb]
+	\centerline{\includegraphics[width=\linewidth]{figures/figure_dcrps_comp_4Zo.pdf}}
+	\caption{Changes in the CRPS components of 4Zo relatively to the total CRPS of the reference methods 2Z (Table \ref{table:params_R1}) for the CP and the VP.}
+	\label{fig:figure_dcrps_comp_4Zo}
+\end{figure}
+
+\begin{figure}[htb]
 	\centerline{\includegraphics[width=8cm]{figures/table_crossing_z4_calib.pdf}}
 	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 4Zo, calibration period.}
 	\label{fig:crossing_4Zo_calib}
@@ -712,6 +697,24 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 	\end{subfigure}
 	\caption{Optimized spatial windows for the 4Zo-2MIo method (analogy of atmospheric circulation on 4 pressure levels and the analogy on the moisture index on 2 pressure levels). The pressure levels are ordered by increasing pressure and increasing time for the same levels.}
 	\label{fig:spatial_windows_4Zo-2MIo}
+\end{figure}
+
+\begin{figure}[htb]
+	\centerline{\includegraphics[width=\linewidth]{figures/figure_dcrpss_4Zo-2HIo.pdf}}
+	\caption{CRPSS relative improvement of 4Zo-2HIo compared to the reference methods 2Z-2MI (Table \ref{table:params_R2}) for the CP and the VP.}
+	\label{fig:figure_dcrpss_4Zo-2HIo}
+\end{figure}
+
+\begin{figure}[htb]
+	\centerline{\includegraphics[width=\linewidth]{figures/figure_dcrpss_4Zo-4HIo.pdf}}
+	\caption{CRPSS relative improvement of 4Zo-4HIo compared to the reference methods 2Z-2MI (Table \ref{table:params_R2}) for the CP and the VP.}
+	\label{fig:figure_dcrpss_4Zo-4HIo}
+\end{figure}
+
+\begin{figure}[htb]
+	\centerline{\includegraphics[width=\linewidth]{figures/figure_dcrps_comp_4Zo-2HIo.pdf}}
+	\caption{Changes in the CRPS components of 4Zo-2HIo relatively to the total CRPS of the reference methods 2Z-2MI (Table \ref{table:params_R2}) for the CP and the VP.}
+	\label{fig:figure_dcrps_comp_4Zo-2HIo}
 \end{figure}
 
 \begin{figure}[htb]
