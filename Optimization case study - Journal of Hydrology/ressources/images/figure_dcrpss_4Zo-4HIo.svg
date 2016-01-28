@@ -19,7 +19,7 @@
    sodipodi:docname="figure_dcrpss_4Zo-4HIo.svg"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath26"><path
@@ -182,7 +182,7 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="0.67425131"
-     inkscape:cx="250.38293"
+     inkscape:cx="227.16398"
      inkscape:cy="208.70908"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -385,59 +385,6 @@
              y="0"
              sodipodi:role="line"
              id="tspan224">Improvement in CRPSS for the different regions, method </tspan></text>
-</g></g><g
-       id="g226"><g
-         id="g228"
-         clip-path="url(#clipPath230)"><text
-           transform="matrix(1,0,0,-1,201.53,485.81)"
-           style="font-variant:normal;font-weight:normal;font-size:15.81599998px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           id="text234"><tspan
-             x="0 7.908 18.457272"
-             y="0"
-             sodipodi:role="line"
-             id="tspan236">4Zo</tspan></text>
-</g></g><g
-       id="g238"><g
-         id="g240"
-         clip-path="url(#clipPath242)"><text
-           transform="matrix(1,0,0,-1,228.72,485.81)"
-           style="font-variant:normal;font-weight:normal;font-size:15.81599998px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           id="text246"><tspan
-             x="0"
-             y="0"
-             id="tspan248">-</tspan></text>
-</g></g><g
-       id="g250"><g
-         id="g252"
-         clip-path="url(#clipPath254)"><text
-           transform="matrix(1,0,0,-1,233.95,485.81)"
-           style="font-variant:normal;font-weight:normal;font-size:15.81599998px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           id="text258"><tspan
-             x="0 7.908 21.003649 26.333639 35.048256 38.844097 45.138863 52.714729 57.317184 65.225182 70.381203 74.825493 83.508476 91.084343 95.686798 104.51213 108.46613 113.62215 122.32095 126.11678 134.02478"
-             y="0"
-             sodipodi:role="line"
-             id="tspan260">4HIo relatively to 2Z</tspan></text>
-</g></g><g
-       id="g262"><g
-         id="g264"
-         clip-path="url(#clipPath266)"><text
-           transform="matrix(1,0,0,-1,378.82,485.81)"
-           style="font-variant:normal;font-weight:normal;font-size:15.81599998px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           id="text270"><tspan
-             x="0"
-             y="0"
-             id="tspan272">-</tspan></text>
-</g></g><g
-       id="g274"><g
-         id="g276"
-         clip-path="url(#clipPath278)"><text
-           transform="matrix(1,0,0,-1,384.02,485.81)"
-           style="font-variant:normal;font-weight:normal;font-size:15.81599998px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           id="text282"><tspan
-             x="0 7.908 21.066912"
-             y="0"
-             sodipodi:role="line"
-             id="tspan284">2HI</tspan></text>
 </g></g><path
        d="m 194.08,274.43 7.2013,0 0,7.2013 -7.2013,0 0,-7.2013 z"
        style="fill:#8064a2;fill-opacity:1;fill-rule:evenodd;stroke:none"
@@ -468,4 +415,17 @@
              y="0"
              sodipodi:role="line"
              id="tspan312">Validation period</tspan></text>
-</g></g></g></svg>
+</g></g><text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="196.17572"
+       y="-485.98145"
+       id="text4325"
+       sodipodi:linespacing="125%"
+       transform="scale(1,-1)"><tspan
+         sodipodi:role="line"
+         id="tspan4327"
+         x="196.17572"
+         y="-485.98145"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.80000019px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype'">4Zo-4MIo relatively to 2Z-2MIo</tspan></text>
+</g></svg>
