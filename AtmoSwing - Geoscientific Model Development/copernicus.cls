@@ -16,13 +16,13 @@
 %% -----------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{copernicus}
-    [2015/04/24 7.83 Copernicus papers]
+    [2016/01/22 8.09 Copernicus papers]
 \frenchspacing
 \clubpenalty10000
 \widowpenalty10000
-\protected@edef\CopernicusInfo#1{\protect\ClassInfo{\@currname}{#1}}
-\protected@edef\CopernicusWarningNoLine#1{\protect\ClassWarningNoLine{\@currname}{#1}}
-\protected@edef\CopernicusError#1#2{\protect\ClassError{\@currname}{#1}{#2}}
+\protected@edef\CopernicusInfo#1{\protect\ClassInfo{copernicus}{#1}}
+\protected@edef\CopernicusWarningNoLine#1{\protect\ClassWarningNoLine{copernicus}{#1}}
+\protected@edef\CopernicusError#1#2{\protect\ClassError{copernicus}{#1}{#2}}
 \let\@classfilename\@currname
 \newcommand\UndefinedError[1]
  {\CopernicusError{You must define #1}{Add #1 to your document!}}
@@ -44,7 +44,7 @@
 \thickmuskip=4mu
 \def\cop@opterrshort{Option  "\CurrentOption" not supported}
 \def\cop@opterrlong{%
-  The option "\CurrentOption" from article.cls is not supported by \@currname.cls.}
+  The option "\CurrentOption" from article.cls is not supported by copernicus.cls.}
 \DeclareOption{a4paper}{\@latexerr{\cop@opterrshort}{\cop@opterrlong}}
 \DeclareOption{a5paper}{\@latexerr{\cop@opterrshort}{\cop@opterrlong}}
 \DeclareOption{b5paper}{\@latexerr{\cop@opterrshort}{\cop@opterrlong}}
@@ -75,8 +75,9 @@
 \newif\if@twostagejnl
 \newif\if@manuscript     \DeclareOption{manuscript}{\@manuscripttrue}
 \newif\if@noline         \DeclareOption{noline}{\@nolinetrue}%classical
-\newif\if@bar%modern, %wird nur unter \@cop@hometrue verwendet; sowie neuerdings auch in classical für angeocom-Unterzeitschrift
-\newif\if@hvmath         \DeclareOption{hvmath}{\@hvmathtrue}%discussions
+\newif\if@corrigendum    \DeclareOption{corrigendum}{\@corrigendumtrue}
+\newif\if@bar            %only used under \if@stage@final and \@cop@hometrue; for modern layout as well as for the classically layouted sub-journal "angeocom"
+\newif\if@hvmath         \DeclareOption{hvmath}{\@hvmathtrue}%only used for discussions and only under \@cop@hometrue
 \InputIfFileExists{copernicus.cfg}%
   {\typeout{Additional configuration file copernicus.cfg used}}%
   {\CopernicusError{No additional configuration file copernicus.cfg}
@@ -84,6 +85,9 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions
 \if@stage@final\else\@twostagejnltrue\fi
+\if@cop@home\else
+  \if@stage@final\else\@stage@finaltrue\@manuscripttrue\fi
+\fi
 \if@manuscript
   \@sansseriffacefalse
   \@sansserifheaderfalse
@@ -91,14 +95,16 @@
 \fi
 \LoadClass[fleqn]{article}
 \AtBeginDocument{\mathindent\z@}
-\newdimen\bleed \bleed3mm\relax
 \if@stage@final
   \if@manuscript
-    \oddsidemargin1in
-    \evensidemargin1in
-    \textwidth140mm
-    \textheight220mm
-    \topmargin\dimexpr1in-10mm\relax
+    \oddsidemargin16.4mm
+    \evensidemargin16.4mm
+    \textwidth177mm
+    \textheight\dimexpr660\p@-37mm+11.4mm\relax
+    \headheight\z@
+    \headsep\z@
+    \topmargin10mm
+    \footskip30pt
   \else
     \let\footnotesize\small
     \oddsidemargin16.4mm
@@ -146,10 +152,15 @@
   \topmargin-18.4mm
 \fi
 \parindent1em
+\newdimen\bleed \bleed3mm\relax
 \if@stage@final
   \hoffset\dimexpr-1in+\bleed\relax
   \voffset\dimexpr-1in+\bleed\relax
-  \paperheight\dimexpr277mm+2\bleed\relax
+  \if@manuscript
+    \paperheight\dimexpr240mm+2\bleed\relax%2015-12-14
+  \else
+    \paperheight\dimexpr277mm+2\bleed\relax
+  \fi
   \paperwidth\dimexpr210mm+2\bleed\relax
   \@tempdima\dimexpr1in+\hoffset\relax
   \@tempdimb\dimexpr\@tempdima+\paperwidth-2\bleed\relax
@@ -195,7 +206,7 @@
       /BleedBox[\b@l@offset\space\b@u@offset\space\b@r@offset\space\b@o@offset]}
     \expandafter\pdfpageattr\expandafter{\@tempa}
   \fi
-\else%disc
+\else%discussions
   \paperheight159mm
   \paperwidth166mm
 \fi
@@ -244,12 +255,13 @@
       \kern6.5mm\kern-0.5\@tempdima}}
 \fi
 \def\@journalInfo{%
+  \if@corrigendum Corrigendum to\space\fi
   \@journalnameabbreviation
   \if@noref\else, \@pvol, \@fpage\if@nolastpage\else{--\@lpage}\fi, \@pyear\fi}
 \def\@journalurlInfo{%
   \@journalurl\if@noref\else/\@pvol/\@fpage/\@pyear/\fi}
 \def\runningheaderfont{%
-  \if@stage@final
+  \if@stage@final%spec. obsolete ?
     \if@sansserifheader
       \reset@font\sffamily\normalsize\color{textcol}%
     \else
@@ -257,20 +269,28 @@
     \fi
   \fi}
 \def\@manuscriptInfo{%
-  Manuscript prepared for \@journalnameabbreviation\\
-  with version \csname ver@\@classfilename.cls\endcsname\ %
-    of the \LaTeX\ class \@classfilename.cls.\\
-  Date: \number\day~\ifcase\month\or January\or February\or
-    March\or April\or May\or June\or July\or August\or September\or
-    October\or November\or December\fi~\number\year}
+  % Manuscript prepared for \@journalnameabbreviation\\
+  % with version \csname ver@\@classfilename.cls\endcsname\ %
+  %   of the \LaTeX\ class \@classfilename.cls.\\
+  % Date: \number\day~\ifcase\month\or January\or February\or
+  %   March\or April\or May\or June\or July\or August\or September\or
+  %   October\or November\or December\fi~\number\year
+  %~\\[12pt]
+  }
 \if@stage@final
+  \def\ps@plain{%only used for manuscript
+     \let\@mkboth\@gobbletwo
+     \let\@oddhead\@empty
+     \let\@evenhead\@empty
+     \def\@oddfoot{\reset@font\bfseries\hfil\thepage\hfil}%
+     \let\@evenfoot\@oddfoot}
   \def\ps@headings{%
     \def\@oddhead{%
       \runningheaderfont
       \@runhd\hfil\llap{\thepage}%
       \if@cop@home\if@bar
-            \textcolor{barcol}{\@ddsidemarginbar}%
-            \textcolor{textcol}{\@ddsidemarginrule}%
+          \textcolor{barcol}{\@ddsidemarginbar}%
+          \textcolor{textcol}{\@ddsidemarginrule}%
       \fi\fi}
     \def\@evenhead{%
       \if@cop@home\if@bar
@@ -287,14 +307,14 @@
       \let\@evenfoot\@empty
     \fi
     \let\@mkboth\@gobbletwo}
-\else
+\else%discussions
   \def\ps@headings{%
     \def\@oddhead{%
       \hfil
       \rlap{%
         \kern5mm
-        \@tempdimb\headheight\advance\@tempdimb\topmargin\advance\@tempdimb1in
-        \@tempdimc\paperheight\advance\@tempdimc-\@tempdimb
+        \@tempdimb\dimexpr\headheight+\topmargin+1in\relax
+        \@tempdimc\dimexpr\paperheight-\@tempdimb\relax
         \advance\@tempdimb\bleed
         \advance\@tempdimc\bleed
         \color{discussion_bartext_background}\smash{\vrule\@width5mm\@height\@tempdimb\@depth\@tempdimc}}%
@@ -335,7 +355,10 @@
             {\if@sansserifheader\leavevmode\runningheaderfont\fi
              \@journalInfo\\
              \@journalurlInfo\\
-             \if@noref\else doi:10.5194/\@journalnameshortlower-\@pvol-\@fpage-\@pyear\fi\\
+             \if@noref\else
+               doi:10.5194/\@journalnameshortlower-\@pvol-\@fpage-\@pyear
+               \if@corrigendum-corrigendum\fi
+             \fi\\
              \@journalcopyright\\[1mm]
              \includegraphics[width=1.5cm]{CreativeCommons_Attribution_License.png}}%
           \hfill
@@ -383,7 +406,7 @@
     \CopernicusError
     {Starting page must be odd!}{change the firstpage command}
   \fi
-  \setcounter{page}{\@fpage}%
+  \if@corrigendum\else\setcounter{page}{\@fpage}\fi
   \setcounter{footnote}{0}%
   \if@stage@final\if@manuscript\else\thispagestyle{titlepage}\fi\fi
   \begingroup
@@ -518,7 +541,11 @@
                \hsize\linewidth
                \@maketitle@setup
                \centering
-               \center{\sffamily\LARGE\bfseries\if@sansserifface\mathversion{sansbold}\else\mathversion{bold}\fi\color{textcol}\@title\par}%
+               \center{\sffamily\LARGE\bfseries\if@sansserifface\mathversion{sansbold}\else\mathversion{bold}\fi\color{textcol}%
+                       \if@corrigendum\textit{Corrigendum to}\break``\fi
+                       \@title
+                       \if@corrigendum'' published in \@journalnameabbreviation \if@noref\else, \@pvol, \@fpage\if@nolastpage\else{--\@lpage}\fi, \@pyear\fi\fi
+                       \par}%
                \vspace{10pt}%
                \if@noauthor
                \else
@@ -531,19 +558,24 @@
                  \vskip-0.5\baselineskip
                \fi
                \ifx\@corresp\@empty\else\vskip\topsep\centering\textit{Correspondence to:}\space\@corresp\fi
-               \if!\@recvd!\else
-                 \par\vskip0.33\baselineskip
-                 {\small
-                  Received: \@recvd\ %
-                  \if@twostagejnl
-                    -- \ifx\@pubdiscuss\@empty\else Published in \@journalnameabbreviation\ Discuss.: \@pubdiscuss\\\fi
-                    \if!\@revsd!\else Revised: \@revsd\ -- \fi Accepted: \@accptd\
+               \par\vskip0.33\baselineskip
+               {\small
+                \if@corrigendum
+                \else
+                  \if!\@recvd!
                   \else
-                    \if!\@revsd!\else -- Revised: \@revsd\ \fi
-                    \if!\@accptd!\else -- Accepted: \@accptd\ \fi
+                    Received: \@recvd
+                    \def\datesep{ -- }%
+                    \if@twostagejnl\ifx\@pubdiscuss\@empty\else
+                      \datesep Published in \@journalnameabbreviation\ Discuss.: \@pubdiscuss\def\datesep{\break\def\datesep{ -- }}%
+                    \fi\fi
+                    \if!\@revsd!\else\datesep Revised: \@revsd\fi
+                    \if!\@accptd!\else\datesep Accepted: \@accptd\fi
+                    \ifx\@published\@undefined\else\datesep\fi
                   \fi
-                  -- Published: \@published}%
-               \fi
+                \fi
+                \ifx\@published\@undefined\else Published: \@published\fi
+               }%
                \ifx\abstractexists\@undefined
                \else
                  \par\vskip0.5\baselineskip
@@ -568,7 +600,11 @@
           \vspace*{36mm}%
           {\@maketitle@setup
            \raggedright
-           {\LARGE\bfseries\if@sansserifface\sffamily\mathversion{sansbold}\else\mathversion{bold}\fi\color{textcol}\@title\par}%
+           {\LARGE\bfseries\if@sansserifface\sffamily\mathversion{sansbold}\else\mathversion{bold}\fi\color{textcol}%
+            \if@corrigendum\textit{Corrigendum to}\break``\fi
+            \@title
+            \if@corrigendum'' published in \@journalnameabbreviation \if@noref\else, \@pvol, \@fpage\if@nolastpage\else{--\@lpage}\fi, \@pyear\fi\fi
+            \par}%
            \if@noauthor
            \else
              \vspace{\baselineskip}%
@@ -582,17 +618,22 @@
            \fi
            \@thanks
            \ifx\@corresp\@empty\else\vskip\baselineskip\textit{Correspondence to:}\space\@corresp\fi
-           \if!\@recvd!\else
-             \par\vspace{10pt}%
-             Received: \@recvd\ %
-             \if@twostagejnl
-               -- \ifx\@pubdiscuss\@empty\else Published in \@journalnameabbreviation\ Discuss.: \@pubdiscuss\\\fi
-               \if!\@revsd!\else Revised: \@revsd\ -- \fi Accepted: \@accptd\ -- Published: \@published
+           \par\vspace{10pt}%
+           \if@corrigendum
+           \else
+             \if!\@recvd!
              \else
-               \if!\@revsd!\else -- Revised: \@revsd\ \fi
-               \if!\@accptd!\else -- Accepted: \@accptd\ -- Published: \@published\fi
+               Received: \@recvd
+               \def\datesep{ -- }%
+               \if@twostagejnl\ifx\@pubdiscuss\@empty\else
+                 \datesep Published in \@journalnameabbreviation\ Discuss.: \@pubdiscuss\def\datesep{\newline\def\datesep{ -- }}%
+               \fi\fi
+               \if!\@revsd!\else\datesep Revised: \@revsd\fi
+               \if!\@accptd!\else\datesep Accepted: \@accptd\fi
+               \ifx\@published\@undefined\else\datesep\fi
              \fi
            \fi
+           \ifx\@published\@undefined\else Published: \@published\fi
            \vspace{20pt}}}
   \fi
 \else%discussions
@@ -606,16 +647,29 @@
     \fi\fi
     \begin{nolinenumbers}%
     \if@cop@home
-      \parbox[b]{8.7cm}{\fontsize{8}{11}\usefont{T1}{ma1}{m}{n}%
-        \@journalInfo\\
-        \@journalurlInfo\\
-        \if@noref\else
-           doi:10.5194/\@journalnameshortlower-\@pvol-\@fpage-\@pyear
-        \fi\\
-        \@journalcopyright}%
+      \ifx\@msnumber\@undefined
+        \CopernicusError{Please add \string\msnumber{...}}{You must provide the number of the manuscript}%
+        \global\let\@msnumber\@empty
+      \else
+      \ifx\@msnumber\@empty
+        \CopernicusError{Please fill \string\msnumber{...}}{You must provide the number of the manuscript}%
+      \fi\fi
+      \parbox[b]{107mm}{\fontsize{8}{11}\usefont{T1}{ma1}{m}{n}%
+        %\@journalInfo\\
+        %\@journalurlInfo\\
+        %\if@noref\else
+        %   doi:10.5194/\@journalnameshortlower-\@pvol-\@fpage-\@pyear
+        %\fi\\
+        %\@journalcopyright
+        \@journalnameabbreviation, \if@noref\else\doi{10.5194/\@msnumber}, \@pyear\fi\\
+        Manuscript under review for journal \@journalnameabbreviationbase\\
+        Published: \@published\\
+        \copyright\ Author(s) \@pyear. CC-BY 3.0 License.%
+        %\\[1mm]\includegraphics[width=1.5cm]{CreativeCommons_Attribution_License.png}%
+      }%
       \hfill
       \setbox\z@\hbox{\@journallogo}\@tempdima\dimexpr\ht\z@-17mm\relax
-      \smash{\lower\dimexpr2.5mm+\@tempdima\relax\hbox{\@journallogo}}%
+      \smash{\lower\dimexpr3mm+\@tempdima\relax\llap{\@journallogo}}%war2.5mm
       \vskip5mm
       \ifacp\vskip1.5mm\fi
       \ifamt\vskip1.5mm\fi
@@ -758,8 +812,8 @@
           {\gdef\@abslang{\selectlanguage{english}}}%
           {\gdef\@abslang{\selectlanguage{german}}%
            \if@manuscript\else\if@noline\else\hrule\fi\fi}}}
-  \fi%final
-\else
+  \fi
+\else%discussions
   \renewenvironment{abstract}
    {\gdef\abstractexists{true}%
     \iflanguage{ngerman}{\@abslang}{\iflanguage{german}{\@abslang}{}}%
@@ -849,7 +903,11 @@
 \fi
 \RequirePackage[T1]{fontenc}
 \RequirePackage{textcomp}
-\ifx\xmltexversion\@undefined\RequirePackage[utf8]{inputenc}\fi
+\ifx\xmltexversion\@undefined
+  \RequirePackage[utf8]{inputenc}
+  \DeclareUnicodeCharacter{394}{$\Delta$}
+  \DeclareUnicodeCharacter{8710}{$\Delta$}
+\fi
 \let\old@classoptionslist\@classoptionslist
 \edef\@classoptionslist{english,\old@classoptionslist}
 \RequirePackage{babel}
@@ -962,6 +1020,7 @@
        \global\interdisplaylinepenalty\getdsp@pen{##1}\relax}%
    \fi}
   {\CopernicusWarningNoLine{Cannot find amsmath.sty; proceeding without it}}
+\RequirePackage{amsthm}
 \newcommand\Authfont{\normalfont}
 \newcommand\Affilfont{\normalfont}
 \newcommand\Authsep{, }
@@ -1082,7 +1141,11 @@
   \setcounter{secnumdepth}{4}%
   \@addtoreset{equation}{section}%
   \setcounter{equation}{0}%
+  \setcounter{reaction}{0}%
   \def\theequation{\thesection\@arabic\c@equation}%
+  \def\thereaction{\thesection R\@arabic\c@reaction}%
+  \let\c@org@eq\c@equation%
+  \let\org@theeq\theequation%
   \if@stage@final
     \if@manuscript
     \else
@@ -1334,9 +1397,14 @@
   {\RequirePackage[mathlines,modulo]{lineno}%
    \if@stage@final
      \if@manuscript
-       \linenumbers\renewcommand\linenumberfont{\normalfont\small\sffamily}%
+       \linenumbers\setpagewiselinenumbers\renewcommand\linenumberfont{\normalfont\small\sffamily}%
      \else
-       \nolinenumbers
+       \if@cop@home
+         \nolinenumbers
+       \else%new, 2015-12-14
+         \setpagewiselinenumbers\switchlinenumbers%cf. the switch option
+         \linenumbers
+       \fi
      \fi
    \else
      \setpagewiselinenumbers
@@ -1388,11 +1456,24 @@
     \let\tilde\@undefined
     \let\ddot\@undefined
     \ifx\xmltexversion\@undefined\else{\catcode`\_=\active\global\let\xmltexUndersc@re_}\fi
+    \def\provide@orig@symbol#1{\expandafter\let\csname orig#1\expandafter\endcsname\csname#1\endcsname}
+    \provide@orig@symbol{Gamma}
+    \provide@orig@symbol{Delta}
+    \provide@orig@symbol{Theta}
+    \provide@orig@symbol{Lambda}
+    \provide@orig@symbol{Xi}
+    \provide@orig@symbol{Pi}
+    \provide@orig@symbol{Sigma}
+    \provide@orig@symbol{Upsilon}
+    \provide@orig@symbol{Phi}
+    \provide@orig@symbol{Psi}
+    \provide@orig@symbol{Omega}
     \RequirePackage[mtbold]{mathtime}
     \ifx\xmltexversion\@undefined\else{\catcode`\_=\active\global\let_\xmltexUndersc@re}\fi
     \if@sansserifface
       \DeclareMathVersion{sans}
       \DeclareMathVersion{sansbold}
+      \def\mversion@sans{sans}\def\mversion@sansbold{sansbold}
       \SetSymbolFont{operators}{sans}{OT1}{hvr}{m}{n}%
       \SetSymbolFont{letters}{sans}{OML}{hvm}{m}{it}%
       \SetSymbolFont{symbols}     {sans}{MY2}{mtt}{m}{n}%because +=; reencoded in mathtime.sty
@@ -1400,6 +1481,23 @@
       \SetSymbolFont{operators}{sansbold}{OT1}{hvr}{bx}{n}%
       \SetSymbolFont{letters}{sansbold}{OML}{hvm}{b}{it}%
       \SetSymbolFont{symbols}     {sansbold}{MY2}{mtt}{b}{n}%because +=; reencoded in mathtime.sty
+      \def\provide@fontspec@symbol#1{%
+        \expandafter\let\csname mt#1\expandafter\endcsname\csname#1\endcsname
+        \expandafter\DeclareRobustCommand\expandafter*\csname #1\endcsname{%
+          \ifx\math@version\mversion@sans\csname orig#1\endcsname
+          \else\ifx\math@version\mversion@sansbold\csname orig#1\endcsname
+          \else\csname mt#1\endcsname\fi\fi}}
+      \provide@fontspec@symbol{Gamma}
+      \provide@fontspec@symbol{Delta}
+      \provide@fontspec@symbol{Theta}
+      \provide@fontspec@symbol{Lambda}
+      \provide@fontspec@symbol{Xi}
+      \provide@fontspec@symbol{Pi}
+      \provide@fontspec@symbol{Sigma}
+      \provide@fontspec@symbol{Upsilon}
+      \provide@fontspec@symbol{Phi}
+      \provide@fontspec@symbol{Psi}
+      \provide@fontspec@symbol{Omega}
       \DeclareMathDelimiter{(}{\mathopen} {operators}{"28}{largesymbols}{"00}%was reencoded in mathtime.sty
       \DeclareMathDelimiter{)}{\mathclose}{operators}{"29}{largesymbols}{"01}%was reencoded in mathtime.sty
       \SetMathAlphabet\mathrm{sans}{OT1}{hvr}{m}{n}%mind! (gives more flexibility)
@@ -1425,7 +1523,7 @@
       \DeclareMathAlphabet\mathbold{OML}{cmm}{b}{it}%
     \fi
   \fi
-\else
+\else%discussions
   \if@cop@home
     \if@hvmath
       \RequirePackage{hvmath}
@@ -1456,14 +1554,16 @@
       menucolor=black,pagecolor=black,urlcolor=black}
     \let\old@Hy@backout\Hy@backout\def\Hy@backout{\leavevmode\old@Hy@backout}%bug-fixing, to be checked
     \ifnum\pdfoutput=\z@\RequirePackage{breakurl}\fi
+    \pdfstringdefDisableCommands{\let\boldsymbol\relax\let\vec\relax}
   \fi
   \edef\@pdfcreator{%
-    \@currname.cls%
-    \space version \csname ver@\@currname.cls\endcsname
+    copernicus.cls%
+    \space version \csname ver@copernicus.cls\endcsname
     \ifx\xmltexversion\@undefined\else, produced from XML\fi}
   \if@nohyperref\pdfinfo{/Creator (\@pdfcreator)}\fi
 \else
-  \usepackage[bookmarks=false]{hyperref}
+  \usepackage[bookmarks=false,pdfborder={0 0 0}]{hyperref}
+  \pdfstringdefDisableCommands{\let\boldsymbol\relax\let\vec\relax}
 \fi
 \ifx\xmltexversion\@undefined
 \else
@@ -1590,7 +1690,10 @@
               \href{http://\@journalurl}{\@journalnameshort}}\\[2mm]
              \if@noref
              \else
-               {\small\@pvol, \@fpage\if@nolastpage\else{--\@lpage}\fi, \@pyear}\\[1mm]%
+               {\fontsize{8.7}{11}\selectfont
+                %\@pvol, \@fpage\if@nolastpage\else{--\@lpage}\fi, \@pyear
+                \hypersetup{urlcolor=paneltext}\doi{10.5194/\@msnumber}%
+               }\\[1mm]%
              \fi
              \rule{0.8\panelwidth}{1.1pt}\\[1mm]
              {\bfseries\mathversion{bold}%
@@ -1680,12 +1783,16 @@
 \def\pubdiscuss#1{\if@cop@home\def\@pubdiscuss{#1}\fi} \def\@pubdiscuss{}%+1,+2,-d -- twostagejnltrue
 \def\revised#1{\if@cop@home\def\@revsd{#1}\fi}         \def\@revsd{}%+1,+2,-d
 \def\accepted#1{\if@cop@home\def\@accptd{#1}\fi}       \def\@accptd{}%+1,+2,+d
-\def\published#1{\if@cop@home\gdef\@published{#1}\fi}  \def\@published{}%+1,+2,+d
-\def\firstpage#1{\if@cop@home\gdef\@fpage{#1}\fi}      \def\@fpage{1}%+1,+2,+d
-\def\pubyear#1{\if@cop@home\gdef\@pyear{#1}\fi}        \def\@pyear{\number\year}%+1,+2,+d
-\def\pubvol#1{\if@cop@home\gdef\@pvol{#1}\fi}%+1,+2,+d
+\def\published#1{\if@cop@home\gdef\@published{#1}\fi}  \if@stage@final\else\def\@published{}\fi%+1,+2,+d
+\def\firstpage#1{\if@cop@home\if@corrigendum\else\gdef\@fpage{#1}\fi\fi}
+                                                       \def\@fpage{1}%+1,+2,+d
+\def\pubyear#1{\if@cop@home\if@corrigendum\else\gdef\@pyear{#1}\fi\gdef\@cyear{#1}\fi}
+                                                       \def\@pyear{\number\year}%+1,+2,+d
+                                                       \let\@cyear\@pyear
+\def\pubvol#1{\if@cop@home\if@corrigendum\else\gdef\@pvol{#1}\fi\fi}%+1,+2,+d
 \let\pubnum\@gobble%not for TeX, only for secondary data use
 \def\correspondence#1{\gdef\@corresp{#1}}              \def\@corresp{}%+1,+2,+d
+\def\msnumber#1{\if@cop@home\gdef\@msnumber{#1}\fi}
 \if@stage@final
 \else
   \def\affilfontsize#1{\def\@affilfontsize{#1}}
@@ -1704,10 +1811,13 @@
     \ifadgeo\def\@pvol{1}\fi
     \ifasr\def\@pvol{1}\fi
   \fi
-  \def\@year{\number\year}
-  \def\@published{\number\day~\ifcase\month\or January\or February\or
-     March\or April\or May\or June\or July\or August\or September\or
-     October\or November\or December\fi~\number\year}
+  \AtBeginDocument{%
+    \if@corrigendum
+      \def\origfirstpage#1{\gdef\@fpage{#1}}
+      \def\origlastpage#1{\gdef\@lpage{#1}}
+      \def\origpubyear#1{\gdef\@pyear{#1}}
+      \def\origpubvol#1{\gdef\@pvol{#1}}
+    \fi}
 \else
   \def\@pvol{0}
 \fi
@@ -1744,7 +1854,10 @@
 \fi
 \DeclareRobustCommand*\degree{\ensuremath{^{\circ}}}
 \DeclareRobustCommand*\permil{\ifmmode\text{\textperthousand}\else\textperthousand\fi}
-\DeclareRobustCommand*\Radical{\put(2.0,2.0){\circle*{1.5}}\kern3.5\p@}
+\def\@Radical{\put(2.0,2.0){\circle*{1.5}}\kern3.5\p@}
+\def\@RadicalC{\raise0.25ex\hbox{\@Radical}}
+\DeclareRobustCommand*\Radical{%
+  \ifmmode\mathchoice{\@RadicalC}{\@RadicalC}{\@Radical}{\@Radical}\else\@RadicalC\fi}
 \def\testbx{bx}
 \DeclareRobustCommand*\chem[1]
  {\ensuremath{%
@@ -2045,7 +2158,7 @@
 \newcommand\@journalnameshortlower{jn}
 \newcommand\@journalurl{www.jn.net}
 \newcommand\@journalpublisher{Copernicus Publications}
-\newcommand\@journalcopyright{\copyright\ Author(s)\ \@pyear. CC Attribution 3.0 License.}
+\newcommand\@journalcopyright{\copyright\ Author(s)\ \@cyear. CC Attribution 3.0 License.}
 \newcommand\@journalstartyear{2013}
 \newcommand\@journallogo{Journallogo}
 \newcommand\@sentence{Sentence.}
@@ -2060,9 +2173,16 @@
 \fi
 %%Now, journal configuration from copernicus.cfg:
 \@addjournalconfig
-%%Now, additions for the the discussion stage:
-\if@stage@final\else
+%%Now, additions the manuscript and for the the discussion stage:
+\if@stage@final
+  \if@manuscript
+    \definecolor{textcol}{rgb}{0,0,0}
+    \definecolor{bgcol}{rgb}{1,1,1}
+    \definecolor{barcol}{rgb}{1,1,1}
+  \fi
+\else
   \edef\@journalname{\@journalname\space Discussions}
+  \let\@journalnameabbreviationbase\@journalnameabbreviation
   \edef\@journalnameabbreviation{\@journalnameabbreviation\space Discuss.}
   \edef\@journalnameshort{\@journalnameshort D}
   \edef\@journalnameshortlower{\@journalnameshortlower d}
