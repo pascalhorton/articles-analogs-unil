@@ -101,11 +101,15 @@ The Optimizer integrates the common semi-automatic sequential approach, as well 
 
 Reasoning by analogy is rather widespread in different domains of sciences or engineering. In hydrometeorology, it consists, given a certain situation, in looking into the past to retrieve situations that can be considered similar and therefore with consequences that may be expected similar to the situation at hand. By situation, one often thinks of the atmospheric situation over a rather wide spatial domain. By consequence, one often focuses on a local variable of interest, such as the occurrence of hail, storm, avalanches, or the amount of wind or precipitation over a given region, cumulated on a given time period.
 
-As a general setting, the required ingredients are a couple of archives, one describing the situation through different variables, called predictors, and another one giving, for those situations, the value of the local variable of interest for engineering purpose, called predictand.  Obviously, one understands that the longest and the richest the candidate archive of predictors, the more chance there will be to extract good analogues for a target situation in order to derive a conditional range of predictand values. As for the predictors, one can now hopefully rely on rich reanalysis products, commonly available over 40 years or more, and easily accessible. 
+As a general setting, the required ingredients are a couple of archives, one describing the situation through different variables, called predictors, and another one giving, for those situations, the value of the local variable of interest for engineering purpose, called predictand.
 
-Usually, the predictand values could be derived in a rather physical-dynamic approach  by modeling the chain of processes linking the predictors to the predictand. The processes involved range from large scale dynamical states of the atmosphere down to very small scale microphysical processes, requiring models that are extremely complex, data-demanding, and time consuming. Conversely, given an appropriate set of predictors archives, enough situations analogous to a target one could be found so that reasonable values will be obtained for the predictand, at a reasonable coding and computing-time costs. This is particularly true for a predictand much required in hydrometeorological applications, namely the precipitation amount over a given domain and time duration. Incidentally, the forecast will be proposed as a statistical distribution based on the values taken by the predictand in the set of analogues selected, unless one considers only the single best analogue, which may not prove the most efficient. 
+Usually, the predictand values could be derived in a rather physical-dynamic approach  by modeling the chain of processes linking the predictors to the predictand. The processes involved range from large scale dynamical states of the atmosphere down to very small scale microphysical processes, requiring models that are extremely complex, data-demanding, and time consuming. Conversely, given an appropriate set of predictors archives, enough situations analogous to a target one could be found so that reasonable values will be obtained for the predictand, at a reasonable coding and computing-time costs. This is particularly true for a predictand much required in hydrometeorological applications, namely the precipitation amount over a given domain and time duration. Incidentally, the forecast will be proposed as a statistical distribution based on the values taken by the predictand in the set of analogues selected, unless one considers only the single best analogue, which may not prove the most efficient \citep{Bontron2005}.
 
-The purpose of this paper is not to argue in favour or against this approach, which has proved to be used efficiently either in operational forecasting or more recently in climate studies, and which is capable of challenging more classical approaches based on meteorological modeling. In operational forecasting, it has been used mainly by practitioners, notably hydropower companies or flood forecasting services, while in climate studies, it is more and more used to downscale the results of global climate model simulation runs. In operational, it should however not be considered as a substitute for numerical weather prediction models, but as a complement in order to get a fast and partly independent forecast that is known to be accurate several days in advance. It therefore enriches the analysis of a potential critical situation for flood forecasting, for example, and is very interesting in early warning.
+The AM, or an equivalent, was also used for short to medium term forecasting of daily temperatures \citep{Radinovic1975, Woodcock1980, Kruizinga1983}, wind \citep{Gordon1987}, snow avalanches \citep{Obled1980, Bolognesi1993}, insolation \citep{Bois1981}, and the trajectory of tropical cyclones \citep{Keenan1981, Sievers2000, Fraedrich2003}. \citet{Guilbaud1997} performed a literature review about the use of the AM in long-term forecasting and identified operational applications for monthly forecasts in many countries, including Canada \citep{Shabbar1986},  Hungary \citep{Toth1989}, the Netherlands \citep{Nap1981}, and England \citep{Murray1974}, as well as seasonal forecasts: \citet{Barnett1978}, \citet{Bergen1982} and \citet{Livezey1988}.
+
+The purpose of this paper is not to argue in favour or against this approach, which has proved to be used efficiently either in operational forecasting or more recently in climate studies \citep{Dayon2015}. \citet{Bliefernicht2010} compared the performance of the AM with a forecasting method based on a weather types approach, and concluded that the AM was more efficient.
+
+In operational forecasting, it has been used mainly by practitioners, notably hydropower companies \citep{Desaint2008a,BenDaoud2009,Obled2014} or flood forecasting services in France and Switzerland \citep{Marty2010,GarciaHernandez2009b,Horton2012}. It should however not be considered as a substitute for numerical weather prediction models, but as a complement in order to get a fast and partly independent forecast that is known to be accurate several days in advance. It therefore enriches the analysis of a potential critical situation for flood forecasting, for example, and is very interesting in early warning.
 
 However, how efficient and useful it may seem, this approach is not straightforward. Usually the type of predictand is imposed by some practical needs or constraints. Considering a precipitation variable, one has to decide upon the duration of accumulation, (e.g. from 6-hourly to daily or several day totals) according for example to the size or response time of the catchments to be managed. The availability and quality of long enough time series must also be considered. Moreover, the analogy is restricted to a selection of variables at a specific time and over optimized spatial domains, that are compared by means of a chosen criteria that can rank the candidate days from the archive with a distance quantification. The approach appears predictand-specific but also dependent on the archive of predictors. 
 
@@ -116,7 +120,7 @@ The Analogue Method (AM) will first be presented along with various implementati
 \section{The Analogue Method}
 \label{sec:method}
 
-AtmoSwing does not rely on a single variant of the AM, but can implement different parameterizations. Thus, several examples of possible implementations are gathered here, as well as the main evolution steps of the AM. This latter summarizes the improvements that were brought, as well as discontinued approaches that were found less relevant (such as the use of PCA on the predictors).
+AtmoSwing does not rely on a single variant of the AM, but can implement different parameterizations. Thus, several examples of possible implementations are gathered here, as well as the main evolution steps of the AM. This latter summarizes the improvements that were brought, as well as discontinued approaches that were found less relevant.
 
 \subsection{Principles}
 
@@ -133,19 +137,15 @@ The AM is based on the principle that two similar synoptic situations may produc
 
 Because of the chaotic nature of the atmosphere, two analogue situations quickly diverge over time \citep{Lorenz1969}. Thus, the AM has strong limitations regarding the temporal extrapolation \citep{Bontron2004}. Numerical models being more capable of simulating the dynamic evolution of the atmosphere, the temporal extrapolation of the synoptic variables is left to them. The search for analogy aims thus at connecting the forecasted synoptic situation with a local predictand (temperature, precipitation ...), which is more difficult to simulate by numerical models.
 
-The AM is being used for many years at EDF (\'{E}lectricit\'{e} de France), to build precipitation and temperature scenarios \citep{Desaint2008a}. It is also operational at the Compagnie Nationale du Rh\^{o}ne (CNR, France) and some flood forecasting services (SPC) in France and Switzerland \citep{Marty2010,GarciaHernandez2009b,Horton2012}.
-
 
 \subsection{Data}
 \label{sec:data}
 
-The AM relies on two types of data: predictors, that are atmospheric variables describing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather time series one wants to forecast.
+Predictors are generally reanalysis datasets (as archive) and outputs of a global numerical weather prediction models for the target situation in operational forecasting. Reanalysis datasets, such as the NCEP/NCAR reanalysis I \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996}, the NCEP/DOE reanalysis II \citep{Kanamitsu2002}, ERA-40 \citep{Uppala2005} are often used and can be input in AtmoSwing. Other observed predictors can also be used, such as Sea Surface Temperature \citep[SST, ][]{Reynolds2007}. \citet{Bontron2004} proposed that the minimum length of the archive should be 30 years to forecast usual situations, and 40 years or more for intense events.
 
-Predictors are generally reanalysis datasets (as archive) and outputs of a global numerical weather prediction models for the target situation in operational forecasting. Reanalysis datasets, such as the NCEP/NCAR reanalysis I \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996}, the NCEP/DOE reanalysis II \citep{Kanamitsu2002}, ERA-40 \citep{Uppala2005} are often used and can be input in AtmoSwing. Other observed predictors can also be used, such as Sea Surface Temperature \citep[SST, ][]{Reynolds2007}. The predictors describing the target situation in operational forecasting can, for example, result from GFS \citep[Global Forecast System,][]{Kanamitsu1991,Kanamitsu1989}, which is operated by NCEP and NOAA.
+The predictors describing the target situation in operational forecasting can, for example, result from GFS \citep[Global Forecast System,][]{Kanamitsu1991,Kanamitsu1989}, which is operated by NCEP and NOAA.
 
-\citet{Bontron2004} proposed that the minimum length of the archive should be 30 years to forecast usual situations, and 40 years or more for intense events. He also highlighted the dependency between the optimal number of analogues and the archive size: the shorter the archive, the lower the number of analogues. By varying the resolution of the predictors grids, he concluded that the performance increase is not significant for the analogy of atmospheric circulation below a resolution of 5\textdegree. However, it seems more important for the second level of analogy on moisture, which are more local variables. \citet{BenDaoud2010} assessed the European reanalysis ERA-40 \citep{Uppala2005} with a resolution of 1.125\textdegree. He identified a slight performance improvement, but not substantial enough to really justify an archive change \citep{BenDaoud2008}.
-
-The predictand is the local meteorological variable of interest. It can be 6-houry data, or more often daily time series, but has to be consistent with the time step of the predictors. The most used predictand is the daily precipitation, usually averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}. These time series are frequently normalized by the precipitation value for a return period of 10~years \citep{Djerboua2001}. This normalization allows for an easier comparison between subregions subject to different precipitation regimes, and thus to better identify the most important contributions. Most users also apply a root square to this last ratio in order to reduce the weight of the extreme predictand values, but we generally don't, in order to give extremes a certain weighting.
+The predictand can be 6-houry data, or more often daily time series. The most used predictand is the daily precipitation, usually averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}. These time series are frequently normalized by the precipitation value for a return period of 10~years \citep{Djerboua2001}. This normalization allows for an easier comparison between subregions subject to different precipitation regimes, and thus to better identify the most important contributions. Most users also apply a root square to this last ratio in order to reduce the weight of the extreme predictand values, but we generally don't, in order to give extremes a certain weighting.
 
 
 \subsection{Present structure}
@@ -155,7 +155,7 @@ Although multiple variations of the AM exist, they generally share the same basi
 \begin{enumerate}
 	\item Preselection: to cope with seasonal effects, candidate dates are extracted from the archive within a period of four months centered around the target date, for every year of the archive. Alternatively, the candidate dates can be selected based on similar air temperature \citep{BenDaoud2010}.
 	
-	\item First level of analogy: $N_{1}$ dates are subsampled within all the candidates provided by the preselection, by means of an analogy ranking. The first level of analogy is always based on the atmospheric circulation when it comes to precipitation forecasting. The similarity of the atmospheric circulation of the target date with the candidate situations is thus assessed on the geopotential by means of the S1 criteria \citep[Eq.\ref{eq:S1}, ][see also section \ref{sec:method:evolution}]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial gridded window.
+	\item First level of analogy: $N_{1}$ dates are subsampled within all the candidates provided by the preselection, by means of an analogy ranking. The first level of analogy is always based on the atmospheric circulation when it comes to precipitation forecasting. The similarity of the atmospheric circulation of the target date with the candidate situations is thus assessed on the geopotential by means of the S1 criteria \citep[Eq.\ref{eq:S1}, ][see also section \ref{sec:method:references}]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial gridded window.
 	
 	\begin{equation}
 	\label{eq:S1}
@@ -170,7 +170,7 @@ Although multiple variations of the AM exist, they generally share the same basi
 	
 	This process can be repeated, by subsampling a decreasing number of analogues, $N_{i}$, according to a ranking processed on various meteorological variables.
 	
-	\item Probabilistic forecast: then, the (e.g. daily) observed precipitation amount (or another predictand of interest) of the $N_{i}$ resulting dates provide the empirical conditional distribution considered as the probabilistic forecast for the target day. The empirical frequencies are processed for every value of the predictand, after classification, based on the Gringorten parameters (for a Gumbel or exponential law) and a probabilistic model can be fitted (e.g. Gamma function, or else).
+	\item Probabilistic forecast: then, the (e.g. daily) observed precipitation amount (or another predictand of interest) of the $N_{i}$ resulting dates provide the empirical conditional distribution considered as the probabilistic forecast for the target day. The empirical frequencies are processed for every value of the predictand, after classification, based on the Gringorten parameters \cite[for a Gumbel or exponential law][]{Gringorten1963} and a probabilistic model can be fitted \citep[e.g. Gamma function][]{Obled2002}. The forcast is often synthetized by the percentiles 20, 60 and 90~\% \citep{Guilbaud1997, Guilbaud1998}.
 	
 \end{enumerate}
 
@@ -192,15 +192,16 @@ The naming contains different blocs (separated by an hyphen) for the various lev
 	\item T: based on air temperature \citep{BenDaoud2010}
 \end{itemize}
 
-Then, the following levels of analogy are listed. They may start with an optional A (for analogy) when other methods are mixed into the parameterization \citep[see eg. ][]{Chardon2014}. For every level of analogy, the number of variables used (combination of atmospheric levels and time of observation) is first provided, and then the short name of the variable is given (according eg to ECMWF conventions; in upper case), for example:
+Then, the following levels of analogy are listed, which may start with an optional A (for analogy). For every level of analogy, the number of variables used (combination of atmospheric levels and time of observation) is first provided, and then the short name of the variable is given (according eg to ECMWF conventions; in upper case), for example:
 \begin{itemize}
 	\setlength\itemsep{-2px}
 	\item Z : geopotential (circulation)
-	\item MI : moisture index (TPW * RH)
-	\item MF : moisture flux (V * TPW * RH)
 	\item TPW : total precipitable water
+	\item RH : relative humidity
 	\item V : wind velocity
 	\item W : vertical velocity
+	\item MI : moisture index (TPW * RH)
+	\item MF : moisture flux (V * TPW * RH)
 \end{itemize}
 
 In order to keep the identifier simple, no value of atmospheric level neither time of observation is specified. Moreover, the analogy criterion is not specified and is supposed to be S1 for Z and RMSE for the other variables. If anything changes from these conventions, it can be noted as a flag. The flag (lower case) can also give other information, such as the optimization method:
@@ -210,27 +211,19 @@ In order to keep the identifier simple, no value of atmospheric level neither ti
 	\item go (or just ''o'') : global optimization (by means of genetic algorithms for example)
 \end{itemize}
 
-This nomenclature can be adapted to specific needs, or simplified for a better readability (eg. by removing the specification of the preselection). Examples are provided in the following section.
+This nomenclature can be adapted to specific needs, or simplified for a better readability (eg. by removing the specification of the preselection). For example, one of the most used parameterization established by \citet{Bontron2004} is composed of a first level of analogy on the geopotential height and a second on the moisture index and can thus be codified as PC-2Z-2MI. Other examples are provided in the following section.
 
 
-\subsection{Evolution of the method for precipitation forecasting}
-\label{sec:method:evolution}
+\subsection{Common variants for precipitation forecasting}
+\label{sec:method:references}
 
-The most common usage of the AM is for precipitation forecasting. Thus, the evolution presented hereafter focuses on this predictand. However, the AM, or an equivalent, was also used for short to medium term forecasting of daily temperatures \citep{Radinovic1975, Woodcock1980, Kruizinga1983}, wind \citep{Gordon1987}, snow avalanches \citep{Obled1980, Bolognesi1993}, insolation \citep{Bois1981}, and the trajectory of tropical cyclones \citep{Keenan1981, Sievers2000, Fraedrich2003}. \citet{Guilbaud1997} performed a literature review about the use of the AM in long-term forecasting and identified operational applications for monthly forecasts in many countries, including Canada \citep{Shabbar1986},  Hungary \citep{Toth1989}, the Netherlands \citep{Nap1981}, and England \citep{Murray1974}, as well as seasonal forecasts: \citet{Barnett1978}, \citet{Bergen1982} and \citet{Livezey1988}.
+Some examples of parameterizations of the most used or the most recent AM variants are provided hereunder. Some of these are more specific for a certain region and may not be relevant for others, and some perform better depending on the lead time. An extended history of the method's origin and its early evolution can be found in Appendix \ref{app:evolution}.
 
-The evolution of the AM for precipitation forecasting led to several improvements. However, some of these are specific for a certain region and are not relevant for others, and some perform better depending on the lead time. Thereby, one cannot provide a single best parameterization for the AM, neither rank them from worst to best. Some examples of parameterizations of the most recent AM variant will thus be provided, in the chronological order they appeared. 
+The basis of the method was introduced by \citet{Lorenz1969}, who considered the analogy of the geopotential field on different pressure levels. In addition, the analogue situations were to belong to the same period of the year to be comparable in terms of distribution of solar energy. This preselection was later implemented as a moving selection of more or less two months around the target date.
 
-\citet{Lorenz1969} introduced the concept and established the basis of the AM. He considered looking for analogues on the geopotential field (at 200, 500 and 850~hPa) with a corrected Euclidean distance averaged on the 3 levels. In addition, the analogue situations were to belong to the same period of the year to be comparable in terms of distribution of solar energy.
+Several pressure levels were assessed by means of various criteria for the analogy on the geopotential field \citep{Duband1970, Duband1974, Duband1981, Guilbaud1997}. It was found to be important to compute the analogy on multiple pressure levels and different temporal windows \citep{Guilbaud1998, Obled2002}. The Teweles-Wobus (S1) criterion (Eq. \ref{eq:S1}), which allows for a comparison of the gradients and thus an analogy of the atmospheric circulation, was identified as the most suited criteria by different studies \citep{Wilson1980, Woodcock1980, Guilbaud1998, Bontron2004}.
 
-The use of the AM for operational forecasting of daily precipitation originates in the work of \citet{Duband1970, Duband1974, Duband1981}. It was then designed for operational forecasting at EDF (\'{E}lectricit\'{e} de France) in order to better manage water resources and flood risks. The geopotential height at 700~hPa and 00~h was used for its higher stability than the sea level pressure (SLP) field, and its sensitivity to the atmospheric disturbances \citep{Guilbaud1997}. However, the SLP at 06~h was also introduced for determining the precipitation intensity, as well as the temperature at 700~hPa as indicator of the thermal state of the air mass \citep{Duband1974}. The data were then based on 37 radiosounding over Europe and condensed by a principal component analysis. The first 25 analogues on the geopotential at 700~hPa were considered, and multiple local regressions between precipitation, SLP, and the temperature at 700~hPa were established on these analogues before being applied to the target situation \citep{Guilbaud1997}. The archives were split by season to consider comparable situations in terms of distribution of solar energy \citep{Lorenz1969}. This initially rigid division into seasons was then transformed into a moving selection of more or less two months around the target date. The forecast was then performed only on the basis of radiosonde observations and was temporally extrapolated to the two following days. After a few years, this statistical temporal extrapolation was abandoned in favor of a statistical adaptation using synoptic predictors taken from a numerical model, allowing a forecast over the following 4~days.
-
-Thereafter, the geopotential was considered at 1000~hPa and 700~hPa and the analogues selection was done in two stages: first according to an Euclidean distance in the space of the principal components of the geopotential field at 700~hPa, and then according to a correlation criterion (on the geopotential field at 700 and 1000~hPa, as well as on the thickness between these two levels) in order to remove days close in distance but too dissimilar in pattern \citep{Guilbaud1997}. The local regression approach to determine precipitation was eventually abandoned in favor of the direct probabilistic forecasting (synthesized by the percentiles 20, 60 and 90~\%), as it is performed today by interpolating linearly over the cumulative empirical distribution of daily precipitation measured at the analogue days \citep{Guilbaud1997, Guilbaud1998}.
-
-\citet{Wilson1980} sought the 20 best analogues on the geopotential field at 500 and 1000~hPa using the Teweles-Wobus (S1) criterion (Eq. \ref{eq:S1}), which allows for a comparison of the gradients and thus an analogy of the atmospheric circulation. This work has demonstrated the best performance of the AM compared to classical regression based approaches. \citet{Woodcock1980} used the same criterion on the SLP fields to select 50~analogues in order to forecast maximum daily temperatures. After comparing S1 to other criteria from the literature, or combinations of these, \citet{Guilbaud1998} confirmed that S1 is the most efficient. They also pointed out the benefit of using 2 atmospheric levels, 1000~hPa (Z1000) and 700~hPa (Z700) or 500~hPa (Z500), instead of one (also instead of the thickness), and to also consider 2 temporal windows, 00~h and 24~h \citep{Obled2002}. 
-
-\citet{Guilbaud1997} stopped using PCA in order to work directly with the raw data interpolated on grids, which resulted in an improvement, especially when considering the S1 criterion instead of the Euclidean distance. The number of analogues considered was 50. When using multiple predictors, they combined the criteria values calculated on each atmospheric level and each temporal window using an arithmetic mean.
-
-At the dawn of the new millennium, \citet{Bontron2004} could benefit from a real breakthrough, the newly available NCEP/NCAR reanalysis data. This dataset being more homogeneous, much longer, and containing more variables than what was previously used, he could systematically assess a large selection of variables in the AM combined with different criteria. He thus confirmed the interest of the geopotential height along with the S1 criterion for the first level of analogy. He has also shown that the choice of the temporal window (time of observation) has a higher importance than the atmospheric level for the performance of the AM for daily precipitations. By assessing multiple combinations of atmospheric levels and temporal windows, he concluded that the coupled geopotential heights at 1000~hPa (Z1000) \& 12~h and 500~hPa (Z500) \& 24~h provided the best performance for the studied region (Table \ref{table:R1}). The analogy on the atmospheric circulation proposed by \citet{Bontron2004} is still, at the time of writing, often used operationally, and considered as a reference for benchmarking new parameterizations \citep{Horton2012, BenDaoud2015}.
+With a systematic assessment of the newly available NCEP/NCAR reanalysis data, \citet{Bontron2004} concluded that the coupled geopotential heights at 1000~hPa (Z1000) \& 12~h and 500~hPa (Z500) \& 24~h provided the best performance for the studied region (Table \ref{table:R1}). The analogy on the atmospheric circulation proposed by \citet{Bontron2004} is still, at the time of writing, often used operationally, and considered as a reference for benchmarking new parameterizations \citep{Horton2012, BenDaoud2015}. In order to assess the forecast, he introduced the Continuous Ranked Probability Score \citep[CRPS, Eq. \ref{eq:CRPS}, ][]{Brown1974}, which discards the issue of determining classes as with the Ranked Probability Score \citep{Epstein1969} previously in use.
 
 \begin{table}[htbp]
 	\caption{Method of type PC-2Z proposed by \citet{Bontron2004}. The first column is the level of analogy (0 for preselection), then comes the meteorological variable and its hour of observation (temporal window). The criteria used for the current level of analogy is then provided, as well as the number of analogues.}
@@ -247,9 +240,27 @@ At the dawn of the new millennium, \citet{Bontron2004} could benefit from a real
 	\label{table:R1}
 \end{table}
 
-\citet{Mandon1985} tried to introduce a second level of analogy and assessed different variables, such as wind, moisture, air temperature, surface temperature of the Mediterranean, the product of wind and the 700~hPa moisture, as well as a second barometric criteria differentiated according to the season. \citet{Vallee1986} continued to work on the second level of analogy and considered the wind at 700~hPa \& 12~h in order to improve heavy precipitation events for a region in France susceptible to southerly flows.
+\citet{Horton2012} identified that the analogy on the atmospheric circulation may not be comprehensive, and that a significant gain was obtained by considering 4 atmospheric levels (1000, 850, 700, and 500~hPa at 12 or 24~h) instead of 2 (Table \ref{table:R6}). The number of analogues ($N_{1}$) was not provided globally, as it was calibrated for every subregion. An equivalent structure was also optimized by means of generic algorithms (PC-4Zgo), which is the topic of another paper \citep{Horton2016b}.
 
-\citet{Bontron2004} also assessed several variables for the second level of analogy and identified the moisture variables (precipitable water and relative humidity) and vertical velocity to be the most relevant. Finally, he found that a moisture index made of the product of relative humidity at 850~hPa (RH850) and total precipitable water (TPW) gave the best performance (Table \ref{table:R2}). This index does not represent an actual physical quantity, but expresses the water content of the air column and its proximity to saturation.
+\begin{table}[htbp]
+	\caption{Method of type PC-4Z proposed by \citet{Horton2012}. Same conventions as Table \ref{table:R1}}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{4}{*}{1} & Z1000 & 12~h & \multirow{4}{*}{S1} & \multirow{4}{*}{$N_{1}$} \\
+		& Z850 & 24~h & & \\ 
+		& Z700 & 12~h & & \\ 
+		& Z500 & 24~h & & \\ 
+		\bottomhline 
+	\end{tabular}
+	\label{table:R6}
+\end{table}
+
+
+A second level of analogy based on thermodynamic variables was then introduced by \citet{Mandon1985, Vallee1986, Gibergans-Baguena2007}. After a systematic assessment, \citet{Bontron2004} pointed out that a moisture index (MI) made of the product of relative humidity at 850~hPa (RH850) and total precipitable water (TPW) gave the best performance (Table \ref{table:R2}). This index does not represent an actual physical quantity, but expresses the water content of the air column and its proximity to saturation.
 
 \begin{table}[htbp]
 	\caption{Method of type PC-2Z-2MI proposed by \citet{Bontron2004}. Same conventions as Table \ref{table:R1}}
@@ -267,10 +278,6 @@ At the dawn of the new millennium, \citet{Bontron2004} could benefit from a real
 	\end{tabular} 
 	\label{table:R2}
 \end{table}
-
-He noted the relevance of defining different spatial windows for each region, rather than a single window for the entire territory. These windows are more able to represent the specific atmospheric influences for each region. In order to assess the forecast, he introduced the Continuous Ranked Probability Score \citep[CRPS, Eq. \ref{eq:CRPS}, ][]{Brown1974}, which discards the issue of determining classes as with the Ranked Probability Score \citep{Epstein1969} previously in use.
-
-\citet{Gibergans-Baguena2007} implemented the AM for daily precipitation forecasts in Catalonia. They considered the geopotential at 700 and 1000~hPa, and the thickness between these two levels, to search for analogy of circulation, and then applied a second selection on local data from radiosonde: stability indexes, precipitable water, temperature, etc.
 
 \citet{Marty2010} tested other temporal windows for intraday application on the basis of a more comprehensive reanalysis dataset. He first proposed to change the hours of observation for both levels of analogy (both for 06~h and 18~h), and selected the 925~hPa level for the moisture analogy (Table \ref{table:R3a}). The selected hours and atmospheric levels were not available before in the reanalysis dataset.
 
@@ -356,28 +363,7 @@ Subsequently, \citet{BenDaoud2010} added an additional level of analogy, between
 	\label{table:R5}
 \end{table}
 
-\citet{Bliefernicht2010} proposed to add a weighting to each grid points of the predictor domain to overcome a comparison on a fixed-size window, and to give more importance to regions with relevant atmospheric circulation information. However, he noticed that there is a risk of overparametrization as the performance was not stable between the calibration and the validation periods, and a simplification of the weighting fields may be necessary. He also compared the performance of the AM with a forecasting method based on a weather types approach, and concluded that the AM was more efficient.
-
-\citet{Horton2012} identified that the analogy on the atmospheric circulation may not be comprehensive, and that a significant gain was obtained by considering 4 atmospheric levels (1000, 850, 700, and 500~hPa at 12 or 24~h) instead of 2 (Table \ref{table:R6}). The number of analogues ($N_{1}$) was not provided globally, as it was calibrated for every subregion. Considering an AM only based on the atmospheric circulation has an interest for operational forecasting, since moisture variables are less well forecasted for a lead time of a few days. An equivalent structure was also optimized by means of generic algorithms (PC-4Zgo), which is the topic of another paper \citep{Horton2016b}.
-
-\begin{table}[htbp]
-	\caption{Method of type PC-4Z proposed by \citet{Horton2012}. Same conventions as Table \ref{table:R1}}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline 
-		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-		\middlehline 
-		\multirow{4}{*}{1} & Z1000 & 12~h & \multirow{4}{*}{S1} & \multirow{4}{*}{$N_{1}$} \\
-		& Z850 & 24~h & & \\ 
-		& Z700 & 12~h & & \\ 
-		& Z500 & 24~h & & \\ 
-		\bottomhline 
-	\end{tabular}
-	\label{table:R6}
-\end{table}
-
-\citet{Horton2012} also integrated an analogy on the moisture flux, after the circulation analogy on the 4 atmospheric levels (Table \ref{table:R7}). The number of analogues ($N_{1}$, $N_{2}$) were also calibrated for every subregion. Similarly, an equivalent structure was optimized \citep[PC-4Zgo-2MIgo,][]{Horton2016b}.
+\citet{Horton2012} also integrated an analogy on the moisture flux, after the circulation analogy on the 4 atmospheric levels (Table \ref{table:R7}). The number of analogues ($N_{1}$, $N_{2}$) were calibrated for every subregion. Similarly, an equivalent structure was optimized \citep[PC-4Zgo-2MIgo,][]{Horton2016b}.
 
 \begin{table}[htbp]
 	\caption{Method of type PC-4Z-2MI, by \citet{Horton2012}. Same conventions as Table \ref{table:R1}}
@@ -405,7 +391,7 @@ The optimal predictors vary from one region to another, along with the leading a
 
 A version of the AM was evaluated during the project STARDEX \citep[\textit{STAtistical and Regional dynamical Downscaling of EXtremes for European regions}, see][]{Goodess2003, Stardex2005}. One of the project goals was to compare various downscaling methods for the determination of weather extremes, and the AM was selected among the most interesting from various techniques \citep{Maheras2005, Schmidli2007}. Its use as adaptation method of climate models is also the subject of a growing number of studies \citep{Zorita1999, Wetterhall2005, Wetterhall2007, Matulla2007, Chardon2014, Dayon2015}.
 
-\citet{Hamill2006} used an analogy based approach on the GFS reforecasts in order to correct systematic errors in the ensemble forecasts of temperature and precipitation. Indeed, the statistical approach pointed at some bias in estimates of the numerical model, which may have been adjusted by taking into account the intrinsic local climatology from the AM. Moreover, the under-dispersion of the ensemble forecast from the numerical model has been corrected using analogues \citep{Hamill2006}. Correction of ensemble forecast under-dispersion by means of the AM is also used operationally at EDF.
+\citet{Hamill2006} used an analogy based approach on the GFS reforecasts in order to correct systematic errors in the ensemble forecasts of temperature and precipitation. Indeed, the statistical approach pointed at some bias in estimates of the numerical model, which may have been adjusted by taking into account the intrinsic local climatology from the AM. Moreover, the under-dispersion of the ensemble forecast from the numerical model has been corrected using analogues \citep{Hamill2006}. Correction of ensemble forecast under-dispersion by means of the AM is also used operationally at EDF (\'{E}lectricit\'{e} de France).
 
 \citet{Bliefernicht2010} observed that the performance of the AM is higher for winter than for summer. The relationship between synoptic predictors and local rainfall is lower in summer, due to convective precipitations that present a higher spatial variability and that depend on other parameters. Variables describing the synoptic circulation are indeed not able to predict the location of thunderstorm cells. This was also observed by \citet{BenDaoud2010}, who set up a specific model for the summer months (June 15 to September 15).
 
@@ -427,7 +413,9 @@ AtmoSwing is made of 3 main modules (Figure \ref{figure:logo}) that are standalo
 	\label{figure:logo}
 \end{figure}
 
-The source code in under version control (with Mercurial), and is open source (on Bitbucket, www.atmoswing.org). Developments have been made with a test driven development (TDD) approach. A collection of 500+ tests are frequently evaluated and completed during development, in order to verify that code changes do not introduce regression. Every analogy criterion, prediction score, searching and sorting functions, data manipulation, and so on, is tested. The integration tests specific to the  AM rely on the results of another analogue sorting software developed in Grenoble. They result from a comparison work done with the help of R. Marty in order to ensure that the results of AtmoSwing are exactly equivalent to their model, given the same parameters and data. These tests are part of the checks carried out regularly, so that these results are always reproducible.
+The source code in under version control (with Mercurial), and is open source (on Bitbucket, www.atmoswing.org). Developments have been made with a test driven development (TDD) approach. A collection of more than 500 tests are frequently evaluated and completed during development, in order to verify that code changes do not introduce regression. Every analogy criterion, prediction score, searching and sorting functions, data manipulation, and so on, is tested. The integration tests specific to the AM rely on the results of another analogue sorting software developed at the LTHE - INPG university of Grenoble. They ensure that the results of AtmoSwing are exactly equivalent to their model, given the same parameters and data. These tests are part of the checks carried out regularly.
+
+A user interface allows the creation of the precipitation database. Its generation consists in extracting the time series from text files in order to process them and save a database in the NetCDF format. During the process, Gumbel adjustments are automatically calculated in order to determine the values corresponding to different return periods. The time series are normalized by a selected return period (default 10~years) and their square root is eventually processed. The final database file contains both the raw and the normalized series, as well as characteristics of the gauging stations and some metadata.
 
 
 \subsection{Modular approach and implementation}
@@ -440,14 +428,14 @@ An AtmoSwing great strength is that it is designed to process analogy forecastin
 	\label{figure:flowchart_modules_atmoswing}
 \end{figure}
 
-Each implementation of the AM (see section \ref{sec:method:evolution}) may enter this scheme, even if it consists of preprocessed variables (e.g. moisture index). Various preprocessing functions are implemented, as the calculation of the moisture index or flux, multiplication operations or calculation of the gradients. The user can specify the preprocessing method and the predictors to use, dynamically, in the XML file.
+Each implementation of the AM (see section \ref{sec:method:references}) may enter this scheme, even if it consists of preprocessed variables (e.g. moisture index). Various preprocessing functions are implemented, as the calculation of the moisture index or flux, multiplication operations or calculation of the gradients. The user can specify the preprocessing method and the predictors to use, dynamically, in the XML file.
 
 
 \subsection{Performance}
 
-Although processing an analogue forecast for a given target date is fast, when optimizing the AM, forecasts are re-processed over long periods of several decades, which may become very time consuming. Thus, great effort has been made in order to reduce the processing time to a minimum. Waste of time were identified with profiling tools and cut down at different levels. The software also use the linear algebra library Eigen 3 \citep{Guennebaud2010} for calculations on vectors and matrices, which resulted in time saving. Obviously, multi-threading is also implemented.
+Although processing an analogue forecast for a given target date is fast, when optimizing the AM, forecasts are re-processed over long periods of several decades, which may become very time consuming. Thus, great effort has been made in order to reduce the processing time to a minimum. Waste of time were identified with profiling tools and cut down at different levels. The software also use the linear algebra library Eigen 3 \citep{Guennebaud2010} for calculations on vectors and matrices, which resulted in time saving. Multi-threading is also implemented so that the search for analogue situations in the archive is distributed among the available threads.
 
-First, every identified redundancy has been removed. Then, when looking for a certain date or data, the search looks first in the proximity where it is likely to be found instead of exploring an entire array. Similar data are not loaded twice, but shared pointers are used. Many other improvements allowed saving time, for example the use of the quicksort method \citep{Hoare1962a} to sort the date vectors according to the values of analogy criteria. Different implementations were tested (many remain in the code as alternatives) in order to select the most efficient: for example, when storing analogue dates according to their criteria value, it is faster to insert them in a fixed-size array rather than storing them all and sorting the array subsequently.
+The code optimization consited in reducing the most significant processing time identified by means of profiling tools. First, every identified redundancy in processing has been removed. Then, when looking for a certain date or data, the search looks first in the proximity where it is likely to be found instead of exploring an entire array. Similar data are not loaded twice, but shared pointers are used. Many other improvements allowed saving more time, for example the use of the quicksort method \citep{Hoare1962a} to sort the date vectors according to the values of analogy criteria. Different implementations were tested (many remain in the code as alternatives) in order to select the most efficient: for example, when storing analogue dates according to their criteria value, it is faster to insert them in a fixed-size array rather than storing them all and sorting the array subsequently.
 
 The major performance gains were obtained by:
 \vspace*{-2mm}
@@ -473,13 +461,11 @@ The Forecaster module allows to process operational forecasts, defined by an XML
 	\label{figure:atmoswing-forecaster-gui}
 \end{figure}
 
-The software first downloads the predictor describing the target situation, such as 1\textdegree\ GFS outputs \citep[Global Forecast System,][see section \ref{sec:data}]{Kanamitsu1991,Kanamitsu1989}. It then interpolates the gridded data to match the resolution of the archive (for example 2.5\textdegree\ in the case of the NCEP/NCAP reanalysis I). The analogues dates are next sought according to the selected parameterization, and the predictand data are associated with the corresponding dates. The results are finally saved in auto-describing NetCDF files. If required, a synthetic XML is generated for an easier integration on a web platform for example. Every step of the forecast, from the predictor downloading to the final results, is done in the software (and controlled through configuration), without use of external scripts (e.g. for data conversion).
+The software first downloads the predictor describing the target situation, such as 1\textdegree\ GFS outputs \citep[Global Forecast System,][see section \ref{sec:data}]{Kanamitsu1991,Kanamitsu1989}. It then interpolates linearly the gridded data to match the resolution of the archive (for example 2.5\textdegree\ in the case of the NCEP/NCAP reanalysis I). The analogues dates are next sought according to the selected parameterization, and the predictand data are associated with the corresponding dates. The results are finally saved in auto-describing NetCDF files. If required, a synthetic XML is generated for an easier integration on a web platform for example. Every step of the forecast, from the predictor downloading to the final results, is done in the software (and controlled through configuration), without use of external scripts (e.g. for data conversion).
 
-When using a given parameterization of the AM, it has previously been optimized in a perfect prognosis context \citep[i.e. by optimizing on the reanalysis dataset; however, this does not take into account the uncertainty of the target situation when taken from operational forecasts of a NWP model,][]{Klein1963}. In operational forecasting, one should take into account the uncertainty of the predictor increasing with the lead time. A solution, presented in section \ref{sec:optimization-operational}, consists in increasing the number of analogue situations to keep with the lead time. This technique is available in AtmoSwing, as the number of analogues can be specified for every lead time, making such approach easily accessible.
+When using a given parameterization of the AM, it has previously been optimized in a perfect prognosis context \citep[i.e. by optimizing on the reanalysis dataset; however, this does not take into account the uncertainty of the target situation when taken from operational forecasts of a Numerical Weather Prediction model,][]{Klein1963}. In operational forecasting, one should take into account the uncertainty of the predictor increasing with the lead time. A solution, presented in section \ref{sec:optimization-operational}, consists in increasing the number of analogue situations to keep with the lead time. This technique is available in AtmoSwing, as the number of analogues can be specified for every lead time, making such approach easily accessible.
 
 The command-line interface allows to start the process for the present date, a selected past date, or the last $x$ days (as long as the predictors are available on the provider server). When there is nothing to process (no new predictor data available), the execution just stops, leading to no loss of computing resources. The recommended use is thus to set up a cron task on a Linux server in order to trigger the forecast every 30 minutes. When using GFS outputs, this would provide 4 forecasts a day with a reduced delay between GFS outputs availability and the analogue forecast.
-
-A user interface allows the creation of the precipitation database. Its generation consists in extracting the time series from text files in order to process them and save a database in the NetCDF format. During the process, Gumbel adjustments are automatically calculated in order to determine the values corresponding to different return periods. The time series are normalized by a selected return period (default 10~years) and their square root is eventually processed. The final database file contains both the raw and the normalized series, as well as characteristics of the gauging stations and some metadata.
 
 
 \section{AtmoSwing Viewer}
@@ -525,7 +511,7 @@ The user can even go into further details and display the predictand cumulative 
 
 Finally, one can see the details of the analogue dates, along with the predictand and the criteria values in an interactive spreadsheet (not shown).
 
-AtmoSwing Viewer relies on workspaces to specify the path to the forecast directories and the GIS layers. Many GIS formats are supported thanks to the GDAL and VroomGIS libraries. One can have as many layers as desired, and can control their display properties. It is thus easy to switch from a forecast for a region to another by opening a workspace file (XML format).
+AtmoSwing Viewer relies on workspaces to specify the path to the forecast directories and the GIS layers. Many GIS formats are supported thanks to GDAL \cite[Geospatial Data Abstraction Library,][]{GDAL2014}. One can have as many layers as desired, and can control their display properties. It is thus easy to switch from a forecast for a region to another by opening a workspace file (XML format).
 
 
 \subsection{Interpreting a precipitation forecast}
@@ -534,11 +520,9 @@ AtmoSwing Viewer relies on workspaces to specify the path to the forecast direct
 \citet{Djerboua2001} applied the AM developed by \citet{Guilbaud1997} in operational forecasting as part of the MAP project \citep[\textit{Mesoscale Alpine Programme}, see][]{Binder1996} during the special observation period \citep{Bougeault2001}. He noted that the 60$^{th}$ percentile was better to forecast precipitation amounts for common situations, but for strong to extreme events, the 90$^{th}$ percentile turned out to be a better indicator. It is therefore necessary to pay particular attention to the 90$^{th}$ percentile which, when reaching high values, may be indicative of a situation related to extreme precipitations, due the presence of several analogue dates with significant observed precipitations amounts in the distribution \citep{Djerboua2001}. \citet{Bontron2004} made the same observation: he found the 60$^{th}$ percentile to be best for occurrence forecasting, but the 90$^{th}$ percentile to be the most informative in order to forecast medium to high precipitation amounts ($P > P10/10$, one tenth of the 10-year return period value). In this regard, operators should pay particular attention to the distribution of the best analogues. If, for example, it is shifted to higher values, there is a risk of under-estimating the event when considering the middle of the full distribution. Obviously, if the target situation has its best analogues with high precipitations, then this situation is likely to be rare. So, when collecting a fixed number of analogue situations, the worst ones are likely to be more common and will contribute to lower the resulting precipitation distribution, therefore a trend towards underestimation.
 
 
-\citet{Marty2010} applied several validation scores to the quantiles of the AM distribution in operational forecasting. He concluded that the detection of the precipitation occurrence was better predicted by median quantiles (50-70~\%), with an optimum to 60~\%. However, once again, for significant rainfall, the 90$^{th}$ percentile gave the best performance. Comparing the results from the AM to an ensemble forecast, \citet{Marty2010} found the AM to be better than the considered ensembles, particularly for strong precipitation. The gain of the AM comes from a greater accuracy for a poorer sharpness, when the ensemble forecasts are very sharp, but lack a bit of accuracy.
+\citet{Marty2010} applied several validation scores to the quantiles of the AM distribution in operational forecasting. He concluded that the detection of the precipitation occurrence was better predicted by median quantiles (50-70~\%), with an optimum to 60~\%. However, once again, for significant rainfall, the 90$^{th}$ percentile gave the best performance. Comparing the results from the AM to an ensemble forecast, \citet{Marty2010} found the AM to be better than the considered ensembles, particularly for strong precipitation.
 
-When comparing the performance of Meteo France numerical models along with the AM, \citet{Djerboua2001} concluded that the numerical models were at that time better at predicting the precipitation of the current day, but the AM became more competitive for the following lead times. It is indeed very interesting in early warning approaches, as it may able to identify a potentially critical situation one week ahead.
-
-All AMs rely on atmospheric circulation information, while some add subsequent levels of analogy on moisture or other thermodynamic predictors (see section \ref{sec:method:evolution}). However, these subsequent predictors were found to be relevant only on the first 3~days, and not much further, due to higher uncertainties in their forecast (see section \ref{sec:optimization-operational}). This was found to be the case for moisture indexes and vertical velocity. The user has to keep this aspect in mind when interpreting forecasts over a range of lead times.
+All AMs rely on atmospheric circulation information, while some add subsequent levels of analogy on moisture or other thermodynamic predictors (see section \ref{sec:method:references}). However, these subsequent predictors were found to be relevant only on the first 3~days, and not much further, due to higher uncertainties in their forecast (see section \ref{sec:optimization-operational}). This was found to be the case for moisture indexes and vertical velocity. The user has to keep this aspect in mind when interpreting forecasts over a range of lead times.
 
 
 \section{AtmoSwing Optimizer}
@@ -646,7 +630,7 @@ Finally, the rank diagram \citep{Talagrand1997} and its accuracy as defined by \
 \subsection{The sequential calibration}
 \label{sec:atmoswing-calibration}
 
-The calibration procedure that we call ''sequential'' or ''classic'', but which is also named ''optimization'' \cite[eg. by ][]{BenDaoud2015}, was developed by \citet{Bontron2004} at the LTHE laboratory (INPG, Grenoble). It is a semi-automatic procedure that determines the optimal parameters for the different variables of each level of analogy. The analogy levels (eg. the atmospheric circulation or moisture index) are calibrated sequentially. The procedure consists of the following steps \citep{Bontron2004}:
+The calibration procedure that we call ''sequential'' or ''classic'', but which is also named ''optimization'' \cite[eg. by ][]{BenDaoud2015}, was developed at LTHE - INPG university of Grenoble \citep{Bontron2004}. It is a semi-automatic procedure that determines the optimal parameters for the different variables of each level of analogy. The analogy levels (eg. the atmospheric circulation or moisture index) are calibrated sequentially. The procedure consists of the following steps \citep{Bontron2004}:
 
 \begin{enumerate}
 	\item Manual selection of the following parameters:
@@ -732,16 +716,36 @@ As it was shown in the historical section, the AM evolves, with the availability
 	\item an optimization per season in order to get parameterizations specific to the leading processes during the period in question;
 	\item optimizations specific for extreme events, with an objective function tailored to the determination of the most critical situations;
 	\item a better insight in the role of the length of the archive, by using long reanalyses over the $20^{th}$ century;	
-	\item a weighting of the predictor grids, in order to get free of fixed rectangular spatial windows;
+	\item a weighting of the predictor grids \citep[see][]{Bliefernicht2010};
 	\item assessment of potential indicators based on the properties of the distribution of all analogues or the 10 best, for example;
 	\item assessment of the relevance of an automatic interpretation of the distribution in order to provide the most likely expected value;
 \end{itemize}
 
 
-%\appendix
-%\section{}    %% Appendix A
+\appendix
+\section{Origin and early evolution of the method for precipitation forecasting}    %% Appendix A
+\label{app:evolution}
 
-%\subsection{}     %% Appendix A1, A2, etc.
+\citet{Lorenz1969} introduced the concept and established the basis of the AM. He considered looking for analogues on the geopotential field (at 200, 500 and 850~hPa) with a corrected Euclidean distance averaged on the 3 levels. 
+
+The use of the AM for operational forecasting of daily precipitation originates in the work of \citet{Duband1970, Duband1974, Duband1981}. It was then designed for operational forecasting at EDF in order to better manage water resources and flood risks. The geopotential height at 700~hPa and 00~h was used for its higher stability than the sea level pressure (SLP) field, and its sensitivity to the atmospheric disturbances \citep{Guilbaud1997}. However, the SLP at 06~h was also introduced for determining the precipitation intensity, as well as the temperature at 700~hPa as indicator of the thermal state of the air mass \citep{Duband1974}. The data were then based on 37 radiosounding over Europe and condensed by a principal component analysis. The first 25 analogues on the geopotential at 700~hPa were considered, and multiple local regressions between precipitation, SLP, and the temperature at 700~hPa were established on these analogues before being applied to the target situation \citep{Guilbaud1997}. The archives were split by season to consider comparable situations in terms of distribution of solar energy \citep{Lorenz1969}. This initially rigid division into seasons was then transformed into a moving selection of more or less two months around the target date. The forecast was then performed only on the basis of radiosonde observations and was temporally extrapolated to the two following days. After a few years, this statistical temporal extrapolation was abandoned in favor of a statistical adaptation using synoptic predictors taken from a numerical model, allowing a forecast over the following 4~days.
+
+Thereafter, the geopotential was considered at 1000~hPa and 700~hPa and the analogues selection was done in two stages: first according to an Euclidean distance in the space of the principal components of the geopotential field at 700~hPa, and then according to a correlation criterion (on the geopotential field at 700 and 1000~hPa, as well as on the thickness between these two levels) in order to remove days close in distance but too dissimilar in pattern \citep{Guilbaud1997}. The local regression approach to determine precipitation was eventually abandoned in favor of the direct probabilistic forecasting (synthesized by the percentiles 20, 60 and 90~\%), as it is performed today by interpolating linearly over the cumulative empirical distribution of daily precipitation measured at the analogue days \citep{Guilbaud1997, Guilbaud1998}.
+
+\citet{Wilson1980} sought the 20 best analogues on the geopotential field at 500 and 1000~hPa using the Teweles-Wobus (S1) criterion (Eq. \ref{eq:S1}), which allows for a comparison of the gradients and thus an analogy of the atmospheric circulation. This work has demonstrated the best performance of the AM compared to classical regression based approaches. \citet{Woodcock1980} used the same criterion on the SLP fields to select 50~analogues in order to forecast maximum daily temperatures. After comparing S1 to other criteria from the literature, or combinations of these, \citet{Guilbaud1998} confirmed that S1 is the most efficient. They also pointed out the benefit of using 2 atmospheric levels, 1000~hPa (Z1000) and 700~hPa (Z700) or 500~hPa (Z500), instead of one (also instead of the thickness), and to also consider 2 temporal windows, 00~h and 24~h \citep{Obled2002}. 
+
+\citet{Guilbaud1997} stopped using PCA in order to work directly with the raw data interpolated on grids, which resulted in an improvement, especially when considering the S1 criterion instead of the Euclidean distance. The number of analogues considered was 50. When using multiple predictors, they combined the criteria values calculated on each atmospheric level and each temporal window using an arithmetic mean.
+
+At the dawn of the new millennium, \citet{Bontron2004} could benefit from a real breakthrough, the newly available NCEP/NCAR reanalysis data. This dataset being more homogeneous, much longer, and containing more variables than what was previously used, he could systematically assess a large selection of variables in the AM combined with different criteria. He thus confirmed the interest of the geopotential height along with the S1 criterion for the first level of analogy. He has also shown that the choice of the temporal window (time of observation) has a higher importance than the atmospheric level for the performance of the AM for daily precipitations. By assessing multiple combinations of atmospheric levels and temporal windows, he concluded that the coupled geopotential heights at 1000~hPa (Z1000) \& 12~h and 500~hPa (Z500) \& 24~h provided the best performance for the studied region (Table \ref{table:R1}).
+
+\citet{Mandon1985} tried to introduce a second level of analogy and assessed different variables, such as wind, moisture, air temperature, surface temperature of the Mediterranean, the product of wind and the 700~hPa moisture, as well as a second barometric criteria differentiated according to the season. \citet{Vallee1986} continued to work on the second level of analogy and considered the wind at 700~hPa \& 12~h in order to improve heavy precipitation events for a region in France susceptible to southerly flows.
+
+\citet{Bontron2004} also assessed several variables for the second level of analogy and identified the moisture variables (precipitable water and relative humidity) and vertical velocity to be the most relevant. Finally, he found that a moisture index made of the product of relative humidity at 850~hPa (RH850) and total precipitable water (TPW) gave the best performance (Table \ref{table:R2}). He noted the relevance of defining different spatial windows for each region, rather than a single window for the entire territory. These windows are more able to represent the specific atmospheric influences for each region. He also highlighted the dependency between the optimal number of analogues and the archive size: the shorter the archive, the lower the number of analogues.
+
+By varying the resolution of the predictors grids, \citet{Bontron2004} concluded that the performance increase is not significant for the analogy of atmospheric circulation below a resolution of 5\textdegree. However, it seems more important for the second level of analogy on moisture, which are more local variables. \citet{BenDaoud2010} assessed the European reanalysis ERA-40 \citep{Uppala2005} with a resolution of 1.125\textdegree. He identified a slight performance improvement, but not substantial enough to really justify an archive change \citep{BenDaoud2008}.
+
+\citet{Gibergans-Baguena2007} implemented the AM for daily precipitation forecasts in Catalonia. They considered the geopotential at 700 and 1000~hPa, and the thickness between these two levels, to search for analogy of circulation, and then applied a second selection on local data from radiosonde: stability indexes, precipitable water, temperature, etc.
+
 
 
 \section*{Code availability}
@@ -763,7 +767,7 @@ To get access to the frozen version at the time of writing (v1.4.2), the followi
 \begin{acknowledgements}
 Thanks to Lucien Schreiber and Richard Metzger for their programming advices. Thanks to Renaud Marty for his active involvement in testing AtmoSwing against his code base. Thanks to Dominique B\'{e}rod for his support.
 
-Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton and the Water, Land and Sanitation Service of the Vaud Canton who financed the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me des Rivi\`{e}res Valaisannes et de leurs Effets) project which started this research. The fruitful collaboration with the Laboratoire d'Etude des Transferts en Hydrologie et Environnement of the Grenoble Institute of Technology (G-INP) was made possible thanks to the Herbette Foundation. NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. 
+Thanks to the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton, the Water, Land and Sanitation Service of the Vaud Canton and the Swiss Federal Office for Environment (FOEV), who financed the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me des Rivi\`{e}res Valaisannes et de leurs Effets) project which started this research. The fruitful collaboration with the Laboratoire d'Etude des Transferts en Hydrologie et Environnement of the Grenoble Institute of Technology (G-INP) was made possible thanks to the Herbette Foundation. NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. 
 \end{acknowledgements}
 
 
@@ -782,7 +786,7 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 %\end{thebibliography}
 
 \bibliographystyle{copernicus}
-\bibliography{../_refs/_articles-atmoswing}
+\bibliography{refs}
 
 %% Since the Copernicus LaTeX package includes the BibTeX style file copernicus.bst,
 %% authors experienced with BibTeX only have to include the following two lines:
