@@ -90,7 +90,7 @@ The Forecaster handles every required processing internally, such as predictors 
 
 The Viewer displays the forecasts in an interactive GIS environment. It contains several layers of syntheses and details in order to provide a quick overview of the potential critical situations in the coming days, as well as the possibility for the user to go into the details of the forecasted predictand and criteria distributions. Several tips coming from the literature are provided in order to help interpreting the forecasts.
 
-The Optimizer integrates the common semi-automatic sequential approach, as well as Monte-Carlo analyses, and a global optimization technique by means of Genetic algorithms. 
+The Optimizer integrates the common semi-automatic sequential approach, as well as Monte\textendash Carlo analyses, and a global optimization technique by means of Genetic algorithms. 
 
 
 \end{abstract}
@@ -177,7 +177,7 @@ Although multiple variations of the AM exist, they generally share the same basi
 
 \subsection{Proposed nomenclature}
 
-Variants of the AM parameterization are numerous and it is not always easy to reference them in a short and descriptive way. We thus propose a basic nomenclature (Figure \ref{figure:nomenclature}) in order to express the structure into a simple identifier. This one cannot describe all the parameters of the AM, but quickly illustrate the structure of the implementation. This is particularly useful when working with a global optimization method, where nothing is fixed but the very structure of the AM.
+Variants of the AM parameterization are numerous and it is not always easy to reference them in a short and descriptive way. We thus propose a basic nomenclature (Fig. \ref{figure:nomenclature}) in order to express the structure into a simple identifier. This one cannot describe all the parameters of the AM, but quickly illustrate the structure of the implementation. This is particularly useful when working with a global optimization method, where nothing is fixed but the very structure of the AM.
 
 The naming contains different blocs (separated by an hyphen) for the various levels of analogy. It starts with the specification of the preselection (P; can be omitted when comparing AMs with the same preselection approaches), which can be nowadays of 2 types:
 \begin{itemize}
@@ -215,7 +215,7 @@ Some examples of parameterizations of the most used or the most recent AM varian
 
 The basis of the method was introduced by \citet{Lorenz1969}, who considered the analogy of the geopotential field on different pressure levels. In addition, the analogue situations were to belong to the same period of the year to be comparable in terms of distribution of solar energy. This preselection was later implemented as a moving selection of more or less two months around the target date.
 
-Several pressure levels were assessed by means of various criteria for the analogy on the geopotential field \citep{Duband1970, Duband1974, Duband1981, Guilbaud1997}. It was found to be important to compute the analogy on multiple pressure levels and different temporal windows \citep{Guilbaud1998, Obled2002}. The Teweles-Wobus (S1) criterion (Eq. \ref{eq:S1}), which allows for a comparison of the gradients and thus an analogy of the atmospheric circulation, was identified as the most suited criteria by different studies \citep{Wilson1980, Woodcock1980, Guilbaud1998, Bontron2004}.
+Several pressure levels were assessed by means of various criteria for the analogy on the geopotential field \citep{Duband1970, Duband1974, Duband1981, Guilbaud1997}. It was found to be important to compute the analogy on multiple pressure levels and different temporal windows \citep{Guilbaud1998, Obled2002}. The Teweles\textendash Wobus (S1) criterion (Eq. \ref{eq:S1}), which allows for a comparison of the gradients and thus an analogy of the atmospheric circulation, was identified as the most suited criteria by different studies \citep{Wilson1980, Woodcock1980, Guilbaud1998, Bontron2004}.
 
 With a systematic assessment of the newly available NCEP/NCAR reanalysis data, \citet{Bontron2004} concluded that the coupled geopotential heights at 1000~hPa (Z1000) \& 12~h and 500~hPa (Z500) \& 24~h provided the best performance for the studied region (Table \ref{table:R1}). The analogy on the atmospheric circulation proposed by \citet{Bontron2004} is still, at the time of writing, often used operationally, and considered as a reference for benchmarking new parameterizations \citep{Horton2012, BenDaoud2015}. In order to assess the forecast, he introduced the Continuous Ranked Probability Score \citep[CRPS, Eq. \ref{eq:CRPS}, ][]{Brown1974}, which discards the issue of determining classes as with the Ranked Probability Score \citep{Epstein1969} previously in use.
 
@@ -254,16 +254,16 @@ It is also legitimate to raise the question of the relevance of an approach base
 \section{Software basics}
 \label{sec:atmoswing}
 
-AtmoSwing is made of 3 main modules (Figure \ref{figure:logo}) that are standalone, but do share a common code basis: the Forecaster, to process the operational forecasting, the Viewer, to display the forecast in a GIS environment, and the Optimizer, to calibrate/optimize the statistical relationship defining the analogy for a given predictand time series. Separating the Forecaster and the Viewer allows to automate the forecast on a server and to quickly display the results locally. The code is written in object oriented C++ and relies on the wxWidgets \citep{Smart2006} library to provide a cross-platform native experience to users. The software can thus be compiled on MS Windows, Linux / Unix, Mac (OS X, iOS), both in 32-bit and 64-bit.
+AtmoSwing is made of 3 main modules (Fig. \ref{figure:logo}) that are standalone, but do share a common code basis: the Forecaster, to process the operational forecasting, the Viewer, to display the forecast in a GIS environment, and the Optimizer, to calibrate/optimize the statistical relationship defining the analogy for a given predictand time series. Separating the Forecaster and the Viewer allows to automate the forecast on a server and to quickly display the results locally. The code is written in object oriented C++ and relies on the wxWidgets \citep{Smart2006} library to provide a cross-platform native experience to users. The software can thus be compiled on MS Windows, Linux / Unix, Mac (OS X, iOS), both in 32-bit and 64-bit.
 
-The source code in under version control (with Mercurial), and is open source (on Bitbucket, www.atmoswing.org). Developments have been made with a test driven development (TDD) approach. A collection of more than 500 tests are frequently evaluated and completed during development, in order to verify that code changes do not introduce regression. Every analogy criterion, prediction score, searching and sorting functions, data manipulation, and so on, is tested. The integration tests specific to the AM rely on the results of another analogue sorting software developed at the LTHE - INPG university of Grenoble. They ensure that the results of AtmoSwing are exactly equivalent to their model, given the same parameters and data. These tests are part of the checks carried out regularly.
+The source code in under version control (with Mercurial), and is open source (on Bitbucket, www.atmoswing.org). Developments have been made with a test driven development (TDD) approach. A collection of more than 500 tests are frequently evaluated and completed during development, in order to verify that code changes do not introduce regression. Every analogy criterion, prediction score, searching and sorting functions, data manipulation, and so on, is tested. The integration tests specific to the AM rely on the results of another analogue sorting software developed at the LTHE \textendash INPG university of Grenoble. They ensure that the results of AtmoSwing are exactly equivalent to their model, given the same parameters and data. These tests are part of the checks carried out regularly.
 
 A user interface allows the creation of the precipitation database. Its generation consists in extracting the time series from text files in order to process them and save a database in the NetCDF format. During the process, Gumbel adjustments are automatically calculated in order to determine the values corresponding to different return periods. The time series are normalized by a selected return period (default 10~years) and their square root is eventually processed. The final database file contains both the raw and the normalized series, as well as characteristics of the gauging stations and some metadata.
 
 
 \subsection{Modular approach and implementation}
 
-An AtmoSwing great strength is that it is designed to process analogy forecasting in a modular fashion. The structure of the AM (number of analogy levels, number of predictors) is built dynamically (Figure \ref{figure:flowchart_modules_atmoswing}), and nothing is fixed a priori. The software then performs successively as many analogy levels as the user specified, with all the predictors he wants. Each level of analogy processed results in an object containing target dates, analogue dates, values of the analogy criteria, and other data. This object can be saved in a NetCDF file and/or can be injected into a new analogy level. The whole structure of the AM is defined in an XML file generated by the user. Even the time step of the method (6 or 24~hours for example) is a dynamic parameter.
+An AtmoSwing great strength is that it is designed to process analogy forecasting in a modular fashion. The structure of the AM (number of analogy levels, number of predictors) is built dynamically (Fig. \ref{figure:flowchart_modules_atmoswing}), and nothing is fixed a priori. The software then performs successively as many analogy levels as the user specified, with all the predictors he wants. Each level of analogy processed results in an object containing target dates, analogue dates, values of the analogy criteria, and other data. This object can be saved in a NetCDF file and/or can be injected into a new analogy level. The whole structure of the AM is defined in an XML file generated by the user. Even the time step of the method (6 or 24~hours for example) is a dynamic parameter.
 
 Each implementation of the AM (see Sect. \ref{sec:method:references}) may enter this scheme, even if it consists of preprocessed variables (e.g. moisture index). Various preprocessing functions are implemented, as the calculation of the moisture index or flux, multiplication operations or calculation of the gradients. The user can specify the preprocessing method and the predictors to use, dynamically, in the XML file.
 
@@ -290,7 +290,7 @@ The major performance gains were obtained by:
 \section{AtmoSwing Forecaster}
 \label{sec:forecaster}
 
-The Forecaster module allows to process operational forecasts, defined by an XML file. A list of parameterizations is processed successively. The software can be compiled with a GUI (graphical user interface, Figure \ref{figure:atmoswing-forecaster-gui}), or without in order to be used on a headless server through a command line interface. Processing a forecast requires very low computing capabilities and can be done on a low-end computer. 
+The Forecaster module allows to process operational forecasts, defined by an XML file. A list of parameterizations is processed successively. The software can be compiled with a GUI (graphical user interface, Fig. \ref{figure:atmoswing-forecaster-gui}), or without in order to be used on a headless server through a command line interface. Processing a forecast requires very low computing capabilities and can be done on a low-end computer. 
 
 The software first downloads the predictor describing the target situation, such as 1\textdegree\ GFS outputs \citep[Global Forecast System,][see Sect. \ref{sec:data}]{Kanamitsu1991,Kanamitsu1989}. It then interpolates linearly the gridded data to match the resolution of the archive (for example 2.5\textdegree\ in the case of the NCEP/NCAP reanalysis I). The analogues dates are next sought according to the selected parameterization, and the predictand data are associated with the corresponding dates. The results are finally saved in auto-describing NetCDF files. If required, a synthetic XML is generated for an easier integration on a web platform for example. Every step of the forecast, from the predictor downloading to the final results, is done in the software (and controlled through configuration), without use of external scripts (e.g. for data conversion).
 
@@ -304,17 +304,17 @@ The command-line interface allows to start the process for the present date, a s
 
 \subsection{The graphical user interface }
 
-The Viewer module allows displaying the resulting forecast files in an interactive GIS environment (Figure \ref{figure:atmoswing-viewer-gui}). During the forecast, different parametrization variants of the same type of AM may be applied to a region; the reason being that some parameterizations may be specific for a subregion, when its meteorological influences differ, which is often the case even in relatively small catchments \citep{Horton2012}. The Viewer automatically gathers the similar AMs and provides a composite view of the optimal forecasts per subregion. The user can however choose to display a specific parameterization for the whole region, which is more consistent in terms of homogeneity of the analogue dates.
+The Viewer module allows displaying the resulting forecast files in an interactive GIS environment (Fig. \ref{figure:atmoswing-viewer-gui}). During the forecast, different parametrization variants of the same type of AM may be applied to a region; the reason being that some parameterizations may be specific for a subregion, when its meteorological influences differ, which is often the case even in relatively small catchments \citep{Horton2012}. The Viewer automatically gathers the similar AMs and provides a composite view of the optimal forecasts per subregion. The user can however choose to display a specific parameterization for the whole region, which is more consistent in terms of homogeneity of the analogue dates.
 
-The software provides several levels of synthesis of the forecasts. When it is opened, it automatically loads the most recent forecasts, eliminating the need to manually open files. It first offers a quick overview of possible alerts by means of color codes on the lead time switcher (upper right in the graphical user interface (GUI), see Figure \ref{figure:atmoswing-viewer-gui}), which synthesizes the worst case scenario, or in the alarms panel (on the left part of the GUI). The alarms panel offers a synthesis of the higher forecasted values over the region, for the different AMs and the different lead times. By default, the colors are expressed relatively to 10-year return period values, for the $90^{th}$ percentile (can be changed in the preferences). This higher level of synthesis allows to quickly identify potential critical situations in the days ahead.
+The software provides several levels of synthesis of the forecasts. When it is opened, it automatically loads the most recent forecasts, eliminating the need to manually open files. It first offers a quick overview of possible alerts by means of color codes on the lead time switcher (upper right in the graphical user interface (GUI), see Fig. \ref{figure:atmoswing-viewer-gui}), which synthesizes the worst case scenario, or in the alarms panel (on the left part of the GUI). The alarms panel offers a synthesis of the higher forecasted values over the region, for the different AMs and the different lead times. By default, the colors are expressed relatively to 10~year return period values, for the $90^{th}$ percentile (can be changed in the preferences). This higher level of synthesis allows to quickly identify potential critical situations in the days ahead.
 
-Then, the user can explore the forecasts more in details, starting from the map provided by the GUI (Figure \ref{figure:atmoswing-viewer-gui}). The map display the forecast of the selected parameterization (upper left) and the selected lead time (upper right). The displayed AM is by default a composite of the parameterization variants for the region, but the user can choose a specific parameterization for the whole region by opening the tree view and selecting a child element. We also allowed a display of all lead times on a single map by means of a symbolic representation on a circular band with a box for every lead time (Figure \ref{figure:atmoswing-viewer-snail}). The number of boxes is dynamically adjusted to the number of lead times. This representation offers a global spatiotemporal display for a chosen parameterization.
+Then, the user can explore the forecasts more in details, starting from the map provided by the GUI (Fig. \ref{figure:atmoswing-viewer-gui}). The map display the forecast of the selected parameterization (upper left) and the selected lead time (upper right). The displayed AM is by default a composite of the parameterization variants for the region, but the user can choose a specific parameterization for the whole region by opening the tree view and selecting a child element. We also allowed a display of all lead times on a single map by means of a symbolic representation on a circular band with a box for every lead time (Fig. \ref{figure:atmoswing-viewer-snail}). The number of boxes is dynamically adjusted to the number of lead times. This representation offers a global spatiotemporal display for a chosen parameterization.
 
 Color scales in the map are easily controlled by choosing the predictand ratio (raw value or ratio to different return periods) and the quantile of the distribution (on the left part of the GUI). Representation relatively to a return time better expresses the meaning of a certain precipitation amount for a given region, as climatology can be drastically different between two locations in a mountainous area, even if they are close to each other. All information relative to a rain gauge station (or catchments), such as its location, its name, or the values of different return periods, are stored in the forecast files, in order to be displayable for end users who do not have the predictand database.
 
-By clicking on a station (forecast points) on the map (or by selection in a dropdown list on the left), a new window appears with a plot of the forecasted time series (Figure \ref{figure:atmoswing-viewer-timeseries}). By default, the plot contains the usual 3 considered percentiles (90$^{th}$, 60$^{th}$, and 20$^{th}$), along with the 10 best analogues with a color code from yellow (10$^{th}$) to red (1$^{st}$). The 10 year return period is also displayed in order to put the forecast in perspective. The user can choose to hide any data or to display supplementary information (all analogues, all 10$^{th}$ percentiles, or all return periods) in the left panel. Traces of previous days forecasts are also automatically loaded and displayed in order to inform on the stability of the forecasts. 
+By clicking on a station (forecast points) on the map (or by selection in a dropdown list on the left), a new window appears with a plot of the forecasted time series (Fig. \ref{figure:atmoswing-viewer-timeseries}). By default, the plot contains the usual 3 considered percentiles (90$^{th}$, 60$^{th}$, and 20$^{th}$), along with the 10 best analogues with a color code from yellow (tenth) to red (first). The 10 year return period is also displayed in order to put the forecast in perspective. The user can choose to hide any data or to display supplementary information (all analogues, all 10$^{th}$ percentiles, or all return periods) in the left panel. Traces of previous days forecasts are also automatically loaded and displayed in order to inform on the stability of the forecasts. 
 
-The user can even go into further details and display the predictand cumulative distribution for a given lead time (Figure \ref{figure:atmoswing-viewer-distribution}). This is useful when working on extreme precipitation, as comparing the distribution of all analogues versus the 10 best analogues provides information in order to interpret the forecast (trend to under/overestimation). Distribution of the analogy criteria (not shown) can also be displayed in order to identify eventual discontinuities in the criteria values.
+The user can even go into further details and display the predictand cumulative distribution for a given lead time (Fig. \ref{figure:atmoswing-viewer-distribution}). This is useful when working on extreme precipitation, as comparing the distribution of all analogues versus the 10 best analogues provides information in order to interpret the forecast (trend to under/overestimation). Distribution of the analogy criteria (not shown) can also be displayed in order to identify eventual discontinuities in the criteria values.
 
 Finally, one can see the details of the analogue dates, along with the predictand and the criteria values in an interactive spreadsheet (not shown).
 
@@ -324,10 +324,10 @@ AtmoSwing Viewer relies on workspaces to specify the path to the forecast direct
 \subsection{Interpreting a precipitation forecast}
 \label{sec:interpreting}
 
-\citet{Djerboua2001} applied the AM developed by \citet{Guilbaud1997} in operational forecasting as part of the MAP project \citep[\textit{Mesoscale Alpine Programme}, see][]{Binder1996} during the special observation period \citep{Bougeault2001}. He noted that the 60$^{th}$ percentile was better to forecast precipitation amounts for common situations, but for strong to extreme events, the 90$^{th}$ percentile turned out to be a better indicator. It is therefore necessary to pay particular attention to the 90$^{th}$ percentile which, when reaching high values, may be indicative of a situation related to extreme precipitations, due the presence of several analogue dates with significant observed precipitations amounts in the distribution \citep{Djerboua2001}. \citet{Bontron2004} made the same observation: he found the 60$^{th}$ percentile to be best for occurrence forecasting, but the 90$^{th}$ percentile to be the most informative in order to forecast medium to high precipitation amounts ($P > P10/10$, one tenth of the 10-year return period value). In this regard, operators should pay particular attention to the distribution of the best analogues. If, for example, it is shifted to higher values, there is a risk of under-estimating the event when considering the middle of the full distribution. Obviously, if the target situation has its best analogues with high precipitations, then this situation is likely to be rare. So, when collecting a fixed number of analogue situations, the worst ones are likely to be more common and will contribute to lower the resulting precipitation distribution, therefore a trend towards underestimation.
+\citet{Djerboua2001} applied the AM developed by \citet{Guilbaud1997} in operational forecasting as part of the MAP project \citep[\textit{Mesoscale Alpine Programme}, see][]{Binder1996} during the special observation period \citep{Bougeault2001}. He noted that the 60$^{th}$ percentile was better to forecast precipitation amounts for common situations, but for strong to extreme events, the 90$^{th}$ percentile turned out to be a better indicator. It is therefore necessary to pay particular attention to the 90$^{th}$ percentile which, when reaching high values, may be indicative of a situation related to extreme precipitations, due the presence of several analogue dates with significant observed precipitations amounts in the distribution \citep{Djerboua2001}. \citet{Bontron2004} made the same observation: he found the 60$^{th}$ percentile to be best for occurrence forecasting, but the 90$^{th}$ percentile to be the most informative in order to forecast medium to high precipitation amounts ($P > P10/10$, one tenth of the 10~year return period value). In this regard, operators should pay particular attention to the distribution of the best analogues. If, for example, it is shifted to higher values, there is a risk of under-estimating the event when considering the middle of the full distribution. Obviously, if the target situation has its best analogues with high precipitations, then this situation is likely to be rare. So, when collecting a fixed number of analogue situations, the worst ones are likely to be more common and will contribute to lower the resulting precipitation distribution, therefore a trend towards underestimation.
 
 
-\citet{Marty2010} applied several validation scores to the quantiles of the AM distribution in operational forecasting. He concluded that the detection of the precipitation occurrence was better predicted by median quantiles (50-70~\%), with an optimum to 60~\%. However, once again, for significant rainfall, the 90$^{th}$ percentile gave the best performance. Comparing the results from the AM to an ensemble forecast, \citet{Marty2010} found the AM to be better than the considered ensembles, particularly for strong precipitation.
+\citet{Marty2010} applied several validation scores to the quantiles of the AM distribution in operational forecasting. He concluded that the detection of the precipitation occurrence was better predicted by median quantiles (50\textendash 70~\%), with an optimum to 60~\%. However, once again, for significant rainfall, the 90$^{th}$ percentile gave the best performance. Comparing the results from the AM to an ensemble forecast, \citet{Marty2010} found the AM to be better than the considered ensembles, particularly for strong precipitation.
 
 All AMs rely on atmospheric circulation information, while some add subsequent levels of analogy on moisture or other thermodynamic predictors (see Sect. \ref{sec:method:references}). However, these subsequent predictors were found to be relevant only on the first 3~days, and not much further, due to higher uncertainties in their forecast (see Sect. \ref{sec:optimization-operational}). This was found to be the case for moisture indexes and vertical velocity. The user has to keep this aspect in mind when interpreting forecasts over a range of lead times.
 
@@ -437,14 +437,14 @@ Finally, the rank diagram \citep{Talagrand1997} and its accuracy as defined by \
 \subsection{The sequential calibration}
 \label{sec:atmoswing-calibration}
 
-The calibration procedure that we call ''sequential'' or ''classic'', but which is also named ''optimization'' \cite[eg. by ][]{BenDaoud2015}, was developed at LTHE - INPG university of Grenoble \citep{Bontron2004}. It is a semi-automatic procedure that determines the optimal parameters for the different variables of each level of analogy. The analogy levels (eg. the atmospheric circulation or moisture index) are calibrated sequentially. The procedure consists of the following steps \citep{Bontron2004}:
+The calibration procedure that we call ''sequential'' or ''classic'', but which is also named ''optimization'' \cite[eg. by ][]{BenDaoud2015}, was developed at LTHE \textendash INPG university of Grenoble \citep{Bontron2004}. It is a semi-automatic procedure that determines the optimal parameters for the different variables of each level of analogy. The analogy levels (eg. the atmospheric circulation or moisture index) are calibrated sequentially. The procedure consists of the following steps \citep{Bontron2004}:
 
 \begin{enumerate}
 	\item Manual selection of the following parameters:
 	\begin{enumerate}
 		\item meteorological variable (e.g. geopotential, temperature, relative humidity, etc.),
 		\item pressure level (e.g. 700 hPa, ...),
-		\item temporal window (hour of observation - e.g. 6, or 12~h~UTC),
+		\item temporal window (hour of observation \textendash e.g. 6, or 12~h~UTC),
 		\item initial analogue numbers (e.g. $N_{1}=50$).
 	\end{enumerate}
 	
@@ -462,17 +462,17 @@ The calibration is thus done in successive steps, on a limited number of paramet
 
 Small improvements were added to this method, then named ''classic+'', by allowing the spatial windows to do other moves, such as: (1) increase in 2 simultaneous directions, (2) decrease in 1 or 2 simultaneous directions, (3) expansion or contraction (in every direction), (4) shift of the window (without resizing) in 8 directions (including diagonals), and finally (5) all the moves described above, but with a factor of 2, 3, or more. For example, an increase by 2 units in one (or more) direction is assessed. This allows to skip one size that may not be optimal. These supplementary steps often result in spatial windows that are a bit different, but the performance gain is rather marginal.
 
-\subsection{Monte-Carlo analysis}
+\subsection{Monte\textendash Carlo analysis}
 
-A Monte-Carlo analysis is also implemented in AtmoSwing. It performs thousands assessments of random parameters within given ranges. This method is not efficient to find the best parameters set, but helps to better understand the sensitivity of the parameters.
+A Monte\textendash Carlo analysis is also implemented in AtmoSwing. It performs thousands assessments of random parameters within given ranges. This method is not efficient to find the best parameters set, but helps to better understand the sensitivity of the parameters.
 
-For example, a Monte-Carlo analysis was performed on the PC-2Z (Table \ref{table:R1}) AM for the southeastern crests on the upper Rh\^{o}ne catchment in Switzerland, with 10,000 random selections of its parameters according to a uniform law (the analysis was also performed in other subregions of the upper Rh\^{o}ne catchment in Switzerland, but the conclusions depicted here are similar). Unlike conventional calibration, the spatial windows on Z500 and Z1000 were not necessarily overlapping. Thus, 9 parameters were varying together (8 for the spatial windows and 1 for the number of analogues)
+For example, a Monte\textendash Carlo analysis was performed on the PC-2Z (Table \ref{table:R1}) AM for the southeastern crests on the upper Rh\^{o}ne catchment in Switzerland, with 10,000 random selections of its parameters according to a uniform law (the analysis was also performed in other subregions of the upper Rh\^{o}ne catchment in Switzerland, but the conclusions depicted here are similar). Unlike conventional calibration, the spatial windows on Z500 and Z1000 were not necessarily overlapping. Thus, 9 parameters were varying together (8 for the spatial windows and 1 for the number of analogues)
 
 Figure \ref{figure:monte_carlo_r1} presents the resulting scatter of random exploration of the parameters space, along with the results of the sequential calibration (red cross). Results are illustrated here for the 4 parameters defining the spatial window on Z500. Despite the high number of simulations, the upper portion of the distributions seems incomplete, and the score of the sequential calibration is not matched. Although the method is poor to find efficiently the best parameters, it is informative as to the shape of the scatter plots.
 
-The shape of the scatter plots from Figure \ref{figure:monte_carlo_r1} reveals a low sensitivity as to the exact location of the spatial windows. There is a maximum threshold for minimum longitudes and latitudes and, inversely, a minimum threshold for maximum latitudes and longitudes, but outside of these limits, the distribution slope is more gentle. A spatial window can thus be a bit larger than its optimal size without a significant drop in performance, as long as it includes at least one critical region. This was also observed by \citet{Bontron2004}, who noted that ''\textit{performance slowly decreases if we consider a slightly too large window, while the use of too small windows results in strong performance loss}''. The dilution of a part of the relevant synoptic information has therefore not necessarily a significant negative impact on performance, while ignoring some of this information leads to undesirable loss of performance. It is the same for the analogues number (not shown), for which, past an optimum, the upper slope of the distribution decreases slowly.
+The shape of the scatter plots from Fig. \ref{figure:monte_carlo_r1} reveals a low sensitivity as to the exact location of the spatial windows. There is a maximum threshold for minimum longitudes and latitudes and, inversely, a minimum threshold for maximum latitudes and longitudes, but outside of these limits, the distribution slope is more gentle. A spatial window can thus be a bit larger than its optimal size without a significant drop in performance, as long as it includes at least one critical region. This was also observed by \citet{Bontron2004}, who noted that ''\textit{performance slowly decreases if we consider a slightly too large window, while the use of too small windows results in strong performance loss}''. The dilution of a part of the relevant synoptic information has therefore not necessarily a significant negative impact on performance, while ignoring some of this information leads to undesirable loss of performance. It is the same for the analogues number (not shown), for which, past an optimum, the upper slope of the distribution decreases slowly.
 
-The same analysis has been conducted on the AM with 2 levels of analogy, PC-2Z-2MI (Table \ref{table:R2}), and the results on the number of analogues on the 1st and the 2nd level are illustrated in Figure \ref{figure:monte_carlo_r2}. One can see that the AM is not very sensitive to the number of analogues on the first level of analogy, when considering a second level afterwards, as long as this number is not too small. The trend on the second level is more apparent, but a large tolerance seems possible.
+The same analysis has been conducted on the AM with 2 levels of analogy, PC-2Z-2MI (Table \ref{table:R2}), and the results on the number of analogues on the first and the second level are illustrated in Fig. \ref{figure:monte_carlo_r2}. One can see that the AM is not very sensitive to the number of analogues on the first level of analogy, when considering a second level afterwards, as long as this number is not too small. The trend on the second level is more apparent, but a large tolerance seems possible.
 
 The use of such a random method allows informing on the parameters sensitivity, and so on the importance of the expected precision of the calibration results. It helps understanding how different parameterizations can end up to relatively similar performances. Using Monte Carlo analyses allows to easily display the AM parameters sensitivity. 
 
@@ -499,7 +499,7 @@ It should be stressed that these operational aspects are dependent on the model 
 
 \conclusions[Conclusions and perspectives]
 
-Processing operational forecasts by means of AtmoSwing requests in the end very low computing infrastructure and can provide useful information, such as early warning for extreme precipitation, in the case of an application in flood forecasting. The Forecaster is very flexible as it builds the desired method in a dynamic way, and can thus implement multiple variants of the AM. The connection with open access NWP model such as GFS is easy and very efficient (data are collected quickly after being available, and processed in a few minutes). The Viewer offers a user-friendly display of the forecasts, with different levels of synthesis and details. The Optimizer implements different optimization techniques, such as the sequential approach, a Monte-Carlo method, and a global optimization technique. Obviously, it is used only occasionally for a given location: for a first implementation of an AM, in case of a change in the archive, or of a substantial updating, etc.
+Processing operational forecasts by means of AtmoSwing requests in the end very low computing infrastructure and can provide useful information, such as early warning for extreme precipitation, in the case of an application in flood forecasting. The Forecaster is very flexible as it builds the desired method in a dynamic way, and can thus implement multiple variants of the AM. The connection with open access NWP model such as GFS is easy and very efficient (data are collected quickly after being available, and processed in a few minutes). The Viewer offers a user-friendly display of the forecasts, with different levels of synthesis and details. The Optimizer implements different optimization techniques, such as the sequential approach, a Monte\textendash Carlo method, and a global optimization technique. Obviously, it is used only occasionally for a given location: for a first implementation of an AM, in case of a change in the archive, or of a substantial updating, etc.
 
 Meanwhile, several additions would be nice to have in AtmoSwing for operational forecasting. The first one would be using outputs from multiple global NWP models within one forecast, namely making multi-models forecasts, in order to take into account the variability between various providers. In the same direction, \citet{Thevenot2004} showed the benefit of using ensembles of global NWP forecasts as input for the method (in his case the 51 traces from the EFS of ECMWF). This approach takes into account the uncertainties on predictors from the global model. Its implementation is a combination of the selected analogue days associated with each of the traces. Rainfall distribution is then established on all analogues. The forecast on the ensemble was found to be more accurate than the deterministic control for a lead time of 4 days and more \citep{Thevenot2004}. 
 
@@ -543,7 +543,7 @@ The use of the AM for operational forecasting of daily precipitation originates 
 
 Thereafter, the geopotential was considered at 1000~hPa and 700~hPa and the analogues selection was done in two stages: first according to an Euclidean distance in the space of the principal components of the geopotential field at 700~hPa, and then according to a correlation criterion (on the geopotential field at 700 and 1000~hPa, as well as on the thickness between these two levels) in order to remove days close in distance but too dissimilar in pattern \citep{Guilbaud1997}. The local regression approach to determine precipitation was eventually abandoned in favor of the direct probabilistic forecasting (synthesized by the percentiles 20, 60 and 90~\%), as it is performed today by interpolating linearly over the cumulative empirical distribution of daily precipitation measured at the analogue days \citep{Guilbaud1997, Guilbaud1998}.
 
-\citet{Wilson1980} sought the 20 best analogues on the geopotential field at 500 and 1000~hPa using the Teweles-Wobus (S1) criterion (Eq. \ref{eq:S1}), which allows for a comparison of the gradients and thus an analogy of the atmospheric circulation. This work has demonstrated the best performance of the AM compared to classical regression based approaches. \citet{Woodcock1980} used the same criterion on the SLP fields to select 50~analogues in order to forecast maximum daily temperatures. After comparing S1 to other criteria from the literature, or combinations of these, \citet{Guilbaud1998} confirmed that S1 is the most efficient. They also pointed out the benefit of using 2 atmospheric levels, 1000~hPa (Z1000) and 700~hPa (Z700) or 500~hPa (Z500), instead of one (also instead of the thickness), and to also consider 2 temporal windows, 00~h and 24~h \citep{Obled2002}. 
+\citet{Wilson1980} sought the 20 best analogues on the geopotential field at 500 and 1000~hPa using the Teweles\textendash Wobus (S1) criterion (Eq. \ref{eq:S1}), which allows for a comparison of the gradients and thus an analogy of the atmospheric circulation. This work has demonstrated the best performance of the AM compared to classical regression based approaches. \citet{Woodcock1980} used the same criterion on the SLP fields to select 50~analogues in order to forecast maximum daily temperatures. After comparing S1 to other criteria from the literature, or combinations of these, \citet{Guilbaud1998} confirmed that S1 is the most efficient. They also pointed out the benefit of using 2 atmospheric levels, 1000~hPa (Z1000) and 700~hPa (Z700) or 500~hPa (Z500), instead of one (also instead of the thickness), and to also consider 2 temporal windows, 00~h and 24~h \citep{Obled2002}. 
 
 \citet{Guilbaud1997} stopped using PCA in order to work directly with the raw data interpolated on grids, which resulted in an improvement, especially when considering the S1 criterion instead of the Euclidean distance. The number of analogues considered was 50. When using multiple predictors, they combined the criteria values calculated on each atmospheric level and each temporal window using an arithmetic mean.
 
@@ -677,15 +677,17 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\includegraphics[width=8.3cm]{figures/fig09.png}
-	\caption{Example of a Monte Carlo analysis on the PC-2Z (Table \ref{table:R1}) AM. Results are illustrated for the 4 parameters defining the spatial window on Z500, along with the results of the sequential calibration (red cross).}
+	\caption{Example of a Monte\textendash Carlo analysis on the PC-2Z (Table \ref{table:R1}) AM. Results are illustrated for the 4 parameters defining the spatial window on Z500, along with the results of the sequential calibration (red cross).}
 	\label{figure:monte_carlo_r1}
 \end{figure}
 
 \begin{figure}[t]
 	\includegraphics[width=8.3cm]{figures/fig10.png}
-	\caption{Example of a Monte Carlo analysis on the PC-2Z-2MI (Table \ref{table:R2}) AM. Results are illustrated for the number of analogues on the 1st and 2nd level of analogy, along with the results of the sequential calibration (red cross).}
+	\caption{Example of a Monte\textendash Carlo analysis on the PC-2Z-2MI (Table \ref{table:R2}) AM. Results are illustrated for the number of analogues on the first and second level of analogy, along with the results of the sequential calibration (red cross).}
 	\label{figure:monte_carlo_r2}
 \end{figure}
+
+\clearpage
 
 %
 %%% TABLES
@@ -740,6 +742,8 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\label{table:R1}
 \end{table}
 
+\clearpage
+
 \begin{table}[t]
 	\caption{Method of type PC-4Z proposed by \citet{Horton2012}. Same conventions as Table \ref{table:R1}}
 	\begin{tabular}{ccccc}
@@ -756,6 +760,8 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\end{tabular}
 	\label{table:R6}
 \end{table}
+
+\clearpage
 
 \begin{table}[t]
 	\caption{Method of type PC-2Z-2MI proposed by \citet{Bontron2004}. Same conventions as Table \ref{table:R1}}
@@ -774,6 +780,8 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\label{table:R2}
 \end{table}
 
+\clearpage
+
 \begin{table}[t]
 	\caption{Method of type PC-2Z-2MI proposed by \citet{Marty2010}. Same conventions as Table \ref{table:R1}}
 	\begin{tabular}{ccccc}
@@ -790,6 +798,8 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\end{tabular} 
 	\label{table:R3a}
 \end{table}
+
+\clearpage
 
 \begin{table}[t]
 	\caption{Method of type PC-2Z-2MF proposed by \citet{Marty2010}. Same conventions as Table \ref{table:R1}}
@@ -808,6 +818,8 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\belowtable{$\dagger$ or V925 * TPW * RH925 as an alternative}
 	\label{table:R3b}
 \end{table}
+
+\clearpage
 
 \begin{table}[t]
 	\caption{Method of type P2T-2Z-4MI (or P2T-2Z-10MI for the alternative version), by \citet{BenDaoud2010}. Same conventions as Table \ref{table:R1}}
@@ -829,6 +841,8 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\label{table:R4b}
 \end{table}
 
+\clearpage
+
 \begin{table}[t]
 	\caption{Method of type P2T-2Z-4W-4MI, by \citet{BenDaoud2010}. Same conventions as Table \ref{table:R1}}
 	\begin{tabular}{ccccc}
@@ -849,6 +863,8 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\end{tabular}
 	\label{table:R5}
 \end{table}
+
+\clearpage
 
 \begin{table}[t]
 	\caption{Method of type PC-4Z-2MI, by \citet{Horton2012}. Same conventions as Table \ref{table:R1}}
