@@ -179,12 +179,6 @@ Although multiple variations of the AM exist, they generally share the same basi
 
 Variants of the AM parameterization are numerous and it is not always easy to reference them in a short and descriptive way. We thus propose a basic nomenclature (Figure \ref{figure:nomenclature}) in order to express the structure into a simple identifier. This one cannot describe all the parameters of the AM, but quickly illustrate the structure of the implementation. This is particularly useful when working with a global optimization method, where nothing is fixed but the very structure of the AM.
 
-\begin{figure}[htbp]
-	\includegraphics[width=8.3cm]{figures/nomenclature.pdf}
-	\caption{Proposed structure for naming the parameterizations of the AM.}
-	\label{figure:nomenclature}
-\end{figure}
-
 The naming contains different blocs (separated by an hyphen) for the various levels of analogy. It starts with the specification of the preselection (P; can be omitted when comparing AMs with the same preselection approaches), which can be nowadays of 2 types:
 \begin{itemize}
 	\setlength\itemsep{-2px}
@@ -225,164 +219,19 @@ Several pressure levels were assessed by means of various criteria for the analo
 
 With a systematic assessment of the newly available NCEP/NCAR reanalysis data, \citet{Bontron2004} concluded that the coupled geopotential heights at 1000~hPa (Z1000) \& 12~h and 500~hPa (Z500) \& 24~h provided the best performance for the studied region (Table \ref{table:R1}). The analogy on the atmospheric circulation proposed by \citet{Bontron2004} is still, at the time of writing, often used operationally, and considered as a reference for benchmarking new parameterizations \citep{Horton2012, BenDaoud2015}. In order to assess the forecast, he introduced the Continuous Ranked Probability Score \citep[CRPS, Eq. \ref{eq:CRPS}, ][]{Brown1974}, which discards the issue of determining classes as with the Ranked Probability Score \citep{Epstein1969} previously in use.
 
-\begin{table}[htbp]
-	\caption{Method of type PC-2Z proposed by \citet{Bontron2004}. The first column is the level of analogy (0 for preselection), then comes the meteorological variable and its hour of observation (temporal window). The criteria used for the current level of analogy is then provided, as well as the number of analogues.}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline 
-		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-		\middlehline 
-		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
-		& Z500 & 24~h & & \\ 
-		\bottomhline 
-	\end{tabular} 
-	\label{table:R1}
-\end{table}
-
 \citet{Horton2012} identified that the analogy on the atmospheric circulation may not be comprehensive, and that a significant gain was obtained by considering 4 atmospheric levels (1000, 850, 700, and 500~hPa at 12 or 24~h) instead of 2 (Table \ref{table:R6}). The number of analogues ($N_{1}$) was not provided globally, as it was calibrated for every subregion. An equivalent structure was also optimized by means of generic algorithms (PC-4Zgo), which is the topic of another paper \citep{Horton2016b}.
-
-\begin{table}[htbp]
-	\caption{Method of type PC-4Z proposed by \citet{Horton2012}. Same conventions as Table \ref{table:R1}}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline 
-		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-		\middlehline 
-		\multirow{4}{*}{1} & Z1000 & 12~h & \multirow{4}{*}{S1} & \multirow{4}{*}{$N_{1}$} \\
-		& Z850 & 24~h & & \\ 
-		& Z700 & 12~h & & \\ 
-		& Z500 & 24~h & & \\ 
-		\bottomhline 
-	\end{tabular}
-	\label{table:R6}
-\end{table}
-
 
 A second level of analogy based on thermodynamic variables was then introduced by \citet{Mandon1985, Vallee1986, Gibergans-Baguena2007}. After a systematic assessment, \citet{Bontron2004} pointed out that a moisture index (MI) made of the product of relative humidity at 850~hPa (RH850) and total precipitable water (TPW) gave the best performance (Table \ref{table:R2}). This index does not represent an actual physical quantity, but expresses the water content of the air column and its proximity to saturation.
 
-\begin{table}[htbp]
-	\caption{Method of type PC-2Z-2MI proposed by \citet{Bontron2004}. Same conventions as Table \ref{table:R1}}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline 
-		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-		\middlehline 
-		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
-		& Z500 & 24~h & & \\ 
-		\middlehline
-		2 & TPW * RH850 & 12, 24~h & RMSE & 30 \\
-		\bottomhline 
-	\end{tabular} 
-	\label{table:R2}
-\end{table}
-
 \citet{Marty2010} tested other temporal windows for intraday application on the basis of a more comprehensive reanalysis dataset. He first proposed to change the hours of observation for both levels of analogy (both for 06~h and 18~h), and selected the 925~hPa level for the moisture analogy (Table \ref{table:R3a}). The selected hours and atmospheric levels were not available before in the reanalysis dataset.
-
-\begin{table}[htbp]
-	\caption{Method of type PC-2Z-2MI proposed by \citet{Marty2010}. Same conventions as Table \ref{table:R1}}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline 
-		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-		\middlehline 
-		\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{75} \\
-		& Z500 & 18~h & & \\ 
-		\middlehline
-		2 & TPW * RH925 & 06, 18~h & RMSE & 30 \\
-		\bottomhline 
-	\end{tabular} 
-	\label{table:R3a}
-\end{table}
 
 Then, \citet{Marty2010} changed the moisture index into the moisture flux by adding the wind velocity (V700 or V925) component in the multiplication. He considered this flux at 700~hPa or 925~hPa (Table \ref{table:R3b}).
 
-\begin{table}[htbp]
-	\caption{Method of type PC-2Z-2MF proposed by \citet{Marty2010}. Same conventions as Table \ref{table:R1}}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline 
-		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-		\middlehline 
-		\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{60} \\
-		& Z500 & 18~h & & \\ 
-		\middlehline
-		2 & V700 * TPW * RH700 $^{\dagger}$ & 06, 18~h & RMSE & 25 \\
-		\bottomhline 
-	\end{tabular} 
-	\belowtable{$\dagger$ or V925 * TPW * RH925 as an alternative}
-	\label{table:R3b}
-\end{table}
-
 \citet{BenDaoud2010} applied the AM in the context of large floodplains (Sa\^{o}ne, Seine). He evaluated several variables usually used in weather forecasting, amongst them the air temperature and the vertical velocity that presented a potential interest. The temperature (at the nearest grid point, on the 925~hPa \& 36~h and 600~hPa \& 12~h levels) could replace the rigid calendar preselection of $\pm$ 60 days around the target date by a more dynamic screening of similar situations in terms of air masses. The seasonal effect is indeed also present in the temperature data. The number of preselected dates is equivalent to the number of days one would have chosen with the calendar approach, and thus depends on the archive size: $N_{0} = 60 \cdot 2 \cdot n_{a}$ where $n_{a}$ is the number of years in the calibration period. \citet{BenDaoud2010} also reconsidered the parameters of the moisture index and ended up with both 925~hPa and 700~hPa levels, at 12~h and 24~h, or at every time step (6~h) between 06~h and 30~h (Table \ref{table:R4b}).
-
-\begin{table}[htbp]
-	\caption{Method of type P2T-2Z-4MI (or P2T-2Z-10MI for the alternative version), by \citet{BenDaoud2010}. Same conventions as Table \ref{table:R1}}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline
-		\multirow{2}{*}{0} & T925 & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
-		& T600 & 12~h & & \\ 
-		\middlehline 
-		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
-		& Z500 & 24~h & & \\ 
-		\middlehline
-		\multirow{2}{*}{2} & TPW * RH925 & 12, 24~h $^{\dagger}$ & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
-		& TPW * RH700 & 12, 24~h $^{\dagger}$ & & \\ 
-		\bottomhline 
-	\end{tabular} 
-	\belowtable{$\dagger$ or 06-30~h as an alternative}
-	\label{table:R4b}
-\end{table}
 
 Subsequently, \citet{BenDaoud2010} added an additional level of analogy, between the circulation and the moisture analogy (Table \ref{table:R5}), based on vertical velocity at 850~hPa (W850). This AM was developed for large floodplains in France, but was found to be not relevant for an Alpine environment where topography is mostly responsible for uplift of air masses \citep{Horton2012}. 
 
-\begin{table}[htbp]
-	\caption{Method of type P2T-2Z-4W-4MI, by \citet{BenDaoud2010}. Same conventions as Table \ref{table:R1}}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline
-		\multirow{2}{*}{0} & T925 (1 point) & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
-		& T600 (1 point) & 12~h & & \\ 
-		\middlehline 
-		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{170} \\
-		& Z500 & 24~h & & \\ 
-		\middlehline
-		2 & W850 & 06-24~h & RMSE & 70 \\
-		\middlehline
-		\multirow{2}{*}{3} & TPW * RH925 & 12, 24~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
-		& TPW * RH700 & 12, 24~h & & \\
-		\bottomhline 
-	\end{tabular}
-	\label{table:R5}
-\end{table}
-
 \citet{Horton2012} also integrated an analogy on the moisture flux, after the circulation analogy on the 4 atmospheric levels (Table \ref{table:R7}). The number of analogues ($N_{1}$, $N_{2}$) were calibrated for every subregion. Similarly, an equivalent structure was optimized \citep[PC-4Zgo-2MIgo,][]{Horton2016b}.
-
-\begin{table}[htbp]
-	\caption{Method of type PC-4Z-2MI, by \citet{Horton2012}. Same conventions as Table \ref{table:R1}}
-	\begin{tabular}{ccccc}
-		\tophline
-		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
-		\middlehline 
-		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-		\middlehline 
-		\multirow{4}{*}{1} & Z1000 & 12~h & \multirow{4}{*}{S1} & \multirow{4}{*}{$N_{1}$} \\
-		& Z850 & 24~h & & \\ 
-		& Z700 & 12~h & & \\ 
-		& Z500 & 24~h & & \\ 
-		\middlehline
-		2 & V700 * TPW * RH700 & 12, 24~h & RMSE & $N_{2}$ \\
-		\bottomhline 
-	\end{tabular}
-	\label{table:R7}
-\end{table}
 
 The optimal predictors vary from one region to another, along with the leading atmospheric processes. One will thus never get a unique parameterization of the AM valid for any place on earth, but the method needs to be adapted to the local conditions, available data, and to the size of the catchment of interest. Thus, there will always be local adaptations to be made for use in a new region.
 
@@ -407,12 +256,6 @@ It is also legitimate to raise the question of the relevance of an approach base
 
 AtmoSwing is made of 3 main modules (Figure \ref{figure:logo}) that are standalone, but do share a common code basis: the Forecaster, to process the operational forecasting, the Viewer, to display the forecast in a GIS environment, and the Optimizer, to calibrate/optimize the statistical relationship defining the analogy for a given predictand time series. Separating the Forecaster and the Viewer allows to automate the forecast on a server and to quickly display the results locally. The code is written in object oriented C++ and relies on the wxWidgets \citep{Smart2006} library to provide a cross-platform native experience to users. The software can thus be compiled on MS Windows, Linux / Unix, Mac (OS X, iOS), both in 32-bit and 64-bit.
 
-\begin{figure}[htbp]
-	\includegraphics[width=8.3cm]{figures/logo.pdf}
-	\caption{The AtmoSwing logo and its 3 modules: the Forecaster, the Viewer and the Optimizer.}
-	\label{figure:logo}
-\end{figure}
-
 The source code in under version control (with Mercurial), and is open source (on Bitbucket, www.atmoswing.org). Developments have been made with a test driven development (TDD) approach. A collection of more than 500 tests are frequently evaluated and completed during development, in order to verify that code changes do not introduce regression. Every analogy criterion, prediction score, searching and sorting functions, data manipulation, and so on, is tested. The integration tests specific to the AM rely on the results of another analogue sorting software developed at the LTHE - INPG university of Grenoble. They ensure that the results of AtmoSwing are exactly equivalent to their model, given the same parameters and data. These tests are part of the checks carried out regularly.
 
 A user interface allows the creation of the precipitation database. Its generation consists in extracting the time series from text files in order to process them and save a database in the NetCDF format. During the process, Gumbel adjustments are automatically calculated in order to determine the values corresponding to different return periods. The time series are normalized by a selected return period (default 10~years) and their square root is eventually processed. The final database file contains both the raw and the normalized series, as well as characteristics of the gauging stations and some metadata.
@@ -421,12 +264,6 @@ A user interface allows the creation of the precipitation database. Its generati
 \subsection{Modular approach and implementation}
 
 An AtmoSwing great strength is that it is designed to process analogy forecasting in a modular fashion. The structure of the AM (number of analogy levels, number of predictors) is built dynamically (Figure \ref{figure:flowchart_modules_atmoswing}), and nothing is fixed a priori. The software then performs successively as many analogy levels as the user specified, with all the predictors he wants. Each level of analogy processed results in an object containing target dates, analogue dates, values of the analogy criteria, and other data. This object can be saved in a NetCDF file and/or can be injected into a new analogy level. The whole structure of the AM is defined in an XML file generated by the user. Even the time step of the method (6 or 24~hours for example) is a dynamic parameter.
-
-\begin{figure}[htbp]
-	\includegraphics[width=8.3cm]{figures/flowchart_modules_atmoswing.pdf}
-	\caption{Simplified organizational chart of the AM implementation in AtmoSwing.}
-	\label{figure:flowchart_modules_atmoswing}
-\end{figure}
 
 Each implementation of the AM (see section \ref{sec:method:references}) may enter this scheme, even if it consists of preprocessed variables (e.g. moisture index). Various preprocessing functions are implemented, as the calculation of the moisture index or flux, multiplication operations or calculation of the gradients. The user can specify the preprocessing method and the predictors to use, dynamically, in the XML file.
 
@@ -455,12 +292,6 @@ The major performance gains were obtained by:
 
 The Forecaster module allows to process operational forecasts, defined by an XML file. A list of parameterizations is processed successively. The software can be compiled with a GUI (graphical user interface, Figure \ref{figure:atmoswing-forecaster-gui}), or without in order to be used on a headless server through a command line interface. Processing a forecast requires very low computing capabilities and can be done on a low-end computer. 
 
-\begin{figure}[htbp]
-	\includegraphics[width=8.3cm]{figures/atmoswing-forecaster.png}
-	\caption{Graphical user interface of the Forecaster module. A list of different parameterizations is being processed.}
-	\label{figure:atmoswing-forecaster-gui}
-\end{figure}
-
 The software first downloads the predictor describing the target situation, such as 1\textdegree\ GFS outputs \citep[Global Forecast System,][see section \ref{sec:data}]{Kanamitsu1991,Kanamitsu1989}. It then interpolates linearly the gridded data to match the resolution of the archive (for example 2.5\textdegree\ in the case of the NCEP/NCAP reanalysis I). The analogues dates are next sought according to the selected parameterization, and the predictand data are associated with the corresponding dates. The results are finally saved in auto-describing NetCDF files. If required, a synthetic XML is generated for an easier integration on a web platform for example. Every step of the forecast, from the predictor downloading to the final results, is done in the software (and controlled through configuration), without use of external scripts (e.g. for data conversion).
 
 When using a given parameterization of the AM, it has previously been optimized in a perfect prognosis context \citep[i.e. by optimizing on the reanalysis dataset; however, this does not take into account the uncertainty of the target situation when taken from operational forecasts of a Numerical Weather Prediction model,][]{Klein1963}. In operational forecasting, one should take into account the uncertainty of the predictor increasing with the lead time. A solution, presented in section \ref{sec:optimization-operational}, consists in increasing the number of analogue situations to keep with the lead time. This technique is available in AtmoSwing, as the number of analogues can be specified for every lead time, making such approach easily accessible.
@@ -475,37 +306,13 @@ The command-line interface allows to start the process for the present date, a s
 
 The Viewer module allows displaying the resulting forecast files in an interactive GIS environment (Figure \ref{figure:atmoswing-viewer-gui}). During the forecast, different parametrization variants of the same type of AM may be applied to a region; the reason being that some parameterizations may be specific for a subregion, when its meteorological influences differ, which is often the case even in relatively small catchments \citep{Horton2012}. The Viewer automatically gathers the similar AMs and provides a composite view of the optimal forecasts per subregion. The user can however choose to display a specific parameterization for the whole region, which is more consistent in terms of homogeneity of the analogue dates.
 
-\begin{figure*}[t]
-	\includegraphics[width=18cm]{figures/atmoswing-viewer.png}
-	\caption{Graphical user interface of the Viewer module (Elevation data from The Shuttle Radar Topography Mission (SRTM), and hydrological network from SwissTopo).}
-	\label{figure:atmoswing-viewer-gui}
-\end{figure*}
-
 The software provides several levels of synthesis of the forecasts. When it is opened, it automatically loads the most recent forecasts, eliminating the need to manually open files. It first offers a quick overview of possible alerts by means of color codes on the lead time switcher (upper right in the graphical user interface (GUI), see Figure \ref{figure:atmoswing-viewer-gui}), which synthesizes the worst case scenario, or in the alarms panel (on the left part of the GUI). The alarms panel offers a synthesis of the higher forecasted values over the region, for the different AMs and the different lead times. By default, the colors are expressed relatively to 10-year return period values, for the $90^{th}$ percentile (can be changed in the preferences). This higher level of synthesis allows to quickly identify potential critical situations in the days ahead.
 
 Then, the user can explore the forecasts more in details, starting from the map provided by the GUI (Figure \ref{figure:atmoswing-viewer-gui}). The map display the forecast of the selected parameterization (upper left) and the selected lead time (upper right). The displayed AM is by default a composite of the parameterization variants for the region, but the user can choose a specific parameterization for the whole region by opening the tree view and selecting a child element. We also allowed a display of all lead times on a single map by means of a symbolic representation on a circular band with a box for every lead time (Figure \ref{figure:atmoswing-viewer-snail}). The number of boxes is dynamically adjusted to the number of lead times. This representation offers a global spatiotemporal display for a chosen parameterization.
 
 Color scales in the map are easily controlled by choosing the predictand ratio (raw value or ratio to different return periods) and the quantile of the distribution (on the left part of the GUI). Representation relatively to a return time better expresses the meaning of a certain precipitation amount for a given region, as climatology can be drastically different between two locations in a mountainous area, even if they are close to each other. All information relative to a rain gauge station (or catchments), such as its location, its name, or the values of different return periods, are stored in the forecast files, in order to be displayable for end users who do not have the predictand database.
 
-\begin{figure}[htbp]
-	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-snail.png}
-	\caption{Visualization of multiple lead times on the map (Elevation data from the SRTM, and hydrological network from SwissTopo).}
-	\label{figure:atmoswing-viewer-snail}
-\end{figure}
-
 By clicking on a station (forecast points) on the map (or by selection in a dropdown list on the left), a new window appears with a plot of the forecasted time series (Figure \ref{figure:atmoswing-viewer-timeseries}). By default, the plot contains the usual 3 considered percentiles (90$^{th}$, 60$^{th}$, and 20$^{th}$), along with the 10 best analogues with a color code from yellow (10$^{th}$) to red (1$^{st}$). The 10 year return period is also displayed in order to put the forecast in perspective. The user can choose to hide any data or to display supplementary information (all analogues, all 10$^{th}$ percentiles, or all return periods) in the left panel. Traces of previous days forecasts are also automatically loaded and displayed in order to inform on the stability of the forecasts. 
-
-\begin{figure}[htbp]
-	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-timeseries.png}
-	\caption{Visualization of the forecasted time series.}
-	\label{figure:atmoswing-viewer-timeseries}
-\end{figure}
-
-\begin{figure}[htbp]
-	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-distribution.png}
-	\caption{Visualization of the forecasted precipitation distribution for a given lead time.}
-	\label{figure:atmoswing-viewer-distribution}
-\end{figure}
 
 The user can even go into further details and display the predictand cumulative distribution for a given lead time (Figure \ref{figure:atmoswing-viewer-distribution}). This is useful when working on extreme precipitation, as comparing the distribution of all analogues versus the 10 best analogues provides information in order to interpret the forecast (trend to under/overestimation). Distribution of the analogy criteria (not shown) can also be displayed in order to identify eventual discontinuities in the criteria values.
 
@@ -665,19 +472,7 @@ Figure \ref{figure:monte_carlo_r1} presents the resulting scatter of random expl
 
 The shape of the scatter plots from Figure \ref{figure:monte_carlo_r1} reveals a low sensitivity as to the exact location of the spatial windows. There is a maximum threshold for minimum longitudes and latitudes and, inversely, a minimum threshold for maximum latitudes and longitudes, but outside of these limits, the distribution slope is more gentle. A spatial window can thus be a bit larger than its optimal size without a significant drop in performance, as long as it includes at least one critical region. This was also observed by \citet{Bontron2004}, who noted that ''\textit{performance slowly decreases if we consider a slightly too large window, while the use of too small windows results in strong performance loss}''. The dilution of a part of the relevant synoptic information has therefore not necessarily a significant negative impact on performance, while ignoring some of this information leads to undesirable loss of performance. It is the same for the analogues number (not shown), for which, past an optimum, the upper slope of the distribution decreases slowly.
 
-\begin{figure}[htbp]
-	\includegraphics[width=8.3cm]{figures/monte_carlo_r1.png}
-	\caption{Example of a Monte Carlo analysis on the PC-2Z (Table \ref{table:R1}) AM. Results are illustrated for the 4 parameters defining the spatial window on Z500, along with the results of the sequential calibration (red cross).}
-	\label{figure:monte_carlo_r1}
-\end{figure}
-
 The same analysis has been conducted on the AM with 2 levels of analogy, PC-2Z-2MI (Table \ref{table:R2}), and the results on the number of analogues on the 1st and the 2nd level are illustrated in Figure \ref{figure:monte_carlo_r2}. One can see that the AM is not very sensitive to the number of analogues on the first level of analogy, when considering a second level afterwards, as long as this number is not too small. The trend on the second level is more apparent, but a large tolerance seems possible.
-
-\begin{figure}[htbp]
-	\includegraphics[width=8.3cm]{figures/monte_carlo_r2.png}
-	\caption{Example of a Monte Carlo analysis on the PC-2Z-2MI (Table \ref{table:R2}) AM. Results are illustrated for the number of analogues on the 1st and 2nd level of analogy, along with the results of the sequential calibration (red cross).}
-	\label{figure:monte_carlo_r2}
-\end{figure}
 
 The use of such a random method allows informing on the parameters sensitivity, and so on the importance of the expected precision of the calibration results. It helps understanding how different parameterizations can end up to relatively similar performances. Using Monte Carlo analyses allows to easily display the AM parameters sensitivity. 
 
@@ -832,6 +627,68 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 %\caption{TEXT}
 %\end{figure*}
 %
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/nomenclature.pdf}
+	\caption{Proposed structure for naming the parameterizations of the AM.}
+	\label{figure:nomenclature}
+\end{figure}
+
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/logo.pdf}
+	\caption{The AtmoSwing logo and its 3 modules: the Forecaster, the Viewer and the Optimizer.}
+	\label{figure:logo}
+\end{figure}
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/flowchart_modules_atmoswing.pdf}
+	\caption{Simplified organizational chart of the AM implementation in AtmoSwing.}
+	\label{figure:flowchart_modules_atmoswing}
+\end{figure}
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/atmoswing-forecaster.png}
+	\caption{Graphical user interface of the Forecaster module. A list of different parameterizations is being processed.}
+	\label{figure:atmoswing-forecaster-gui}
+\end{figure}
+
+\begin{figure*}[t]
+	\includegraphics[width=18cm]{figures/atmoswing-viewer.png}
+	\caption{Graphical user interface of the Viewer module (Elevation data from The Shuttle Radar Topography Mission (SRTM), and hydrological network from SwissTopo).}
+	\label{figure:atmoswing-viewer-gui}
+\end{figure*}
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-snail.png}
+	\caption{Visualization of multiple lead times on the map (Elevation data from the SRTM, and hydrological network from SwissTopo).}
+	\label{figure:atmoswing-viewer-snail}
+\end{figure}
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-timeseries.png}
+	\caption{Visualization of the forecasted time series.}
+	\label{figure:atmoswing-viewer-timeseries}
+\end{figure}
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-distribution.png}
+	\caption{Visualization of the forecasted precipitation distribution for a given lead time.}
+	\label{figure:atmoswing-viewer-distribution}
+\end{figure}
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/monte_carlo_r1.png}
+	\caption{Example of a Monte Carlo analysis on the PC-2Z (Table \ref{table:R1}) AM. Results are illustrated for the 4 parameters defining the spatial window on Z500, along with the results of the sequential calibration (red cross).}
+	\label{figure:monte_carlo_r1}
+\end{figure}
+
+\begin{figure}[htbp]
+	\includegraphics[width=8.3cm]{figures/monte_carlo_r2.png}
+	\caption{Example of a Monte Carlo analysis on the PC-2Z-2MI (Table \ref{table:R2}) AM. Results are illustrated for the number of analogues on the 1st and 2nd level of analogy, along with the results of the sequential calibration (red cross).}
+	\label{figure:monte_carlo_r2}
+\end{figure}
+
 %
 %%% TABLES
 %%%
@@ -868,6 +725,153 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 %\belowtable{} % Table Footnotes
 %\end{table*}
 %
+
+
+\begin{table}[htbp]
+	\caption{Method of type PC-2Z proposed by \citet{Bontron2004}. The first column is the level of analogy (0 for preselection), then comes the meteorological variable and its hour of observation (temporal window). The criteria used for the current level of analogy is then provided, as well as the number of analogues.}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+		& Z500 & 24~h & & \\ 
+		\bottomhline 
+	\end{tabular} 
+	\label{table:R1}
+\end{table}
+
+\begin{table}[htbp]
+	\caption{Method of type PC-4Z proposed by \citet{Horton2012}. Same conventions as Table \ref{table:R1}}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{4}{*}{1} & Z1000 & 12~h & \multirow{4}{*}{S1} & \multirow{4}{*}{$N_{1}$} \\
+		& Z850 & 24~h & & \\ 
+		& Z700 & 12~h & & \\ 
+		& Z500 & 24~h & & \\ 
+		\bottomhline 
+	\end{tabular}
+	\label{table:R6}
+\end{table}
+
+\begin{table}[htbp]
+	\caption{Method of type PC-2Z-2MI proposed by \citet{Bontron2004}. Same conventions as Table \ref{table:R1}}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+		& Z500 & 24~h & & \\ 
+		\middlehline
+		2 & TPW * RH850 & 12, 24~h & RMSE & 30 \\
+		\bottomhline 
+	\end{tabular} 
+	\label{table:R2}
+\end{table}
+
+\begin{table}[htbp]
+	\caption{Method of type PC-2Z-2MI proposed by \citet{Marty2010}. Same conventions as Table \ref{table:R1}}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{75} \\
+		& Z500 & 18~h & & \\ 
+		\middlehline
+		2 & TPW * RH925 & 06, 18~h & RMSE & 30 \\
+		\bottomhline 
+	\end{tabular} 
+	\label{table:R3a}
+\end{table}
+
+\begin{table}[htbp]
+	\caption{Method of type PC-2Z-2MF proposed by \citet{Marty2010}. Same conventions as Table \ref{table:R1}}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 06~h & \multirow{2}{*}{S1} & \multirow{2}{*}{60} \\
+		& Z500 & 18~h & & \\ 
+		\middlehline
+		2 & V700 * TPW * RH700 $^{\dagger}$ & 06, 18~h & RMSE & 25 \\
+		\bottomhline 
+	\end{tabular} 
+	\belowtable{$\dagger$ or V925 * TPW * RH925 as an alternative}
+	\label{table:R3b}
+\end{table}
+
+\begin{table}[htbp]
+	\caption{Method of type P2T-2Z-4MI (or P2T-2Z-10MI for the alternative version), by \citet{BenDaoud2010}. Same conventions as Table \ref{table:R1}}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline
+		\multirow{2}{*}{0} & T925 & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
+		& T600 & 12~h & & \\ 
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+		& Z500 & 24~h & & \\ 
+		\middlehline
+		\multirow{2}{*}{2} & TPW * RH925 & 12, 24~h $^{\dagger}$ & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
+		& TPW * RH700 & 12, 24~h $^{\dagger}$ & & \\ 
+		\bottomhline 
+	\end{tabular} 
+	\belowtable{$\dagger$ or 06-30~h as an alternative}
+	\label{table:R4b}
+\end{table}
+
+\begin{table}[htbp]
+	\caption{Method of type P2T-2Z-4W-4MI, by \citet{BenDaoud2010}. Same conventions as Table \ref{table:R1}}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline
+		\multirow{2}{*}{0} & T925 (1 point) & 36~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{0}$} \\
+		& T600 (1 point) & 12~h & & \\ 
+		\middlehline 
+		\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{170} \\
+		& Z500 & 24~h & & \\ 
+		\middlehline
+		2 & W850 & 06-24~h & RMSE & 70 \\
+		\middlehline
+		\multirow{2}{*}{3} & TPW * RH925 & 12, 24~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{25} \\
+		& TPW * RH700 & 12, 24~h & & \\
+		\bottomhline 
+	\end{tabular}
+	\label{table:R5}
+\end{table}
+
+\begin{table}[htbp]
+	\caption{Method of type PC-4Z-2MI, by \citet{Horton2012}. Same conventions as Table \ref{table:R1}}
+	\begin{tabular}{ccccc}
+		\tophline
+		\textbf{Level} & \textbf{Variable} & \textbf{Hour} & \textbf{Criteria} & \textbf{Nb} \\ 
+		\middlehline 
+		0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+		\middlehline 
+		\multirow{4}{*}{1} & Z1000 & 12~h & \multirow{4}{*}{S1} & \multirow{4}{*}{$N_{1}$} \\
+		& Z850 & 24~h & & \\ 
+		& Z700 & 12~h & & \\ 
+		& Z500 & 24~h & & \\ 
+		\middlehline
+		2 & V700 * TPW * RH700 & 12, 24~h & RMSE & $N_{2}$ \\
+		\bottomhline 
+	\end{tabular}
+	\label{table:R7}
+\end{table}
+
+
 %
 %%% NUMBERING OF FIGURES AND TABLES
 %%%
