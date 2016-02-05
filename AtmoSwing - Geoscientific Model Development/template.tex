@@ -113,7 +113,7 @@ In operational forecasting, it has been used mainly by practitioners, notably hy
 
 However, how efficient and useful it may seem, this approach is not straightforward. Usually the type of predictand is imposed by some practical needs or constraints. Considering a precipitation variable, one has to decide upon the duration of accumulation, (e.g. from 6-hourly to daily or several day totals) according for example to the size or response time of the catchments to be managed. The availability and quality of long enough time series must also be considered. Moreover, the analogy is restricted to a selection of variables at a specific time and over optimized spatial domains, that are compared by means of a chosen criteria that can rank the candidate days from the archive with a distance quantification. The approach appears predictand-specific but also dependent on the archive of predictors. 
 
-The Analogue Method (AM) will first be presented along with various implementations (section \ref{sec:method}), as the optimal version of the method may vary with the location of interest, and as all these can be processed with AtmoSwing. The software will then be presented (section \ref{sec:atmoswing}), and its modules detailed, such as the Forecaster (section \ref{sec:forecaster}) and the Viewer (section \ref{sec:viewer}) that are tools for operational use, and the Optimizer (section \ref{sec:optimizer}) that allows optimizing the method for a given predictand time series.
+The Analogue Method (AM) will first be presented along with various implementations (Sect. \ref{sec:method}), as the optimal version of the method may vary with the location of interest, and as all these can be processed with AtmoSwing. The software will then be presented (Sect. \ref{sec:atmoswing}), and its modules detailed, such as the Forecaster (Sect. \ref{sec:forecaster}) and the Viewer (Sect. \ref{sec:viewer}) that are tools for operational use, and the Optimizer (Sect. \ref{sec:optimizer}) that allows optimizing the method for a given predictand time series.
 
 
 
@@ -155,7 +155,7 @@ Although multiple variations of the AM exist, they generally share the same basi
 \begin{enumerate}
 	\item Preselection: to cope with seasonal effects, candidate dates are extracted from the archive within a period of four months centered around the target date, for every year of the archive. Alternatively, the candidate dates can be selected based on similar air temperature \citep{BenDaoud2010}.
 	
-	\item First level of analogy: $N_{1}$ dates are subsampled within all the candidates provided by the preselection, by means of an analogy ranking. The first level of analogy is always based on the atmospheric circulation when it comes to precipitation forecasting. The similarity of the atmospheric circulation of the target date with the candidate situations is thus assessed on the geopotential by means of the S1 criteria \citep[Eq.\ref{eq:S1}, ][see also section \ref{sec:method:references}]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial gridded window.
+	\item First level of analogy: $N_{1}$ dates are subsampled within all the candidates provided by the preselection, by means of an analogy ranking. The first level of analogy is always based on the atmospheric circulation when it comes to precipitation forecasting. The similarity of the atmospheric circulation of the target date with the candidate situations is thus assessed on the geopotential by means of the S1 criteria \citep[Eq. (\ref{eq:S1}), ][see also Sect. \ref{sec:method:references}]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial gridded window.
 	
 	\begin{equation}
 	\label{eq:S1}
@@ -201,7 +201,7 @@ Then, the following levels of analogy are listed, which may start with an option
 In order to keep the identifier simple, no value of atmospheric level neither time of observation is specified. Moreover, the analogy criterion is not specified and is supposed to be S1 for Z and RMSE for the other variables. If anything changes from these conventions, it can be noted as a flag. The flag (lower case) can also give other information, such as the optimization method:
 \begin{itemize}
 	\setlength\itemsep{-2px}
-	\item sc : sequential calibration (can be omitted as considered as default, see section \ref{sec:atmoswing-calibration})
+	\item sc : sequential calibration (can be omitted as considered as default, see Sect. \ref{sec:atmoswing-calibration})
 	\item go (or just ''o'') : global optimization (by means of genetic algorithms for example)
 \end{itemize}
 
@@ -265,7 +265,7 @@ A user interface allows the creation of the precipitation database. Its generati
 
 An AtmoSwing great strength is that it is designed to process analogy forecasting in a modular fashion. The structure of the AM (number of analogy levels, number of predictors) is built dynamically (Figure \ref{figure:flowchart_modules_atmoswing}), and nothing is fixed a priori. The software then performs successively as many analogy levels as the user specified, with all the predictors he wants. Each level of analogy processed results in an object containing target dates, analogue dates, values of the analogy criteria, and other data. This object can be saved in a NetCDF file and/or can be injected into a new analogy level. The whole structure of the AM is defined in an XML file generated by the user. Even the time step of the method (6 or 24~hours for example) is a dynamic parameter.
 
-Each implementation of the AM (see section \ref{sec:method:references}) may enter this scheme, even if it consists of preprocessed variables (e.g. moisture index). Various preprocessing functions are implemented, as the calculation of the moisture index or flux, multiplication operations or calculation of the gradients. The user can specify the preprocessing method and the predictors to use, dynamically, in the XML file.
+Each implementation of the AM (see Sect. \ref{sec:method:references}) may enter this scheme, even if it consists of preprocessed variables (e.g. moisture index). Various preprocessing functions are implemented, as the calculation of the moisture index or flux, multiplication operations or calculation of the gradients. The user can specify the preprocessing method and the predictors to use, dynamically, in the XML file.
 
 
 \subsection{Performance}
@@ -292,9 +292,9 @@ The major performance gains were obtained by:
 
 The Forecaster module allows to process operational forecasts, defined by an XML file. A list of parameterizations is processed successively. The software can be compiled with a GUI (graphical user interface, Figure \ref{figure:atmoswing-forecaster-gui}), or without in order to be used on a headless server through a command line interface. Processing a forecast requires very low computing capabilities and can be done on a low-end computer. 
 
-The software first downloads the predictor describing the target situation, such as 1\textdegree\ GFS outputs \citep[Global Forecast System,][see section \ref{sec:data}]{Kanamitsu1991,Kanamitsu1989}. It then interpolates linearly the gridded data to match the resolution of the archive (for example 2.5\textdegree\ in the case of the NCEP/NCAP reanalysis I). The analogues dates are next sought according to the selected parameterization, and the predictand data are associated with the corresponding dates. The results are finally saved in auto-describing NetCDF files. If required, a synthetic XML is generated for an easier integration on a web platform for example. Every step of the forecast, from the predictor downloading to the final results, is done in the software (and controlled through configuration), without use of external scripts (e.g. for data conversion).
+The software first downloads the predictor describing the target situation, such as 1\textdegree\ GFS outputs \citep[Global Forecast System,][see Sect. \ref{sec:data}]{Kanamitsu1991,Kanamitsu1989}. It then interpolates linearly the gridded data to match the resolution of the archive (for example 2.5\textdegree\ in the case of the NCEP/NCAP reanalysis I). The analogues dates are next sought according to the selected parameterization, and the predictand data are associated with the corresponding dates. The results are finally saved in auto-describing NetCDF files. If required, a synthetic XML is generated for an easier integration on a web platform for example. Every step of the forecast, from the predictor downloading to the final results, is done in the software (and controlled through configuration), without use of external scripts (e.g. for data conversion).
 
-When using a given parameterization of the AM, it has previously been optimized in a perfect prognosis context \citep[i.e. by optimizing on the reanalysis dataset; however, this does not take into account the uncertainty of the target situation when taken from operational forecasts of a Numerical Weather Prediction model,][]{Klein1963}. In operational forecasting, one should take into account the uncertainty of the predictor increasing with the lead time. A solution, presented in section \ref{sec:optimization-operational}, consists in increasing the number of analogue situations to keep with the lead time. This technique is available in AtmoSwing, as the number of analogues can be specified for every lead time, making such approach easily accessible.
+When using a given parameterization of the AM, it has previously been optimized in a perfect prognosis context \citep[i.e. by optimizing on the reanalysis dataset; however, this does not take into account the uncertainty of the target situation when taken from operational forecasts of a Numerical Weather Prediction model,][]{Klein1963}. In operational forecasting, one should take into account the uncertainty of the predictor increasing with the lead time. A solution, presented in Sect. \ref{sec:optimization-operational}, consists in increasing the number of analogue situations to keep with the lead time. This technique is available in AtmoSwing, as the number of analogues can be specified for every lead time, making such approach easily accessible.
 
 The command-line interface allows to start the process for the present date, a selected past date, or the last $x$ days (as long as the predictors are available on the provider server). When there is nothing to process (no new predictor data available), the execution just stops, leading to no loss of computing resources. The recommended use is thus to set up a cron task on a Linux server in order to trigger the forecast every 30 minutes. When using GFS outputs, this would provide 4 forecasts a day with a reduced delay between GFS outputs availability and the analogue forecast.
 
@@ -329,15 +329,15 @@ AtmoSwing Viewer relies on workspaces to specify the path to the forecast direct
 
 \citet{Marty2010} applied several validation scores to the quantiles of the AM distribution in operational forecasting. He concluded that the detection of the precipitation occurrence was better predicted by median quantiles (50-70~\%), with an optimum to 60~\%. However, once again, for significant rainfall, the 90$^{th}$ percentile gave the best performance. Comparing the results from the AM to an ensemble forecast, \citet{Marty2010} found the AM to be better than the considered ensembles, particularly for strong precipitation.
 
-All AMs rely on atmospheric circulation information, while some add subsequent levels of analogy on moisture or other thermodynamic predictors (see section \ref{sec:method:references}). However, these subsequent predictors were found to be relevant only on the first 3~days, and not much further, due to higher uncertainties in their forecast (see section \ref{sec:optimization-operational}). This was found to be the case for moisture indexes and vertical velocity. The user has to keep this aspect in mind when interpreting forecasts over a range of lead times.
+All AMs rely on atmospheric circulation information, while some add subsequent levels of analogy on moisture or other thermodynamic predictors (see Sect. \ref{sec:method:references}). However, these subsequent predictors were found to be relevant only on the first 3~days, and not much further, due to higher uncertainties in their forecast (see Sect. \ref{sec:optimization-operational}). This was found to be the case for moisture indexes and vertical velocity. The user has to keep this aspect in mind when interpreting forecasts over a range of lead times.
 
 
 \section{AtmoSwing Optimizer}
 \label{sec:optimizer}
 
-AtmoSwing Optimizer is a single tool that integrates different optimization methods, presented in section \ref{sec:atmoswing-calibration} to \ref{sec:atmoswing-optimization}. Optimization is essentially performed in the calibration framework (section \ref{sec:calibration-framework}), where one tries to maximize (by means of performance scores, see section \ref{sec:forecasts-scores}) the information that can be extracted from the available predictors and predictand archives.
+AtmoSwing Optimizer is a single tool that integrates different optimization methods, presented in Sect. \ref{sec:atmoswing-calibration} to \ref{sec:atmoswing-optimization}. Optimization is essentially performed in the calibration framework (Sect. \ref{sec:calibration-framework}), where one tries to maximize (by means of performance scores, see Sect. \ref{sec:forecasts-scores}) the information that can be extracted from the available predictors and predictand archives.
 
-However, in operational use, a further ingredient arises : the model from which the target synoptic situations are taken for the coming days, and the increasing uncertainty related to the lead time. Depending on the properties of these forecasts, the operational scheme has to be tuned (section \ref{sec:optimization-operational}).
+However, in operational use, a further ingredient arises : the model from which the target synoptic situations are taken for the coming days, and the increasing uncertainty related to the lead time. Depending on the properties of these forecasts, the operational scheme has to be tuned (Sect. \ref{sec:optimization-operational}).
 
 
 \subsection{Calibration framework}
@@ -355,7 +355,7 @@ A validation period is always considered. It consists of an independent period t
 \subsection{Implemented forecasts scores}
 \label{sec:forecasts-scores}
 
-Most often, the accuracy of the parameters for precipitations forecasting is evaluated by means of the CRPS \citep[Continuous Ranked Probability Score,][]{Brown1974, Matheson1976, Hersbach2000}. It is the only score that will be detailed hereafter (in section \ref{sec:prob_forecasts}). In addition, other scores are implemented in AtmoSwing Optimizer. The following sections list the scores presently available, but will not detail them.
+Most often, the accuracy of the parameters for precipitations forecasting is evaluated by means of the CRPS \citep[Continuous Ranked Probability Score,][]{Brown1974, Matheson1976, Hersbach2000}. It is the only score that will be detailed hereafter (in Sect. \ref{sec:prob_forecasts}). In addition, other scores are implemented in AtmoSwing Optimizer. The following sections list the scores presently available, but will not detail them.
 
 
 \subsubsection{Discrete deterministic forecasts}
@@ -488,11 +488,11 @@ Due to limitations in the sequential approach, we decided to explore optimizatio
 
 Up to now, the AM has been optimized essentially by replaying past situations that were taken from a unique meteorological archive. Therefore, the synoptic variables have similar properties in terms of resolution, models that have processed them, etc... However, when it comes to operational forecasting, as already mentioned, the resulting AM will be applied to target situations that are no longer similar to the reanalyzed ones. They will be taken from global model forecasts, which may not be those used to elaborate the archive of reanalyzed situations. Thus, these new targets will display characteristics different from those of the archive, and will in particular contain larger uncertainties, especially at growing lead-times.
 
-Eventually, a meteorological variable that was proven to be a good predictor during the calibration of the AM may be poorly predicted by the forecast NWP model selected beyond a certain lead time. In this regards, it should be dropped after the lead time in question (see section \ref{sec:interpreting}).
+Eventually, a meteorological variable that was proven to be a good predictor during the calibration of the AM may be poorly predicted by the forecast NWP model selected beyond a certain lead time. In this regards, it should be dropped after the lead time in question (see Sect. \ref{sec:interpreting}).
 
 To assess and address these operational aspects, the best option is to collect a dataset of re-forecast from the specific NWP model selected. Then, distinct variants of AM parameterizations can be assessed on different lead times. For example, when using moisture variables for the second level of analogy, \citet{Thevenot2004} showed that beyond a lead time of 3 days, the AM with two levels did not do better that the one with a unique level of analogy. It comes from the fact that large scale geopotential variables are correctly predicted up to 8 or 10 days, while humidity variables are not, at least by the current version of the model considered.
 
-Next, we assume that for the synoptic variables used as predictors, the model forecasts have more uncertainties than the reanalyses, but no systematic bias. To optimize further the AM, it can be considered that the further the lead time, the more uncertain the synoptic forecasts and therefore the more uncertain the precipitation forecasts could be. This can been addressed by reconsidering, for each lead-time, the optimal number of analogues to select, for re-forecast data from a particular NWP model \citep{Thevenot2004}. The underlying idea is that if the model proves perfect, then the number of analogues should remain close to that obtained in the perfect progonosis framework. While if the forecast becomes irrelevant, for example at distant lead times, the AM should propose a forecast closer and closer to the climatological distribution of the predictand. The optimal number of analogue situations will thus increase with the lead time, and should be optimized for every lead time on the re-forecast dataset \citep[see][for the details]{Thevenot2004}. This option is implemented in AtmoSwing Forecaster (see section \ref{sec:forecaster}).
+Next, we assume that for the synoptic variables used as predictors, the model forecasts have more uncertainties than the reanalyses, but no systematic bias. To optimize further the AM, it can be considered that the further the lead time, the more uncertain the synoptic forecasts and therefore the more uncertain the precipitation forecasts could be. This can been addressed by reconsidering, for each lead-time, the optimal number of analogues to select, for re-forecast data from a particular NWP model \citep{Thevenot2004}. The underlying idea is that if the model proves perfect, then the number of analogues should remain close to that obtained in the perfect progonosis framework. While if the forecast becomes irrelevant, for example at distant lead times, the AM should propose a forecast closer and closer to the climatological distribution of the predictand. The optimal number of analogue situations will thus increase with the lead time, and should be optimized for every lead time on the re-forecast dataset \citep[see][for the details]{Thevenot2004}. This option is implemented in AtmoSwing Forecaster (see Sect. \ref{sec:forecaster}).
 
 It should be stressed that these operational aspects are dependent on the model used to provide the AM with synoptic forecasts, and on the availability of a re-forecast data to perform the tuning of the AM to this particular model.
 
@@ -514,6 +514,22 @@ As it was shown in the historical section, the AM evolves, with the availability
 	\item a weighting of the predictor grids \citep[see][]{Bliefernicht2010};
 	\item assessment of potential indicators based on the properties of the distribution of all analogues or the 10 best, for example;
 	\item assessment of the relevance of an automatic interpretation of the distribution in order to provide the most likely expected value;
+\end{itemize}
+
+
+\section*{Code availability}
+
+AtmoSwing is open source, under the CDDL license. It is developed under the Mercurial distributed revision control, and the source code can be found at:
+
+\begin{itemize}
+	\item http://www.atmoswing.org
+	\item https://bitbucket.org/atmoswing/atmoswing
+\end{itemize}
+
+To get access to the frozen version at the time of writing (v1.4.2), the following address can be used:
+
+\begin{itemize}
+	\item bitbucket.org/atmoswing/atmoswing/commits/tag/1.4.2
 \end{itemize}
 
 
@@ -540,23 +556,6 @@ At the dawn of the new millennium, \citet{Bontron2004} could benefit from a real
 By varying the resolution of the predictors grids, \citet{Bontron2004} concluded that the performance increase is not significant for the analogy of atmospheric circulation below a resolution of 5\textdegree. However, it seems more important for the second level of analogy on moisture, which are more local variables. \citet{BenDaoud2010} assessed the European reanalysis ERA-40 \citep{Uppala2005} with a resolution of 1.125\textdegree. He identified a slight performance improvement, but not substantial enough to really justify an archive change \citep{BenDaoud2008}.
 
 \citet{Gibergans-Baguena2007} implemented the AM for daily precipitation forecasts in Catalonia. They considered the geopotential at 700 and 1000~hPa, and the thickness between these two levels, to search for analogy of circulation, and then applied a second selection on local data from radiosonde: stability indexes, precipitable water, temperature, etc.
-
-
-
-\section*{Code availability}
-
-AtmoSwing is open source, under the CDDL license. It is developed under the Mercurial distributed revision control, and the source code can be found at:
-
-\begin{itemize}
-	\item http://www.atmoswing.org
-	\item https://bitbucket.org/atmoswing/atmoswing
-\end{itemize}
-
-To get access to the frozen version at the time of writing (v1.4.2), the following address can be used:
-
-\begin{itemize}
-	\item bitbucket.org/atmoswing/atmoswing/commits/tag/1.4.2
-\end{itemize}
 
 
 \begin{acknowledgements}
@@ -629,61 +628,61 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 %
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/nomenclature.pdf}
+	\includegraphics[width=8.3cm]{figures/fig01.pdf}
 	\caption{Proposed structure for naming the parameterizations of the AM.}
 	\label{figure:nomenclature}
 \end{figure}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/logo.pdf}
+	\includegraphics[width=8.3cm]{figures/fig02.pdf}
 	\caption{The AtmoSwing logo and its 3 modules: the Forecaster, the Viewer and the Optimizer.}
 	\label{figure:logo}
 \end{figure}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/flowchart_modules_atmoswing.pdf}
+	\includegraphics[width=8.3cm]{figures/fig03.pdf}
 	\caption{Simplified organizational chart of the AM implementation in AtmoSwing.}
 	\label{figure:flowchart_modules_atmoswing}
 \end{figure}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/atmoswing-forecaster.png}
+	\includegraphics[width=8.3cm]{figures/fig04.png}
 	\caption{Graphical user interface of the Forecaster module. A list of different parameterizations is being processed.}
 	\label{figure:atmoswing-forecaster-gui}
 \end{figure}
 
 \begin{figure*}[t]
-	\includegraphics[width=18cm]{figures/atmoswing-viewer.png}
+	\includegraphics[width=18cm]{figures/fig05.png}
 	\caption{Graphical user interface of the Viewer module (Elevation data from The Shuttle Radar Topography Mission (SRTM), and hydrological network from SwissTopo).}
 	\label{figure:atmoswing-viewer-gui}
 \end{figure*}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-snail.png}
+	\includegraphics[width=8.3cm]{figures/fig06.png}
 	\caption{Visualization of multiple lead times on the map (Elevation data from the SRTM, and hydrological network from SwissTopo).}
 	\label{figure:atmoswing-viewer-snail}
 \end{figure}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-timeseries.png}
+	\includegraphics[width=8.3cm]{figures/fig07.png}
 	\caption{Visualization of the forecasted time series.}
 	\label{figure:atmoswing-viewer-timeseries}
 \end{figure}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/atmoswing-viewer-distribution.png}
+	\includegraphics[width=8.3cm]{figures/fig08.png}
 	\caption{Visualization of the forecasted precipitation distribution for a given lead time.}
 	\label{figure:atmoswing-viewer-distribution}
 \end{figure}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/monte_carlo_r1.png}
+	\includegraphics[width=8.3cm]{figures/fig09.png}
 	\caption{Example of a Monte Carlo analysis on the PC-2Z (Table \ref{table:R1}) AM. Results are illustrated for the 4 parameters defining the spatial window on Z500, along with the results of the sequential calibration (red cross).}
 	\label{figure:monte_carlo_r1}
 \end{figure}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/monte_carlo_r2.png}
+	\includegraphics[width=8.3cm]{figures/fig10.png}
 	\caption{Example of a Monte Carlo analysis on the PC-2Z-2MI (Table \ref{table:R2}) AM. Results are illustrated for the number of analogues on the 1st and 2nd level of analogy, along with the results of the sequential calibration (red cross).}
 	\label{figure:monte_carlo_r2}
 \end{figure}
