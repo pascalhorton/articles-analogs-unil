@@ -114,48 +114,9 @@ S1=100 \frac {\displaystyle \sum_{i} \vert \Delta\hat{z}_{i} - \Delta z_{i} \ver
 \end{equation}
 where $\Delta \hat{z}_{i}$ is the difference in geopotential height between the \textit{i}th pair of adjacent points of the gridded data describing the target situation, and $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation. The differences are processed separately in both directions over the selected spatial domain. The smaller the S1 values, the more similar the pressure fields.
 
-\begin{table}[htb]
-	\caption{Parameters of the reference method on the atmospheric circulation (2Z). The first column is the level of analogy (0 for preselection), then comes the meteorological variable and its hour of observation (temporal window). The criteria used for the current level of analogy is then provided, as well as the number of analogues.}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline
-			Level & Variable & Hour & Criteria & Nb \\ 
-			\hline 
-			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-			\hline 
-			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
-			& Z500 & 24~h & & \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:params_R1}
-\end{table}
-
 The $N_{1}$ dates with the lowest values of S1 are considered as analogues to the target day. The number of analogues, $N_{1}$, is a parameter to calibrate. Then, the daily observed precipitation amount of the $N_{1}$ resulting dates provide the empirical conditional distribution considered as the probabilistic forecast for the target day.
 
 The other most know parametrization adds a second level of analogy on moisture variables (method 2Z-2MI, Table \ref{table:params_R2}). The predictor that \citet{Bontron2004} found optimal for the France territory is a moisture index made of the product of the precipitable water with the relative humidity at 850~hPa (RH850). \cite{Horton2012a} confirmed that this index is also better for the Swiss Alps than any other variable from the NCEP/NCAR reanalysis considered independently. When adding a second level of analogy, $N_{2}$ dates are subsampled in the $N_{1}$ analogues on the atmospheric circulation, to end up with a smaller number of analogue situations. When a second level of analogy is added, a higher number of analogues $N_{1}$ is kept on the first level.
-
-\begin{table}[htb]
-	\caption{Parameters of the reference method with moisture variables (2Z-2MI). Same conventions as Table \ref{table:params_R1}}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccc}
-			\hline 
-			Level & Variable & Hour & Criteria & Nb \\ 
-			\hline 
-			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
-			\hline 
-			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
-			& Z500 & 24~h & & \\ 
-			\hline
-			\multirow{2}{*}{2} & TPW * RH850 & 12~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{30} \\
-			& TPW * RH850 & 24~h & & \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:params_R2}
-\end{table}
 
 
 \subsection{Data}
@@ -261,108 +222,6 @@ This sums up to 29 degrees of freedom that are optimized simultaneously.
 
 The resulting optimized parameters for 4Zo vary from one subregion to another. An example of the detailed parameters is provided for the Swiss Chablais in Table \ref{table:params_GA_4Zo}. The optimized spatial windows are given for every subregion in Figure \ref{fig:spatial_windows_4Zo}, and the selected pressure levels in Table~\ref{table:levels_GA_4Zo}. 
 
-\begin{table}[htb]
-	\caption{Parameters of the 4Zo method (analogy on 4 levels of the atmospheric circulation) optimized for the Chablais subregion. The columns are the following: L = level of analogy, V = meteorological variable, H = hour of observation or temporal window, D = domain or spatial window, W = weighting of the score for the selected pressure levels, C = criteria, N = number of analogues.}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccccc}
-			\hline L & V & H & D & W & C & N \\ 
-			\hline 
-			0 & \multicolumn{6}{l}{$\pm 60$ days around the target date} \\
-			\hline 
-			\multirow{8}{*}{1} &  \multirow{2}{*}{Z300} & \multirow{2}{*}{12~h} & -2.5 - 15.0 \degree E & \multirow{2}{*}{32\%} & \multirow{8}{*}{S1} & \multirow{8}{*}{28} \\
-			& & & 37.5 - 57.5 \degree N & & & \\ 
-			& \multirow{2}{*}{Z700} & \multirow{2}{*}{24~h} & 2.5 - 10.0 \degree E & \multirow{2}{*}{22\%} & & \\ 
-			& & & 42.5 - 45.0 \degree N & & & \\ 
-			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{6~h} & -5.0 - 15.0 \degree E & \multirow{2}{*}{24\%} & & \\ 
-			& & & 42.5 - 47.5 \degree N & & & \\ 
-			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{30~h} & 2.5 - 15.0 \degree E & \multirow{2}{*}{22\%} & & \\ 
-			& & & 40.0 - 50.0 \degree N & & & \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:params_GA_4Zo}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Pressure levels ($\sim$) automatically selected for the 4Zo method at the different subregions. R represents the reference method (Table \ref{table:params_R1}).}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccccccc}
-			\hline ID & 300 & 400 & 500 & 600 & 700 & 850 & 925 & 1000 \\ 
-			\hline 
-			1  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
-			2  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
-			3  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
-			4  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
-			5  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
-			6  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
-			7  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
-			8  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
-			9  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
-			10 &   &   &   & $\sim$ & $\sim$ &   &   & $\sim \sim$ \\
-			\hline 	
-			R  &   &   & $\sim$ &   &   &   &   & $\sim$ \\
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:levels_GA_4Zo}
-\end{table}
-
-\begin{table}[htb]
-	\caption{CRPSS score (\%) of the three optimized methods (4Zo is the atmospheric circulation analogy detailed in the present section; 4Zo-2MIo and 4Zo-4MIo add a second level of analogy on moisture indexes, as explained in section \ref{sec:optim_moisture}).}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccccc}
-			\hline 
-			ID & \multicolumn{2}{c}{4Zo} & \multicolumn{2}{c}{4Zo-2MIo} & \multicolumn{2}{c}{4Zo-4MIo} \\ 
-			& CP & VP & CP & VP & CP & VP \\ 
-			\hline 
-			1 & 40.3 & 38.5 & 45.5 & 43.8 & 45.9 & 43.6 \\
-			2 & 37.8 & 34.9 & 42.4 & 40.8 & 42.9 & 41.3 \\
-			3 & 36.6 & 33.9 & 41.4 & 39.0 & 41.8 & 39.5 \\
-			4 & 31.2 & 30.8 & 36.1 & 36.4 & 36.8 & 37.1 \\
-			5 & 34.4 & 36.5 & 38.6 & 41.4 & 39.2 & 41.8 \\
-			6 & 37.0 & 39.9 & 41.0 & 44.5 & 41.9 & 44.6 \\
-			7 & 30.0 & 30.1 & 33.8 & 34.6 & 34.4 & 34.8 \\
-			8 & 37.7 & 40.1 & 40.7 & 43.1 & 41.2 & 43.3 \\
-			9 & 33.1 & 30.0 & 38.4 & 36.6 & 38.7 & 36.3 \\
-			10 & 40.0 & 40.0 & 42.6 & 42.9 & 43.3 & 43.2 \\
-			\hline
-			av. & 35.8 & 35.5 & 40.1 & 40.3 & 40.6 & 40.5 \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:scores}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized 4Zo method.}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccccc}
-			\hline 
-			ID & \multicolumn{2}{c}{P\(\geq\)1 mm} & \multicolumn{2}{c}{P\(\geq\)0.1\(\cdot\)P10} & \multicolumn{2}{c}{P\(\geq\)0.5\(\cdot\)P10} \\ 
-			& CP & VP & CP & VP & CP & VP \\ 
-			\hline 
-			1 & 10.2 & 9.4 & 8.5 & 7.9 & 17.0 & 14.2 \\ 
-			2 & 9.9 & 3.4 & 10.2 & 7.3 & 19.3 & 13.7 \\ 
-			3 & 13.3 & 10.5 & 13.3 & 10.9 & 19.7 & 9.7 \\ 
-			4 & 11.0 & 7.4 & 12.9 & 10.0 & 23.2 & 23.8 \\ 
-			5 & 8.6 & 4.2 & 10.9 & 6.2 & 25.2 & 23.8 \\ 
-			6 & 10.5 & 5.1 & 11.1 & 7.1 & 21.2 & 41.1 \\ 
-			7 & 24.3 & 12.4 & 33.1 & 26.0 & 71.2 & 104.3 \\ 
-			8 & 19.0 & 12.7 & 26.2 & 19.2 & 39.4 & 34.9 \\ 
-			9 & 12.4 & 6.8 & 13.8 & 9.9 & 24.9 & 48.1 \\ 
-			10 & 13.6 & 6.8 & 14.4 & 6.9 & 29.9 & 31.5 \\ 
-			\hline 
-			av. & 13.3 & 7.9 & 15.4 & 11.1 & 29.1 & 34.5 \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:scores_thresholds_4Zo}
-\end{table}
-
 The resulting CRPSS scores are provided in Table \ref{table:scores} and are in average 35.8 \% for the CP and 35.5 \% for the VP. The improvement of the CRPSS score relatively to the reference method on the atmospheric circulation (optimized by the sequential procedure) is illustrated in Figure \ref{fig:figure_dcrpss_4Zo} and is in average 15.3 \% for the CP and 9.9 \% for the VP. The score was also calculated for three precipitation thresholds: P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10, P10 being the daily precipitation with a 10~year return period (Table \ref{table:scores_thresholds_4Zo}). The gain in score increases with the precipitation threshold: the relative improvement of the CRPSS is in average, respectively for the different thresholds, 13.3\%, 15.4\% and 29.1\% for the CP and 7.9\%, 11.1\% and 34.5\% for the VP. The optimization improves thus even more the forecasts for days with significant precipitation than usual days.
 
 To assess the parameters cross-compatibility, those optimized for one subregion were applied to the others. The resulting losses or gains of the CRPSS are displayed in Figure \ref{fig:crossing_4Zo_calib} for the CP and in Figure \ref{fig:crossing_4Zo_valid} for the VP.
@@ -396,87 +255,6 @@ The optimization was processed on both levels of analogy simultaneously. This im
 Due to significant similarities between the results from 4Zo-2MIo and 4Zo-4MIo, the latter will only be partly shown in order to improve readability.
 
 As previously, the optimized parameters differ from one subregion to another, and this even to a greater extent. Detailed examples are again provided for the Swiss Chablais subregion in Table \ref{table:params_GA_4Zo_2MIo} for 4Zo-2MIo. The resulting spatial windows are displayed in Figure \ref{fig:spatial_windows_4Zo-2MIo} for 4Zo-2MIo, along with the selected pressure levels for both the circulation and the moisture analogy (Table \ref{table:levels_GA_4Zo_2MIo}). 
-
-\begin{table}[htb]
-	\caption{Parameters of the 4Zo-2MIo method (atmospheric circulation on 4 levels and moisture index on 2 levels), optimized for the Chablais subregion. Same conventions as Table \ref{table:params_GA_4Zo}.}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccccc}
-			\hline L & V & H & D & W & C & N \\ 
-			\hline 
-			0 & \multicolumn{6}{l}{$\pm 60$ days around the target date} \\
-			\hline 
-			\multirow{8}{*}{1} &  \multirow{2}{*}{Z300} & \multirow{2}{*}{12~h} & 0.0 - 15.0 \degree E & \multirow{2}{*}{23\%} & \multirow{8}{*}{S1} & \multirow{8}{*}{74} \\
-			& & & 42.5 - 55.0 \degree N & & & \\ 
-			& \multirow{2}{*}{Z500} & \multirow{2}{*}{30~h} & 0.0 - 10.0 \degree E & \multirow{2}{*}{25\%} & & \\ 
-			& & & 40.0 - 45.0 \degree N & & & \\ 
-			& \multirow{2}{*}{Z850} & \multirow{2}{*}{12~h} & 0.0 - 10.0 \degree E & \multirow{2}{*}{26\%} & & \\ 
-			& & & 42.5 - 47.5 \degree N & & & \\ 
-			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{30~h} & 0.0 - 20.0 \degree E & \multirow{2}{*}{26\%} & & \\ 
-			& & & 40.0 - 47.5 \degree N & & & \\ 
-			\hline 
-			\multirow{4}{*}{2} & TPW & \multirow{2}{*}{12~h} & 5.0 - 10.0 \degree E & \multirow{2}{*}{57\%} & \multirow{4}{*}{RMSE} & \multirow{4}{*}{25} \\
-			& *RH700 & & 45.0 - 47.5 \degree N & & & \\ 
-			& TPW & \multirow{2}{*}{24~h} & 5.0 - 10.0 \degree E & \multirow{2}{*}{43\%} & & \\ 
-			& *RH700 & & 45.0 - 47.5 \degree N & & & \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:params_GA_4Zo_2MIo}
-\end{table}
-
-
-\begin{table}[htb]
-	\caption{Atmospheric levels automatically selected for the analogy of the atmospheric circulation ($\sim$) and the analogy of moisture ($\bullet$) of the 4Zo-2MIo method, at the different subregions.  R represents the reference method (Table \ref{table:params_R2})}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccccccc}
-			\hline ID & 300 & 400 & 500 & 600 & 700 & 850 & 925 & 1000 \\ 
-			\hline 
-			1  & $\sim$ &   & $\sim$ &   & $\bullet \bullet$  & $\sim$ &   & $\sim$ \\
-			2  & $\sim$ &   &   &   & $\sim \bullet \bullet$ & $\sim$ &   & $\sim$ \\
-			3  & $\sim$ &   &   &   & $\sim \bullet \bullet$ & $\sim$ & $\sim$ &   \\
-			4  &   &   & $\sim$ & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
-			5  &   & $\sim$ &   &   & $\sim \bullet \bullet$ &   & $\sim \sim$ &   \\
-			6  &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
-			7  &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
-			8  &   &   & $\sim$ & $\bullet$ & $\sim \bullet$ &   & $\sim \sim$ &   \\
-			9  &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ & $\sim$ &   \\
-			10 &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
-			\hline 
-			R &   &   & $\sim$ &   &   & $\bullet \bullet$ &   & $\sim$ \\
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:levels_GA_4Zo_2MIo}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized 4Zo-2MIo method.}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccccc}
-			\hline 
-			ID & \multicolumn{2}{c}{P\(\geq\)1 mm} & \multicolumn{2}{c}{P\(\geq\)0.1\(\cdot\)P10} & \multicolumn{2}{c}{P\(\geq\)0.5\(\cdot\)P10} \\  
-			& CP & VP & CP & VP & CP & VP \\ 
-			\hline 
-			1 & 12.6 & 9.3 & 12.4 & 9.7 & 15.8 & 11.0 \\
-			2 & 10.4 & 7.7 & 11.2 & 10.5 & 18.9 & 16.6 \\ 
-			3 & 14.5 & 11.6 & 14.1 & 11.4 & 18.7 & 14.6 \\ 
-			4 & 11.4 & 9.4 & 11.5 & 11.6 & 14.9 & 22.7 \\ 
-			5 & 11.8 & 8.0 & 12.2 & 8.9 & 12.0 & 12.8 \\ 
-			6 & 11.3 & 7.1 & 11.2 & 8.0 & 15.3 & 29.1 \\ 
-			7 & 20.5 & 15.5 & 25.2 & 24.0 & 43.0 & 79.5 \\
-			8 & 19.3 & 15.7 & 23.1 & 18.6 & 25.2 & 31.7 \\ 
-			9 & 17.0 & 15.4 & 17.4 & 16.5 & 23.7 & 39.4 \\ 
-			10 & 12.9 & 9.6 & 13.8 & 11.1 & 28.5 & 32.1 \\ 
-			\hline 
-			av. & 14.2 & 10.9 & 15.2 & 13.0 & 21.6 & 28.9 \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:scores_thresholds_4Zo-2MIo}
-\end{table}
 
 The CRPSS scores of the optimized methods are provided in Table \ref{table:scores} and amounts to slightly more than 40 \% in average for both methods and for both periods. This results in a relative improvements for 4Zo-2MIo that is in average 14.0 \% for the CP and 11.5 \% for the VP (Figure \ref{fig:figure_dcrpss_4Zo-2HIo}), compared to the reference method on the moisture analogy optimized with the sequential procedure. For 4Zo-4MIo, the average improvement is 15.6 \% for the CP and 12.1 \% for the VP (Figure \ref{fig:figure_dcrpss_4Zo-4HIo}). 
 
@@ -556,10 +334,9 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \bibliography{../_refs/_articles-optimization}
 
+\clearpage
 
 %% FIGURES
-
-
 
 \begin{figure}[t]
 	\centerline{\includegraphics[width=8.8cm]{figures/fig01.pdf}}
@@ -567,102 +344,327 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\label{fig:map}
 \end{figure}
 
-
 \begin{figure}[t]
 	\centerline{\includegraphics[width=8.4cm]{figures/fig02.pdf}}
 	\caption{Optimized spatial windows for the 4Zo method (analogy of atmospheric circulation on 4 pressure levels). The pressure levels are ordered by increasing pressure and increasing time for the same levels.}
 	\label{fig:spatial_windows_4Zo}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.8cm]{figures/fig03.pdf}}
 	\caption{CRPSS relative improvement of 4Zo compared to the reference methods 2Z (Table \ref{table:params_R1}) for the CP and the VP.}
 	\label{fig:figure_dcrpss_4Zo}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.8cm]{figures/fig04.pdf}}
 	\caption{Changes in the CRPS components of 4Zo relatively to the total CRPS of the reference methods 2Z (Table \ref{table:params_R1}) for the CP and the VP.}
 	\label{fig:figure_dcrps_comp_4Zo}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.4cm]{figures/fig05.pdf}}
 	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 4Zo, calibration period.}
 	\label{fig:crossing_4Zo_calib}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.4cm]{figures/fig06.pdf}}
 	\caption{Same as Figure \ref{fig:crossing_4Zo_calib} but for the validation period.}
 	\label{fig:crossing_4Zo_valid}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.4cm]{figures/fig07.pdf}}
 	\caption{Optimized spatial windows for the 4Zo-2MIo method (analogy of atmospheric circulation on 4 pressure levels and the analogy on the moisture index on 2 pressure levels). The pressure levels are ordered by increasing pressure and increasing time for the same levels.}
 	\label{fig:spatial_windows_4Zo-2MIo}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.8cm]{figures/fig08.pdf}}
 	\caption{CRPSS relative improvement of 4Zo-2MIo compared to the reference methods 2Z-2MI (Table \ref{table:params_R2}) for the CP and the VP.}
 	\label{fig:figure_dcrpss_4Zo-2HIo}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.8cm]{figures/fig09.pdf}}
 	\caption{CRPSS relative improvement of 4Zo-4MIo compared to the reference methods 2Z-2MI (Table \ref{table:params_R2}) for the CP and the VP.}
 	\label{fig:figure_dcrpss_4Zo-4HIo}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.8cm]{figures/fig10.pdf}}
 	\caption{Changes in the CRPS components of 4Zo-2MIo relatively to the total CRPS of the reference methods 2Z-2MI (Table \ref{table:params_R2}) for the CP and the VP.}
 	\label{fig:figure_dcrps_comp_4Zo-2HIo}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.8cm]{figures/fig11.pdf}}
 	\caption{Number of analogues for the different regions and the various methods resulting from the optimization. Method 4Zo is made of a single level of analogy with $N_{1}$ analogues, whereas 4Zo-2MIo has two levels of analogy with respectively $N_{1}$ and $N_{2}$ analogues.}
 	\label{fig:figure_nb_analogues}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.8cm]{figures/fig12.pdf}}
 	\caption{Relationships between the optimal number of analogues for both levels of the 4Zo-2MIo method and the corresponding ones for the unique level of the 4Zo method.}
 	\label{fig:figure_nb_analogues_relationships}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.4cm]{figures/fig13.pdf}}
 	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 4Zo-2MIo, calibration period.}
 	\label{fig:crossing_4Zo-2MIo_calib}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.4cm]{figures/fig14.pdf}}
 	\caption{Same as Figure \ref{fig:crossing_4Zo-2MIo_calib} but for the validation period.}
 	\label{fig:crossing_4Zo-2MIo_valid}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.8cm]{figures/fig15.pdf}}
 	\caption{Optimized weighting for the pressure levels of the 4Zo method.}
 	\label{fig:levels_weights}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=8.8cm]{figures/fig16.pdf}}
 	\caption{Averaged weighting for the pressure levels of the circulation analogy of the three methods.}
 	\label{fig:levels_weights_average}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[t]
 	\centerline{\includegraphics[width=7.5cm]{figures/fig17.pdf}}
 	\caption{Example of the evolution of the performance score of the best individual over 8 independent optimizations.}
 	\label{fig:evolution}
 \end{figure}
+
+\clearpage
+
+%% TABLES
+
+\begin{table}[t]
+	\caption{Parameters of the reference method on the atmospheric circulation (2Z). The first column is the level of analogy (0 for preselection), then comes the meteorological variable and its hour of observation (temporal window). The criteria used for the current level of analogy is then provided, as well as the number of analogues.}
+	\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline
+			Level & Variable & Hour & Criteria & Nb \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+			& Z500 & 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:params_R1}
+\end{table}
+
+\begin{table}[t]
+	\caption{Parameters of the reference method with moisture variables (2Z-2MI). Same conventions as Table \ref{table:params_R1}}
+	\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline 
+			Level & Variable & Hour & Criteria & Nb \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+			& Z500 & 24~h & & \\ 
+			\hline
+			\multirow{2}{*}{2} & TPW * RH850 & 12~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{30} \\
+			& TPW * RH850 & 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:params_R2}
+\end{table}
+
+\begin{table}[t]
+	\caption{Parameters of the 4Zo method (analogy on 4 levels of the atmospheric circulation) optimized for the Chablais subregion. The columns are the following: L = level of analogy, V = meteorological variable, H = hour of observation or temporal window, D = domain or spatial window, W = weighting of the score for the selected pressure levels, C = criteria, N = number of analogues.}
+	\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccccc}
+			\hline L & V & H & D & W & C & N \\ 
+			\hline 
+			0 & \multicolumn{6}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{8}{*}{1} &  \multirow{2}{*}{Z300} & \multirow{2}{*}{12~h} & -2.5 - 15.0 \degree E & \multirow{2}{*}{32\%} & \multirow{8}{*}{S1} & \multirow{8}{*}{28} \\
+			& & & 37.5 - 57.5 \degree N & & & \\ 
+			& \multirow{2}{*}{Z700} & \multirow{2}{*}{24~h} & 2.5 - 10.0 \degree E & \multirow{2}{*}{22\%} & & \\ 
+			& & & 42.5 - 45.0 \degree N & & & \\ 
+			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{6~h} & -5.0 - 15.0 \degree E & \multirow{2}{*}{24\%} & & \\ 
+			& & & 42.5 - 47.5 \degree N & & & \\ 
+			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{30~h} & 2.5 - 15.0 \degree E & \multirow{2}{*}{22\%} & & \\ 
+			& & & 40.0 - 50.0 \degree N & & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:params_GA_4Zo}
+\end{table}
+
+\begin{table}[t]
+	\caption{Pressure levels ($\sim$) automatically selected for the 4Zo method at the different subregions. R represents the reference method (Table \ref{table:params_R1}).}
+	\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccccccc}
+			\hline ID & 300 & 400 & 500 & 600 & 700 & 850 & 925 & 1000 \\ 
+			\hline 
+			1  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
+			2  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
+			3  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
+			4  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
+			5  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			6  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			7  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			8  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			9  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			10 &   &   &   & $\sim$ & $\sim$ &   &   & $\sim \sim$ \\
+			\hline 	
+			R  &   &   & $\sim$ &   &   &   &   & $\sim$ \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:levels_GA_4Zo}
+\end{table}
+
+\begin{table}[t]
+	\caption{CRPSS score (\%) of the three optimized methods (4Zo is the atmospheric circulation analogy detailed in the present section; 4Zo-2MIo and 4Zo-4MIo add a second level of analogy on moisture indexes, as explained in section \ref{sec:optim_moisture}).}
+	\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccccc}
+			\hline 
+			ID & \multicolumn{2}{c}{4Zo} & \multicolumn{2}{c}{4Zo-2MIo} & \multicolumn{2}{c}{4Zo-4MIo} \\ 
+			& CP & VP & CP & VP & CP & VP \\ 
+			\hline 
+			1 & 40.3 & 38.5 & 45.5 & 43.8 & 45.9 & 43.6 \\
+			2 & 37.8 & 34.9 & 42.4 & 40.8 & 42.9 & 41.3 \\
+			3 & 36.6 & 33.9 & 41.4 & 39.0 & 41.8 & 39.5 \\
+			4 & 31.2 & 30.8 & 36.1 & 36.4 & 36.8 & 37.1 \\
+			5 & 34.4 & 36.5 & 38.6 & 41.4 & 39.2 & 41.8 \\
+			6 & 37.0 & 39.9 & 41.0 & 44.5 & 41.9 & 44.6 \\
+			7 & 30.0 & 30.1 & 33.8 & 34.6 & 34.4 & 34.8 \\
+			8 & 37.7 & 40.1 & 40.7 & 43.1 & 41.2 & 43.3 \\
+			9 & 33.1 & 30.0 & 38.4 & 36.6 & 38.7 & 36.3 \\
+			10 & 40.0 & 40.0 & 42.6 & 42.9 & 43.3 & 43.2 \\
+			\hline
+			av. & 35.8 & 35.5 & 40.1 & 40.3 & 40.6 & 40.5 \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores}
+\end{table}
+
+\begin{table}[t]
+	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized 4Zo method.}
+	\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccccc}
+			\hline 
+			ID & \multicolumn{2}{c}{P\(\geq\)1 mm} & \multicolumn{2}{c}{P\(\geq\)0.1\(\cdot\)P10} & \multicolumn{2}{c}{P\(\geq\)0.5\(\cdot\)P10} \\ 
+			& CP & VP & CP & VP & CP & VP \\ 
+			\hline 
+			1 & 10.2 & 9.4 & 8.5 & 7.9 & 17.0 & 14.2 \\ 
+			2 & 9.9 & 3.4 & 10.2 & 7.3 & 19.3 & 13.7 \\ 
+			3 & 13.3 & 10.5 & 13.3 & 10.9 & 19.7 & 9.7 \\ 
+			4 & 11.0 & 7.4 & 12.9 & 10.0 & 23.2 & 23.8 \\ 
+			5 & 8.6 & 4.2 & 10.9 & 6.2 & 25.2 & 23.8 \\ 
+			6 & 10.5 & 5.1 & 11.1 & 7.1 & 21.2 & 41.1 \\ 
+			7 & 24.3 & 12.4 & 33.1 & 26.0 & 71.2 & 104.3 \\ 
+			8 & 19.0 & 12.7 & 26.2 & 19.2 & 39.4 & 34.9 \\ 
+			9 & 12.4 & 6.8 & 13.8 & 9.9 & 24.9 & 48.1 \\ 
+			10 & 13.6 & 6.8 & 14.4 & 6.9 & 29.9 & 31.5 \\ 
+			\hline 
+			av. & 13.3 & 7.9 & 15.4 & 11.1 & 29.1 & 34.5 \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores_thresholds_4Zo}
+\end{table}
+
+\begin{table}[t]
+	\caption{Parameters of the 4Zo-2MIo method (atmospheric circulation on 4 levels and moisture index on 2 levels), optimized for the Chablais subregion. Same conventions as Table \ref{table:params_GA_4Zo}.}
+	\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccccc}
+			\hline L & V & H & D & W & C & N \\ 
+			\hline 
+			0 & \multicolumn{6}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{8}{*}{1} &  \multirow{2}{*}{Z300} & \multirow{2}{*}{12~h} & 0.0 - 15.0 \degree E & \multirow{2}{*}{23\%} & \multirow{8}{*}{S1} & \multirow{8}{*}{74} \\
+			& & & 42.5 - 55.0 \degree N & & & \\ 
+			& \multirow{2}{*}{Z500} & \multirow{2}{*}{30~h} & 0.0 - 10.0 \degree E & \multirow{2}{*}{25\%} & & \\ 
+			& & & 40.0 - 45.0 \degree N & & & \\ 
+			& \multirow{2}{*}{Z850} & \multirow{2}{*}{12~h} & 0.0 - 10.0 \degree E & \multirow{2}{*}{26\%} & & \\ 
+			& & & 42.5 - 47.5 \degree N & & & \\ 
+			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{30~h} & 0.0 - 20.0 \degree E & \multirow{2}{*}{26\%} & & \\ 
+			& & & 40.0 - 47.5 \degree N & & & \\ 
+			\hline 
+			\multirow{4}{*}{2} & TPW & \multirow{2}{*}{12~h} & 5.0 - 10.0 \degree E & \multirow{2}{*}{57\%} & \multirow{4}{*}{RMSE} & \multirow{4}{*}{25} \\
+			& *RH700 & & 45.0 - 47.5 \degree N & & & \\ 
+			& TPW & \multirow{2}{*}{24~h} & 5.0 - 10.0 \degree E & \multirow{2}{*}{43\%} & & \\ 
+			& *RH700 & & 45.0 - 47.5 \degree N & & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:params_GA_4Zo_2MIo}
+\end{table}
+
+\begin{table}[t]
+	\caption{Atmospheric levels automatically selected for the analogy of the atmospheric circulation ($\sim$) and the analogy of moisture ($\bullet$) of the 4Zo-2MIo method, at the different subregions.  R represents the reference method (Table \ref{table:params_R2})}
+	\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccccccc}
+			\hline ID & 300 & 400 & 500 & 600 & 700 & 850 & 925 & 1000 \\ 
+			\hline 
+			1  & $\sim$ &   & $\sim$ &   & $\bullet \bullet$  & $\sim$ &   & $\sim$ \\
+			2  & $\sim$ &   &   &   & $\sim \bullet \bullet$ & $\sim$ &   & $\sim$ \\
+			3  & $\sim$ &   &   &   & $\sim \bullet \bullet$ & $\sim$ & $\sim$ &   \\
+			4  &   &   & $\sim$ & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
+			5  &   & $\sim$ &   &   & $\sim \bullet \bullet$ &   & $\sim \sim$ &   \\
+			6  &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
+			7  &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
+			8  &   &   & $\sim$ & $\bullet$ & $\sim \bullet$ &   & $\sim \sim$ &   \\
+			9  &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ & $\sim$ &   \\
+			10 &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
+			\hline 
+			R &   &   & $\sim$ &   &   & $\bullet \bullet$ &   & $\sim$ \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:levels_GA_4Zo_2MIo}
+\end{table}
+
+\begin{table}[t]
+	\caption{Improvement (\%) of the CRPSS for different precipitations thresholds for the optimized 4Zo-2MIo method.}
+	\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccccc}
+			\hline 
+			ID & \multicolumn{2}{c}{P\(\geq\)1 mm} & \multicolumn{2}{c}{P\(\geq\)0.1\(\cdot\)P10} & \multicolumn{2}{c}{P\(\geq\)0.5\(\cdot\)P10} \\  
+			& CP & VP & CP & VP & CP & VP \\ 
+			\hline 
+			1 & 12.6 & 9.3 & 12.4 & 9.7 & 15.8 & 11.0 \\
+			2 & 10.4 & 7.7 & 11.2 & 10.5 & 18.9 & 16.6 \\ 
+			3 & 14.5 & 11.6 & 14.1 & 11.4 & 18.7 & 14.6 \\ 
+			4 & 11.4 & 9.4 & 11.5 & 11.6 & 14.9 & 22.7 \\ 
+			5 & 11.8 & 8.0 & 12.2 & 8.9 & 12.0 & 12.8 \\ 
+			6 & 11.3 & 7.1 & 11.2 & 8.0 & 15.3 & 29.1 \\ 
+			7 & 20.5 & 15.5 & 25.2 & 24.0 & 43.0 & 79.5 \\
+			8 & 19.3 & 15.7 & 23.1 & 18.6 & 25.2 & 31.7 \\ 
+			9 & 17.0 & 15.4 & 17.4 & 16.5 & 23.7 & 39.4 \\ 
+			10 & 12.9 & 9.6 & 13.8 & 11.1 & 28.5 & 32.1 \\ 
+			\hline 
+			av. & 14.2 & 10.9 & 15.2 & 13.0 & 21.6 & 28.9 \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:scores_thresholds_4Zo-2MIo}
+\end{table}
+
 
 
 \end{document}
