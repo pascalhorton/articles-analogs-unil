@@ -63,11 +63,11 @@
 \address[lthe]{Universit\'{e} de Grenoble-Alpes, LTHE, Grenoble, France}
 
 \begin{abstract}
-The analogue method is often used to forecast precipitation based on predictors variables provided by global models. The method samples a selection of days in the archives that are similar to the target day to predict, and consider the set of their corresponding observed precipitation (the predictand) as the conditional distribution for the target day. The relationship between predictors and predictands relies on some parameters that characterize how and where the similitude between two atmospheric situations is defined.
+The Analogue Method aims at predicting precipitation based on predictors variables provided by global models. The method samples a selection of days in the archives that are similar to the target day to predict, and consider the set of their corresponding observed precipitation (the predictand) as the conditional distribution for the target day. The relationship between predictors and predictands relies on some parameters that characterize how and where the similitude between two atmospheric situations is defined.
 
-This relationship is usually established by a semi-automatic sequential procedure that has strong limitations. A new global optimization approach relying on Genetic Algorithms can optimize all parameters jointly and automatically, which is a breakthrough in the way the analogue method was calibrated until now. It allows taking into account parameters inter-dependencies, adding new degrees of freedom, and choosing objectively some parameters that were manually selected beforehand (such as the pressure levels and the temporal windows of the predictor variables).
+This relationship is usually established by a semi-automatic sequential procedure that has strong limitations. A new global optimization approach relying on Genetic Algorithms can optimize all parameters jointly and automatically, which is a breakthrough in the way the Analogue Method was calibrated until now. It allows taking into account parameters inter-dependencies, and selecting objectively some parameters that were manually selected beforehand (such as the pressure levels and the temporal windows of the predictor variables).
 
-In this work, the global optimization is applied to the Rh\^{o}ne catchment in the Swiss Alps in order to show its interest and the relevance of the resulting parameters. Indeed, not only the performance increases, but the parameters are obtained automatically and objectively, which reduces efforts invested in exploration attempts when adapting the method to a new region or for a new predictand. Moreover, the approach allows for new degrees of freedom, such as a weighting between the pressure levels and non overlapping spatial windows.
+In this work, the global optimization is applied to the Rh\^{o}ne catchment, in the Swiss Alps. The performance scores are significantly increased compared to a reference method, and this even to a greater extent for days with high precipitation totals. The resulting parameters were found to be relevant and coherent between the different subregions of the catchment. Moreover, they are obtained automatically and objectively, which reduces efforts invested in exploration attempts when adapting the method to a new region or for a new predictand. In addition, the approach allows for new degrees of freedom, such as a weighting between the pressure levels, and non overlapping spatial windows.
 \end{abstract}
 
 \begin{keyword}
@@ -97,7 +97,7 @@ With the perspective to overcome these limitations, a global optimization by Gen
 A short overview of AMs is presented in section \ref{sec:analog_method}, as well as a summary of Genetic Algorithms in section \ref{sec:gas}. Section \ref{sec:case_study} describes the case study area. The results are first detailed for the optimization of the analogy on the atmospheric circulation only (section \ref{sec:optim_circul}), before being extended to a method adding a second level of analogy on moisture variables (section \ref{sec:optim_moisture}). General discussions (section \ref{sec:discussion}) and conclusions (section \ref{sec:conclusions}) follow.
 
 
-\section{The analogue method}
+\section{The Analogue Method}
 \label{sec:analog_method}
 
 \subsection{References}
@@ -149,7 +149,7 @@ CRPSS = \frac{CRPS-CRPS_{r}}{CRPS_{p}-CRPS_{r}} = 1-\frac{CRPS}{CRPS_{r}}
 where $CRPS_{r}$ is the CRPS value for the reference and $CRPS_{p}$ would be the one for a perfect prediction (which implies $CRPS_{p}~=~0$). A better prediction is characterized by an increase in CRPSS.
 
 
-\section{Genetic algorithms}
+\section{Genetic Algorithms}
 \label{sec:gas}
 
 Genetic Algorithms (GAs) were developed by \citet{Holland1992b} and \citet{Goldberg1989}. They are part of Evolutionary Algorithms \citep{Back1993b, Schwefel1993}, which get inspiration from some mechanisms of biological evolution, such as reproduction, genetic mutations, chromosomal crossovers, and natural selection. GAs seek the global optimum on a complex surface, theoretically without restriction. Practically, GAs allow rapidly approaching satisfactory solutions, but they do not provide the optimum solution for sure \citep{Zitzler2004a}. It is indeed mainly a matter of time. When the optimizer gets closer to the global optimum, any new improvement takes more time to appear (see for example Figure \ref{fig:evolution}), and the final adjustment of the parameters is very time consuming \citep{Back1993a}. For problems that require a significant amount of time in order to evaluate the objective function, as in the case of AMs, the number of generations has to be limited in order to get reasonable processing time. Thus, different acceptable solutions can result from one or more optimizations \citep{Holland1992b}. This is a strength and a weakness of GAs: they are very good at exploring complex parameter spaces in order to identify the most promising areas, but they will not necessarily always find the best solution with the optimal values of all parameters \citep{Holland1992b}.
