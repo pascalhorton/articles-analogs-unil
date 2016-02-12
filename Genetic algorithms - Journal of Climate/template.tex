@@ -67,13 +67,13 @@
 % and Author Two\thanks{Current affiliation: American Meteorological Society, 
     % 45 Beacon St., Boston, MA 02108.}}
 
-\authors{Pascal Horton\correspondingauthor{Terranum, Rue de l'industrie 35 bis, 1030 Bussigny, Switzerland.}}
+\authors{Pascal Horton\correspondingauthor{Pascal Horton, Terranum, Rue de l'industrie 35 bis, 1030 Bussigny, Switzerland.}\thanks{Current affiliation: Terranum, Bussigny, Switzerland}}
 
 %% Follow this form:
     % \affiliation{American Meteorological Society, 
     % Boston, Massachusetts.}
 
-\affiliation{University of Lausanne and Terranum, Lausanne, Switzerland}
+\affiliation{University of Lausanne, Lausanne, Switzerland}
 
 %% Follow this form:
     %\email{latex@ametsoc.org}
@@ -193,7 +193,7 @@ A key element of the parametrization of GAs is finding the right balance between
 
 The GAs optimize a population of $N$ individuals (parameter sets). Each individual contains a chromosome (set of parameters of the AM in this case). Genes are the individual parameters constituting the chromosome. They can be either categorical (e.g. geopotential, or temperature), discrete (e.g. number of analogues to select, from 1 to 40), or continuous. The floating-point representation \citep[instead of the canonical binary, see][]{Goldberg1989, Goldberg1990a, Holland1992b} of the genes was considered, as it was found more suited in multiple applications \citep{Michalewicz1996, Herrera1998a, Haupt2004, Back1996b, Gaffney2010a}. 
 
-There are numerous implementation variants of GAs, often optimal for a given problem \citep{Hart1991a, Schraudolph1992a}. The divergences are in the operators implementation, through significantly different algorithms, which has an important effect on the results \citep{Gaffney2010a}. Here, operators are defined as the mechanisms that modify the values of the genes to try bringing individuals (or chromosomes) closer to an optimum of the fitness function. The structure of the method (Figure \ref{fig:structure_gas}) resulting from the work of \citet{Holland1992b} is common to most applications \citep{Back1993b}, and consists in the following steps:
+There are numerous implementation variants of GAs, often optimal for a given problem \citep{Hart1991a, Schraudolph1992a}. The divergences are in the operators implementation, through significantly different algorithms, which has an important effect on the results \citep{Gaffney2010a}. Here, operators are defined as the mechanisms that modify the values of the genes to try bringing individuals (or chromosomes) closer to an optimum of the fitness function. The structure of the method (Fig. \ref{fig:structure_gas}) resulting from the work of \citet{Holland1992b} is common to most applications \citep{Back1993b}, and consists in the following steps:
 
 \begin{enumerate}
 	\item A population of $N$ individuals (parameter sets of the AM) is randomly generated, which constitutes the initial population.
@@ -458,7 +458,7 @@ In order to evaluate a combination of operators/options, 10 optimizations per pa
 
 \subsection{Success of the approach}
 
-After a first overview of the results, GAs have quicky proved successful at optimizing the AM. The performance score of the sequential approach has been quickly exceeded without adding any new parameter to the method (Figure \ref{fig:gas_evolution_good}). Even GAs parameterizations that will be considered later as inadequate (Figure \ref{fig:gas_evolution_bad}) did significantly better that the sequential approach. The amplitude of the improvement is not the main outcome here. The most important point is that GAs proved successful at optimizing AMs automatically, globally, and objectively.
+After a first overview of the results, GAs have quicky proved successful at optimizing the AM. The performance score of the sequential approach has been quickly exceeded without adding any new parameter to the method (Fig. \ref{fig:gas_evolution_good}). Even GAs parameterizations that will be considered later as inadequate (Fig. \ref{fig:gas_evolution_bad}) did significantly better that the sequential approach. The amplitude of the improvement is not the main outcome here. The most important point is that GAs proved successful at optimizing AMs automatically, globally, and objectively.
 
 
 \subsection{Results of the comparison}
@@ -471,9 +471,9 @@ From the very beginning of the assessments, the importance of the mutation opera
 
 Every combination of 6 options for the couples selection (Table \ref{tab:assessed_couples_selection_operators}) and 21 for the chromosome crossover operators (Table \ref{tab:assessed_crossover_operators}) were evaluated, along with variants of the other operators. This resulted in 1,008 combinations, requiring 10,080 optimizations.
 
-The performance of the couples selection operator are relatively close (Figure \ref{fig:operator_selectcoupl_score}). Overall, the tournament selection with 3~candidates is slightly superior to others, along with the roulette wheel weighting. This last one is however a bit less effective in terms of convergence and number of evaluations (not shown). The couples selection operator has not a significant role in this application. 
+The performance of the couples selection operator are relatively close (Fig. \ref{fig:operator_selectcoupl_score}). Overall, the tournament selection with 3~candidates is slightly superior to others, along with the roulette wheel weighting. This last one is however a bit less effective in terms of convergence and number of evaluations (not shown). The couples selection operator has not a significant role in this application. 
 
-Analysis of crossover operators (Figure \ref{fig:operator_crossover_score}) reveal some slightly superior options, some inappropriate, and many average. Binary-like crossover (especially with 2 points of intersection, whether $\beta$ is shared or not) are significantly better than the others, especially in terms of convergence (not shown). Others operators can also be considered usable.
+Analysis of crossover operators (Fig. \ref{fig:operator_crossover_score}) reveal some slightly superior options, some inappropriate, and many average. Binary-like crossover (especially with 2 points of intersection, whether $\beta$ is shared or not) are significantly better than the others, especially in terms of convergence (not shown). Others operators can also be considered usable.
 	
 
 \subsubsection{Mutation operator}
@@ -481,15 +481,15 @@ Analysis of crossover operators (Figure \ref{fig:operator_crossover_score}) reve
 
 Having identified the leading role of the mutation operator, the next sensitivity analysis focused on it. Each of the 10 different implementations (see section \ref{sec:gas:mutation}) was tested, with different parameters for those who require some (Table \ref{tab:assessed_mutation_operators}), bringing the number of variations up to 109. Some optimizations without any mutation were also performed as a reference. Along with variants of the other operators \citep[see][for the details]{Horton2012a}, this resulted in 660 combinations (so 6,600 optimizations).
 
-Figure \ref{fig:operator_mutation_score} show the results of this analysis and illustrates the important role of the mutation on the performance of the optimizations. Those without mutation (last box on the Figure) are inferior to most mutation operators, and the scale of the influence of this operator is significantly more important than those for the other options. The details of the analysis \citep[see][]{Horton2012a} show that the other reproduction operators seem of secondary importance. This observation is in line with the work of \citet{Back1996a}, who argues for the importance of mutation over reproduction, as well as other authors (see section \ref{sec:gas}.\ref{sec:gas:mutation}).
+Figure \ref{fig:operator_mutation_score} show the results of this analysis and illustrates the important role of the mutation on the performance of the optimizations. Those without mutation (last box on the figure) are inferior to most mutation operators, and the scale of the influence of this operator is significantly more important than those for the other options. The details of the analysis \citep[see][]{Horton2012a} show that the other reproduction operators seem of secondary importance. This observation is in line with the work of \citet{Back1996a}, who argues for the importance of mutation over reproduction, as well as other authors (see section \ref{sec:gas}.\ref{sec:gas:mutation}).
 
 The mutation operators based on a variable normal or variable uniform laws work very poorly and are difficult to configure. Many operators present more or less the same performance scores and require a variable amount of assessments. The convergence analysis \citep[see][]{Horton2012a} allows to highlight three best operators: non-uniform mutation, chromosome of adaptive search radius, and multi-scale mutation. Thus, different optimizations were further performed using variants of these 3 operators (Table \ref{tab:assessed_mutation_operators_bis}).
 
-The first analysis was the optimization of the precipitation forecasting over a subcatchment (Binn-Simplon region) in the Swiss Alps (Figure \ref{fig:operator_mutation_score_atmlevel}). The optimizer could choose the 2 pressure levels of the atmospheric circulation analogy (method with a single level of analogy). The resulting performance score \citep[CRPSS = skill score of the CRPS, see][]{Brown1974} is obviously superior to the one obtained by the sequential calibration (red line on Figure \ref{fig:operator_mutation_score_atmlevel}). For most options, it is also slightly better than the results from the optimization without selection of the pressure levels (blue line). A clear breakthrough of the performances was not expected, as the former selection of pressure levels results already from intensive comparative work \citep{Bontron2004}. This application however demonstrates that, when correctly parametrized, GAs can automatically and successfully choose the pressure levels. However, some less relevant optimizations do not match the previous results. Through different applications, the automatic selection of the pressure level was shown to significantly increase the difficulty for GAs to converge to a unique solution, ideally the global optimum. A difficulty is that the pressure levels are considered within the optimization without continuity between values, and thus the approaches relying on distance in the parameters space, such as the search radius, cannot fully exploit the properties that make them efficient. However, even though the results show a certain variability, most of them present very good performance scores, despite different parameters of the AM.
+The first analysis was the optimization of the precipitation forecasting over a subcatchment (Binn-Simplon region) in the Swiss Alps (Fig. \ref{fig:operator_mutation_score_atmlevel}). The optimizer could choose the 2 pressure levels of the atmospheric circulation analogy (method with a single level of analogy). The resulting performance score \citep[CRPSS = skill score of the CRPS, see][]{Brown1974} is obviously superior to the one obtained by the sequential calibration (red line on Fig. \ref{fig:operator_mutation_score_atmlevel}). For most options, it is also slightly better than the results from the optimization without selection of the pressure levels (blue line). A clear breakthrough of the performances was not expected, as the former selection of pressure levels results already from intensive comparative work \citep{Bontron2004}. This application however demonstrates that, when correctly parametrized, GAs can automatically and successfully choose the pressure levels. However, some less relevant optimizations do not match the previous results. Through different applications, the automatic selection of the pressure level was shown to significantly increase the difficulty for GAs to converge to a unique solution, ideally the global optimum. A difficulty is that the pressure levels are considered within the optimization without continuity between values, and thus the approaches relying on distance in the parameters space, such as the search radius, cannot fully exploit the properties that make them efficient. However, even though the results show a certain variability, most of them present very good performance scores, despite different parameters of the AM.
 
-Then, the same optimization was performed, but for another region, sensitive to other meteorological influences (Figure \ref{fig:operator_mutation_score_rhoneamont}), in order to assess eventual dependencies of the operator with the predictand. Even though differences can be observed with Figure \ref{fig:operator_mutation_score_atmlevel}, it is globally the same options that perform better.
+Then, the same optimization was performed, but for another region, sensitive to other meteorological influences (Fig. \ref{fig:operator_mutation_score_rhoneamont}), in order to assess eventual dependencies of the operator with the predictand. Even though differences can be observed with Fig. \ref{fig:operator_mutation_score_atmlevel}, it is globally the same options that perform better.
 
-Next, a second level of analogy was proposed (Figure \ref{fig:operator_mutation_score_r2}) based on moisture variables \citep[see][]{Bontron2004, Horton2016}. GAs had to optimize both levels of analogy simultaneously. Once again, despite the difficulty to do so, the results were better than the sequential calibration (red line on Figure \ref{fig:operator_mutation_score_r2}). And finally, a preselection on air temperature was added instead of the fixed calendar window, as proposed by \cite{BenDaoud2015}. The results show generally higher scores (Figure \ref{fig:operator_mutation_score_r4}), demonstrating the success of the optimizer to take advantage of this new degree of freedom, and its capacity to handle optimization of 3 analogy levels jointly. Again, the most relevant options are generally the same.
+Next, a second level of analogy was proposed (Fig. \ref{fig:operator_mutation_score_r2}) based on moisture variables \citep[see][]{Bontron2004, Horton2016}. GAs had to optimize both levels of analogy simultaneously. Once again, despite the difficulty to do so, the results were better than the sequential calibration (red line on Fig. \ref{fig:operator_mutation_score_r2}). And finally, a preselection on air temperature was added instead of the fixed calendar window, as proposed by \cite{BenDaoud2015}. The results show generally higher scores (Fig. \ref{fig:operator_mutation_score_r4}), demonstrating the success of the optimizer to take advantage of this new degree of freedom, and its capacity to handle optimization of 3 analogy levels jointly. Again, the most relevant options are generally the same.
 
 After analysis of the most relevant mutation operators, the following advice can be raised (detailed parametrization are provided in section \ref{sec:recommendations}):
 
@@ -508,9 +508,9 @@ In this application, the mutation operator has a leading effect and should be ch
 
 \subsubsection{Other options}
 
-The analysis of the natural selection operator (Figure \ref{fig:operator_selectnat_score}) reveals a slight preference for the ratio-elitism compared to the tournament selection, but not so significant. This operator, or at least the two assessed versions, do not appear to significantly influence the optimization performances.
+The analysis of the natural selection operator (Fig. \ref{fig:operator_selectnat_score}) reveals a slight preference for the ratio-elitism compared to the tournament selection, but not so significant. This operator, or at least the two assessed versions, do not appear to significantly influence the optimization performances.
 
-The size of the population ($N$), i.e. the number of sets of AM parameters considered, has an effect on the performance of the optimization (Figure \ref{fig:option_taillepop_score}). A bigger population leads to better results, but also to significantly longer optimizations. Indeed, the required number of evaluation, and thus the required time, is approximately proportional to the population size. The optimal size seems to depend on the complexity of the AM to optimize: a more complex AM (ie. with more degrees of freedom) requires a bigger population size. A rule of thumb based on a limited number of case studies (not shown here) is provided hereafter:
+The size of the population ($N$), i.e. the number of sets of AM parameters considered, has an effect on the performance of the optimization (Fig. \ref{fig:option_taillepop_score}). A bigger population leads to better results, but also to significantly longer optimizations. Indeed, the required number of evaluation, and thus the required time, is approximately proportional to the population size. The optimal size seems to depend on the complexity of the AM to optimize: a more complex AM (ie. with more degrees of freedom) requires a bigger population size. A rule of thumb based on a limited number of case studies (not shown here) is provided hereafter:
 
 \begin{itemize}
 	\item $N\approx100$ for very simple implementations of the AM (1 level of analogy with 2 pressure levels),
@@ -518,7 +518,7 @@ The size of the population ($N$), i.e. the number of sets of AM parameters consi
 	\item $N\approx500$ for significantly more complex AMs (2-3 levels of analogy with 4 pressure levels for the atmospheric circulation, and 2 to 4 levels for the moisture analogy).
 \end{itemize}
 
-The influence of the size of the IG (proportion of the total population) selected for mating was also assessed (Figure \ref{fig:option_popratio_score}). It does not appear that this parameter is critical to the quality of the optimizations, provided it is not too big. A value of 50~\% seems a wise choice.
+The influence of the size of the IG (proportion of the total population) selected for mating was also assessed (Fig. \ref{fig:option_popratio_score}). It does not appear that this parameter is critical to the quality of the optimizations, provided it is not too big. A value of 50~\% seems a wise choice.
 
 
 \section{Recommended parametrization of GAs}
@@ -567,9 +567,9 @@ The global optimization approach allows easily adapting the AM to new regions by
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \acknowledgments
-Thanks to Hamid Hussain-Khan of the University of Lausanne for his help and availability, and for the intensive use of the cluster he is in charge of. Thanks to Renaud Marty for his fruitful collaboration over the years. Thanks to Dominique B\'{e}rod for his support and to Michel Bierlaire for his advices on optimization methods.
+Thanks to Hamid Hussain-Khan of the University of Lausanne for his help and availability, and for the intensive use of the cluster he is in charge of. Thanks to Dominique B\'{e}rod for his support and to Michel Bierlaire for his advices on optimization methods.
 
-Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton and the Water, Land and Sanitation Service of the Vaud Canton who financed the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me des Rivi\`{e}res Valaisannes et de leurs Effets) project which started this research. The fruitful collaboration with the Laboratoire d'Etude des Transferts en Hydrologie et Environnement of the Grenoble Institute of Technology (G-INP) was made possible thanks to the Herbette Foundation. NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. Precipitation time series provided by MeteoSwiss. 
+Thanks to the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton, the Water, Land and Sanitation Service of the Vaud Canton, and the Swiss Federal Office for Environment (FOEV) who financed the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me des Rivi\`{e}res Valaisannes et de leurs Effets) project which started this research. The fruitful collaboration with the Laboratoire d'Etude des Transferts en Hydrologie et Environnement of the Grenoble Institute of Technology (G-INP) was made possible thanks to the Herbette Foundation. NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. Precipitation time series provided by MeteoSwiss. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -748,13 +748,13 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 	\begin{center}
 		\noindent\includegraphics[width=19pc,angle=0]{figures/gas_evolution_bad.pdf}\\
 	\end{center}
-	\caption{Same as Figure \ref{fig:gas_evolution_good}, but for a GAs parametrization considered as less relevant.}
+	\caption{Same as Fig. \ref{fig:gas_evolution_good}, but for a GAs parametrization considered as less relevant.}
 	\label{fig:gas_evolution_bad}
 \end{figure}
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=7cm,angle=0]{figures/operator_selectcoupl_score.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{figures/operator_selectcoupl_score.pdf}\\
 	\end{center}
 	\caption{Influence of the couples selection operators (Table \ref{tab:assessed_couples_selection_operators}) on the optimization performance. The box extends from the lower to upper quartile values of the data, with a line at the median. The whiskers extend from the box to 1.5 times the interquartile range. Flier points are those past the end of the whiskers. The star represents the median. The gray box highlights the best options.}
 	\label{fig:operator_selectcoupl_score}
@@ -762,73 +762,73 @@ Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water c
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=16cm,angle=0]{figures/operator_crossover_score.pdf}\\
+		\noindent\includegraphics[width=39pc,angle=0]{figures/operator_crossover_score.pdf}\\
 	\end{center}
-	\caption{Influence of the chromosome crossover operators (Table \ref{tab:assessed_crossover_operators}) on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the chromosome crossover operators (Table \ref{tab:assessed_crossover_operators}) on the optimization performance. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_crossover_score}
 \end{figure*}
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=7cm,angle=0]{figures/operator_mutation_score.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{figures/operator_mutation_score.pdf}\\
 	\end{center}
-	\caption{Influence of the mutation operators (Table \ref{tab:assessed_mutation_operators}) on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the mutation operators (Table \ref{tab:assessed_mutation_operators}) on the optimization performance. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score}
 \end{figure}
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=14cm,angle=0]{figures/operator_mutation_score_atmlevel.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{figures/operator_mutation_score_atmlevel.pdf}\\
 	\end{center}
-	\caption{Influence of the mutation operators (Table \ref{tab:assessed_mutation_operators_bis}) on the optimization performance, leaving the optimizer choose the pressure level of the atmospheric circulation analogy (single level of analogy). The predictand is precipitation over a subcatchment in the Swiss Alps (Binn-Simplon region). The red line represents the score of the sequential calibration and the blue line, the score of the optimization without automatic selection of the pressure levels. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the mutation operators (Table \ref{tab:assessed_mutation_operators_bis}) on the optimization performance, leaving the optimizer choose the pressure level of the atmospheric circulation analogy (single level of analogy). The predictand is precipitation over a subcatchment in the Swiss Alps (Binn-Simplon region). The red line represents the score of the sequential calibration and the blue line, the score of the optimization without automatic selection of the pressure levels. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score_atmlevel}
 \end{figure*}
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=14cm,angle=0]{figures/operator_mutation_score_rhoneamont.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{figures/operator_mutation_score_rhoneamont.pdf}\\
 	\end{center}
-	\caption{Same as Figure \ref{fig:operator_mutation_score_atmlevel}, but for another region in the Swiss Alps (Bottom Rhone valley), with different atmospheric influences.}
+	\caption{Same as Fig. \ref{fig:operator_mutation_score_atmlevel}, but for another region in the Swiss Alps (Bottom Rhone valley), with different atmospheric influences.}
 	\label{fig:operator_mutation_score_rhoneamont}
 \end{figure*}
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=14cm,angle=0]{figures/operator_mutation_score_r2.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{figures/operator_mutation_score_r2.pdf}\\
 	\end{center}
-	\caption{Same as Figure \ref{fig:operator_mutation_score_atmlevel}, but with a second level of analogy on moisture variables.}
+	\caption{Same as Fig. \ref{fig:operator_mutation_score_atmlevel}, but with a second level of analogy on moisture variables.}
 	\label{fig:operator_mutation_score_r2}
 \end{figure*}
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=14cm,angle=0]{figures/operator_mutation_score_r4.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{figures/operator_mutation_score_r4.pdf}\\
 	\end{center}
-	\caption{Same as Figure \ref{fig:operator_mutation_score_r2}, but with a preselection on air temperature rather than a fixed calendar window.}
+	\caption{Same as Fig. \ref{fig:operator_mutation_score_r2}, but with a preselection on air temperature rather than a fixed calendar window.}
 	\label{fig:operator_mutation_score_r4}
 \end{figure*}
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=4cm,angle=0]{figures/operator_selectnat_score.pdf}\\
+		\noindent\includegraphics[width=11pc,angle=0]{figures/operator_selectnat_score.pdf}\\
 	\end{center}
-	\caption{Influence of the natural selection operators on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the natural selection operators on the optimization performance. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_selectnat_score}
 \end{figure}
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=4cm,angle=0]{figures/option_taillepop_score.pdf}\\
+		\noindent\includegraphics[width=11pc,angle=0]{figures/option_taillepop_score.pdf}\\
 	\end{center}
-	\caption{Influence of the population size on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the population size on the optimization performance. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:option_taillepop_score}
 \end{figure}
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=4cm,angle=0]{figures/option_popratio_score.pdf}\\
+		\noindent\includegraphics[width=11pc,angle=0]{figures/option_popratio_score.pdf}\\
 	\end{center}
-	\caption{Influence of the intermediate population (IG) ratio on the optimization performance. Same conventions as Figure \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the intermediate population (IG) ratio on the optimization performance. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:option_popratio_score}
 \end{figure}
 
