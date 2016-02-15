@@ -107,8 +107,8 @@
 % and identify it as the capsule. Example: This is the end of the abstract. (Capsule Summary) This is the capsule summary. 
 
 \abstract{The Analogue Method is based on a statistical relationship between synoptic atmospheric variables (predictors) and local weather (predictand), which we aim at forecasting. This relationship is expressed through many parameters that are usually calibrated by means of a semi-automatic sequential procedure. This calibration approach has strong limitations: it is made of successive steps and thus cannot handle parameters dependencies, and it cannot automatically optimize some parameters, such as the selection of the pressure levels and the temporal windows on which the predictors are compared.
-In order to surpass these limitations, a global optimization technique was assessed, namely genetic algorithms, which can optimize jointly all parameters of the method and get closer to a global optimum by taking into account the parameters dependencies. Moreover, it can choose objectively parameters that were previously manually assessed, and can take into account new degrees of freedom that were unthinkable before.
-These kind of optimization techniques need however to be tailored to the problem to solve. Multiple combinations of algorithms had to be assessed, and even new operators were developed, such as the \textit{chromosome of adaptive search radius} which was found to be very robust, in order to make recommendations for the use of Genetic Algorithms to optimize the analogue method. These recommendations are the main outcome of this work. It opens new perspective for the improvement of the analogue method, and its application to new regions or to new predictands.
+In order to surpass these limitations, a global optimization technique was assessed, namely Genetic Algorithms, which can optimize jointly all parameters of the method and get closer to a global optimum by taking into account the parameters dependencies. Moreover, it can choose objectively parameters that were previously manually assessed, and can take into account new degrees of freedom that were unthinkable before.
+These kind of optimization techniques need however to be tailored to the problem to solve. Multiple combinations of algorithms had to be assessed, and even new operators were developed, such as the \textit{chromosome of adaptive search radius} which was found to be very robust, in order to make recommendations for the use of Genetic Algorithms to optimize the Analogue Method. These recommendations are the main outcome of this work. It opens new perspective for the improvement of the Analogue Method, and its application to new regions or to new predictands.
 }
 
 \begin{document}
@@ -155,15 +155,15 @@ The Analogue Method (AM) relies on the hypothesis that similar situations in ter
 
 Even though the method is rather simple compared to numerical weather prediction (NWP) models, it contains a certain number of parameters one needs to determine, such as the choice of the predictor variable, its pressure level and temporal window to consider, the spatial domain to use for the comparison, as well as the analogy criteria itself, and finally the number of analogue situations to keep at each subsampling level. 
 
-The AM needs to be adapted to every new region considered, because the leading meteorological influences may be specific per region. Even the selection of the pressure levels and the temporal windows should be reconsidered, when not the predictor variable itself. For example, \citet{BenDaoud2010} found the vertical velocity relevant for the great plains in France, when \citet{Horton2012a} found it useless in an Alpine environment, because the vertical motion, which is mainly controlled by orographic effects, was already well related to the atmospheric circulation itself.
+The AM needs to be adapted to every new region considered, because the leading meteorological influences may be location specific. Even the selection of the pressure levels and the temporal windows should be reconsidered, when not the predictor variable itself. 
 
-Up to now, the optimization of the method has been undertaken by semi-automatic sequential calibration procedures \citep[see][for its definition]{Bontron2004, Horton2016}. However, the selection of predictor variables, pressure levels and temporal windows had still to be made manually before optimizing the spatial windows and the number of analogues. Testing multiple combinations of these is very combinatorial and becomes quickly cumbersome, especially when considering multiple predictors within the same level of analogy. Thus, optimizing the method with the sequential technique is laborious, as many combinations of predictors (variables, pressure levels, temporal windows) have to be assessed. Moreover, proceeding to the optimization sequentially ignores potential dependencies between the parameters of the method, may they be within a single level of analogy or between them. However, such dependencies between them cannot be excluded, which could lead to another parametrization if calibrated together. However, simultaneous calibration of all parameters has never been undertaken so far. Thus, due to the sequential approach, the risk of ending in a local optimum is high and can not be avoided. Indeed, during the AM calibration it has been found that the resulting parameters may vary with initial choices (such as the number of analogues).
+Up to now, the optimization of the method has been undertaken by semi-automatic sequential calibration procedures \citep[see][for its definition]{Bontron2004, Horton2016}. However, the selection of predictor variables, pressure levels and temporal windows had still to be made manually before optimizing the spatial windows and the number of analogues. Testing multiple combinations of these is very combinatorial and becomes quickly cumbersome, especially when considering multiple predictors within the same level of analogy. Thus, optimizing the method with the sequential technique is laborious, as many combinations of predictors (variables, pressure levels, temporal windows) have to be assessed. Moreover, proceeding to the optimization sequentially ignores potential dependencies between the parameters of the method, may they be within a single level of analogy or between them, which could lead to another parametrization if the parameters were calibrated together. Simultaneous calibration of all parameters has never been undertaken so far. Thus, due to the sequential approach, the risk of ending in a local optimum is high and can not be avoided. Indeed, during the AM calibration it has been found that the resulting parameters may vary with initial choices (such as the number of analogues).
 
 When creating the sequential calibration procedure, \citet{Bontron2004} was aware of the problem of dependencies between parameters and wrote: ''\textit{We perceive here the combinatorial aspect of our problem: variables and spatial windows are not independent. We will present our results by first searching the best variable [note: e.g. selection of the pressure level and the temporal window for the geopotential height] on a chosen spatial window, and next, the best window for the chosen variable. However, even by repeating the process, are we sure to obtain the optimal combination?}''. And later in his work: ''\textit{Our approach, which is again to vary the parameters one by one -- the others being fixed in a more or less arbitrary manner -- may therefore not exactly lead us to the optimal solution}''. \citet{Bliefernicht2010} has also faced the combinatorial issue of the parameters of the AM and concludes that one needs to be an expert to have a sense of their respective influence, sensitivity and nonlinear interactions. \citet{BenDaoud2010}, when calibrating the AM, also stated that ''\textit{the combinatory aspect related to the calibration was found to be too high for all the parameters to be calibrated simultaneously}''.
 
 In order to overcome these limitations, two optimization techniques were assessed. First, \citet{Horton2012a} assessed the ability of the \citet{Nelder1965a} method based on a simplex approach. This technique did not provide satisfying results and failed at converging toward a unique solution. The parameter space of the AM is very complex and is inappropriate for a linear optimization technique. The conclusion was that global optimization techniques were necessary in order to calibrate AMs, as it is the only way to optimize all parameters of all analogy levels simultaneously. In addition, it can overcome the systematic manual assessments of all pressure levels and temporal windows. Finally, it can open new perspectives by allowing the addition of new degrees of freedom, such as a weighting of the criteria values between the pressure levels \citep[see][]{Horton2016b}, and the consideration of differentiated spatial windows between the pressure levels. The relevance of Genetic Algorithms (GAs) is presented here, which does not exclude that other global optimization techniques could eventually be successful. 
 
-This article is not about discussing the details of the results of an optimization with GAs, but describing how GAs are to be used in order to successfully optimize AMs. Indeed, GAs variants are numerous and always need to be tailored to the problem addressed. This requires intensive and systematic comparisons of operators and options in order to identify the key factors leading the optimization and the respective sensitivity of the options. Such analyses are presented here by application to the upper Rho\^{o}ne catchment in Switzerland, and will result in recommendations for the use of GAs when applied to AMs. The demonstration of the benefit brought by such an approach on a specific case study is the topic of \citet{Horton2016b}. 
+This article is not about discussing the details of the results of an optimization with GAs, but describing how GAs are to be used in order to successfully optimize AMs. Indeed, GAs variants are numerous and always need to be tailored to the problem addressed. This requires intensive and systematic comparisons of operators and options in order to identify the key factors leading the optimization and the respective sensitivity of the options. Such analyses are presented here by application to the upper Rh\^{o}ne catchment in Switzerland, and will result in recommendations for the use of GAs when applied to AMs. The demonstration of the benefit brought by such an approach on a specific case study is the topic of \citet{Horton2016b}. 
 
 We will begin by presenting the basics of the AM (Sect. \ref{sec:am}) and the concepts of GAs as well as the assessed operators (operations performed on the AM parameters; see Sect. \ref{sec:gas}). The comparative analyses of the operators and their results are presented in Sect. \ref{sec:assessment}, which lead us to the recommendations in Sect. \ref{sec:recommendations}.
 
@@ -220,9 +220,9 @@ A key element of the parametrization of GAs is finding the right balance between
 The GAs optimize a population of $N$ individuals (parameter sets). Each individual contains a chromosome (set of parameters of the AM in this case). Genes are the individual parameters constituting the chromosome. They can be either categorical (e.g. geopotential, or temperature), discrete (e.g. number of analogues to select, from 1 to 40), or continuous. For example, a chromosome may looks like:
 
 \begin{equation}
-[p_{i,j}, h_{i,j}, xw_{i,j}, xe_{i,j}, ys_{i,j}, yn_{i,j}, p_{i,j+1}, h_{i,j+1}, ..., n_{i}, ... p_{i+1,j}, h_{i+1,j}, ..., n_{i+1}, ...]
+[p_{i,j}, h_{i,j}, \lambda w_{i,j}, \lambda e_{i,j}, \varphi s_{i,j}, \varphi n_{i,j}, p_{i,j+1}, h_{i,j+1}, ..., n_{i}, ... p_{i+1,j}, h_{i+1,j}, ..., n_{i+1}, ...]
 \end{equation}
-where, for the level of analogy $i$ and the predictor number $j$, $p_{i,j}$ is the pressure level, $h_{i,j}$ is the hour of the day, $xw_{i,j}$ and $xe_{i,j}$ are the western and eastern longitudes of the spatial window, $ys_{i,j}$ and $yn_{i,j}$ are its southerly and northerly latitudes, and $n_{i,j}$ is the number of analogues. A chromosome for the simple AM on the circulation (Sect. \ref{sec:am}) only may be: $[500~hPa, 12~h, -2.5\degree, 15\degree, 40\degree, 55\degree, 1000~hPa, 24~h, 0\degree, 15\degree, 42.5\degree, 47.5\degree, 28]$
+where, for the level of analogy $i$ and the predictor number $j$, $p_{i,j}$ is the pressure level, $h_{i,j}$ is the temporal window, $\lambda w_{i,j}$ and $\lambda e_{i,j}$ are the western and eastern longitudes of the spatial window, $\varphi s_{i,j}$ and $\varphi n_{i,j}$ are its southerly and northerly latitudes, and $n_{i,j}$ is the number of analogues. A chromosome for the simple AM on the atmospheric circulation only (Sect. \ref{sec:am}) may be: $[500~hPa, 12~h, -2.5\degree, 15\degree, 40\degree, 55\degree, 1000~hPa, 24~h, 0\degree, 15\degree, 42.5\degree, 47.5\degree, 28]$
 
 The floating-point representation \citep[instead of the canonical binary, see][]{Goldberg1989, Goldberg1990a, Holland1992b} of the genes was considered, as it was found more suited in multiple applications \citep{Michalewicz1996, Herrera1998a, Haupt2004, Back1996b, Gaffney2010a}. 
 
@@ -233,7 +233,7 @@ There are numerous implementation variants of GAs, often optimal for a given pro
 	\item The fitness (performance score or objective function) of every individual is assessed.
 	\item A natural selection is applied, after which only the best individuals remain, which constitutes the intermediate generation (IG).
 	\item From this IG, couples are formed according to given rules.
-	\item These couples proceed to reproduction, or chromosome crossover, in order to mix their genes (parameters) according to the selected operator version. New children are generated in order to refill the IG back to $N$ individuals.
+	\item These couples proceed to reproduction, or chromosome crossover, to mix their genes (parameters) according to the selected operator version. New children are generated in order to refill the IG back to $N$ individuals.
 	\item Parents and children are then subject to mutation, where some genes get affected, meaning some parameter values are randomly changed.
 	\item The new formed generation is then re-assessed.
 	\item According to the ending criteria, the optimization ends or starts again for another iteration.
@@ -265,11 +265,11 @@ Individuals of the IG can reproduce. It begins with the selection of pairs (the 
 
 
 \begin{itemize}
-	\item Rank pairing: individuals are gathered in pairs according to their rank (based on the performance scores). Consecutive ranks are put together (odd rows are associated with even rows). This approach is easy to achieve, but does not look like a natural process.
+	\item Rank pairing: individuals are gathered in pairs according to their rank (based on the performance scores). Consecutive ranks are put together (odd rows are associated with even rows).
 	
 	\item Random pairing: two individuals are randomly selected to form a couple, according to a uniform law.
 	
-	\item Roulette wheel weighting: this technique refers to gambling, but with a biased roulette. Each individual is associated with a sector of the wheel with a certain opening angle, which is its probability of selection. The probability assigned to the individuals is proportional to their fitness (objective function), so that the most adapted individuals have the greatest probability of reproduction. There are two techniques for weighting the individuals of the IG:
+	\item Roulette wheel weighting: this technique refers to gambling, but with a biased roulette. Each individual is associated with a sector of the wheel with a certain opening angle, which is its probability of selection. The probability ($p_{n}$) assigned to the individuals is proportional to their fitness (objective function), so that the most adapted individuals have the greatest probability of reproduction. There are two techniques for weighting the individuals of the IG:
 	
 	\textit{Roulette wheel weighting on rank}: the probability of each individual depends on its rank $n$:
 	\begin{equation}
@@ -277,7 +277,7 @@ Individuals of the IG can reproduce. It begins with the selection of pairs (the 
 	\label{equation_mating_rank_weighting}
 	\end{equation}
 	
-	\textit{Roulette wheel weighting on fitness}: the selection probability is calculated based on the value of the objective function. The probability $p_{n}$ of each individual is calculated by the equation \ref{equation_mating_score_weighting}:
+	\textit{Roulette wheel weighting on fitness}: the selection probability is calculated based on the value of the objective function:
 	\begin{equation}
 	p_{n}=\frac{score_{n}-score_{N_{IG}}}{\sum_{n=1}^{N_{IG}} (score_{n}-score_{N_{IG}})}
 	\label{equation_mating_score_weighting}
@@ -304,7 +304,7 @@ The evaluated crossover operators are the following:
 	
 	\item Uniform crossover \citep{Syswerda1989}: for each gene of the chromosome, it is randomly chosen to exchange or not the values between the parents.
 	
-	\item Binary-like crossover \citep{Haupt2004}: chromosome crossover on a binary coding can generate new values for variables located at intersection points, since the crossovers are applied at the bit level, thus often within a gene. This is not the case for the floating-point representation, since the crossover is performed between the genes. To reproduce the behaviour present in the original algorithms, which introduces new information, \citet{Haupt2004} propose an operator that combines standard crossover with an interpolation approach. The genes located after a crossover point are exchanged, but the gene located at the intersection is modified as follows (equation \ref{equation_mating_as_binary}):
+	\item Binary-like crossover \citep{Haupt2004}: chromosome crossover on a binary coding can generate new values for variables located at intersection points, since the crossovers are applied at the bit level, thus often within a gene. This is not the case for the floating-point representation, since the crossover is performed between the genes. To reproduce the behaviour present in the original algorithms, which introduces new information, \citet{Haupt2004} propose an operator that combines standard crossover with an interpolation approach. The genes located after a crossover point are exchanged, but the gene located at the intersection is modified according to:
 	\begin{equation}
 	\left\lbrace \begin{array}{l} 
 	g_{o1,n} = g_{p1,n} - \beta (g_{p1,n} - g_{p2,n}) \\
@@ -314,7 +314,7 @@ The evaluated crossover operators are the following:
 	\end{equation}
 	where $g_{o1,n}$ and $g_{o2,n}$ are the $n$-th gene of the two new offspring, and $g_{p1,n}$ and $g_{p2,n}$ are those of the two parents. $\beta$ is a random value between 0 and 1.
 	
-	\item Blending method \citep{Radcliffe1991a}: in this approach, instead of exchanging the genes in between the chromosomes after one or multiple crossover points, these are combined by linear combination (equation \ref{equation_mating_blending_method}). The genes of the parents are blended together using a random value ($\beta$) that can be unique for the whole chromosome, or that can change for every gene. The genes of the offspring are bounded by the genes of the parents, no value can be out of their range.
+	\item Blending method \citep{Radcliffe1991a}: in this approach, instead of exchanging the genes in between the chromosomes after one or multiple crossover points, these are combined by linear combination (Eq. \ref{equation_mating_blending_method}). The genes of the parents are blended together using a random value ($\beta$) that can be unique for the whole chromosome, or that can change for every gene. The genes of the offspring are bounded by the genes of the parents, no value can be out of their range.
 	\begin{equation}
 	\left\lbrace \begin{array}{l} 
 	g_{o1,n} = \beta g_{p1,n} + (1-\beta)g_{p2,n} \\ 
@@ -323,7 +323,7 @@ The evaluated crossover operators are the following:
 	\label{equation_mating_blending_method}
 	\end{equation}
 	
-	\item Linear crossover \citep{Wright1991a}: in order to allow the genes to take values outside the interval defined by the parents, a method of extrapolation is necessary. Linear crossover introduces such an approach, and produces three children from two parents, following equation \ref{equation_mating_linear_crossover}. Less couples are required in order to fill up the population.
+	\item Linear crossover \citep{Wright1991a}: in order to allow the genes to take values outside the interval defined by the parents, a method of extrapolation is necessary. Linear crossover introduces such an approach, and produces three children from two parents, following Eq. \ref{equation_mating_linear_crossover}. Less couples are required in order to fill up the population.
 	\begin{equation}
 	\left\lbrace \begin{array}{l} 
 	g_{o1,n} = 0.5 g_{p1,n} + 0.5 g_{p2,n} \\ 
@@ -342,7 +342,7 @@ The evaluated crossover operators are the following:
 	\label{equation_mating_heuristic_crossover}
 	\end{equation}
 	
-	\item Linear interpolation: unlike previous techniques, this technique does not rely on crossover points, but on a linear interpolation on every gene of the couple (equation \ref{equation_mating_linear_interpolation}).
+	\item Linear interpolation: unlike previous techniques, this technique does not rely on crossover points, but on a linear interpolation on every gene of the couple (Eq. \ref{equation_mating_linear_interpolation}).
 	\begin{equation}
 	\left\lbrace \begin{array}{l} 
 	c_{o1} = c_{p1} - \beta (c_{p1} - c_{p2}) \\
@@ -393,7 +393,7 @@ The evaluated and developed mutation operators are listed hereafter. They apply 
 	\end{equation}
 	where $\sigma$ is the standard deviation of the distribution, which has to be estimated.
 	
-	\item Variable normal mutation (new): with the same logic as the variable uniform mutation, a mutation operator was tested using a normal distribution with a variable mutation rate and standard deviation. The mutation rate is calculated with equation \ref{equation_mutation_uniformvariable}. On the same principle, the standard deviation decreases linearly over the generations:
+	\item Variable normal mutation (new): with the same logic as the variable uniform mutation, a mutation operator was tested using a normal distribution with a variable mutation rate and standard deviation. The mutation rate is calculated with Eq. \ref{equation_mutation_uniformvariable}. On the same principle, the standard deviation decreases linearly over the generations:
 	\begin{equation}
 	\sigma_{n,G} = \sigma_{G_{0}}+\left( \dfrac{\sigma_{G_{0}}-\sigma_{G_{m,\sigma}}}{G_{m,\sigma}} \right) min\left\lbrace G,G_{m,\sigma}\right\rbrace 
 	\label{equation_mutation_normalvariable}
@@ -446,7 +446,7 @@ The evaluated and developed mutation operators are listed hereafter. They apply 
 	
 	\item Chromosome of adaptive search radius (new): this operator combines the operations of the chromosome of adaptive mutation rate to the adaptive search radius approach. Similarly, an individual has 3 chromosomes: the first containing the values to be optimized, the second the distributed mutation rate, and the last one, the distributed search radius. Again, no external parameters are required.
 	
-	\item Multi-scale mutation (new): finally, another approach was developed that is also based on the search radius concept. However, the latter is not decreasing with time. Methods based on a reduction of the mutation rate or radius simulate a transition from the exploration phase to the exploitation one. The idea was to test an approach that combines both exploration and exploitation during the whole optimization. Thus, the search radius $r_{a}$ of equation \ref{equation_mutation_rayon_adaptatif} was considered as a random value for each individual, but restricted to 4 equiprobable values: 1, 0.5, 0.1, 0.02, which range from full exploration to fine exploitation. The only external parameter is the mutation rate which is fixed.
+	\item Multi-scale mutation (new): finally, another approach was developed that is also based on the search radius concept. However, the latter is not decreasing with time. Methods based on a reduction of the mutation rate or radius simulate a transition from the exploration phase to the exploitation one. The idea was to test an approach that combines both exploration and exploitation during the whole optimization. Thus, the search radius $r_{a}$ of Eq. \ref{equation_mutation_rayon_adaptatif} was considered as a random value for each individual, but restricted to 4 equiprobable values: 1, 0.5, 0.1, 0.02, which range from full exploration to fine exploitation. The only external parameter is the mutation rate which is fixed.
 	
 \end{itemize}
 
@@ -763,7 +763,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{figures/figure_structure_gas.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{figures/fig01.pdf}\\
 	\end{center}
 	\caption{Genetic Algorithms operational flowchart}
 	\label{fig:structure_gas}
@@ -771,7 +771,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{figures/gas_evolution_good.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{figures/fig02.pdf}\\
 	\end{center}
 	\caption{Evolution of the score of the best individuals over generations for the 10 optimizations processed for a given parametrization. The green line (bottom) represents the score of the sequential approach and the blue one (top), the supposed global optimum.}
 	\label{fig:gas_evolution_good}
@@ -779,7 +779,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{figures/gas_evolution_bad.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{figures/fig03.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:gas_evolution_good}, but for a GAs parametrization considered as less relevant.}
 	\label{fig:gas_evolution_bad}
@@ -787,7 +787,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{figures/operator_selectcoupl_score.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{figures/fig04.pdf}\\
 	\end{center}
 	\caption{Influence of the couples selection operators (Table \ref{tab:assessed_couples_selection_operators}) on the optimization performance (improvement of the score). The box extends from the lower to upper quartile values of the data, with a line at the median. The whiskers extend from the box to 1.5 times the interquartile range. Flier points are those past the end of the whiskers. The star represents the median. The gray box highlights the best options.}
 	\label{fig:operator_selectcoupl_score}
@@ -795,7 +795,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=39pc,angle=0]{figures/operator_crossover_score.pdf}\\
+		\noindent\includegraphics[width=39pc,angle=0]{figures/fig05.pdf}\\
 	\end{center}
 	\caption{Influence of the chromosome crossover operators (Table \ref{tab:assessed_crossover_operators}) on the optimization performance (improvement of the score). Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_crossover_score}
@@ -803,7 +803,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{figures/operator_mutation_score.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{figures/fig06.pdf}\\
 	\end{center}
 	\caption{Influence of the mutation operators (Table \ref{tab:assessed_mutation_operators}) on the optimization performance. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score}
@@ -811,7 +811,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{figures/operator_mutation_score_atmlevel.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{figures/fig07.pdf}\\
 	\end{center}
 	\caption{Influence of the mutation operators (Table \ref{tab:assessed_mutation_operators_bis}) on the optimization performance, leaving the optimizer choose the pressure level of the atmospheric circulation analogy (single level of analogy). The predictand is precipitation over a subcatchment in the Swiss Alps (Binn-Simplon region). The red line represents the score of the sequential calibration and the blue line, the score of the optimization without automatic selection of the pressure levels. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score_atmlevel}
@@ -819,7 +819,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{figures/operator_mutation_score_rhoneamont.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{figures/fig08.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:operator_mutation_score_atmlevel}, but for another region in the Swiss Alps, with different atmospheric influences.}
 	\label{fig:operator_mutation_score_rhoneamont}
@@ -827,7 +827,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{figures/operator_mutation_score_r2.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{figures/fig09.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:operator_mutation_score_atmlevel}, but with a second level of analogy on moisture variables.}
 	\label{fig:operator_mutation_score_r2}
@@ -835,7 +835,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{figures/operator_mutation_score_r4.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{figures/fig10.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:operator_mutation_score_r2}, but with a preselection on air temperature rather than a fixed calendar window.}
 	\label{fig:operator_mutation_score_r4}
@@ -843,7 +843,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=11pc,angle=0]{figures/operator_selectnat_score.pdf}\\
+		\noindent\includegraphics[width=11pc,angle=0]{figures/fig11.pdf}\\
 	\end{center}
 	\caption{Influence of the natural selection operators on the optimization performance. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_selectnat_score}
@@ -851,7 +851,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=11pc,angle=0]{figures/option_taillepop_score.pdf}\\
+		\noindent\includegraphics[width=11pc,angle=0]{figures/fig12.pdf}\\
 	\end{center}
 	\caption{Influence of the population size on the optimization performance. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:option_taillepop_score}
@@ -859,7 +859,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=11pc,angle=0]{figures/option_popratio_score.pdf}\\
+		\noindent\includegraphics[width=11pc,angle=0]{figures/fig13.pdf}\\
 	\end{center}
 	\caption{Influence of the intermediate population (IG) ratio on the optimization performance. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:option_popratio_score}
