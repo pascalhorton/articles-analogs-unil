@@ -13,13 +13,13 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    xml:space="preserve"
-   width="519.45374"
-   height="515.2962"
-   viewBox="0 0 519.45374 515.2962"
+   width="540.98438"
+   height="489.96201"
+   viewBox="0 0 540.98438 489.962"
    sodipodi:docname="operator_selectcoupl_score.svg"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath20"><path
@@ -313,15 +313,16 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="0.87407408"
-     inkscape:cx="331.22561"
-     inkscape:cy="20.90414"
+     inkscape:cx="129.66307"
+     inkscape:cy="203.91213"
      inkscape:window-x="92"
      inkscape:window-y="67"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer1" /><g
+     inkscape:current-layer="g10" /><g
      inkscape:groupmode="layer"
      id="layer1"
-     inkscape:label="bg"><rect
+     inkscape:label="bg"
+     transform="translate(21.530679,-25.291326)"><rect
        style="fill:#e6e6e6;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect3685"
        width="237.28154"
@@ -331,7 +332,7 @@
      id="g10"
      inkscape:groupmode="layer"
      inkscape:label="operator_selectcoupl_score"
-     transform="matrix(1.25,0,0,-1.25,-10.371293,523.80472)"><g
+     transform="matrix(1.25,0,0,-1.25,11.159386,498.51339)"><g
        id="g16"><g
          id="g18"
          clip-path="url(#clipPath20)"><path
@@ -966,19 +967,6 @@
        inkscape:connector-curvature="0" /><text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:32px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="59.424442"
-       y="-404.17685"
-       id="text4487"
-       sodipodi:linespacing="125%"
-       transform="scale(1,-1)"><tspan
-         sodipodi:role="line"
-         id="tspan4489"
-         x="59.424442"
-         y="-404.17685"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18px;font-family:'URW Palladio L';-inkscape-font-specification:'URW Palladio L'">Operator influence on the performance (%)</tspan></text>
-<text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:32px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="136.29555"
        y="-11.337102"
        id="text4491"
@@ -989,4 +977,17 @@
          x="136.29555"
          y="-11.337102"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'URW Palladio L';-inkscape-font-specification:'URW Palladio L'">Couples selection operator</tspan></text>
+<text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:32px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="99.002167"
+       y="2.7204912"
+       id="text4491-3"
+       sodipodi:linespacing="125%"
+       transform="matrix(0,1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan4493-7"
+         x="99.002167"
+         y="2.7204912"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'URW Palladio L';-inkscape-font-specification:'URW Palladio L'">Influence on the performance (%)</tspan></text>
 </g></svg>
