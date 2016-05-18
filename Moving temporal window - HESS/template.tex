@@ -132,10 +132,11 @@ However, attempts to reconstruct longer precipitation series of running 24~h-tot
 
 
 \introduction  %% \introduction[modified heading if necessary]
+\label{sec:introduction}
 
 The Analogue Method (AM) is based on the principle that two relatively similar synoptic situations may produce relatively similar local effects \citep{Lorenz1956, Lorenz1969}. Multiple variations of the methods exist and listings can be found in \citet{Horton2016} or \citet{BenDaoud2015}. The versions that will be considered here are often used as references or benchmarks for various improvements.
 
-The first method is based on the analogy of the atmospheric circulation only \citep[Table \ref{table:method_2Z},][]{Obled2002, Bontron2005, Marty2012}. Searching analogue situations for a target day starts by a preselection step of the potential candidate for analogy. Here, it has been limited to the 4 months centered around the target date for every year of the archive, in order to cope with seasonal effects. Then, the similarity of the atmospheric circulation of the target date with every day of the preselection is assessed by processing the S1 criteria \citep[Eq.\ \ref{eq:S1}, ][]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial window and at certain hours:
+The first method is based on the analogy of the atmospheric circulation only \citep[Table \ref{table:method_2Z},][]{Obled2002, Bontron2005, Marty2012}. Searching analogue situations for a target day starts by a preselection step of the potential candidate for analogy. Here, it has been limited to the 4 months centered around the target date for every year of the archive, in order to cope with seasonal effects. Then, the similarity of the atmospheric circulation of the target date with every day of the preselection is assessed by processing the S1 criteria \citep[Eq.\ \ref{eq:S1}, ][]{Teweles1954}, which is a comparison of gradients, over a certain spatial window and at certain hours:
 
 \begin{equation}
 \label{eq:S1}
@@ -167,7 +168,7 @@ Then, $N_{1}$ dates with the lowest values of S1 are considered as analogues to 
 	\label{table:method_2Z}
 \end{table}
 
-The second reference method adds a subsequent level of analogy on moisture variables (method 2Z-2MI, Table \ref{table:method_2Z-2MI}). This second predictor is a moisture index made of the product of the total precipitable water (TPW) with the relative humidity at 850~hPa (RH850) \citep{Bontron2004}. When adding a second level of analogy, $N_{2}$ dates are subsampled in the $N_{1}$ analogues on the atmospheric circulation, to end up with a smaller number of analogue situations. When a second level of analogy is added, a higher number of $N_{1}$ analogues is kept on the first level.
+The second reference method adds a subsequent level of analogy on moisture variables, compared by means of the root-mean-square error (RMSE) (method 2Z-2MI, Table \ref{table:method_2Z-2MI}). This second predictor is a moisture index made of the product of the total precipitable water (TPW) with the relative humidity at 850~hPa (RH850) \citep{Bontron2004}. When adding a second level of analogy, $N_{2}$ dates are subsampled in the $N_{1}$ analogues on the atmospheric circulation, to end up with a smaller number of analogue situations. When a second level of analogy is added, a higher number of $N_{1}$ analogues is kept on the first level.
 
 \begin{table}[htb]
 	\caption{Parameters of the reference method with moisture variables (2Z-2MI). Same conventions as Table \ref{table:method_2Z}}
@@ -243,7 +244,7 @@ The target situations and their corresponding observed precipitation values (use
 	\begin{center}
 		\includegraphics[width=8.3cm]{figures/illustration_moving_window.pdf}
 	\end{center}
-	\caption{Illustration of the principle of a sliding time window. The bars illustrate the 24~h precipitation totals.}
+	\caption{Illustration of the principle of a sliding time window. The larger horizontal bars represent the 24~h precipitation totals.}
 	\label{fig:principle}
 \end{figure}
 
@@ -332,7 +333,7 @@ When searching for analogues on the geopotential heights, as in the 2Z method, t
 	\label{fig:changes_S1_analogues}
 \end{figure*}
 
-Figure \ref{fig:changes_S1_analogues} presents the changes in the distributions of the S1 criterion for the $1^{st}$, $5^{th}$, $20^{th}$ and $40^{th}$ analogues for the Ulrichen station on the whole calibration period, due to introduction of the STW. The precipitation target remains at before, that is centered on 18~h~UTC (6~h~UTC to 6~h~UTC the next day). The shapes of the distributions of the conventional approach and the STW are similar, but the values of the analogy criteria are now reduced (shifted to the left), and therefore better. An increase in the difference between a fixed window and a sliding window is identifiable, which means that the last analogues are further improved. The latter effect is due to the accumulation of improvements brought by the new analogue situations in the selection.
+Figure \ref{fig:changes_S1_analogues} presents the changes in the distributions of the S1 criterion for the $1^{st}$, $5^{th}$, $20^{th}$ and $40^{th}$ analogues for the Ulrichen station on the whole calibration period, due to introduction of the STW. The precipitation target remains as before, that is centered on 18~h~UTC (6~h~UTC to 6~h~UTC the next day). The shapes of the distributions of the conventional approach and the STW are similar, but the values of the analogy criteria are now reduced (shifted to the left), and therefore better. An increase in the difference between a fixed window and a sliding window is identifiable, which means that the last analogues are further improved. The latter effect is due to the accumulation of improvements brought by the new analogue situations in the selection.
 
 \begin{figure}[htb]
 	\begin{center}
@@ -383,16 +384,22 @@ Atmospheric dynamics varies greatly from one season to another, which reflects o
 	\label{fig:hours_selection_per_season}
 \end{figure}
 
+\begin{figure}[htb]
+	\includegraphics[width=8.3cm]{figures/hours_selection_per_season_Visp.pdf}
+	\caption{Distribution of the predictors hours in the selected analogue dates depending on the season, for the Visp station.}
+	\label{fig:hours_selection_per_season_Visp}
+\end{figure}
+
 A seasonal effect can be observed on the reduction of the S1 criteria due to the STW (Figure \ref{fig:changes_S1_seasons}). The improvements are greater for winter than summer. One hypothesis is that the diurnal effects of the summer months have an influence on the atmospheric circulation, at least in the lower layers. This effect is based on the daily cycle and good analogues are essentially found for the same hours or time windows.
 
 An analysis of the selected hours for the geopotential predictor seems to confirm this assumption (Figure \ref{fig:hours_selection_per_season}). It was found that the new choice of the temporal window in winter, when using the STW approach, is well balanced between the 4 options. This means a change of 75\% of the analogues selection compared to the conventional approach, which improves the circulation analogy.
 
-On the contrary, the summer months have a preference for the initial temporal window (Z500 24h \& Z1000 12h), due to more pronounced diurnal effects which reduces the potential for improvement of the criteria. Other seasons are between these two extremes, which is consistent with their respective improvements. This seasonal effect was observed for each station in a very similar way, and generally even with a larger amplitude than for Ulrichen.
+On the contrary, the summer months have a preference for the initial temporal window (Z500 24h \& Z1000 12h), due to more pronounced diurnal effects which reduces the potential for improvement of the criteria. Other seasons are between these two extremes, which is consistent with their respective improvements. This seasonal effect was observed for each station in a very similar way, and generally even with a slightly larger amplitude than for Ulrichen (see example of the Visp station in Figure \ref{fig:hours_selection_per_season_Visp}).
 
 
 \subsection{Changes in the moisture analogy}
 
-When considering the second level of analogy of the 2Z-2MI method (Table \ref{table:method_2Z-2MI}), the number of candidates situations did not increase, as they are subsampled in the previously $N_{1}$ selected analogues, but their dates may have changed. In contrast to earlier, both a reduction or an increase of the RMSE analogy criterion values are possible. Indeed, Figure \ref{fig:changes_RMSE} shows an almost insignificant improvement of the RMSE values. Unlike for the first level of analogy, the relative improvement of the RMSE values are distributed relatively symmetrically around zero, with improvements and losses of the same amplitude. Once again, the results for the other stations are similar.
+When considering the second level of analogy of the 2Z-2MI method (Table \ref{table:method_2Z-2MI}), the number of candidates situations did not increase, as they are subsampled in the previously $N_{1}$ selected analogues, but their dates have changed. In contrast to earlier, both a reduction or an increase of the RMSE analogy criterion values are possible. Indeed, Figure \ref{fig:changes_RMSE} shows an almost insignificant improvement of the RMSE values. Unlike for the first level of analogy, the relative improvement of the RMSE values are distributed relatively symmetrically around zero, with improvements and losses of the same amplitude. Once again, the results for the other stations are similar.
 
 \begin{figure}[htb]
 	\begin{center}
@@ -520,7 +527,7 @@ The values of the CRPSS scores for both methods (Table \ref{table:CRPSS_recalibr
 
 \subsection{Changes in sharpness and accuracy}
 
-The CRPS score can be decomposed into two components, namely sharpness and accuracy. The impact of the STW has been analyzed on these components and the results can be found in Table \ref{table:CRPSS_decomposition_no_recalibration} for the original parameters and in Table \ref{table:CRPSS_decomposition_recalibration} for the re-calibrated methods. The changes are expressed relative to the total CRPS. Both components do not have the same value ranges: accuracy is in our case almost twice the sharpness values. Since the CRPS is considered here and not the CRPSS, improved prediction capacity results in a lower score. A decrease of the score is thus desirable.
+The CRPS score can be decomposed into two components, namely sharpness and accuracy \citep[see][]{Bontron2004}. The impact of the STW has been analyzed on these components and the results can be found in Table \ref{table:CRPSS_decomposition_no_recalibration} for the original parameters and in Table \ref{table:CRPSS_decomposition_recalibration} for the re-calibrated methods. The changes are expressed relative to the total CRPS. Both components do not have the same value ranges: accuracy is in our case almost twice the sharpness values. Since the CRPS is considered here and not the CRPSS, improved prediction capacity results in a lower score. A decrease of the score is thus desirable.
 
 \begin{table}[htb]
 	\caption{Changes in sharpness and accuracy relatively to the total CRPS, due to the introduction of the STW. The changes are presented for both 2Z and 2Z-2MI methods with the original parameters. A decrease of the score is desirable.}
@@ -596,12 +603,12 @@ A proportional distribution is certainly the simplest approach that can be perfo
 	\begin{center}
 		\includegraphics[width=8cm]{figures/illustration_disaggregation.pdf}
 	\end{center}
-	\caption{Illustration of the generation of 24~h-totals moving averages by means of a proportional distribution.}
+	\caption{Illustration of the generation of 24~h-totals moving averages by means of a proportional distribution. The colours refer to the corresponding day of the daily time series.}
 	\label{fig:illustration_disaggregation}
 \end{figure}
 
 \begin{table}[htb]
-	\caption{Values of the CRPSS (\%) skill score for the original and the recalibrated parameters using the STW approach on the disaggregated precipitation time series (short period) by means of the proportional distribution.}
+	\caption{Values of the CRPSS (\%) skill score for the original and the recalibrated parameters (with the sequential method, as described in Section \ref{sec:introduction}) using the STW approach on the disaggregated precipitation time series (short period) by means of the proportional distribution.}
 	\begin{center}
 		\begin{tabular}{l c c c c}
 			\hline
@@ -657,7 +664,7 @@ The first step consisted in determining which variables from the precipitable wa
 \end{table}
 
 \begin{table}[htb]
-	\caption{Values of the CRPSS (\%) skill score for Zermatt, for the original and the recalibrated parameters using the STW approach on the disaggregated precipitation time series (short and long periods) by means of variables from the reanalysis.}
+	\caption{Values of the CRPSS (\%) skill score for Zermatt, for the original and the recalibrated parameters (with the sequential method, as described in Section \ref{sec:introduction}) using the STW approach on the disaggregated precipitation time series (short and long periods) by means of variables from the reanalysis.}
 	\begin{center}
 		\begin{tabular}{l c c c c}
 			\hline
