@@ -218,7 +218,7 @@ Several pressure levels were assessed by means of various criteria for the analo
 
 With a systematic assessment of the newly available NCEP/NCAR reanalysis data, \citet{Bontron2004} concluded that the coupled geopotential heights at 1000~hPa (Z1000) \& 12~h and 500~hPa (Z500) \& 24~h provided the best performance for the studied region (Table \ref{table:R1}). The analogy on the atmospheric circulation proposed by \citet{Bontron2004} is still, at the time of writing, often used operationally, and considered as a reference for benchmarking new parameterizations \citep[see e.g.][]{Horton2012, BenDaoud2015}. In order to assess the forecast, he introduced the Continuous Ranked Probability Score \citep[CRPS, Eq. \ref{eq:CRPS}, ][]{Brown1974}, which discards the issue of determining classes as with the Ranked Probability Score \citep{Epstein1969} previously in use.
 
-\citet{Horton2012} identified that the analogy on the atmospheric circulation may not be comprehensive, and that a significant gain was obtained by considering 4 atmospheric levels (1000, 850, 700, and 500~hPa at 12 or 24~h) instead of 2 (Table \ref{table:R6}). The number of analogues ($N_{1}$) was not provided globally, as it was calibrated for every subregion. An equivalent structure was also optimized by means of generic algorithms (PC-4Zgo), which is the topic of another paper \citep{Horton2016b}.
+\citet{Horton2012} identified that the analogy on the atmospheric circulation may not be comprehensive in an alpine environment, and that a significant gain was obtained by considering 4 atmospheric levels (1000, 850, 700, and 500~hPa at 12 or 24~h) instead of 2 (Table \ref{table:R6}). The number of analogues ($N_{1}$) was not provided globally, as it was calibrated for every subregion. An equivalent structure was also optimized by means of generic algorithms (PC-4Zgo), which is the topic of another paper \citep{Horton2016b}.
 
 A second level of analogy based on thermodynamic variables was then introduced by \citet{Mandon1985}, \citet{Vallee1986}, and \citet{Gibergans-Baguena2007}. After a systematic assessment, \citet{Bontron2004} pointed out that a moisture index (MI) made of the product of relative humidity at 850~hPa (RH850) and total precipitable water (TPW) gave the best performance (Table \ref{table:R2}). This index does not represent an actual physical quantity, but expresses the water content of the air column and its proximity to saturation.
 
@@ -632,54 +632,66 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\includegraphics[width=8.3cm]{figures/fig02.pdf}
+	\caption{Performance scores, for the Swiss Alps, for different AM variants on a single level of analogy \citep{Horton2012a}.}
+	\label{figure:scores_1}
+\end{figure}
+
+\begin{figure}[t]
+	\includegraphics[width=8.3cm]{figures/fig03.pdf}
+	\caption{Performance scores, for the Swiss Alps, for different AM variants on multiple levels of analogy \citep{Horton2012a}.}
+	\label{figure:scores_2}
+\end{figure}
+
+\begin{figure}[t]
+	\includegraphics[width=8.3cm]{figures/fig04.pdf}
 	\caption{The AtmoSwing logo and its 3 modules: the Forecaster, the Viewer and the Optimizer.}
 	\label{figure:logo}
 \end{figure}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/fig03.pdf}
+	\includegraphics[width=8.3cm]{figures/fig05.pdf}
 	\caption{Simplified organizational chart of the AM implementation in AtmoSwing.}
 	\label{figure:flowchart_modules_atmoswing}
 \end{figure}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/fig04.png}
+	\includegraphics[width=8.3cm]{figures/fig06.png}
 	\caption{Graphical user interface of the Forecaster module. A list of different parameterizations is being processed.}
 	\label{figure:atmoswing-forecaster-gui}
 \end{figure}
 
 \begin{figure*}[t]
-	\includegraphics[width=18cm]{figures/fig05.png}
+	\includegraphics[width=18cm]{figures/fig07.png}
 	\caption{Graphical user interface of the Viewer module (Elevation data from The Shuttle Radar Topography Mission (SRTM), and hydrological network from SwissTopo).}
 	\label{figure:atmoswing-viewer-gui}
 \end{figure*}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/fig06.png}
+	\includegraphics[width=8.3cm]{figures/fig08.png}
 	\caption{Visualization of multiple lead times on the map (Elevation data from the SRTM, and hydrological network from SwissTopo).}
 	\label{figure:atmoswing-viewer-snail}
 \end{figure}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/fig07.png}
+	\includegraphics[width=8.3cm]{figures/fig09.png}
 	\caption{Visualization of the forecasted time series.}
 	\label{figure:atmoswing-viewer-timeseries}
 \end{figure}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/fig08.png}
+	\includegraphics[width=8.3cm]{figures/fig10.png}
 	\caption{Visualization of the forecasted precipitation distribution for a given lead time.}
 	\label{figure:atmoswing-viewer-distribution}
 \end{figure}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/fig09.png}
+	\includegraphics[width=8.3cm]{figures/fig11.png}
 	\caption{Example of a Monte\textendash Carlo analysis on the PC-2Z (Table \ref{table:R1}) AM. Results are illustrated for the 4 parameters defining the spatial window on Z500, along with the results of the sequential calibration (red cross).}
 	\label{figure:monte_carlo_r1}
 \end{figure}
 
 \begin{figure}[t]
-	\includegraphics[width=8.3cm]{figures/fig10.png}
+	\includegraphics[width=8.3cm]{figures/fig12.png}
 	\caption{Example of a Monte\textendash Carlo analysis on the PC-2Z-2MI (Table \ref{table:R2}) AM. Results are illustrated for the number of analogues on the first and second level of analogy, along with the results of the sequential calibration (red cross).}
 	\label{figure:monte_carlo_r2}
 \end{figure}
