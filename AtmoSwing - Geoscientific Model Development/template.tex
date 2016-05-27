@@ -114,6 +114,23 @@ However, how efficient and useful it may seem, this approach is not straightforw
 The AM will first be presented along with various implementations (Sect. \ref{sec:method}), as all these can be processed with AtmoSwing. The software will then be presented (Sect. \ref{sec:atmoswing}), and its modules detailed, such as the Forecaster (Sect. \ref{sec:forecaster}) and the Viewer (Sect. \ref{sec:viewer}) that are tools for operational use, and the Optimizer (Sect. \ref{sec:optimizer}) that allows optimizing the method for a given predictand time series, may it be for operational forecasting or climate impact studies.
 
 
+\section{Data and case study description}
+\label{sec:data_and_case_study}
+
+\subsection{Data}
+\label{sec:data}
+
+Predictors are generally reanalysis datasets (as archive) and outputs of a global numerical weather prediction models for the target situation in operational forecasting. Reanalysis datasets, such as the NCEP/NCAR reanalysis I \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996}, the NCEP/DOE reanalysis II \citep{Kanamitsu2002}, ERA-40 \citep{Uppala2005} are often used and can be input in AtmoSwing. Other observed predictors can also be used, such as Sea Surface Temperature \citep[SST, ][]{Reynolds2007}. \citet{Bontron2004} proposed that the minimum length of the archive should be 30 years to forecast usual situations, and 40 years or more for intense events.
+
+The predictors describing the target situation in operational forecasting can, for example, result from GFS \citep[Global Forecast System,][]{Kanamitsu1991,Kanamitsu1989}, which is operated by NCEP and NOAA.
+
+The predictand can be 6-houry data, or more often daily time series. The most used predictand is the daily precipitation, usually averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}. These time series are frequently normalized by the precipitation value for a return period of 10~years \citep{Djerboua2001}. This normalization allows for an easier comparison between subregions subject to different precipitation regimes, and thus to better identify the most important contributions.
+
+\subsection{Case study description}
+\label{sec:case_study}
+
+Some results will be illustrated throughout this article for the alpine upper Rh\^{o}ne catchment in Switzerland (Fig.\ \ref{figure:map}). Even though the region is rather small (5524~km$^{2}$), the meteorological influences related to extreme weather conditions varies substantially within it \citep[see][]{Horton2012}. The gauging stations in the catchment were thus aggregated into 10~subregions (Fig.\ \ref{figure:map}): (1) Swiss Chablais, (2) Trient Valley, (3) West Bernese Alps, (4) Lower Rhone Valley, (5) Left side valleys, (6) Southern ridges, (7) Upper Rhone Valley, (8) Southeast ridges, (9) East Bernese Alps, and (10) Conches Valley.
+
 
 \section{The Analogue Method}
 \label{sec:method}
@@ -135,16 +152,6 @@ The AM is based on the principle that two similar synoptic situations may produc
 \end{itemize}
 
 Because of the chaotic nature of the atmosphere, two analogue situations quickly diverge over time \citep{Lorenz1969}. Thus, the AM has strong limitations regarding the temporal extrapolation \citep{Bontron2004}. Numerical models being more capable of simulating the dynamic evolution of the atmosphere, the temporal extrapolation of the synoptic variables is left to them. The search for analogy aims thus at connecting the forecasted synoptic situation with a local predictand (temperature, precipitation, etc), which is more difficult to simulate by numerical models.
-
-
-\subsection{Data}
-\label{sec:data}
-
-Predictors are generally reanalysis datasets (as archive) and outputs of a global numerical weather prediction models for the target situation in operational forecasting. Reanalysis datasets, such as the NCEP/NCAR reanalysis I \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996}, the NCEP/DOE reanalysis II \citep{Kanamitsu2002}, ERA-40 \citep{Uppala2005} are often used and can be input in AtmoSwing. Other observed predictors can also be used, such as Sea Surface Temperature \citep[SST, ][]{Reynolds2007}. \citet{Bontron2004} proposed that the minimum length of the archive should be 30 years to forecast usual situations, and 40 years or more for intense events.
-
-The predictors describing the target situation in operational forecasting can, for example, result from GFS \citep[Global Forecast System,][]{Kanamitsu1991,Kanamitsu1989}, which is operated by NCEP and NOAA.
-
-The predictand can be 6-houry data, or more often daily time series. The most used predictand is the daily precipitation, usually averaged over subregions in order to smooth local effects \citep{Obled2002, Marty2012}. These time series are frequently normalized by the precipitation value for a return period of 10~years \citep{Djerboua2001}. This normalization allows for an easier comparison between subregions subject to different precipitation regimes, and thus to better identify the most important contributions.
 
 
 \subsection{Present structure}
@@ -218,15 +225,17 @@ Several pressure levels were assessed by means of various criteria for the analo
 
 With a systematic assessment of the newly available NCEP/NCAR reanalysis data, \citet{Bontron2004} concluded that the coupled geopotential heights at 1000~hPa (Z1000) \& 12~h and 500~hPa (Z500) \& 24~h provided the best performance for the studied region (Table \ref{table:R1}). The analogy on the atmospheric circulation proposed by \citet{Bontron2004} is still, at the time of writing, often used operationally, and considered as a reference for benchmarking new parameterizations \citep[see e.g.][]{Horton2012, BenDaoud2015}. In order to assess the forecast, he introduced the Continuous Ranked Probability Score \citep[CRPS, Eq. \ref{eq:CRPS}, ][]{Brown1974}, which discards the issue of determining classes as with the Ranked Probability Score \citep{Epstein1969} previously in use.
 
-\citet{Horton2012} identified that the analogy on the atmospheric circulation may not be comprehensive in an alpine environment, and that a significant gain was obtained by considering 4 atmospheric levels (1000, 850, 700, and 500~hPa at 12 or 24~h) instead of 2 (Table \ref{table:R6}). The number of analogues ($N_{1}$) was not provided globally, as it was calibrated for every subregion. An equivalent structure was also optimized by means of generic algorithms (PC-4Zgo), which is the topic of another paper \citep{Horton2016b}.
+Every variable of the NCEP/NCAR reanalysis was systematically assessed for each of the identified subregions of the study area (Sect. \ref{sec:case_study}). The present assessment considers every subregion separately and optimizes the spatial window and the number of analogues for every combination of variables, pressure levels, times of observation, and subregions (using the sequential calibration tool implemented in AtmoSwing, see Sect. \ref{sec:atmoswing-calibration}). Even though the best predictors may vary from one place to another due to different meteorological influences (see Fig. \ref{figure:variable_exploration_Chablais} for the 30 best predictors for the Chablais region, and Fig. \ref{figure:variable_exploration_SE_crests} for the Southeast ridges), 2 main conclusions can be drawn from the NCEP/NCAR reanalysis dataset for the area of interest, that meet those from \citet{Bontron2004}: (1) the variables describing the atmospheric circulation (pressure fields or geopotential heights) are the ones with the highest prediction capacity (the precipitation rate is even rarely selected in the 30 best predictors), and (2) these are better when compared by means of the S1 criteria (asterisk in Fig. \ref{figure:variable_exploration_Chablais} and \ref{figure:variable_exploration_SE_crests}) instead of the RMSE. The reason for this latter point is the better representation of the atmospheric circulation information when considering the shape of a pressure field rather than its values.
+
+\citet{Horton2012} identified that the analogy on the atmospheric circulation as defined by \citet{Bontron2004} may not be comprehensive in an alpine environment, and that considering 4 atmospheric levels (1000, 850, 700, and 500~hPa at 12 or 24~h) instead of 2 could improve the performance (Table \ref{table:R6} -- the number of analogues $N_{1}$ was not provided globally, as it was calibrated for every subregion). The change in performance scores is illustrated in Fig. \ref{figure:scores_1} for the different subregions of the study area. An equivalent structure was also optimized by means of generic algorithms (PC-4Zgo), which is the topic of another paper \citep{Horton2016b}. As these new parametrizations provide performance gains for alpine catchments under varying meteorological influences (Fig. \ref{figure:scores_1}), they are recommended for operational use.
 
 A second level of analogy based on thermodynamic variables was then introduced by \citet{Mandon1985}, \citet{Vallee1986}, and \citet{Gibergans-Baguena2007}. After a systematic assessment, \citet{Bontron2004} pointed out that a moisture index (MI) made of the product of relative humidity at 850~hPa (RH850) and total precipitable water (TPW) gave the best performance (Table \ref{table:R2}). This index does not represent an actual physical quantity, but expresses the water content of the air column and its proximity to saturation.
 
 \citet{Marty2010} tested other temporal windows for intraday application on the basis of a more comprehensive reanalysis dataset. He first proposed to change the hours of observation for both levels of analogy (both for 06~h and 18~h), and selected the 925~hPa level for the moisture analogy (Table \ref{table:R3a}). The selected hours and atmospheric levels were not available before in the reanalysis dataset. Then, \citet{Marty2010} changed the moisture index into the moisture flux by adding the wind velocity (V700 or V925) component in the multiplication. He considered this flux at 700~hPa or 925~hPa (Table \ref{table:R3b}).
 
-\citet{Horton2012} also integrated an analogy on the moisture flux, after the circulation analogy on the 4 atmospheric levels (Table \ref{table:R7}). The number of analogues ($N_{1}$, $N_{2}$) were calibrated for every subregion. Similarly, an equivalent structure was optimized \citep[PC-4Zgo-2MIgo,][]{Horton2016b}.
+\citet{Horton2012} also integrated an analogy on the moisture flux, after the circulation analogy on the 4 atmospheric levels (Table \ref{table:R7}). The number of analogues ($N_{1}$, $N_{2}$) were calibrated for every subregion. Similarly, an equivalent structure was optimized \citep[PC-4Zgo-2MIgo,][]{Horton2016b}. The change in the performance scores, for the method with 2 levels of analogy, is illustrated in Fig. \ref{figure:scores_2} for the study area. As previously, we would recommend using these new parametrizations for alpine catchments.
 
-\citet{BenDaoud2010} applied the AM in the context of large floodplains (Sa\^{o}ne, Seine). He evaluated several variables usually used in weather forecasting, amongst them the air temperature and the vertical velocity that presented a potential interest. The temperature (at the nearest grid point, on the 925~hPa \& 36~h and 600~hPa \& 12~h levels) could replace the rigid calendar preselection of $\pm$ 60 days around the target date by a more dynamic screening of similar situations in terms of air masses. The seasonal effect is indeed also present in the temperature data. The number of preselected dates is equivalent to the number of days one would have chosen with the calendar approach, and thus depends on the archive size: $N_{0} = 60 \cdot 2 \cdot n_{a}$ where $n_{a}$ is the number of years in the calibration period. \citet{BenDaoud2010} also reconsidered the parameters of the moisture index and ended up with both 925~hPa and 700~hPa levels, at 12~h and 24~h, or at every time step (6~h) between 06~h and 30~h (Table \ref{table:R4b}).
+\citet{BenDaoud2010} applied the AM in the context of large floodplains (Sa\^{o}ne, Seine). He evaluated several variables usually used in weather forecasting, amongst them the air temperature and the vertical velocity that presented a potential interest. The temperature (at the nearest grid point, on the 925~hPa \& 36~h and 600~hPa \& 12~h levels) could replace the rigid calendar preselection of $\pm$ 60 days around the target date by a more dynamic screening of similar situations in terms of air masses. The seasonal effect is indeed also present in the temperature data. The number of preselected dates is equivalent to the number of days one would have chosen with the calendar approach, and thus depends on the archive size: $N_{0} = 60 \cdot 2 \cdot n_{a}$ where $n_{a}$ is the number of years in the calibration period. \citet{BenDaoud2010} also reconsidered the parameters of the moisture index and ended up with both 925~hPa and 700~hPa levels, at 12~h and 24~h, or at every time step (6~h) between 06~h and 30~h (Table \ref{table:R4b}). The performance of this parameterization for our case study is presented in Fig. \ref{figure:scores_2}.
 
 Subsequently, \citet{BenDaoud2010} added an additional level of analogy, between the circulation and the moisture analogy (Table \ref{table:R5}), based on vertical velocity at 850~hPa (W850). This AM was developed for large floodplains in France, but was found to be not relevant for an Alpine environment where topography is mostly responsible for uplift of air masses \citep{Horton2012}. 
 
@@ -625,6 +634,24 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 %
 
 \begin{figure}[t]
+	\includegraphics[width=8.3cm]{figures/map.pdf}
+	\caption{Location of the alpine Rh\^{o}ne catchment in Switzerland. (source: Swisstopo)}
+	\label{figure:map}
+\end{figure}
+
+\begin{figure}[t]
+	\includegraphics[width=7.5cm]{figures/variable_exploration_Chablais.pdf}
+	\caption{Performance score (CRPSS) of the 30 best variables from the NCEP/NCAR reanalysis dataset, when considered separately (no combination), for the Chablais region (Sect. \ref{sec:case_study}). The analogy criteria is S1 when there is an asterisk next to the variable name, and RMSE otherwise. Color illustrates the variable type: green = atmospheric circulation, blue = moisture, orange = temperature, yellow = radiation, purple = vertical velocity, and gray = other. SLP stands for sea level pressure, and Z for geopotential height}
+	\label{figure:variable_exploration_Chablais}
+\end{figure}
+
+\begin{figure}[t]
+	\includegraphics[width=7.5cm]{figures/variable_exploration_SE_crests.pdf}
+	\caption{Same as Fig. \ref{figure:variable_exploration_SE_crests}, but for the southeast ridges.}
+	\label{figure:variable_exploration_SE_crests}
+\end{figure}
+
+\begin{figure}[t]
 	\includegraphics[width=8.3cm]{figures/fig01.pdf}
 	\caption{Proposed structure for naming the parameterizations of the AM.}
 	\label{figure:nomenclature}
@@ -638,7 +665,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\includegraphics[width=8.3cm]{figures/fig03.pdf}
-	\caption{Performance scores, for the Swiss Alps, for different AM variants on multiple levels of analogy \citep{Horton2012a}.}
+	\caption{Performance scores, for the Swiss Alps, for different AM variants on multiple levels of analogy \citep{Horton2012a}. Same conventions as Fig. \ref{figure:scores_2}.}
 	\label{figure:scores_2}
 \end{figure}
 
