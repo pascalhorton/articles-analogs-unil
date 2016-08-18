@@ -13,21 +13,16 @@ _ressources/
 *.gz
 *.spl
 *.out
-AtmoSwing - Geoscientific Model Development\template.pdf
-Genetic algorithms - Journal of Climate\template.pdf
-Optimization case study - Journal of Hydrology\elsarticle-template.pdf
-Optimization - draft.pdf
-Optimization - preview.pdf
 *.gz(busy)
+*.qgs~
+*~$*
 1 - AtmoSwing v1.pdf
 2 - GAs v1.pdf
 3 - Case study.pdf
-Moving temporal window - HESS\template.pdf
 1 - AtmoSwing v1.docx
 2 - GAs v1.docx
 3 - Case study v1.docx
 3 - Case study v1.pdf
-*.qgs~
 4 - Sliding time window v1.docx
 4 - Sliding time window v1.pdf
 1 - AtmoSwing v2.pdf
@@ -36,3 +31,7 @@ Moving temporal window - HESS\template.pdf
 3 - Case study v3.pdf
 4 - Sliding time window v2.pdf
 4 - Sliding time window v3.pdf
+Moving temporal window - HESS\template.pdf
+AtmoSwing - GMD\template.pdf
+Genetic algorithms - MWR\template.pdf
+Optimization case study - JoH\elsarticle-template.pdf
