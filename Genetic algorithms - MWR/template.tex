@@ -11,15 +11,15 @@
 % Email questions to latex@ametsoc.org.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% PREAMBLE
+%% PREAMBLE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Start with one of the following:
-% DOUBLE-SPACED VERSION FOR SUBMISSION TO THE AMS
+%% DOUBLE-SPACED VERSION FOR SUBMISSION TO THE AMS
 \documentclass{ametsoc}
 
 
-% TWO-COLUMN JOURNAL PAGE LAYOUT---FOR AUTHOR USE ONLY
+%% TWO-COLUMN JOURNAL PAGE LAYOUT---FOR AUTHOR USE ONLY
 %\documentclass[twocol]{ametsoc}
 
 
@@ -54,7 +54,7 @@
 
 %% May use \\ to break lines in title:
 
-\title{Global Optimization of the Analog Method by Means of Genetic Algorithms}
+\title{Global Optimization of an Analog Method by Means of Genetic Algorithms}
 
 %%% Enter authors' names, as you see in this example:
 %%% Use \correspondingauthor{} and \thanks{Current Affiliation:...}
@@ -98,7 +98,7 @@
 \extraaffil{Universit\'{e} de Grenoble-Alpes, LTHE, Grenoble, France}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ABSTRACT
+%% ABSTRACT
 %
 % Enter your abstract here
 % Abstracts should not exceed 250 words in length!
@@ -106,9 +106,9 @@
 % For BAMS authors only: If your article requires a Capsule Summary, please place the capsule text at the end of your abstract
 % and identify it as the capsule. Example: This is the end of the abstract. (Capsule Summary) This is the capsule summary. 
 
-\abstract{The Analog Method is based on a statistical relationship between synoptic atmospheric variables (predictors) and local weather (predictand), which we aim at predicting. This relationship is expressed through many parameters that are usually calibrated by means of a semi-automatic sequential procedure. This calibration approach has strong limitations: it is made of successive steps and thus cannot handle parameters dependencies, and it cannot automatically optimize some parameters, such as the selection of the pressure levels and the temporal windows on which the predictors are compared.
+\abstract{Analog methods are based on a statistical relationship between synoptic atmospheric variables (predictors) and local weather (predictand), which we aim at predicting. This relationship is expressed through many parameters that are usually calibrated by means of a semi-automatic sequential procedure. This calibration approach has strong limitations: it is made of successive steps and thus cannot handle parameters dependencies, and it cannot automatically optimize some parameters, such as the selection of the pressure levels and the temporal windows on which the predictors are compared.
 In order to surpass these limitations, a global optimization technique was assessed, namely Genetic Algorithms, which can optimize jointly all parameters of the method and get closer to a global optimum by taking into account the parameters dependencies. Moreover, it can choose objectively parameters that were previously manually assessed, and can take into account new degrees of freedom that were unthinkable before.
-These kind of optimization techniques need however to be tailored to the problem to solve. Multiple combinations of algorithms had to be assessed, and even new operators were developed, such as the \textit{chromosome of adaptive search radius} which was found to be very robust, in order to make recommendations for the use of Genetic Algorithms to optimize the Analog Method. These recommendations are the main outcome of this work. It opens new perspective for the improvement of the Analog Method, and its application to new regions or to new predictands.
+These kind of optimization techniques need however to be tailored to the problem to solve. Multiple combinations of algorithms had to be assessed, and even new operators were developed, such as the \textit{chromosome of adaptive search radius} which was found to be very robust, in order to make recommendations for the use of Genetic Algorithms to optimize sevral variants of analog methods. These recommendations are the main outcome of this work. It opens new perspective for the improvement of  analog methods, and their application to new regions or to new predictands.
 }
 
 \begin{document}
@@ -118,7 +118,7 @@ These kind of optimization techniques need however to be tailored to the problem
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% MAIN BODY OF PAPER
+%% MAIN BODY OF PAPER
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 
@@ -151,35 +151,37 @@ These kind of optimization techniques need however to be tailored to the problem
 \section{Introduction}
 \label{section_intro}
 
-The Analog Method (AM) relies on the hypothesis that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Lorenz1956, Lorenz1969, Duband1970, Bontron2005}. The principle consists in sampling a certain number of past situations based on different atmospheric variables (predictors) in order to build a probabilistic prediction for a local weather variable of interest (predictand). The most common usage of the AM is for precipitation downscaling \citep[eg.][]{Guilbaud1997, Bontron2005, Bliefernicht2010, Marty2012, Horton2012, Radanovics2013, BenDaoud2015}, but AMs, or equivalent, were also used for downscaling of daily temperatures \citep{Radinovic1975, Woodcock1980, Kruizinga1983}, wind \citep{Gordon1987}, snow avalanches \citep{Obled1980, Bolognesi1993}, insolation \citep{Bois1981}, and the trajectory of tropical cyclones \citep{Keenan1981, Sievers2000, Fraedrich2003}. Applications for monthly time series in many countries also exist, including Canada \citep{Shabbar1986},  Hungary \citep{Toth1989}, the Netherlands \citep{Nap1981}, and England \citep{Murray1974}, as well as seasonal predictions: \citet{Barnett1978}, \citet{Bergen1982} and \citet{Livezey1988}.
+Analog methods (AMs) relies on the hypothesis that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Lorenz1956, Lorenz1969, Duband1970, Bontron2005}. The principle consists in sampling a certain number of past situations based on different atmospheric variables (predictors) in order to build a probabilistic prediction for a local weather variable of interest (predictand). A common usage of AMs is for precipitation downscaling \citep[eg.][]{Guilbaud1997, Bontron2005, Bliefernicht2010, Marty2012, Horton2012, Radanovics2013, BenDaoud2015}, but AMs, or equivalent, were also used for downscaling of daily temperatures \citep{Radinovic1975, Woodcock1980, Kruizinga1983}, wind \citep{Gordon1987}, snow avalanches \citep{Obled1980, Bolognesi1993}, insolation \citep{Bois1981}, and the trajectory of tropical cyclones \citep{Keenan1981, Sievers2000, Fraedrich2003}. Applications for monthly time series in many countries also exist, including Canada \citep{Shabbar1986},  Hungary \citep{Toth1989}, the Netherlands \citep{Nap1981}, and England \citep{Murray1974}, as well as seasonal predictions: \citet{Barnett1978}, \citet{Bergen1982} and \citet{Livezey1988}.
 
 Even though the method is rather simple compared to numerical weather prediction (NWP) models, it contains a certain number of parameters one needs to determine, such as the choice of the predictor variable, its pressure level and temporal window to consider, the spatial domain to use for the comparison, as well as the analogy criteria itself, and finally the number of analog situations to keep at each subsampling level. 
 
-The AM needs to be adapted to every new region considered, because the leading meteorological influences may be location specific. Even the selection of the pressure levels and the temporal windows should be reconsidered, if not the predictor variable itself. 
+AMs need to be adapted to every new region considered, because the leading meteorological influences may be location specific. Even the selection of the pressure levels and the temporal windows should be reconsidered, if not the predictor variable itself. 
 
-Up to now, the optimization of the method has been undertaken by semi-automatic sequential calibration procedures \citep[see][for its definition]{Bontron2004, Horton2016}. However, the selection of predictor variables, pressure levels and temporal windows had still to be made manually before optimizing the spatial windows and the number of analogs. Testing multiple combinations of these is very combinatorial and becomes quickly cumbersome, especially when considering multiple predictors within the same level of analogy. Thus, optimizing the method with the sequential technique is laborious, as many combinations of predictors (variables, pressure levels, temporal windows) have to be assessed. Moreover, proceeding to the optimization sequentially ignores potential dependencies between the parameters of the method, may they be within a single level of analogy or between them, which could lead to another parametrization if the parameters were calibrated together. Simultaneous calibration of all parameters has never been undertaken so far. Thus, due to the sequential approach, the risk of ending in a local optimum is high and can not be avoided. Indeed, during the AM calibration it has been found that the resulting parameters may vary with initial choices (such as the number of analogs).
+Up to now, the optimization of the method has been undertaken by semi-automatic sequential calibration procedures \citep[see][for its definition]{Bontron2004}. However, the selection of predictor variables, pressure levels and temporal windows had still to be made manually before optimizing the spatial windows and the number of analogs. Testing multiple combinations of these is very combinatorial and becomes quickly cumbersome, especially when considering multiple predictors within the same level of analogy. Thus, optimizing the method with the sequential technique is laborious, as many combinations of predictors (variables, pressure levels, temporal windows) have to be assessed. Moreover, proceeding to the optimization sequentially ignores potential dependencies between the parameters of the method, may they be within a single level of analogy or between them, which could lead to another parametrization if the parameters were calibrated together. Simultaneous calibration of all parameters has never been undertaken so far. Thus, due to the sequential approach, the risk of ending in a local optimum is high and can not be avoided. Indeed, during an AM calibration it has been found that the resulting parameters may vary with initial choices (such as the number of analogs).
 
-When creating the sequential calibration procedure, \citet{Bontron2004} was aware of the problem of dependencies between parameters and wrote: ''\textit{We perceive here the combinatorial aspect of our problem: variables and spatial windows are not independent. We will present our results by first searching the best variable [note: e.g. selection of the pressure level and the temporal window for the geopotential height] on a chosen spatial window, and next, the best window for the chosen variable. However, even by repeating the process, are we sure to obtain the optimal combination?}''. And later in his work: ''\textit{Our approach, which is again to vary the parameters one by one -- the others being fixed in a more or less arbitrary manner -- may therefore not exactly lead us to the optimal solution}''. \citet{Bliefernicht2010} has also faced the combinatorial issue of the parameters of the AM and concludes that one needs to be an expert to have a sense of their respective influence, sensitivity and nonlinear interactions. \citet{BenDaoud2010}, when calibrating the AM, also stated that ''\textit{the combinatory aspect related to the calibration was found to be too high for all the parameters to be calibrated simultaneously}''.
+When creating the sequential calibration procedure, \citet{Bontron2004} was aware of the problem of dependencies between parameters and wrote: ''\textit{We perceive here the combinatorial aspect of our problem: variables and spatial windows are not independent. We will present our results by first searching the best variable [note: e.g. selection of the pressure level and the temporal window for the geopotential height] on a chosen spatial window, and next, the best window for the chosen variable. However, even by repeating the process, are we sure to obtain the optimal combination?}''. And later in his work: ''\textit{Our approach, which is again to vary the parameters one by one -- the others being fixed in a more or less arbitrary manner -- may therefore not exactly lead us to the optimal solution}''. \citet{Bliefernicht2010} has also faced the combinatorial issue of the parameters of an AM and concludes that one needs to be an expert to have a sense of their respective influence, sensitivity and nonlinear interactions. \citet{BenDaoud2010}, when calibrating an AM, also stated that ''\textit{the combinatory aspect related to the calibration was found to be too high for all the parameters to be calibrated simultaneously}''.
 
-In order to overcome these limitations, two optimization techniques were assessed. First, \citet{Horton2012a} assessed the ability of the \citet{Nelder1965a} method based on a simplex approach. This technique did not provide satisfying results and failed at converging toward a unique solution. The parameter space of the AM is very complex and is inappropriate for a linear optimization technique. The conclusion was that global optimization techniques were necessary in order to calibrate AMs, as it is the only way to optimize all parameters of all analogy levels simultaneously. In addition, it can overcome the systematic manual assessments of all pressure levels and temporal windows. Finally, it can open new perspectives by allowing the addition of new degrees of freedom, such as a weighting of the criteria values between the pressure levels \citep[see][]{Horton2016b}, and the consideration of differentiated spatial windows between the pressure levels. The relevance of Genetic Algorithms (GAs) is presented here, which does not exclude that other global optimization techniques could eventually be successful. 
+In order to overcome these limitations, two optimization techniques were assessed. First, \citet{Horton2012a} assessed the ability of the \citet{Nelder1965a} method based on a simplex approach. This technique did not provide satisfying results and failed at converging toward a unique solution. The parameter space of AMs can be very complex and is inappropriate for a linear optimization technique. The conclusion was that global optimization techniques were necessary in order to calibrate most AM variants, as it is the only way to optimize all parameters of all analogy levels simultaneously. In addition, it can overcome the systematic manual assessments of all pressure levels and temporal windows. Finally, it can open new perspectives by allowing the addition of new degrees of freedom, such as a weighting of the criteria values between the pressure levels, and the consideration of differentiated spatial windows between the pressure levels. The relevance of Genetic Algorithms (GAs) is presented here, which does not exclude that other global optimization techniques could eventually be successful. 
 
-This article is not about discussing the details of the results of an optimization with GAs, but describing how GAs are to be used in order to successfully optimize AMs. Indeed, GAs variants are numerous and always need to be tailored to the problem addressed. This requires intensive and systematic comparisons of operators and options in order to identify the key factors leading the optimization and the respective sensitivity of the options. Such analyses are presented here by application to the upper Rh\^{o}ne catchment in Switzerland, and will result in recommendations for the use of GAs when applied to AMs. The demonstration of the benefit brought by such an approach on a specific case study is the topic of \citet{Horton2016b}. 
+This article is not about discussing the details of the results of an optimization with GAs, but describing how GAs are to be used in order to successfully optimize some AM variants. Indeed, GAs variants are numerous and always need to be tailored to the problem addressed. This requires intensive and systematic comparisons of operators and options in order to identify the key factors leading the optimization and the respective sensitivity of the options. Such analyses are presented here by application to the upper Rh\^{o}ne catchment in Switzerland, and will result in recommendations for the use of GAs when applied to several AM implementations. The demonstration of the benefit brought by such an approach on a specific case study is the topic of another coming paper. 
 
-We will begin by presenting the basics of the AM (Sect. \ref{sec:am}) and the concepts of GAs as well as the assessed operators (operations performed on the AM parameters; see Sect. \ref{sec:gas}). The comparative analyses of the operators and their results are presented in Sect. \ref{sec:assessment}, which lead us to the recommendations in Sect. \ref{sec:recommendations}.
+We will begin by presenting the basics of the considered AM variants (Sect. \ref{sec:am}) and the concepts of GAs as well as the assessed operators (operations performed on the AM parameters; see Sect. \ref{sec:gas}). The comparative analyses of the operators and their results are presented in Sect. \ref{sec:assessment}, which lead us to the recommendations in Sect. \ref{sec:recommendations}.
 
 
-\section{The Analog Method}
+\section{The considered analog method}
 \label{sec:am}
 
-The purpose of this paper is not to present in details the AM and its different parameterizations, which can be found in \citet{Horton2016} or \citet{BenDaoud2015}. The concepts one needs to understand here are the following: the AM consists in searching a certain number of past situations in a meteorological archive (typically reanalysis datasets) that are the most similar, according to an analogy criteria, and to extract the observed values of the local weather variable of interest from another archive (typically local or basin averaged time series) in order to build the conditional empirical distribution considered as the probabilistic prediction for the target day. Predictors can be varied: for example the geopotential height at different pressure levels on different temporal windows (time of observation). The method is usually made of several levels of analogy, leading to successive subsampling on predictors of different nature (eg. atmospheric circulation, moisture variables, vertical motion, and air temperature).
+% TODO: Add description of the method
 
-There are mainly 2 parameterizations that are most often used for precipitation downscaling: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on moisture variables \citep{Obled2002, Bontron2005, Marty2012}.
+The concepts one needs to understand here are the following: AMs consist in searching a certain number of past situations in a meteorological archive (typically reanalysis datasets) that are the most similar, according to an analogy criteria, and to extract the observed values of the local weather variable of interest from another archive (typically local or basin averaged time series) in order to build the conditional empirical distribution considered as the probabilistic prediction for the target day. Predictors can be varied: for example the geopotential height at different pressure levels on different temporal windows (time of observation). The method is usually made of several levels of analogy, leading to successive subsampling on predictors of different nature (eg. atmospheric circulation, moisture variables, vertical motion, and air temperature).
+
+Two parameterizations are often used for precipitation downscaling: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on moisture variables \citep{Obled2002, Bontron2005, Marty2012}.
 
 The method based on the analogy of the synoptic circulation consists in the following steps: the similarity of the atmospheric circulation of a target date with every day of the archive is assessed by processing the S1 criteria \citep{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, on 2 different the geopotential heights (e.g. 500 and 1000~hPa) and over a certain spatial window. To cope with seasonal effects, candidate dates are extracted within a period of 4 months centered around the target date, for every year of the archive. The $n_{1}$ (parameter to calibrate) dates with the lowest values of S1 are considered as analogs to the target day. Then, the daily observed precipitation amount of the $n_{1}$ resulting dates provide the empirical conditional distribution considered as the probabilistic prediction for the target day.
 
 The other current parametrization adds a second level of analogy on moisture variables, more specifically on a moisture index made of the product of the precipitable water with the relative humidity at a certain pressure level \citep[e.g. 850~hPa, see][]{Bontron2004}. When adding a second level of analogy, $n_{2}$ dates are subsampled in the $n_{1}$ analogs on the atmospheric circulation, to end up with a smaller number of analog situations.
 
-The score that is most often used to assess an AM performance is the CRPS \citep[Continuous Ranked Probability Score,][]{Brown1974, Matheson1976, Hersbach2000}. It allows evaluating the predicted cumulative distribution functions $F(y)$, for example of the precipitation values $y$ from analog situations, compared to the observed value $y^{0}$. The better the prediction, the smaller the score. The mean CRPS of a prediction series of length $l$ can be written:
+A score that has been often used to assess an AM performance is the CRPS \citep[Continuous Ranked Probability Score,][]{Brown1974, Matheson1976, Hersbach2000}. It allows evaluating the predicted cumulative distribution functions $F(y)$, for example of the precipitation values $y$ from analog situations, compared to the observed value $y^{0}$. The better the prediction, the smaller the score. The mean CRPS of a prediction series of length $l$ can be written:
 
 \begin{equation}
 \label{eq:CRPS}
@@ -217,19 +219,19 @@ A key element of the parametrization of GAs is finding the right balance between
 
 \subsection{Structure and operators}
 
-The GAs optimize a population of $N$ individuals (parameter sets). Each individual contains a chromosome (set of parameters of the AM in this case). Genes are the individual parameters constituting the chromosome. They can be either categorical (e.g. geopotential, or temperature), discrete (e.g. number of analogs to select, from 1 to 40), or continuous. For example, a chromosome may looks like:
+The GAs optimize a population of $N$ individuals (parameter sets). Each individual contains a chromosome (set of parameters of our AM in this case). Genes are the individual parameters constituting the chromosome. They can be either categorical (e.g. geopotential, or temperature), discrete (e.g. number of analogs to select, from 1 to 40), or continuous. For example, a chromosome may looks like:
 
 \begin{equation}
 [p_{i,j}, h_{i,j}, \lambda w_{i,j}, \lambda e_{i,j}, \varphi s_{i,j}, \varphi n_{i,j}, p_{i,j+1}, h_{i,j+1}, ..., n_{i}, ... p_{i+1,j}, h_{i+1,j}, ..., n_{i+1}, ...]
 \end{equation}
-where, for the level of analogy $i$ and the predictor number $j$, $p_{i,j}$ is the pressure level, $h_{i,j}$ is the temporal window, $\lambda w_{i,j}$ and $\lambda e_{i,j}$ are the western and eastern longitudes of the spatial window, $\varphi s_{i,j}$ and $\varphi n_{i,j}$ are its southerly and northerly latitudes, and $n_{i,j}$ is the number of analogs. A chromosome for the simple AM on the atmospheric circulation only (Sect. \ref{sec:am}) may be: $[500~hPa, 12~h, -2.5\degree, 15\degree, 40\degree, 55\degree, 1000~hPa, 24~h, 0\degree, 15\degree, 42.5\degree, 47.5\degree, 28]$
+where, for the level of analogy $i$ and the predictor number $j$, $p_{i,j}$ is the pressure level, $h_{i,j}$ is the temporal window, $\lambda w_{i,j}$ and $\lambda e_{i,j}$ are the western and eastern longitudes of the spatial window, $\varphi s_{i,j}$ and $\varphi n_{i,j}$ are its southerly and northerly latitudes, and $n_{i,j}$ is the number of analogs. A chromosome for a simple AM on the atmospheric circulation only (Sect. \ref{sec:am}) may be: $[500~hPa, 12~h, -2.5\degree, 15\degree, 40\degree, 55\degree, 1000~hPa, 24~h, 0\degree, 15\degree, 42.5\degree, 47.5\degree, 28]$
 
 The floating-point representation \citep[instead of the canonical binary, see][]{Goldberg1989, Goldberg1990a, Holland1992b} of the genes was considered, as it was found more suited in multiple applications \citep{Michalewicz1996, Herrera1998a, Haupt2004, Back1996b, Gaffney2010a}. 
 
 There are numerous implementation variants of GAs, often optimal for a given problem \citep{Hart1991a, Schraudolph1992a}. The divergences are in the operators implementation, through significantly different algorithms, which has an important effect on the results \citep{Gaffney2010a}. Here, operators are defined as the mechanisms that modify the values of the genes to try bringing individuals (or chromosomes) closer to an optimum of the fitness function. The structure of the method (Fig. \ref{fig:structure_gas}) resulting from the work of \citet{Holland1992b} is common to most applications \citep{Back1993b}, and consists in the following steps:
 
 \begin{enumerate}
-	\item A population of $N$ individuals (parameter sets of the AM) is randomly generated, which constitutes the initial population.
+	\item A population of $N$ individuals (parameter sets of the AM to optimize) is randomly generated, which constitutes the initial population.
 	\item The fitness (performance score or objective function) of every individual is assessed.
 	\item A natural selection is applied, after which only the best individuals remain, which constitutes the intermediate generation (IG).
 	\item From this IG, couples are formed according to given rules.
@@ -243,7 +245,7 @@ All considered operators and their options, applied to floating-point coding, ar
 
 \subsubsection{Genesis of the population}
 
-The first step of the optimization is to generate an initial population. A population is a set of $N$ individuals (each of which represents, in this application, a parameter set of the AM and thus a point in the space of potential solutions) that are going to evolve. A generation is the population considered at a given time. 
+The first step of the optimization is to generate an initial population. A population is a set of $N$ individuals (each of which represents, in this application, a parameter set of an AM and thus a point in the space of potential solutions) that are going to evolve. A generation is the population considered at a given time. 
 
 A random initialization based on a uniform sampling is the most current version. The size $N$ of the population is often a compromise between the computation time and the quality of the solution. $N$ must allow sufficient sampling of the solutions field \citep{Beasley1996a}, and should thus vary as a function of chromosome size (ie the number of genes or parameters to be optimized). 
 
@@ -465,7 +467,7 @@ The convergence check determines whether the solution is acceptable and if the a
 
 Some constraints need to be taken into account. For example, when a crossover or a mutation operation results in a parameter value standing out of the authorized bounds, it has to be brought back within the limits. Moreover, the parameters are of different nature: some are continuous, some are discrete, and finally, some are categorical, i.e. independent elements in an array, such as the selection of the meteorological variable. New values resulting from the optimizer need to respect the type of data it represents.
 
-Other constraints exist in between the parameters, such as the temporal window of the moisture index \cite[see][]{Horton2016} that has to be consistent in between the relative humidity and the precipitable water.
+Other constraints exist in between the parameters, such as the temporal window of the moisture index that has to be consistent in between the relative humidity and the precipitable water.
 
 GAs are very computationally intensive because they require many evaluations of the objective function. These assessments are very long in this application, as they require calculating and assessing a prediction for every day of the calibration period, thus over several decades. In order to reduce the computation time, recalculating the performance score of an individual who has previously been evaluated and that has not changed was avoided. Thus, the score of each individual living in the selection was kept until it mutates.
 
@@ -484,14 +486,14 @@ Values of the mutation rate ($p$) varies broadly between studies: from 0.001 \ci
 
 \subsection{Comparison process}
 
-One of our goals being to make recommendations of parametrization in view of optimizing the AM, a systematic procedure was adopted. The results are summarized hereafter \citep[see][for the details]{Horton2012a}. Concepts were taken from the factorial design approach \citep[see eg.][]{Costa2005a,Costa2007a,Mariano2010a}, which is sometimes used for comparative analysis of different parametrizations of GAs. It allows isolating the effect of a parameter under different combinations of the other options. A procedure by stages was adopted, analyzing in details and in a systematic way every variant of the implemented operators, in combination with multiple other options and parameters in order to take into account eventual co-dependencies. The goal here is not to focus on the performance score obtained through optimization, neither the values of the new optimized parameters \citep[covered in][]{Horton2016b}, but to explain how to use GAs to optimize AMs in an efficient way.
+One of our goals being to make recommendations of parametrization in view of optimizing AM variants, a systematic procedure was adopted. The results are summarized hereafter \citep[see][for the details]{Horton2012a}. Concepts were taken from the factorial design approach \citep[see eg.][]{Costa2005a,Costa2007a,Mariano2010a}, which is sometimes used for comparative analysis of different parametrizations of GAs. It allows isolating the effect of a parameter under different combinations of the other options. A procedure by stages was adopted, analyzing in details and in a systematic way every variant of the implemented operators, in combination with multiple other options and parameters in order to take into account eventual co-dependencies. The goal here is not to focus on the performance score obtained through optimization, neither the values of the new optimized parameters (covered in another coming paper), but to explain how to use GAs to optimize AMs in an efficient way.
 
 In order to evaluate a combination of operators/options, 10 optimizations per parametrization of GAs were processed. Such assessment is not possible on the whole archive length, and had to be performed on a reduced period. The performances were characterized by four indicators: (i) mean performance score: average of the final scores of the 10 optimizations, (ii) convergence: the number of optimizations that converged to a supposed global optimum, (iii) number of generations: characterization of the convergence speed, and (iv) number of evaluations of the objective function: characterization of the required calculation time.
 
 
 \subsection{Success of the approach}
 
-After a first overview of the results, GAs have quicky proved successful at optimizing the AM. The performance score of the sequential approach has been quickly exceeded without adding any new parameter to the method (Fig. \ref{fig:gas_evolution_good}). Even GAs parameterizations that will be considered later as inadequate (Fig. \ref{fig:gas_evolution_bad}) did significantly better that the sequential approach. The amplitude of the improvement is not the main outcome here. The most important point is that GAs proved successful at optimizing AMs automatically, globally, and objectively.
+After a first overview of the results, GAs have quicky proved successful at optimizing the considered AM implementations. The performance score of the sequential approach has been quickly exceeded without adding any new parameter to the method (Fig. \ref{fig:gas_evolution_good}). Even GAs parameterizations that will be considered later as inadequate (Fig. \ref{fig:gas_evolution_bad}) did significantly better that the sequential approach. The amplitude of the improvement is not the main outcome here. The most important point is that GAs proved successful at optimizing AMs automatically, globally, and objectively.
 
 
 \subsection{Results of the comparison}
@@ -518,11 +520,11 @@ Figure \ref{fig:operator_mutation_score} show the results of this analysis and i
 
 The mutation operators based on variable normal or variable uniform laws work very poorly and are difficult to configure. Many operators present more or less the same performance scores and require a variable amount of assessments. The convergence analysis \citep[see][]{Horton2012a} allows one to highlight three best operators: non-uniform mutation, chromosome of adaptive search radius, and multi-scale mutation. Thus, different optimizations were further performed using variants of these 3 operators (Table \ref{tab:assessed_mutation_operators_bis}).
 
-The first analysis was the optimization of the precipitation downscaling over a subcatchment (Binn-Simplon region) in the Swiss Alps (Fig. \ref{fig:operator_mutation_score_atmlevel}). The optimizer could choose the 2 pressure levels of the atmospheric circulation analogy (method with a single level of analogy). The resulting CRPSS performance score (Sect. \ref{sec:am}) is obviously superior to the one obtained by the sequential calibration (red line on Fig. \ref{fig:operator_mutation_score_atmlevel}). For most options, it is also slightly better than the results from the optimization without selection of the pressure levels (blue line). A clear breakthrough of the performances was not expected, as the former selection of pressure levels results already from intensive comparative work \citep{Bontron2004}. This application however demonstrates that, when correctly parametrized, GAs can automatically and successfully choose the pressure levels. However, some less relevant optimizations do not match the previous results. Through different applications, the automatic selection of the pressure level was shown to significantly increase the difficulty for GAs to converge to a unique solution, ideally the global optimum. A difficulty is that the pressure levels are considered within the optimization without continuity between values, and thus the approaches relying on distance in the parameters space, such as the search radius, cannot fully exploit the properties that make them efficient. However, even though the results show a certain variability, most of them present very good performance scores, despite different parameters of the AM.
+The first analysis was the optimization of the precipitation downscaling over a subcatchment (Binn-Simplon region) in the Swiss Alps (Fig. \ref{fig:operator_mutation_score_atmlevel}). The optimizer could choose the 2 pressure levels of the atmospheric circulation analogy (method with a single level of analogy). The resulting CRPSS performance score (Sect. \ref{sec:am}) is obviously superior to the one obtained by the sequential calibration (red line on Fig. \ref{fig:operator_mutation_score_atmlevel}). For most options, it is also slightly better than the results from the optimization without selection of the pressure levels (blue line). A clear breakthrough of the performances was not expected, as the former selection of pressure levels results already from intensive comparative work \citep{Bontron2004}. This application however demonstrates that, when correctly parametrized, GAs can automatically and successfully choose the pressure levels. However, some less relevant optimizations do not match the previous results. Through different applications, the automatic selection of the pressure level was shown to significantly increase the difficulty for GAs to converge to a unique solution, ideally the global optimum. A difficulty is that the pressure levels are considered within the optimization without continuity between values, and thus the approaches relying on distance in the parameters space, such as the search radius, cannot fully exploit the properties that make them efficient. However, even though the results show a certain variability, most of them present very good performance scores, despite different parameters of the AM considered.
 
 Then, the same optimization was performed, but for another region, sensitive to other meteorological influences (Fig. \ref{fig:operator_mutation_score_rhoneamont}), in order to assess eventual dependencies of the operator with the predictand. Even though differences can be observed with Fig. \ref{fig:operator_mutation_score_atmlevel}, it is globally the same options that perform better.
 
-Next, a second level of analogy was proposed (Fig. \ref{fig:operator_mutation_score_r2}) based on moisture variables \citep[see][]{Bontron2004, Horton2016}. GAs had to optimize both levels of analogy simultaneously. Once again, despite the difficulty to do so, the results were better than the sequential calibration (red line on Fig. \ref{fig:operator_mutation_score_r2}). And finally, a preselection on air temperature was added instead of the fixed calendar window, as proposed by \cite{BenDaoud2015}. The results show generally higher scores (Fig. \ref{fig:operator_mutation_score_r4}), demonstrating the success of the optimizer to take advantage of this new degree of freedom, and its capacity to handle optimization of 3 analogy levels jointly. Again, the most relevant options are generally the same.
+Next, a second level of analogy was proposed (Fig. \ref{fig:operator_mutation_score_r2}) based on moisture variables \citep[see][]{Bontron2004}. GAs had to optimize both levels of analogy simultaneously. Once again, despite the difficulty to do so, the results were better than the sequential calibration (red line on Fig. \ref{fig:operator_mutation_score_r2}). And finally, a preselection on air temperature was added instead of the fixed calendar window, as proposed by \cite{BenDaoud2015}. The results show generally higher scores (Fig. \ref{fig:operator_mutation_score_r4}), demonstrating the success of the optimizer to take advantage of this new degree of freedom, and its capacity to handle optimization of 3 analogy levels jointly. Again, the most relevant options are generally the same.
 
 After analysis of the most relevant mutation operators, the following advice can be raised (detailed parametrization are provided in Sect. \ref{sec:recommendations}):
 
@@ -546,7 +548,7 @@ The analysis of the natural selection operator (Fig. \ref{fig:operator_selectnat
 The size of the population ($N$), i.e. the number of sets of AM parameters considered, has an effect on the performance of the optimization (Fig. \ref{fig:option_taillepop_score}). A bigger population leads to better results, but also to significantly longer optimizations. Indeed, the required number of evaluation, and thus the required time, is approximately proportional to the population size. The optimal size seems to depend on the complexity of the AM to optimize: a more complex AM (ie. with more degrees of freedom) requires a bigger population size. A rule of thumb based on a limited number of case studies (not shown here) is provided hereafter:
 
 \begin{itemize}
-	\item $N\approx100$ for very simple implementations of the AM (1 level of analogy with 2 pressure levels),
+	\item $N\approx100$ for very simple AM implementations (1 level of analogy with 2 pressure levels),
 	\item $N\approx200$ for a slightly more complex AM (1 level of analogy with 4 pressure levels, or 2 level of analogy with less pressure levels),
 	\item $N\approx500$ for significantly more complex AMs (2-3 levels of analogy with 4 pressure levels for the atmospheric circulation, and 2 to 4 levels for the moisture analogy).
 \end{itemize}
@@ -557,7 +559,7 @@ The influence of the size of the IG (proportion of the total population) selecte
 \section{Recommended parametrization of GAs}
 \label{sec:recommendations}
 
-Optimizations by GAs for AMs of varying complexities were performed with a large number of combinations of operators in order to make recommendations for optimizing the AM. The conclusions are:
+Optimizations by GAs for AMs of varying complexities were performed with a large number of combinations of operators in order to make recommendations for optimizing AMs. The conclusions are:
 
 \begin{itemize}
 	\item The population size should be in accordance with the complexity of the AM to optimize: from 100 for the simple ones, up to 500 for the most complex AMs.
@@ -590,15 +592,15 @@ where $p_{mut}$ is the mutation rate (or mutation probability), $G_{m,r}$ is the
 
 \section{Conclusions}
 
-In order to automatically optimize the AM and to get rid of the limitations of the usual sequential calibration, GAs were evaluated. Given the large number of existing operators and options, multiple variants were assessed systematically in order to identify which operators are important, and which variants work best for the AM. The mutation operator was identified as a key element for this application, and new variants that proved efficient were provided, such as the chromosome of adaptive search radius that is very robust (no control parameter). Recommendations were established for a relevant use of GAs for the optimization of AMs. 
+In order to automatically optimize several AM variants and to get rid of the limitations of the usual sequential calibration, GAs were evaluated. Given the large number of existing operators and options, multiple variants were assessed systematically in order to identify which operators are important, and which variants work best for the considered AM implementations. The mutation operator was identified as a key element for this application, and new variants that proved efficient were provided, such as the chromosome of adaptive search radius that is very robust (no control parameter). Recommendations were established for a relevant use of GAs for the optimization of AMs. 
 
 It is not excluded that another global optimization method or other operators of GAs may perform still better. However, the relevance of such an approach has now been proved as it results in parametrization of AMs that are relevant and fully automatically, globally and objectively established. A global optimization is the only way to take into account all the dependencies between parameters and levels of analogy.
 
-The global optimization approach allows easily adapting the AM to new regions by potentially taking into account local meteorological influences, and has thus a great potential of use. Moreover, it allows exploring automatically datasets in order to extract the most relevant variables. It is thus possible to try assessing other predictands, such as the temperature, the limit of snowfall, the occurrence of hail, or wind, while leaving the algorithms select the best variables and the associated parameters.
+The global optimization approach allows easily adapting AMs to new regions by potentially taking into account local meteorological influences, and has thus a great potential of use. Moreover, it allows exploring automatically datasets in order to extract the most relevant variables. It is thus possible to try assessing other predictands, such as the temperature, the limit of snowfall, the occurrence of hail, or wind, while leaving the algorithms select the best variables and the associated parameters.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ACKNOWLEDGMENTS
+%% ACKNOWLEDGMENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \acknowledgments
@@ -608,7 +610,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% APPENDIXES
+%% APPENDIXES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Use \appendix if there is only one appendix.
@@ -639,14 +641,14 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 % All appendix figures/tables should be placed in order AFTER the main figures/tables, i.e., tables, appendix tables, figures, appendix figures.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% REFERENCES
+%% REFERENCES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Make your BibTeX bibliography by using these commands:
 \bibliographystyle{ametsoc2014}
 \bibliography{references}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TABLES
+%% TABLES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Enter tables at the end of the document, before figures.
 %%
@@ -756,7 +758,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% FIGURES
+%% FIGURES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Enter figures at the end of the document, after tables.
 %%
