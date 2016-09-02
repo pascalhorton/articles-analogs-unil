@@ -230,6 +230,7 @@ A key element of GAs configuration is finding the right balance between explorat
 
 
 \subsection{Structure and operators}
+\label{sec:gas:operators}
 
 GAs optimize a population of $N$ individuals (parameter sets). Each individual contains a chromosome (set of parameters of our AM in this case). Genes are the individual parameters constituting the chromosome. They can be either categorical (e.g. choice of the meteorological variable), discrete (e.g. number of analogs to select), or continuous.
 
@@ -244,6 +245,7 @@ A random initialization based on a uniform sampling is the most current version 
 
 
 \subsubsection{Natural selection}
+\label{sec:gas:nat_selection}
 
 Natural selection is performed on the basis of the objective function values. The selection allows to only keep a certain part of the population, usually half ($N/2$), which can access the IG (with $N_{IG}$ members). Several techniques exist, such as:
 
@@ -255,6 +257,7 @@ Natural selection is performed on the basis of the objective function values. Th
 
 
 \subsubsection{Selection of the couples}
+\label{sec:gas:selection_couples}
 
 Individuals of the IG can then reproduce, which begins with the selection of pairs (the parents). The techniques implemented in this work are the following:
 
@@ -271,6 +274,7 @@ Individuals of the IG can then reproduce, which begins with the selection of pai
 
 
 \subsubsection{Chromosome crossover}
+\label{sec:gas:crossover}
 
 Once the two parents are selected for breeding, they combine their chromosomes and produce two children, bringing the number of individuals in the population back to $N$. The combination of chromosomes is carried out using a crossover operator, thereby generating two offspring having characteristics derived from both parents. It allows a mixing of genes and a potential accumulation of positive mutations. The evaluated crossover operators are the following:
 
@@ -418,7 +422,7 @@ From the very beginning of the assessments, the importance of the mutation opera
 
 \subsubsection{Breeding operators}
 
-Every combination of 6 options for the couples selection (Table \ref{tab:assessed_couples_selection_operators}) and 21 for the chromosome crossover operators (Table \ref{tab:assessed_crossover_operators}) were evaluated, along with variants of the other operators. This resulted in 1,008 combinations, requiring 10,080 optimizations.
+Every combination of 6 options for the couples selection (Fig. \ref{fig:operator_selectcoupl_score}) and 21 for the chromosome crossover operators (Fig. \ref{fig:operator_crossover_score}) were evaluated, along with variants of the other operators. This resulted in 1,008 combinations, requiring 10,080 optimizations.
 
 The performance of the couples selection operator are relatively close (Fig. \ref{fig:operator_selectcoupl_score}). Overall, the tournament selection with 3~candidates is slightly superior to others, along with the roulette wheel weighting. This last one is however a bit less effective in terms of convergence and number of evaluations (not shown). The couples selection operator has not a significant role in this application. 
 
@@ -428,11 +432,11 @@ Analysis of crossover operators (Fig. \ref{fig:operator_crossover_score}) reveal
 \subsubsection{Mutation operator}
 \label{sec:assessment:mutation}
 
-Having identified the leading role of the mutation operator, the next sensitivity analysis focused on it. Each of the 10 different implementations (see section \ref{sec:gas:mutation}) was tested, with different parameters for those who require some (Table \ref{tab:assessed_mutation_operators}), bringing the number of variations up to 109. Some optimizations without any mutation were also performed as a reference. Along with variants of the other operators \citep[see][for the details]{Horton2012a}, this resulted in 660 combinations (so 6,600 optimizations).
+Having identified the leading role of the mutation operator, the next sensitivity analysis focused on it. Each of the 10 different implementations (see section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:mutation}) was tested, with different parameters for those who require some (Figure \ref{fig:operator_mutation_score}), bringing the number of variations up to 109. Some optimizations without any mutation were also performed as a reference. Along with variants of the other operators \citep[see][for the details]{Horton2012a}, this resulted in 660 combinations (so 6,600 optimizations).
 
-Figure \ref{fig:operator_mutation_score} show the results of this analysis and illustrates the important role of the mutation on the performance of the optimizations. Those without mutation (last box on Figure \ref{fig:operator_mutation_score}) are inferior to most mutation operators, and the scale of the influence of this operator is significantly more important than those for the other options. The details of the analysis \citep[see][]{Horton2012a} show that the other reproduction operators seem of secondary importance. This observation is in line with the work of \citet{Back1996a}, who argues for the importance of mutation over reproduction, as well as other authors (see section \ref{sec:gas}.\ref{sec:gas:mutation}).
+Figure \ref{fig:operator_mutation_score} show the results of this analysis and illustrates the important role of the mutation on the performance of the optimizations. Those without mutation (last box on Figure \ref{fig:operator_mutation_score}) are inferior to most mutation operators, and the scale of the influence of this operator is significantly more important than those for the other options. The details of the analysis \citep[see][]{Horton2012a} show that the other reproduction operators seem of secondary importance. This observation is in line with the work of \citet{Back1996a}, who argues for the importance of mutation over reproduction, as well as other authors (see section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:mutation}).
 
-The mutation operators based on variable normal or variable uniform laws work very poorly and are difficult to configure. Many operators present more or less the same performance scores and require a variable amount of assessments. The convergence analysis \citep[see][]{Horton2012a} allows one to highlight three best operators: non-uniform mutation, chromosome of adaptive search radius, and multi-scale mutation. Thus, different optimizations were further performed using variants of these 3 operators (Table \ref{tab:assessed_mutation_operators_bis}).
+The mutation operators based on variable normal or variable uniform laws work very poorly and are difficult to configure. Many operators present more or less the same performance scores and require a variable amount of assessments. The convergence analysis \citep[see][]{Horton2012a} allows one to highlight three best operators: non-uniform mutation, chromosome of adaptive search radius, and multi-scale mutation. Thus, different optimizations were further performed using variants of these 3 operators (Figures \ref{fig:operator_mutation_score_atmlevel}-\ref{fig:operator_mutation_score_r4}).
 
 The first analysis was the optimization of the precipitation downscaling over a subcatchment (Binn-Simplon region) in the Swiss Alps (Fig. \ref{fig:operator_mutation_score_atmlevel}). The optimizer could choose the 2 pressure levels of the atmospheric circulation analogy (method with a single level of analogy). The resulting CRPSS performance score (section \ref{sec:am}) is obviously superior to the one obtained by the sequential calibration (red line on Fig. \ref{fig:operator_mutation_score_atmlevel}). For most options, it is also slightly better than the results from the optimization without selection of the pressure levels (blue line). A clear breakthrough of the performances was not expected, as the former selection of pressure levels results already from intensive comparative work \citep{Bontron2004}. This application however demonstrates that, when correctly configured, GAs can automatically and successfully choose the pressure levels. However, some less relevant optimizations do not match the previous results. Through different applications, the automatic selection of the pressure level was shown to significantly increase the difficulty for GAs to converge to a unique solution, ideally the global optimum. A difficulty is that the pressure levels are considered within the optimization without continuity between values, and thus the approaches relying on distance in the parameters space, such as the search radius, cannot fully exploit the properties that make them efficient. However, even though the results show a certain variability, most of them present very good performance scores, despite different parameters of the AM considered.
 
@@ -569,106 +573,6 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 %%
 %
 
-\begin{table}[t]
-	\caption{Assessed operator for couples selection.}
-	\begin{center}
-		\begin{tabular}{ll}
-			\hline\hline  & \textbf{Couples selection operators} \\ 
-			\hline 
-			A & Rank pairing \\ 
-			B & Random pairing \\ 
-			C & Roulette wheel weighting on rank \\ 
-			D & Roulette wheel weighting on fitness \\ 
-			E & Tournament selection (3 candidates) \\ 
-			F & Tournament selection (4 candidates) \\ 
-			\hline 
-		\end{tabular}
-	\end{center}
-	\label{tab:assessed_couples_selection_operators}
-\end{table}
-
-\begin{table}[t]
-	\caption{Assessed operators for chromosome crossover.}
-	\begin{center}
-		\begin{tabular}{ll}
-			\hline\hline  & \textbf{Chromosome crossover operators} \\ 
-			\hline 
-			1 & Single-point crossover \\
-			2 & Two-point crossover \\
-			3 & Multiple-point crossover (3 points) \\
-			4 & Multiple-point crossover (5 points) \\
-			5 & Uniform crossover \\
-			6 & Blending method (2 points, unshared $\beta$) \\
-			7 & Blending method (4 points, unshared $\beta$) \\
-			8 & Blending method (2 points, shared $\beta$) \\
-			9 & Blending method (4 points, shared $\beta$) \\
-			10 & Linear crossover (2 points) \\
-			11 & Linear crossover (4 points) \\
-			12 & Heuristic crossover (2 points, unshared $\beta$) \\
-			13 & Heuristic crossover (4 points, unshared $\beta$) \\
-			14 & Heuristic crossover (2 points, shared $\beta$) \\
-			15 & Heuristic crossover (4 points, shared $\beta$) \\
-			16 & Binary-like crossover (2 points, unshared $\beta$) \\
-			17 & Binary-like crossover (4 points, unshared $\beta$) \\
-			18 & Binary-like crossover (2 points, shared $\beta$) \\
-			19 & Binary-like crossover (4 points, shared $\beta$) \\
-			20 & Linear interpolation \\
-			21 & Free interpolation \\
-			\hline
-		\end{tabular}
-	\end{center}
-	\label{tab:assessed_crossover_operators}
-\end{table}
-
-\begin{table}[t]
-	\caption{Assessed mutation operators with the number of variants considered (combination of parameters).}
-	\begin{center}
-		\begin{tabular}{llc}
-			\hline\hline  & \textbf{Mutation operator} & \textbf{Variants}\\ 
-			\hline 
-			1 & Uniform mutation & 3 \\
-			2 & Variable uniform mutation & 27 \\
-			3 & Constant normal mutation & 9 \\
-			4 & Variable normal mutation & 36 \\
-			5 & Non-uniform mutation & 27 \\
-			6 & Individual adaptive mutation rate & 1 \\
-			7 & Individual adaptive search radius & 1 \\
-			8 & Chromosome of adaptive mutation rate & 1 \\
-			9 & Chromosome of adaptive search radius & 1 \\
-			10 & Mutli-scale mutation & 3 \\
-			11 & No mutation & 1 \\
-			\hline
-		\end{tabular}
-	\end{center}
-	\label{tab:assessed_mutation_operators}
-\end{table}
-
-\begin{table}[t]
-	\caption{Further assessments of mutation operators.}
-	\begin{center}
-		\begin{tabular}{llrrr}
-			\hline\hline  & \textbf{Mutation operator} & \textbf{$p_{mut}$} & \textbf{$G_{max}$} & \textbf{$\omega$}\\ 
-			\hline 1 & Non-uniform mutation & 0.01 & 50 & 0.1 \\
-			2 & Non-uniform mutation & 0.05 & 50 & 0.1 \\
-			3 & Non-uniform mutation & 0.1 & 50 & 0.1 \\
-			4 & Non-uniform mutation & 0.2 & 50 & 0.1 \\
-			5 & Non-uniform mutation & 0.4 & 50 & 0.1 \\
-			6 & Non-uniform mutation & 0.01 & 100 & 0.1 \\
-			7 & Non-uniform mutation & 0.05 & 100 & 0.1 \\
-			8 & Non-uniform mutation & 0.1 & 100 & 0.1 \\
-			9 & Non-uniform mutation & 0.2 & 100 & 0.1 \\
-			10 & Non-uniform mutation & 0.4 & 100 & 0.1 \\
-			11 & Mutli-scale mutation &  0.01 &&\\
-			12 & Mutli-scale mutation &  0.05 && \\
-			13 & Mutli-scale mutation &  0.1 && \\
-			14 & Mutli-scale mutation &  0.2 && \\
-			15 & Mutli-scale mutation &  0.4 && \\
-			16 & \multicolumn{4}{l}{Chromosome of adaptive search radius} \\
-			\hline
-		\end{tabular}
-	\end{center}
-	\label{tab:assessed_mutation_operators_bis}
-\end{table}
 
 
 
@@ -708,7 +612,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\begin{center}
 		\noindent\includegraphics[width=19pc,angle=0]{fig04.pdf}\\
 	\end{center}
-	\caption{Influence of the couples selection operators (Table \ref{tab:assessed_couples_selection_operators}) on the optimization performance (improvement of the score). The box extends from the lower to upper quartile values of the data, with a line at the median. The whiskers extend from the box to 1.5 times the interquartile range. Flier points are those past the end of the whiskers. The star represents the median. The gray box highlights the best options.}
+	\caption{Influence of the couples selection operators (section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:nat_selection}) on the optimization performance (improvement of the score). The box extends from the lower to upper quartile values of the data, with a line at the median. The whiskers extend from the box to 1.5 times the interquartile range. Flier points are those past the end of the whiskers. The star represents the median. The gray box highlights the best options.}
 	\label{fig:operator_selectcoupl_score}
 \end{figure}
 
@@ -716,7 +620,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\begin{center}
 		\noindent\includegraphics[width=39pc,angle=0]{fig05.pdf}\\
 	\end{center}
-	\caption{Influence of the chromosome crossover operators (Table \ref{tab:assessed_crossover_operators}) on the optimization performance (improvement of the score). Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the chromosome crossover operators (section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:crossover}) on the optimization performance (improvement of the score).  $\beta$s represent a shared $\beta$ parameter, and $\beta$u the unshared version. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_crossover_score}
 \end{figure*}
 
@@ -724,7 +628,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\begin{center}
 		\noindent\includegraphics[width=19pc,angle=0]{fig06.pdf}\\
 	\end{center}
-	\caption{Influence of the mutation operators (Table \ref{tab:assessed_mutation_operators}) on the optimization performance. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the mutation operators (section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:mutation}) on the optimization performance. In parentheses is the number of variants considered (combination of options). Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score}
 \end{figure}
 
@@ -732,7 +636,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\begin{center}
 		\noindent\includegraphics[width=33pc,angle=0]{fig07.pdf}\\
 	\end{center}
-	\caption{Influence of the mutation operators (Table \ref{tab:assessed_mutation_operators_bis}) on the optimization performance, leaving the optimizer choose the pressure level of the atmospheric circulation analogy (single level of analogy). The predictand is precipitation over a subcatchment in the Swiss Alps (Binn-Simplon region). The continuous bottom line represents the score of the sequential calibration and the dashed superior line, the score of the optimization without automatic selection of the pressure levels. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the mutation options (section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:mutation}) on the optimization performance, leaving the optimizer choose the pressure level of the atmospheric circulation analogy (single level of analogy). For the non-uniform mutation, $\omega=0.1$ in every case. The predictand is precipitation over a subcatchment in the Swiss Alps (Binn-Simplon region). The continuous bottom line represents the score of the sequential calibration and the dashed superior line, the score of the optimization without automatic selection of the pressure levels. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score_atmlevel}
 \end{figure*}
 
