@@ -28,7 +28,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% To be entered only if twocol option is used
 
-\journal{jcli}
+\journal{mwr}
 
 %  Please choose a journal abbreviation to use above from the following list:
 % 
@@ -153,7 +153,7 @@ These kind of optimization techniques need however to be tailored to the problem
 
 Analog methods (AMs) relies on the hypothesis that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Lorenz1956, Lorenz1969, Duband1970, Bontron2005}. The principle consists in sampling a certain number of past situations based on different atmospheric variables (predictors) in order to build a probabilistic prediction for a local weather variable of interest (predictand). A common usage of AMs is for precipitation forecasting or downscaling \citep[eg.][]{Guilbaud1997, Bontron2005, Hamill2006, Bliefernicht2010, Marty2012, Horton2012, Radanovics2013, Chardon2014, Dayon2015, Hamill2015b, BenDaoud2016}, but AMs, or equivalent, were also used to predict temperature \citep{Radinovic1975, Woodcock1980, Kruizinga1983, DelleMonache2013, Caillouet2016}, wind \citep{Gordon1987, DelleMonache2013, DelleMonache2011, Vanvyve2015, Alessandrini2015, Junk2015, Junk2015c}, solar power \citep{Alessandrini2015a, Bessa2015}, snow avalanches \citep{Obled1980, Bolognesi1993}, insolation \citep{Bois1981}, and the trajectory of tropical cyclones \citep{Keenan1981, Sievers2000, Fraedrich2003}. Applications for monthly time series in many countries also exist, including Canada \citep{Shabbar1986},  Hungary \citep{Toth1989}, the Netherlands \citep{Nap1981}, and England \citep{Murray1974}, as well as seasonal predictions: \citet{Barnett1978}, \citet{Bergen1982} and \citet{Livezey1988}.
 
-Even though the method is rather simple compared to numerical weather prediction (NWP) models, it contains a certain number of parameters one needs to determine, such as the choice of the predictor variable, its pressure level and temporal window (hour of observation of the predictor) to consider, the spatial domain to use for the comparison, as well as the analogy criteria itself, and finally the number of analog situations to keep at each subsampling level. 
+Even though the method is rather simple, it contains a certain number of parameters one needs to determine, such as the choice of the predictor variable, its pressure level and temporal window (hour of observation of the predictor) to consider, the spatial domain to use for the comparison, as well as the analogy criteria itself, and finally the number of analog situations to keep at each subsampling level. 
 
 AMs need to be adapted to every new region considered, because the leading meteorological influences may be location specific. Even the selection of the pressure levels and the temporal windows should be reconsidered, if not the predictor variable itself. 
 
@@ -169,42 +169,75 @@ In order to overcome these limitations, two optimization techniques were assesse
 
 This article is not about discussing the details of the results of an optimization with GAs, but describing how GAs are to be used in order to successfully optimize some AM variants. Indeed, GAs variants are numerous and always need to be tailored to the problem addressed. This requires intensive and systematic comparisons of operators and options in order to identify the key factors leading the optimization and the respective sensitivity of the options. Such analyses are presented here by application to the upper Rh\^{o}ne catchment in Switzerland, and will result in recommendations for the use of GAs when applied to several AM implementations. The demonstration of the benefit brought by such an approach on a specific case study is the topic of another coming paper. 
 
-We will begin by presenting the basics of the considered AM variants (section \ref{sec:am}) and the assessed GAs options (section \ref{sec:gas}). The comparative analyses of these options are presented in section \ref{sec:assessment}, which results in recommendations formulated in section \ref{sec:recommendations} and conclusions in section \ref{sec:conclusions}.
+We will begin by presenting the basics of the considered AM variants (section \ref{sec:method_data}) and the assessed GAs options (section \ref{sec:gas}). The comparative analyses of these options are presented in section \ref{sec:assessment}, which results in recommendations formulated in section \ref{sec:recommendations} and conclusions in section \ref{sec:conclusions}.
+
+
+\section{Case study and data}
+\label{sec:case_study_data}
+
+The study area is the alpine upper Rh\^{o}ne catchment in Switzerland (Fig.\ \ref{fig:map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region is the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project that aims at allowing real-time flood management on the upper Rh\^{o}ne catchment \citep{GarciaHernandez2009b}. Based on different climatological analyses, the gauging stations in the catchment were clustered in 10~subregions (Fig.\ \ref{fig:map}).
+
+The overall aim of the project is to implement a real-time precipitation and discharge forecasting in the catchment. An AM is used to provide real-time probabilistic forecasts of precipitation, based on NWP outputs. However, before being applied in the forecasting context, the AM must be calibrated for the given region, which is done here in the Perfect Prognosis framework \citep{Klein1963}, like the majority of AMs calibration procedures for precipitation prediction cited previously \cite[with the exception of][]{Hamill2006,Hamill2015b}.
+
+
+\subsection{Data}
+\label{sec:data}
+
+The AM relies on two types of data: predictors, that are atmospheric variables describing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather time series one wants to predict.
+
+Working in the Perfect Prognosis framework, the meteorological archive from which the predictors are extracted is a reanalysis dataset. Oppositely, other applications of AMs for wind forecasting are based on a Model Output Statistics \citep[MOS, see][]{Glahn1972} context, and thus use forecast archives or reforecast products \citep[e.g.][]{DelleMonache2013, DelleMonache2011, Alessandrini2015, Junk2015, Junk2015c}.
+
+In the present study, the NCEP-NCAR reanalysis I dataset \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996} is used, but it could be any other reanalysis dataset. This dataset is relatively old, even though still widely used, and better results may be expected with more recent datasets. However, we can safely make the assumption that if the optimization technique works for this reanalysis dataset, it will also work on an improved one.
+
+The predictand (which is to be predicted) is here the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss' stations network in the alpine upper Rh\^{o}ne catchment in Switzerland. The time series from every available gauging station were averaged over subregions of approximately 500~km$^{2}$ \citep[see][for the details]{Horton2012a} in order to smooth local effects \citep{Obled2002, Marty2012}.
 
 
 \section{The considered analog method}
 \label{sec:am}
 
-% TODO: Add description of the method
+AMs are based on the principle that two similar synoptic situations may produce similar local effects \citep{Lorenz1956, Lorenz1969}. Thus, they consist in searching a certain number of past situations in a meteorological archive that present similar properties for chosen predictors, according to an analogy criteria, in order to extract the observed values of the local weather variable of interest from another archive (predictand time series, see section \ref{sec:method_data}.\ref{sec:data}). Based on these analogue observations, the conditional empirical distribution considered as the probabilistic prediction for the target day (the day one wants to predict) is built.
 
-AMs consist in searching a certain number of past situations in a meteorological archive that are the most similar, according to an analogy criteria, and to extract the observed values of the local weather variable of interest from another archive (typically local or basin averaged time series) in order to build the conditional empirical distribution considered as the probabilistic prediction for the target day (the day one wants to predict).
+Predictors, for precipitation prediction, can be varied: e.g. geopotential heights at different pressure levels and on different temporal windows (time of observation), humidity variables, etc \citep[see][for a more detailed list]{BenDaoud2016}. The method is often made of several levels of analogy, leading to successive subsampling on predictors of different nature (eg. atmospheric circulation, moisture variables, vertical motion, and air temperature). 
 
-The present work takes place in the Perfect Prognosis framework \citep{Klein1963}, like the majority of AMs applications for precipitation prediction, and thus the meteorological archive from which the predictors are extracted is a reanalysis dataset. Oppositely, most applications for wind forecasting are based on a Model Output Statistics \citep[MOS, see][]{Glahn1972} context \citep[e.g.][]{DelleMonache2013, DelleMonache2011, Alessandrini2015, Junk2015, Junk2015c}.
+The basis of the AM implementation considered here is the following \citep[same approach as][]{Guilbaud1997, Bontron2005, Marty2012, Horton2012, Radanovics2013, Chardon2014, Dayon2015, BenDaoud2016}:
 
+\begin{enumerate}
+	\item Preselection: to cope with seasonal effects, $n_{0}$ candidate dates are extracted from the archive within a period of four months centered around the target date, for every year of the archive. Alternatively, the candidate dates can be selected based on similar air temperature \citep{BenDaoud2010}.
+	
+	\item First level of analogy: $n_{1}$ dates are selected out of the preselected $n_{0}$, by means of an analogy ranking. The first level of analogy is often based on the atmospheric circulation when it comes to precipitation prediction. The similarity of the atmospheric circulation of the target date with the candidate situations is thus assessed on the geopotential height (at specific pressure levels, such as 500 and 1000~hPa, and over a certain spatial window, e.g. 12~h and 24~h) by means of the S1 criteria \citep[Eq. (\ref{eq:S1}), ][]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial gridded window. This criteria was found more relevant than Euclidean distances for pressure fields by different studies \citep{Wilson1980, Woodcock1980, Guilbaud1998, Bontron2004}.
+	
+	\begin{equation}
+	\label{eq:S1}
+	S1=100 \frac {\displaystyle \sum_{i} \vert \Delta\hat{z}_{i} - \Delta z_{i} \vert}
+	{\displaystyle \sum_{i} max\left\lbrace \vert \Delta\hat{z}_{i} \vert , \vert \Delta z_{i} \vert \right\rbrace }
+	\end{equation}
+	where $\Delta \hat{z}_{i}$ is the forecast geopotential height difference between the \textit{i}th pair of adjacent points from the grid of the target situation, and $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation. The differences are processed separately in both directions. The smaller the S1 values, the more similar the pressure fields.
+	
+	The $n_{1}$ dates with the lowest values of S1 are considered as analogs, in terms of the general circulation, to the target day. The analog number, $n_{1}$, is a parameter to calibrate.
+	
+	\item Subsequent level(s) of analogy: beyond the similarity of airflows, one may look for similarities in other variables of interest, such as moisture variables. Therefore, the $n_{1}$ analogs are subsampled once again on the basis of another variable, in order to obtain a lower number of analog dates, $n_{2}$. When the predictor is not a pressure field, the analogy criteria usually represents absolute distances: Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE), the latest being most often used.
+	
+	A second level of analogy based on thermodynamic variables was introduced by \citet{Vallee1986}, and \citet{Gibergans-Baguena2007}. After a systematic assessment, \citet{Bontron2004} pointed out that a moisture index made of the product of relative humidity at 850~hPa and total precipitable water gave the best performance. This index does not represent an actual physical quantity, but expresses the water content of the air column and its proximity to saturation.
+	
+	This process can be repeated, by subsampling a decreasing number of analogs, $n_{i}$, according to various meteorological variables.
+	
+	\item Probabilistic prediction of forecast: then, the (e.g. daily) observed precipitation amount of the $n_{i}$ resulting dates provide the empirical conditional distribution considered as the probabilistic forecast for the target day.
+	
+\end{enumerate}
 
+The parameters to be defined (manually or automatically), for every level of analogy, are the following:
 
+\begin{itemize}
+	\item The selection of meteorologic variables, the predictors, that must contain large scale information having direct or indirect dependency with the local weather and the target predictand.
+	\item The pressure level, or height, at which the predictor is considered.
+	\item The spatial window is the domain on which the predictor is considered. The ideal size of this area is the one that maximizes useful information and minimizes noise.
+	\item The temporal window is the hour in the day, or a set of different hours, at which the predictors are considered.
+	\item The analogy criterion, needed to compare the variables on the chosen spatial and temporal windows, is a distance measure used for ranking observed situations according to their degree of similarity with the target situation.
+	\item Eventual weights between the predictors \cite[e.g.][]{Horton2012a, Junk2015}
+	\item The ideal number of analog situations, which is the best compromise in order to take into account local variability and to maximize useful synoptic information \citep{Bontron2004}.
+\end{itemize}
 
-
-Predictors can be varied: for example the geopotential height at different pressure levels on different temporal windows (time of observation). The method is usually made of several levels of analogy, leading to successive subsampling on predictors of different nature (eg. atmospheric circulation, moisture variables, vertical motion, and air temperature).
-
-Two variants are often used for precipitation downscaling: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on moisture variables \citep{Obled2002, Bontron2005, Marty2012}.
-
-The method based on the analogy of the synoptic circulation consists in the following steps: the similarity of the atmospheric circulation of a target date with every day of the archive is assessed by processing the S1 criteria \citep{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, on 2 different the geopotential heights (e.g. 500 and 1000~hPa) and over a certain spatial window:
-
-\begin{equation}
-\label{eq:S1}
-S1=100 \frac {\displaystyle \sum_{i} \vert \Delta\hat{z}_{i} - \Delta z_{i} \vert}
-{\displaystyle \sum_{i} max\left\lbrace \vert \Delta\hat{z}_{i} \vert , \vert \Delta z_{i} \vert \right\rbrace }
-\end{equation}
-where $\Delta \hat{z}_{i}$ is the forecast geopotential height difference between the \textit{i}th pair of adjacent points from the grid of the target situation, and $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation. The differences are processed separately in both directions. The smaller the S1 values, the more similar the pressure fields.
-
-
-
-To cope with seasonal effects, candidate dates are extracted within a period of 4 months centered around the target date, for every year of the archive. The $n_{1}$ (parameter to calibrate) dates with the lowest values of S1 are considered as analogs to the target day. Then, the daily observed precipitation amount of the $n_{1}$ resulting dates provide the empirical conditional distribution considered as the probabilistic prediction for the target day.
-
-The other current variant adds a second level of analogy on moisture variables, more specifically on a moisture index made of the product of the precipitable water with the relative humidity at a certain pressure level \citep[e.g. 850~hPa, see][]{Bontron2004}. When adding a second level of analogy, $n_{2}$ dates are subsampled in the $n_{1}$ analogs on the atmospheric circulation, to end up with a smaller number of analog situations.
-
-The CRPS \citep[Continuous Ranked Probability Score,][]{Brown1974, Matheson1976, Hersbach2000} has been often used to assess an AM performance \citep[see, e.g.,][]{Bontron2004, Bontron2005, BenDaoud2008, Horton2012, Marty2012, Radanovics2013, Chardon2014, Junk2015, BenDaoud2016, Caillouet2016}. It allows evaluating the predicted cumulative distribution functions $F(y)$, for example of the precipitation values $y$ from analog situations, compared to the observed value $y^{0}$. The better the prediction, the smaller the score. The mean CRPS of a prediction series of length $l$ can be written:
+In order to calibrate the method, the CRPS \citep[Continuous Ranked Probability Score,][]{Brown1974, Matheson1976, Hersbach2000} has been often used to assess the AM performance \citep[see, e.g.,][]{Bontron2004, Bontron2005, BenDaoud2008, Horton2012, Marty2012, Radanovics2013, Chardon2014, Junk2015, BenDaoud2016, Caillouet2016}. It allows evaluating the predicted cumulative distribution functions $F(y)$, for example of the precipitation values $y$ from analog situations, compared to the observed value $y^{0}$. The better the prediction, the smaller the score. The mean CRPS of a prediction series of length $l$ can be written:
 
 \begin{equation}
 \label{eq:CRPS}
@@ -400,10 +433,12 @@ Some constraints need to be taken into account. For example, when a crossover or
 
 The choice of GAs options, such as the mutation rate, population size, natural selection options, etc, appears difficult given the high number of existing variants, each developed for a specific problem \citep{Haupt2004, Costa2007a}. Thus, different studies suggest very different configurations \citep{DeJong1975a, Grefenstette1986, Back1996a, Back1996b}.
 
+In the present study, the choice of the meteorological variables considered as predictors is still set a priori. Then, for every level of analogy, GAs have to optimize jointly (i) the spatial windows (position and size; different between the pressure levels), (ii) the temporal windows (hours of observation of the predictors), (iii) the number of analog situations, and (iv) later on, the selection of the pressure levels (two, in this case). The first experiments are on a single level of analogy (on the geopotential height, see section \ref{sec:method_data}), and a second level (on moisture) is added further on in section \ref{sec:assessment}.\ref{sec:assessment:results}.\ref{sec:assessment:mutation}.
+
 
 \subsection{Comparison process}
 
-One of our goals being to make recommendations of how to use GAs in view of optimizing AM variants, a systematic procedure was adopted. The results are summarized hereafter \citep[see][for the details]{Horton2012a}. In order to compare different configurations of GAs, the factorial design approach was applied, in a similar way as \citet{Costa2005a,Costa2007a} and \citet{Mariano2010a}. It allows isolating the effect of a parameter under different combinations of the other options. A procedure by stages was adopted, analyzing in details and in a systematic way every variant of the implemented operators, in combination with multiple other options and parameters in order to take into account eventual co-dependencies. The goal here is not to focus on the performance score obtained through optimization, neither the values of the new optimized parameters (covered in another coming paper), but to explain how to use GAs to optimize AMs in an efficient way.
+One of our goals being to make recommendations of how to use GAs in view of optimizing AM variants, a systematic procedure was adopted. The results are summarized hereafter \citep[see][for the details]{Horton2012a}. In order to compare different configurations of GAs, the factorial design approach was applied, in a similar way as \citet{Costa2005a,Costa2007a} and \citet{Mariano2010a}. It allows isolating the effect of a parameter under different combinations of the other options. A procedure by stages was adopted, analyzing in details and in a systematic way every variant of the implemented operators, in combination with multiple other options and parameters in order to take into account eventual co-dependencies.
 
 In order to evaluate a combination of operators/options, 10 optimizations per configuration of GAs were processed. With all assessed combinations of GAs options, 21,630 optimizations were performed on an Intel Xeon based HPC cluster with 96 cpu, running Linux RedHat. Such assessment is not possible on the whole archive length, and had to be performed on a reduced period (5 years). The total resources needed for this comparison amounts to 229,539 h/cpu (26.2 years). One should remember that these intensive resources were needed in order to assess multiple combinations of GAs options in order to provide recommendations. Based on these, applying GAs to optimize AMs require some computational power, but not as much (the time needed is function of the archive length, the population number, the other GAs options, and the complexity of the AM to optimize). 
 
@@ -412,7 +447,9 @@ The performances were characterized by four indicators: (i) mean performance sco
 
 \subsection{Success of the approach}
 
-After a first overview of the results, GAs have quicky proved successful at optimizing the considered AM implementations. The performance score of the sequential approach has been quickly exceeded without adding any new parameter to the method (Fig. \ref{fig:gas_evolution_good}). Even GAs configurations that will be considered later as inadequate (Fig. \ref{fig:gas_evolution_bad}) did significantly better that the sequential approach. The amplitude of the improvement is not the main outcome here. The most important point is that GAs proved successful at optimizing AMs automatically, globally, and objectively.
+After a first overview of the results, GAs have quicky proved successful at optimizing the considered AM implementations. Figure \ref{fig:gas_evolution_good} shows the evolution of the score of the best individuals over generations for 10 optimizations processed for a given configuration of GAs (same operators options). 7 out of 10 optimizations reach the supposed global optimum (dashed line at the top of the plot) after 40 to 55 generations, which is not the best performance we observed later on. The performance score of the sequential approach (bottom line) has been quickly exceeded without adding any new parameter to the method (Fig. \ref{fig:gas_evolution_good}). The improvement is about 8.8\% in this case, which is substantial.
+
+Even GAs configurations that will be considered later as inadequate, because they did not reach the supposed global optimum (Fig. \ref{fig:gas_evolution_bad}), did significantly better that the sequential approach. GAs proved promising at optimizing AMs automatically, globally, and objectively.
 
 
 \subsection{Results of the comparison}
@@ -434,13 +471,13 @@ Analysis of crossover operators (Fig. \ref{fig:operator_crossover_score}) reveal
 \subsubsection{Mutation operator}
 \label{sec:assessment:mutation}
 
-Having identified the leading role of the mutation operator, the next sensitivity analysis focused on it. Each of the 10 different implementations (see section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:mutation}) was tested, with different parameters for those who require some (Figure \ref{fig:operator_mutation_score}), bringing the number of variations up to 109. Some optimizations without any mutation were also performed as a reference. Along with variants of the other operators \citep[see][for the details]{Horton2012a}, this resulted in 660 combinations (so 6,600 optimizations).
+Having identified the leading role of the mutation operator, the next sensitivity analysis focused on it. Each of the 10 different implementations (see section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:mutation}) was tested, with different parameters for those who require some (Fig. \ref{fig:operator_mutation_score}), bringing the number of variations up to 109. Some optimizations without any mutation were also performed as a reference. Along with variants of the other operators \citep[see][for the details]{Horton2012a}, this resulted in 660 combinations (so 6,600 optimizations).
 
 Figure \ref{fig:operator_mutation_score} show the results of this analysis and illustrates the important role of the mutation on the performance of the optimizations. Those without mutation (last box on Figure \ref{fig:operator_mutation_score}) are inferior to most mutation operators, and the scale of the influence of this operator is significantly more important than those for the other options. The details of the analysis \citep[see][]{Horton2012a} show that the other reproduction operators seem of secondary importance. This observation is in line with the work of \citet{Back1996a}, who argues for the importance of mutation over reproduction, as well as other authors (see section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:mutation}).
 
 The mutation operators based on variable normal or variable uniform laws work very poorly and are difficult to configure. Many operators present more or less the same performance scores and require a variable amount of assessments. The convergence analysis \citep[see][]{Horton2012a} allows one to highlight three best operators: non-uniform mutation, chromosome of adaptive search radius, and multi-scale mutation. Thus, different optimizations (an additional 4,950) were further performed using variants of these 3 operators (Figures \ref{fig:operator_mutation_score_atmlevel}-\ref{fig:operator_mutation_score_r4}).
 
-The first analysis was the optimization of the precipitation downscaling over a subcatchment (Binn-Simplon region) in the Swiss Alps (Fig. \ref{fig:operator_mutation_score_atmlevel}). The optimizer could choose the 2 pressure levels of the atmospheric circulation analogy (method with a single level of analogy). The resulting CRPSS performance score (section \ref{sec:am}) is obviously superior to the one obtained by the sequential calibration (red line on Fig. \ref{fig:operator_mutation_score_atmlevel}). For most options, it is also slightly better than the results from the optimization without selection of the pressure levels (blue line). A clear breakthrough of the performances was not expected, as the former selection of pressure levels results already from intensive comparative work \citep{Bontron2004}. This application however demonstrates that, when correctly configured, GAs can automatically and successfully choose the pressure levels. However, some less relevant optimizations do not match the previous results. Through different applications, the automatic selection of the pressure level was shown to significantly increase the difficulty for GAs to converge to a unique solution, ideally the global optimum. A difficulty is that the pressure levels are considered within the optimization without continuity between values, and thus the approaches relying on distance in the parameters space, such as the search radius, cannot fully exploit the properties that make them efficient. However, even though the results show a certain variability, most of them present very good performance scores, despite different parameters of the AM considered.
+The first analysis was the optimization of the precipitation downscaling over a subcatchment (Binn-Simplon region) in the Swiss Alps (Fig. \ref{fig:operator_mutation_score_atmlevel}). The optimizer could choose the 2 pressure levels of the atmospheric circulation analogy (method with a single level of analogy). The resulting CRPSS performance score (section \ref{sec:method_data}.\ref{sec:am}) is obviously superior to the one obtained by the sequential calibration (red line on Fig. \ref{fig:operator_mutation_score_atmlevel}). For most options, it is also slightly better than the results from the optimization without selection of the pressure levels (blue line). A clear breakthrough of the performances was not expected, as the former selection of pressure levels results already from intensive comparative work \citep{Bontron2004}. This application however demonstrates that, when correctly configured, GAs can automatically and successfully choose the pressure levels. However, some less relevant optimizations do not match the previous results. Through different applications, the automatic selection of the pressure level was shown to significantly increase the difficulty for GAs to converge to a unique solution, ideally the global optimum. A difficulty is that the pressure levels are considered within the optimization without continuity between values, and thus the approaches relying on distance in the parameters space, such as the search radius, cannot fully exploit the properties that make them efficient. However, even though the results show a certain variability, most of them present very good performance scores, despite different parameters of the AM considered.
 
 Then, the same optimization was performed, but for another region, sensitive to other meteorological influences (Fig. \ref{fig:operator_mutation_score_rhoneamont}), in order to assess eventual dependencies of the operator with the predictand. Even though differences can be observed with Fig. \ref{fig:operator_mutation_score_atmlevel}, it is globally the same options that perform better.
 
@@ -587,8 +624,14 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 
 \begin{figure}[t]
+	\centerline{\includegraphics[width=19pc,angle=0]{fig01.pdf}}
+	\caption{Location of the alpine Rh\^{o}ne catchment in Switzerland, and its discretization in 10 subregions:	(1) Swiss Chablais, (2) Trient Valley, (3) West Bernese Alps, (4) Lower Rhone Valley, (5) Left side valleys, (6) Southern ridges, (7) Upper Rhone Valley, (8) Southeast ridges, (9) East Bernese Alps, (10) Conches Valley. (source: Swisstopo)}
+	\label{fig:map}
+\end{figure}
+
+\begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig01.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{fig02.pdf}\\
 	\end{center}
 	\caption{Genetic Algorithms operational flowchart.}
 	\label{fig:structure_gas}
@@ -596,7 +639,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig02.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{fig03.pdf}\\
 	\end{center}
 	\caption{Evolution of the score of the best individuals over generations for the 10 optimizations processed for a given configuration. The continuous bottom line represents the score of the sequential approach and the dashed one (top), the supposed global optimum. The circles represent the end of the optimization (when the best individual did not progress during 20 generations).}
 	\label{fig:gas_evolution_good}
@@ -604,7 +647,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig03.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{fig04.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:gas_evolution_good}, but for a GAs configuration considered as less relevant.}
 	\label{fig:gas_evolution_bad}
@@ -612,7 +655,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig04.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{fig05.pdf}\\
 	\end{center}
 	\caption{Influence of the couples selection operators (section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:nat_selection}) on the optimization performance (improvement of the score). The box extends from the lower to upper quartile values of the data, with a line at the median. The whiskers extend from the box to 1.5 times the interquartile range. Flier points are those past the end of the whiskers. The star represents the median. The gray box highlights the best options.}
 	\label{fig:operator_selectcoupl_score}
@@ -620,7 +663,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=39pc,angle=0]{fig05.pdf}\\
+		\noindent\includegraphics[width=39pc,angle=0]{fig06.pdf}\\
 	\end{center}
 	\caption{Influence of the chromosome crossover operators (section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:crossover}) on the optimization performance (improvement of the score).  $\beta$s represent a shared $\beta$ parameter, and $\beta$u the unshared version. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_crossover_score}
@@ -628,7 +671,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig06.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{fig07.pdf}\\
 	\end{center}
 	\caption{Influence of the mutation operators (section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:mutation}) on the optimization performance. In parentheses is the number of variants considered (combination of options). Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score}
@@ -636,7 +679,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{fig07.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{fig08.pdf}\\
 	\end{center}
 	\caption{Influence of the mutation options (section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:mutation}) on the optimization performance, leaving the optimizer choose the pressure level of the atmospheric circulation analogy (single level of analogy). For the non-uniform mutation, $\omega=0.1$ in every case. The predictand is precipitation over a subcatchment in the Swiss Alps (Binn-Simplon region). The continuous bottom line represents the score of the sequential calibration and the dashed superior line, the score of the optimization without automatic selection of the pressure levels. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score_atmlevel}
@@ -644,7 +687,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{fig08.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{fig09.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:operator_mutation_score_atmlevel}, but for another region in the Swiss Alps, with different atmospheric influences.}
 	\label{fig:operator_mutation_score_rhoneamont}
@@ -652,7 +695,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{fig09.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{fig10.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:operator_mutation_score_atmlevel}, but with a second level of analogy on moisture variables.}
 	\label{fig:operator_mutation_score_r2}
@@ -660,7 +703,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{fig10.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{fig11.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:operator_mutation_score_r2}, but with a preselection on air temperature rather than a fixed calendar window.}
 	\label{fig:operator_mutation_score_r4}
@@ -668,7 +711,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=11pc,angle=0]{fig11.pdf}\\
+		\noindent\includegraphics[width=11pc,angle=0]{fig12.pdf}\\
 	\end{center}
 	\caption{Influence of the natural selection operators on the optimization performance. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_selectnat_score}
@@ -676,7 +719,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=11pc,angle=0]{fig12.pdf}\\
+		\noindent\includegraphics[width=11pc,angle=0]{fig13.pdf}\\
 	\end{center}
 	\caption{Influence of the population size on the optimization performance. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:option_taillepop_score}
@@ -684,7 +727,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=11pc,angle=0]{fig13.pdf}\\
+		\noindent\includegraphics[width=11pc,angle=0]{fig14.pdf}\\
 	\end{center}
 	\caption{Influence of the intermediate population (IG) ratio on the optimization performance. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:option_popratio_score}
