@@ -440,12 +440,12 @@ In the present study, the choice of the meteorological variables considered as p
 
 As one of our goals is to make recommendations on how to use GAs in order to optimize different AM variants, a systematic procedure was adopted. The results are summarized hereafter \citep[see][for the details]{Horton2012a}. In order to compare different configurations of GAs, the factorial design approach was applied, in a similar way as \citet{Costa2005a,Costa2007a} and \citet{Mariano2010a}. It allows isolating the effect of a parameter under different combinations of the other options. A procedure by stages was adopted, analyzing in details and in a systematic way every variant of the implemented operators, in combination with multiple other options and parameters in order to take into account eventual co-dependencies.
 
-In order to evaluate a combination of operators/options, 10 optimizations per configuration of GAs were processed. With all assessed combinations of GAs options, 21,630 optimizations were performed on an Intel Xeon based HPC cluster with 96 cpu, running Linux RedHat. Such assessment is not possible on the whole archive length, and had to be performed on a reduced period (5 years). The total resources needed for this comparison amounts to 229,539 h/cpu (26.2 years). One should remember that these intensive resources were needed in order to assess multiple combinations of GAs options in order to provide recommendations. Based on these, applying GAs to optimize AMs require some computational power, but not as much (the time needed is function of the archive length, the population number, the other GAs options, and the complexity of the AM to optimize). 
+In order to evaluate a combination of operators/options, 10 optimizations per configuration of GAs were processed. With all assessed combinations of GAs options, 21,630 optimizations were performed on an Intel Xeon based HPC cluster with 96 cpu, running Linux RedHat. Such assessment is not possible on the whole archive length, and had to be performed on a reduced calibration period : 5 years, from 1998 to 2002, but looking for analog dates on a 48 years period (1961-2008). The total resources needed for this comparison amounts to 229,539 h/cpu (26.2 years). One should remember that these intensive resources were needed in order to assess multiple combinations of GAs options in order to provide recommendations. Based on these, applying GAs to optimize AMs require some computational power, but not as much (the time needed is function of the archive length, the population number, the other GAs options, and the complexity of the AM to optimize). 
 
 The performances were characterized by four indicators: (i) mean performance score: average of the final scores of the 10 optimizations, (ii) convergence: the number of optimizations that converged, (iii) number of generations: characterization of the convergence speed, and (iv) number of evaluations of the objective function: characterization of the required calculation time.
 
 
-\subsection{Success of the approach}
+\subsection{Convergence}
 
 After a first quick assessment, GAs were found to be successful at optimizing the considered AM implementations. Figure \ref{fig:gas_evolution_good} shows the evolution of the score of the best individuals over generations for 10 optimizations processed for a given configuration of GAs (same operators options). 7 out of 10 optimizations converged to the global optimum (dashed line at the top of the plot) after 40 to 55 generations, which is not the best performance we observed later on. The performance score of the sequential approach (bottom line) has been quickly exceeded without adding any new parameter to the method (Fig. \ref{fig:gas_evolution_good}). The improvement is about 8.8\% in this case, which is substantial.
 
@@ -546,6 +546,14 @@ The optimization does not systematically converge to the global optimum (but oft
 \end{itemize}
 
 where $p_{mut}$ is the mutation rate (or mutation probability), $G_{m,r}$ is the maximum number of generations during which the magnitude of the research varies, and $\omega$ is a threshold chosen by the user to maintain a minimum search radius when the number of generations $G>G_{m,r}$.
+
+
+\subsection{Illustration of application}
+
+
+Ref: 95\%   ( 0.2921,  0.3494 )  
+Optimized: 95\%   ( 0.3521,  0.4011 )  
+
 
 
 \section{Conclusions}

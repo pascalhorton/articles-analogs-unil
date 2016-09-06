@@ -1,0 +1,28 @@
+REFERENCE
+
+BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+Based on 10000 bootstrap replicates
+
+CALL : 
+boot.ci(boot.out = results, conf = c(0.9, 0.95), type = "basic")
+
+Intervals : 
+Level      Basic         
+90%   ( 0.2967,  0.3441 )   
+95%   ( 0.2921,  0.3494 )  
+Calculations and Intervals on Original Scale
+
+---------------------------------------------------------------
+OPTIMIZED
+
+BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+Based on 10000 bootstrap replicates
+
+CALL : 
+boot.ci(boot.out = results, conf = c(0.9, 0.95), type = "basic")
+
+Intervals : 
+Level      Basic         
+90%   ( 0.3559,  0.3969 )   
+95%   ( 0.3521,  0.4011 )  
+Calculations and Intervals on Original Scale
