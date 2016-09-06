@@ -23,6 +23,9 @@
 %\documentclass[twocol]{ametsoc}
 
 
+% TODO: check all references to sections
+% TODO: reduce font size in plots
+
 \usepackage{gensymb}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,7 +57,7 @@
 
 %% May use \\ to break lines in title:
 
-\title{Global Optimization of an Analog Method by Means of Genetic Algorithms}
+\title{Global Optimization of an analog method by Means of Genetic Algorithms}
 
 %%% Enter authors' names, as you see in this example:
 %%% Use \correspondingauthor{} and \thanks{Current Affiliation:...}
@@ -169,7 +172,7 @@ In order to overcome these limitations, two optimization techniques were assesse
 
 This article is not about discussing the details of the results of an optimization with GAs, but describing how GAs are to be used in order to successfully optimize some AM variants. Indeed, GAs variants are numerous and always need to be tailored to the problem addressed. This requires intensive and systematic comparisons of operators and options in order to identify the key factors leading the optimization and the respective sensitivity of the options. Such analyses are presented here by application to the upper Rh\^{o}ne catchment in Switzerland, and will result in recommendations for the use of GAs when applied to several AM implementations. The demonstration of the benefit brought by such an approach on a specific case study is the topic of another coming paper. 
 
-The document starts by presenting the case study area and the data (section \ref{sec:case_study_data}), the basics of the considered AM variants (section \ref{sec:am}), and the assessed GAs options (section \ref{sec:gas}). The comparative analyses of these options are presented in section \ref{sec:assessment}, which results in recommendations formulated in section \ref{sec:recommendations} and conclusions in section \ref{sec:conclusions}.
+The document starts by presenting the case study area and the data (section \ref{sec:case_study_data}), the basics of the considered AM variants (section \ref{sec:am}), and the assessed GAs options (section \ref{sec:gas}). The comparative analyses of these options are presented in section \ref{sec:assessment}, which results in recommendations formulated in section \ref{sec:use} and conclusions in section \ref{sec:conclusions}.
 
 
 \section{Case study and data}
@@ -449,7 +452,7 @@ The performances were characterized by four indicators: (i) mean performance sco
 
 After a first quick assessment, GAs were found to be successful at optimizing the considered AM implementations. Figure \ref{fig:gas_evolution_good} shows the evolution of the score of the best individuals over generations for 10 optimizations processed for a given configuration of GAs (same operators options). 7 out of 10 optimizations converged to the global optimum (dashed line at the top of the plot) after 40 to 55 generations, which is not the best performance we observed later on. The performance score of the sequential approach (bottom line) has been quickly exceeded without adding any new parameter to the method (Fig. \ref{fig:gas_evolution_good}). The improvement is about 8.8\% in this case, which is substantial.
 
-Even GAs configurations that will be considered later as inadequate, because they did not reach the global optimum (Fig. \ref{fig:gas_evolution_bad}), did significantly better that the sequential approach. GAs proved promising at optimizing AMs automatically, globally, and objectively.
+Even GAs configurations that will be later rejected, because they did not converge (Fig. \ref{fig:gas_evolution_bad}), did still significantly better that the sequential approach. GAs showed a promising potential at optimizing AMs automatically, globally, and objectively.
 
 
 \subsection{Results of the comparison}
@@ -479,12 +482,11 @@ The mutation operators based on variable normal or variable uniform laws work ve
 
 The first analysis was the optimization of the precipitation downscaling over a subcatchment (Binn-Simplon region) in the Swiss Alps (Fig. \ref{fig:operator_mutation_score_atmlevel}). The optimizer could choose the 2 pressure levels of the atmospheric circulation analogy (method with a single level of analogy). The resulting CRPSS performance score (section \ref{sec:am}) is obviously superior to the one obtained by the sequential calibration (red line on Fig. \ref{fig:operator_mutation_score_atmlevel}). For most options, it is also slightly better than the results from the optimization without selection of the pressure levels (blue line). A clear breakthrough of the performances was not expected, as the former selection of pressure levels results already from intensive comparative work \citep{Bontron2004}. This application however demonstrates that, when correctly configured, GAs can automatically and successfully choose the pressure levels. However, some less relevant optimizations do not match the previous results. Through different applications, the automatic selection of the pressure level was shown to significantly increase the difficulty for GAs to converge to a unique solution, ideally the global optimum. A difficulty is that the pressure levels are considered within the optimization without continuity between values, and thus the approaches relying on distance in the parameters space, such as the search radius, cannot fully exploit the properties that make them efficient. However, even though the results show a certain variability, most of them present very good performance scores, despite different parameters of the AM considered.
 
-% TODO: add region name and ref to map
-The same experiment was performed for another region, which is sensitive to other meteorological influences (Fig. \ref{fig:operator_mutation_score_rhoneamont}), in order to assess eventual dependencies of the operator with the predictand. Even though differences can be observed with Fig. \ref{fig:operator_mutation_score_atmlevel}, it is globally the same options that perform better.
+The same experiment was performed for another region (Swiss Chablais, see Fig. \ref{fig:map}), which is sensitive to other meteorological influences (Fig. \ref{fig:operator_mutation_score_rhoneamont}), in order to assess eventual dependencies of the operator with the predictand. Even though differences can be observed with Fig. \ref{fig:operator_mutation_score_atmlevel}, it is globally the same options that perform better.
 
 Next, a second level of analogy was proposed (Fig. \ref{fig:operator_mutation_score_r2}) based on moisture variables \citep[see][]{Bontron2004}. GAs had to optimize both levels of analogy (on the geopotential height first, and then on the moisture index made of relative humidity and precipitable water) simultaneously. Once again, despite the difficulty to do so, the results were better than the sequential calibration (bottom line on Fig. \ref{fig:operator_mutation_score_r2}). And finally, a preselection on air temperature was added instead of the fixed calendar window, as proposed by \cite{BenDaoud2016}. The results show generally higher scores (Fig. \ref{fig:operator_mutation_score_r4}), demonstrating the success of the optimizer to take advantage of this new degree of freedom, and its capacity to handle optimization of 3 analogy levels jointly. Again, the most relevant options are generally the same.
 
-After analysis of the most relevant mutation operators, the following advice can be raised (detailed options are provided in section \ref{sec:recommendations}):
+After analysis of the most relevant mutation operators, the following advice can be raised (detailed options are provided in section \ref{sec:use}.\ref{sec:recommendations}):
 
 \begin{itemize}
 	
@@ -514,7 +516,10 @@ The size of the population ($N$), i.e. the number of sets of AM parameters consi
 The influence of the size of the IG (proportion of the total population) selected for mating was also assessed (Fig. \ref{fig:option_popratio_score}). It does not appear that this parameter is critical to the quality of the optimizations, provided it is not too big. A value of 50~\% seems a wise choice.
 
 
-\section{Recommended configuration of GAs}
+\section{Use of GAs ot optimize AMs}
+\label{sec:use}
+
+\subsection{Recommended configuration of GAs}
 \label{sec:recommendations}
 
 Optimizations by GAs for AMs of varying complexities were performed with a large number of combinations of operators in order to make recommendations for optimizing AMs. The conclusions are:
@@ -550,10 +555,11 @@ where $p_{mut}$ is the mutation rate (or mutation probability), $G_{m,r}$ is the
 
 \subsection{Illustration of application}
 
+In order to illustrate the gain achievable by the optimization on the considered AM, the Southeast ridges region of the alpine Rhône catchment has been optimized for the whole calibration period (40 years in the 1961-2008 period, leaving out 8 years for validation), instead of the smaller 5-years period.
 
-Ref: 95\%   ( 0.2921,  0.3494 )  
-Optimized: 95\%   ( 0.3521,  0.4011 )  
+The optimizer could select the geopotential height at 4 pressure levels, at any time of the day, on unconstrained spatial windows. Moreover, a weighting was introduced in the combination of the criteria processed on each pressure level \citep[such as][]{Horton2012a, Junk2015}. In this case, no new meteorological variable was added, and the method still contains a unique level of analogy.
 
+The performance (CRPSS) of the reference method calibrated by means of the sequential procedure amounts to 32.00\%, with a 0.95 confidence interval (assessed by bootstrapping on 10,000 samples) of (29.21\%; 34.94\%). The method optimized by means of GAs reaches a performance of 37.62\%, with a 0.95 confidence interval of (35.21\%; 40.11\%). The resulting gain is thus statistically significant. The results on all subregions and the physical meaning of the optimized parameters will be discussed in a coming paper.
 
 
 \section{Conclusions}
