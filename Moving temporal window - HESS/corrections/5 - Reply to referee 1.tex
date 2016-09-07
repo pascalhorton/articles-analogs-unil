@@ -1,0 +1,50 @@
+\documentclass[]{letter}
+
+\begin{document}
+
+First of all, thank you for carefully reading the manuscript and for the constructive feedback.
+
+Some referee comments are recalled in italics and followed by the authors’ responses. Others are addressed here, but without being recalled. The technical corrections or rephrasing are not discussed here, but will be performed.
+
+\begin{itemize}
+	\item Introduction: The structure will be changed and the description of the method moved into “Data and method”. Additional references will be added, and different variations will be presented, instead of relying on another papers to cover the literature review. The introduction will thus be rewritten.
+	
+	\item \textit{The issue discussed in the manuscript goes beyond this “fixed/moving” window issue. It more generally consider influence of the size of the data set (including the length of the archive) on the prediction skill. I am not aware of works that explored this issue but references to those, if any, and associated results have to be presented in the introduction.}
+	
+	The issue of the archive length will be better described, according to the relevant literature.
+	
+	\item \textit{The final objective of the work is to increase the prediction skill of the method. Other means are possible for this. They should be also mentioned.}
+	
+	We will mention other means to increase the prediction skill in the introduction.
+	
+	\item MTW strategy vs longer archive: We agree that the MTW might not be as performant as a 4 times longer archive, for the reasons provided. We indeed observed a gain in performance similar to doubling the archive. Your point on the transient climate is also interesting. We will add a discussion on these aspects in the paper. 
+	
+	\item Number of analogs: we totally agree with the referee that when the choice of the predictors or the parameters are improved, leading to a better prediction, the optimal number of analog situations thus decreases. However, when the length of the archive increases, the optimal number of analogs increases too, for a better performance, up to a certain threshold. This has been demonstrated in the PhD of G. Bontron (2004, p. 227), and we can also see it in Fig.7 of Hamill et al. (2006). This increase in the number of analog situations results objectively in better performance skills in our case. The MTW enriches the pool of available situations, even though they are not fully independent. We will improve the clarity of this analysis. It is true though that the choice of predictors can be improved and auxiliary predictors are missing. The chosen methods are not the most recent ones, but are benchmarks as they have been used by several studies as a references. A note on that will be added.
+	
+	\item \textit{Explain both terms of the decomposition. Another well-known decomposition of the CRPSS is that of Herbasch. Please mention it also and clarify the advantage of that of Bontron. It is not clear at this stage.}
+	
+	We will remove the analysis of the sharpness and accuracy, as it brings unneeded complexity without being very instructive.
+	
+	\item \textit{Why using a non conventional notation for the CRPS score. Please use the classical one (CRPSS) or justify}
+	
+	It is the journal convention (“Multi-letter variables should be avoided. Instead use single-letter variables with subscript (e.g. ERMS instead of RMSE, or ET instead of ET).”) and we were asked to change the notation of the CRPS this way. We agree that is an unusual notation for this score… We are very open to change back these notations, if the editor says so.
+	
+	\item Resolution of the atmospheric reanalysis: it was shown by some studies that the resolution of the reanalysis dataset does not improve significantly the performance of the analogy of the atmospheric circulation. However, a full analysis of this aspect is out of the scope of this publication, and is a topic we are working on right now. Nevertheless, we can make the assumption that it does not alter the fact that we can find better analog situations at different hours of the day.
+	
+	\item Seasonal stratification: yes, we consider a seasonal stratification. It is mentioned in l. 36-39. This should be more clear after the change in the paper structure.
+	
+	\item \textit{You use the mean intensity of rainfall as a proxy of “dynamism of the atmospheric situation”. Another proxy could be the intensity of the variations within the geopotential fields (e.g. mean gradient value). Why did you not explore this? It would better fit to your “dynamism” concept.}
+	
+	Yes, that could be a possibility. However, even though the link between the dynamism and the precipitation amount is not direct, the interest in analyzing it this way is that it highlights improvements we are directly interested in: a better prediction of high precipitation amounts. This will be rephrased to focus more on the precipitation thresholds rather than the dynamism of the circulation pattern.
+	
+	\item Sharpness and accuracy: We will remove the analysis of the sharpness and accuracy, as mentioned previously.
+	
+	\item Figure 11: this figure is complex and not very instructive. It will be removed along with the sharpness and accuracy analysis.
+	
+	\item Tables: we agree that there are many tables. We will remove some unanalyzed data, such as the spatial windows in Tables 3, 4, 7, and 8 in order to group the remaining information. Tables 10 and 11 will also be removed along with the sharpness and accuracy analysis.
+	
+	\item The other unmentioned detailed issues will be fixed
+\end{itemize}
+
+
+\end{document}
