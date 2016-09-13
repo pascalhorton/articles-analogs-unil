@@ -23,8 +23,8 @@
 %\documentclass[twocol]{ametsoc}
 
 
-% TODO: check all references to sections
 % TODO: reduce font size in plots
+% TODO: AMS guidelines
 
 \usepackage{gensymb}
 
@@ -152,7 +152,7 @@ Genetic Algorithms need however to be tailored to the addressed problem. Multipl
 
 
 \section{Introduction}
-\label{section_intro}
+\label{sec:intro}
 
 Analog methods (AMs) rely on the hypothesis that similar situations in terms of the atmospheric circulation are likely to lead to similar local weather \citep{Lorenz1956, Lorenz1969, Duband1970, Bontron2005}. They consist in sampling a certain number of past situations based on different synoptic-scale meteorological variables (predictors) in order to build a probabilistic prediction for a local weather variable of interest (predictand). A common usage of AMs is for operational precipitation forecasting \citep[eg.][]{Guilbaud1997, Bontron2005, Hamill2006, Bliefernicht2010, Marty2012, Horton2012, Hamill2015b, BenDaoud2016}, or more recently for precipitation downscaling in a climate perspective \citep[eg.][]{Radanovics2013, Chardon2014, Dayon2015}. However, AMs or equivalent are also used to predict temperature \citep{Radinovic1975, Woodcock1980, Kruizinga1983, DelleMonache2013, Caillouet2016}, wind \citep{Gordon1987, DelleMonache2013, DelleMonache2011, Vanvyve2015, Alessandrini2015, Junk2015, Junk2015c}, solar power \citep{Alessandrini2015a, Bessa2015}, snow avalanches \citep{Obled1980, Bolognesi1993}, insolation \citep{Bois1981}, and the trajectory of tropical cyclones \citep{Keenan1981, Sievers2000, Fraedrich2003}.
 
@@ -198,7 +198,7 @@ The predictand (which is to be predicted) was here the daily precipitation (6~a.
 \section{The considered analog method}
 \label{sec:am}
 
-AMs are based on the principle that two similar synoptic situations may produce similar local effects \citep{Lorenz1956, Lorenz1969}. Thus, they consist in searching a certain number of past situations in a meteorological archive that present similar properties for chosen predictors, according to an analogy criteria, in order to extract the observed values of the local weather variable of interest from another archive (predictand time series, see section \ref{sec:case_study_data}.\ref{sec:data}). Based on these analog observations, the conditional empirical distribution considered as the probabilistic prediction for the target day (the day one wants to predict) is built.
+AMs are based on the principle that two similar synoptic situations may produce similar local effects \citep{Lorenz1956, Lorenz1969}. Thus, they consist in searching a certain number of past situations in a meteorological archive that present similar properties for chosen predictors, according to an analogy criteria, in order to extract the observed values of the local weather variable of interest from another archive (predictand time series, see section \ref{sec:case_study_data}\ref{sec:data}). Based on these analog observations, the conditional empirical distribution considered as the probabilistic prediction for the target day (the day one wants to predict) is built.
 
 Predictors for precipitation prediction, can be varied: e.g. geopotential height at different pressure levels and temporal windows, humidity variables, etc \citep[see][for a more detailed list of predictors]{BenDaoud2016}. The method often contains several levels of analogy, which are successive subsampling on predictors of different nature (eg. atmospheric circulation, moisture variables, vertical motion, and air temperature). 
 
@@ -329,7 +329,7 @@ Once the two parents are selected for breeding, they combine their chromosomes a
 	g_{o1,n} = g_{p1,n} - \beta (g_{p1,n} - g_{p2,n}) \\
 	g_{o2,n} = g_{p2,n} + \beta (g_{p1,n} - g_{p2,n}) \\
 	\end{array} \right.
-	\label{equation_mating_as_binary}
+	\label{eq:binary_like_crossover}
 	\end{equation}
 	where $g_{o1,n}$ and $g_{o2,n}$ are the $n$-th gene of the two new offspring, and $g_{p1,n}$ and $g_{p2,n}$ are those of the two parents. $\beta$ is a random value between 0 and 1, that can be unique for the whole chromosome, or that can change for every gene.
 	
@@ -371,7 +371,7 @@ The evaluated and developed mutation operators are listed hereafter (equations a
 	g_{n} + \left(b_{n}-g_{n}\right) r_{2} \varphi^{2} & if \; r_{1} < 0.5 \\
 	g_{n} - \left(g_{n}-a_{n}\right) r_{2} \varphi^{2} & if \; r_{1} \geq 0.5 \\
 	\end{array} \right.
-	\label{equation_mutation_nonuniform_original}
+	\label{eq:nonuniform_mutation}
 	\end{equation}
 	
 	with 
@@ -399,7 +399,7 @@ The evaluated and developed mutation operators are listed hereafter (equations a
 	g_{n} + \left(b_{n}-g_{n}\right) r_{2} r_{a} & if \; r_{1} < 0.5 \\
 	g_{n} - \left(g_{n}-a_{n}\right) r_{2} r_{a} & if \; r_{1} \geq 0.5 \\
 	\end{array} \right.
-	\label{equation_mutation_rayon_adaptatif}
+	\label{eq:adaptive_search_radius_mutation}
 	\end{equation}
 	where $r_{1}$ and $r_{2}$ are randomly selected, such as in the non-uniform mutation. No external parameter is therefore necessary.
 	
@@ -436,7 +436,7 @@ Some constraints need to be taken into account. For example, when a crossover or
 
 The choice of GAs options, such as the mutation rate, population size, natural selection, etc, appears difficult given the high number of existing variants, each developed for a specific problem \citep{Haupt2004, Costa2007a}. Thus, different studies suggest very different configurations \citep{DeJong1975a, Grefenstette1986, Back1996a, Back1996b}.
 
-In the present study, the choice of the meteorological variables (predictors) was still performed manually. Then, GAs had to optimize jointly, for all levels of analogy, (i) the spatial windows (position and size; different between the pressure levels), (ii) the temporal windows (hours of observation of the predictors), (iii) the number of analog situations, and (iv) later on, the selection of the pressure levels (two, in this case). The first experiments considered a single level of analogy (on the geopotential height, see section \ref{sec:am}), and a second level (on moisture) was added further on in section \ref{sec:assessment}.\ref{sec:assessment:results}.\ref{sec:assessment:mutation}.
+In the present study, the choice of the meteorological variables (predictors) was still performed manually. Then, GAs had to optimize jointly, for all levels of analogy, (i) the spatial windows (position and size; different between the pressure levels), (ii) the temporal windows (hours of observation of the predictors), (iii) the number of analog situations, and (iv) later on, the selection of the pressure levels (two, in this case). The first experiments considered a single level of analogy (on the geopotential height, see section \ref{sec:am}), and a second level (on moisture) was added further on in section \ref{sec:assessment}\ref{sec:assessment:results}\ref{sec:assessment:mutation}.
 
 
 \subsection{Comparison process}
@@ -450,7 +450,7 @@ The performances were characterized by four indicators: (i) mean performance sco
 
 \subsection{Convergence}
 
-After a first quick assessment, GAs were found to be successful at optimizing the considered AM implementations. Figure \ref{fig:gas_evolution_good} shows the evolution of the score of the best individuals over generations for 10 optimizations processed for a given configuration of GAs (same operators options). 7 out of 10 optimizations converged to the global optimum (dashed line at the top of the plot in Figure \ref{fig:gas_evolution_good}) after 40 to 55 generations, which is not the best performance we observed later on. The performance score of the sequential approach (bottom line) has been quickly exceeded without adding any new parameter to the method (Fig. \ref{fig:gas_evolution_good}). The improvement was about 8.8\% in this case, which is substantial.
+After a first quick assessment, GAs were found to be successful at optimizing the considered AM implementations. Figure \ref{fig:gas_evolution_good} shows the evolution of the score of the best individuals over generations for 10 optimizations processed for a given configuration of GAs (same operators options). 7 out of 10 optimizations converged to the global optimum (dashed line at the top of the plot in Fig. \ref{fig:gas_evolution_good}) after 40 to 55 generations, which is not the best performance we observed later on. The performance score of the sequential approach (bottom line) has been quickly exceeded without adding any new parameter to the method (Fig. \ref{fig:gas_evolution_good}). The improvement was about 8.8\% in this case, which is substantial.
 
 Even GAs configurations that were later rejected, because they did not converge (Fig. \ref{fig:gas_evolution_bad}), did still significantly better that the sequential approach. GAs showed a promising potential at optimizing AMs automatically, globally, and objectively.
 
@@ -460,7 +460,7 @@ Even GAs configurations that were later rejected, because they did not converge 
 
 The results of the factorial design procedure illustrate the effect of an operator when its contribution is isolated from the other operators. It means that we analyzed the effect of a given operator for equivalent conditions (same settings of other operators), while assessing multiple combinations of these. This contribution was then summarized as a percentage of gain/loss regarding the mean of all variants, for equivalent external conditions. For example, to evaluate the performance of the uniform crossover operator, its performance was compared to the average of all crossover operators, while retaining the same population size, the same mutation, natural selection, and couples selection operators.
 
-From the very beginning of the assessments, the importance of the mutation operator was obvious \cite[see][for the details]{Horton2012a}, and its leading influence on the optimization performance was evident. Its role is analyzed later on in section \ref{sec:assessment}.\ref{sec:assessment:results}.\ref{sec:assessment:mutation}.
+From the very beginning of the assessments, the importance of the mutation operator was obvious \cite[see][for the details]{Horton2012a}, and its leading influence on the optimization performance was evident. Its role is analyzed later on in section \ref{sec:assessment}\ref{sec:assessment:results}\ref{sec:assessment:mutation}.
 
 \subsubsection{Breeding operators}
 
@@ -474,11 +474,11 @@ As for crossover operators (Fig. \ref{fig:operator_crossover_score}), binary-lik
 \subsubsection{Mutation operator}
 \label{sec:assessment:mutation}
 
-Having identified the leading role of the mutation operator, the next sensitivity analysis focused on it. The 10 different implementations (see section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:mutation}) were tested, with different options (Fig. \ref{fig:operator_mutation_score}), bringing the number of variations up to 109. Some optimizations without any mutation were also performed as a reference. Along with variants of the other operators \citep[see][for the details]{Horton2012a}, this resulted in 660 combinations (so 6,600 optimizations).
+Having identified the leading role of the mutation operator, the next sensitivity analysis focused on it. The 10 different implementations (see section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:mutation}) were tested, with different options (Fig. \ref{fig:operator_mutation_score}), bringing the number of variations up to 109. Some optimizations without any mutation were also performed as a reference. Along with variants of the other operators \citep[see][for the details]{Horton2012a}, this resulted in 660 combinations (so 6,600 optimizations).
 
-Figure \ref{fig:operator_mutation_score} show the results of this analysis and illustrates the important role of mutation on the optimization performance. Configurations without mutation (last box on Figure \ref{fig:operator_mutation_score}) were inferior to most mutation operators, and the magnitude of this operator influence was significantly higher than those of the other options. The details of the analysis \citep[see][]{Horton2012a} showed that the other reproduction operators seem of secondary importance. This observation is in line with the conclusions made by several other authors (see section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:mutation}).
+Figure \ref{fig:operator_mutation_score} show the results of this analysis and illustrates the important role of mutation on the optimization performance. Configurations without mutation (last box on Fig. \ref{fig:operator_mutation_score}) were inferior to most mutation operators, and the magnitude of this operator influence was significantly higher than those of the other options. The details of the analysis \citep[see][]{Horton2012a} showed that the other reproduction operators seem of secondary importance. This observation is in line with the conclusions made by several other authors (see section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:mutation}).
 
-The mutation operators based on variable normal or variable uniform laws worked very poorly here and were difficult to configure. Many operators presented more or less the same performance scores and required a variable amount of assessments. The convergence analysis \citep[see][]{Horton2012a} allowed to highlight three best operators: non-uniform mutation, chromosome of adaptive search radius, and multi-scale mutation. Thus, different optimizations (an additional 4,950) were further performed using variants of these 3 operators (Figures \ref{fig:operator_mutation_score_atmlevel}-\ref{fig:operator_mutation_score_r4}).
+The mutation operators based on variable normal or variable uniform laws worked very poorly here and were difficult to configure. Many operators presented more or less the same performance scores and required a variable amount of assessments. The convergence analysis \citep[see][]{Horton2012a} allowed to highlight three best operators: non-uniform mutation, chromosome of adaptive search radius, and multi-scale mutation. Thus, different optimizations (an additional 4,950) were further performed using variants of these 3 operators (Fig. \ref{fig:operator_mutation_score_atmlevel}-\ref{fig:operator_mutation_score_r4}).
 
 The first analysis was the optimization of the precipitation prediction over a subcatchment (Binn-Simplon region) in the Swiss Alps (Fig. \ref{fig:operator_mutation_score_atmlevel}). The optimizer could also choose the 2 pressure levels of the atmospheric circulation analogy (method with a single level of analogy). The resulting CRPSS performance score (section \ref{sec:am}) was obviously superior to the one obtained by the sequential calibration (bottom line on Fig. \ref{fig:operator_mutation_score_atmlevel}). For most options, it was also slightly better than the results from the optimization without selection of the pressure levels (dashed line). A clear breakthrough of the performances was not expected, as the former selection of pressure levels results from intensive comparative work \citep{Bontron2004}. This application however demonstrates that, when correctly configured, GAs can automatically and successfully choose the pressure levels. However, the automatic selection of the pressure levels significantly increased the difficulty for GAs to converge to a unique solution, ideally the global optimum. A likely explanation is that the pressure levels were considered as categorical values within the optimization (sampled with a uniform law), and thus the approaches relying on distance in the parameters space, such as the search radius, could not fully exploit the properties that made them efficient. However, even though the results showed a certain variability, most of them presented very good performance scores, despite different selection of AM parameters.
 
@@ -486,7 +486,7 @@ The same experiment was performed for another region (Swiss Chablais, see Fig. \
 
 Next, a second level of analogy was introduced (Fig. \ref{fig:operator_mutation_score_r2}) based on moisture variables (section \ref{sec:am}). GAs had to optimize both levels of analogy (geopotential height and moisture index) simultaneously. Once again, the results were better than the sequential calibration (bottom line on Fig. \ref{fig:operator_mutation_score_r2}). And finally, a preselection on air temperature was added instead of the fixed calendar window, as proposed by \cite{BenDaoud2016}. The results showed generally higher scores (Fig. \ref{fig:operator_mutation_score_r4}), demonstrating the success of the optimizer to take advantage of this new degree of freedom, and its ability to handle optimization of 3 analogy levels jointly. Again, the most relevant options were globally the same.
 
-After these various tests of the mutation operators relevance, the following advices can be raised (detailed options are provided in section \ref{sec:use}.\ref{sec:recommendations}):
+After these various tests of the mutation operators relevance, the following advices can be raised (detailed options are provided in section \ref{sec:use}\ref{sec:recommendations}):
 
 \begin{itemize}
 	
@@ -672,7 +672,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\begin{center}
 		\noindent\includegraphics[width=19pc,angle=0]{fig05.pdf}\\
 	\end{center}
-	\caption{Influence of the couples selection operators (section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:nat_selection}) on the optimization performance (improvement of the score). The box extends from the lower to upper quartile values of the data, with a line at the median. The whiskers extend from the box to 1.5 times the interquartile range. Flier points are those past the end of the whiskers. The star represents the median. The gray box highlights the best options.}
+	\caption{Influence of the couples selection operators (section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:nat_selection}) on the optimization performance (improvement of the score). The box extends from the lower to upper quartile values of the data, with a line at the median. The whiskers extend from the box to 1.5 times the interquartile range. Flier points are those past the end of the whiskers. The star represents the median. The gray box highlights the best options.}
 	\label{fig:operator_selectcoupl_score}
 \end{figure}
 
@@ -680,7 +680,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\begin{center}
 		\noindent\includegraphics[width=39pc,angle=0]{fig06.pdf}\\
 	\end{center}
-	\caption{Influence of the chromosome crossover operators (section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:crossover}) on the optimization performance (improvement of the score).  $\beta$s represent a shared $\beta$ parameter, and $\beta$u the unshared version. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the chromosome crossover operators (section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:crossover}) on the optimization performance (improvement of the score).  $\beta$s represent a shared $\beta$ parameter, and $\beta$u the unshared version. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_crossover_score}
 \end{figure*}
 
@@ -688,7 +688,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\begin{center}
 		\noindent\includegraphics[width=19pc,angle=0]{fig07.pdf}\\
 	\end{center}
-	\caption{Influence of the mutation operators (section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:mutation}) on the optimization performance. In parentheses is the number of variants considered (combination of options). Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the mutation operators (section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:mutation}) on the optimization performance. In parentheses is the number of variants considered (combination of options). Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score}
 \end{figure}
 
@@ -696,7 +696,7 @@ Thanks to the Roads and Water courses Service, Energy and Water Power Service of
 	\begin{center}
 		\noindent\includegraphics[width=33pc,angle=0]{fig08.pdf}\\
 	\end{center}
-	\caption{Influence of the mutation options (section \ref{sec:gas}.\ref{sec:gas:operators}.\ref{sec:gas:mutation}) on the optimization performance, leaving the optimizer choose the pressure level of the atmospheric circulation analogy (single level of analogy). For the non-uniform mutation, $\omega=0.1$ in every case. The predictand is precipitation over a subcatchment in the Swiss Alps (Binn-Simplon region). The continuous bottom line represents the score of the sequential calibration and the dashed superior line, the score of the optimization without automatic selection of the pressure levels. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
+	\caption{Influence of the mutation options (section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:mutation}) on the optimization performance, leaving the optimizer choose the pressure level of the atmospheric circulation analogy (single level of analogy). For the non-uniform mutation, $\omega=0.1$ in every case. The predictand is precipitation over a subcatchment in the Swiss Alps (Binn-Simplon region). The continuous bottom line represents the score of the sequential calibration and the dashed superior line, the score of the optimization without automatic selection of the pressure levels. Same conventions as Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score_atmlevel}
 \end{figure*}
 
