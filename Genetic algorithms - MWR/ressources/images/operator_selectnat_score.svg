@@ -234,12 +234,12 @@
      id="namedview4138"
      showgrid="false"
      inkscape:zoom="1.2204139"
-     inkscape:cx="36.35506"
+     inkscape:cx="75.276282"
      inkscape:cy="157.61471"
      inkscape:window-x="108"
      inkscape:window-y="74"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g4144"
+     inkscape:current-layer="layer1"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -248,7 +248,7 @@
      id="layer1"
      inkscape:label="bg"
      transform="translate(23.046744,-53.263726)"><rect
-       style="display:inline;fill:#e6e6e6;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       style="display:inline;fill:#d9d9d9;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect3685-4"
        width="94.07814"
        height="431.97507"
@@ -551,6 +551,7 @@
 
 
 
+
 <text
    transform="matrix(1,0,0,-1,27.91472,38.468468)"
    style="font-variant:normal;font-size:14px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
@@ -559,6 +560,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan4558">1.5</tspan></text>
+
 
 
 
@@ -590,6 +592,7 @@
 
 
 
+
 <text
    transform="matrix(1,0,0,-1,27.91472,92.468468)"
    style="font-variant:normal;font-size:14px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
@@ -598,6 +601,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan4580">1.0</tspan></text>
+
 
 
 
@@ -629,6 +633,7 @@
 
 
 
+
 <text
    transform="matrix(1,0,0,-1,27.91472,146.46847)"
    style="font-variant:normal;font-size:14px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
@@ -637,6 +642,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan4602">0.5</tspan></text>
+
 
 
 
@@ -668,6 +674,7 @@
 
 
 
+
 <g
    id="g4622"><g
      id="g4624"
@@ -691,6 +698,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan4638">0.5</tspan></text>
+
 
 
 
@@ -722,6 +730,7 @@
 
 
 
+
 <g
    id="g4658"><g
      id="g4660"
@@ -745,6 +754,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan4674">1.5</tspan></text>
+
 
 
 
@@ -782,6 +792,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-weight:normal;font-size:14px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -795,6 +806,7 @@
      x="74.828835"
      y="-26.267418"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;font-family:'URW Palladio L';-inkscape-font-specification:'URW Palladio L'">ratio elit.</tspan></text>
+
 
 
 
@@ -816,6 +828,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-weight:normal;font-size:14px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -829,6 +842,7 @@
      x="104.78306"
      y="10.14764"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;font-family:'URW Palladio L';-inkscape-font-specification:'URW Palladio L'">Influence on the performance (%)</tspan></text>
+
 
 
 

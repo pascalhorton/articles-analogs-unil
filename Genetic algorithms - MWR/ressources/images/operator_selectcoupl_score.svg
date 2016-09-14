@@ -19,7 +19,7 @@
    sodipodi:docname="operator_selectcoupl_score.svg"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath20"><path
@@ -313,17 +313,17 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="0.87407408"
-     inkscape:cx="171.32871"
+     inkscape:cx="-3.1416278"
      inkscape:cy="238.13141"
-     inkscape:window-x="1942"
-     inkscape:window-y="21"
+     inkscape:window-x="-19"
+     inkscape:window-y="19"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" /><g
      inkscape:groupmode="layer"
      id="layer1"
      inkscape:label="bg"
      transform="translate(19.710679,-26.974462)"><rect
-       style="fill:#e6e6e6;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#d9d9d9;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect3685"
        width="237.28154"
        height="627.4812"
@@ -756,6 +756,7 @@
 
 
 
+
 <text
    transform="matrix(1,0,0,-1,19.27472,38.468468)"
    style="font-variant:normal;font-size:14px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -764,6 +765,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan586">1.5</tspan></text>
+
 
 
 
@@ -793,6 +795,7 @@
 
 
 
+
 <text
    transform="matrix(1,0,0,-1,19.27472,96.788468)"
    style="font-variant:normal;font-size:14px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -801,6 +804,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan608">1.0</tspan></text>
+
 
 
 
@@ -830,6 +834,7 @@
 
 
 
+
 <text
    transform="matrix(1,0,0,-1,19.27472,155.10847)"
    style="font-variant:normal;font-size:14px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -838,6 +843,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan630">0.5</tspan></text>
+
 
 
 
@@ -867,6 +873,7 @@
 
 
 
+
 <g
    id="g650"><g
      id="g652"
@@ -890,6 +897,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan666">0.5</tspan></text>
+
 
 
 
@@ -919,6 +927,7 @@
 
 
 
+
 <g
    id="g686"><g
      id="g688"
@@ -942,6 +951,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan702">1.5</tspan></text>
+
 
 
 
@@ -977,6 +987,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-weight:normal;font-size:14px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -990,6 +1001,7 @@
      x="113.40217"
      y="2.7204912"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;font-family:'URW Palladio L';-inkscape-font-specification:'URW Palladio L'">Influence on the performance (%)</tspan></text>
+
 
 
 
@@ -1008,6 +1020,7 @@
      style="font-size:14px">Rank pairing </tspan></text>
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1021,6 +1034,7 @@
      y="-133.91325"
      id="tspan5708-6"
      style="font-size:14px">Random pairing</tspan></text>
+
 
 
 <text
@@ -1043,6 +1057,7 @@
      id="tspan6487">weighting on rank </tspan></text>
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1061,6 +1076,7 @@
      y="-254.14969"
      style="font-size:14px"
      id="tspan6489">weighting on fitness </tspan></text>
+
 
 
 <text
@@ -1083,6 +1099,7 @@
      id="tspan6491">(3 candidates) </tspan></text>
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1101,6 +1118,7 @@
      y="-381.49939"
      style="font-size:14px"
      id="tspan6493">(4 candidates) </tspan></text>
+
 
 
 </g></svg>

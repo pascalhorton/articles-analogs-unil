@@ -30,19 +30,19 @@
      id="namedview4"
      showgrid="false"
      inkscape:zoom="0.80925924"
-     inkscape:cx="376.12282"
-     inkscape:cy="195.80863"
+     inkscape:cx="405.48451"
+     inkscape:cy="191.96152"
      inkscape:window-x="155"
      inkscape:window-y="36"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g10"
+     inkscape:current-layer="layer1"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0" /><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath20"><path
@@ -923,13 +923,13 @@
      id="layer1"
      inkscape:label="bg"
      transform="translate(22.234046,-27.744438)"><rect
-       style="fill:#e6e6e6;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#d9d9d9;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect3685"
        width="45.988003"
        height="507.64658"
        x="738.23346"
        y="32.168781" /><rect
-       style="fill:#e6e6e6;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#d9d9d9;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect3685-9"
        width="45.988003"
        height="507.64658"
@@ -2430,6 +2430,7 @@
 
 
 
+
 <text
    transform="matrix(1,0,0,-1,19.27472,82.208468)"
    style="font-variant:normal;font-size:13px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -2438,6 +2439,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1948">1.5</tspan></text>
+
 
 
 
@@ -2475,6 +2477,7 @@
 
 
 
+
 <text
    transform="matrix(1,0,0,-1,19.27472,125.94847)"
    style="font-variant:normal;font-size:13px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -2483,6 +2486,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1970">1.0</tspan></text>
+
 
 
 
@@ -2520,6 +2524,7 @@
 
 
 
+
 <text
    transform="matrix(1,0,0,-1,19.27472,169.68847)"
    style="font-variant:normal;font-size:13px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -2528,6 +2533,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1992">0.5</tspan></text>
+
 
 
 
@@ -2565,6 +2571,7 @@
 
 
 
+
 <g
    id="g2012"><g
      id="g2014"
@@ -2588,6 +2595,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan2028">0.5</tspan></text>
+
 
 
 
@@ -2625,6 +2633,7 @@
 
 
 
+
 <g
    id="g2048"><g
      id="g2050"
@@ -2648,6 +2657,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan2064">1.5</tspan></text>
+
 
 
 
@@ -2705,6 +2715,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-weight:normal;font-size:13px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -2718,6 +2729,7 @@
      x="122.88474"
      y="-0.026251402"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;font-family:'URW Palladio L';-inkscape-font-specification:'URW Palladio L'">Influence on the performance (%)</tspan></text>
+
 
 
 
@@ -2745,6 +2757,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -2758,6 +2771,7 @@
      y="-94.852547"
      id="tspan8612"
      style="font-size:13px">Two-point</tspan></text>
+
 
 
 
@@ -2779,6 +2793,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -2796,6 +2811,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -2809,6 +2825,7 @@
      y="-203.59001"
      id="tspan8624"
      style="font-size:13px">Uniform</tspan></text>
+
 
 
 
@@ -2832,6 +2849,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -2847,6 +2865,7 @@
      style="font-size:13px">Blending (4 pots, <tspan
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;font-family:Symbol;-inkscape-font-specification:Symbol"
    id="tspan8636">b</tspan>u)</tspan></text>
+
 
 
 
@@ -2870,6 +2889,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -2885,6 +2905,7 @@
      style="font-size:13px">Blending (4 pts, <tspan
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;font-family:Symbol;-inkscape-font-specification:Symbol"
    id="tspan8648">b</tspan>s)</tspan></text>
+
 
 
 
@@ -2906,6 +2927,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -2919,6 +2941,7 @@
      y="-427.89307"
      id="tspan8656"
      style="font-size:13px">Linear (4 pts)</tspan></text>
+
 
 
 
@@ -2942,6 +2965,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -2957,6 +2981,7 @@
      style="font-size:13px">Heuristic (4 pts, <tspan
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;font-family:Symbol;-inkscape-font-specification:Symbol"
    id="tspan8668">b</tspan>u)</tspan></text>
+
 
 
 
@@ -2980,6 +3005,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -2995,6 +3021,7 @@
      style="font-size:13px">Heuristic (4 pts, <tspan
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;font-family:Symbol;-inkscape-font-specification:Symbol"
    id="tspan8680">b</tspan>s)</tspan></text>
+
 
 
 
@@ -3018,6 +3045,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -3033,6 +3061,7 @@
      style="font-size:13px">Binary-like (4 pts, <tspan
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;font-family:Symbol;-inkscape-font-specification:Symbol"
    id="tspan8692">b</tspan>u)</tspan></text>
+
 
 
 
@@ -3056,6 +3085,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -3071,6 +3101,7 @@
      style="font-size:13px">Binary-like (4 pts, <tspan
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;font-family:Symbol;-inkscape-font-specification:Symbol"
    id="tspan8704">b</tspan>s)</tspan></text>
+
 
 
 
@@ -3092,6 +3123,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -3105,6 +3137,7 @@
      y="-797.85394"
      id="tspan8712"
      style="font-size:13px">Free interpolation</tspan></text>
+
 
 
 

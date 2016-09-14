@@ -33,16 +33,16 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="0.87407407"
-     inkscape:cx="431.69088"
-     inkscape:cy="288.48808"
+     inkscape:zoom="0.6180637"
+     inkscape:cx="583.57446"
+     inkscape:cy="246.8617"
      inkscape:window-x="106"
      inkscape:window-y="42"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" /><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><marker
        inkscape:stockid="StopL"
        orient="auto"
@@ -744,25 +744,25 @@
        height="599.67822"
        width="45.988003"
        id="rect3685-4"
-       style="display:inline;fill:#e6e6e6;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" /><rect
+       style="display:inline;fill:#d9d9d9;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" /><rect
        y="32.433693"
        x="957.2818"
        height="599.67822"
        width="45.988003"
        id="rect3685-4-6"
-       style="display:inline;fill:#e6e6e6;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" /><rect
+       style="display:inline;fill:#d9d9d9;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" /><rect
        y="32.247665"
        x="422.53217"
        height="599.86426"
        width="116.93825"
        id="rect3685-4-9"
-       style="display:inline;fill:#e6e6e6;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" /><rect
+       style="display:inline;fill:#d9d9d9;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" /><rect
        y="32.433693"
        x="135.2818"
        height="599.67822"
        width="45.988003"
        id="rect3685-4-1"
-       style="display:inline;fill:#e6e6e6;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" /></g><g
+       style="display:inline;fill:#d9d9d9;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" /></g><g
      transform="matrix(1.25,0,0,-1.25,-17.7811,496.74275)"
      inkscape:label="operator_mutation_score_atmlevel"
      inkscape:groupmode="layer"
@@ -1791,6 +1791,7 @@
 
 
 
+
 <g
    id="g1376"><g
      clip-path="url(#clipPath1380)"
@@ -1814,6 +1815,7 @@
      sodipodi:role="line"
      y="0"
      x="0 7.9701118 11.955168 19.92528 27.895391">0.345</tspan></text>
+
 
 
 
@@ -1845,6 +1847,7 @@
 
 
 
+
 <g
    id="g1412"><g
      clip-path="url(#clipPath1416)"
@@ -1868,6 +1871,7 @@
      sodipodi:role="line"
      y="0"
      x="0 7.9701118 11.955168 19.92528 27.895391">0.355</tspan></text>
+
 
 
 
@@ -1899,6 +1903,7 @@
 
 
 
+
 <g
    id="g1448"><g
      clip-path="url(#clipPath1452)"
@@ -1922,6 +1927,7 @@
      sodipodi:role="line"
      y="0"
      x="0 7.9701118 11.955168 19.92528 27.895391">0.365</tspan></text>
+
 
 
 
@@ -1953,6 +1959,7 @@
 
 
 
+
 <g
    id="g1484"><g
      clip-path="url(#clipPath1488)"
@@ -1976,6 +1983,7 @@
      sodipodi:role="line"
      y="0"
      x="0 7.9701118 11.955168 19.92528 27.895391">0.375</tspan></text>
+
 
 
 
@@ -2007,6 +2015,7 @@
 
 
 
+
 <g
    id="g1520"><g
      clip-path="url(#clipPath1524)"
@@ -2034,6 +2043,7 @@
 
 
 
+
 <text
    id="text1538"
    style="font-variant:normal;font-size:14px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -2042,6 +2052,7 @@
      sodipodi:role="line"
      y="0"
      x="0 11.285679 21.917809 31.529764 39.882442">CRPSS</tspan></text>
+
 
 
 
@@ -2079,6 +2090,7 @@
 
 
 
+
 <path
    inkscape:connector-curvature="0"
    id="path4905"
@@ -2104,6 +2116,7 @@
 
 
 
+
 <text
    transform="scale(1,-1)"
    sodipodi:linespacing="125%"
@@ -2117,6 +2130,7 @@
      x="591.94006"
      id="tspan5312"
      sodipodi:role="line">Mutli-scale mutation</tspan></text>
+
 
 
 
@@ -2142,6 +2156,7 @@
 
 
 
+
 <text
    transform="scale(1,-1)"
    sodipodi:linespacing="125%"
@@ -2157,6 +2172,7 @@
      sodipodi:role="line">G<tspan
    id="tspan5691-2"
    style="font-size:14px;baseline-shift:sub">max</tspan> = 100</tspan></text>
+
 
 
 
@@ -2181,6 +2197,7 @@
    id="tspan4969">mut</tspan> = 0.01</tspan></text>
 
 
+
 <text
    transform="matrix(0,-1,-1,0,0,0)"
    sodipodi:linespacing="125%"
@@ -2196,6 +2213,7 @@
      sodipodi:role="line">p<tspan
    style="font-size:9px;baseline-shift:sub"
    id="tspan4973">mut</tspan> = 0.05</tspan></text>
+
 
 
 <text
@@ -2215,6 +2233,7 @@
    id="tspan4977">mut</tspan> = 0.1</tspan></text>
 
 
+
 <text
    transform="matrix(0,-1,-1,0,0,0)"
    sodipodi:linespacing="125%"
@@ -2230,6 +2249,7 @@
      sodipodi:role="line">p<tspan
    style="font-size:9px;baseline-shift:sub"
    id="tspan4981">mut</tspan> = 0.2</tspan></text>
+
 
 
 <text
@@ -2249,6 +2269,7 @@
    id="tspan4985">mut</tspan> = 0.4</tspan></text>
 
 
+
 <text
    transform="matrix(0,-1,-1,0,0,0)"
    sodipodi:linespacing="125%"
@@ -2264,6 +2285,7 @@
      sodipodi:role="line">p<tspan
    style="font-size:9px;baseline-shift:sub"
    id="tspan4989">mut</tspan> = 0.01</tspan></text>
+
 
 
 <text
@@ -2283,6 +2305,7 @@
    id="tspan4993">mut</tspan> = 0.05</tspan></text>
 
 
+
 <text
    transform="matrix(0,-1,-1,0,0,0)"
    sodipodi:linespacing="125%"
@@ -2298,6 +2321,7 @@
      sodipodi:role="line">p<tspan
    style="font-size:9px;baseline-shift:sub"
    id="tspan4997">mut</tspan> = 0.1</tspan></text>
+
 
 
 <text
@@ -2317,6 +2341,7 @@
    id="tspan5001">mut</tspan> = 0.2</tspan></text>
 
 
+
 <text
    transform="matrix(0,-1,-1,0,0,0)"
    sodipodi:linespacing="125%"
@@ -2332,6 +2357,7 @@
      sodipodi:role="line">p<tspan
    style="font-size:9px;baseline-shift:sub"
    id="tspan5005">mut</tspan> = 0.4</tspan></text>
+
 
 
 <text
@@ -2351,6 +2377,7 @@
    id="tspan5009">mut</tspan> = 0.01</tspan></text>
 
 
+
 <text
    transform="matrix(0,-1,-1,0,0,0)"
    sodipodi:linespacing="125%"
@@ -2366,6 +2393,7 @@
      sodipodi:role="line">p<tspan
    style="font-size:9px;baseline-shift:sub"
    id="tspan5013">mut</tspan> = 0.05</tspan></text>
+
 
 
 <text
@@ -2385,6 +2413,7 @@
    id="tspan5017">mut</tspan> = 0.1</tspan></text>
 
 
+
 <text
    transform="matrix(0,-1,-1,0,0,0)"
    sodipodi:linespacing="125%"
@@ -2402,6 +2431,7 @@
    id="tspan5021">mut</tspan> = 0.2</tspan></text>
 
 
+
 <text
    transform="matrix(0,-1,-1,0,0,0)"
    sodipodi:linespacing="125%"
@@ -2417,6 +2447,7 @@
      sodipodi:role="line">p<tspan
    style="font-size:9px;baseline-shift:sub"
    id="tspan5025">mut</tspan> = 0.4</tspan></text>
+
 
 
 <text
@@ -2437,6 +2468,7 @@
      x="-28.328901"
      sodipodi:role="line"
      id="tspan10210">search radius</tspan></text>
+
 
 
 </g></svg>
