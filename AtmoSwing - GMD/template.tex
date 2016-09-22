@@ -91,9 +91,9 @@
 
 \begin{abstract}
 
-The Analog Method allows predicting local meteorological variables of interest (predictand), such as the daily precipitation, on the basis of synoptic variables (predictors). It relies on the fact that similar meteorological influences are likely to result in similar local effects. This statistical relationship is thus based on archives of observed data, and used in order to operationally forecast the coming days, or to evaluate future conditions under a changing climate.
+Analog methods (AMs) allow predicting local meteorological variables of interest (predictand), such as the daily precipitation, on the basis of synoptic variables (predictors). They rely on the fact that similar meteorological influences are likely to result in similar local effects. This statistical relationship is thus based on archives of observed data, and used in order to operationally forecast the coming days, or to evaluate future conditions under a changing climate.
 
-AtmoSwing is an open source software that implements the Analog Method in a very flexible way, so that different variants can be handled dynamically, by parameterization through XML files. It is made of 3 tools: the Forecaster to perform operational forecasts, the Viewer to display the results, and the Optimizer to establish the relationship between the predictand and predictors. 
+AtmoSwing is an open source software that implements different AM variants in a very flexible way, so that different variants can be handled dynamically, by parameterization through XML files. It is made of 3 tools: the Forecaster to perform operational forecasts, the Viewer to display the results, and the Optimizer to establish the relationship between the predictand and predictors. 
 
 The Forecaster handles every required processing internally, such as predictors downloading and reading, grid interpolation, analogy sorting, without external scripts or file conversion. The processing of a forecast is extremely lightweight in terms of IT infrastructure; it can indeed run on almost any computer.
 
@@ -114,9 +114,9 @@ As a general setting, the required ingredients are a couple of archives, one des
 
 Usually, the predictand values could be derived in a rather physical-dynamic approach  by modeling the chain of processes linking the predictors to the predictand. The processes involved range from large scale dynamical states of the atmosphere down to very small scale microphysical processes, requiring models that are extremely complex, data-demanding, and time consuming. Conversely, given an appropriate set of predictors archives, enough situations analogous to a target one could be found so that reasonable values will be obtained for the predictand, at a reasonable coding and computing-time costs. This is particularly true for a predictand much required in hydrometeorological applications, namely the precipitation amount over a given domain and time duration. Incidentally, the forecast will be proposed as a statistical distribution based on the values taken by the predictand in the set of analogs selected, unless one considers only the single best analog, which may not prove the most efficient \citep{Bontron2005}.
 
-In addition to precipitation prediction, the Analog Method (AM), or an equivalent, was also used for short to medium term prediction of daily temperatures \citep{Radinovic1975, Woodcock1980, Kruizinga1983}, wind \citep{Gordon1987}, snow avalanches \citep{Obled1980, Bolognesi1993}, insolation \citep{Bois1981}, and the trajectory of tropical cyclones \citep{Keenan1981, Sievers2000, Fraedrich2003}. \citet{Guilbaud1997} performed a literature review about the use of the AM in long-term forecasting and identified operational applications for monthly forecasts in many countries, including Canada \citep{Shabbar1986},  Hungary \citep{Toth1989}, the Netherlands \citep{Nap1981}, and England \citep{Murray1974}, as well as seasonal forecasts: \citet{Barnett1978}, \citet{Bergen1982} and \citet{Livezey1988}.
+In addition to precipitation prediction, analog methods (AMs), or equivalent, were also used for short to medium term prediction of daily temperatures \citep{Radinovic1975, Woodcock1980, Kruizinga1983}, wind \citep{Gordon1987}, snow avalanches \citep{Obled1980, Bolognesi1993}, insolation \citep{Bois1981}, and the trajectory of tropical cyclones \citep{Keenan1981, Sievers2000, Fraedrich2003}. \citet{Guilbaud1997} performed a literature review about the use of the AM in long-term forecasting and identified operational applications for monthly forecasts in many countries, including Canada \citep{Shabbar1986},  Hungary \citep{Toth1989}, the Netherlands \citep{Nap1981}, and England \citep{Murray1974}, as well as seasonal forecasts: \citet{Barnett1978}, \citet{Bergen1982} and \citet{Livezey1988}.
 
-In operational forecasting, it has been used mainly by practitioners, notably hydropower companies \citep{Desaint2008a,BenDaoud2009,Obled2014} or flood forecasting services in France and Switzerland \citep{Marty2010,GarciaHernandez2009b,Horton2012}. It should however not be considered as a substitute for Numerical Weather Prediction (NWP) models, but as a complement in order to get a fast and partly independent forecast that is known to be accurate several days in advance. It therefore enriches the analysis of a potential critical situation for flood forecasting, for example, and is very interesting in early warning.
+In operational forecasting, they have been used mainly by practitioners, notably hydropower companies \citep{Desaint2008a,BenDaoud2009,Obled2014} or flood forecasting services in France and Switzerland \citep{Marty2010,GarciaHernandez2009b,Horton2012}. They should however not be considered as a substitute for Numerical Weather Prediction (NWP) models, but as a complement in order to get a fast and partly independent forecast that is known to be accurate several days in advance. They therefore enrich the analysis of a potential critical situation for flood forecasting, for example, and are very interesting in early warning.
 
 However, how efficient and useful it may seem, this approach is not straightforward. Usually the type of predictand is imposed by some practical needs or constraints. Considering a precipitation variable, one has to decide upon the duration of accumulation, (e.g. from 6-hourly to daily or several day totals) according for example to the size or response time of the catchments to be managed. The availability and quality of long enough time series must also be considered. Moreover, the analogy is restricted to a selection of variables at a specific time and over optimized spatial domains, that are compared by means of a chosen criteria that can rank the candidate days from the archive with a distance quantification. The approach appears predictand-specific but also dependent on the archive of predictors. 
 
@@ -141,7 +141,7 @@ The predictand can be 6-houry data, or more often daily time series. The most us
 Some results will be illustrated throughout this article for the alpine upper Rh\^{o}ne catchment in Switzerland (Fig.\ \ref{figure:map}). Even though the region is rather small (5524~km$^{2}$), the meteorological influences related to extreme weather conditions varies substantially within it \citep[see][]{Horton2012}. The gauging stations in the catchment were thus aggregated into 10~subregions (Fig.\ \ref{figure:map}): (1) Swiss Chablais, (2) Trient Valley, (3) West Bernese Alps, (4) Lower Rhone Valley, (5) Left side valleys, (6) Southern ridges, (7) Upper Rhone Valley, (8) Southeast ridges, (9) East Bernese Alps, and (10) Conches Valley.
 
 
-\section{The Analog Method}
+\section{Analog methods}
 \label{sec:method}
 
 AtmoSwing does not rely on a single variant of the AM, but can implement different parameterizations. Thus, several examples of possible implementations are gathered here, as well as the main evolution steps of the AM.
@@ -541,10 +541,10 @@ AtmoSwing is open source, under the CDDL license. It is developed under the Merc
 	\item https://bitbucket.org/atmoswing/atmoswing
 \end{itemize}
 
-To get access to the frozen version at the time of writing (v1.4.2), the following address can be used:
+To get access to the frozen version at the time of writing (v1.4.3), the following address can be used:
 
 \begin{itemize}
-	\item bitbucket.org/atmoswing/atmoswing/commits/tag/1.4.2
+	\item bitbucket.org/atmoswing/atmoswing/commits/tag/1.4.3
 \end{itemize}
 
 
