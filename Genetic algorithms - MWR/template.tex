@@ -69,18 +69,18 @@
 % and Author Two\thanks{Current affiliation: American Meteorological Society, 
 % 45 Beacon St., Boston, MA 02108.}}
 
-\authors{Pascal Horton\correspondingauthor{Pascal Horton, University of Bern, Hallerstrasse 12, 3012 Bern, Switzerland.}\thanks{Current affiliation: Institute of Geography \& Oeschger Centre for Climate Change Research, University of Bern, Switzerland}}
+\authors{Pascal Horton\correspondingauthor{Pascal Horton, University of Bern, Hallerstrasse 12, 3012 Bern, Switzerland.}\thanks{Current affiliation: Oeschger Centre for Climate Change Research and Institute of Geography, University of Bern, Bern, Switzerland}}
 
 %% Follow this form:
 % \affiliation{American Meteorological Society, 
 % Boston, Massachusetts.}
 
-\affiliation{University of Lausanne, Lausanne, Switzerland}
+\affiliation{University of Lausanne, Lausanne, Switzerland and Oeschger Centre for Climate Change Research and Institute of Geography, University of Bern, Bern, Switzerland}
 
 %% Follow this form:
 %\email{latex@ametsoc.org}
 
-\email{pascal.horton@alumnil.unil.ch}
+\email{pascal.horton@giub.unibe.ch}
 
 %% If appropriate, add additional authors, different affiliations:
 %\extraauthor{Extra Author}
@@ -267,7 +267,7 @@ A key element of the configuration of GAs is to determine the correct balance be
 
 GAs optimize a population of $N$ individuals. Each individual contains a chromosome, which here is a vector of the AM parameters. Genes are the individual parameters constituting the chromosome. These can be categorical (e.g., choice of the meteorological variable), discrete (e.g., number of analog dates to select), or continuous.
 
-There are numerous implementation variants of GAs, which are often optimal for a given problem \citep{Hart1991a, Schraudolph1992a}. The differences are found in the implementation of the operators, through significantly different algorithms, which has an important effect on the results \citep{Gaffney2010a}. Here, operators are defined as the mechanisms that modify the values of the genes, to try to bring individuals (or chromosomes) closer to an optimum of the fitness function. The structure of the method (Fig. \ref{fig:structure_gas}) that results from the work of \citet{Holland1992b} is common to most applications \citep{Back1993b}, and consists of the following steps. (1) A population of $N$ individuals (parameter sets of the AM to be optimized) is randomly generated, which constitutes the initial population. The fitness (performance score or objective function) of every individual is assessed. (2) A natural selection algorithm is applied, after which only the best individuals remain. This constitutes the intermediate generation (IG), from which (3) couples are formed according to given rules. Then, (4) these couples proceed to the reproduction or chromosome crossover stage, to mix their genes according to the selected operator version. New children are generated, in order to refill the IG back to $N$ individuals. (5) Parents and children are then subjected to mutation, where some genes are randomly changed. Finally, (6) the new generation is then re-assessed, and the best individual restored if degraded. Then, (7) according to the ending criterion, the optimization either ends or begins again for another iteration.
+There are numerous implementation variants of GAs, which are often optimal for a given problem \citep{Hart1991a, Schraudolph1992a}. The differences are found in the implementation of the operators, through significantly different algorithms, which has an important effect on the results \citep{Gaffney2010a}. Here, operators are defined as the mechanisms that modify the values of the genes, to try to bring individuals (or chromosomes) closer to an optimum of the fitness function. The structure of the method (Fig. \ref{fig:structure_gas}) that results from the work of \citet{Holland1992b} is common to most applications \citep{Back1993b}, and consists of the following steps. (1) A population of $N$ individuals (parameter sets of the AM to be optimized) is randomly generated, which constitutes the initial population. The fitness (performance score or objective function) of every individual is assessed. (2) A natural selection algorithm is applied, after which only the best individuals remain. This constitutes the intermediate generation (IG), from which (3) couples are formed according to given rules. Then, (4) these couples proceed to the reproduction or chromosome crossover stage, to mix their genes according to the selected operator version. New children are generated, in order to refill the IG back to $N$ individuals. (5) Parents and children are then subjected to mutation, where some genes are randomly changed. Finally, (6) the new generation is then re-assessed, and the best individual restored if degraded (so that a superior solution is never lost). Then, (7) according to the ending criterion, the optimization either ends or begins again for another iteration.
 
 
 All of the considered operators and their options are described in the following sections (only briefly for operators of less importance). Many other operators exist, but only those that are evaluated are described here.
@@ -292,7 +292,7 @@ Natural selection is performed on the basis of the objective function values. Th
 \subsubsection{Selection of the couples}
 \label{sec:gas:selection_couples}
 
-Individuals of the IG can then reproduce, which begins with the selection of pairs (the parents). The techniques implemented in this study are the following:
+Individuals of the IG can then reproduce, which begins with the selection of pairs (the parents). The techniques implemented in this study are the following (see Fig. \ref{fig:illustration_couples}):
 
 
 \begin{itemize}
@@ -309,7 +309,7 @@ Individuals of the IG can then reproduce, which begins with the selection of pai
 \subsubsection{Chromosome crossover}
 \label{sec:gas:crossover}
 
-Once the two parents have been selected for breeding, they combine their chromosomes and produce two children, bringing the number of individuals in the population back to $N$. The combination of chromosomes is carried out using a crossover operator, thereby generating two offspring that have characteristics derived from both parents. This allows the mixing of genes, and the potential accumulation of positive mutations. The evaluated crossover operators are the following:
+Once the two parents have been selected for breeding, they combine their chromosomes and produce two children, bringing the number of individuals in the population back to $N$. The combination of chromosomes is carried out using a crossover operator, thereby generating two offspring that have characteristics derived from both parents. This allows the mixing of genes, and the potential accumulation of positive mutations. The evaluated crossover operators are the following (see Fig. \ref{fig:illustration_crossover}):
 
 \begin{itemize}
 	\item Single-point crossover \citep{Goldberg1989}: The genes located after a randomly chosen point within the chromosome are exchanged between the two parents.
@@ -440,7 +440,7 @@ In the present study, the choice of meteorological variables (predictors) was st
 
 With the main goal of the present paper being to provide recommendations regarding the use of GAs to optimize different AM variants, a systematic procedure was adopted. The results are summarized in the following \citep[see][for the details]{Horton2012a}. In order to compare different configurations of GAs, a factorial design approach was applied, in a similar manner as in \citet{Costa2005a,Costa2007a} and \citet{Mariano2010a}. This allows the isolation of the effects of a parameter under different combinations of the other options.
 
-In order to evaluate a combination of operators/options, 10 optimizations were processed per configuration of GAs. For all combinations of GA options, 21~630 optimizations were performed on an Intel Xeon based HPC (High-performance computing) cluster with 96 CPU, running Linux RedHat. Such an assessment was not possible on the whole archive length, and had to be performed on a reduced calibration period of five years from 1998 to 2002, while looking for analog dates over a 48 year period (1961-2008). The total resources required for this comparison amounted to 229~539 h CPU (26.2 years CPU). One should remember that these intensive resources were required in order to assess multiple combinations of GA options, in order to provide recommendations. Based on these, applying GAs to optimize AMs requires some computational power, but to a lesser extent (the required time is a function of the archive length, the population number, GA options, and the complexity of the AM to be optimized). 
+In order to evaluate a combination of operators/options, 10 optimizations were processed per configuration of GAs. For all combinations of GA options, 21~630 optimizations were performed on a small Intel Xeon based HPC (High-performance computing) cluster with 8 nodes (Xeon 5670, 2.97 GHz, 12 cores), running Linux RedHat. Such an assessment was not possible on the whole archive length, and had to be performed on a reduced calibration period of five years from 1998 to 2002, while looking for analog dates over a 48 year period (1961-2008). The total resources required for this comparison amounted to 229~539 h CPU. One should remember that these intensive resources were required in order to assess multiple combinations of GA options, in order to provide recommendations. Based on these, applying GAs to optimize AMs requires some computational power, but to a lesser extent (the required time is a function of the archive length, the population number, GA options, and the complexity of the AM to be optimized). 
 
 The performances were characterized by four indicators: (i) mean performance score: average of the final scores of the 10 optimizations, (ii) convergence: the number of optimizations that converged, (iii) number of generations: characterization of the convergence speed, and (iv) number of evaluations of the objective function: characterization of the required calculation time.
 
@@ -500,7 +500,7 @@ For this application, the mutation operator has a leading effect, and should be 
 
 \subsubsection{Other options}
 
-The analysis of the natural selection operator (Fig. \ref{fig:operator_selectnat_score}) revealed a slight preference for ratio-elitism compared to the tournament selection, but this was not very significant. This operator, or at least the two assessed versions, did not appear to significantly influence the optimization performance.
+The analysis of the natural selection operator (Fig. \ref{fig:operator_selectnat_score}) revealed a slight preference for ratio-elitism compared to the tournament selection (section \ref{sec:gas:nat_selection}), but this was not very significant. This operator, or at least the two assessed versions, did not appear to significantly influence the optimization performance.
 
 The size of the population ($N$, the number of initial parameter sets) had an effect on the optimization performance (Fig. \ref{fig:option_taillepop_score}). A bigger population led to better results, but also to longer optimizations. The required number of evaluations, and thus the required time, was approximately proportional to the population size. Thus, if the population size doubled, then the time required for the optimization also nearly doubled (e.g., for a five year calibration period, approximately 4~h CPU were required when $N = 50$, and 14~h CPU when $N = 200$). The optimal size seems to depend on the complexity of the AM to be optimized. A more complex AM (i.e., with more degrees of freedom) requires a bigger population size. A rule of thumb based on a limited number of case studies (not presented here) is provided as follows:
 
@@ -536,7 +536,7 @@ Optimizations using GAs of AMs of varying complexities were performed with a lar
 	
 \end{itemize}
 
-The optimization did not systematically converge to the global optimum (but often close to it), which is why it is recommended to performs several optimizations in parallel in order to compare the results, analyze the convergence, and keep the best configuration. It may be wise to consider the three mutation operators in parallel. In order to be confident in the optimized AMs, we propose using a set of the following mutation operators:
+The optimization did not systematically converge to the global optimum (but often close to it), which is why it is recommended to performs several optimizations in parallel in order to compare the results, analyze the convergence, and keep the best configuration. It may be wise to consider the three mutation operators in parallel. In order to be confident in the optimized AMs, we propose using a set of the following mutation operators, where $p_{mut}$ is the mutation rate (or mutation probability), $G_{m,r}$ is the maximum number of generations during which the magnitude of the research varies, and $\omega$ is a threshold chosen by the user in order to maintain a minimum search radius when the number of generations $G>G_{m,r}$:
 
 \begin{itemize}
 	\setlength\itemsep{-4px}
@@ -546,8 +546,6 @@ The optimization did not systematically converge to the global optimum (but ofte
 	\item the multi-scale mutation once, with  $p_{mut}=0.1$
 	\item the chromosome of adaptive search radius twice
 \end{itemize}
-
-where $p_{mut}$ is the mutation rate (or mutation probability), $G_{m,r}$ is the maximum number of generations during which the magnitude of the research varies, and $\omega$ is a threshold chosen by the user in order to maintain a minimum search radius when the number of generations $G>G_{m,r}$.
 
 
 \subsection{Illustration of application}
@@ -645,29 +643,46 @@ Thanks to the Roads and Water Courses Service, Energy and Water Power Service of
 	\begin{center}
 		\noindent\includegraphics[width=19pc,angle=0]{fig02.pdf}\\
 	\end{center}
+	\caption{Illustration of the different couples selection variants assessed in this study. Distributions on the left illustrate the probability of selection depending on the rank of the individual.}
+	\label{fig:illustration_couples}
+\end{figure}
+
+\begin{figure}[t]
+	\begin{center}
+		\noindent\includegraphics[width=33pc,angle=0]{fig03.pdf}\\
+	\end{center}
+	\caption{Illustration of the different chromosome crossover variants assessed in this study.}
+	\label{fig:illustration_crossover}
+\end{figure}
+
+
+\begin{figure}[t]
+	\begin{center}
+		\noindent\includegraphics[width=19pc,angle=0]{fig04.pdf}\\
+	\end{center}
 	\caption{Genetic algorithms operational flowchart.}
 	\label{fig:structure_gas}
 \end{figure}
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig03.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{fig05.pdf}\\
 	\end{center}
-	\caption{Evolution of the score of the best individual over each generation for the 10 optimizations processed for a given configuration. The continuous bottom line represents the score of the sequential approach, and the dashed line (top) shows the supposed global optimum. The circles represent the end of the optimization (when the best individual did not progress during 20 generations).}
+	\caption{Evolution of the score of the best individual over each generation for the 10 optimizations processed for a given configuration. The continuous bottom line represents the score of the sequential approach, and the dashed line (top) shows the supposed global optimum. The circles represent the end of the optimization (when the best individual did not progress during 20 generations). Seven out of 10 optimizations converged to the global optimum.}
 	\label{fig:gas_evolution_good}
 \end{figure}
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig04.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{fig06.pdf}\\
 	\end{center}
-	\caption{Same as Fig. \ref{fig:gas_evolution_good}, but for a GA configuration considered to be less relevant.}
+	\caption{Same as Fig. \ref{fig:gas_evolution_good}, but for a GA configuration considered to be less relevant and later rejected, because the optimizations did not converge. However, it still performed significantly better than the sequential approach (continuous bottom line).}
 	\label{fig:gas_evolution_bad}
 \end{figure}
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig05.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{fig07.pdf}\\
 	\end{center}
 	\caption{Influence of the couples selection operators (section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:nat_selection}) on the optimization performance (improvement of the score). The box extends from the lower to upper quartile values of the data, with a line at the median. The whiskers extend from the box to 1.5 times the interquartile range. Flier points are those past the end of the whiskers. The star represents the median. The gray box highlights the best options.}
 	\label{fig:operator_selectcoupl_score}
@@ -675,7 +690,7 @@ Thanks to the Roads and Water Courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=39pc,angle=0]{fig06.pdf}\\
+		\noindent\includegraphics[width=39pc,angle=0]{fig08.pdf}\\
 	\end{center}
 	\caption{Influence of the chromosome crossover operators (section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:crossover}) on the optimization performance (improvement of the score).  $\beta$s represent a shared $\beta$ parameter, and $\beta$u the unshared version. The same conventions apply as in Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_crossover_score}
@@ -683,7 +698,7 @@ Thanks to the Roads and Water Courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig07.pdf}\\
+		\noindent\includegraphics[width=19pc,angle=0]{fig09.pdf}\\
 	\end{center}
 	\caption{Influence of the mutation operators (section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:mutation}) on the optimization performance. In parentheses is the number of variants considered (combination of options). The same conventions apply as in Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score}
@@ -691,7 +706,7 @@ Thanks to the Roads and Water Courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{fig08.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{fig10.pdf}\\
 	\end{center}
 	\caption{Influence of the mutation options (section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:mutation}) on the optimization performance, letting the optimizer choose the pressure level of the atmospheric circulation analogy (single level of analogy). For the non-uniform mutation, $\omega=0.1$ in every case. The continuous bottom line represents the score of the sequential calibration, and the dashed superior line is the score of the optimization without automatic selection of the pressure levels. The same conventions apply as in Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score_atmlevel}
@@ -699,7 +714,7 @@ Thanks to the Roads and Water Courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{fig09.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{fig11.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:operator_mutation_score_atmlevel}, but for another region in the Swiss Alps (Swiss Chablais), with different atmospheric influences.}
 	\label{fig:operator_mutation_score_rhoneamont}
@@ -707,7 +722,7 @@ Thanks to the Roads and Water Courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{fig10.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{fig12.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:operator_mutation_score_atmlevel}, but with a second level of analogy on moisture variables.}
 	\label{fig:operator_mutation_score_r2}
@@ -715,7 +730,7 @@ Thanks to the Roads and Water Courses Service, Energy and Water Power Service of
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{fig11.pdf}\\
+		\noindent\includegraphics[width=33pc,angle=0]{fig13.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:operator_mutation_score_r2}, but with a preselection on air temperature rather than a fixed calendar window.}
 	\label{fig:operator_mutation_score_r4}
@@ -723,7 +738,7 @@ Thanks to the Roads and Water Courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=11pc,angle=0]{fig12.pdf}\\
+		\noindent\includegraphics[width=11pc,angle=0]{fig14.pdf}\\
 	\end{center}
 	\caption{Influence of the natural selection operators on the optimization performance. The same conventions apply as in Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_selectnat_score}
@@ -731,7 +746,7 @@ Thanks to the Roads and Water Courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=11pc,angle=0]{fig13.pdf}\\
+		\noindent\includegraphics[width=11pc,angle=0]{fig15.pdf}\\
 	\end{center}
 	\caption{Influence of the population size on the optimization performance. The same conventions apply as in Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:option_taillepop_score}
@@ -739,7 +754,7 @@ Thanks to the Roads and Water Courses Service, Energy and Water Power Service of
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=11pc,angle=0]{fig14.pdf}\\
+		\noindent\includegraphics[width=11pc,angle=0]{fig16.pdf}\\
 	\end{center}
 	\caption{Influence of the intermediate generation (IG) ratio on the optimization performance. The same conventions apply as in Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:option_popratio_score}
