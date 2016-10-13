@@ -150,7 +150,7 @@ To calibrate the method, the commonly used technique is a semi-automatic sequent
 \label{eq:CRPS}
 S_{\text{CRP}} = \int_{-\infty}^{+\infty} \left[ F(y)-\text{H}(y-y^{0})\right]^{2} \text{d}y ,  
 \end{equation}
-where $\text{H}(y-y^{0})$ is the Heaviside function that is null when $y-y^{0}<0$, and has the value 1 otherwise. \citet{Bontron2004} proposed a decomposition of this score interpreted into a sharpness and an accuracy terms.
+where $\text{H}(y-y^{0})$ is the Heaviside function that is null when $y-y^{0}<0$, and has the value 1 otherwise.
 
 In order to compare the value of the score in regard to a reference, one often considers its skill score expression, and use the climatological distribution as the reference. The Continuous Ranked Probability Skill Score ($S_{\text{SCRP}}$) is thus defined as following:
 
@@ -268,13 +268,6 @@ After recalibrating, some changes in the optimal parameters can be observed for 
 This increase in number of analogs has a slight effect on the performance of the different precipitation classes. The same analysis as in Sect. \ref{sec:improvement_CRPSS_precip_threshold} has been performed again on the basis of the newly calibrated parameters. The results are generally very similar, but a slight performance increase of small precipitation values can be observed at the expense of higher amounts. The change in the analogs numbers is likely to be responsible for this difference in the performance distributions.
 
 The values of the $S_{\text{SCRP}}$ scores for both methods (Table \ref{table:CRPSS_recalibration}) have significantly increased after recalibration. With the introduction of the MTW, the performance loss related to the reduction of the archive length is compensated.
-
-
-\subsubsection{Changes in sharpness and accuracy}
-
-The $S_{\text{CRP}}$ score can be decomposed into two components, namely sharpness and accuracy \citep[see][]{Bontron2004}. The impact of the MTW has been analyzed on these components and the results can be found in Table \ref{table:CRPSS_decomposition_no_recalibration} for the original parameters and in Table \ref{table:CRPSS_decomposition_recalibration} for the re-calibrated methods. The changes are expressed relative to the total $S_{\text{CRP}}$. Both components do not have the same value ranges: accuracy is in our case almost twice the sharpness values. Since the $S_{\text{CRP}}$ is considered here and not the $S_{\text{SCRP}}$, improved prediction capacity results in a lower score. A decrease of the score is thus desirable.
-
-It appears that the sharpness is a bit inferior with the MTW in favor of accuracy (Table \ref{table:CRPSS_decomposition_no_recalibration}). When using the recalibrated parameters, the components are a bit more balanced, but still the accuracy prevails on the sharpness (Table \ref{table:CRPSS_decomposition_recalibration}). Fig. \ref{fig:CRPSS_decomposition_precip_thresholds} illustrates the changes (relative to the total $S_{\text{CRP}}$) in sharpness and accuracy for different precipitation thresholds at the Ulrichen station. Be it for the 2Z or 2Z-2MI method, the original or the recalibrated parameters, the changes are similar: the improvements concern the accuracy over the sharpness, and this to a greater extent for significant precipitation events. The MTW does not allow to improve the sharpness, but the improvement in accuracy is significant, and this especially for the days with heavy precipitation. In terms of the predicted precipitation distribution, it means that the median of the prediction is closer to the observed values, while the distribution is not more condensed than previously.
 
 
 \section{Application attempts on the full archive}
@@ -414,16 +407,6 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 	\caption{Differences of the $S_{\text{SCRP}}$ performance score, due to the introduction of the MTW, as a function of precipitation thresholds at the Ulrichen station. The stars represent averages.}
 	\label{fig:changes_CRPS_precip_threshold}
 \end{figure}
-
-\begin{figure*}[htb]
-	\begin{center}$
-		\begin{array}{cccc}
-		\includegraphics[width=16cm]{figures/components.pdf}
-		\end{array}$
-	\end{center}
-	\caption{Influence (\%) of the MTW on the $S_{\text{CRP}}$ components (accuracy and sharpness) relatively to the total $S_{\text{CRP}}$, for the 2Z and 2Z-2MI methods, according to different precipitation thresholds. The results are presented for (top) the original parameters, and (bottom) the recalibrated parameters. Improved prediction results in a lower score.}
-	\label{fig:CRPSS_decomposition_precip_thresholds}
-\end{figure*}
 
 \begin{figure}[htb]
 	\begin{center}
@@ -612,46 +595,6 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 	\label{table:CRPSS_recalibration}
 \end{table}
 
-\begin{table}[htb]
-	\caption{Changes in sharpness and accuracy relatively to the total $S_{\text{CRP}}$, due to the introduction of the MTW. The changes are presented for both 2Z and 2Z-2MI methods with the original parameters. A decrease of the score is desirable.}
-	\begin{center}
-		\begin{tabular}{l c c c c}
-			\hline
-			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{2}{c}{2Z-2MI} \\
-			& Sharpness & Accuracy & Sharpness & Accuracy \\
-			\hline
-			Ulrichen & 2.82 & -5.29 & 1.00 & -4.30 \\
-			Zermatt & 2.26 & -5.01 & 0.88 & -3.58 \\
-			Visp & 3.66 & -5.18 & 2.67 & -4.94 \\
-			Montana & 1.62 & -2.78 & 0.57 & -2.91 \\
-			Sion & 2.02 & -2.78 & 0.33 & -2.75 \\
-			Aigle & 0.52 & -2.26 & -1.20 & -2.17 \\ 
-			\hline
-		\end{tabular}
-	\end{center}
-	\label{table:CRPSS_decomposition_no_recalibration}
-\end{table}
-
-
-\begin{table}[htb]
-	\caption{Same as Table \ref{table:CRPSS_decomposition_no_recalibration} but with the re-calibrated parameters.}
-	\begin{center}
-		\begin{tabular}{l c c c c}
-			\hline
-			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{2}{c}{2Z-2MI} \\
-			& Sharpness & Accuracy & Sharpness & Accuracy \\
-			\hline
-			Ulrichen & 1.44 & -4.56 & -0.37 & -3.34 \\
-			Zermatt & 0.80 & -4.03 & 0.75 & -4.42 \\
-			Visp & 1.53 & -3.94 & 1.47 & -4.96 \\
-			Montana & -0.27 & -1.80 & 0.06 & -3.71 \\
-			Sion & 0.95 & -2.66 & -0.10 & -3.19 \\
-			Aigle & -0.35 & -2.01 & -2.08 & -1.90 \\ 
-			\hline
-		\end{tabular}
-	\end{center}
-	\label{table:CRPSS_decomposition_recalibration}
-\end{table}
 
 \begin{table}[htb]
 	\caption{Values of the $S_{\text{SCRP}}$ (\%) skill score for the original and the recalibrated parameters (with the sequential method, as described in Sect. \ref{sec:introduction}) using the MTW approach on the disaggregated precipitation time series (short period) by means of the proportional distribution.}
