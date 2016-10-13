@@ -194,7 +194,7 @@ Based on some preliminary tests (not shown), no constraint was added in order to
 
 As sub-daily precipitation time series are usually available on a shorter period than traditional daily time steps, the first assessment consists in assessing the loss of performance resulting from a reduction of a 47~years archive (1961 to 2008) to 25~years (1982 to 2007). This change is assessed with the original method, without MTW.
 
-Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated using AtmoSwing \citep{Horton2016} on the original archive (Tables \ref{table:params_2Z} and \ref{table:params_2Z-2MI}) and will be used thereafter.
+Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated using AtmoSwing \citep{Horton2016} on the original archive (Tables \ref{table:performance}) and will be used thereafter.
 
 The impact of the change in the archive length is summarized in Table \ref{table:loss_reduction} for both 2Z and 2Z-2MI methods. As expected, a loss of performance can be observed for each station, except for that of Aigle, which seems relatively indifferent to this change. This loss is globally significant, with up to -1.89 points for Visp and the 2Z method. 
 
@@ -263,7 +263,7 @@ The increasing positive trend of skill improvements regarding the precipitation 
 
 The previous assessment of the performance improvement was established with the original parameters optimized with a fixed time window. However, one can assume that the introduction of the MTW may change the optimum of some parameters. The calibration has then been reprocessed.
 
-After recalibrating, some changes in the optimal parameters can be observed for both 2Z (Table \ref{table:params_2Z_new}) and 2Z-2MI methods (Table \ref{table:params_2Z-2MI_new}). Among these, the east-west dimension of the spatial windows of the circulation analogy tends to decrease. More significantly, the optimal number of analogs increases after introducing the MTW, of a significant order of magnitude: 25~\% to 83~\% for the 2Z method and 20~\% 67~\% for the 2Z-2MI method. The number of analogs of the first analogy level of the 2Z-2MI method even reached three times its previous value for the Visp station. It seems as if the method perceive the increase in the archive length and diversity by allowing to extract more analogs. As we saw in Fig. \ref{fig:changes_S1}, the improvement of the $S_{\text{TW}}$ criteria grows along with the rank of the analog, which shows an accumulation of better analog situations in the distributions. It seems thus profitable to widen the selection of analogs in order to keep also some whose rank has increased, as they appear to be also relevant to predict precipitation values. The number of good analogs is thus globally increased.
+After recalibrating, some changes in the optimal number of analogs can be observed for both 2Z and 2Z-2MI methods (Table \ref{table:nb_analogs_new}). Among these, the east-west dimension of the spatial windows of the circulation analogy tends to decrease. More significantly, the optimal number of analogs increases after introducing the MTW, of a significant order of magnitude: 25~\% to 83~\% for the 2Z method and 20~\% 67~\% for the 2Z-2MI method. The number of analogs of the first analogy level of the 2Z-2MI method even reached three times its previous value for the Visp station. It seems as if the method perceive the increase in the archive length and diversity by allowing to extract more analogs. As we saw in Fig. \ref{fig:changes_S1}, the improvement of the $S_{\text{TW}}$ criteria grows along with the rank of the analog, which shows an accumulation of better analog situations in the distributions. It seems thus profitable to widen the selection of analogs in order to keep also some whose rank has increased, as they appear to be also relevant to predict precipitation values. The number of good analogs is thus globally increased.
 
 This increase in number of analogs has a slight effect on the performance of the different precipitation classes. The same analysis as in Sect. \ref{sec:improvement_CRPSS_precip_threshold} has been performed again on the basis of the newly calibrated parameters. The results are generally very similar, but a slight performance increase of small precipitation values can be observed at the expense of higher amounts. The change in the analogs numbers is likely to be responsible for this difference in the performance distributions.
 
@@ -460,41 +460,23 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 \end{table}
 
 \begin{table}[htb]
-	\caption{Calibrated parameters (spatial windows and number of analogs) for the analogy on the geopotential at 500~hPa and 1000~hPa (method 2Z) and skill score (\%) of the method on the full archive.}
-	\begin{center}
-		\begin{tabular}{l c c c c }
-			\hline
-			Station & Long (° E) & Lat (° N) & $N_{1}$ & $S_{\text{SCRP}}$ \\
-			\hline
-			Ulrichen & 0 $\rightarrow$ 17.5 & 42.5 $\rightarrow$ 47.5 & 40 & 30.73 \\
-			Zermatt & 0 $\rightarrow$ 20 & 37.5 $\rightarrow$ 50 & 35 & 23.87 \\
-			Visp & -2.5 $\rightarrow$ 20 & 40 $\rightarrow$ 47.5 & 30 & 25.11 \\
-			Montana & -2.5 $\rightarrow$ 17.5 & 40 $\rightarrow$ 47.5 & 40 & 32.55 \\
-			Sion & -2.5 $\rightarrow$ 17.5 & 40 $\rightarrow$ 47.5 & 40 & 26.23 \\
-			Aigle & -5 $\rightarrow$ 17.5 & 40 $\rightarrow$ 50 & 50 & 30.59 \\ 
-			\hline
-		\end{tabular}
-	\end{center}
-	\label{table:params_2Z}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Parameters of the moisture variables from the 2Z-2MI method and the corresponding skill score (\%) on the complete archive. The parameters for the atmospheric circulation are the same as in Table \ref{table:params_2Z}, except the number of analogs of the first analogy level ($N_{1}$), which are here different. The $5^{th}$ column is the number of analogs for the second level ($N_{2}$).}
+	\caption{Number of analogs (of the first and the second level of analogy, respectively $N_{1}$ and $N_{2}$) and skill score (\%) of the method based on the atmospheric circulation only (method 2Z), and the one with a second level of analogy on moisture variables (2Z-2MI), on the full archive.}
 	\begin{center}
 		\begin{tabular}{l c c c c c }
 			\hline
-			Station & Long (° E) & Lat (° N) & $N_{1}$ & $N_{2}$ & $S_{\text{SCRP}}$ \\
+			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{3}{c}{2Z-2MI} \\
+			& $N_{1}$ & $S_{\text{SCRP}}$ & $N_{1}$ & $N_{2}$ & $S_{\text{SCRP}}$ \\ 
 			\hline
-			Ulrichen & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 60 & 25 & 34.31 \\
-			Zermatt & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 55 & 25 & 28.28 \\
-			Visp & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 45 & 25 & 28.85 \\
-			Montana & 5 $\rightarrow$ 7.5 & 45 $\rightarrow$ 47.5 & 55 & 30 & 36.11 \\
-			Sion & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 90 & 30 & 31.16 \\
-			Aigle & 7.5 & 45 $\rightarrow$ 47.5 & 100 & 35 & 35.82 \\ 
+			Ulrichen & 40 & 30.73 & 60 & 25 & 34.31 \\
+			Zermatt & 35 & 23.87 & 55 & 25 & 28.28 \\
+			Visp & 30 & 25.11 & 45 & 25 & 28.85 \\
+			Montana & 40 & 32.55 & 55 & 30 & 36.11 \\
+			Sion & 40 & 26.23 & 90 & 30 & 31.16 \\
+			Aigle & 50 & 30.59 & 100 & 35 & 35.82 \\ 
 			\hline
 		\end{tabular}
-	\end{center}
-	\label{table:params_2Z-2MI}
+	\end{center}	
+	\label{table:performance}
 \end{table}
 
 \begin{table}[htb]
@@ -538,41 +520,23 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 \end{table}
 
 \begin{table}[htb]
-	\caption{Calibrated parameters (spatial windows and number of analogs) for the analogy on the geopotential at 500~hPa and 1000~hPa (method 2Z) with the MTW approach.}
+	\caption{Number of analogs (of the first and the second level of analogy, respectively $N_{1}$ and $N_{2}$) of the method based on the atmospheric circulation only (method 2Z), and the one with a second level of analogy on moisture variables (2Z-2MI), using the MTW approach.}
 	\begin{center}
 		\begin{tabular}{l c c c }
 			\hline
-			Station & Long (° E) & Lat (° N) & $N_{1}$ \\
+			\multirow{2}{*}{Station} & \multicolumn{1}{c}{2Z} & \multicolumn{2}{c}{2Z-2MI} \\
+			& $N_{1}$ & $N_{1}$ & $N_{2}$ \\ 
 			\hline
-			Ulrichen & 0 $\rightarrow$ 17.5 & 42.5 $\rightarrow$ 50 & 50 \\
-			Zermatt & 0 $\rightarrow$ 17.5 & 40 $\rightarrow$ 50 & 55 \\
-			Visp & -2.5 $\rightarrow$ 20 & 40 $\rightarrow$ 50 & 55 \\
-			Montana & -2.5 $\rightarrow$ 15 & 42.5 $\rightarrow$ 47.5 & 55 \\
-			Sion & -2.5 $\rightarrow$ 15 & 37.5 $\rightarrow$ 50 & 55 \\
-			Aigle & -2.5 $\rightarrow$ 15 & 40 $\rightarrow$ 50 & 75 \\
-			\hline
-		\end{tabular}
-	\end{center}
-	\label{table:params_2Z_new}
-\end{table}
-
-\begin{table}[htb]
-	\caption{Parameters of the moisture variables from the 2Z-2MI method with the MTW approach. The parameters for the atmospheric circulation are the same as in Table \ref{table:params_2Z_new}, except the number of analogs of the first analogy level ($N_{1}$), which are here different. The $5^{th}$ column is the number of analogs for the second level ($N_{2}$).}
-	\begin{center}
-		\begin{tabular}{l c c c c }
-			\hline
-			Station & Long (° E) & Lat (° N) & $N_{1}$ & $N_{2}$ \\
-			\hline
-			Ulrichen & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 110 & 35 \\
-			Zermatt & 7.5 & 45 $\rightarrow$ 47.5 & 80 & 30 \\
-			Visp & 7.5 & 45 $\rightarrow$ 47.5 & 135 & 35 \\
-			Montana & 5 $\rightarrow$ 7.5 & 45 & 110 & 40 \\
-			Sion & 5 $\rightarrow$ 10 & 45 $\rightarrow$ 47.5 & 140 & 50 \\
-			Aigle & 5 $\rightarrow$ 7.5 & 45 & 135 & 45 \\ 
+			Ulrichen & 50 & 110 & 35 \\
+			Zermatt & 55 & 80 & 30 \\
+			Visp & 55 & 135 & 35 \\
+			Montana & 55 & 110 & 40 \\
+			Sion & 55 & 140 & 50 \\
+			Aigle & 75 & 135 & 45 \\ 
 			\hline
 		\end{tabular}
-	\end{center}
-	\label{table:params_2Z-2MI_new}
+	\end{center}	
+	\label{table:nb_analogs_new}
 \end{table}
 
 \begin{table}[htb]
