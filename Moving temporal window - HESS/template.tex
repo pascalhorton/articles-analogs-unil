@@ -30,8 +30,8 @@
 \Author[3]{Charles}{Obled}
 \Author[1]{Michel}{Jaboyedoff}
 
-\affil[1]{Institute of Earth Sciences, University of Lausanne, Lausanne, Switzerland}
-\affil[2]{Oeschger Centre for Climate Change Research \& Institute of Geography, University of Bern, Bern, Switzerland}
+\affil[1]{University of Lausanne, Institute of Earth Sciences, Lausanne, Switzerland}
+\affil[2]{University of Bern, Oeschger Centre for Climate Change Research, Institute of Geography, Bern, Switzerland}
 \affil[3]{Universit\'{e} de Grenoble-Alpes, LTHE, Grenoble, France}
 
 
@@ -79,7 +79,7 @@ However, attempts to reconstruct longer precipitation series of running 24~h-tot
 \introduction  %% \introduction[modified heading if necessary]
 \label{sec:introduction}
 
-The Analog Method (AM) is based on the principle that two relatively similar synoptic situations may produce relatively similar local effects \citep{Lorenz1956, Lorenz1969}. Multiple variations of the methods exist and listings can be found in \citet{Horton2016} or \citet{BenDaoud2015}. The versions that will be considered here are often used as references or benchmarks for various improvements.
+The Analog Method (AM) is based on the principle that two relatively similar synoptic situations may produce relatively similar local effects \citep{Lorenz1956, Lorenz1969}. Multiple variations of the methods exist and listings can be found in \citet{BenDaoud2016}. The versions that will be considered here are often used as references or benchmarks for various improvements.
 
 The AM is usually implemented with a daily time step, due to the availability of long precipitation archives that have no equivalent at a finer resolution. Therefore, the analog situations are assessed on the basis of a daily time step, by comparing predictors at fixed hours of the day, otherwise one would not know what precipitation values to assign to them. However, it can be expected that the analogy of the synoptic situations does not occur systematically at the same time of the day, and that better candidates can be found by shifting to a different hour. On this assumption, a moving time window (MTW) was introduced to allow searching for candidates at different hours of the day.
 
@@ -107,7 +107,7 @@ The first method is based on the analogy of the atmospheric circulation only \ci
 
 The predictand, here a 24~h precipitation total, results from meteorological situations that are continuous transitions between changing circulation patterns. Thus, the observed predictors fields, extracted from reanalysis datasets, are considered at different time of the day and at different heights. In our case, the geopotential height is considered at 1000~hPa (Z1000) at 12~h~UTC and 500~hPa (Z500) at 24~h~UTC. The selection of the observation time of the predictor was found by \citet{Bontron2004} to have a significant influence.
 
-Then, $N_{1}$ dates with the lowest values of $S_{\text{TW}}$ are considered as analogs to the target day, $N_{1}$ being a parameter to calibrate. Then, the daily observed precipitation amount of the corresponding dates provide the empirical conditional distribution considered as the probabilistic prediction for the target day. Following the nomenclature proposed by \citet{Horton2016}, this method will be named 2Z.
+Then, $N_{1}$ dates with the lowest values of $S_{\text{TW}}$ are considered as analogs to the target day, $N_{1}$ being a parameter to calibrate. Then, the daily observed precipitation amount of the corresponding dates provide the empirical conditional distribution considered as the probabilistic prediction for the target day. This method will be named 2Z further on.
 
 The second reference method adds a subsequent level of analogy on moisture variables, compared by means of the root-mean-square error ($E_{\text{RMS}}$) (method 2Z-2MI, Table \ref{table:method_2Z-2MI}). This second predictor is a moisture index made of the product of the total precipitable water (TPW) with the relative humidity at 850~hPa (RH850) \citep{Bontron2004}. When adding a second level of analogy, $N_{2}$ dates are subsampled in the $N_{1}$ analogs on the atmospheric circulation, to end up with a smaller number of analog situations. When a second level of analogy is added, a higher number of $N_{1}$ analogs is kept on the first level.
 
