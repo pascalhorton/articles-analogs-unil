@@ -13,13 +13,13 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    xml:space="preserve"
-   width="540"
-   height="630"
-   viewBox="0 0 540 630"
+   width="501.16794"
+   height="587.73242"
+   viewBox="0 0 501.16794 587.73242"
    sodipodi:docname="changes_S1_seasons.svg"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath20"><path
@@ -79,21 +79,25 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1126"
-     inkscape:window-height="969"
+     inkscape:window-width="1667"
+     inkscape:window-height="1074"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="2.1190756"
-     inkscape:cx="62.201205"
-     inkscape:cy="337.61929"
+     inkscape:zoom="1.0595378"
+     inkscape:cx="119.56497"
+     inkscape:cy="263.2148"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g10" /><g
+     inkscape:current-layer="g10"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" /><g
      id="g10"
      inkscape:groupmode="layer"
      inkscape:label="changes_S1_seasons"
-     transform="matrix(1.25,0,0,-1.25,0,630)"><path
+     transform="matrix(1.25,0,0,-1.25,-14.914942,605.61339)"><path
    d="m 51.84,50.4 280.8,0 0,428.4 -280.8,0 0,-428.4 z"
    style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
    id="path14"
@@ -142,6 +146,7 @@
      id="tspan62">5</tspan></text>
 
 
+
 <path
    d="m 116.64,50.4 0,4"
    style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -158,6 +163,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan70">10</tspan></text>
+
 
 
 <path
@@ -178,6 +184,7 @@
      id="tspan78">15</tspan></text>
 
 
+
 <path
    d="m 188.64,50.4 0,4"
    style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -194,6 +201,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan86">20</tspan></text>
+
 
 
 <path
@@ -214,6 +222,7 @@
      id="tspan94">25</tspan></text>
 
 
+
 <path
    d="m 260.64,50.4 0,4"
    style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -230,6 +239,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan102">30</tspan></text>
+
 
 
 <path
@@ -250,6 +260,7 @@
      id="tspan110">35</tspan></text>
 
 
+
 <path
    d="m 332.64,50.4 0,4"
    style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -266,6 +277,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan118">40</tspan></text>
+
 
 
 <g
@@ -292,6 +304,7 @@
      id="tspan140">4</tspan></text>
 
 
+
 <g
    id="g142"><g
      id="g144"
@@ -316,6 +329,7 @@
      id="tspan158">6</tspan></text>
 
 
+
 <g
    id="g160"><g
      id="g162"
@@ -338,6 +352,7 @@
      x="0"
      y="0"
      id="tspan176">8</tspan></text>
+
 
 
 <g
@@ -365,6 +380,7 @@
      id="tspan194">10</tspan></text>
 
 
+
 <g
    id="g196"><g
      id="g198"
@@ -390,6 +406,7 @@
      id="tspan212">12</tspan></text>
 
 
+
 <g
    id="g214"><g
      id="g216"
@@ -413,6 +430,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan230">14</tspan></text>
+
 
 
 <path
@@ -447,6 +465,7 @@
      id="tspan266">DJF</tspan></text>
 
 
+
 <path
    d="m 347.5856,448.72421 18.6592,0"
    style="fill:none;stroke:#77933c;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -461,6 +480,7 @@
      y="-444.05942"
      sodipodi:role="line"
      id="tspan272">MAM</tspan></text>
+
 
 
 <path
@@ -479,6 +499,7 @@
      id="tspan278">JJA</tspan></text>
 
 
+
 <path
    d="m 347.5856,408.90643 18.6592,0"
    style="fill:none;stroke:#a8423f;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -495,6 +516,7 @@
      id="tspan284">SON</tspan></text>
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -509,6 +531,7 @@
      y="-18.789152">Analogue rank</tspan></text>
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -520,11 +543,8 @@
      sodipodi:role="line"
      id="tspan4418"
      x="158.31825"
-     y="23.510078">Reduction of the <tspan
-   style="font-style:italic"
-   id="tspan4262">S</tspan><tspan
-   style="font-size:52%;baseline-shift:sub;font-style:normal"
-   id="tspan4260">TW</tspan> criteria [%]</tspan></text>
+     y="23.510078">Reduction of the S1 criteria [%]</tspan></text>
+
 
 
 </g></svg>

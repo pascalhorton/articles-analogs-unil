@@ -103,13 +103,13 @@ Predictors are extracted from the NCEP/NCAR reanalysis I \citep{Kalnay1996} data
 \subsection{The considered analog method}
 \label{sec:analog_method}
 
-The first method is based on the analogy of the atmospheric circulation only \citep[Table \ref{table:method_2Z},][]{Obled2002, Bontron2005, Marty2012}. Searching analog situations for a target day starts by a preselection step of the potential candidate for analogy. Here, it has been limited to the 4 months centered around the target date for every year of the archive, in order to cope with seasonal effects. Then, the similarity of the atmospheric circulation of the target date with every day of the preselection is assessed by processing the \citet{Teweles1954} score ($S_{\text{TW}}$), which is a comparison of gradients, over a certain spatial window and at certain hours. The smaller the $S_{\text{TW}}$ values, the more similar the pressure fields.
+The first method is based on the analogy of the atmospheric circulation only \citep[Table \ref{table:method_2Z},][]{Obled2002, Bontron2005, Marty2012}. Searching analog situations for a target day starts by a preselection step of the potential candidate for analogy. Here, it has been limited to the 4 months centered around the target date for every year of the archive, in order to cope with seasonal effects. Then, the similarity of the atmospheric circulation of the target date with every day of the preselection is assessed by processing the \citet{Teweles1954} score (S1), which is a comparison of gradients, over a certain spatial window and at certain hours. The smaller the S1 values, the more similar the pressure fields.
 
 The predictand, here a 24~h precipitation total, results from meteorological situations that are continuous transitions between changing circulation patterns. Thus, the observed predictors fields, extracted from reanalysis datasets, are considered at different time of the day and at different heights. In our case, the geopotential height is considered at 1000~hPa (Z1000) at 12~h~UTC and 500~hPa (Z500) at 24~h~UTC. The selection of the observation time of the predictor was found by \citet{Bontron2004} to have a significant influence.
 
-Then, $N_{1}$ dates with the lowest values of $S_{\text{TW}}$ are considered as analogs to the target day, $N_{1}$ being a parameter to calibrate. Then, the daily observed precipitation amount of the corresponding dates provide the empirical conditional distribution considered as the probabilistic prediction for the target day. This method will be named 2Z further on.
+Then, $N_{1}$ dates with the lowest values of S1 are considered as analogs to the target day, $N_{1}$ being a parameter to calibrate. Then, the daily observed precipitation amount of the corresponding dates provide the empirical conditional distribution considered as the probabilistic prediction for the target day. This method will be named 2Z further on.
 
-The second reference method adds a subsequent level of analogy on moisture variables, compared by means of the root-mean-square error ($E_{\text{RMS}}$) (method 2Z-2MI, Table \ref{table:method_2Z-2MI}). This second predictor is a moisture index made of the product of the total precipitable water (TPW) with the relative humidity at 850~hPa (RH850) \citep{Bontron2004}. When adding a second level of analogy, $N_{2}$ dates are subsampled in the $N_{1}$ analogs on the atmospheric circulation, to end up with a smaller number of analog situations. When a second level of analogy is added, a higher number of $N_{1}$ analogs is kept on the first level.
+The second reference method adds a subsequent level of analogy on moisture variables, compared by means of the root-mean-square error (RMSE) (method 2Z-2MI, Table \ref{table:method_2Z-2MI}). This second predictor is a moisture index made of the product of the total precipitable water (TPW) with the relative humidity at 850~hPa (RH850) \citep{Bontron2004}. When adding a second level of analogy, $N_{2}$ dates are subsampled in the $N_{1}$ analogs on the atmospheric circulation, to end up with a smaller number of analog situations. When a second level of analogy is added, a higher number of $N_{1}$ analogs is kept on the first level.
 
 
 \subsection{Calibration of the analog method}
@@ -138,7 +138,7 @@ In order to assess this potential improvement of the prediction, precipitation d
 \subsection{Performance score}
 \label{sec:performance}
 
-The score that is most often considered to assess an AM performance is the Continuous Ranked Probability Score \citep[$S_{\text{CRP}}$,][]{Brown1974, Matheson1976, Hersbach2000}. It allows evaluating the predicted cumulative distribution functions $F(y)$, for example of the precipitation values $y$ from analog situations, compared to the observed value $y^{0}$. The better the prediction, the smaller the score. It is defined as follows:
+The score that is most often considered to assess an AM performance is the Continuous Ranked Probability Score \citep[CRPS,][]{Brown1974, Matheson1976, Hersbach2000}. It allows evaluating the predicted cumulative distribution functions $F(y)$, for example of the precipitation values $y$ from analog situations, compared to the observed value $y^{0}$. The better the prediction, the smaller the score. It is defined as follows:
 
 \begin{equation}
 \label{eq:CRPS}
@@ -146,13 +146,13 @@ S_{\text{CRP}} = \int_{-\infty}^{+\infty} \left[ F(y)-\text{H}(y-y^{0})\right]^{
 \end{equation}
 where $\text{H}(y-y^{0})$ is the Heaviside function that is null when $y-y^{0}<0$, and has the value 1 otherwise.
 
-In order to compare the value of the score in regard to a reference, one often considers its skill score expression, and use the climatological distribution as the reference. The Continuous Ranked Probability Skill Score ($S_{\text{SCRP}}$) is thus defined as following:
+In order to compare the value of the score in regard to a reference, one often considers its skill score expression, and use the climatological distribution as the reference. The Continuous Ranked Probability Skill Score (CRPSS) is thus defined as following:
 
 \begin{equation}
 \label{eq:CRPSS}
 S_{\text{SCRP}} = \frac{S_{\text{CRP}}-S_{\text{CRP}}^{r}}{S_{\text{CRP}}^{p}-S_{\text{CRP}}^{r}} = 1-\frac{S_{\text{CRP}}}{S_{\text{CRP}}^{r}}
 \end{equation}
-where $S_{\text{CRP}}^{r}$ is the $S_{\text{CRP}}$ value for the reference (climatological distribution) and $S_{\text{CRP}}^{p}$ would be the one for a perfect prediction (which implies $S_{\text{CRP}}^{p}~=~0$). A better prediction is characterized by an increase in $S_{\text{SCRP}}$. 
+where $S_{\text{CRP}}^{r}$ is the $S_{\text{CRP}}$ value for the reference (climatological distribution) and $S_{\text{CRP}}^{p}$ would be the one for a perfect prediction (which implies $S_{\text{CRP}}^{p}~=~0$). A better prediction is characterized by an increase in CRPSS. 
 
 
 
@@ -180,15 +180,15 @@ The impact of the change in the archive length is summarized in Table \ref{table
 
 When searching for analogs on the geopotential heights, as in the 2Z method, there are now 4 times more candidates than before, which obviously allows to find better matches.
 
-Figure \ref{fig:changes_S1_analogs} presents the changes in the distributions of the $S_{\text{TW}}$ criterion for the $1^{st}$, $5^{th}$, $20^{th}$ and $40^{th}$ analogs for the Ulrichen station on the whole calibration period, due to introduction of the MTW. The precipitation target remains as before, that is centered on 18~h~UTC (6~h~UTC to 6~h~UTC the next day). The shapes of the distributions of the conventional approach and the MTW are similar, but the values of the analogy criteria are now reduced (shifted to the left), and therefore better. An increase in the difference between a fixed window and a moving window is identifiable, which means that the last analogs are further improved. The latter effect is due to the accumulation of improvements brought by the new analog situations in the selection.
+Figure \ref{fig:changes_S1_analogs} presents the changes in the distributions of the S1 criterion for the $1^{st}$, $5^{th}$, $20^{th}$ and $40^{th}$ analogs for the Ulrichen station on the whole calibration period, due to introduction of the MTW. The precipitation target remains as before, that is centered on 18~h~UTC (6~h~UTC to 6~h~UTC the next day). The shapes of the distributions of the conventional approach and the MTW are similar, but the values of the analogy criteria are now reduced (shifted to the left), and therefore better. An increase in the difference between a fixed window and a moving window is identifiable, which means that the last analogs are further improved. The latter effect is due to the accumulation of improvements brought by the new analog situations in the selection.
 
-The improvements of the $S_{\text{TW}}$ criteria are summarized in Fig. \ref{fig:changes_S1}, which shows (top) quantiles of the $S_{\text{TW}}$ criteria according to the analog rank for the conventional method and the MTW, and (bottom) quantiles of the relative reduction. This confirms that all quantile seem similarly reduced ($S_{\text{TW}}$ distributions keep their shape), and that this improvement is constantly increasing from the first to the last analog (Fig. \ref{fig:changes_S1} bottom).
+The improvements of the S1 criteria are summarized in Fig. \ref{fig:changes_S1}, which shows (top) quantiles of the S1 criteria according to the analog rank for the conventional method and the MTW, and (bottom) quantiles of the relative reduction. This confirms that all quantile seem similarly reduced (S1 distributions keep their shape), and that this improvement is constantly increasing from the first to the last analog (Fig. \ref{fig:changes_S1} bottom).
 
 
 \subsubsection{Changes per precipitation classes}
 \label{sec:influence_precip}
 
-The impact of the MTW on the analogy criteria has been decomposed per precipitation classes. The results of this analysis are summarized in Fig. \ref{fig:changes_S1_precip_threshold} by the median reduction of $S_{\text{TW}}$ for days with precipitation (organized into classes) between two thresholds. The number of cases per class being reduced, the curves are not as smooth as in previous analyzes. It is nevertheless clear that the improvement tends to increase on days with higher precipitation. This is true for all our stations.
+The impact of the MTW on the analogy criteria has been decomposed per precipitation classes. The results of this analysis are summarized in Fig. \ref{fig:changes_S1_precip_threshold} by the median reduction of S1 for days with precipitation (organized into classes) between two thresholds. The number of cases per class being reduced, the curves are not as smooth as in previous analyzes. It is nevertheless clear that the improvement tends to increase on days with higher precipitation. This is true for all our stations.
 
 
 \subsubsection{Changes per season}
@@ -196,26 +196,26 @@ The impact of the MTW on the analogy criteria has been decomposed per precipitat
 
 Atmospheric dynamics varies greatly from one season to another, which reflects on the performance of the AM that is generally lower between June and August \citep{Bliefernicht2010}. It therefore makes sense to verify the effect of the MTW separately per season.
 
-A seasonal effect can be observed on the reduction of the $S_{\text{TW}}$ criteria due to the MTW (Fig. \ref{fig:changes_S1_seasons}). The improvements are greater for winter than summer. 
+A seasonal effect can be observed on the reduction of the S1 criteria due to the MTW (Fig. \ref{fig:changes_S1_seasons}). The improvements are greater for winter than summer. 
 
 
 \subsubsection{Changes in the moisture analogy}
 
-When considering the second level of analogy of the 2Z-2MI method (Table \ref{table:method_2Z-2MI}), the number of candidates situations did not increase, as they are subsampled in the previously $N_{1}$ selected analogs, but their dates have changed. In contrast to earlier, both a reduction or an increase of the $E_{\text{RMS}}$ analogy criterion values are possible. Indeed, Fig. \ref{fig:changes_RMSE} shows an almost insignificant improvement of the $E_{\text{RMS}}$ values. Unlike for the first level of analogy, the relative improvement of the $E_{\text{RMS}}$ values are distributed relatively symmetrically around zero, with improvements and losses of the same amplitude. Once again, the results for the other stations are similar.
+When considering the second level of analogy of the 2Z-2MI method (Table \ref{table:method_2Z-2MI}), the number of candidates situations did not increase, as they are subsampled in the previously $N_{1}$ selected analogs, but their dates have changed. In contrast to earlier, both a reduction or an increase of the RMSE analogy criterion values are possible. Indeed, Fig. \ref{fig:changes_RMSE} shows an almost insignificant improvement of the RMSE values. Unlike for the first level of analogy, the relative improvement of the RMSE values are distributed relatively symmetrically around zero, with improvements and losses of the same amplitude. Once again, the results for the other stations are similar.
 
 
 \subsection{Impact on performance scores}
 \label{sec:influence_scores}
 
-A systematic improvement of the $S_{\text{TW}}$ values was previously observed. 
+A systematic improvement of the S1 values was previously observed. 
 
-The new performance scores are provided in Table \ref{table:CRPSS_MTW}, along with the differences regarding the conventional method with the same archive length. The differences ranges from 0.57 to 2.14 points for the 2Z method and from 1.53 to 2.20 points for the 2Z-2MI method. The introduction of the MTW brings an improvement of the performance that is not very large, but that is nevertheless significant. Moreover, it requires no additional predictor. No relationship was found between the improvement of the score and the reduction of the $S_{\text{TW}}$ criteria, neither with the season.
+The new performance scores are provided in Table \ref{table:CRPSS_MTW}, along with the differences regarding the conventional method with the same archive length. The differences ranges from 0.57 to 2.14 points for the 2Z method and from 1.53 to 2.20 points for the 2Z-2MI method. The introduction of the MTW brings an improvement of the performance that is not very large, but that is nevertheless significant. Moreover, it requires no additional predictor. No relationship was found between the improvement of the score and the reduction of the S1 criteria, neither with the season.
 
 
 \subsubsection{Improvement per precipitation classes}
 \label{sec:improvement_CRPSS_precip_threshold}
 
-The $S_{\text{TW}}$ criteria was previously found to be improved to a greater extent for the most dynamic situations related with higher precipitation values (Sect. \ref{sec:influence_precip}). The changes in terms of performance scores will now be assessed regarding precipitation thresholds. Fig. \ref{fig:changes_CRPS_precip_threshold} synthesizes these differences for the Ulrichen station, other stations having the same behavior.
+The S1 criteria was previously found to be improved to a greater extent for the most dynamic situations related with higher precipitation values (Sect. \ref{sec:influence_precip}). The changes in terms of performance scores will now be assessed regarding precipitation thresholds. Fig. \ref{fig:changes_CRPS_precip_threshold} synthesizes these differences for the Ulrichen station, other stations having the same behavior.
 
 The increasing positive trend of skill improvements regarding the precipitation threshold is significant and shows that the prediction of higher precipitation totals is further improved. Thus, both the analogy criteria and the performance scores are improved to a greater extent for heavier precipitation events. On the contrary, the non-rainy days and small accumulations are not improved.
 
@@ -229,7 +229,7 @@ After recalibrating, some changes in the optimal number of analogs can be observ
 
 This increase in number of analogs has a slight effect on the performance of the different precipitation classes. The same analysis as in Sect. \ref{sec:improvement_CRPSS_precip_threshold} has been performed again on the basis of the newly calibrated parameters. The results are generally very similar, but a slight performance increase of small precipitation values can be observed at the expense of higher amounts. The change in the analogs numbers is likely to be responsible for this difference in the performance distributions.
 
-The values of the $S_{\text{SCRP}}$ scores for both methods (Table \ref{table:CRPSS_recalibration}) have significantly increased after recalibration. 
+The values of the CRPSS scores for both methods (Table \ref{table:CRPSS_recalibration}) have significantly increased after recalibration. 
 
 
 \section{Discussion}
@@ -238,14 +238,14 @@ The values of the $S_{\text{SCRP}}$ scores for both methods (Table \ref{table:CR
 
 \subsection{Improvement of the atmospheric circulation analogy}
 
-The median of the $S_{\text{TW}}$ values reduction (Fig. \ref{fig:changes_S1} bottom) starts approximately at 5~\% for the first analog and reaches more than 10~\% for the last one. This increasing trend with the analog rank can be explained by the accumulation of better analogs in the distribution. The minimum improvement starts from 0 and reaches 2--3\%, meaning that the criteria have been improved on most analogs for every day of the calibration period. All other stations have a similar improvement of the $S_{\text{TW}}$ criteria, both in terms of distribution shape and amplitude.
+The median of the S1 values reduction (Fig. \ref{fig:changes_S1} bottom) starts approximately at 5~\% for the first analog and reaches more than 10~\% for the last one. This increasing trend with the analog rank can be explained by the accumulation of better analogs in the distribution. The minimum improvement starts from 0 and reaches 2--3\%, meaning that the criteria have been improved on most analogs for every day of the calibration period. All other stations have a similar improvement of the S1 criteria, both in terms of distribution shape and amplitude.
 
 \subsection{Improvement of the moisture analogy}
 
 
 
 
-This result of a globally null improvement of the $E_{\text{RMS}}$ values does not mean that the 2Z-2MI method cannot be improved by the MTW. It means that after the selection of the analogs situations in terms of the synoptic circulation, the new candidate dates do not allow to find better analogs in terms of moisture. However, the selected dates have changed in the first level of analogy, and thus also in the final selection, which can potentially improve the performance scores on the predictand.
+This result of a globally null improvement of the RMSE values does not mean that the 2Z-2MI method cannot be improved by the MTW. It means that after the selection of the analogs situations in terms of the synoptic circulation, the new candidate dates do not allow to find better analogs in terms of moisture. However, the selected dates have changed in the first level of analogy, and thus also in the final selection, which can potentially improve the performance scores on the predictand.
 
 
 
@@ -279,7 +279,7 @@ On the contrary, the summer months have a preference for the initial temporal wi
 
 
 
-It seems as if the method perceive the increase in the archive length and diversity by allowing to extract more analogs. As we saw in Fig. \ref{fig:changes_S1}, the improvement of the $S_{\text{TW}}$ criteria grows along with the rank of the analog, which shows an accumulation of better analog situations in the distributions. It seems thus profitable to widen the selection of analogs in order to keep also some whose rank has increased, as they appear to be also relevant to predict precipitation values. The number of good analogs is thus globally increased.
+It seems as if the method perceive the increase in the archive length and diversity by allowing to extract more analogs. As we saw in Fig. \ref{fig:changes_S1}, the improvement of the S1 criteria grows along with the rank of the analog, which shows an accumulation of better analog situations in the distributions. It seems thus profitable to widen the selection of analogs in order to keep also some whose rank has increased, as they appear to be also relevant to predict precipitation values. The number of good analogs is thus globally increased.
 
 
 
@@ -304,7 +304,7 @@ As demonstrated in the previous section, the performance improvement brought by 
 
 The best proxy variable was identified by means of a correlation analyses (on non-zero values) with the 6-hourly precipitation time series on the period 1982-2007. Precipitable water and relative humidity (at 1000~hPa, 925~hPa or 850~hPa) were assessed at the four points surrounding the catchment, and by allowing a time lapse between both series in order to take into account the significant distance separating the weather stations and the reanalysis grid point (details not shown). The best proxy for the Zermatt station is the precipitable water at 45° N and 7.5° E, with a time offset of -6~h.
 
-Table \ref{table:proxy_CRPSS} presents the $S_{\text{SCRP}}$ scores obtained by the reconstituted series using the proxy of precipitable water. A slight improvement can be obtained compared to the proportional distribution method, but it is still relatively small, and most of the benefit of the MTW is again lost. A more recent reanalysis archive with more accurate moisture variables might produce better proxies.
+Table \ref{table:proxy_CRPSS} presents the CRPSS scores obtained by the reconstituted series using the proxy of precipitable water. A slight improvement can be obtained compared to the proportional distribution method, but it is still relatively small, and most of the benefit of the MTW is again lost. A more recent reanalysis archive with more accurate moisture variables might produce better proxies.
 
 These attempts to transpose the MTW on the total archive highlight the importance of the actual rainfall chronology. The MTW is profitable, provided that the precipitation series are close to the observed one. Without precipitation series with an accurate sub-daily chronology, the introduction of a MTW remains fruitless.
 
@@ -314,7 +314,7 @@ These attempts to transpose the MTW on the total archive highlight the importanc
 
 The AM is most often based on a daily time step, due to the availability of long precipitation archives. However, it is unlikely that two analog synoptic situations, that evolve relatively quickly, would correspond optimally at the same hour of the day. It is thus more likely that a better match can be found at another time, which can change the selection of the analogs dates.
 
-As \citet{Finet2008} had previously shown, the introduction of a MTW allows finding better analog situations in terms of the atmospheric circulation. It has been here demonstrated that the improvement of the $S_{\text{TW}}$ criteria values is growing with the rank of the analog. This is due to the accumulation of better analogs within the predicted distributions.
+As \citet{Finet2008} had previously shown, the introduction of a MTW allows finding better analog situations in terms of the atmospheric circulation. It has been here demonstrated that the improvement of the S1 criteria values is growing with the rank of the analog. This is due to the accumulation of better analogs within the predicted distributions.
 
 The improvement of the circulation analogy was found to be more important for heavy precipitation events, which are generally related to more dynamic atmospheric situations. This dynamism implies more specific circulation patterns that are evolving more rapidly. Thus, a MTW is found to be of particular interest in this kind of situation, and benefits the prediction of extreme precipitation events.
 
@@ -371,7 +371,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 	\begin{center}
 		\includegraphics[width=15cm]{figures/changes_S1_analogues.pdf}
 	\end{center}
-	\caption{Changes in the $S_{\text{TW}}$ criteria distributions of (a) the $1^{st}$, (b) $5^{th}$, (c) $20^{th}$ and (d) $40^{th}$ analog ranks for the Ulrichen station, due to the MTW.}
+	\caption{Changes in the S1 criteria distributions of (a) the $1^{st}$, (b) $5^{th}$, (c) $20^{th}$ and (d) $40^{th}$ analog ranks for the Ulrichen station, due to the MTW.}
 	\label{fig:changes_S1_analogs}
 \end{figure*}
 
@@ -379,7 +379,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 	\begin{center}
 		\includegraphics[width=8.2cm]{figures/changes_S1_value_and_gain.pdf}
 	\end{center}
-	\caption{Synthesis of the changes in the $S_{\text{TW}}$ criteria, due to the MTW, for the Ulrichen station, depending on the ranks of the analog. (a) Quantiles of the $S_{\text{TW}}$ distributions with and without the MTW. (b) Quantiles of the relative improvements of the S1 criteria when using the MTW.}
+	\caption{Synthesis of the changes in the S1 criteria, due to the MTW, for the Ulrichen station, depending on the ranks of the analog. (a) Quantiles of the S1 distributions with and without the MTW. (b) Quantiles of the relative improvements of the S1 criteria when using the MTW.}
 	\label{fig:changes_S1}
 \end{figure}
 
@@ -387,7 +387,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 	\begin{center}
 		\includegraphics[width=8.3cm]{figures/changes_S1_precip_threshold.pdf}
 	\end{center}
-	\caption{Distribution of the median improvements of the $S_{\text{TW}}$ criteria, due to the MTW, depending on precipitation thresholds at the Ulrichen station.}
+	\caption{Distribution of the median improvements of the S1 criteria, due to the MTW, depending on precipitation thresholds at the Ulrichen station.}
 	\label{fig:changes_S1_precip_threshold}
 \end{figure}
 
@@ -395,7 +395,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 	\begin{center}
 		\includegraphics[width=7cm]{figures/changes_S1_seasons.pdf}
 	\end{center}
-	\caption{Seasonal effect on the median reduction of the $S_{\text{TW}}$ criteria for the Ulrichen station due to the MTW. DJF: winter, MAM: spring, JJA: summer SON: fall.}
+	\caption{Seasonal effect on the median reduction of the S1 criteria for the Ulrichen station due to the MTW. DJF: winter, MAM: spring, JJA: summer SON: fall.}
 	\label{fig:changes_S1_seasons}
 \end{figure}
 
@@ -415,13 +415,13 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 	\begin{center}
 		\includegraphics[width=8.1cm]{figures/changes_RMSE_value_and_gain.pdf}
 	\end{center}
-	\caption{Synthesis of the changes in the $E_{\text{RMS}}$ criteria, due to the MTW, for the Ulrichen station, depending on the ranks of the analog. (a) Quantiles of the $E_{\text{RMS}}$ distributions with and without the MTW. (b) Quantiles of the relative improvements of the $E_{\text{RMS}}$ criteria when using the MTW.}
+	\caption{Synthesis of the changes in the RMSE criteria, due to the MTW, for the Ulrichen station, depending on the ranks of the analog. (a) Quantiles of the RMSE distributions with and without the MTW. (b) Quantiles of the relative improvements of the RMSE criteria when using the MTW.}
 	\label{fig:changes_RMSE}
 \end{figure}
 
 \begin{figure}[htb]
 	\includegraphics[width=5cm]{figures/changes_CRPS_precip_threshold.pdf}
-	\caption{Differences of the $S_{\text{SCRP}}$ performance score, due to the introduction of the MTW, as a function of precipitation thresholds at the Ulrichen station. The stars represent averages.}
+	\caption{Differences of the CRPSS performance score, due to the introduction of the MTW, as a function of precipitation thresholds at the Ulrichen station. The stars represent averages.}
 	\label{fig:changes_CRPS_precip_threshold}
 \end{figure}
 
@@ -447,7 +447,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 			\hline 
 			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
 			\hline 
-			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{$S_{\text{TW}}$} & \multirow{2}{*}{$N_{1}$} \\
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{$N_{1}$} \\
 			& Z500 & 24~h & & \\ 
 			\hline 
 		\end{tabular} 
@@ -465,10 +465,10 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 			\hline 
 			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
 			\hline 
-			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{$S_{\text{TW}}$} & \multirow{2}{*}{$N_{1}$} \\
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{$N_{1}$} \\
 			& Z500 & 24~h & & \\ 
 			\hline
-			\multirow{2}{*}{2} & TPW * RH850 & 12~h & \multirow{2}{*}{$E_{\text{RMS}}$} & \multirow{2}{*}{$N_{2}$} \\
+			\multirow{2}{*}{2} & TPW * RH850 & 12~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{$N_{2}$} \\
 			& TPW * RH850 & 24~h & & \\ 
 			\hline 
 		\end{tabular} 
@@ -482,7 +482,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 		\begin{tabular}{l c c c c c }
 			\hline
 			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{3}{c}{2Z-2MI} \\
-			& $N_{1}$ & $S_{\text{SCRP}}$ & $N_{1}$ & $N_{2}$ & $S_{\text{SCRP}}$ \\ 
+			& $N_{1}$ & CRPSS & $N_{1}$ & $N_{2}$ & CRPSS \\ 
 			\hline
 			Ulrichen & 40 & 30.73 & 60 & 25 & 34.31 \\
 			Zermatt & 35 & 23.87 & 55 & 25 & 28.28 \\
@@ -497,7 +497,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 \end{table}
 
 \begin{table}[htb]
-	\caption{Influence of the archive reduction on the $S_{\text{SCRP}}$. $S_{\text{SCRP}}$ values are provided for both considered methods and the differences are expressed in absolute value.}
+	\caption{Influence of the archive reduction on the CRPSS. CRPSS values are provided for both considered methods and the differences are expressed in absolute value.}
 	\begin{center}
 		\begin{tabular}{l c c c c }
 			\hline
@@ -517,7 +517,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 \end{table}
 
 \begin{table}[htb]
-	\caption{New $S_{\text{SCRP}}$ performance scores for both 2Z and 2Z-2MI methods obtained by the MTW approach. The differences are expressed regarding the conventional method with the same archive length.}
+	\caption{New CRPSS performance scores for both 2Z and 2Z-2MI methods obtained by the MTW approach. The differences are expressed regarding the conventional method with the same archive length.}
 	\begin{center}
 		\begin{tabular}{l c c c c}
 			\hline
@@ -557,7 +557,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 \end{table}
 
 \begin{table}[htb]
-	\caption{Values of the $S_{\text{SCRP}}$ (\%) skill score for the newly calibrated parameters using the MTW approach. The differences are expressed regarding the conventional method with the same archive length.}
+	\caption{Values of the CRPSS (\%) skill score for the newly calibrated parameters using the MTW approach. The differences are expressed regarding the conventional method with the same archive length.}
 	\begin{center}
 		\begin{tabular}{l c c c c}
 			\hline
@@ -578,7 +578,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 
 
 \begin{table}[htb]
-	\caption{Values of the $S_{\text{SCRP}}$ (\%) skill score for the original and the recalibrated parameters (with the sequential method, as described in Sect. \ref{sec:introduction}) using the MTW approach on the disaggregated precipitation time series (short period) by means of the proportional distribution.}
+	\caption{Values of the CRPSS (\%) skill score for the original and the recalibrated parameters (with the sequential method, as described in Sect. \ref{sec:introduction}) using the MTW approach on the disaggregated precipitation time series (short period) by means of the proportional distribution.}
 	\begin{center}
 		\begin{tabular}{l c c c c}
 			\hline
@@ -598,7 +598,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 \end{table}
 
 \begin{table}[htb]
-	\caption{Values of the $S_{\text{SCRP}}$ (\%) skill score for Zermatt, for the original and the recalibrated parameters (with the sequential method, as described in Sect. \ref{sec:introduction}) using the MTW approach on the disaggregated precipitation time series (short and long periods) by means of variables from the reanalysis.}
+	\caption{Values of the CRPSS (\%) skill score for Zermatt, for the original and the recalibrated parameters (with the sequential method, as described in Sect. \ref{sec:introduction}) using the MTW approach on the disaggregated precipitation time series (short and long periods) by means of variables from the reanalysis.}
 	\begin{center}
 		\begin{tabular}{l c c c c}
 			\hline

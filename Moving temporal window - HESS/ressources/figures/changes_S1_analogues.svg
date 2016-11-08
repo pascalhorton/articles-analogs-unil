@@ -22,7 +22,7 @@
    inkscape:export-ydpi="299.992"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath20"><path
@@ -1180,9 +1180,9 @@
      inkscape:window-height="1020"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="0.96224359"
-     inkscape:cx="329.77619"
-     inkscape:cy="383.7709"
+     inkscape:zoom="1.3608179"
+     inkscape:cx="336.67935"
+     inkscape:cy="485.03964"
      inkscape:window-x="79"
      inkscape:window-y="57"
      inkscape:window-maximized="0"
@@ -1258,6 +1258,7 @@
 
 
 
+
 <g
    transform="translate(0,554.96033)"
    id="g150"><path
@@ -1280,6 +1281,7 @@
      sodipodi:role="line"
      y="-296.53391"
      x="62.202702 67.971191">20</tspan></text>
+
 
 
 
@@ -1310,6 +1312,7 @@
 
 
 
+
 <g
    transform="translate(0,554.96033)"
    id="g174"><path
@@ -1332,6 +1335,7 @@
      sodipodi:role="line"
      y="-296.53391"
      x="121.47911 127.2476">40</tspan></text>
+
 
 
 
@@ -1362,6 +1366,7 @@
 
 
 
+
 <g
    transform="translate(0,554.96033)"
    id="g198"><path
@@ -1384,6 +1389,7 @@
      sodipodi:role="line"
      y="-296.53391"
      x="180.75551 186.524">60</tspan></text>
+
 
 
 
@@ -1414,6 +1420,7 @@
 
 
 
+
 <g
    transform="translate(0,554.96033)"
    id="g222"><path
@@ -1440,6 +1447,7 @@
 
 
 
+
 <g
    transform="translate(0,554.96033)"
    id="g234"><path
@@ -1456,6 +1464,7 @@
      sodipodi:role="line"
      y="-296.53391"
      x="269.6701">90</tspan></text>
+
 
 
 
@@ -1493,6 +1502,7 @@
 
 
 
+
 </g><g
    id="g292"><g
      id="g294"
@@ -1522,6 +1532,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan334">0.01</tspan></text>
+
 
 
 
@@ -1559,6 +1570,7 @@
 
 
 
+
 </g><g
    id="g380"><g
      id="g382"
@@ -1588,6 +1600,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan422">0.03</tspan></text>
+
 
 
 
@@ -1625,6 +1638,7 @@
 
 
 
+
 </g><g
    id="g468"><g
      id="g470"
@@ -1654,6 +1668,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan510">0.05</tspan></text>
+
 
 
 
@@ -1691,6 +1706,7 @@
 
 
 
+
 <text
    transform="matrix(0,1,1,0,8.376004,372.83021)"
    style="font-variant:normal;font-weight:normal;font-size:11.53698635px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioLRoman;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -1699,6 +1715,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan558" /></text>
+
 
 
 
@@ -1790,6 +1807,7 @@
 
 
 
+
 <g
    id="g720"
    transform="translate(0,554.96033)"><path
@@ -1810,6 +1828,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan730">20</tspan></text>
+
 
 
 
@@ -1838,6 +1857,7 @@
 
 
 
+
 <g
    id="g744"
    transform="translate(0,554.96033)"><path
@@ -1858,6 +1878,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan754">40</tspan></text>
+
 
 
 
@@ -1886,6 +1907,7 @@
 
 
 
+
 <g
    id="g768"
    transform="translate(0,554.96033)"><path
@@ -1906,6 +1928,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan778">60</tspan></text>
+
 
 
 
@@ -1934,6 +1957,7 @@
 
 
 
+
 <g
    id="g792"
    transform="translate(0,554.96033)"><path
@@ -1958,6 +1982,7 @@
 
 
 
+
 <g
    id="g804"
    transform="translate(0,554.96033)"><path
@@ -1978,6 +2003,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan820">90</tspan></text>
+
 
 
 
@@ -2015,6 +2041,7 @@
 
 
 
+
 </g><g
    id="g866"><g
      id="g868"
@@ -2044,6 +2071,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan908">0.01</tspan></text>
+
 
 
 
@@ -2081,6 +2109,7 @@
 
 
 
+
 </g><g
    id="g954"><g
      id="g956"
@@ -2110,6 +2139,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan996">0.03</tspan></text>
+
 
 
 
@@ -2147,6 +2177,7 @@
 
 
 
+
 </g><g
    id="g1042"><g
      id="g1044"
@@ -2176,6 +2207,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1084">0.05</tspan></text>
+
 
 
 
@@ -2210,6 +2242,7 @@
      sodipodi:role="line"
      y="-262.65659"
      x="15.248203 21.016697 23.900942 29.669436">0.06</tspan></text>
+
 
 
 
@@ -2301,6 +2334,7 @@
 
 
 
+
 <g
    id="g1294"
    transform="translate(0,554.96033)"><path
@@ -2321,6 +2355,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1304">20</tspan></text>
+
 
 
 
@@ -2349,6 +2384,7 @@
 
 
 
+
 <g
    id="g1318"
    transform="translate(0,554.96033)"><path
@@ -2369,6 +2405,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1328">40</tspan></text>
+
 
 
 
@@ -2397,6 +2434,7 @@
 
 
 
+
 <g
    id="g1342"
    transform="translate(0,554.96033)"><path
@@ -2417,6 +2455,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1352">60</tspan></text>
+
 
 
 
@@ -2445,6 +2484,7 @@
 
 
 
+
 <g
    id="g1366"
    transform="translate(0,554.96033)"><path
@@ -2469,6 +2509,7 @@
 
 
 
+
 <g
    id="g1378"
    transform="translate(0,554.96033)"><path
@@ -2489,6 +2530,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1394">90</tspan></text>
+
 
 
 
@@ -2526,6 +2568,7 @@
 
 
 
+
 </g><g
    id="g1440"><g
      id="g1442"
@@ -2555,6 +2598,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1482">0.01</tspan></text>
+
 
 
 
@@ -2592,6 +2636,7 @@
 
 
 
+
 </g><g
    id="g1528"><g
      id="g1530"
@@ -2621,6 +2666,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1570">0.03</tspan></text>
+
 
 
 
@@ -2658,6 +2704,7 @@
 
 
 
+
 </g><g
    id="g1616"><g
      id="g1618"
@@ -2691,6 +2738,7 @@
 
 
 
+
 </g><g
    id="g1660"><g
      id="g1662"
@@ -2720,6 +2768,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1702">0.06</tspan></text>
+
 
 
 
@@ -2811,6 +2860,7 @@
 
 
 
+
 <g
    id="g1868"
    transform="translate(0,554.96033)"><path
@@ -2831,6 +2881,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1878">20</tspan></text>
+
 
 
 
@@ -2859,6 +2910,7 @@
 
 
 
+
 <g
    id="g1892"
    transform="translate(0,554.96033)"><path
@@ -2879,6 +2931,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1902">40</tspan></text>
+
 
 
 
@@ -2907,6 +2960,7 @@
 
 
 
+
 <g
    id="g1916"
    transform="translate(0,554.96033)"><path
@@ -2927,6 +2981,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1926">60</tspan></text>
+
 
 
 
@@ -2955,6 +3010,7 @@
 
 
 
+
 <g
    id="g1940"
    transform="translate(0,554.96033)"><path
@@ -2979,6 +3035,7 @@
 
 
 
+
 <g
    id="g1952"
    transform="translate(0,554.96033)"><path
@@ -2999,6 +3056,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan1968">90</tspan></text>
+
 
 
 
@@ -3036,6 +3094,7 @@
 
 
 
+
 </g><g
    id="g2014"><g
      id="g2016"
@@ -3065,6 +3124,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan2056">0.01</tspan></text>
+
 
 
 
@@ -3102,6 +3162,7 @@
 
 
 
+
 </g><g
    id="g2102"><g
      id="g2104"
@@ -3131,6 +3192,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan2144">0.03</tspan></text>
+
 
 
 
@@ -3168,6 +3230,7 @@
 
 
 
+
 </g><g
    id="g2190"><g
      id="g2192"
@@ -3197,6 +3260,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan2232">0.05</tspan></text>
+
 
 
 
@@ -3231,6 +3295,7 @@
      sodipodi:role="line"
      y="-547.01141"
      x="305.10751 310.87601 313.76025 319.52875">0.06</tspan></text>
+
 
 
 
@@ -3300,11 +3365,9 @@
      sodipodi:role="line"
      id="tspan6559"
      x="130.34612"
-     y="-284.82867"><tspan
-   style="font-style:italic"
-   id="tspan5279">S</tspan><tspan
-   style="font-size:52%;baseline-shift:sub;font-style:normal"
-   id="tspan5277">TW</tspan> criteria</tspan></text>
+     y="-284.82867"
+     style="font-weight:normal;font-style:normal">S1 criteria</tspan></text>
+
 
 
 
@@ -3320,11 +3383,9 @@
      sodipodi:role="line"
      id="tspan6559-9"
      x="418.34613"
-     y="-284.82867"><tspan
-   style="font-style:italic"
-   id="tspan5285">S</tspan><tspan
-   style="font-size:52%;baseline-shift:sub;font-style:normal"
-   id="tspan5283">TW</tspan> criteria</tspan></text>
+     y="-284.82867"
+     style="font-style:normal">S1 criteria</tspan></text>
+
 
 
 
@@ -3340,11 +3401,9 @@
      sodipodi:role="line"
      id="tspan6559-4"
      x="130.34612"
-     y="-0.028665543"><tspan
-   style="font-style:italic"
-   id="tspan5291">S</tspan><tspan
-   style="font-size:52%;baseline-shift:sub;font-style:normal"
-   id="tspan5289">TW</tspan> criteria</tspan></text>
+     y="-0.028665543"
+     style="font-style:normal">S1 criteria</tspan></text>
+
 
 
 
@@ -3360,11 +3419,9 @@
      sodipodi:role="line"
      id="tspan6559-9-7"
      x="418.34613"
-     y="-0.028665543"><tspan
-   style="font-style:italic"
-   id="tspan5297">S</tspan><tspan
-   style="font-size:52%;baseline-shift:sub;font-style:normal"
-   id="tspan5295">TW</tspan> criteria</tspan></text>
+     y="-0.028665543"
+     style="font-style:normal">S1 criteria</tspan></text>
+
 
 
 
@@ -3387,6 +3444,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -3401,6 +3459,7 @@
      id="tspan7339-5"
      x="78.236092"
      y="8.847352">Frequency of occurrence</tspan></text>
+
 
 
 
@@ -3423,6 +3482,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -3437,6 +3497,7 @@
      id="tspan7339-5-6"
      x="78.236099"
      y="298.44736">Frequency of occurrence</tspan></text>
+
 
 
 
@@ -3463,6 +3524,7 @@
 
 
 
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -3481,6 +3543,7 @@
      y="38.259132"
      style="font-size:10px"
      id="tspan7425-0">Distribution of the MTW technique</tspan></text>
+
 
 
 
@@ -3990,6 +4053,7 @@
      x="46.378777"
      y="-535.0401"
      style="font-size:12px">(a)</tspan></text>
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -4004,6 +4068,7 @@
      y="-528.22284">1<tspan
    style="font-size:52%;baseline-shift:super"
    id="tspan5713">st</tspan> analogue</tspan></text>
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -4018,6 +4083,7 @@
      y="-528.22284">5<tspan
    style="font-size:52%;baseline-shift:super"
    id="tspan5715">th</tspan> analogue</tspan></text>
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -4031,6 +4097,7 @@
      x="334.37878"
      y="-535.0401"
      style="font-size:12px">(b)</tspan></text>
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -4044,6 +4111,7 @@
      x="46.378777"
      y="-250.24011"
      style="font-size:12px">(c)</tspan></text>
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -4057,6 +4125,7 @@
      x="334.37878"
      y="-250.24011"
      style="font-size:12px">(d)</tspan></text>
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -4071,6 +4140,7 @@
      y="-243.42285">20<tspan
    style="font-size:51.99999809%;baseline-shift:super"
    id="tspan5717">th</tspan> analogue</tspan></text>
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -4085,4 +4155,5 @@
      y="-243.42285">40<tspan
    style="font-size:52%;baseline-shift:super"
    id="tspan5719">th</tspan> analogue</tspan></text>
+
 </g></svg>
