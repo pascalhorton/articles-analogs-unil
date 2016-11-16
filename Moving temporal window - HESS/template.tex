@@ -96,26 +96,27 @@ The MTW is explained in Sect. \ref{sec:mtw}. As this method requires sub-daily t
 \subsection{Study area and data}
 \label{sec:data}
 
-The study area is the upper Rh\^{o}ne catchment in Switzerland \cite[see also][]{Horton2012a}. Due to the low density of weather stations with high temporal resolution and long archives, no spatially aggregated rainfall was processed. The time series (on the period 1982--2007) come from 6 automatic weather stations, namely Ulrichen, Zermatt, Visp, Montana, Sion and Aigle (Fig. \ref{fig:map}), which are subject to various meteorological influences \citep{Horton2012}. The results will thereafter be presented arbitrarily for the Ulrichen station, but they are equivalent for all stations.
+The study area is the upper Rh\^{o}ne catchment in Switzerland. Precipitation time series (at an hourly time step, on the period 1982--2007) come from 6 automatic weather stations, namely Ulrichen, Zermatt, Visp, Montana, Sion and Aigle (Fig. \ref{fig:map}), which are subject to various meteorological influences \citep{Horton2012}. Due to the low density of weather stations with high temporal resolution and long archives, no spatially aggregated rainfall was processed. The results will thereafter be presented arbitrarily for the Ulrichen station, but are equivalent for all stations.
 
-Predictors are extracted from the NCEP/NCAR reanalysis I \citep{Kalnay1996} dataset with a 6-hourly temporal resolution, 17 pressure levels, and a spatial resolution of 2.5\degree. This dataset is now relatively old, but still often used (see discussion).
+Synoptic-scale variables, used as predictors, are extracted from the NCEP/NCAR reanalysis I \citep{Kalnay1996} dataset with a 6-hourly temporal resolution, 17 pressure levels, and a spatial resolution of 2.5\degree. This dataset is now relatively old, but still often used (see discussion in Sect. \ref{sec:old_reanalysis}).
+
 
 \subsection{The considered analog method}
 \label{sec:analog_method}
 
-The first method is based on the analogy of the atmospheric circulation only \citep[Table \ref{table:method_2Z},][]{Obled2002, Bontron2005, Marty2012}. Searching analog situations for a target day starts by a preselection step of the potential candidate for analogy. Here, it has been limited to the 4 months centered around the target date for every year of the archive, in order to cope with seasonal effects (seasonal stratification). Then, the similarity of the atmospheric circulation of the target date with every day of the preselection is assessed by processing the \citet{Teweles1954} score (S1), which is a comparison of gradients, over a certain spatial window and at certain hours. The smaller the S1 values, the more similar the pressure fields.
+The first considered AM is based on the analogy of the atmospheric circulation only \citep[Table \ref{table:method_2Z},][]{Obled2002, Bontron2005, Marty2012}. Searching for analog situations to a target day starts by a seasonal stratification through a preselection step of the potential candidates for analogy. The restriction is here a search for analog days within a 4 months window centered on the target date, for every year of the archive. Then, the similarity of the atmospheric circulation of the target date with every day of the preselection is assessed by processing the \citet{Teweles1954} score (S1), which is a comparison of gradients, on geopotential heights over a certain spatial window and at certain hours. The smaller the S1 values, the more similar the pressure fields.
 
-The predictand, here a 24~h precipitation total (6~h~UTC to 6~h~UTC the next day), results from meteorological situations that are continuous transitions between changing circulation patterns. Thus, the observed predictors fields, extracted from reanalysis datasets, are considered at different hours and at different heights. In our case, the geopotential height is considered at 1000~hPa (Z1000) at 12~h~UTC and 500~hPa (Z500) at 24~h~UTC. The selection of the time of the day at which the predictors are selected was found by \citet{Bontron2004} to have a significant influence.
+The predictand, here a 24~h precipitation total (classically from 6~h~UTC to 6~h~UTC the next day), results from meteorological situations that are continuous transitions between changing circulation patterns. Thus, the predictor data, extracted from reanalysis datasets, are considered at different hours of the day. Based on \citet{Bontron2005}, geopotential heights are thus compared at 1000~hPa (Z1000) at 12~h~UTC and 500~hPa (Z500) at 24~h~UTC. The time of the day at which the predictors are selected was found by \citet{Bontron2004} to have a significant influence.
 
-Then, $N_{1}$ dates with the lowest values of S1 are considered as analogs to the target day, $N_{1}$ being a parameter to calibrate. Then, the daily observed precipitation amount of the corresponding dates provide the empirical conditional distribution considered as the probabilistic prediction for the target day. This method will be named 2Z further on.
+Then, $N_{1}$ dates with the lowest values of S1 are considered as analogs to the target day, $N_{1}$ being a parameter to calibrate (see Sect. \ref{sec:calibration}). Finally, the daily observed precipitation amount of the corresponding dates provide the empirical conditional distribution considered as the probabilistic prediction for the target day. This method will be named 2Z further on.
 
-The second reference method adds a subsequent level of analogy on moisture variables, compared by means of the root-mean-square error (RMSE) (method 2Z-2MI, Table \ref{table:method_2Z-2MI}). This second predictor is a moisture index made of the product of the total precipitable water (TPW) with the relative humidity at 850~hPa (RH850) \citep{Bontron2004}. When adding a second level of analogy, $N_{2}$ dates are subsampled in the $N_{1}$ analogs on the atmospheric circulation, to end up with a smaller number of analog situations. When a second level of analogy is added, a higher number of $N_{1}$ analogs is kept on the first level.
+The second reference method (2Z-2MI, Table \ref{table:method_2Z-2MI}) adds a subsequent level of analogy on moisture variables, compared by means of the root-mean-square error (RMSE). The additional predictor is a moisture index made of the product of the total precipitable water (TPW) with the relative humidity at 850~hPa (RH850) \citep{Bontron2004}. When adding a second level of analogy, $N_{2}$ dates are subsampled from the $N_{1}$ analogs on the atmospheric circulation, to end up with a smaller number of analog situations. When a second level of analogy is added, a higher number of $N_{1}$ analogs is kept on the first level.
 
 
 \subsection{Performance score}
 \label{sec:performance}
 
-The score that is most often considered to assess an AM performance is the Continuous Ranked Probability Score \citep[CRPS,][]{Brown1974, Matheson1976, Hersbach2000}. It allows evaluating the predicted cumulative distribution functions $F(y)$, for example of the precipitation values $y$ from analog situations, compared to the observed value $y^{0}$. The better the prediction, the smaller the score. It is defined as follows:
+In order to assess the performance of AMs, the continuous ranked probability score \citep[CRPS,][]{Brown1974, Matheson1976, Hersbach2000} is often employed \citep[see, e.g.,][]{Bontron2004, Bontron2005, BenDaoud2008, Horton2012, Marty2012, Radanovics2013, Chardon2014, Junk2015, BenDaoud2016, Caillouet2016}. It allows evaluating the predicted cumulative distribution functions $F(y)$, for example of the precipitation values $y$ from analog situations, compared to the observed value $y^{0}$. The better the prediction, the smaller the score. It is defined as follows:
 
 \begin{equation}
 \label{eq:CRPS}
@@ -123,15 +124,13 @@ S_{\text{CRP}} = \int_{-\infty}^{+\infty} \left[ F(y)-\text{H}(y-y^{0})\right]^{
 \end{equation}
 where $\text{H}(y-y^{0})$ is the Heaviside function that is null when $y-y^{0}<0$, and has the value 1 otherwise.
 
-In order to compare the value of the score in regard to a reference, one often considers its skill score expression, and use the climatological distribution as the reference. The Continuous Ranked Probability Skill Score (CRPSS) is thus defined as following:
+In order to compare the value of the score in regard to a reference, one often considers its skill score expression, and use the climatological distribution (i.e. the distribution of all precipitation values from the corresponding archive) as the reference. The continuous ranked probability skill score (CRPSS) is thus defined as follows:
 
 \begin{equation}
 \label{eq:CRPSS}
 S_{\text{SCRP}} = \frac{S_{\text{CRP}}-S_{\text{CRP}}^{r}}{S_{\text{CRP}}^{p}-S_{\text{CRP}}^{r}} = 1-\frac{S_{\text{CRP}}}{S_{\text{CRP}}^{r}}
 \end{equation}
-where $S_{\text{CRP}}^{r}$ is the $S_{\text{CRP}}$ value for the reference (climatological distribution \textendash\ i.e. the distribution of all precipitation values from the corresponding archive) and $S_{\text{CRP}}^{p}$ would be the one for a perfect prediction (which implies $S_{\text{CRP}}^{p}~=~0$). A better prediction is characterized by an increase in CRPSS: $S_{\text{SCRP}}~=~1$ for a perfect prediction, and $S_{\text{SCRP}}~<~0$ for a prediction with a lower skill than the reference.
-
-
+where $S_{\text{CRP}}^{r}$ is the $S_{\text{CRP}}$ value for the reference (climatological distribution) and $S_{\text{CRP}}^{p}$ would be the one for a perfect prediction (which implies $S_{\text{CRP}}^{p}~=~0$). A better prediction is characterized by an increase in CRPSS: $S_{\text{SCRP}}~=~1$ for a perfect prediction, and $S_{\text{SCRP}}~<~0$ for a prediction with a lower skill than the reference.
 
 
 \subsection{The moving time window (MTW) approach}
@@ -166,7 +165,7 @@ As demonstrated in the previous section, the performance improvement brought by 
 \subsection{Calibration of the analog method}
 \label{sec:calibration}
 
-To calibrate the method, the semi-automatic sequential procedure elaborated by \citet{Bontron2004} was used \cite[see also ][]{BenDaoud2016}. The analogy levels (eg. the atmospheric circulation or moisture index) are calibrated sequentially. The parameters calibrated by this approach, for every level of analogy, are the spatial windows on which the predictors are compared and the number of analogs. The procedure consists of the following steps \citep{Bontron2004}:
+To calibrate the method, the semi-automatic sequential procedure elaborated by \citet{Bontron2004} was used \cite[see also ][]{Horton2012a, BenDaoud2016}. The analogy levels (eg. the atmospheric circulation or moisture index) are calibrated sequentially. The parameters calibrated by this approach, for every level of analogy, are the spatial windows on which the predictors are compared and the number of analogs. The procedure consists of the following steps \citep{Bontron2004}:
 
 \begin{enumerate}
 	\item Manual selection of the following parameters:
@@ -332,6 +331,7 @@ The change in the analogs numbers is likely to be responsible for this differenc
 One can question the interest of using moving daily totals when 6-hourly precipitation series can be predicted instead. A first reason is that the 6-hourly time series generated by the AM might not represent accurately the intra-daily precipitation distribution (results not shown). Or, sometimes one just does not need finer resolution than the daily time step, eventually using another disaggregation technique afterwards. Finally, when using a reconstructed precipitation archive, the errors in intra-day precipitation distributions have a lesser impact over 24~h daily totals.
 
 \subsection{On the use of an old reanalysis dataset}
+\label{sec:old_reanalysis}
 
 The considered reanalysis dataset, which is the NCEP/NCAR reanalysis I \citep{Kalnay1996}, is relatively old and has a coarse resolution. Newer reanalysis dataset could have been used to achieve this study, and might have resulted in higher performance scores. However, one can assume that the gain observed here by introducing a MTW should also be found for a better reanalysis dataset, especially if the information of the atmospheric circulation is more accurate. Indeed, a better dataset does not negatively influence the fact that one can find better analog situations at other hours of the day rather than at fixed hours. A comparative analysis of several reanalysis dataset within the AM is under work and will be the topic of a dedicated paper.
 
