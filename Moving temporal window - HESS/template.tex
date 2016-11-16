@@ -133,8 +133,6 @@ where $S_{\text{CRP}}^{r}$ is the $S_{\text{CRP}}$ value for the reference (clim
 
 
 
-Finding better analog situations does not obligatory imply better skills to predict the precipitation. Therefore, the impact of the MTW introduction, and thus the selection of other analog dates, has to be assessed on the performance scores. In order to perform this assessment, the 24~h-totals (moving average) at a 6-hourly time step were used (see Sect. \ref{sec:data}). The target dates remain unchanged, since the original time slot (6~h~UTC -- 6~h~UTC the next day) is kept, and thus the performance scores can be directly compared with the former ones.
-
 
 \subsection{The moving time window (MTW) approach}
 \label{sec:mtw}
@@ -148,6 +146,21 @@ No constraint was added in order to restrict the selection of multiple analogs w
 
 
 In order to assess this potential improvement of the prediction, precipitation data with a resolution of 10 minutes, on a respectable archive length, was used (Sect. \ref{sec:data}). It was then aggregated in the form of 24~h-totals, but starting at different 6-hourly time step, by means of a moving total.
+
+
+
+
+Finding better analog situations does not necessarily imply better skills to predict the precipitation. Therefore, the impact of the MTW introduction, and thus the selection of other analog dates, has to be assessed on the performance scores. In order to perform this assessment, the 24~h-totals (moving average) at a 6-hourly time step were used (see Sect. \ref{sec:data}). The target dates remain unchanged, since the original time slot (6~h~UTC -- 6~h~UTC the next day) is kept, and thus the performance scores can be directly compared with the former ones.
+
+
+\subsection{Reconstruction of a precipitation archive}
+\label{sec:reconstruction}
+
+The improvement provided by the MTW is interesting, mainly for heavy precipitation events, and thus it would be profitable to be able to apply it to the complete archive. Unfortunately, there is no long precipitation time series available with a sub-daily time step. In order to reconstruct a longer archive of moving 24~h-totals, different disaggregation approaches of the daily time series were assessed.
+
+A proportional distribution is certainly the simplest approach that can be performed. It consists in allocating proportional parts of the original daily time series into a new moving average of 24~h-totals (Fig. \ref{fig:illustration_disaggregation}). 
+
+As demonstrated in the previous section, the performance improvement brought by the MTW is lost when using a simplistic precipitation time series. In order to get closer to the chronology of the actual precipitation, the reconstruction procedure must rely on some informative variable. Data from the NCEP/NCAR reanalysis 1 (Sect. \ref{sec:data}) was used in this perspective, despite their rough resolution.
 
 
 \subsection{Calibration of the analog method}
@@ -197,7 +210,7 @@ The impact of the change in the archive length is visible in Fig. \ref{fig:plots
 
 When searching for analogs on the geopotential heights, as in the 2Z method, there are now 4 times more candidates (even though not fully independent) than before, which obviously allows to find better matches.
 
-Figure \ref{fig:changes_S1_analogs} presents the changes in the distributions of the S1 criterion for the $1^{st}$, $5^{th}$, $20^{th}$ and $40^{th}$ analog situations for the Ulrichen station on the whole calibration period (1961-2008), due to introduction of the MTW. The precipitation target remains as before, that is centered on 18~h~UTC (6~h~UTC to 6~h~UTC the next day). The shapes of the distributions of the conventional approach and the MTW are similar, but the values of the analogy criteria are now reduced (shifted to the left), and therefore better. For analogs with higher ranks (e.g. $20^{th}$ or $40^{th}$), the difference between the two distributions is larger than for the first ranks, which means that the improvement increases with the rank of the analogs. 
+Figure \ref{fig:changes_S1_analogs} presents the changes in the distributions of the S1 criterion for the $1^{st}$, $5^{th}$, $20^{th}$ and $40^{th}$ analog situations for the Ulrichen station on the whole calibration period (1961-2008), due to introduction of the MTW. The precipitation target remains as before, that is centered on 18~h~UTC (6~h~UTC to 6~h~UTC the next day). The shape of the distributions of the conventional approach and the MTW are similar, but the values of the analogy criteria are now reduced (shifted to the left), and therefore better. For analogs with higher ranks (e.g. $20^{th}$ or $40^{th}$), the difference between the two distributions is larger than for the first ranks, which means that the improvement increases with the rank of the analogs. 
 
 The improvements of the S1 criteria are summarized in Fig. \ref{fig:changes_S1}, which shows (top) quantiles of the S1 criteria according to the analog rank for the conventional method and the MTW, and (bottom) quantiles of the relative reduction. This confirms that all quantiles are similarly reduced (S1 distributions keep their shape), and that this improvement is constantly increasing from the first to the last analog (Fig. \ref{fig:changes_S1} bottom).
 
@@ -226,7 +239,7 @@ When considering the second level of analogy of the 2Z-2MI method (Table \ref{ta
 
 A systematic improvement of the analogy criteria values was previously observed. 
 
-The new performance scores are provided in Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z and 2Z-2MI methods respectively. The gains, relatively to the static approach on the reduced archive, range from 0.57 to 2.14 points for the 2Z method and from 1.53 to 2.20 points for the 2Z-2MI method. 
+The new performance scores (CRPSS) are provided in Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z and 2Z-2MI methods respectively. The gains, relatively to the static approach on the reduced archive, range from 0.57 to 2.14 points for the 2Z method and from 1.53 to 2.20 points for the 2Z-2MI method. 
 
 
 \subsubsection{Improvement per precipitation classes}
@@ -245,6 +258,15 @@ The previous assessment of the performance improvement was established with the 
 After recalibrating, changes in the AM parameters can be observed for both 2Z and 2Z-2MI methods. Among these, the zonal extent of the spatial windows of the circulation analogy tends to decrease (not shown). More significantly, the optimal number of analogs increases after introducing the MTW, of a significant order of magnitude: 25~\% to 83~\% for the 2Z method and 20~\% 67~\% for the 2Z-2MI method (Table \ref{table:analog_nb}). The number of analogs of the first analogy level of the 2Z-2MI method even reached three times its previous value for the Visp station. 
 
 The values of the CRPSS scores for both methods (Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI}) have significantly increased after recalibration. When analyzing the change in performance per precipitation classes, the results (not shown) are very similar to what was observed in Sect. \ref{sec:improvement_CRPSS_precip_threshold}, with a slight performance increase of small precipitation values can be observed at the expense of higher amounts.
+
+
+\subsection{Using a reconstructed archive}
+
+When using this reconstructed time series on the shorter period, the method performance was degraded and was even below the conventional method without MTW (Table \ref{table:disaggregation_proportional} to compare to Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI}).
+
+The best proxy variable was identified by means of a correlation analyses (on non-zero values) with the 6-hourly precipitation time series on the period 1982-2007. Precipitable water and relative humidity (at 1000~hPa, 925~hPa or 850~hPa) were assessed at the four points surrounding the catchment, and by allowing a time lapse between both series in order to take into account the significant distance separating the weather stations and the reanalysis grid point (details not shown). The best proxy for the Zermatt station is the precipitable water at 45° N and 7.5° E, with a time offset of -6~h (Table \ref{table:proxy_correlations}).
+
+Table \ref{table:proxy_CRPSS} presents the CRPSS scores obtained by the reconstituted series using the proxy of precipitable water.
 
 
 \section{Discussion}
@@ -272,12 +294,11 @@ With the introduction of the MTW, the performance loss related to the reduction 
 
 The introduction of the MTW brings an improvement of the performance that is not very large, but that is nevertheless significant. Moreover, it requires no additional predictor. More complex methods with additional levels of analogy and more predictors do increase the performance score, and the MTW could also be applied in these situations as it is likely to improve the analogy of the atmospheric circulation anyway. 
 
-No relationship was found between the improvement of the score and the reduction of the S1 criteria, neither with the season.
 
 
 \subsection{Impact of the MTW per precipitation classes}
 
-Both the analogy criteria (Sect. \ref{sec:influence_precip}) and the performance scores (Sect. \ref{sec:improvement_CRPSS_precip_threshold}) are improved to a greater extent for heavier precipitation events. This is likely due to the fact that higher precipitation events are a consequence of atmospheric conditions with a higher dynamism, such as weather disturbances, which have a well marked temporal evolution. Indeed, the position of the driving elements such as the low-pressure center and the fronts change significantly during a day. We can therefore expect to improve more significantly these situations with a higher dynamism when introducing a MTW, as better matches to the target situation may be found. On the opposite, days with a low dynamism of the atmospheric circulation, such as anticyclonic situations, will not be radically improved by the introduction of the MTW.
+Both the analogy criteria (Sect. \ref{sec:influence_precip}) and the performance scores (Sect. \ref{sec:improvement_CRPSS_precip_threshold}) are improved to a greater extent for heavier precipitation events. This is likely due to the fact that higher precipitation events are a consequence of atmospheric conditions with a higher dynamics, such as weather disturbances, which have a well marked temporal evolution. Indeed, the position of the driving elements such as the low-pressure center and the fronts change significantly during a day. We can therefore expect to improve more significantly these situations with a higher dynamics when introducing a MTW, as better matches to the target situation may be found. On the opposite, days with a low dynamics of the atmospheric circulation, such as anticyclonic situations, will not be radically improved by the introduction of the MTW.
 
 
 \subsection{Seasonal effect}
@@ -314,19 +335,13 @@ One can question the interest of using moving daily totals when 6-hourly precipi
 
 The considered reanalysis dataset, which is the NCEP/NCAR reanalysis I \citep{Kalnay1996}, is relatively old and has a coarse resolution. Newer reanalysis dataset could have been used to achieve this study, and might have resulted in higher performance scores. However, one can assume that the gain observed here by introducing a MTW should also be found for a better reanalysis dataset, especially if the information of the atmospheric circulation is more accurate. Indeed, a better dataset does not negatively influence the fact that one can find better analog situations at other hours of the day rather than at fixed hours. A comparative analysis of several reanalysis dataset within the AM is under work and will be the topic of a dedicated paper.
 
-\subsection{Is a simple reconstructed precipitation archive useful for the MTW ?}
+\subsection{Relevance of the simple reconstructed precipitation archive}
 
-The improvement provided by the MTW is interesting, mainly for heavy precipitation events, and thus it would be profitable to be able to apply it to the complete archive. Unfortunately, there is no long precipitation time series available with a sub-daily time step. In order to reconstruct a longer archive of moving 24~h-totals, different disaggregation approaches of the daily time series were assessed.
+The benefit of a better selection of the analog situations is lost due to a precipitation archive of poor quality.
 
-A proportional distribution is certainly the simplest approach that can be performed. It consists in allocating proportional parts of the original daily time series into a new moving average of 24~h-totals (Fig. \ref{fig:illustration_disaggregation}). When using this reconstructed time series on the shorter period, the method performance was degraded and was even below the conventional method without MTW (Table \ref{table:disaggregation_proportional} to compare to Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI}). The benefit of a better selection of the analog situations is lost due to a precipitation archive of poor quality.
 
-\subsection{Can a proxy variable help reconstruct a better precipitation archive ?}
 
-As demonstrated in the previous section, the performance improvement brought by the MTW is lost when using a simplistic precipitation time series. In order to get closer to the chronology of the actual precipitation, the reconstruction procedure must rely on some informative variable. Data from the NCEP/NCAR reanalysis 1 (Sect. \ref{sec:data}) was used in this perspective, despite their rough resolution.
-
-The best proxy variable was identified by means of a correlation analyses (on non-zero values) with the 6-hourly precipitation time series on the period 1982-2007. Precipitable water and relative humidity (at 1000~hPa, 925~hPa or 850~hPa) were assessed at the four points surrounding the catchment, and by allowing a time lapse between both series in order to take into account the significant distance separating the weather stations and the reanalysis grid point (details not shown). The best proxy for the Zermatt station is the precipitable water at 45° N and 7.5° E, with a time offset of -6~h.
-
-Table \ref{table:proxy_CRPSS} presents the CRPSS scores obtained by the reconstituted series using the proxy of precipitable water. A slight improvement can be obtained compared to the proportional distribution method, but it is still relatively small, and most of the benefit of the MTW is again lost. A more recent reanalysis archive with more accurate moisture variables might produce better proxies.
+A slight improvement can be obtained compared to the proportional distribution method, but it is still relatively small, and most of the benefit of the MTW is again lost. A more recent reanalysis archive with more accurate moisture variables might produce better proxies.
 
 These attempts to transpose the MTW on the total archive highlight the importance of the actual rainfall chronology. The MTW is profitable, provided that the precipitation series are close to the observed one. Without precipitation series with an accurate sub-daily chronology, the introduction of a MTW remains fruitless.
 
@@ -338,7 +353,7 @@ The AM is most often based on a daily time step, due to the availability of long
 
 As \citet{Finet2008} had previously shown, the introduction of a MTW allows finding better analog situations in terms of the atmospheric circulation. It has been here demonstrated that the improvement of the S1 criteria values is growing with the rank of the analog. This is due to the accumulation of better analogs within the predicted distributions.
 
-The improvement of the circulation analogy was found to be more important for heavy precipitation events, which are generally related to more dynamic atmospheric situations. This dynamism implies more specific circulation patterns that are evolving more rapidly. Thus, a MTW is found to be of particular interest in this kind of situation, and benefits the prediction of extreme precipitation events.
+The improvement of the circulation analogy was found to be more important for heavy precipitation events, which are generally related to more dynamic atmospheric situations. This dynamic implies more specific circulation patterns that are evolving more rapidly. Thus, a MTW is found to be of particular interest in this kind of situation, and benefits the prediction of extreme precipitation events.
 
 A seasonal effect has been highlighted, as the MTW is more profitable for winter months than summer. The reason is likely that the diurnal cycle has a bigger effect in summer than in winter, which results in better analogs at the same time of the day. The preference for the same hours in summer has been demonstrated, whereas 75\% of the analog situations are selected at a different time in winter.
 
@@ -348,7 +363,7 @@ The parameters were then calibrated again, using the MTW. Some parameters change
 
 The importance of the quality of the precipitation archive was also demonstrated, as too simplistic reconstructions of 6-hourly time series lead to a loss of all the improvement brought by better analog situations identified by the MTW. The precipitation prediction is improved only when the precipitation chronology is close to the accurate one. Attempts to reconstruct longer time series based on a simplistic proportional distribution or using meteorological variables from the NCEP reanalysis 1 dataset as proxy did not succeed. Other reanalysis datasets could eventually perform better.
 
-Perspectives of using the MTW rely on the availability of long precipitation series at a sub-daily time step and with high accuracy. First, these archives of high temporal resolution precipitation data are increasing now with time. The second source is the establishment of precipitation reanalysis at a country scale, or the use of reanalysis-driven RCMs (Regional Climate Models) or LAMs (Limited Area Models) on a long period. When such precipitation data will be available, the use of a MTW in the AM should be considered for any application, especially when the prediction quality of extreme events is important.
+Perspectives of using the MTW rely on the availability of long precipitation series at a sub-daily time step and with high accuracy. First, these archives of high temporal resolution precipitation data are increasing now with time. The second source is the establishment of precipitation reanalysis at a country scale, or the use of reanalysis-driven RCMs (Regional Climate Models) or LAMs (Limited Area Models) on a long period. Even though outputs from these models might be biased or not accurate enough, information on the timing of the precipitation events could be useful in order to disaggregate stations timeseries. When precipitation data with accurate time distribution will be available, the use of a MTW in the AM should be considered for any application, especially when the prediction quality of extreme events is important.
 
 
 
@@ -543,6 +558,35 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 		\end{tabular}
 	\end{center}
 	\label{table:disaggregation_proportional}
+\end{table}
+
+\begin{table}[htb]
+	\caption{Value of the coefficient of determination between the reconstructed 6-hourly precipitation time series using the listed variables, and the accurate time series on the period 1982-2007. The grid points surrounding the region are the following: 1) 5° E, 47.5° N, 2) 5° E, 45° N, 3) 7.5° E, 47.5° N, 4) 7.5° E, 45° N. The highest coefficient of determination is indicated in bold.}
+	\begin{center}
+		\begin{tabular}{l c c c c c c}
+			\hline
+			\multirow{2}{*}{Variable} & \multirow{2}{*}{Point} &  \multicolumn{5}{c}{Time lapse} \\
+			&  & -12 h & -6 h & 0 h & +6 h & +12 h \\ 
+			\hline
+			\multirow{ 4}{*}{RH1000} & 1 & 0.668 & 0.669 & 0.684 & 0.683 & 0.670 \\
+			& 2 & 0.669 & 0.669 & 0.683 & 0.681 & 0.669 \\
+			& 3 & 0.662 & 0.673 & 0.691 & 0.682 & 0.673 \\
+			& 4 & 0.666 & 0.671 & 0.688 & 0.681 & 0.668 \\ \hline
+			\multirow{ 4}{*}{RH925} & 1 & 0.672 & 0.673 & 0.684 & 0.684 & 0.675 \\
+			& 2 & 0.674 & 0.674 & 0.683 & 0.682 & 0.672 \\
+			& 3 & 0.662 & 0.673 & 0.691 & 0.682 & 0.673 \\
+			& 4 & 0.666 & 0.671 & 0.689 & 0.681 & 0.668 \\ \hline
+			\multirow{ 4}{*}{RH850} & 1 & 0.675 & 0.675 & 0.679 & 0.678 & 0.671 \\
+			& 2 & 0.681 & 0.690 & 0.691 & 0.677 & 0.664 \\
+			& 3 & 0.665 & 0.680 & 0.693 & 0.683 & 0.675 \\
+			& 4 & 0.675 & 0.694 & 0.706 & 0.681 & 0.659 \\ \hline
+			\multirow{ 4}{*}{TCW} & 1 & 0.688 & 0.687 & 0.667 & 0.655 & 0.652 \\
+			& 2 & 0.697 & 0.699 & 0.669 & 0.644 & 0.644 \\
+			& 3 & 0.686 & 0.708 & 0.689 & 0.655 & 0.648 \\
+			& 4 & 0.696 & \textbf{0.721} & 0.696 & 0.643 & 0.636 \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{table:proxy_correlations}
 \end{table}
 
 \begin{table}[htb]
