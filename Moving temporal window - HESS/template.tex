@@ -96,7 +96,7 @@ The MTW is explained in Sect. \ref{sec:mtw}. As this method requires sub-daily t
 \subsection{Study area and data}
 \label{sec:data}
 
-The study area is the upper Rh\^{o}ne catchment in Switzerland. Precipitation time series (at an hourly time step, on the period 1982--2007) come from 6 automatic weather stations, namely Ulrichen, Zermatt, Visp, Montana, Sion and Aigle (Fig. \ref{fig:map}), which are subject to various meteorological influences \citep{Horton2012}. Due to the low density of weather stations with high temporal resolution and long archives, no spatially aggregated rainfall was processed. The results will thereafter be presented arbitrarily for the Ulrichen station, but are equivalent for all stations.
+The study area is the upper Rh\^{o}ne catchment in Switzerland. Precipitation time series come from 6 automatic weather stations, namely Ulrichen, Zermatt, Visp, Montana, Sion and Aigle (Fig. \ref{fig:map}), which are subject to various meteorological influences \citep{Horton2012}. The data are available at an hourly time step on 25~years (1982 to 2007), and were also obtained at a daily time step on 47~years (1961 to 2008). Due to the low density of weather stations with high temporal resolution and long archives, no spatially aggregated rainfall was processed. The results will thereafter be presented arbitrarily for the Ulrichen station, but are equivalent for all stations.
 
 Synoptic-scale variables, used as predictors, are extracted from the NCEP/NCAR reanalysis I \citep{Kalnay1996} dataset with a 6-hourly temporal resolution, 17 pressure levels, and a spatial resolution of 2.5\degree. This dataset is now relatively old, but still often used (see discussion in Sect. \ref{sec:old_reanalysis}).
 
@@ -136,36 +136,27 @@ where $S_{\text{CRP}}^{r}$ is the $S_{\text{CRP}}$ value for the reference (clim
 \subsection{The moving time window (MTW) approach}
 \label{sec:mtw}
 
-In order to assess the benefit of searching analog situations at a sub-daily time step, an appropriate precipitation series is required. On the basis of high resolution time series (Sect. \ref{sec:data}), 24~h-totals were processed, but at a 6-hourly time step (temporal resolution of the reanalysis dataset), by means of a moving 24~h-total. 
+The moving time window (MTW) technique aims at finding better analog situations at different hours of the day rather than comparing the predictors at fixed hours. Thus, instead of looking for analogs at a 24-hourly time step, they are sought at the time step matching the predictor temporal resolution, which is here 6-hourly (Fig. \ref{fig:principle}).
 
-The target situations and their corresponding observed precipitation values do not change, because the prediction is always established for a fixed period of the target day (6~h~UTC to 6~h~UTC the next day), as before. The difference is that the candidates are 4~times more numerous (Fig. \ref{fig:principle}).
+The target situations and their corresponding observed precipitation values do not change, because the prediction is always established for a fixed period of the target day (6~h~UTC to 6~h~UTC the next day), as before. The difference is that the candidates are 4~times more numerous (even though they are not fully independent). No constraint was added in order to restrict the selection of multiple analogs within the same candidate dates.
 
-No constraint was added in order to restrict the selection of multiple analogs within the same candidate dates.
-
-
-
-In order to assess this potential improvement of the prediction, precipitation data with a resolution of 10 minutes, on a respectable archive length, was used (Sect. \ref{sec:data}). It was then aggregated in the form of 24~h-totals, but starting at different 6-hourly time step, by means of a moving total.
+In order to assess the benefit of searching analog situations at a sub-daily time step, an appropriate precipitation series is required. On the basis of high resolution time series (Sect. \ref{sec:data}), 24~h-totals were processed, but at a 6-hourly time step, by means of a moving 24~h-total.  As sub-daily precipitation time series are available on a shorter period than daily ones, the loss of performance resulting from a reduction of a 47~years archive (1961 to 2008) to 25~years (1982 to 2007) needs to be assessed.
 
 
-
-
-Finding better analog situations does not necessarily imply better skills to predict the precipitation. Therefore, the impact of the MTW introduction, and thus the selection of other analog dates, has to be assessed on the performance scores. In order to perform this assessment, the 24~h-totals (moving average) at a 6-hourly time step were used (see Sect. \ref{sec:data}). The target dates remain unchanged, since the original time slot (6~h~UTC -- 6~h~UTC the next day) is kept, and thus the performance scores can be directly compared with the former ones.
-
-
-\subsection{Reconstruction of a precipitation archive}
+\subsection{Reconstruction of a longer precipitation archive}
 \label{sec:reconstruction}
 
-The improvement provided by the MTW is interesting, mainly for heavy precipitation events, and thus it would be profitable to be able to apply it to the complete archive. Unfortunately, there is no long precipitation time series available with a sub-daily time step. In order to reconstruct a longer archive of moving 24~h-totals, different disaggregation approaches of the daily time series were assessed.
+Applying the MTW technique involve the need of sub-daily precipitation timeseries. However, such data are not available on long periods. As the AM benefits from long archives, it would be profitable to be able to apply the MTW to a longer archive. Thus, in order to reconstruct a longer archive of moving 24~h-totals, two simple disaggregation approaches of the daily time series were assessed.
 
-A proportional distribution is certainly the simplest approach that can be performed. It consists in allocating proportional parts of the original daily time series into a new moving average of 24~h-totals (Fig. \ref{fig:illustration_disaggregation}). 
+The first technique is a proportional distribution, where the observed daily precipitation is considered constant during the measuring period (6~h~UTC to 6~h~UTC the next day). It then consists in allocating proportional parts of the original daily time series into a new moving average of 24~h-totals (Fig. \ref{fig:illustration_disaggregation}). 
 
-As demonstrated in the previous section, the performance improvement brought by the MTW is lost when using a simplistic precipitation time series. In order to get closer to the chronology of the actual precipitation, the reconstruction procedure must rely on some informative variable. Data from the NCEP/NCAR reanalysis 1 (Sect. \ref{sec:data}) was used in this perspective, despite their rough resolution.
+The second approach aims at getting closer to the chronology of the actual precipitation by relying on some informative variable during the reconstruction procedure. The best proxy variable is identified by means of a correlation analyses (on non-zero values) with the 6-hourly precipitation time series on the period 1982-2007. Precipitable water and relative humidity (at 1000~hPa, 925~hPa or 850~hPa) were assessed at the four points surrounding the catchment, and by allowing a time lapse between both series in order to take into account the significant distance separating the weather stations and the reanalysis grid point. Data from the NCEP/NCAR reanalysis 1 (Sect. \ref{sec:data}) was used in this perspective, despite their rough resolution.
 
 
 \subsection{Calibration of the analog method}
 \label{sec:calibration}
 
-To calibrate the method, the semi-automatic sequential procedure elaborated by \citet{Bontron2004} was used \cite[see also ][]{Horton2012a, BenDaoud2016}. The analogy levels (eg. the atmospheric circulation or moisture index) are calibrated sequentially. The parameters calibrated by this approach, for every level of analogy, are the spatial windows on which the predictors are compared and the number of analogs. The procedure consists of the following steps \citep{Bontron2004}:
+To calibrate the method, the semi-automatic sequential procedure elaborated by \citet{Bontron2004} was used \cite[see also ][]{Horton2012a, Radanovics2013, BenDaoud2016}. The analogy levels (eg. the atmospheric circulation or moisture index) are calibrated sequentially. The parameters calibrated by this approach, for every level of analogy, are the spatial windows on which the predictors are compared and the number of analogs. The procedure consists of the following steps \citep{Bontron2004}:
 
 \begin{enumerate}
 	\item Manual selection of the following parameters:
@@ -178,15 +169,15 @@ To calibrate the method, the semi-automatic sequential procedure elaborated by \
 	
 	\item For every level of analogy:
 	\begin{enumerate}
-		\item Identification of the most skilled unitary cell (1~point for moisture variables and 4 for the geopotential height when using the S1 criteria) over a large domain. Every point (or cell) of the full domain is assessed jointly on all predictors of the level of analogy (consisting generally of the same variable, but on different pressure levels and at different hours).
+		\item Identification of the most skilled unitary cell (1~point for moisture variables and 4 for the geopotential height when using the S1 criteria) over a large domain. Every point (or cell) of the full domain is assessed on all predictors of the level of analogy jointly (consisting generally of the same variable, but on different pressure levels and at different hours).
 		\item From this most skilled point, the spatial window is expanded by successive iterations in the direction of greater performance gain. The spatial window grows up by repeating the previous steps, until no improvement is reached.
 		\item The number of analog situations is then reconsidered and optimized for the current level of analogy.
-		\item A new level of analogy can then be added, based on other variables (such as the moisture index) at chosen pressure levels and hours of the day. The number of analogs for the next level of analogy is initiated at a chosen value. Then, the procedure starts again from step (a) for the new level. The parameters calibrated on the previous analog levels are fixed and do not change (except the numbers of analogs of every level of analogy, that are optimized once again at the final stage). 
 	\end{enumerate}
+	\item A new level of analogy can then be added, based on other variables (such as the moisture index) at chosen pressure levels and hours of the day. The number of analogs for the next level of analogy is initiated at a chosen value. Then, the procedure starts again from step (2) for the new level. The parameters calibrated on the previous analog levels are fixed and do not change. 
 	\item Finally, the numbers of analogs are re-assessed for the different levels of analogy. This is done iteratively by varying the number of analogs of each level in a systematic way.
 \end{enumerate}
 
-The calibration is thus done in successive steps, on a limited number of parameters. Previously calibrated parameters are generally not reassessed. 
+The calibration is thus done in successive steps, on a limited number of parameters. Previously calibrated parameters are generally not reassessed (except for the number of analogs). More advanced techniques, such as using Genetic Algorithms \citep{Horton2016}, exist, but are out of the scope of the present study.
 
 
 \section{Results}
@@ -195,11 +186,9 @@ The calibration is thus done in successive steps, on a limited number of paramet
 \subsection{Consequences of the archive reduction}
 \label{sec:archive_reduction}
 
-As sub-daily precipitation time series are usually available on a shorter period than traditional daily time steps, the first assessment consists in assessing the loss of performance resulting from a reduction of a 47~years archive (1961 to 2008) to 25~years (1982 to 2007). This change is assessed with the original method, without MTW.
+The performance loss resulting from a reduction of a 47~years archive (1961 to 2008, corresponding to the daily time series) to 25~years (1982 to 2007, corresponding to the hourly time series) was assessed with the original method, without MTW. Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated on the original archive (see resulting analog numbers in Tables \ref{table:analog_nb}) and will be used thereafter.
 
-Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated on the original archive (Tables \ref{table:analog_nb}) and will be used thereafter.
-
-The impact of the change in the archive length is visible in Fig. \ref{fig:plots_CRPSS_2Z} for the 2Z method and in Fig. \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z-2MI method. As expected, a loss of performance can be observed for each station, except for that of Aigle, which seems relatively indifferent to this change. This loss is globally significant, with up to -1.89 points for Visp and the 2Z method. 
+The impact of the archive reduction can be seen in Fig. \ref{fig:plots_CRPSS_2Z} for the 2Z method and in Fig. \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z-2MI method. As expected, a loss of performance can be observed for each station, except for that of Aigle, which seems relatively indifferent to this change. This loss is globally significant, with up to -1.89 points for Visp and the 2Z method. 
 
 
 \subsection{Influence on the analogy criteria}
@@ -263,7 +252,7 @@ The values of the CRPSS scores for both methods (Fig. \ref{fig:plots_CRPSS_2Z} a
 
 When using this reconstructed time series on the shorter period, the method performance was degraded and was even below the conventional method without MTW (Table \ref{table:disaggregation_proportional} to compare to Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI}).
 
-The best proxy variable was identified by means of a correlation analyses (on non-zero values) with the 6-hourly precipitation time series on the period 1982-2007. Precipitable water and relative humidity (at 1000~hPa, 925~hPa or 850~hPa) were assessed at the four points surrounding the catchment, and by allowing a time lapse between both series in order to take into account the significant distance separating the weather stations and the reanalysis grid point (details not shown). The best proxy for the Zermatt station is the precipitable water at 45° N and 7.5° E, with a time offset of -6~h (Table \ref{table:proxy_correlations}).
+ (details not shown). The best proxy for the Zermatt station is the precipitable water at 45° N and 7.5° E, with a time offset of -6~h (Table \ref{table:proxy_correlations}).
 
 Table \ref{table:proxy_CRPSS} presents the CRPSS scores obtained by the reconstituted series using the proxy of precipitable water.
 
@@ -275,6 +264,11 @@ Table \ref{table:proxy_CRPSS} presents the CRPSS scores obtained by the reconsti
 \subsection{Improvement of the atmospheric circulation analogy}
 
 The median of the S1 values reduction (Fig. \ref{fig:changes_S1} bottom) starts approximately at 5~\% for the first analog and reaches more than 10~\% for the last one. This increasing trend with the analog rank can be explained by the accumulation of better analogs in the distribution. The minimum improvement starts from 0 and reaches 2--3\%, meaning that the criteria have been improved on most analogs for every day of the calibration period. All other stations have a similar improvement of the S1 criteria, both in terms of distribution shape and amplitude.
+
+
+
+
+Finding better analog situations does not necessarily imply better skills to predict the precipitation.
 
 
 \subsection{Improvement of the moisture analogy}
@@ -338,6 +332,9 @@ The considered reanalysis dataset, which is the NCEP/NCAR reanalysis I \citep{Ka
 \subsection{Relevance of the simple reconstructed precipitation archive}
 
 The benefit of a better selection of the analog situations is lost due to a precipitation archive of poor quality.
+
+
+As demonstrated in the previous section, the performance improvement brought by the MTW is lost when using a simplistic precipitation time series.
 
 
 
