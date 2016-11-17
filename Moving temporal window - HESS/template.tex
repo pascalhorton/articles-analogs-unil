@@ -64,7 +64,7 @@ The Analog Method (AM) aims at predicting local weather variables (predictands),
 
 The search for candidate situations, for a given target day, is usually undertaken by comparing the state of the atmosphere at fixed hours of the day, for both the target day and the candidate analogs. The constraint is the use of daily time series, due to the length of available archives they provide, and the unavailability of equivalent archives at a finer time step. However, it is unlikely that the best analogy happens at the very same hour, but it may occur at a different time of the day. In order to assess the potential of finding better analogs at a different hour, a moving time window (MTW) has been introduced on a reduced archive of hourly precipitation totals.
 
-The MTW resulted in a better analogy in terms of the atmospheric circulation, with improved values of the analogy criteria on the whole distribution of analog dates. The improvement was found to grow with the analog ranks due to an accumulation of more similar situations in the selection. Moreover, the improvement is even more important for days with heavy precipitation events, which are generally related to more dynamic atmospheric situations, where timing is more specific. 
+The MTW resulted in a better analogy in terms of the atmospheric circulation, with improved values of the analogy criterion on the whole distribution of analog dates. The improvement was found to grow with the analog ranks due to an accumulation of more similar situations in the selection. Moreover, the improvement is even more important for days with heavy precipitation events, which are generally related to more dynamic atmospheric situations, where timing is more specific. 
 
 A seasonal effect has also been identified, with larger improvements in winter than in summer, supposedly due to the stronger effect of the diurnal cycle in summer, which favors predictors at the same hour for target and analogs.
 
@@ -83,10 +83,10 @@ The Analog Method (AM) is based on the principle that two relatively similar syn
 
 The AM is usually implemented with a daily time step, due to the availability of long precipitation archives that have no equivalent at a finer resolution. Therefore, the analog situations are assessed on the basis of a daily time step, by comparing predictors at fixed hours of the day. However, it can be expected that the analogy of the synoptic situations does not occur systematically at the same time of the day, and that better candidates can be found by shifting to a different hour. On this assumption, a moving time window (MTW) was introduced to allow searching for candidates at different hours of the day.
 
-Previous tests showed the benefit, in terms of analogy criteria values, of searching for analog synoptic situations at a finer time step, but without assessing the impact on the prediction skills \citep{Finet2008}. 
+Previous tests showed the benefit, in terms of analogy criterion values, of searching for analog synoptic situations at a finer time step, but without assessing the impact on the prediction skills \citep{Finet2008}. 
 
 
-The MTW is explained in Sect. \ref{sec:mtw}. As this method requires sub-daily time series, the available archive length is reduced compared to more common daily measurements, which has some consequences on the performance score (Sect. \ref{sec:archive_reduction}). The benefit of introducing a MTW was assessed first in regards to the analogy criteria improvement (Sect. \ref{sec:influence_criteria}), and then in terms of precipitation prediction skill (Sect. \ref{sec:influence_scores}). Finally, the results are discussed in Sect. \ref{sec:discussion}.
+The MTW is explained in Sect. \ref{sec:mtw}. As this method requires sub-daily time series, the available archive length is reduced compared to more common daily measurements, which has some consequences on the performance score (Sect. \ref{sec:archive_reduction}). The benefit of introducing a MTW was assessed first in regards to the analogy criterion improvement (Sect. \ref{sec:influence_criteria}), and then in terms of precipitation prediction skill (Sect. \ref{sec:influence_scores}). Finally, the results are discussed in Sect. \ref{sec:discussion}.
 
 
 %TODO: complete !!
@@ -169,7 +169,7 @@ To calibrate the method, the semi-automatic sequential procedure elaborated by \
 	
 	\item For every level of analogy:
 	\begin{enumerate}
-		\item Identification of the most skilled unitary cell (1~point for moisture variables and 4 for the geopotential height when using the S1 criteria) over a large domain. Every point (or cell) of the full domain is assessed on all predictors of the level of analogy jointly (consisting generally of the same variable, but on different pressure levels and at different hours).
+		\item Identification of the most skilled unitary cell (1~point for moisture variables and 4 for the geopotential height when using the S1 criterion) over a large domain. Every point (or cell) of the full domain is assessed on all predictors of the level of analogy jointly (consisting generally of the same variable, but on different pressure levels and at different hours).
 		\item From this most skilled point, the spatial window is expanded by successive iterations in the direction of greater performance gain. The spatial window grows up by repeating the previous steps, until no improvement is reached.
 		\item The number of analog situations is then reconsidered and optimized for the current level of analogy.
 	\end{enumerate}
@@ -186,188 +186,143 @@ The calibration is thus done in successive steps, on a limited number of paramet
 \subsection{Consequences of the archive reduction}
 \label{sec:archive_reduction}
 
-The performance loss resulting from a reduction of a 47~years archive (1961 to 2008, corresponding to the daily time series) to 25~years (1982 to 2007, corresponding to the hourly time series) was assessed with the original method, without MTW. Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated on the original archive (see resulting analog numbers in Tables \ref{table:analog_nb}) and will be used thereafter.
+The performance loss resulting from a reduction of a 47~years archive (1961 to 2008, corresponding to the daily time series) to 25~years (1982 to 2007, corresponding to the hourly time series, see Sect. \ref{sec:mtw}) was assessed with the original method, without MTW. Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated on the original archive (see resulting analog numbers in Tables \ref{table:analog_nb}) and will be used thereafter.
 
 The impact of the archive reduction can be seen in Fig. \ref{fig:plots_CRPSS_2Z} for the 2Z method and in Fig. \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z-2MI method. As expected, a loss of performance can be observed for each station, except for that of Aigle, which seems relatively indifferent to this change. This loss is globally significant, with up to -1.89 points for Visp and the 2Z method. 
 
 
-\subsection{Influence on the analogy criteria}
+\subsection{Influence on the analogy criterion}
 \label{sec:influence_criteria}
 
 \subsubsection{Changes in the atmospheric circulation analogy}
 
-When searching for analogs on the geopotential heights, as in the 2Z method, there are now 4 times more candidates (even though not fully independent) than before, which obviously allows to find better matches.
+When searching for analogs in the first level of analogy, such as on the geopotential heights in the 2Z method (Sect. \ref{sec:analog_method}), there are 4 times more candidates (even though not fully independent) with the MTW than before (Sect. \ref{sec:mtw}). Figure \ref{fig:changes_S1_analogs} shows the changes in the distributions of the analogy criterion (S1) for the $1^{st}$, $5^{th}$, $20^{th}$ and $40^{th}$ analog rank at the Ulrichen station on the whole calibration period (1961-2008 -- we can use the full period here, as we do not consider precipitation at this stage), due to introduction of the MTW. The shape of the distributions of the conventional approach and the MTW are similar, but the values of the analogy criterion are now reduced (shifted to the left), and therefore better. For analogs with higher ranks (e.g. $20^{th}$ or $40^{th}$), the difference between the two distributions is larger than for the first ranks, which means that the improvement increases with the rank of the analogs. 
 
-Figure \ref{fig:changes_S1_analogs} presents the changes in the distributions of the S1 criterion for the $1^{st}$, $5^{th}$, $20^{th}$ and $40^{th}$ analog situations for the Ulrichen station on the whole calibration period (1961-2008), due to introduction of the MTW. The precipitation target remains as before, that is centered on 18~h~UTC (6~h~UTC to 6~h~UTC the next day). The shape of the distributions of the conventional approach and the MTW are similar, but the values of the analogy criteria are now reduced (shifted to the left), and therefore better. For analogs with higher ranks (e.g. $20^{th}$ or $40^{th}$), the difference between the two distributions is larger than for the first ranks, which means that the improvement increases with the rank of the analogs. 
-
-The improvements of the S1 criteria are summarized in Fig. \ref{fig:changes_S1}, which shows (top) quantiles of the S1 criteria according to the analog rank for the conventional method and the MTW, and (bottom) quantiles of the relative reduction. This confirms that all quantiles are similarly reduced (S1 distributions keep their shape), and that this improvement is constantly increasing from the first to the last analog (Fig. \ref{fig:changes_S1} bottom).
+The improvements of the S1 criterion with the rank of the analogs are summarized in Fig. \ref{fig:changes_S1}, which shows (top) quantiles of the S1 criterion for the conventional method and the MTW, and (bottom) quantiles of the relative reduction (meaning improvement) due to the MTW. This confirms that all quantiles are similarly reduced (S1 distributions keep their shape), and that this improvement is constantly increasing from the first to the last analog (Fig. \ref{fig:changes_S1} bottom).
 
 
 \subsubsection{Changes per precipitation classes}
 \label{sec:influence_precip}
 
-The impact of the MTW on the analogy criteria has been decomposed per precipitation classes. The results of this analysis are summarized in Fig. \ref{fig:changes_S1_precip_threshold} by the median reduction of S1 for days with precipitation (organized into classes) between two thresholds. The number of cases per class being reduced, the curves are not as smooth as in previous analyzes. It is nevertheless clear that the improvement tends to increase on days with higher precipitation. This is true for all our stations.
+The impact of the MTW on the analogy criterion has been analyzed per precipitation classes. The results are summarized in Fig. \ref{fig:changes_S1_precip_threshold} by the median reduction of S1 for days with precipitation (organized into classes) between two thresholds. The number of cases per class being reduced, the curves are not as smooth as in previous analyzes. It is nevertheless clear that the improvement tends to increase on days with higher precipitation. This is true for all our stations.
 
 
 \subsubsection{Changes per season}
 \label{sec:seasonal_effect}
 
-Atmospheric dynamics varies greatly from one season to another, which reflects on the performance of the AM that is generally lower between June and August \citep{Bliefernicht2010}. It therefore makes sense to verify the effect of the MTW separately per season.
-
-A seasonal effect can be observed on the reduction of the S1 criteria due to the MTW (Fig. \ref{fig:changes_S1_seasons}). The improvements are greater for winter than summer. 
+Atmospheric dynamics varies greatly from one season to another, which reflects on the performance of the AM that is generally lower between June and August \citep{Bliefernicht2010}. The effect of the MTW on the S1 criterion per season is presented in Fig. \ref{fig:changes_S1_seasons}. Differences between the seasons are substantial. The improvements are greater for winter than summer. 
 
 
 \subsubsection{Changes in the moisture analogy}
 
-When considering the second level of analogy of the 2Z-2MI method (Table \ref{table:method_2Z-2MI}), the number of candidates situations did not increase, as they are subsampled in the previously $N_{1}$ selected analogs, but their dates have changed. In contrast to the AM on the atmospheric circulation only, both a reduction or an increase of the RMSE analogy criterion values are possible here with the MTW compared to the static approach. Indeed, Fig. \ref{fig:changes_RMSE} shows an almost insignificant improvement of the RMSE values. Unlike for the first level of analogy, the relative improvement of the RMSE values are distributed relatively symmetrically around zero, with improvements and losses of the same amplitude. Once again, the results for the other stations are similar.
+When adding the second level of analogy of the 2Z-2MI method (Table \ref{table:method_2Z-2MI}), the number of candidate situations did not increase, as they are subsampled in the previously $N_{1}$ selected analogs, but their dates have changed. In contrast to the AM on the atmospheric circulation only, both a reduction or an increase of the RMSE analogy criterion values are possible here with the MTW compared to the static approach. Indeed, Fig. \ref{fig:changes_RMSE} shows an almost insignificant improvement of the RMSE values. Unlike for the first level of analogy, the relative improvement of the RMSE values are distributed relatively symmetrically around zero, with improvements and losses of the same amplitude. Once again, the results for the other stations are similar.
 
 
-\subsection{Impact on performance scores}
+\subsection{Impact on the prediction relevance}
 \label{sec:influence_scores}
 
-A systematic improvement of the analogy criteria values was previously observed. 
-
-The new performance scores (CRPSS) are provided in Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z and 2Z-2MI methods respectively. The gains, relatively to the static approach on the reduced archive, range from 0.57 to 2.14 points for the 2Z method and from 1.53 to 2.20 points for the 2Z-2MI method. 
+The new performance scores (CRPSS) are provided in Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z and 2Z-2MI methods respectively, on the reduced archive (1982--2007). The gains, relatively to the static approach on the same archive, range from 0.57 to 2.14 points for the 2Z method and from 1.53 to 2.20 points for the 2Z-2MI method. 
 
 
 \subsubsection{Improvement per precipitation classes}
 \label{sec:improvement_CRPSS_precip_threshold}
 
-The S1 criteria was previously found to be improved to a greater extent for higher precipitation values (Sect. \ref{sec:influence_precip}). The changes in terms of performance scores will now be assessed regarding precipitation thresholds. Fig. \ref{fig:changes_CRPS_precip_threshold} synthesizes these differences for the Ulrichen station, other stations having the same behavior.
-
-The performance score is improved for days with higher precipitation after the introduction of the MTW. On the contrary, non-rainy days and small accumulations are not improved.
+The S1 criterion was previously found to be improved to a greater extent for higher precipitation values (Sect. \ref{sec:influence_precip}). The changes in terms of performance scores are now also assessed per precipitation classes. Fig. \ref{fig:changes_CRPS_precip_threshold} synthesizes these differences for the Ulrichen station, other stations having the same behavior. The performance score is improved for days with higher precipitation after the introduction of the MTW. On the contrary, non-rainy days and small precipitation values are not improved.
 
 
 \subsubsection{Recalibration of the AM parameters}
 \label{sec:recalibration}
 
-The previous assessment of the performance improvement was established with the original parameters optimized with a fixed time window. However, one can assume that the introduction of the MTW may change the optimum of some parameters. The calibration has then been reprocessed.
+The previous assessment of the performance improvement was established with the original parameters optimized with a fixed time window. However, one can assume that the introduction of the MTW might change the optimum value of some parameters. The calibration (see Sect. \ref{sec:calibration}) has then been reprocessed.
 
-After recalibrating, changes in the AM parameters can be observed for both 2Z and 2Z-2MI methods. Among these, the zonal extent of the spatial windows of the circulation analogy tends to decrease (not shown). More significantly, the optimal number of analogs increases after introducing the MTW, of a significant order of magnitude: 25~\% to 83~\% for the 2Z method and 20~\% 67~\% for the 2Z-2MI method (Table \ref{table:analog_nb}). The number of analogs of the first analogy level of the 2Z-2MI method even reached three times its previous value for the Visp station. 
+After recalibrating, changes in the AM parameters can be observed for both 2Z and 2Z-2MI methods. Among these, the zonal extent of the spatial windows of the circulation analogy tends to decrease (not shown). More significantly, the optimal number of analogs increases after introducing the MTW, of a considerable order of magnitude: 25~\% to 83~\% for the 2Z method and 20~\% 67~\% for the 2Z-2MI method (Table \ref{table:analog_nb}). The number of analogs of the first analogy level of the 2Z-2MI method even reached three times its previous value for the Visp station. 
 
-The values of the CRPSS scores for both methods (Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI}) have significantly increased after recalibration. When analyzing the change in performance per precipitation classes, the results (not shown) are very similar to what was observed in Sect. \ref{sec:improvement_CRPSS_precip_threshold}, with a slight performance increase of small precipitation values can be observed at the expense of higher amounts.
+The values of the CRPSS scores for both methods (Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI}) have significantly increased after recalibration. When analyzing the change in performance per precipitation classes, the results (not shown) are very similar to what was observed in Sect. \ref{sec:improvement_CRPSS_precip_threshold}, with a slight performance increase of small precipitation values that can be observed at the expense of higher amounts.
 
 
 \subsection{Using a reconstructed archive}
+\label{sec:reconstruction_results}
 
-When using this reconstructed time series on the shorter period, the method performance was degraded and was even below the conventional method without MTW (Table \ref{table:disaggregation_proportional} to compare to Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI}).
+When using the first reconstructed time series (on the reduced period), based on the proportional distribution (see Sect. \ref{sec:reconstruction}), the AM performance was degraded and was even below the conventional method without MTW (Table \ref{table:disaggregation_proportional} to compare to Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI}).
 
- (details not shown). The best proxy for the Zermatt station is the precipitable water at 45° N and 7.5° E, with a time offset of -6~h (Table \ref{table:proxy_correlations}).
-
-Table \ref{table:proxy_CRPSS} presents the CRPSS scores obtained by the reconstituted series using the proxy of precipitable water.
+For the second approach, the synoptic proxy to use for the temporal disaggregation of the daily time series had to be identified first. The results are illustrated for the Zermatt station. Amongst the considered moisture variables (see Sect. \ref{sec:reconstruction}), the best proxy was the precipitable water at 45° N and 7.5° E, with a time offset of -6~h (Table \ref{table:proxy_correlations}). Table \ref{table:proxy_CRPSS} presents the CRPSS scores obtained by the reconstituted series using the proxy of precipitable water.
 
 
 \section{Discussion}
 \label{sec:discussion}
 
 
-\subsection{Improvement of the atmospheric circulation analogy}
+\subsection{Improvement of the selection of analog situations}
 
-The median of the S1 values reduction (Fig. \ref{fig:changes_S1} bottom) starts approximately at 5~\% for the first analog and reaches more than 10~\% for the last one. This increasing trend with the analog rank can be explained by the accumulation of better analogs in the distribution. The minimum improvement starts from 0 and reaches 2--3\%, meaning that the criteria have been improved on most analogs for every day of the calibration period. All other stations have a similar improvement of the S1 criteria, both in terms of distribution shape and amplitude.
+On the first level of analogy, the median of the S1 values reduction (Fig. \ref{fig:changes_S1} bottom) starts approximately at 5~\% for the first analog and reaches more than 10~\% for the last one. This increase of improvements with the analog rank can be explained by the accumulation of better analogs in the distribution. The curve representing the minimum improvement is quickly slightly superior to zero, meaning that the criteria have been improved on most analogs for every day of the calibration period. All other stations have a similar improvement of the S1 criterion, both in terms of distribution shape and amplitude. The introduction of the MTW allows finding better analog situations in the first level of analogy, resulting in a selection of days with more similar atmospheric circulation.
 
-
-
-
-Finding better analog situations does not necessarily imply better skills to predict the precipitation.
+When adding a second level of analogy on moisture variables, the criteria values (RMSE) are not improved by the MTW as the number of candidates is not higher (still the $N_{1}$ days selected in the first level of analogy). However, this result of a globally null improvement of the RMSE values does not mean that the 2Z-2MI method cannot be improved by the MTW. It means that after the selection of the analog situations in terms of the synoptic circulation, the new candidate dates do not allow to find better analogs in terms of moisture. However, the selected dates have changed in the first level of analogy, and thus also in the final selection, which can potentially improve the prediction skill.
 
 
-\subsection{Improvement of the moisture analogy}
+\subsection{Improvement of the precipitation prediction}
 
+Finding better analog situations does not necessarily imply better skills to predict the precipitation. This had to be assessed and the MTW was found to improve the skill of the precipitation prediction for both the 2Z and 2Z-2MI methods (Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI}). The improvement of the performance is not very large, but is nevertheless substantial. Moreover, it requires no additional predictor. With the introduction of the MTW, the performance loss related to the reduction of the archive length is compensated.
 
+More complex methods with additional levels of analogy and more predictors do increase the performance score, and the MTW could also be applied in these situations, as it is likely to improve the analogy of the atmospheric circulation anyway. 
 
-
-This result of a globally null improvement of the RMSE values does not mean that the 2Z-2MI method cannot be improved by the MTW. It means that after the selection of the analogs situations in terms of the synoptic circulation, the new candidate dates do not allow to find better analogs in terms of moisture. However, the selected dates have changed in the first level of analogy, and thus also in the final selection, which can potentially improve the performance scores on the predictand.
-
-
-
-
-With the introduction of the MTW, the performance loss related to the reduction of the archive length is compensated.
-
-
-
-The introduction of the MTW brings an improvement of the performance that is not very large, but that is nevertheless significant. Moreover, it requires no additional predictor. More complex methods with additional levels of analogy and more predictors do increase the performance score, and the MTW could also be applied in these situations as it is likely to improve the analogy of the atmospheric circulation anyway. 
-
-
-
-\subsection{Impact of the MTW per precipitation classes}
-
-Both the analogy criteria (Sect. \ref{sec:influence_precip}) and the performance scores (Sect. \ref{sec:improvement_CRPSS_precip_threshold}) are improved to a greater extent for heavier precipitation events. This is likely due to the fact that higher precipitation events are a consequence of atmospheric conditions with a higher dynamics, such as weather disturbances, which have a well marked temporal evolution. Indeed, the position of the driving elements such as the low-pressure center and the fronts change significantly during a day. We can therefore expect to improve more significantly these situations with a higher dynamics when introducing a MTW, as better matches to the target situation may be found. On the opposite, days with a low dynamics of the atmospheric circulation, such as anticyclonic situations, will not be radically improved by the introduction of the MTW.
+Both the analogy criteria (Sect. \ref{sec:influence_precip}) and the performance scores (Sect. \ref{sec:improvement_CRPSS_precip_threshold}) are improved to a greater extent for heavier precipitation events. This is likely due to the fact that higher precipitation events are a consequence of atmospheric conditions with a greater dynamics, such as weather disturbances, which have a well marked temporal evolution. Indeed, the position of the driving elements such as the low-pressure center and the fronts change significantly during a day. Moreover, these situations are less numerous than anticyclonic situations, which makes it less likely to find very good analogs at the same time of the day. We can therefore expect to improve more significantly these situations with a greater dynamics when introducing a MTW, as better matches to the target situation may be found. On the opposite, days with a low dynamics of the atmospheric circulation, such as anticyclonic situations, will not be radically improved by the introduction of the MTW.
 
 
 \subsection{Seasonal effect}
 
+Section \ref{sec:seasonal_effect} and Fig. \ref{fig:changes_S1_seasons} revealed a difference of the improvement of the S1 criterion according to the season, with greater improvements for winter than summer. One hypothesis is that the diurnal effects of the summer months have an influence on the atmospheric circulation, at least in the lower layers. This effect is based on the daily cycle and good analogs are essentially found for the same hours or time windows.
 
-One hypothesis is that the diurnal effects of the summer months have an influence on the atmospheric circulation, at least in the lower layers. This effect is based on the daily cycle and good analogs are essentially found for the same hours or time windows.
+An analysis of the selected hours for the geopotential predictor seems to confirm this assumption (Fig. \ref{fig:hours_selection_per_season}). It was found that the new choice of the temporal window in winter, when using the MTW approach, is well balanced between the 4 options. This means a change of 75\% of the analogs selection compared to the conventional approach, which improves the circulation analogy. On the contrary, the summer months have a preference for the initial temporal window (Z500 24~h \& Z1000 12~h), likely due to more pronounced diurnal effects which reduces the potential for improvement of the criteria. Other seasons are between these two extremes, which is consistent with their respective improvements. This seasonal effect was observed for each station in a very similar way, and generally even with a slightly larger amplitude than for Ulrichen.
 
-An analysis of the selected hours for the geopotential predictor seems to confirm this assumption (Fig. \ref{fig:hours_selection_per_season}). It was found that the new choice of the temporal window in winter, when using the MTW approach, is well balanced between the 4 options. This means a change of 75\% of the analogs selection compared to the conventional approach, which improves the circulation analogy.
-
-On the contrary, the summer months have a preference for the initial temporal window (Z500 24~h \& Z1000 12~h), due to more pronounced diurnal effects which reduces the potential for improvement of the criteria. Other seasons are between these two extremes, which is consistent with their respective improvements. This seasonal effect was observed for each station in a very similar way, and generally even with a slightly larger amplitude than for Ulrichen.
 
 \subsection{On the increase in number of analogs}
 
-After the recalibration of the method with the MTW, the optimal analog numbers were significantly higher than for the original method. 
+After the recalibration of the AMs with the MTW, the optimal analog numbers were significantly higher than for the original methods (see Sect. \ref{sec:recalibration} and Fig. \ref{table:analog_nb}). As we saw in Fig. \ref{fig:changes_S1}, the improvement of the S1 criterion grows along with the rank of the analog, which shows an accumulation of better analog situations in the distributions. It seems thus profitable to widen the selection of analogs in order to keep also some whose rank has increased, as they appear to be also relevant to predict precipitation values. The number of good analogs is thus globally increased.
 
-
-
-
-
-As we saw in Fig. \ref{fig:changes_S1}, the improvement of the S1 criteria grows along with the rank of the analog, which shows an accumulation of better analog situations in the distributions. It seems thus profitable to widen the selection of analogs in order to keep also some whose rank has increased, as they appear to be also relevant to predict precipitation values. The number of good analogs is thus globally increased.
-
-
-
-
-The change in the analogs numbers is likely to be responsible for this difference in the performance distributions. --> thresholds
-
+A higher number of analogs generally means, with an archive of fixed length, a poorer analogy. Indeed, when the choice of the predictors or the parameters are improved, leading to a better prediction, the optimal number of analog situations decreases. However, when the length of the archive increases, the optimal number of analogs increases too, for a better performance, up to a certain threshold (\citealt{Bontron2004}, see also Fig. 7 of \citealt{Hamill2006a}). The observed increases in the number of analog situations with the MTW result in better performance skills, as it can be seen as an inflation of the archive. The MTW enriches the pool of available situations, even though they are not fully independent. 
 
 
 \subsection{Why not just making a 6-hourly predictions ?}
 
-One can question the interest of using moving daily totals when 6-hourly precipitation series can be predicted instead. A first reason is that the 6-hourly time series generated by the AM might not represent accurately the intra-daily precipitation distribution (results not shown). Or, sometimes one just does not need finer resolution than the daily time step, eventually using another disaggregation technique afterwards. Finally, when using a reconstructed precipitation archive, the errors in intra-day precipitation distributions have a lesser impact over 24~h daily totals.
+One can question the interest of using moving daily totals when 6-hourly precipitation series can be predicted instead. A first reason is that the 6-hourly time series generated by the AM might not represent accurately the intra-daily precipitation distribution (results not shown). Also, sometimes one just does not need finer resolution than the daily time step, eventually using another disaggregation technique afterwards. Finally, when using a reconstructed precipitation archive, the errors in intra-day precipitation distributions have a lesser impact over 24~h daily totals.
+
 
 \subsection{On the use of an old reanalysis dataset}
 \label{sec:old_reanalysis}
 
 The considered reanalysis dataset, which is the NCEP/NCAR reanalysis I \citep{Kalnay1996}, is relatively old and has a coarse resolution. Newer reanalysis dataset could have been used to achieve this study, and might have resulted in higher performance scores. However, one can assume that the gain observed here by introducing a MTW should also be found for a better reanalysis dataset, especially if the information of the atmospheric circulation is more accurate. Indeed, a better dataset does not negatively influence the fact that one can find better analog situations at other hours of the day rather than at fixed hours. A comparative analysis of several reanalysis dataset within the AM is under work and will be the topic of a dedicated paper.
 
-\subsection{Relevance of the simple reconstructed precipitation archive}
 
-The benefit of a better selection of the analog situations is lost due to a precipitation archive of poor quality.
+\subsection{Relevance of the reconstructed precipitation archives}
 
+The two simple methods assessed to reconstruct precipitation archives (Sect. \ref{sec:reconstruction}) did not result in valuable outputs (Sect. \ref{sec:reconstruction_results}). Indeed, the performance improvement brought by the MTW is lost due to a precipitation archive of poor quality. A slight improvement can be obtained for the second method relying on a proxy variable compared to the proportional distribution method, but it is still relatively small, and most of the benefit of the MTW is lost. A more recent reanalysis archive with more accurate moisture variables might produce better proxies.
 
-As demonstrated in the previous section, the performance improvement brought by the MTW is lost when using a simplistic precipitation time series.
-
-
-
-A slight improvement can be obtained compared to the proportional distribution method, but it is still relatively small, and most of the benefit of the MTW is again lost. A more recent reanalysis archive with more accurate moisture variables might produce better proxies.
-
-These attempts to transpose the MTW on the total archive highlight the importance of the actual rainfall chronology. The MTW is profitable, provided that the precipitation series are close to the observed one. Without precipitation series with an accurate sub-daily chronology, the introduction of a MTW remains fruitless.
+These attempts to transpose the MTW on the total archive highlight the importance of the actual rainfall chronology. The MTW is profitable, provided that the precipitation series are close to the observed one. Without precipitation series with an accurate sub-daily chronology, the introduction of a MTW does not improve the precipitation prediction.
 
 
 
 \conclusions  %% \conclusions[modified heading if necessary]
 
-The AM is most often based on a daily time step, due to the availability of long precipitation archives. However, it is unlikely that two analog synoptic situations, that evolve relatively quickly, would correspond optimally at the same hour of the day. It is thus more likely that a better match can be found at another time, which can change the selection of the analogs dates.
+The AM is most often based on a daily time step, due to the availability of long precipitation archives. However, it is unlikely that two analog synoptic situations, that evolve relatively quickly, would correspond optimally at the same hour of the day. It is thus probable that better matches can be found at another time, which can change the selection of the analogs dates.
 
-As \citet{Finet2008} had previously shown, the introduction of a MTW allows finding better analog situations in terms of the atmospheric circulation. It has been here demonstrated that the improvement of the S1 criteria values is growing with the rank of the analog. This is due to the accumulation of better analogs within the predicted distributions.
+As \citet{Finet2008} had previously shown, the introduction of a MTW allows finding better analog situations in terms of the atmospheric circulation. It has been here demonstrated that the improvement of the S1 criterion values is growing with the rank of the analog. This is due to the accumulation of better analogs within the predicted distributions.
 
-The improvement of the circulation analogy was found to be more important for heavy precipitation events, which are generally related to more dynamic atmospheric situations. This dynamic implies more specific circulation patterns that are evolving more rapidly. Thus, a MTW is found to be of particular interest in this kind of situation, and benefits the prediction of extreme precipitation events.
+The improvement of the circulation analogy was found to be more important for heavy precipitation events, which are generally related to more dynamic atmospheric situations and are less frequent in the archive. This dynamism implies more specific circulation patterns that are evolving more rapidly. Thus, a MTW is found to be of particular interest in this kind of situation, and benefits the prediction of heavier precipitation events.
 
 A seasonal effect has been highlighted, as the MTW is more profitable for winter months than summer. The reason is likely that the diurnal cycle has a bigger effect in summer than in winter, which results in better analogs at the same time of the day. The preference for the same hours in summer has been demonstrated, whereas 75\% of the analog situations are selected at a different time in winter.
 
-The impact of the MTW on the prediction performance has never been assessed before, due to the shortcoming of long precipitation series at a sub-daily time step. The impact of the MTW approach could be assessed on a 25 years time series with a high temporal resolution. After the introduction of the MTW, the performance scores increased of the same order of magnitude as if the length of the archive doubled, in this case study.
+The impact of the MTW on the prediction skill has never been assessed before, due to the shortcoming of long precipitation series at a sub-daily time step. The impact of the MTW approach was assessed on a 25 years time series with a high temporal resolution. After the introduction of the MTW, the performance scores increased of the same order of magnitude as if the length of the archive doubled, in this case study.
 
-The parameters were then calibrated again, using the MTW. Some parameters changed, the main difference being the number of analogs, which systematically and significantly increased compared to the original set. A wider selection of analog situations, containing those whose rank decreased, seemed profitable for the prediction performance. The number of good analogs is thus globally increased. This change seems to benefit mainly the prediction of days with small precipitation totals.
+The parameters were then calibrated again, using the MTW. Some parameters changed, the main difference being the number of analogs, which systematically and significantly increased compared to the original set. A wider selection of analog situations, containing those whose rank decreased, seemed profitable for the prediction performance. The number of good analogs is thus globally increased, in the same way as if the archive length increased. This change seems to benefit mainly the prediction of days with small precipitation totals.
 
-The importance of the quality of the precipitation archive was also demonstrated, as too simplistic reconstructions of 6-hourly time series lead to a loss of all the improvement brought by better analog situations identified by the MTW. The precipitation prediction is improved only when the precipitation chronology is close to the accurate one. Attempts to reconstruct longer time series based on a simplistic proportional distribution or using meteorological variables from the NCEP reanalysis 1 dataset as proxy did not succeed. Other reanalysis datasets could eventually perform better.
+The importance of the quality of the precipitation archive was also demonstrated, as too simplistic reconstructions of 6-hourly time series lead to a loss of all the improvement brought by the MTW. The precipitation prediction is improved only when the precipitation chronology is close to the accurate one. Attempts to reconstruct longer time series based on a simplistic proportional distribution or using meteorological variables from the NCEP reanalysis 1 dataset as proxy did not succeed. Other reanalysis datasets could eventually perform better.
 
-Perspectives of using the MTW rely on the availability of long precipitation series at a sub-daily time step and with high accuracy. First, these archives of high temporal resolution precipitation data are increasing now with time. The second source is the establishment of precipitation reanalysis at a country scale, or the use of reanalysis-driven RCMs (Regional Climate Models) or LAMs (Limited Area Models) on a long period. Even though outputs from these models might be biased or not accurate enough, information on the timing of the precipitation events could be useful in order to disaggregate stations timeseries. When precipitation data with accurate time distribution will be available, the use of a MTW in the AM should be considered for any application, especially when the prediction quality of extreme events is important.
+Perspectives of using the MTW rely on the availability of long precipitation series at a sub-daily time step and with high accuracy. First, these archives of high temporal resolution precipitation data are increasing now with time. Another possible source of such archives is the establishment of precipitation reanalysis at a country scale, or the use of reanalysis-driven RCMs (Regional Climate Models) or LAMs (Limited Area Models) on a long period. Even though outputs from these models might be biased or not accurate enough, information on the timing of the precipitation events could be useful in order to disaggregate stations time series. When precipitation data with accurate time distribution will be available, the use of a MTW in the AM should be considered for any application, especially when the prediction quality of extreme events is important.
 
 
 
 \begin{acknowledgements}
-Thanks to Dominique B\'{e}rod for his support and to Renaud Marty for his fruitful collaboration over the years. 
-
-Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton and the Water, Land and Sanitation Service of the Vaud Canton who financed the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me des Rivi\`{e}res Valaisannes et de leurs Effets) project which started this research. 
+Thanks to the Swiss Federal Office for Environment (FOEV), the Roads and Water courses Service, Energy and Water Power Service of the Wallis Canton and the Water, Land and Sanitation Service of the Vaud Canton who financed the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me des Rivi\`{e}res Valaisannes et de leurs Effets) project which started this research. Thanks to Dominique B\'{e}rod for his support.
 
 The fruitful collaboration with the Laboratoire d'Etude des Transferts en Hydrologie et Environnement of the Grenoble Institute of Technology (G-INP) was made possible thanks to the Herbette Foundation. 
 
@@ -405,7 +360,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 	\begin{center}
 		\includegraphics[width=15cm]{figures/changes_S1_analogues.pdf}
 	\end{center}
-	\caption{Changes in the S1 criteria distributions of (a) the $1^{st}$, (b) $5^{th}$, (c) $20^{th}$ and (d) $40^{th}$ analog ranks for the Ulrichen station, due to the MTW.}
+	\caption{Changes in the S1 criterion distributions of (a) the $1^{st}$, (b) $5^{th}$, (c) $20^{th}$ and (d) $40^{th}$ analog ranks for the Ulrichen station, due to the MTW.}
 	\label{fig:changes_S1_analogs}
 \end{figure*}
 
@@ -413,7 +368,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 	\begin{center}
 		\includegraphics[width=8.2cm]{figures/changes_S1_value_and_gain.pdf}
 	\end{center}
-	\caption{Synthesis of the changes in the S1 criteria, due to the MTW, for the Ulrichen station, depending on the ranks of the analog. (a) Quantiles of the S1 distributions with and without the MTW. (b) Quantiles of the relative improvements of the S1 criteria when using the MTW.}
+	\caption{Synthesis of the changes in the S1 criterion, due to the MTW, for the Ulrichen station, depending on the ranks of the analog. (a) Quantiles of the S1 distributions with and without the MTW. (b) Quantiles of the relative improvements of the S1 criterion when using the MTW.}
 	\label{fig:changes_S1}
 \end{figure}
 
@@ -421,7 +376,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 	\begin{center}
 		\includegraphics[width=8.3cm]{figures/changes_S1_precip_threshold.pdf}
 	\end{center}
-	\caption{Distribution of the median improvements of the S1 criteria, due to the MTW, depending on precipitation thresholds at the Ulrichen station.}
+	\caption{Distribution of the median improvements of the S1 criterion, due to the MTW, depending on precipitation thresholds at the Ulrichen station.}
 	\label{fig:changes_S1_precip_threshold}
 \end{figure}
 
@@ -429,7 +384,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 	\begin{center}
 		\includegraphics[width=7cm]{figures/changes_S1_seasons.pdf}
 	\end{center}
-	\caption{Seasonal effect on the median reduction of the S1 criteria for the Ulrichen station due to the MTW. DJF: winter, MAM: spring, JJA: summer SON: fall.}
+	\caption{Seasonal effect on the median reduction of the S1 criterion for the Ulrichen station due to the MTW. DJF: winter, MAM: spring, JJA: summer SON: fall.}
 	\label{fig:changes_S1_seasons}
 \end{figure}
 
@@ -443,7 +398,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 	\begin{center}
 		\includegraphics[width=8.1cm]{figures/changes_RMSE_value_and_gain.pdf}
 	\end{center}
-	\caption{Synthesis of the changes in the RMSE criteria, due to the MTW, for the Ulrichen station, depending on the ranks of the analog. (a) Quantiles of the RMSE distributions with and without the MTW. (b) Quantiles of the relative improvements of the RMSE criteria when using the MTW.}
+	\caption{Synthesis of the changes in the RMSE criterion, due to the MTW, for the Ulrichen station, depending on the ranks of the analog. (a) Quantiles of the RMSE distributions with and without the MTW. (b) Quantiles of the relative improvements of the RMSE criterion when using the MTW.}
 	\label{fig:changes_RMSE}
 \end{figure}
 
@@ -478,12 +433,12 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 
 
 \begin{table}[htb]
-	\caption{Parameters of the reference method on the atmospheric circulation (2Z). The first column is the level of analogy (0 for preselection), then comes the meteorological variable and its hour of observation (temporal window). The criteria used for the current level of analogy is then provided, as well as the number of analogs.}
+	\caption{Parameters of the reference method on the atmospheric circulation (2Z). The first column is the level of analogy (0 for preselection), then comes the meteorological variable and its hour of observation (temporal window). The criterion used for the current level of analogy is then provided, as well as the number of analogs.}
 	\footnotesize
 	\begin{center}
 		\begin{tabular}{ccccc}
 			\hline
-			Level & Variable & Hour & Criteria & Nb \\ 
+			Level & Variable & Hour & Criterion & Nb \\ 
 			\hline 
 			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
 			\hline 
@@ -501,7 +456,7 @@ NCEP reanalysis data provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, 
 	\begin{center}
 		\begin{tabular}{ccccc}
 			\hline 
-			Level & Variable & Hour & Criteria & Nb \\ 
+			Level & Variable & Hour & Criterion & Nb \\ 
 			\hline 
 			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
 			\hline 
