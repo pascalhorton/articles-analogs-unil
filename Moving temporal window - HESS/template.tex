@@ -79,24 +79,17 @@ However, attempts to reconstruct longer precipitation series of running 24~h-tot
 \introduction  %% \introduction[modified heading if necessary]
 \label{sec:introduction}
 
-The Analog Method (AM) is based on the principle that two relatively similar synoptic situations may produce relatively similar local effects \citep{Lorenz1956, Lorenz1969}. Multiple variations of the methods exist and listings can be found in \citet{BenDaoud2016}.
+Analog methods (AMs) are based on the hypothesis that two relatively similar synoptic situations may produce similar local effects \citep{Lorenz1956, Lorenz1969}. They are part of the statistical downscaling methods \cite{Maraun2010}. They consist in finding past situations that are similar, in terms of the atmospheric circulation or other synoptic predictors, to the target day of interest. Then, the local weather variables of interest (predictand) that were observed at the analog dates are used to construct a probabilistic prediction for the target day \citep{Duband1970, Bontron2005}. Multiple variations of the methods exist \citep[a non exhaustive listing can be found in][]{BenDaoud2016}. AMs are used for operational precipitation forecasting \citep[e.g.,][]{Guilbaud1997, Bontron2005, Hamill2006, Bliefernicht2010, Marty2012, Horton2012, Hamill2015, BenDaoud2016}, as well as precipitation downscaling in a climate perspective \citep[e.g.,][]{Radanovics2013, Chardon2014, Dayon2015}. Other applications focus on temperatures \citep{Radinovic1975, Woodcock1980, Kruizinga1983, DelleMonache2013, Caillouet2016}, wind \citep{Gordon1987, DelleMonache2013, DelleMonache2011, Vanvyve2015, Alessandrini2015, Junk2015, Junk2015c}, solar power \citep{Alessandrini2015a, Bessa2015}, snow avalanches \citep{Obled1980, Bolognesi1993}, insolation \citep{Bois1981}, and the trajectories of tropical cyclones \citep{Keenan1981, Sievers2000, Fraedrich2003}.
 
-The AM is usually implemented with a daily time step, due to the availability of long precipitation archives that have no equivalent at a finer resolution. Therefore, the analog situations are assessed on the basis of a daily time step, by comparing predictors at fixed hours of the day. However, it can be expected that the analogy of the synoptic situations does not occur systematically at the same time of the day, and that better candidates can be found by shifting to a different hour. On this assumption, a moving time window (MTW) was introduced to allow searching for candidates at different hours of the day.
+AMs are usually implemented with a daily time step (see references above), due to the availability of long precipitation archives that have no equivalent at a finer resolution. Therefore, the analog situations are assessed on the basis of a daily time step, by comparing predictors at fixed hours of the day. However, it can be expected that the analogy of the synoptic situations does not occur systematically at the same time of the day, and that better candidates can be found by shifting to a different hour. On this assumption, a moving time window (MTW) was introduced to allow searching for candidates at different hours of the day. Previous tests showed the benefit, in terms of analogy criterion values, of searching for analog synoptic situations at a finer time step, but without assessing the impact on the prediction skills \citep{Finet2008}.
 
-Previous tests showed the benefit, in terms of analogy criterion values, of searching for analog synoptic situations at a finer time step, but without assessing the impact on the prediction skills \citep{Finet2008}. 
+The time step at which the MTW is applied depends on the time step of the predictor variables. In the present study, a 6-hourly reanalysis dataset is used, which is a standard temporal resolution. Thus, additionally to eventually finding better analogs, the MTW also increases the archive length. However, despite having four times more candidate situations, the quantity of new information is not expected to be as important, due to significant autocorrelation between successive situations at a 6-hourly time step. The quality of the analogy depends on the archive length to a certain extent \cite{Ruosteenoja1988, Vandendool1994}. Thus, the reduction of the archive length necessary to the MTW, due to the reduced availability of sub-daily precipitation time series, is expected to decrease the AM performance, whereas the archive inflation brought by the MTW is expected to contribute to an increase in performance.
 
+Section \ref{sec:data_methods} presents the context of the present study as well as data and methods, including the proposed MTW technique. The impact of the reduction of the archive and the improvements brought by the MTW are assessed in Sect. \ref{sec:results}. The benefit of introducing a MTW was assessed first in regards to the analogy criterion improvement (Sect. \ref{sec:influence_criteria}), and then in terms of precipitation prediction skill (Sect. \ref{sec:influence_scores}). Finally, the results are discussed in Sect. \ref{sec:discussion}.
 
-The MTW is explained in Sect. \ref{sec:mtw}. As this method requires sub-daily time series, the available archive length is reduced compared to more common daily measurements, which has some consequences on the performance score (Sect. \ref{sec:archive_reduction}). The benefit of introducing a MTW was assessed first in regards to the analogy criterion improvement (Sect. \ref{sec:influence_criteria}), and then in terms of precipitation prediction skill (Sect. \ref{sec:influence_scores}). Finally, the results are discussed in Sect. \ref{sec:discussion}.
-
-
-
-\cite{Ruosteenoja1988}
-
-
-
-%TODO: complete !!
 
 \section{Data and methods}
+\label{sec:data_methods}
 
 \subsection{Study area and data}
 \label{sec:data}
@@ -186,7 +179,7 @@ The calibration is thus done in successive steps, on a limited number of paramet
 
 
 \section{Results}
-
+\label{sec:results}
 
 \subsection{Consequences of the archive reduction}
 \label{sec:archive_reduction}
