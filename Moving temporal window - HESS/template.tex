@@ -19,10 +19,7 @@
 \usepackage[utf8]{inputenc}
 
 
-%TODO: check figs and table captions
-%TODO: order figs
 %TODO: english editing
-%TODO: analogs
 %TODO: perspective Obled: MTW without precip -> indicator
 
 
@@ -88,7 +85,7 @@ Analog methods (AMs) are based on the hypothesis that two relatively similar syn
 
 The spatial transferability of the method is analyzed in \citet{Chardon2014}. A great advantage of AMs is that they create realistic precipitation patterns, as they are based on observed situations, with consistent spatial distribution, as long as the analog dates chosen for a region are the same. The temporal transferability has also been the topic of recent studies, may it be for past or future climates \citep{Dayon2015, Caillouet2016}.
 
-\citet{Ruosteenoja1988} and \citet{Vandendool1994} have analyzed the influence of the archive length on the quality of the analogy. They highlight a three-way relationship between the quality of the analogy, the archive length and the size of the spatial domain (or degrees of freedom): errors increase with a bigger domain, but decrease with a longer archive. They demonstrate that it is not possible to find good analogues on the whole northern hemisphere with a 100 years archive (and even for much higher orders of magnitude). For that reason, smaller spatial windows are always considered to search for analogues, and the archive length is maximized. 
+\citet{Ruosteenoja1988} and \citet{Vandendool1994} have analyzed the influence of the archive length on the quality of the analogy. They highlight a three-way relationship between the quality of the analogy, the archive length and the size of the spatial domain (or degrees of freedom): errors increase with a bigger domain, but decrease with a longer archive. They demonstrate that it is not possible to find good analogs on the whole northern hemisphere with a 100 years archive (and even for much higher orders of magnitude). For that reason, smaller spatial windows are always considered to search for analogs, and the archive length is maximized. 
 
 Thus, due to the availability of long precipitation archives at a daily time step that have no equivalent at a finer resolution, AMs are usually implemented on a daily basis (see references above). Therefore, the analog situations are assessed by comparing predictors at fixed hours of the day. However, it can be expected that the analogy of the synoptic situations does not occur systematically at the same time of the day, and that better candidates can be found by shifting to a different hour. On this assumption, a moving time window (MTW) was introduced to allow searching for candidates at different hours of the day. Previous tests showed the benefit, in terms of analogy criterion values, of searching for analog synoptic situations at a finer time step, but without assessing the impact on the prediction skills \citep{Finet2008}.
 
@@ -378,11 +375,31 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 	\label{fig:principle}
 \end{figure}
 
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=8cm]{figures/illustration_disaggregation.pdf}
+	\end{center}
+	\caption{Illustration of the generation of 24~h-totals moving averages by means of a proportional distribution. The colours refer to the corresponding day of the daily time series.}
+	\label{fig:illustration_disaggregation}
+\end{figure}
+
+\begin{figure}[htb]
+	\includegraphics[width=8.3cm]{figures/plots_CRPSS_2Z.pdf}
+	\caption{Performance score (CRPSS, \%) of the AM on the atmospheric circulation, at the different stations, for (dashed) the full archive, i.e. 1961-2008, (yellow) the reduced archive, i.e. 1982-2007, (blue) the introduction of the MTW on the reduced archive, and (green) the recalibrated parameters of the AM with the MTW.}
+	\label{fig:plots_CRPSS_2Z}
+\end{figure}
+
+\begin{figure}[htb]
+	\includegraphics[width=8.3cm]{figures/plots_CRPSS_2Z-2MI.pdf}
+	\caption{Same as Figure \ref{fig:plots_CRPSS_2Z}, but for the analog method with a second level on the moisture variables.}
+	\label{fig:plots_CRPSS_2Z-2MI}
+\end{figure}
+
 \begin{figure*}[htb]
 	\begin{center}
 		\includegraphics[width=15cm]{figures/changes_S1_analogues.pdf}
 	\end{center}
-	\caption{Changes in the S1 criterion distributions of (a) the $1^{st}$, (b) $5^{th}$, (c) $20^{th}$ and (d) $40^{th}$ analog ranks for the Ulrichen station, due to the MTW.}
+	\caption{Changes in the S1 criterion distributions, due to the MTW, of (a) the $1^{st}$, (b) $5^{th}$, (c) $20^{th}$ and (d) $40^{th}$ analog ranks for the Ulrichen station.}
 	\label{fig:changes_S1_analogs}
 \end{figure*}
 
@@ -390,7 +407,7 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 	\begin{center}
 		\includegraphics[width=8.2cm]{figures/changes_S1_value_and_gain.pdf}
 	\end{center}
-	\caption{Synthesis of the changes in the S1 criterion, due to the MTW, for the Ulrichen station, depending on the ranks of the analog. (a) Quantiles of the S1 distributions with and without the MTW. (b) Quantiles of the relative improvements of the S1 criterion when using the MTW.}
+	\caption{Synthesis of the changes in the S1 criterion, due to the MTW, for the Ulrichen station, depending on the rank of the analog. (a) Quantiles of the S1 distributions with and without the MTW. (b) Quantiles of the relative improvements of the S1 criterion when using the MTW.}
 	\label{fig:changes_S1}
 \end{figure}
 
@@ -411,29 +428,11 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 \end{figure}
 
 \begin{figure}[htb]
-	\includegraphics[width=8.3cm]{figures/hours_selection_per_season.pdf}
-	\caption{Distribution of the predictors hours in the selected analog dates depending on the season, for the Ulrichen station.}
-	\label{fig:hours_selection_per_season}
-\end{figure}
-
-\begin{figure}[htb]
 	\begin{center}
 		\includegraphics[width=8.1cm]{figures/changes_RMSE_value_and_gain.pdf}
 	\end{center}
-	\caption{Synthesis of the changes in the RMSE criterion, due to the MTW, for the Ulrichen station, depending on the ranks of the analog. (a) Quantiles of the RMSE distributions with and without the MTW. (b) Quantiles of the relative improvements of the RMSE criterion when using the MTW.}
+	\caption{Synthesis of the changes in the RMSE criterion, due to the MTW, for the Ulrichen station, depending on the rank of the analog. (a) Quantiles of the RMSE distributions with and without the MTW. (b) Quantiles of the relative improvements of the RMSE criterion when using the MTW.}
 	\label{fig:changes_RMSE}
-\end{figure}
-
-\begin{figure}[htb]
-	\includegraphics[width=8.3cm]{figures/plots_CRPSS_2Z.pdf}
-	\caption{Performance score (CRPSS, \%) of the AM on the atmospheric circulation, at the different stations, for (dashed) the full archive, i.e. 1961-2008, (yellow) the reduced archive, i.e. 1982-2007, (blue) the introduction of the MTW on the reduced archive, and (green) the recalibrated parameters of the AM with the MTW.}
-	\label{fig:plots_CRPSS_2Z}
-\end{figure}
-
-\begin{figure}[htb]
-	\includegraphics[width=8.3cm]{figures/plots_CRPSS_2Z-2MI.pdf}
-	\caption{Same as Figure \ref{fig:plots_CRPSS_2Z}, but for the analog method with a second level on the moisture variables.}
-	\label{fig:plots_CRPSS_2Z-2MI}
 \end{figure}
 
 \begin{figure}[htb]
@@ -443,11 +442,9 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 \end{figure}
 
 \begin{figure}[htb]
-	\begin{center}
-		\includegraphics[width=8cm]{figures/illustration_disaggregation.pdf}
-	\end{center}
-	\caption{Illustration of the generation of 24~h-totals moving averages by means of a proportional distribution. The colours refer to the corresponding day of the daily time series.}
-	\label{fig:illustration_disaggregation}
+	\includegraphics[width=8.3cm]{figures/hours_selection_per_season.pdf}
+	\caption{Distribution of the predictors hours in the selected analog dates depending on the season, for the Ulrichen station.}
+	\label{fig:hours_selection_per_season}
 \end{figure}
 
 
@@ -515,7 +512,7 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 \end{table}
 
 \begin{table}[htb]
-	\caption{Values of the CRPSS (\%) skill score for the original and the recalibrated parameters (with the sequential method, as described in Sect. \ref{sec:introduction}) using the MTW approach on the disaggregated precipitation time series (short period) by means of the proportional distribution.}
+	\caption{Values of the CRPSS (\%) score for the original and the recalibrated parameters (with the sequential method, as described in Sect. \ref{sec:calibration}) using the MTW approach on the disaggregated precipitation time series (short period) by means of the proportional distribution.}
 	\begin{center}
 		\begin{tabular}{l c c c c}
 			\hline
