@@ -18,6 +18,7 @@
 % Hydrology and Earth System Sciences (hess)
 
 \usepackage[utf8]{inputenc}
+\usepackage{scrextend}
 
 
 \begin{document}
@@ -78,7 +79,7 @@
 	\introduction  %% \introduction[modified heading if necessary]
 	\label{sec:introduction}
 	
-	Analogue methods (AMs) are based on the hypothesis that two relatively similar synoptic situations may produce similar local effects \citep{Lorenz1956, Lorenz1969}. They are statistical downscaling methods \citep{Maraun2010} and consist of finding past situations that are similar in terms of the atmospheric circulation or other synoptic predictors to the target day of interest. The local weather variables of interest (predictand) that were observed at the analogue dates are used to construct a probabilistic prediction for the target day \citep{Duband1970, Zorita1999}. Multiple variations of the method exist \citep[a non-exhaustive listing can be found in][]{BenDaoud2016}. The AMs are used for operational precipitation forecasting, either in the context of flood forecasting or hydropower production \citep[e.g.,][]{Guilbaud1997, Bontron2005, Hamill2006, Desaint2008a, GarciaHernandez2009b, Bliefernicht2010, Marty2010, Marty2012, Horton2012, Obled2014, Hamill2015, BenDaoud2016}, as well as in precipitation downscaling from a climate perspective \citep[e.g.][]{Radanovics2013, Chardon2014, Dayon2015}. Other applications focus on temperatures \citep{Radinovic1975, Woodcock1980, Kruizinga1983, DelleMonache2013, Caillouet2016}, wind \citep{Gordon1987, DelleMonache2013, DelleMonache2011, Vanvyve2015, Alessandrini2015, Junk2015, Junk2015c}, solar power \citep{Alessandrini2015a, Bessa2015}, snow avalanches \citep{Obled1980, Bolognesi1993}, insolation \citep{Bois1981}, and the trajectories of tropical cyclones \citep{Keenan1981, Sievers2000, Fraedrich2003}.
+	Analogue methods (AMs) are based on the hypothesis that two relatively similar synoptic situations may produce similar local effects \citep{Lorenz1956, Lorenz1969}. They are statistical downscaling methods \citep{Maraun2010} and consist of finding past situations that are similar in terms of the atmospheric circulation or other synoptic predictors to the target day of interest. The local weather variables of interest (predictand) that were observed at the analogue dates are used to construct a probabilistic prediction for the target day \citep{Duband1970, Zorita1999}. Multiple variations of the method exist \citep[a non-exhaustive listing can be found in][]{BenDaoud2016}. The AMs are used for operational precipitation forecasting, either in the context of weather forecasting, flood forecasting, or hydropower production \citep[e.g.,][]{Guilbaud1997, Bontron2005, Hamill2006, Desaint2008a, GarciaHernandez2009b, Bliefernicht2010, Marty2010, Marty2012, Horton2012, Obled2014, Hamill2015, BenDaoud2016}, as well as in precipitation downscaling from a climate perspective \citep[e.g.][]{Radanovics2013, Chardon2014, Dayon2015}. Other applications focus on temperatures \citep{Radinovic1975, Woodcock1980, Kruizinga1983, DelleMonache2013, Caillouet2016}, wind \citep{Gordon1987, DelleMonache2013, DelleMonache2011, Vanvyve2015, Alessandrini2015, Junk2015, Junk2015c}, solar power \citep{Alessandrini2015a, Bessa2015}, snow avalanches \citep{Obled1980, Bolognesi1993}, insolation \citep{Bois1981}, and the trajectories of tropical cyclones \citep{Keenan1981, Sievers2000, Fraedrich2003}.
 	
 	The spatial transferability of the method is analysed in \citet{Chardon2014}. A great advantage of AMs is that they create realistic precipitation patterns, since they are based on observed situations with consistent spatial distribution, as long as the analogue dates chosen for a region are the same. Their temporal transferability has also been the topic of recent studies for past or future climates \citep{Dayon2015, Caillouet2016}.
 	
@@ -107,13 +108,28 @@
 	\subsection{The considered analogue method}
 	\label{sec:analog_method}
 	
-	The first considered AM is based on the analogy of the atmospheric circulation only \citep[Table \ref{table:method_2Z},][]{Obled2002, Bontron2005, Marty2012}. Searching for analogue situations to a target day starts by a seasonal stratification through a preselection step of the potential candidates for analogy. The restriction is a search for analogue days within a 4-month window centred on the target date for every year of the archive. The similarity of the atmospheric circulation of the target date with every day of the preselection is assessed by processing the \citet{Teweles1954} score (S1) that is a comparison of gradients on geopotential heights over a certain spatial window and at certain hours. With smaller S1 values, there is greater similarity in the pressure fields.
+	The first considered AM is based on the analogy of the atmospheric circulation only \citep[Table \ref{table:method_2Z},][]{Obled2002, Bontron2005, Marty2012}. Searching for analogue situations to a target day starts by a seasonal stratification through a preselection step of the potential candidates for analogy. The restriction is a search for analogue days within a 4-month window centred on the target date for every year of the archive. The similarity of the atmospheric circulation of the target date with every day of the preselection is assessed by processing the \citet{Teweles1954} score (S1) that is a comparison of gradients on geopotential heights over a certain spatial window and at certain hours:
+	
+	\begin{equation}
+	\label{eq:S1}
+	S_{1}=100 \frac {\displaystyle \sum_{i}^{m} \vert \Delta\hat{z}_{i} - \Delta z_{i} \vert}
+	{\displaystyle \sum_{i}^{m} max( \vert \Delta\hat{z}_{i} \vert , \vert \Delta z_{i} \vert ) }
+	\end{equation}
+	where $\Delta \hat{z}_{i}$ is the forecast geopotential height difference between the \textit{i}th pair of adjacent points from the grid of the target situation, $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation, and $m$ is the number of pairs of adjacent points in the grid. The differences are processed separately in both directions. With smaller S1 values, there is greater similarity in the pressure fields.
 	
 	The predictor variables extracted from reanalysis datasets are considered at different hours of the day. Based on \citet{Bontron2005}, geopotential heights are compared at 1000~hPa (Z1000) at 12~h~UTC and 500~hPa (Z500) at 24~h~UTC. The time of the day at which the predictors are selected is found by \citet{Bontron2004} to have a significant influence.
 	
 	Then, $N_{1}$ dates with the lowest values of S1 are considered as analogues to the target day, $N_{1}$ being a parameter to calibrate (see Sect. \ref{sec:calibration}). Finally, the daily observed precipitation amount of the corresponding dates provide the empirical conditional distribution considered as the probabilistic prediction for the target day. This method will be named 2Z.
 	
-	The second reference method (2Z-2MI, Table \ref{table:method_2Z-2MI}) adds a subsequent level of analogy with moisture variables, compared by means of the root-mean-square error (RMSE). The additional predictor is a moisture index composed of the product of the total precipitable water (TPW) with the relative humidity at 850~hPa (RH850) \citep{Bontron2004}. When adding a second level of analogy, $N_{2}$ dates are subsampled from the $N_{1}$ analogues on the atmospheric circulation, resulting in a smaller number of analogue situations. When a second level of analogy is added, a higher number of $N_{1}$ analogues is kept on the first level.
+	The second reference method (2Z-2MI, Table \ref{table:method_2Z-2MI}) adds a subsequent level of analogy with moisture variables, compared by means of the root-mean-square error (RMSE):
+	
+	\begin{equation}
+	\label{eq:RMSE}
+	E_{RMS}= \sqrt[]{ \frac{1}{n} \sum_{i=1}^{n}(\hat{v}_{i} - v_{i})^{2}} 
+	\end{equation}
+	where $\hat{v}_{i}$ is the \textit{i}th predictor value from the grid of the target situation, $v_{i}$ is the corresponding observed value in the candidate situation, and $n$ is the number of points in the grid.
+	
+	The additional predictor is a moisture index composed of the product of the total precipitable water (TPW) with the relative humidity at 850~hPa (RH850) \citep{Bontron2004}. When adding a second level of analogy, $N_{2}$ dates are subsampled from the $N_{1}$ analogues on the atmospheric circulation, resulting in a smaller number of analogue situations. When a second level of analogy is added, a higher number of $N_{1}$ analogues is kept on the first level.
 	
 	More complex AMs exist with additional predictors \citep[see e.g.][]{Horton2012a, BenDaoud2016, Caillouet2016}. The MTW can also be applied to these, as they generally rely on a similarity of the atmospheric circulation in the first level of analogy. However, it is easier to interpret the impact of the MTW using more basic methods.
 	
@@ -155,13 +171,13 @@
 	
 	The first technique was a proportional distribution, where the observed daily precipitations were considered constant during the measuring period (6~h~UTC to 6~h~UTC the next day). Proportional parts of the original daily time series were allocated into a new moving average of 24~h-totals (Fig. \ref{fig:illustration_disaggregation}). 
 	
-	The second approach aimed at getting closer to the chronology of the actual precipitation by relying on some informative variables during the reconstruction procedure. Data from the NCEP/NCAR reanalysis 1 (Sect. \ref{sec:data}) were used for this purpose, despite their rough resolution. Precipitable water and relative humidity (at 1000~hPa, 925~hPa or 850~hPa) were assessed at the four points surrounding the catchment, and a time lapse between both series was allowed to take into account the significant distance separating the weather stations and the reanalysis grid point. The best proxy variable was identified by means of a correlation analyses (on non-zero values) with the 6-hourly precipitation time series over the period 1982-2007. Once the best proxy had been selected, its temporal profile was used in order to disaggregate the daily precipitation time series.
+	The second approach aimed at getting closer to the chronology of the actual precipitation by relying on some informative variables during the reconstruction procedure. Data from the NCEP/NCAR reanalysis 1 (Sect. \ref{sec:data}) were used for this purpose, despite their rough resolution (2.5\degree). Precipitable water and relative humidity (at 1000~hPa, 925~hPa or 850~hPa) were assessed at the four points surrounding the catchment, and a time lapse between both series was allowed to take into account the significant distance separating the weather stations and the reanalysis grid point. The best proxy variable was identified by means of a correlation analyses (on non-zero values) with the 6-hourly precipitation time series over the period 1982-2007. Once the best proxy had been selected, its temporal profile was used in order to disaggregate the daily precipitation time series.
 	
 	
 	\subsection{Calibration of the analogue method}
 	\label{sec:calibration}
 	
-	The semi-automatic sequential procedure elaborated by \citet{Bontron2004} was used to calibrate the AM \cite[see also ][]{Radanovics2013, BenDaoud2016}. The analogy levels (e.g. the atmospheric circulation or moisture index) are calibrated sequentially. The parameters calibrated by this approach, for every level of analogy, are the spatial windows on which the predictors are compared and the number of analogues. The procedure consists of the following steps \citep{Bontron2004}:
+	The semi-automatic sequential procedure elaborated by \citet{Bontron2004} was used to calibrate the AM \cite[see also ][]{Radanovics2013, BenDaoud2016}. The analogy levels (e.g. the atmospheric circulation or moisture index) are calibrated sequentially. The parameters calibrated by this approach, for every level of analogy, are the spatial windows on which the predictors are compared and the number of analogues. The procedure, as defined by \citet{Bontron2004}, consists of the following steps:
 	
 	\begin{enumerate}
 		\item Manual selection of the following parameters:
@@ -193,7 +209,7 @@
 	
 	The performance loss resulting from the reduction of a 47~year archive (1961 to 2008, corresponding to the daily time series) to 25~years (1982 to 2007, corresponding to the hourly time series in Sect. \ref{sec:mtw}) was assessed with the original method without MTW. Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated on the original archive (see resulting analogue numbers in Tables \ref{table:analog_nb}) and were used thereafter.
 	
-	The impact of the archive reduction can be seen in Fig. \ref{fig:plots_CRPSS_2Z} for the 2Z method and in Fig. \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z-2MI method. As expected, a loss of performance was observed for each station, except for that of Aigle, which seemed relatively indifferent to this change. This loss was globally significant, with up to -1.89 points for Visp and the 2Z method. 
+	The impact of the archive reduction can be seen in Fig. \ref{fig:plots_CRPSS_2Z} for the 2Z method and in Fig. \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z-2MI method. As expected, a loss of performance was observed for each station, except for that of Aigle, which seemed relatively indifferent to this change. This loss was globally significant, with up to -1.89 points (\% of CRPSS) for Visp and the 2Z method. 
 	
 	
 	\subsection{Influence on the analogy criterion}
@@ -228,7 +244,7 @@
 	\subsection{Impact on prediction skill}
 	\label{sec:influence_scores}
 	
-	The new performance scores (CRPSS) are provided in Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z and 2Z-2MI methods, respectively, for the reduced archive (1982--2007). The gains relative to the static approach on the same archive ranged from 0.57 to 2.14 points for the 2Z method and from 1.53 to 2.20 points for the 2Z-2MI method. 
+	The new performance scores (CRPSS) are provided in Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z and 2Z-2MI methods, respectively, for the reduced archive (1982--2007). The gains relative to the static approach on the same archive ranged from 0.57 to 2.14 points (\% of CRPSS) for the 2Z method and from 1.53 to 2.20 points for the 2Z-2MI method. 
 	
 	
 	\subsubsection{Improvement per precipitation classes}
@@ -290,7 +306,7 @@
 	
 	After the recalibration of the AMs with the MTW, the optimal analogue numbers were significantly higher than in the original methods (see Sect. \ref{sec:recalibration} and Fig. \ref{table:analog_nb}). As shown in Fig. \ref{fig:changes_S1}, the improvement of the S1 criterion grew along with the rank of the analogue, which shows an accumulation of better analogue situations in the distributions. It seems profitable to widen the selection of analogues in order to also keep some whose rank has increased, as they appear to be relevant to the prediction of the precipitation values. The number of good analogues was globally increased.
 	
-	A higher number of analogues generally means, with an archive of fixed length, a poorer analogy. Indeed, when the choice of the predictors or the parameters are improved, leading to a better prediction, the optimal number of analogue situations decreases. However, when the length of the archive increases, the optimal number of analogues increases too for a better performance up to a certain threshold \citep[][]{Bontron2004, Hamill2006a }. The observed increase in the number of analogue situations with the MTW resulted in better performance skills for a given method, as it can be seen as an inflation of the archive. However, if new relevant predictors were added to the method, the number of analogues would then decrease.
+	A higher number of analogues generally means, with an archive of fixed length, a poorer analogy. Indeed, when the choice of the predictors or the parameters are improved, leading to a better prediction, the optimal number of analogue situations decreases. However, when the length of the archive increases, the optimal number of analogues increases too for a better performance up to a certain threshold \citep[][]{Bontron2004, Hamill2006a}. The observed increase in the number of analogue situations with the MTW resulted in better performance skills for a given method, as it can be seen as an inflation of the archive. However, if new relevant predictors were added to the method, the number of analogues would then decrease.
 	
 	
 	\subsection{Why not just make 6-hourly predictions?}
@@ -335,6 +351,28 @@
 	
 	
 	
+	\appendix
+	\section{Acronyms}    %% Appendix A
+	
+	\begin{labeling}{2Z-2MI}
+		\item [2Z] Name of the analogue method of the atmospheric circulation
+		\item [2Z-2MI] Name of the analogue method composed of a first level on the atmospheric circulation and a second level on a moisture index
+		\item [AM] Analog method
+		\item [CRPS] Continuous ranked probability score
+		\item [CRPSS] Continuous ranked probability skill score
+		\item [MTW] Moving time window
+		\item [NCAR] National Center for Atmospheric Research
+		\item [NCEP] National Center for Environmental Prediction
+		\item [RH850] Relative humidity at 850 hPa
+		\item [RMSE] Root-mean-square error
+		\item [S1] Teweles and Wobus (1954) score
+		\item [TPW] Total precipitable water
+		\item [Z1000] Geopotential height at 1000 hPa
+		\item [Z500] Geopotential height at 500 hPa
+	\end{labeling}
+	
+	
+	
 	\begin{acknowledgements}
 		We thank the Swiss Federal Office for Environment (FOEV), the Roads and Water Courses Service, Energy and Water Power Service of the Wallis Canton, and the Water, Land, and Sanitation Service of the Vaud Canton which financed the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me des Rivi\`{e}res Valaisannes et de leurs Effets) project that started this research. Thanks to Dominique B\'{e}rod for his support.
 		
@@ -368,7 +406,7 @@
 		\begin{center}
 			\includegraphics[width=8.3cm]{figures/illustration_moving_window.pdf}
 		\end{center}
-		\caption{Illustration of the principle of a moving time window. The larger horizontal bars represent the 24~h precipitation totals.}
+		\caption{Illustration of the principle of a moving time window. The target situation is the same for the conventional approach and the MTW, while the candidate situations are four times more numerous with the MTW. The larger horizontal bars represent the 24~h precipitation totals.}
 		\label{fig:principle}
 	\end{figure}
 	
