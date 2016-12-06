@@ -471,7 +471,7 @@ dataset with a 6-hourly temporal resolution, 17 pressure levels , and a spatial 
 %DIFDELCMD < %%%
 \DIFdelend Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated \DIFdelbegin \DIFdel{using AtmoSwing \mbox{%DIFAUXCMD
 \citep{Horton2016} }%DIFAUXCMD
-}\DIFdelend on the original archive (\DIFdelbegin \DIFdel{Tables \ref{table:params_2Z} and \ref{table:params_2Z-2MI}) and will be }\DIFdelend \DIFaddbegin \DIFadd{see resulting analogue numbers in Tables \ref{table:analog_nb}) and were }\DIFaddend used thereafter.
+}\DIFdelend on the original archive (\DIFdelbegin \DIFdel{Tables \ref{table:params_2Z} and \ref{table:params_2Z-2MI}) and will be }\DIFdelend \DIFaddbegin \DIFadd{see resulting analogue numbers in Table \ref{table:analog_nb}) and were }\DIFaddend used thereafter.
 
 	The impact of the \DIFdelbegin \DIFdel{change in the archive length is summarized in Table \ref{table:loss_reduction} for both }\DIFdelend \DIFaddbegin \DIFadd{archive reduction can be seen in Fig. \ref{fig:plots_CRPSS_2Z} for the }\DIFaddend 2Z \DIFdelbegin \DIFdel{and }\DIFdelend \DIFaddbegin \DIFadd{method and in Fig. \ref{fig:plots_CRPSS_2Z-2MI} for the }\DIFaddend 2Z-2MI \DIFdelbegin \DIFdel{methods}\DIFdelend \DIFaddbegin \DIFadd{method}\DIFaddend . As expected, a loss of performance \DIFdelbegin \DIFdel{can be }\DIFdelend \DIFaddbegin \DIFadd{was }\DIFaddend observed for each station, except for that of Aigle, which \DIFdelbegin \DIFdel{seems }\DIFdelend \DIFaddbegin \DIFadd{seemed }\DIFaddend relatively indifferent to this change. This loss \DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{was }\DIFaddend globally significant, with up to \DIFdelbegin \DIFdel{-1.89 points }\DIFdelend \DIFaddbegin \DIFadd{\textendash 1.89 points (\% of CRPSS) }\DIFaddend for Visp and the 2Z method. 
 
@@ -1004,490 +1004,36 @@ showed that the sensitivity of the method to the reanalysis dataset is rather sm
 
 	\begin{table}[htb]
 		\caption{\DIFdelbeginFL \DIFdelFL{Calibrated parameters (spatial windows and }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Optimal }\DIFaddendFL number of analogues \DIFdelbeginFL \DIFdelFL{) for }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{(of }\DIFaddendFL the \DIFaddbeginFL \DIFaddFL{first and second level of }\DIFaddendFL analogy\DIFaddbeginFL \DIFaddFL{, respectively, $N_{1}$ and $N_{2}$) of the method based }\DIFaddendFL on the \DIFdelbeginFL \DIFdelFL{geopotential at 500~hPa and 1000~hPa }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{atmospheric circulation only }\DIFaddendFL (method 2Z) and \DIFdelbeginFL \DIFdelFL{skill score (\%) of }\DIFdelendFL the method \DIFaddbeginFL \DIFaddFL{with a second level of analogy with moisture variables (2Z-2MI) }\DIFaddendFL on the full archive \DIFaddbeginFL \DIFaddFL{(Standard), and after recalibration using the MTW (MTW-r)}\DIFaddendFL .}
+		
 		\begin{center}
-			\DIFdelbeginFL %DIFDELCMD < \begin{tabular}{l c c c c }
-%DIFDELCMD < 			%%%
-\DIFdelendFL \DIFaddbeginFL \begin{tabular}{l c c c c c c }
-				\DIFaddendFL \hline
-				\DIFdelbeginFL \DIFdelFL{Station }\DIFdelendFL \DIFaddbeginFL \multirow{3}{*}{Station} \DIFaddendFL & \DIFdelbeginFL \DIFdelFL{Long (° E) }\DIFdelendFL \DIFaddbeginFL \multicolumn{3}{c}{Standard} \DIFaddendFL & \DIFdelbeginFL \DIFdelFL{Lat (° N) }%DIFDELCMD < & %%%
-\DIFdelFL{$N_{1}$ }%DIFDELCMD < & %%%
-\DIFdelFL{$S_{\text{SCRP}}$ }\DIFdelendFL \DIFaddbeginFL \multicolumn{3}{c}{MTW-r} \DIFaddendFL \\
-				\DIFdelbeginFL %DIFDELCMD < \hline
-%DIFDELCMD < 			%%%
-\DIFdelFL{Ulrichen }\DIFdelendFL & \DIFdelbeginFL \DIFdelFL{0 $\rightarrow$ 17.5 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{2Z }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{42.5 $\rightarrow$ 47.5 }\DIFdelendFL \DIFaddbeginFL \multicolumn{2}{c}{2Z-2MI} \DIFaddendFL & \DIFdelbeginFL \DIFdelFL{40 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{2Z }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{30.73 }\DIFdelendFL \DIFaddbeginFL \multicolumn{2}{c}{2Z-2MI}\DIFaddendFL \\
-				\DIFdelbeginFL \DIFdelFL{Zermatt }\DIFdelendFL & \DIFdelbeginFL \DIFdelFL{0 $\rightarrow$ 20 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$N_{1}$ }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{37.5 $\rightarrow$ 50 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$N_{1}$ }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{35 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$N_{2}$ }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{23.87 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Visp }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{$N_{1}$ }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{-2.5 $\rightarrow$ 20 }%DIFDELCMD < & %%%
-\DIFdelFL{40 $\rightarrow$ 47.5 }%DIFDELCMD < & %%%
-\DIFdelFL{30 }%DIFDELCMD < & %%%
-\DIFdelFL{25.11 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Montana }%DIFDELCMD < & %%%
-\DIFdelFL{-2.5 $\rightarrow$ 17.5 }%DIFDELCMD < & %%%
-\DIFdelFL{40 $\rightarrow$ 47.5 }%DIFDELCMD < & %%%
-\DIFdelFL{40 }%DIFDELCMD < & %%%
-\DIFdelFL{32.55 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Sion }%DIFDELCMD < & %%%
-\DIFdelFL{-2.5 $\rightarrow$ 17.5 }%DIFDELCMD < & %%%
-\DIFdelFL{40 $\rightarrow$ 47.5 }%DIFDELCMD < & %%%
-\DIFdelFL{40 }%DIFDELCMD < & %%%
-\DIFdelFL{26.23 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Aigle }%DIFDELCMD < & %%%
-\DIFdelFL{-5 $\rightarrow$ 17.5 }%DIFDELCMD < & %%%
-\DIFdelFL{40 $\rightarrow$ 50 }%DIFDELCMD < & %%%
-\DIFdelFL{50 }%DIFDELCMD < & %%%
-\DIFdelFL{30.59 }%DIFDELCMD < \\ 
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 		\end{tabular}
-%DIFDELCMD < 	\end{center}
-%DIFDELCMD < 	\label{table:params_2Z}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
-%DIFDELCMD < \begin{table}[htb]
-%DIFDELCMD < 	%%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{Parameters of the moisture variables from the 2Z-2MI method and the corresponding skill score (\%) on the complete archive. The parameters for the atmospheric circulation are the same as in Table \ref{table:params_2Z}, except the number of analogues of the first analogy level ($N_{1}$), which are here different. The $5^{th}$ column is the number of analogues for the second level ($N_{2}$).}}
-	%DIFAUXCMD
-%DIFDELCMD < \begin{center}
-%DIFDELCMD < 		\begin{tabular}{l c c c c c }
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			%%%
-\DIFdelFL{Station }%DIFDELCMD < & %%%
-\DIFdelFL{Long (° E) }%DIFDELCMD < & %%%
-\DIFdelFL{Lat (° N) }%DIFDELCMD < & %%%
-\DIFdelendFL $N_{1}$ & $N_{2}$\DIFdelbeginFL %DIFDELCMD < & %%%
-\DIFdelFL{$S_{\text{SCRP}}$ }\DIFdelendFL \\ 
+			\begin{tabular}{l c c c c c c }
 				\hline
-				Ulrichen & \DIFdelbeginFL \DIFdelFL{5 $\rightarrow$ 10 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{40 }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{45 $\rightarrow$ 47.5 }%DIFDELCMD < & %%%
-\DIFdelendFL 60 & 25 & \DIFdelbeginFL \DIFdelFL{34.31 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{50 }& \DIFaddFL{110 }& \DIFaddFL{35}\DIFaddendFL \\
-				Zermatt & \DIFdelbeginFL \DIFdelFL{5 $\rightarrow$ 10 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{35 }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{45 $\rightarrow$ 47.5 }%DIFDELCMD < & %%%
-\DIFdelendFL 55 & 25 & \DIFdelbeginFL \DIFdelFL{28.28 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{55 }& \DIFaddFL{80 }& \DIFaddFL{30}\DIFaddendFL \\
-				Visp & \DIFdelbeginFL \DIFdelFL{5 $\rightarrow$ 10 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{30 }\DIFaddendFL & 45 \DIFdelbeginFL \DIFdelFL{$\rightarrow$ 47.5 }\DIFdelendFL & \DIFdelbeginFL \DIFdelFL{45 }%DIFDELCMD < & %%%
-\DIFdelendFL 25 & \DIFdelbeginFL \DIFdelFL{28.85 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Montana }%DIFDELCMD < & %%%
-\DIFdelFL{5 $\rightarrow$ 7.5 }%DIFDELCMD < & %%%
-\DIFdelFL{45 $\rightarrow$ 47.5 }%DIFDELCMD < & %%%
-\DIFdelendFL 55 & \DIFdelbeginFL \DIFdelFL{30 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{135 }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{36.11 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Sion }%DIFDELCMD < & %%%
-\DIFdelFL{5 $\rightarrow$ 10 }%DIFDELCMD < & %%%
-\DIFdelFL{45 $\rightarrow$ 47.5 }%DIFDELCMD < & %%%
-\DIFdelFL{90 }%DIFDELCMD < & %%%
-\DIFdelFL{30 }%DIFDELCMD < & %%%
-\DIFdelFL{31.16 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Aigle }%DIFDELCMD < & %%%
-\DIFdelFL{7.5 }%DIFDELCMD < & %%%
-\DIFdelFL{45 $\rightarrow$ 47.5 }%DIFDELCMD < & %%%
-\DIFdelFL{100 }%DIFDELCMD < & %%%
-\DIFdelendFL 35\DIFdelbeginFL %DIFDELCMD < & %%%
-\DIFdelFL{35.82 }\DIFdelendFL \\
-				\DIFdelbeginFL %DIFDELCMD < \hline
-%DIFDELCMD < 		\end{tabular}
-%DIFDELCMD < 	\end{center}
-%DIFDELCMD < 	\label{table:params_2Z-2MI}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
-%DIFDELCMD < \begin{table}[htb]
-%DIFDELCMD < 	%%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{Influence of the archive reduction on the $S_{\text{SCRP}}$. $S_{\text{SCRP}}$ values are provided for both considered methods and the differences are expressed in absolute value.}}
-	%DIFAUXCMD
-%DIFDELCMD < \begin{center}
-%DIFDELCMD < 		\begin{tabular}{l c c c c }
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{2}{c}{2Z-2MI} \\
-%DIFDELCMD < 			& %%%
-\DIFdelFL{82-07 }%DIFDELCMD < & %%%
-\DIFdelFL{$\Delta$ }%DIFDELCMD < & %%%
-\DIFdelFL{82-07 }%DIFDELCMD < & %%%
-\DIFdelFL{$\Delta$ }%DIFDELCMD < \\ 
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			%%%
-\DIFdelFL{Ulrichen }%DIFDELCMD < & %%%
-\DIFdelFL{29.37 }%DIFDELCMD < & %%%
-\DIFdelFL{-1.36 }%DIFDELCMD < & %%%
-\DIFdelFL{33.24 }%DIFDELCMD < & %%%
-\DIFdelFL{-1.08 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Zermatt }%DIFDELCMD < & %%%
-\DIFdelFL{22.20 }%DIFDELCMD < & %%%
-\DIFdelFL{-1.67 }%DIFDELCMD < & %%%
-\DIFdelFL{26.95 }%DIFDELCMD < & %%%
-\DIFdelFL{-1.32 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Visp }%DIFDELCMD < & %%%
-\DIFdelFL{23.23 }%DIFDELCMD < & %%%
-\DIFdelFL{-1.89 }%DIFDELCMD < & %%%
-\DIFdelFL{27.77 }%DIFDELCMD < & %%%
-\DIFdelFL{-1.08 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelendFL Montana & \DIFdelbeginFL \DIFdelFL{30.79 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{40 }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{-1.76 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{55 }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{34.77 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{30 }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{-1.34 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Sion }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{55 }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{24.78 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{110 }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{-1.45 }%DIFDELCMD < & %%%
-\DIFdelFL{29.36 }%DIFDELCMD < & %%%
-\DIFdelFL{-1.80 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{40}\DIFaddendFL \\
-				\DIFdelbeginFL \DIFdelFL{Aigle }%DIFDELCMD < & %%%
-\DIFdelFL{30.57 }%DIFDELCMD < & %%%
-\DIFdelFL{-0.01 }%DIFDELCMD < & %%%
-\DIFdelFL{35.95 }%DIFDELCMD < & %%%
-\DIFdelFL{0.13 }%DIFDELCMD < \\ 
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 		\end{tabular}
-%DIFDELCMD < 	\end{center}
-%DIFDELCMD < 	\label{table:loss_reduction}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
-%DIFDELCMD < \begin{table}[htb]
-%DIFDELCMD < 	%%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{New $S_{\text{SCRP}}$ performance scores for both 2Z and 2Z-2MI methods obtained by the MTW approach. The differences are expressed regarding the conventional method with the same archive length.}}
-	%DIFAUXCMD
-%DIFDELCMD < \begin{center}
-%DIFDELCMD < 		\begin{tabular}{l c c c c}
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{ 2}{c}{2Z-2MI} \\
-%DIFDELCMD < 			& %%%
-\DIFdelFL{MTW }%DIFDELCMD < & %%%
-\DIFdelFL{$\Delta$ }%DIFDELCMD < & %%%
-\DIFdelFL{MTW }%DIFDELCMD < & %%%
-\DIFdelFL{$\Delta$ }%DIFDELCMD < \\
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			%%%
-\DIFdelFL{Ulrichen }%DIFDELCMD < & %%%
-\DIFdelFL{31.12 }%DIFDELCMD < & %%%
-\DIFdelFL{1.74 }%DIFDELCMD < & %%%
-\DIFdelFL{35.44 }%DIFDELCMD < & %%%
-\DIFdelFL{2.20 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Zermatt }%DIFDELCMD < & %%%
-\DIFdelFL{24.34 }%DIFDELCMD < & %%%
-\DIFdelFL{2.14 }%DIFDELCMD < & %%%
-\DIFdelFL{28.92 }%DIFDELCMD < & %%%
-\DIFdelFL{1.97 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Visp }%DIFDELCMD < & %%%
-\DIFdelFL{24.39 }%DIFDELCMD < & %%%
-\DIFdelFL{1.16 }%DIFDELCMD < & %%%
-\DIFdelFL{29.42 }%DIFDELCMD < & %%%
-\DIFdelFL{1.64 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Montana }%DIFDELCMD < & %%%
-\DIFdelFL{31.59 }%DIFDELCMD < & %%%
-\DIFdelFL{0.80 }%DIFDELCMD < & %%%
-\DIFdelFL{36.30 }%DIFDELCMD < & %%%
-\DIFdelFL{1.53 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelendFL Sion & \DIFdelbeginFL \DIFdelFL{25.35 }%DIFDELCMD < & %%%
-\DIFdelFL{0.57 }%DIFDELCMD < & %%%
-\DIFdelFL{31.07 }%DIFDELCMD < & %%%
-\DIFdelFL{1.71 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Aigle }%DIFDELCMD < & %%%
-\DIFdelFL{31.78 }%DIFDELCMD < & %%%
-\DIFdelFL{1.21 }%DIFDELCMD < & %%%
-\DIFdelFL{38.11 }%DIFDELCMD < & %%%
-\DIFdelFL{2.16 }%DIFDELCMD < \\ 
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 		\end{tabular}
-%DIFDELCMD < 	\end{center}
-%DIFDELCMD < 	\label{table:CRPSS_MTW}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
-%DIFDELCMD < \begin{table}[htb]
-%DIFDELCMD < 	%%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{Calibrated parameters (spatial windows and number of analogues) for the analogy on the geopotential at 500~hPa and 1000~hPa (method 2Z) with the MTW approach.}}
-	%DIFAUXCMD
-%DIFDELCMD < \begin{center}
-%DIFDELCMD < 		\begin{tabular}{l c c c }
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			%%%
-\DIFdelFL{Station }%DIFDELCMD < & %%%
-\DIFdelFL{Long (° E) }%DIFDELCMD < & %%%
-\DIFdelFL{Lat (° N) }%DIFDELCMD < & %%%
-\DIFdelFL{$N_{1}$ }%DIFDELCMD < \\
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			%%%
-\DIFdelFL{Ulrichen }%DIFDELCMD < & %%%
-\DIFdelFL{0 $\rightarrow$ 17.5 }%DIFDELCMD < & %%%
-\DIFdelFL{42.5 $\rightarrow$ 50 }%DIFDELCMD < & %%%
-\DIFdelFL{50 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Zermatt }%DIFDELCMD < & %%%
-\DIFdelFL{0 $\rightarrow$ 17.5 }%DIFDELCMD < & %%%
-\DIFdelendFL 40 \DIFdelbeginFL \DIFdelFL{$\rightarrow$ 50 }\DIFdelendFL & \DIFdelbeginFL \DIFdelFL{55 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Visp }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{90 }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{-2.5 $\rightarrow$ 20 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{30 }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{40 $\rightarrow$ 50 }%DIFDELCMD < & %%%
-\DIFdelendFL 55 \DIFdelbeginFL %DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Montana }\DIFdelendFL & \DIFdelbeginFL \DIFdelFL{-2.5 $\rightarrow$ 15 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{140 }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{42.5 $\rightarrow$ 47.5 }%DIFDELCMD < & %%%
-\DIFdelFL{55 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Sion }%DIFDELCMD < & %%%
-\DIFdelFL{-2.5 $\rightarrow$ 15 }%DIFDELCMD < & %%%
-\DIFdelFL{37.5 $\rightarrow$ }\DIFdelendFL 50\DIFdelbeginFL %DIFDELCMD < & %%%
-\DIFdelFL{55 }\DIFdelendFL \\
-				Aigle & \DIFdelbeginFL \DIFdelFL{-2.5 $\rightarrow$ 15 }%DIFDELCMD < & %%%
-\DIFdelFL{40 $\rightarrow$ }\DIFdelendFL 50 & \DIFdelbeginFL \DIFdelFL{75 }%DIFDELCMD < \\
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 		\end{tabular}
-%DIFDELCMD < 	\end{center}
-%DIFDELCMD < 	\label{table:params_2Z_new}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
-%DIFDELCMD < \begin{table}[htb]
-%DIFDELCMD < 	%%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{Parameters of the moisture variables from the 2Z-2MI method with the MTW approach. The parameters for the atmospheric circulation are the same as in Table \ref{table:params_2Z_new}, except the number of analogues of the first analogy level ($N_{1}$), which are here different. The $5^{th}$ column is the number of analogues for the second level ($N_{2}$).}}
-	%DIFAUXCMD
-%DIFDELCMD < \begin{center}
-%DIFDELCMD < 		\begin{tabular}{l c c c c }
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			%%%
-\DIFdelFL{Station }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{100 }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{Long (° E) }%DIFDELCMD < & %%%
-\DIFdelFL{Lat (° N) }%DIFDELCMD < & %%%
-\DIFdelFL{$N_{1}$ }%DIFDELCMD < & %%%
-\DIFdelFL{$N_{2}$ }%DIFDELCMD < \\
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			%%%
-\DIFdelFL{Ulrichen }%DIFDELCMD < & %%%
-\DIFdelFL{5 $\rightarrow$ 10 }%DIFDELCMD < & %%%
-\DIFdelFL{45 $\rightarrow$ 47.5 }%DIFDELCMD < & %%%
-\DIFdelFL{110 }%DIFDELCMD < & %%%
-\DIFdelendFL 35 \DIFdelbeginFL %DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Zermatt }\DIFdelendFL & \DIFdelbeginFL \DIFdelFL{7.5 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{75 }\DIFaddendFL & \DIFdelbeginFL \DIFdelFL{45 $\rightarrow$ 47.5 }%DIFDELCMD < & %%%
-\DIFdelFL{80 }%DIFDELCMD < & %%%
-\DIFdelFL{30 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Visp }%DIFDELCMD < & %%%
-\DIFdelFL{7.5 }%DIFDELCMD < & %%%
-\DIFdelFL{45 $\rightarrow$ 47.5 }%DIFDELCMD < & %%%
-\DIFdelendFL 135 & \DIFdelbeginFL \DIFdelFL{35 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Montana }%DIFDELCMD < & %%%
-\DIFdelFL{5 $\rightarrow$ 7.5 }%DIFDELCMD < & %%%
-\DIFdelendFL 45\DIFdelbeginFL %DIFDELCMD < & %%%
-\DIFdelFL{110 }%DIFDELCMD < & %%%
-\DIFdelFL{40 }\DIFdelendFL \\ 
-				\DIFdelbeginFL \DIFdelFL{Sion }%DIFDELCMD < & %%%
-\DIFdelFL{5 $\rightarrow$ 10 }%DIFDELCMD < & %%%
-\DIFdelFL{45 $\rightarrow$ 47.5 }%DIFDELCMD < & %%%
-\DIFdelFL{140 }%DIFDELCMD < & %%%
-\DIFdelFL{50 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Aigle }%DIFDELCMD < & %%%
-\DIFdelFL{5 $\rightarrow$ 7.5 }%DIFDELCMD < & %%%
-\DIFdelFL{45 }%DIFDELCMD < & %%%
-\DIFdelFL{135 }%DIFDELCMD < & %%%
-\DIFdelFL{45 }%DIFDELCMD < \\ 
-%DIFDELCMD < 			%%%
-\DIFdelendFL \hline
+				\multirow{3}{*}{\DIFaddbeginFL \DIFaddFL{Station} \DIFaddendFL} & \multicolumn{3}{c}{\DIFaddbeginFL \DIFaddFL{Standard} \DIFaddendFL} & \multicolumn{3}{c}{\DIFaddbeginFL \DIFaddFL{MTW-r} \DIFaddendFL} \\
+				& \DIFaddbeginFL \DIFaddFL{2Z} \DIFaddendFL & \multicolumn{2}{c}{\DIFaddbeginFL \DIFaddFL{2Z-2MI} \DIFaddendFL} & \DIFaddbeginFL \DIFaddFL{2Z} \DIFaddendFL & \multicolumn{2}{c}{\DIFaddbeginFL \DIFaddFL{2Z-2MI} \DIFaddendFL}\\
+				& \DIFaddbeginFL \DIFaddFL{$N_{1}$} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{$N_{1}$} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{$N_{2}$} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{$N_{1}$} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{$N_{1}$} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{$N_{2}$} \DIFaddendFL\\ 
+				\hline
+				\DIFaddbeginFL \DIFaddFL{Ulrichen} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{40} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{60} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{25} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{50} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{110} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{35} \DIFaddendFL\\
+				\DIFaddbeginFL \DIFaddFL{Zermatt} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{35} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{55} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{25} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{55} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{80} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{30} \DIFaddendFL\\
+				\DIFaddbeginFL \DIFaddFL{Visp} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{30} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{45} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{25} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{55} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{135} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{35} \DIFaddendFL\\
+				\DIFaddbeginFL \DIFaddFL{Montana} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{40} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{55} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{30} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{55} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{110} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{40} \DIFaddendFL\\
+				\DIFaddbeginFL \DIFaddFL{Sion} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{40} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{90} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{30} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{55} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{140} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{50} \DIFaddendFL\\
+				\DIFaddbeginFL \DIFaddFL{Aigle} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{50} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{100} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{35} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{75} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{135} \DIFaddendFL & \DIFaddbeginFL \DIFaddFL{45} \DIFaddendFL\\ 
+				\hline
 			\end{tabular}
-		\end{center}	
-		\DIFdelbeginFL %DIFDELCMD < \label{table:params_2Z-2MI_new}
-%DIFDELCMD < %%%
-\DIFdelendFL \DIFaddbeginFL \label{table:analog_nb}
-	\DIFaddendFL \end{table}
+		\end{center}
+		
+		\label{table:analog_nb}
+	\end{table}
+	
 
 	\begin{table}[htb]
 		\caption{Values of the \DIFdelbeginFL \DIFdelFL{$S_{\text{SCRP}}$ }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{CRPSS }\DIFaddendFL (\%) \DIFdelbeginFL \DIFdelFL{skill }\DIFdelendFL score for the \DIFdelbeginFL \DIFdelFL{newly calibrated }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{original and the recalibrated }\DIFaddendFL parameters \DIFaddbeginFL \DIFaddFL{(with the sequential method, as described in Sect. \ref{sec:calibration}) }\DIFaddendFL using the MTW approach \DIFdelbeginFL \DIFdelFL{. The differences are expressed regarding }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{on }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{conventional method with }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{disaggregated precipitation time series (short period) by means of }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{same archive length}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{proportional distribution}\DIFaddendFL .}
+
 		\begin{center}
 			\begin{tabular}{l c c c c}
 				\hline
 				\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{ 2}{c}{2Z-2MI} \\
-				& \DIFdelbeginFL \DIFdelFL{MTW }%DIFDELCMD < & %%%
-\DIFdelFL{$\Delta$ }%DIFDELCMD < & %%%
-\DIFdelFL{MTW }%DIFDELCMD < & %%%
-\DIFdelFL{$\Delta$ }%DIFDELCMD < \\
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			%%%
-\DIFdelFL{Ulrichen }%DIFDELCMD < & %%%
-\DIFdelFL{31.58 }%DIFDELCMD < & %%%
-\DIFdelFL{2.20 }%DIFDELCMD < & %%%
-\DIFdelFL{35.72 }%DIFDELCMD < & %%%
-\DIFdelFL{2.48  }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Zermatt }%DIFDELCMD < & %%%
-\DIFdelFL{24.71 }%DIFDELCMD < & %%%
-\DIFdelFL{2.51 }%DIFDELCMD < & %%%
-\DIFdelFL{29.63 }%DIFDELCMD < & %%%
-\DIFdelFL{2.68 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Visp }%DIFDELCMD < & %%%
-\DIFdelFL{25.08 }%DIFDELCMD < & %%%
-\DIFdelFL{1.85 }%DIFDELCMD < & %%%
-\DIFdelFL{30.29 }%DIFDELCMD < & %%%
-\DIFdelFL{2.52 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Montana }%DIFDELCMD < & %%%
-\DIFdelFL{32.22 }%DIFDELCMD < & %%%
-\DIFdelFL{1.43 }%DIFDELCMD < & %%%
-\DIFdelFL{37.15 }%DIFDELCMD < & %%%
-\DIFdelFL{2.38 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Sion }%DIFDELCMD < & %%%
-\DIFdelFL{26.07 }%DIFDELCMD < & %%%
-\DIFdelFL{1.29 }%DIFDELCMD < & %%%
-\DIFdelFL{31.68 }%DIFDELCMD < & %%%
-\DIFdelFL{2.32 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Aigle }%DIFDELCMD < & %%%
-\DIFdelFL{32.21 }%DIFDELCMD < & %%%
-\DIFdelFL{1.64 }%DIFDELCMD < & %%%
-\DIFdelFL{38.50 }%DIFDELCMD < & %%%
-\DIFdelFL{2.55 }%DIFDELCMD < \\
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 		\end{tabular}
-%DIFDELCMD < 	\end{center}
-%DIFDELCMD < 	\label{table:CRPSS_recalibration}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
-%DIFDELCMD < \begin{table}[htb]
-%DIFDELCMD < 	%%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{Changes in sharpness and accuracy relatively to the total $S_{\text{CRP}}$, due to the introduction of the MTW. The changes are presented for both 2Z and 2Z-2MI methods with the original parameters. A decrease of the score is desirable.}}
-	%DIFAUXCMD
-%DIFDELCMD < \begin{center}
-%DIFDELCMD < 		\begin{tabular}{l c c c c}
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{2}{c}{2Z-2MI} \\
-%DIFDELCMD < 			& %%%
-\DIFdelFL{Sharpness }%DIFDELCMD < & %%%
-\DIFdelFL{Accuracy }%DIFDELCMD < & %%%
-\DIFdelFL{Sharpness }%DIFDELCMD < & %%%
-\DIFdelFL{Accuracy }%DIFDELCMD < \\
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			%%%
-\DIFdelFL{Ulrichen }%DIFDELCMD < & %%%
-\DIFdelFL{2.82 }%DIFDELCMD < & %%%
-\DIFdelFL{-5.29 }%DIFDELCMD < & %%%
-\DIFdelFL{1.00 }%DIFDELCMD < & %%%
-\DIFdelFL{-4.30 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Zermatt }%DIFDELCMD < & %%%
-\DIFdelFL{2.26 }%DIFDELCMD < & %%%
-\DIFdelFL{-5.01 }%DIFDELCMD < & %%%
-\DIFdelFL{0.88 }%DIFDELCMD < & %%%
-\DIFdelFL{-3.58 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Visp }%DIFDELCMD < & %%%
-\DIFdelFL{3.66 }%DIFDELCMD < & %%%
-\DIFdelFL{-5.18 }%DIFDELCMD < & %%%
-\DIFdelFL{2.67 }%DIFDELCMD < & %%%
-\DIFdelFL{-4.94 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Montana }%DIFDELCMD < & %%%
-\DIFdelFL{1.62 }%DIFDELCMD < & %%%
-\DIFdelFL{-2.78 }%DIFDELCMD < & %%%
-\DIFdelFL{0.57 }%DIFDELCMD < & %%%
-\DIFdelFL{-2.91 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Sion }%DIFDELCMD < & %%%
-\DIFdelFL{2.02 }%DIFDELCMD < & %%%
-\DIFdelFL{-2.78 }%DIFDELCMD < & %%%
-\DIFdelFL{0.33 }%DIFDELCMD < & %%%
-\DIFdelFL{-2.75 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Aigle }%DIFDELCMD < & %%%
-\DIFdelFL{0.52 }%DIFDELCMD < & %%%
-\DIFdelFL{-2.26 }%DIFDELCMD < & %%%
-\DIFdelFL{-1.20 }%DIFDELCMD < & %%%
-\DIFdelFL{-2.17 }%DIFDELCMD < \\ 
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 		\end{tabular}
-%DIFDELCMD < 	\end{center}
-%DIFDELCMD < 	\label{table:CRPSS_decomposition_no_recalibration}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
-%DIFDELCMD < \begin{table}[htb]
-%DIFDELCMD < 	%%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{Same as Table \ref{table:CRPSS_decomposition_no_recalibration} but with the re-calibrated parameters.}}
-	%DIFAUXCMD
-%DIFDELCMD < \begin{center}
-%DIFDELCMD < 		\begin{tabular}{l c c c c}
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{2}{c}{2Z-2MI} \\
-%DIFDELCMD < 			& %%%
-\DIFdelFL{Sharpness }%DIFDELCMD < & %%%
-\DIFdelFL{Accuracy }%DIFDELCMD < & %%%
-\DIFdelFL{Sharpness }%DIFDELCMD < & %%%
-\DIFdelFL{Accuracy }%DIFDELCMD < \\
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			%%%
-\DIFdelFL{Ulrichen }%DIFDELCMD < & %%%
-\DIFdelFL{1.44 }%DIFDELCMD < & %%%
-\DIFdelFL{-4.56 }%DIFDELCMD < & %%%
-\DIFdelFL{-0.37 }%DIFDELCMD < & %%%
-\DIFdelFL{-3.34 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Zermatt }%DIFDELCMD < & %%%
-\DIFdelFL{0.80 }%DIFDELCMD < & %%%
-\DIFdelFL{-4.03 }%DIFDELCMD < & %%%
-\DIFdelFL{0.75 }%DIFDELCMD < & %%%
-\DIFdelFL{-4.42 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Visp }%DIFDELCMD < & %%%
-\DIFdelFL{1.53 }%DIFDELCMD < & %%%
-\DIFdelFL{-3.94 }%DIFDELCMD < & %%%
-\DIFdelFL{1.47 }%DIFDELCMD < & %%%
-\DIFdelFL{-4.96 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Montana }%DIFDELCMD < & %%%
-\DIFdelFL{-0.27 }%DIFDELCMD < & %%%
-\DIFdelFL{-1.80 }%DIFDELCMD < & %%%
-\DIFdelFL{0.06 }%DIFDELCMD < & %%%
-\DIFdelFL{-3.71 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Sion }%DIFDELCMD < & %%%
-\DIFdelFL{0.95 }%DIFDELCMD < & %%%
-\DIFdelFL{-2.66 }%DIFDELCMD < & %%%
-\DIFdelFL{-0.10 }%DIFDELCMD < & %%%
-\DIFdelFL{-3.19 }%DIFDELCMD < \\
-%DIFDELCMD < 			%%%
-\DIFdelFL{Aigle }%DIFDELCMD < & %%%
-\DIFdelFL{-0.35 }%DIFDELCMD < & %%%
-\DIFdelFL{-2.01 }%DIFDELCMD < & %%%
-\DIFdelFL{-2.08 }%DIFDELCMD < & %%%
-\DIFdelFL{-1.90 }%DIFDELCMD < \\ 
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 		\end{tabular}
-%DIFDELCMD < 	\end{center}
-%DIFDELCMD < 	\label{table:CRPSS_decomposition_recalibration}
-%DIFDELCMD < \end{table}
-%DIFDELCMD < 
-
-%DIFDELCMD < \begin{table}[htb]
-%DIFDELCMD < 	%%%
-%DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{Values of the $S_{\text{SCRP}}$ (\%) skill score for the original and the recalibrated parameters (with the sequential method, as described in Sect. \ref{sec:introduction}) using the MTW approach on the disaggregated precipitation time series (short period) by means of the proportional distribution.}}
-	%DIFAUXCMD
-%DIFDELCMD < \begin{center}
-%DIFDELCMD < 		\begin{tabular}{l c c c c}
-%DIFDELCMD < 			\hline
-%DIFDELCMD < 			\multirow{2}{*}{Station} & \multicolumn{2}{c}{2Z} & \multicolumn{ 2}{c}{2Z-2MI} \\
-%DIFDELCMD < 			& %%%
-\DIFdelendFL original & recalib. & original & recalib. \\
+				& original & recalib. & original & recalib. \\
 				\hline
 				Ulrichen & 29.13 & 29.61 & 33.15 & 33.45 \\
 				Zermatt & 22.17 & 22.80 & 26.72 & 27.43 \\
@@ -1498,6 +1044,7 @@ showed that the sensitivity of the method to the reanalysis dataset is rather sm
 				\hline
 			\end{tabular}
 		\end{center}
+		
 		\label{table:disaggregation_proportional}
 	\end{table}
 
