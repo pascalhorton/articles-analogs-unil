@@ -8,9 +8,6 @@
 
 %% Please use the following documentclass and Journal Abbreviations for Discussion Papers and Final Revised Papers.
 
-%TODO: journal abbreviations
-%TODO: read again
-
 
 %% 2-Column Papers and Discussion Papers
 \documentclass[hess, manuscript]{copernicus}
@@ -108,7 +105,7 @@
 	
 	The study area is the upper Rh\^{o}ne catchment in Switzerland. Precipitation time series come from six automatic weather stations, viz., Ulrichen, Zermatt, Visp, Montana, Sion, and Aigle (Fig. \ref{fig:map}) that are subject to various meteorological influences \citep{Horton2012}. The data were available at an hourly time step for 25~years (1982 to 2007) and were also obtained at a daily time step (from 6~h~UTC to 6~h~UTC the next day) for 47~years (1961 to 2008). Due to the low density of weather stations with high temporal resolution and long archives, no spatially aggregated rainfall was processed. The results will hereafter be presented arbitrarily for the Ulrichen station but are equivalent for all stations.
 	
-	Synoptic-scale variables, used as predictors, were extracted from the NCEP/NCAR reanalysis 1 dataset \citep{Kalnay1996} with a 6-hour temporal resolution, 17 pressure levels, and a spatial resolution of 2.5\degree. This dataset is now relatively old, but it is not expected to affect the conclusions of the present study (see discussion in Sect. \ref{sec:old_reanalysis}).
+	Synoptic-scale variables, used as predictors, were extracted from the NCEP/NCAR reanalysis 1 dataset \citep{Kalnay1996} with a 6-hour temporal resolution, 17 pressure levels, and a spatial resolution of 2.5\textdegree. This dataset is now relatively old, but it is not expected to affect the conclusions of the present study (see discussion in Sect. \ref{sec:old_reanalysis}).
 	
 	
 	\subsection{The considered analogue method}
@@ -177,7 +174,7 @@
 	
 	The first technique was a proportional distribution, where the observed daily precipitations were considered constant during the measuring period (6~h~UTC to 6~h~UTC the next day). Proportional parts of the original daily time series were allocated into a new moving average of 24-h totals (Fig. \ref{fig:illustration_disaggregation}). 
 	
-	The second approach aimed at getting closer to the chronology of the actual precipitation by relying on some informative variables during the reconstruction procedure. Data from the NCEP/NCAR reanalysis 1 (Sect. \ref{sec:data}) were used for this purpose, despite their rough resolution (2.5\degree). Precipitable water and relative humidity (at 1000~hPa, 925~hPa or 850~hPa) were assessed at the four points surrounding the catchment, and a time lapse between both series was allowed to take into account the significant distance separating the weather stations and the reanalysis grid point. The best proxy variable was identified by means of a correlation analyses (on non-zero values) with the 6-hourly precipitation time series over the period 1982-2007. Once the best proxy had been selected, its temporal profile was used in order to disaggregate the daily precipitation time series.
+	The second approach aimed at getting closer to the chronology of the actual precipitation by relying on some informative variables during the reconstruction procedure. Data from the NCEP/NCAR reanalysis 1 (Sect. \ref{sec:data}) were used for this purpose, despite their rough resolution (2.5\textdegree). Precipitable water and relative humidity (at 1000~hPa, 925~hPa or 850~hPa) were assessed at the four points surrounding the catchment, and a time lapse between both series was allowed to take into account the significant distance separating the weather stations and the reanalysis grid point. The best proxy variable was identified by means of a correlation analyses (on non-zero values) with the 6-hourly precipitation time series over the period 1982-2007. Once the best proxy had been selected, its temporal profile was used in order to disaggregate the daily precipitation time series.
 	
 	
 	\subsection{Calibration of the analogue method}
@@ -276,7 +273,7 @@
 	
 	When using the first reconstructed time series based on the proportional distribution (see Sect. \ref{sec:reconstruction}), the AM performance was degraded and was even below the conventional method without MTW (Table \ref{table:disaggregation_proportional} to compare to Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI}).
 	
-	For the second approach, the synoptic proxy for the temporal disaggregation of the daily time series had to be identified first. The results are illustrated this time for the Zermatt station. Among the considered moisture variables (see Sect. \ref{sec:reconstruction}), the best proxy was the precipitable water at 45° N and 7.5° E, with a time offset of -6~h (Table \ref{table:proxy_correlations}). Table \ref{table:proxy_CRPSS} presents the CRPSS scores obtained by the disaggregated series using the proxy of precipitable water which are also lower than the conventional method.
+	For the second approach, the synoptic proxy for the temporal disaggregation of the daily time series had to be identified first. The results are illustrated this time for the Zermatt station. Among the considered moisture variables (see Sect. \ref{sec:reconstruction}), the best proxy was the precipitable water at 45\textdegree\ N and 7.5\textdegree\ E, with a time offset of -6~h (Table \ref{table:proxy_correlations}). Table \ref{table:proxy_CRPSS} presents the CRPSS scores obtained by the disaggregated series using the proxy of precipitable water which are also lower than the conventional method.
 	
 	
 	\section{Discussion}
@@ -325,7 +322,7 @@
 	\subsection{On the use of an old reanalysis dataset}
 	\label{sec:old_reanalysis}
 	
-	The considered reanalysis dataset, which is the NCEP/NCAR reanalysis 1 \citep{Kalnay1996}, is relatively old and has a coarse resolution (2.5\degree). Newer reanalysis datasets could have been used in this study and might have resulted in higher performance scores. However, \cite{BenDaoud2009} showed that the sensitivity of the method to the reanalysis dataset is rather small. This is particularly true for simple AMs that mainly rely on the atmospheric circulation, which is already well defined at a coarser resolution. That might not be the case in more elaborate methods relying on thermodynamic data. A comparative analysis of several reanalysis datasets within the AM is being conducted and will be the topic of a dedicated study.
+	The considered reanalysis dataset, which is the NCEP/NCAR reanalysis 1 \citep{Kalnay1996}, is relatively old and has a coarse resolution (2.5\textdegree). Newer reanalysis datasets could have been used in this study and might have resulted in higher performance scores. However, \cite{BenDaoud2009} showed that the sensitivity of the method to the reanalysis dataset is rather small. This is particularly true for simple AMs that mainly rely on the atmospheric circulation, which is already well defined at a coarser resolution. That might not be the case in more elaborate methods relying on thermodynamic data. A comparative analysis of several reanalysis datasets within the AM is being conducted and will be the topic of a dedicated study.
 	
 	Moreover, one can assume that the gain observed here by introducing a MTW should also be found for a better reanalysis dataset. Indeed, a better dataset does not negatively influence the fact that one can find better analogue situations at other hours of the day rather than at fixed hours.
 	
@@ -407,7 +404,7 @@
 	
 	\begin{figure}[htb]
 		\begin{center}
-			\includegraphics[width=8.3cm]{figures/figure_map.pdf}
+			\includegraphics[width=8.3cm]{fig01.pdf}
 		\end{center}
 		\caption{Position of the six weather stations of interest (Ulrichen, Zermatt, Visp, Montana, Sion, and Aigle) in the upper Rh\^{o}ne catchment in Switzerland.}
 		\label{fig:map}
@@ -415,7 +412,7 @@
 	
 	\begin{figure}[htb]
 		\begin{center}
-			\includegraphics[width=8.3cm]{figures/illustration_moving_window.pdf}
+			\includegraphics[width=8.3cm]{fig02.pdf}
 		\end{center}
 		\caption{Illustration of the principle of a moving time window. The target situation is the same for the conventional approach and the MTW, while the candidate situations are four times as many with the MTW. The larger horizontal bars represent the 24-h precipitation totals.}
 		\label{fig:principle}
@@ -423,27 +420,27 @@
 	
 	\begin{figure}[htb]
 		\begin{center}
-			\includegraphics[width=8cm]{figures/illustration_disaggregation.pdf}
+			\includegraphics[width=8cm]{fig03.pdf}
 		\end{center}
 		\caption{Illustration of the generation of 24-h total moving averages by means of a proportional distribution. The colours refer to the corresponding day of the daily time series.}
 		\label{fig:illustration_disaggregation}
 	\end{figure}
 	
 	\begin{figure}[htb]
-		\includegraphics[width=8.3cm]{figures/plots_CRPSS_2Z.pdf}
+		\includegraphics[width=8.3cm]{fig04.pdf}
 		\caption{Performance score (CRPSS) of the AM on the atmospheric circulation at the different stations for (dashed) the full archive, i.e. 1961-2008; (yellow) the reduced archive, i.e. 1982-2007; (blue) the introduction of the MTW on the reduced archive; and (green) the recalibrated parameters of the AM with the MTW.}
 		\label{fig:plots_CRPSS_2Z}
 	\end{figure}
 	
 	\begin{figure}[htb]
-		\includegraphics[width=8.3cm]{figures/plots_CRPSS_2Z-2MI.pdf}
+		\includegraphics[width=8.3cm]{fig05.pdf}
 		\caption{Same as Figure \ref{fig:plots_CRPSS_2Z}, but for the analogue method with a second level with the moisture variables.}
 		\label{fig:plots_CRPSS_2Z-2MI}
 	\end{figure}
 	
 	\begin{figure*}[htb]
 		\begin{center}
-			\includegraphics[width=15cm]{figures/changes_S1_analogues.pdf}
+			\includegraphics[width=15cm]{fig06.pdf}
 		\end{center}
 		\caption{Changes in the S1 criterion distributions due to the MTW of (a) the $1^{st}$, (b) $5^{th}$, (c) $20^{th}$, and (d) $40^{th}$ analogue ranks for the Ulrichen station over the whole calibration period (1961-2008).}
 		\label{fig:changes_S1_analogs}
@@ -451,7 +448,7 @@
 	
 	\begin{figure}[htb]
 		\begin{center}
-			\includegraphics[width=8.2cm]{figures/changes_S1_value_and_gain.pdf}
+			\includegraphics[width=8.2cm]{fig07.pdf}
 		\end{center}
 		\caption{Synthesis of the changes in the S1 criterion due to the MTW for the Ulrichen station depending on the rank of the analogue. (a) Quantiles of the S1 distributions with and without the MTW. (b) Quantiles of the relative improvements of the S1 criterion when using the MTW.}
 		\label{fig:changes_S1}
@@ -459,7 +456,7 @@
 	
 	\begin{figure}[htb]
 		\begin{center}
-			\includegraphics[width=8.3cm]{figures/changes_S1_precip_threshold.pdf}
+			\includegraphics[width=8.3cm]{fig08.pdf}
 		\end{center}
 		\caption{Distribution of the median improvements of the S1 criterion due to the MTW depending on precipitation thresholds at the Ulrichen station.}
 		\label{fig:changes_S1_precip_threshold}
@@ -467,7 +464,7 @@
 	
 	\begin{figure}[htb]
 		\begin{center}
-			\includegraphics[width=7cm]{figures/changes_S1_seasons.pdf}
+			\includegraphics[width=7cm]{fig09.pdf}
 		\end{center}
 		\caption{Seasonal effect on the median reduction of the S1 criterion for the Ulrichen station due to the MTW. DJF: winter, MAM: spring, JJA: summer, and SON: fall.}
 		\label{fig:changes_S1_seasons}
@@ -475,20 +472,20 @@
 	
 	\begin{figure}[htb]
 		\begin{center}
-			\includegraphics[width=8.1cm]{figures/changes_RMSE_value_and_gain.pdf}
+			\includegraphics[width=8.1cm]{fig10.pdf}
 		\end{center}
 		\caption{Synthesis of the changes in the RMSE criterion due to the MTW for the Ulrichen station depending on the rank of the analogue. (a) Quantiles of the RMSE distributions with and without the MTW. (b) Quantiles of the relative improvements of the RMSE criterion when using the MTW.}
 		\label{fig:changes_RMSE}
 	\end{figure}
 	
 	\begin{figure}[htb]
-		\includegraphics[width=5cm]{figures/changes_CRPS_precip_threshold.pdf}
+		\includegraphics[width=5cm]{fig11.pdf}
 		\caption{Differences of the CRPSS performance score due to the introduction of the MTW as a function of precipitation thresholds at the Ulrichen station. The stars represent averages.}
 		\label{fig:changes_CRPS_precip_threshold}
 	\end{figure}
 	
 	\begin{figure}[htb]
-		\includegraphics[width=8.3cm]{figures/hours_selection_per_season.pdf}
+		\includegraphics[width=8.3cm]{fig12.pdf}
 		\caption{Distribution of the predictor hours on the selected analogue dates, when using the MTW, depending on the season for the Ulrichen station.}
 		\label{fig:hours_selection_per_season}
 	\end{figure}
@@ -578,7 +575,7 @@
 	\end{table}
 	
 	\begin{table}[htb]
-		\caption{Value of the coefficient of determination between the reconstructed 6-hourly precipitation time series using the listed variables and the accurate time series for the period 1982-2007. The grid points surrounding the region are: 1) 5° E, 47.5° N; 2) 5° E, 45° N; 3) 7.5° E, 47.5° N; and 4) 7.5° E, 45° N. The highest coefficient of determination is indicated in bold.}
+		\caption{Value of the coefficient of determination between the reconstructed 6-hourly precipitation time series using the listed variables and the accurate time series for the period 1982-2007. The grid points surrounding the region are: 1) 5\textdegree\ E, 47.5\textdegree\ N; 2) 5\textdegree\ E, 45\textdegree\ N; 3) 7.5\textdegree\ E, 47.5\textdegree\ N; and 4) 7.5\textdegree\ E, 45\textdegree\ N. The highest coefficient of determination is indicated in bold.}
 		\begin{center}
 			\begin{tabular}{l c c c c c c}
 				\hline
