@@ -19,7 +19,7 @@
    sodipodi:docname="changes_CRPS_precip_threshold.svg"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath20"><path
@@ -8174,9 +8174,9 @@
      id="namedview4"
      showgrid="false"
      inkscape:zoom="1.2361274"
-     inkscape:cx="116.61839"
+     inkscape:cx="-8.368727"
      inkscape:cy="247.8689"
-     inkscape:window-x="0"
+     inkscape:window-x="115"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="g10" /><g
@@ -22652,6 +22652,7 @@
 
 
 
+
 <path
    d="m 119.232,90.72 0,4"
    style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -22670,6 +22671,7 @@
 
 
 
+
 <text
    transform="matrix(0.70710678,0.70710678,0.70710678,-0.70710678,106.77615,42.288375)"
    style="font-style:italic;font-variant:normal;font-weight:normal;font-size:16.60971069px;font-family:'Computer Modern';-inkscape-font-specification:CMSY10;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -22677,6 +22679,7 @@
      x="0"
      y="0"
      id="tspan19352">≤</tspan></text>
+
 
 
 
@@ -22690,6 +22693,7 @@
 
 
 
+
 <text
    transform="matrix(0.70710678,0.70710678,0.70710678,-0.70710678,122.99556,58.507775)"
    style="font-style:italic;font-variant:normal;font-weight:normal;font-size:16.60971069px;font-family:'Computer Modern';-inkscape-font-specification:CMMI10;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -22697,6 +22701,7 @@
      x="0"
      y="0"
      id="tspan19360">&lt;</tspan></text>
+
 
 
 
@@ -22708,6 +22713,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan19364">10</tspan></text>
+
 
 
 
@@ -22730,6 +22736,7 @@
 
 
 
+
 <text
    transform="matrix(0.70710678,0.70710678,0.70710678,-0.70710678,154.52202,42.288375)"
    style="font-style:italic;font-variant:normal;font-weight:normal;font-size:16.60971069px;font-family:'Computer Modern';-inkscape-font-specification:CMSY10;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -22737,6 +22744,7 @@
      x="0"
      y="0"
      id="tspan19376">≤</tspan></text>
+
 
 
 
@@ -22750,6 +22758,7 @@
 
 
 
+
 <text
    transform="matrix(0.70710678,0.70710678,0.70710678,-0.70710678,170.74142,58.507775)"
    style="font-style:italic;font-variant:normal;font-weight:normal;font-size:16.60971069px;font-family:'Computer Modern';-inkscape-font-specification:CMMI10;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -22757,6 +22766,7 @@
      x="0"
      y="0"
      id="tspan19384">&lt;</tspan></text>
+
 
 
 
@@ -22768,6 +22778,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan19388">20</tspan></text>
+
 
 
 
@@ -22790,6 +22801,7 @@
 
 
 
+
 <text
    transform="matrix(0.70710678,0.70710678,0.70710678,-0.70710678,199.45002,42.288375)"
    style="font-style:italic;font-variant:normal;font-weight:normal;font-size:16.60971069px;font-family:'Computer Modern';-inkscape-font-specification:CMSY10;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -22797,6 +22809,7 @@
      x="0"
      y="0"
      id="tspan19400">≤</tspan></text>
+
 
 
 
@@ -22810,6 +22823,7 @@
 
 
 
+
 <text
    transform="matrix(0.70710678,0.70710678,0.70710678,-0.70710678,215.66942,58.507775)"
    style="font-style:italic;font-variant:normal;font-weight:normal;font-size:16.60971069px;font-family:'Computer Modern';-inkscape-font-specification:CMMI10;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -22817,6 +22831,7 @@
      x="0"
      y="0"
      id="tspan19408">&lt;</tspan></text>
+
 
 
 
@@ -22828,6 +22843,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan19412">30</tspan></text>
+
 
 
 
@@ -22849,6 +22865,7 @@
 
 
 
+
 <text
    transform="matrix(0.70710678,0.70710678,0.70710678,-0.70710678,250.25593,58.507775)"
    style="font-style:italic;font-variant:normal;font-weight:normal;font-size:16.60971069px;font-family:'Computer Modern';-inkscape-font-specification:CMSY10;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -22856,6 +22873,7 @@
      x="0"
      y="0"
      id="tspan19424">≥</tspan></text>
+
 
 
 
@@ -22867,6 +22885,7 @@
      y="0"
      sodipodi:role="line"
      id="tspan19428">30</tspan></text>
+
 
 
 
@@ -22895,6 +22914,7 @@
 
 
 
+
 <text
    transform="matrix(1,0,0,-1,39.869888,85.988468)"
    style="font-variant:normal;font-size:15.94022369px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -22902,6 +22922,7 @@
      x="0"
      y="0"
      id="tspan19458">4</tspan></text>
+
 
 
 
@@ -22930,6 +22951,7 @@
 
 
 
+
 <text
    transform="matrix(1,0,0,-1,39.869888,121.98847)"
    style="font-variant:normal;font-size:15.94022369px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -22937,6 +22959,7 @@
      x="0"
      y="0"
      id="tspan19480">3</tspan></text>
+
 
 
 
@@ -22965,6 +22988,7 @@
 
 
 
+
 <text
    transform="matrix(1,0,0,-1,39.869888,157.98847)"
    style="font-variant:normal;font-size:15.94022369px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -22972,6 +22996,7 @@
      x="0"
      y="0"
      id="tspan19502">2</tspan></text>
+
 
 
 
@@ -23000,6 +23025,7 @@
 
 
 
+
 <text
    transform="matrix(1,0,0,-1,39.869888,193.98847)"
    style="font-variant:normal;font-size:15.94022369px;font-family:'URW Palladio L';-inkscape-font-specification:URWPalladioL-Roma;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -23007,6 +23033,7 @@
      x="0"
      y="0"
      id="tspan19524">1</tspan></text>
+
 
 
 
@@ -23035,6 +23062,7 @@
 
 
 
+
 <g
    id="g19544"><g
      id="g19546"
@@ -23057,6 +23085,7 @@
      x="0"
      y="0"
      id="tspan19560">1</tspan></text>
+
 
 
 
@@ -23085,6 +23114,7 @@
 
 
 
+
 <g
    id="g19580"><g
      id="g19582"
@@ -23107,6 +23137,7 @@
      x="0"
      y="0"
      id="tspan19596">3</tspan></text>
+
 
 
 
@@ -23135,6 +23166,7 @@
 
 
 
+
 <g
    id="g19616"><g
      id="g19618"
@@ -23160,6 +23192,7 @@
 
 
 
+
 <text
    transform="matrix(0,1,1,0,21.655602,221.08287)"
    style="font-variant:normal;font-weight:normal;font-size:15.94022369px;font-family:PazoMath;-inkscape-font-specification:PazoMath;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -23167,6 +23200,7 @@
      x="0"
      y="0"
      id="tspan19636">∆</tspan></text>
+
 
 
 
@@ -23190,15 +23224,18 @@
    inkscape:connector-curvature="0" /><text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-   x="56.304878"
+   x="46.704887"
    y="-14.885184"
    id="text23776"
    sodipodi:linespacing="125%"
    transform="scale(1,-1)"><tspan
      sodipodi:role="line"
      id="tspan23778"
-     x="56.304878"
-     y="-14.885184">Precipitation thresholds [mm]</tspan></text>
+     x="46.704887"
+     y="-14.885184">Precipitation thresholds [mm d<tspan
+   style="font-size:51.99999809%;baseline-shift:super"
+   id="tspan13949">-1</tspan>]</tspan></text>
+
 
 
 
@@ -23215,6 +23252,7 @@
      x="235.93385"
      y="21.707012"
      style="font-style:normal">CRPSS</tspan></text>
+
 
 
 </g></svg>
