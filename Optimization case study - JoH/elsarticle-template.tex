@@ -302,7 +302,7 @@ The parameters cross-compatibility has also been assessed for the methods with m
 
 When optimizing a method made of 2 levels of analogy, the introduction of moisture variables in the second level has an influence on the parameter values of the first level. It means that the two levels of analogy bring complementary information, and are thus not independent. This is first visible on the number $N_{1}$ of analogues to be selected on the first level, and on the selection of the pressure levels for the circulation analogy. 
 
-As for the sequential procedure, the optimal value of $N_{1}$ increases when adding a second level of analogy (Figure \ref{fig:figure_nb_analogs}). One can also notice that the optimal number of analogues $N_{2}$ for the second level of analogy of 4Zo-2MIo is slightly inferior to $N_{1}$ from 4Zo, but very close. There is a trend between the optimal analogue number values of both methods: the higher $N_{1}$ of the 4Zo method, the higher $N_{1}$ and $N_{2}$ of 4Zo-2MIo is (Figure \ref{fig:figure_nb_analogs_relationships}). This relationship is not to be considered perfectly robust and should not be transposed to another case study, but in this case, it relates the magnitudes of the $N_{1}$ and $N_{2}$ on the various levels and methods. 
+As for the sequential procedure, the optimal value of $N_{1}$ increases when adding a second level of analogy (Figure \ref{fig:figure_nb_analogs}). One can also notice that the optimal number of analogues $N_{2}$ for the second level of analogy of 4Zo-2MIo is slightly inferior to $N_{1}$ from 4Zo, but very close. There is globally a tendency between the optimal analogue number values of both methods: $N_{1}$ of the 4Zo method, and $N_{1}$ and $N_{2}$ of 4Zo-2MIo tend to be higher or lower altogether for a given region.
 
 The optimal final number of analogues do not vary much: $23 \leq N_{1} \leq 33$ for 4Zo and $21 \leq N_{2} \leq 28$ for 4Zo-2MIo. However, the optimal number of $N_{1}$ analogues of the first level of 4Zo-2MIo varies to a greater extent: $48 \leq N_{1} \leq 84$. In this latter method, it may be problematic to consider a fixed and unique value for all regions.
 
@@ -393,20 +393,14 @@ The authors would also like to acknowledge the work Loris Foresti and another an
 
 \begin{figure}[t]
 	\centerline{\includegraphics[width=8.8cm]{figures/fig03.pdf}}
-	\caption{CRPSS relative improvement of 4Zo compared to the reference methods 2Z (Table \ref{table:params_R1}) for the CP and the VP.}
-	\label{fig:figure_dcrpss_4Zo}
+	\caption{Performance score (CRPSS) of the reference methods 2Z (Table \ref{table:params_R1}) and the optimized 4Zo method for the CP and the VP for every subregion.}
+	\label{fig:figure_crpss_4Zo}
 \end{figure}
 
 \begin{figure}[t]
 	\centerline{\includegraphics[width=8.4cm]{figures/fig05.pdf}}
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 4Zo, calibration period.}
-	\label{fig:crossing_4Zo_calib}
-\end{figure}
-
-\begin{figure}[t]
-	\centerline{\includegraphics[width=8.4cm]{figures/fig06.pdf}}
-	\caption{Same as Figure \ref{fig:crossing_4Zo_calib} but for the validation period.}
-	\label{fig:crossing_4Zo_valid}
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 4Zo, calibration and validation periods.}
+	\label{fig:crossing_4Zo}
 \end{figure}
 
 \begin{figure}[t]
@@ -417,14 +411,8 @@ The authors would also like to acknowledge the work Loris Foresti and another an
 
 \begin{figure}[t]
 	\centerline{\includegraphics[width=8.8cm]{figures/fig08.pdf}}
-	\caption{CRPSS relative improvement of 4Zo-2MIo compared to the reference methods 2Z-2MI (Table \ref{table:params_R2}) for the CP and the VP.}
-	\label{fig:figure_dcrpss_4Zo-2HIo}
-\end{figure}
-
-\begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig09.pdf}}
-	\caption{CRPSS relative improvement of 4Zo-4MIo compared to the reference methods 2Z-2MI (Table \ref{table:params_R2}) for the CP and the VP.}
-	\label{fig:figure_dcrpss_4Zo-4HIo}
+	\caption{Performance score (CRPSS) of the reference methods 2Z-2MI (Table \ref{table:params_R2}) and the optimized 4Zo-2MIo method for the CP and the VP for every subregion.}
+	\label{fig:figure_crpss_4Zo-2HIo}
 \end{figure}
 
 \begin{figure}[t]
@@ -434,32 +422,14 @@ The authors would also like to acknowledge the work Loris Foresti and another an
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig12.pdf}}
-	\caption{Relationships between the optimal number of analogues for both levels of the 4Zo-2MIo method and the corresponding ones for the unique level of the 4Zo method.}
-	\label{fig:figure_nb_analogs_relationships}
-\end{figure}
-
-\begin{figure}[t]
 	\centerline{\includegraphics[width=8.4cm]{figures/fig13.pdf}}
-	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 4Zo-2MIo, calibration period.}
-	\label{fig:crossing_4Zo-2MIo_calib}
-\end{figure}
-
-\begin{figure}[t]
-	\centerline{\includegraphics[width=8.4cm]{figures/fig14.pdf}}
-	\caption{Same as Figure \ref{fig:crossing_4Zo-2MIo_calib} but for the validation period.}
-	\label{fig:crossing_4Zo-2MIo_valid}
-\end{figure}
-
-\begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig15.pdf}}
-	\caption{Optimized weighting for the pressure levels of the 4Zo method.}
-	\label{fig:levels_weights}
+	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 4Zo-2MIo, calibration and validation periods.}
+	\label{fig:crossing_4Zo-2MIo}
 \end{figure}
 
 \begin{figure}[t]
 	\centerline{\includegraphics[width=8.8cm]{figures/fig16.pdf}}
-	\caption{Averaged weighting for the pressure levels of the circulation analogy of the three methods.}
+	\caption{Distribution of the optimal weights for the predictors of the first level of analogy (geopotential heights) of the 4Zo, 4Zo-2MIo, and 4Zo-4MIo methods. The results are those of the 10 subregions. The geopotential heights are sorted by increasing pressure and hour.}
 	\label{fig:levels_weights_average}
 \end{figure}
 
@@ -535,33 +505,6 @@ The authors would also like to acknowledge the work Loris Foresti and another an
 		\end{tabular} 
 	\end{center}
 	\label{table:levels_GA_4Zo}
-\end{table}
-
-\begin{table}[t]
-	\caption{CRPSS score (\%) of the three optimized methods (4Zo is the atmospheric circulation analogy detailed in the present section; 4Zo-2MIo and 4Zo-4MIo add a second level of analogy on moisture indexes, as explained in section \ref{sec:optim_moisture}).}
-	\footnotesize
-	\begin{center}
-		\begin{tabular}{ccccccc}
-			\hline 
-			ID & \multicolumn{2}{c}{4Zo} & \multicolumn{2}{c}{4Zo-2MIo} & \multicolumn{2}{c}{4Zo-4MIo} \\ 
-			& CP & VP & CP & VP & CP & VP \\ 
-			\hline 
-			1 & 40.3 & 38.5 & 45.5 & 43.8 & 45.9 & 43.6 \\
-			2 & 37.8 & 34.9 & 42.4 & 40.8 & 42.9 & 41.3 \\
-			3 & 36.6 & 33.9 & 41.4 & 39.0 & 41.8 & 39.5 \\
-			4 & 31.2 & 30.8 & 36.1 & 36.4 & 36.8 & 37.1 \\
-			5 & 34.4 & 36.5 & 38.6 & 41.4 & 39.2 & 41.8 \\
-			6 & 37.0 & 39.9 & 41.0 & 44.5 & 41.9 & 44.6 \\
-			7 & 30.0 & 30.1 & 33.8 & 34.6 & 34.4 & 34.8 \\
-			8 & 37.7 & 40.1 & 40.7 & 43.1 & 41.2 & 43.3 \\
-			9 & 33.1 & 30.0 & 38.4 & 36.6 & 38.7 & 36.3 \\
-			10 & 40.0 & 40.0 & 42.6 & 42.9 & 43.3 & 43.2 \\
-			\hline
-			av. & 35.8 & 35.5 & 40.1 & 40.3 & 40.6 & 40.5 \\ 
-			\hline 
-		\end{tabular} 
-	\end{center}
-	\label{table:scores}
 \end{table}
 
 \begin{table}[t]

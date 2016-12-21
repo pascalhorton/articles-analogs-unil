@@ -155,13 +155,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="-72.287321"
+     inkscape:cx="-293.00161"
      inkscape:cy="478.33982"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1680"
-     inkscape:window-height="987"
+     inkscape:window-width="1920"
+     inkscape:window-height="1138"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
@@ -173,7 +173,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -721,18 +721,6 @@
          y="104.40011"
          x="-507.45291 -496.98291 -486.55792 -477.51291 -467.98792"
          style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">CRPSS</tspan>
-    </text>
-    <text
-       id="text4384"
-       style="font-variant:normal;font-weight:normal;font-size:18px;font-family:BitstreamVeraSans;-inkscape-font-specification:BitstreamVeraSans-Roman;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       x="233.32413"
-       y="219.54082">
-      <tspan
-         id="tspan4386"
-         sodipodi:role="line"
-         y="219.54082"
-         x="233.32413 244.70012 255.35612 266.37213 271.37613 282.78812 289.84412 294.84811 305.86414 317.27612 323.00012 334.01611 340.35211 346.07611 353.13211 364.54413 375.61414 381.33813 392.76813 403.8381 413.21613 420.27213 425.99612 431.00012 442.41211 453.84213 458.84613 469.50211 474.50613 485.93613 497.34811 508.38211"
-         style="-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000;fill-opacity:1">Evolution of the best individual</tspan>
     </text>
   </g>
 </svg>
