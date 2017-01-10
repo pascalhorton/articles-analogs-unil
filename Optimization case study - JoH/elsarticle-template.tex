@@ -234,14 +234,15 @@ The reference method for the analogy of the atmospheric circulation (2Z, Table \
 
 Then, an additional degree of freedom was provided to the GAs by letting them choose the pressure levels along with the other parameters (analogue numbers, spatial and temporal windows), which is also a non-automated process in the sequential calibration. This degree of freedom increased the optimization time and may decrease the number of simulations that converge to a single solution. However, most solutions were very close in terms of score. The averaged relative improvement of the CRPSS is 5.63\% for the CP and 3.82\% for the VP. The pressure levels that were chosen are Z500 or Z700 for the upper level, and Z925 or Z1000 (most often) for the lower level.
 
-Parallel analyses showed that the analogy of circulation is incomplete, and that the geopotential still contains relevant information that can improve the statistical relationship. Therefore, a third predictor was added (still on the geopotential height) that the optimizer could use along with the previous parameters. There was no constraint on the predictors, so that the same pressure level could be selected more than once. Some improvements were found on the score, both for the CP and the VP, confirming that this additional information is beneficial for the quality of the prediction. We then tried with 4 predictors, and so on, up to 8. Every time a new predictor to optimize was added, the score on the CP increased, but in a reduced amount. However, the score value on the VP dropped after 4 predictors, revealing an over-parametrization of the method, and thus a lack of robustness. Considering 4 predictors is optimal for this case study, since the gain in CRPSS is significant. It cannot be excluded that another number would prevail in another region than the upper Rh\^{o}ne catchemnt, under other meteorological conditions.
+Parallel analyses showed that the analogy of circulation is incomplete, and that the geopotential still contains relevant information that can improve the statistical relationship. Therefore, a third followed by a fourth predictor were added (still on the geopotential height) that the optimizer could use along with the previous parameters. There was no constraint on the predictors, so that the same pressure level could be selected more than once. Some improvements were found on the score, both for the CP and the VP, confirming that this additional information is beneficial for the quality of the prediction. 
 
 Finally, a weighting of the analogy criteria values per pressure level was proposed, again optimized by GAs. The weighting operates in the combination of the S1 criteria processed on every level, which were previously averaged with equal weights. The role of this new degree of freedom is to give more weight to the levels with greater predictive capacity, and to consider the geopotential variability changes with altitude. 
 
+The number of predictor was then successively increased up to ten, considering the weighting of the analogy criteria values. The addition of predictors constantly (for both the CP and the VP) improved the prediction skill only up to four predictors (Figure \ref{fig:figure_nb_levels}). Afterwards, the score on the VP is more variable, showing eventually even a decrease, which revealed an over-parametrization of the method, and thus a lack of robustness. After four predictors, the score on the CP does not increase substantially, and might even present some local decrease due to increasing difficulty for the optimizer to converge. Considering four predictors is considered optimal for this case study, since the gain in CRPSS is significant, and the model remains relatively simple. It cannot be excluded that another number would prevail in another region than the upper Rh\^{o}ne catchemnt, under other meteorological conditions, or with another reanalysis dataset.
 
 \subsection{Which parameters are optimized ?}
 
-The chosen method for the atmospheric circulation analogy, based on 4 levels of the geopotential, and that will be named 4Zo, is made of the following degrees of freedom:
+The chosen method for the atmospheric circulation analogy, based on four levels of the geopotential, and that will be named 4Zo, is made of the following degrees of freedom:
 
 \begin{itemize}
 	\setlength\itemsep{-4px}
@@ -268,7 +269,7 @@ To assess the parameters cross-compatibility, and the spatial coherence of the r
 
 The automatic selections of the pressure levels (Table \ref{table:levels_GA_4Zo}) and the temporal windows (not shown) for the analogy of circulation show a great homogeneity and are spatially consistent. First of all, the level Z1000 is always selected twice (the first time at 6 or 12~h, and the second always at 30~h) and Z700 is selected once for every subregion (always at 24~h). The level which varies from one subregion to another is the upper level (however always at 12~h), which is Z300 for the North-West part of the catchment, Z500 for most of the subregions, and Z600 for the Conches Valley. Its spatial distribution is however homogeneous. The optimizer thus provided consistent selections of pressure levels and temporal windows. The automatic selection of the pressure levels is a big advantage in favor of a global optimization.
 
-The resulting spatial windows (Figure \ref{fig:spatial_windows_4Zo}) may look very diverse first, but there are significant similarities for subregions located within the same vicinity. The first 4 subregions are characterized by a large spatial window on the upper level, whereas it is smaller elsewhere. For most subregions, the second level (Z700) is represented by thin and longitudinally extended domains. The third level (Z1000 at 6 or 12~h) also contains longitudinally extended domains, but a bit larger. The last one (Z1000 at 30~h) is rather large and squared. Subregions number 5 (Southern valleys) and 6 (Southern ridges) have exactly the same spatial windows, which suggest that they behave in a similar way and thus could have been merged. This similarity is a good sign for the accuracy of the optimized parameters.
+The resulting spatial windows (Figure \ref{fig:spatial_windows_4Zo}) may look very diverse first, but there are significant similarities for subregions located within the same vicinity. The first four subregions are characterized by a large spatial window on the upper level, whereas it is smaller elsewhere. For most subregions, the second level (Z700) is represented by thin and longitudinally extended domains. The third level (Z1000 at 6 or 12~h) also contains longitudinally extended domains, but a bit larger. The last one (Z1000 at 30~h) is rather large and squared. Subregions number 5 (Southern valleys) and 6 (Southern ridges) have exactly the same spatial windows, which suggest that they behave in a similar way and thus could have been merged. This similarity is a good sign for the accuracy of the optimized parameters.
 
 The scores show non-negligible improvements for both the CP and the VP (Figure \ref{fig:figure_crpss_4Zo}) compared to the reference method optimized by the sequential procedure. Even more interestingly, the results for higher precipitation thresholds (Table \ref{table:scores_thresholds_4Zo}) show the largest improvements. This is of particular interest in the framework of flood forecasting. The further improvement of days with higher precipitation totals is likely related to the fact that larger values contribute more to the CRPS score, which means that better predicting these days results in significant increase of the performance score.
 
@@ -282,7 +283,7 @@ Globally, the same pattern can be observed for the VP (Figure \ref{fig:crossing_
 
 It is known that moisture variables as a second level of analogy do provide improvements to the method (section \ref{sec:references}). The moisture index, which is a combination of the relative humidity and the precipitable water, has thus also to be optimized. In order to do so, a constraint to the optimizer had to be introduced, so as to select the same temporal window (time of observation) for both variables. 
 
-Two methods were assessed: one with 2 moisture predictors (moisture index on 2 pressure levels or at 2 different hours) named 4Zo-2MIo, and one with 4 moisture predictors named 4Zo-4MIo. When introducing 2 predictors for the moisture analogy, the number of degrees of freedom raises to 42, and to 54 with 4 predictors.
+Two methods were assessed: one with 2 moisture predictors (moisture index on 2 pressure levels or at 2 different hours) named 4Zo-2MIo, and one with four moisture predictors named 4Zo-4MIo. When introducing two predictors for the moisture analogy, the number of degrees of freedom raises to 42, and to 54 with four predictors.
 
 The optimization was processed on both levels of analogy simultaneously. This implies that the analogy of the atmospheric circulation may change due to the new moisture information.
 
@@ -308,15 +309,15 @@ As for the sequential procedure, the optimal value of $N_{1}$ increases when add
 
 The optimal final number of analogues do not vary much: $23 \leq N_{1} \leq 33$ for 4Zo and $21 \leq N_{2} \leq 28$ for 4Zo-2MIo. However, the optimal number of $N_{1}$ analogues of the first level of 4Zo-2MIo varies to a greater extent: $48 \leq N_{1} \leq 84$. In this latter method, it may be problematic to consider a fixed and unique value for all regions.
 
-As for the pressure levels, Z1000 that was previously systematically selected twice (Table \ref{table:levels_GA_4Zo}) is now less chosen (once or even not at all) for both 4Zo-2MIo (Table \ref{table:levels_GA_4Zo_2MIo}) and 4Zo-4MIo (not shown). There is indeed a vertical shift of the previously selected Z1000 for higher levels, that is even slightly stronger with 4 moisture predictors than with 2. This change is likely due to the fact that when considering only the circulation analogy, the method tries to take into account information that can serve as proxy for moisture assessment, whereas it does not need it with the moisture index. This aspect has never been demonstrated before, as sequential calibration tools do not allow it. It can only be assessed by a global optimization technique that can tune jointly both levels of analogy. 
+As for the pressure levels, Z1000 that was previously systematically selected twice (Table \ref{table:levels_GA_4Zo}) is now less chosen (once or even not at all) for both 4Zo-2MIo (Table \ref{table:levels_GA_4Zo_2MIo}) and 4Zo-4MIo (not shown). There is indeed a vertical shift of the previously selected Z1000 for higher levels, that is even slightly stronger with four moisture predictors than with 2. This change is likely due to the fact that when considering only the circulation analogy, the method tries to take into account information that can serve as proxy for moisture assessment, whereas it does not need it with the moisture index. This aspect has never been demonstrated before, as sequential calibration tools do not allow it. It can only be assessed by a global optimization technique that can tune jointly both levels of analogy. 
 
-The selected pressure levels for the analogy on the moisture index are strongly centered around 700~hPa and 600~hPa. No other value has been selected when considering 2 pressure levels (Table \ref{table:levels_GA_4Zo_2MIo}), and when considering 4 levels, 850~hPa and 500~hPa were sometimes also selected (not shown). However, even in this latter method, the 700~hPa and 600~hPa levels still hold 78 \% of the selection. It is thus more efficient, in terms of prediction performance, to consider one of this level several times at different hours rather than selecting another pressure level. Besides, the optimizer never chose the same pressure level at the same hour for any variable, even though it was allowed to do so. The selected pressure levels for the analogy on the moisture index differ from the parameters resulting from the reference method optimized by the sequential procedure (Tables \ref{table:params_R2} and \ref{table:levels_GA_4Zo_2MIo}, last row). It is possible that the level 850~hPa is more optimal for the region for which the reference parameterization was established. However, this selection is usually not reconsidered when applying the sequential procedure.
+The selected pressure levels for the analogy on the moisture index are strongly centered around 700~hPa and 600~hPa. No other value has been selected when considering two pressure levels (Table \ref{table:levels_GA_4Zo_2MIo}), and when considering four levels, 850~hPa and 500~hPa were sometimes also selected (not shown). However, even in this latter method, the 700~hPa and 600~hPa levels still hold 78 \% of the selection. It is thus more efficient, in terms of prediction performance, to consider one of this level several times at different hours rather than selecting another pressure level. Besides, the optimizer never chose the same pressure level at the same hour for any variable, even though it was allowed to do so. The selected pressure levels for the analogy on the moisture index differ from the parameters resulting from the reference method optimized by the sequential procedure (Tables \ref{table:params_R2} and \ref{table:levels_GA_4Zo_2MIo}, last row). It is possible that the level 850~hPa is more optimal for the region for which the reference parameterization was established. However, this selection is usually not reconsidered when applying the sequential procedure.
 
 The selection of the temporal windows for the atmospheric circulation is similar to the preceding optimization (in the order of increasing pressure: 12~h, 24/30~h, 12~h, 30~h), but sometimes with a bit more variability. When it comes to the moisture analogy, there is a clear trend to select 12~h and 24~h when considering 2 predictors.
 
-The optimized spatial windows for the atmospheric circulation have also changed (Figure \ref{fig:spatial_windows_4Zo-2MIo}; results of 4Zo-4MIo are not shown but present the same trends). The very large domains on the upper level of the 4 first subregions are not present anymore, and more variability can be observed. The selected points for the analogy on the moisture index are always located nearby the catchment, including at least 1 of the nearest points from the reanalysis dataset, and the spatial windows are relatively small. Thus, for this case study, there is no need to look for distant moisture information and the search could be reduced to a smaller domain. 
+The optimized spatial windows for the atmospheric circulation have also changed (Figure \ref{fig:spatial_windows_4Zo-2MIo}; results of 4Zo-4MIo are not shown but present the same trends). The very large domains on the upper level of the four first subregions are not present anymore, and more variability can be observed. The selected points for the analogy on the moisture index are always located nearby the catchment, including at least 1 of the nearest points from the reanalysis dataset, and the spatial windows are relatively small. Thus, for this case study, there is no need to look for distant moisture information and the search could be reduced to a smaller domain. 
 
-The CRPSS scores were improved by considering the moisture information (Figure \ref{fig:figure_crpss_4Zo-2HIo} to be compared with Figure \ref{fig:figure_crpss_4Zo}). The optimized methods also perform significantly better than the reference method based on the moisture index optimized by the sequential procedure. However, there is no drastic difference between both 4Zo-2MIo and 4Zo-4MIo methods, which suggests that considering 4 moisture predictors is not necessary. When it comes to improvements for days with precipitation above the 3 thresholds (P\(\geq\)1~mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10), the conclusion is the same as before, that is a significant improvement of the prediction compared to the reference method, mainly for heavy rainfall.
+The CRPSS scores were improved by considering the moisture information (Figure \ref{fig:figure_crpss_4Zo-2HIo} to be compared with Figure \ref{fig:figure_crpss_4Zo}). The optimized methods also perform significantly better than the reference method based on the moisture index optimized by the sequential procedure. However, there is no drastic difference between both 4Zo-2MIo and 4Zo-4MIo methods, which suggests that considering four moisture predictors is not necessary. When it comes to improvements for days with precipitation above the 3 thresholds (P\(\geq\)1~mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10), the conclusion is the same as before, that is a significant improvement of the prediction compared to the reference method, mainly for heavy rainfall.
 
 The analysis of the parameters cross-compatibility (Figure \ref{fig:crossing_4Zo-2MIo}) is also very similar to the one on the circulation analogy only (results for 4Zo-4MIo not shown as very similar). The same pattern can be observed, with a drop of performance for the subregions submitted to different meteorological influences. However, the losses of performance are globally more important than before, suggesting that more complex methods with moisture variables are less transposable to another subregion (consistent with the observations of \citet{Chardon2014}), even though both are located within the same grid cell of the reanalysis dataset. Moisture fields have greater variability than pressure fields, and thus a change in the spatial windows can have a greater impact on the method performance. Indeed, the two regions with the lowest cross-compatibility are the Upper Rhone Valley (7) and the Southeast ridges (8), which have similar optimal pressure levels and temporal windows to other regions, but have rather different spatial windows on the moisture predictor.
 
@@ -329,7 +330,7 @@ Predictors based on moisture variables do significantly increase the prediction 
 The optimization of the AM by means of GAs has been undertaken in stages by releasing progressively new degrees of freedom. This approach allowed us to differentiate the contributions to performance gains, as well as to identify possible over-parametrization. The main improvements for the present case study are due to the following factors:
 
 \begin{itemize}
-	\item Using 4 pressure levels for the analogy of circulation. It seems to be the optimal number for the studied region. Beyond that value the validation score drops, revealing a loss in robustness due to over-parametrization.
+	\item Using four pressure levels for the analogy of circulation. It seems to be an optimal number for the studied region, afterwards the validation score is more variable, revealing a loss in robustness due to over-parametrization.
 	\item The automatic and joint optimization of all parameters: the analogues number, the selection of the pressure levels and the temporal windows, and the spatial windows. These parameters are highly interdependent, so one needs to optimize them jointly in order to identify optimal combinations. Indeed, there is a strong interdependence between space and time in the atmospheric circulation, so that e.g. the spatial window should move upstream the main atmospheric flow for earlier temporal windows.	Traditional calibration procedures based on a systematic assessment of every combination is not possible anymore when considering more than 2 pressure levels.
 	\item The introduction of distinct spatial windows between pressure levels. The synoptic circulation is characterized by features with very different scales depending on the height, and important information for predicting rainfall is not necessarily located in the same area from one level to another. However, the optimized spatial windows are consistent in between the subregions.
 	\item The weighting of the analogy criteria between different pressure levels. It can be influenced by the variability of the geopotential with altitude, and the change of some levels significance with the targeted region. There is a trend for the weighting of circulation predictors to decrease with the increase in pressure, as one can see in Figure \ref{fig:levels_weights_average} for the three optimized methods. However, the values stay around equity. This may not be the most influencing factor, and we may suggest to remove it first when trying to reduce the number of degrees of freedom.
@@ -390,55 +391,61 @@ The authors would also like to acknowledge the work Loris Foresti and another an
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.4cm]{figures/fig02.pdf}}
+	\centerline{\includegraphics[width=8.8cm]{figures/fig02.pdf}}
+	\caption{Performance score (CRPSS) on the CP and the VP for three stations (1 - Swiss Chablais, 5 - Southern valleys, 8 - Southeast ridges) when varying the number of geopotential height levels available to the optimizer.}
+	\label{fig:figure_nb_levels}
+\end{figure}
+
+\begin{figure}[t]
+	\centerline{\includegraphics[width=8.4cm]{figures/fig03.pdf}}
 	\caption{Optimized spatial windows for the 4Zo method (analogy of atmospheric circulation on 4 pressure levels). The pressure levels are ordered by increasing pressure and increasing time for the same levels.}
 	\label{fig:spatial_windows_4Zo}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig03.pdf}}
+	\centerline{\includegraphics[width=8.8cm]{figures/fig04.pdf}}
 	\caption{Performance score (CRPSS) of the reference methods 2Z (Table \ref{table:params_R1}) and the optimized 4Zo method for the CP and the VP for every subregion.}
 	\label{fig:figure_crpss_4Zo}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.4cm]{figures/fig04.pdf}}
+	\centerline{\includegraphics[width=8.4cm]{figures/fig05.pdf}}
 	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 4Zo, calibration and validation periods.}
 	\label{fig:crossing_4Zo}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.4cm]{figures/fig05.pdf}}
+	\centerline{\includegraphics[width=8.4cm]{figures/fig06.pdf}}
 	\caption{Optimized spatial windows for the 4Zo-2MIo method (analogy of atmospheric circulation on 4 pressure levels and the analogy on the moisture index on 2 pressure levels). The pressure levels are ordered by increasing pressure and increasing time for the same levels.}
 	\label{fig:spatial_windows_4Zo-2MIo}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig06.pdf}}
+	\centerline{\includegraphics[width=8.8cm]{figures/fig07.pdf}}
 	\caption{Performance score (CRPSS) of the reference methods 2Z-2MI (Table \ref{table:params_R2}) and the optimized 4Zo-2MIo method for the CP and the VP for every subregion.}
 	\label{fig:figure_crpss_4Zo-2HIo}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig07.pdf}}
+	\centerline{\includegraphics[width=8.8cm]{figures/fig08.pdf}}
 	\caption{Number of analogues for the different regions and the various methods resulting from the optimization. Method 4Zo is made of a single level of analogy with $N_{1}$ analogues, whereas 4Zo-2MIo has two levels of analogy with respectively $N_{1}$ and $N_{2}$ analogues.}
 	\label{fig:figure_nb_analogs}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.4cm]{figures/fig08.pdf}}
+	\centerline{\includegraphics[width=8.4cm]{figures/fig09.pdf}}
 	\caption{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 4Zo-2MIo, calibration and validation periods.}
 	\label{fig:crossing_4Zo-2MIo}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig09.pdf}}
+	\centerline{\includegraphics[width=8.8cm]{figures/fig10.pdf}}
 	\caption{Distribution of the optimal weights for the predictors of the first level of analogy (geopotential heights) of the 4Zo, 4Zo-2MIo, and 4Zo-4MIo methods. The results are those of the 10 subregions. The geopotential heights are sorted by increasing pressure and hour.}
 	\label{fig:levels_weights_average}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=7.5cm]{figures/fig10.pdf}}
+	\centerline{\includegraphics[width=7.5cm]{figures/fig11.pdf}}
 	\caption{Example of the evolution of the performance score of the best individual over 8 independent optimizations.}
 	\label{fig:evolution}
 \end{figure}
