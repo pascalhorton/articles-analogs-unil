@@ -578,7 +578,7 @@ This research has been initiated within the MINERVE (Mod\'{e}lisation des Intemp
 
 The fruitful collaboration with the Laboratoire d'Etude des Transferts en Hydrologie et Environnement of the Grenoble Institute of Technology (G-INP) was made possible thanks to the Herbette Foundation. NCEP reanalysis data was provided by the NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, from their Web site at http://www.esrl.noaa.gov/psd/. Precipitation time series were provided by MeteoSwiss.
 
-The authors would also like to acknowledge the work anonymous reviewers, which contributed to improving this paper.
+The authors would also like to acknowledge the work of anonymous reviewers, which contributed to improving this paper.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -638,31 +638,14 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=19pc,angle=0]{fig01.pdf}}
+	\centerline{\includegraphics[width=7.9cm,angle=0]{fig01.pdf}}
 	\caption{Location of the alpine Rh\^{o}ne catchment in Switzerland, and its discretization into 10 subregions:	(1) Swiss Chablais, (2) Trient Valley, (3) West Bernese Alps, (4) Lower Rhone Valley, (5) Left side valleys, (6) Southern ridges, (7) Upper Rhone Valley, (8) Southeast ridges, (9) East Bernese Alps, (10) Conches Valley. (source: Swisstopo)}
 	\label{fig:map}
 \end{figure}
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig02.pdf}\\
-	\end{center}
-	\caption{Illustration of the different couples selection variants assessed in this study. Distributions on the left illustrate the probability of selection depending on the rank of the individual.}
-	\label{fig:illustration_couples}
-\end{figure}
-
-\begin{figure}[t]
-	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{fig03.pdf}\\
-	\end{center}
-	\caption{Illustration of the different chromosome crossover variants assessed in this study.}
-	\label{fig:illustration_crossover}
-\end{figure}
-
-
-\begin{figure}[t]
-	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig04.pdf}\\
+		\noindent\includegraphics[width=7.9cm,angle=0]{fig02.pdf}\\
 	\end{center}
 	\caption{Genetic algorithms operational flowchart.}
 	\label{fig:structure_gas}
@@ -670,7 +653,23 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig05.pdf}\\
+		\noindent\includegraphics[width=7.9cm,angle=0]{fig03.pdf}\\
+	\end{center}
+	\caption{Illustration of the different couples selection variants assessed in this study. Distributions on the left illustrate the probability of selection depending on the rank of the individual.}
+	\label{fig:illustration_couples}
+\end{figure}
+
+\begin{figure}[t]
+	\begin{center}
+		\noindent\includegraphics[width=11.3cm,angle=0]{fig04.pdf}\\
+	\end{center}
+	\caption{Illustration of the different chromosome crossover variants assessed in this study.}
+	\label{fig:illustration_crossover}
+\end{figure}
+
+\begin{figure}[t]
+	\begin{center}
+		\noindent\includegraphics[width=7.9cm,angle=0]{fig05.pdf}\\
 	\end{center}
 	\caption{Evolution of the score of the best individual over each generation for the 10 optimizations processed for a given configuration. The continuous bottom line represents the score of the sequential approach, and the dashed line (top) shows the supposed global optimum. The circles represent the end of the optimization (when the best individual did not progress during 20 generations). Seven out of 10 optimizations converged to the global optimum.}
 	\label{fig:gas_evolution_good}
@@ -678,7 +677,7 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig06.pdf}\\
+		\noindent\includegraphics[width=7.9cm,angle=0]{fig06.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:gas_evolution_good}, but for a GA configuration considered to be less relevant and later rejected, because the optimizations did not converge. However, it still performed significantly better than the sequential approach (continuous bottom line).}
 	\label{fig:gas_evolution_bad}
@@ -686,7 +685,7 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig07.pdf}\\
+		\noindent\includegraphics[width=7.9cm,angle=0]{fig07.pdf}\\
 	\end{center}
 	\caption{Influence of the couples selection operators (section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:nat_selection}) on the optimization performance (improvement of the score). The box extends from the lower to upper quartile values of the data, with a line at the median. The whiskers extend from the box to 1.5 times the interquartile range. Flier points are those past the end of the whiskers. The star represents the median. The gray box highlights the best options.}
 	\label{fig:operator_selectcoupl_score}
@@ -694,7 +693,7 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=39pc,angle=0]{fig08.pdf}\\
+		\noindent\includegraphics[width=13.8cm,angle=0]{fig08.pdf}\\
 	\end{center}
 	\caption{Influence of the chromosome crossover operators (section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:crossover}) on the optimization performance (improvement of the score).  $\beta$s represent a shared $\beta$ parameter, and $\beta$u the unshared version. The same conventions apply as in Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_crossover_score}
@@ -702,7 +701,7 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=19pc,angle=0]{fig09.pdf}\\
+		\noindent\includegraphics[width=7.9cm,angle=0]{fig09.pdf}\\
 	\end{center}
 	\caption{Influence of the mutation operators (section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:mutation}) on the optimization performance. In parentheses is the number of variants considered (combination of options). The same conventions apply as in Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score}
@@ -710,7 +709,7 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{fig10.pdf}\\
+		\noindent\includegraphics[width=11.3cm,angle=0]{fig10.pdf}\\
 	\end{center}
 	\caption{Influence of the mutation options (section \ref{sec:gas}\ref{sec:gas:operators}\ref{sec:gas:mutation}) on the optimization performance, letting the optimizer choose the pressure level of the atmospheric circulation analogy (single level of analogy). For the non-uniform mutation, $\omega=0.1$ in every case. The continuous bottom line represents the score of the sequential calibration, and the dashed superior line is the score of the optimization without automatic selection of the pressure levels. The same conventions apply as in Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_mutation_score_atmlevel}
@@ -718,7 +717,7 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{fig11.pdf}\\
+		\noindent\includegraphics[width=11.3cm,angle=0]{fig11.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:operator_mutation_score_atmlevel}, but for another region in the Swiss Alps (Swiss Chablais), with different atmospheric influences.}
 	\label{fig:operator_mutation_score_rhoneamont}
@@ -726,7 +725,7 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{fig12.pdf}\\
+		\noindent\includegraphics[width=11.3cm,angle=0]{fig12.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:operator_mutation_score_atmlevel}, but with a second level of analogy on moisture variables.}
 	\label{fig:operator_mutation_score_r2}
@@ -734,7 +733,7 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 
 \begin{figure*}[t]
 	\begin{center}
-		\noindent\includegraphics[width=33pc,angle=0]{fig13.pdf}\\
+		\noindent\includegraphics[width=11.3cm,angle=0]{fig13.pdf}\\
 	\end{center}
 	\caption{Same as Fig. \ref{fig:operator_mutation_score_r2}, but with a preselection on air temperature rather than a fixed calendar window.}
 	\label{fig:operator_mutation_score_r4}
@@ -742,7 +741,7 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=11pc,angle=0]{fig14.pdf}\\
+		\noindent\includegraphics[width=4.8cm,angle=0]{fig14.pdf}\\
 	\end{center}
 	\caption{Influence of the natural selection operators on the optimization performance. The same conventions apply as in Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:operator_selectnat_score}
@@ -750,7 +749,7 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=11pc,angle=0]{fig15.pdf}\\
+		\noindent\includegraphics[width=4.8cm,angle=0]{fig15.pdf}\\
 	\end{center}
 	\caption{Influence of the population size on the optimization performance. The same conventions apply as in Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:option_taillepop_score}
@@ -758,7 +757,7 @@ The authors would also like to acknowledge the work anonymous reviewers, which c
 
 \begin{figure}[t]
 	\begin{center}
-		\noindent\includegraphics[width=11pc,angle=0]{fig16.pdf}\\
+		\noindent\includegraphics[width=4.8cm,angle=0]{fig16.pdf}\\
 	\end{center}
 	\caption{Influence of the intermediate generation (IG) ratio on the optimization performance. The same conventions apply as in Fig. \ref{fig:operator_selectcoupl_score}.}
 	\label{fig:option_popratio_score}
