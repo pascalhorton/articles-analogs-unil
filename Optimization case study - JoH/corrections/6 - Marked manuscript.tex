@@ -1,0 +1,1085 @@
+%\documentclass[5p]{elsarticle}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL D:\__OLD-vers\Optimization case study - Journal of Hydrology\elsarticle-template.tex   Mon Jan 23 22:14:10 2017
+%DIF ADD elsarticle-template.tex                                                                Mon Jan 23 21:25:02 2017
+\documentclass[review]{elsarticle}
+
+\usepackage{lineno,hyperref}
+\modulolinenumbers[5]
+
+\journal{Journal of Hydrology}
+
+
+\usepackage{multirow}
+\usepackage{gensymb}
+
+
+%DIF 14d14
+%DIF < 
+%DIF -------
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Elsevier bibliography styles
+%%%%%%%%%%%%%%%%%%%%%%%
+%% To change the style, put a % in front of the second line of the current style and
+%% remove the % from the second line of the style you would like to use.
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Numbered
+%\bibliographystyle{model1-num-names}
+
+%% Numbered without titles
+%\bibliographystyle{model1a-num-names}
+
+%% Harvard
+\bibliographystyle{model2-names}\biboptions{authoryear}
+
+%% Vancouver numbered
+%\usepackage{numcompress}\bibliographystyle{model3-num-names}
+
+%% Vancouver name/year
+%\usepackage{numcompress}\bibliographystyle{model4-names}\biboptions{authoryear}
+
+%% APA style
+%\bibliographystyle{model5-names}\biboptions{authoryear}
+
+%% AMA style
+%\usepackage{numcompress}\bibliographystyle{model6-num-names}
+
+%% `Elsevier LaTeX' style
+%\bibliographystyle{elsarticle-num}
+%%%%%%%%%%%%%%%%%%%%%%%
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Using Genetic Algorithms to Optimize the Analogue Method for Precipitation \DIFdelbegin \DIFdel{Downscaling }\DIFdelend \DIFaddbegin \DIFadd{Prediction }\DIFaddend in the Swiss Alps}
+
+%% Group authors per affiliation:
+\DIFdelbegin %DIFDELCMD < \author[unil,terranum]{%%%
+\DIFdelend \DIFaddbegin \author[unil,unibe,terranum]{\DIFaddend Pascal Horton\corref{mycorrespondingauthor}}
+\cortext[mycorrespondingauthor]{Corresponding author}
+\ead{pascal.horton@alumnil.unil.ch}
+
+\author[unil]{Michel Jaboyedoff}
+\author[lthe]{Charles Obled}
+
+\DIFdelbegin %DIFDELCMD < \address[unil]{University of Lausanne, Lausanne, Switzerland}
+%DIFDELCMD < \address[terranum]{Terranum, Rue de l'industrie 35 bis, 1030 Bussigny, Switzerland}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \address[unil]{University of Lausanne, Institute of Earth Sciences, Lausanne, Switzerland}
+\address[unibe]{University of Bern, Oeschger Centre for Climate Change Research, Institute of Geography, Bern, Switzerland}
+\DIFaddend \address[lthe]{Universit\'{e} de Grenoble-Alpes, LTHE, Grenoble, France}
+
+\begin{abstract}
+	\DIFdelbegin \DIFdel{The Analogue Method aims at predicting precipitation based on predictors variables provided by global models }\DIFdelend \DIFaddbegin \DIFadd{Analogue methods provide a statistical precipitation prediction based on synoptic predictors supplied by general circulation models or numerical weather prediction models}\DIFaddend . The method samples a selection of days in the archives that are similar to the target day to \DIFdelbegin \DIFdel{predict}\DIFdelend \DIFaddbegin \DIFadd{be predicted}\DIFaddend , and consider \DIFdelbegin \DIFdel{the set of their }\DIFdelend \DIFaddbegin \DIFadd{their set of }\DIFaddend corresponding observed precipitation (the predictand) as the conditional distribution for the target day. The relationship between \DIFaddbegin \DIFadd{the }\DIFaddend predictors and predictands relies on some parameters that characterize how and where the \DIFdelbegin \DIFdel{similitude }\DIFdelend \DIFaddbegin \DIFadd{similarity }\DIFaddend between two atmospheric situations is defined.
+
+	This relationship is usually established by a semi-automatic sequential procedure that has strong limitations\DIFdelbegin \DIFdel{. A new }\DIFdelend \DIFaddbegin \DIFadd{: (i) it cannot automatically choose the pressure levels and temporal windows for a given meteorological variable, (ii) it cannot handle dependencies between parameters, and (iii) it cannot easily handle new degrees of freedom. In this work, a }\DIFaddend global optimization approach relying on \DIFdelbegin \DIFdel{Genetic Algorithms can }\DIFdelend \DIFaddbegin \DIFadd{genetic algorithms was able to }\DIFaddend optimize all parameters jointly and automatically\DIFdelbegin \DIFdel{, which is a breakthrough in the way the Analogue Method was calibrated until now. It allows taking into account parameters }\DIFdelend \DIFaddbegin \DIFadd{. It allowed consideration of parameter }\DIFaddend inter-dependencies, and \DIFdelbegin \DIFdel{selecting objectively }\DIFdelend \DIFaddbegin \DIFadd{objective selection of }\DIFaddend some parameters that were manually selected beforehand\DIFdelbegin \DIFdel{(such as the }\DIFdelend \DIFaddbegin \DIFadd{, which obviates the need to assess a large number of combinations of }\DIFaddend pressure levels and \DIFdelbegin \DIFdel{the }\DIFdelend temporal windows of \DIFdelbegin \DIFdel{the predictor variables)}\DIFdelend \DIFaddbegin \DIFadd{predictor variables}\DIFaddend .
+
+	\DIFdelbegin \DIFdel{In this work, the global optimization is applied to the }\DIFdelend \DIFaddbegin \DIFadd{The global optimization was applied to some variants of the analogue method for the }\DIFaddend Rh\^{o}ne catchment \DIFdelbegin \DIFdel{, }\DIFdelend in the Swiss Alps. The performance scores \DIFdelbegin \DIFdel{are significantly }\DIFdelend increased compared to \DIFdelbegin \DIFdel{a reference method, and this even to a greater extent }\DIFdelend \DIFaddbegin \DIFadd{reference methods, especially }\DIFaddend for days with high precipitation totals. The resulting parameters were found to be relevant and coherent between the different subregions of the catchment. Moreover, they \DIFdelbegin \DIFdel{are }\DIFdelend \DIFaddbegin \DIFadd{were }\DIFaddend obtained automatically and objectively, which reduces \DIFdelbegin \DIFdel{efforts }\DIFdelend \DIFaddbegin \DIFadd{the effort that needs to be }\DIFaddend invested in exploration attempts when adapting the method to a new region or for a new predictand. In addition, the approach \DIFdelbegin \DIFdel{allows }\DIFdelend \DIFaddbegin \DIFadd{allowed }\DIFaddend for new degrees of freedom, such as a \DIFdelbegin \DIFdel{weighting between the }\DIFdelend \DIFaddbegin \DIFadd{possible weighting between }\DIFaddend pressure levels, and \DIFdelbegin \DIFdel{non overlapping }\DIFdelend \DIFaddbegin \DIFadd{non-overlapping }\DIFaddend spatial windows.
+\end{abstract}
+
+\begin{keyword}
+	\DIFdelbegin \DIFdel{Precipitation }\DIFdelend \DIFaddbegin \DIFadd{precipitation }\DIFaddend prediction\sep
+	\DIFdelbegin \DIFdel{Precipitation downscaling}%DIFDELCMD < \sep
+%DIFDELCMD < %%%
+\DIFdel{Analogue }\DIFdelend \DIFaddbegin \DIFadd{analogue }\DIFaddend method\sep
+	\DIFdelbegin \DIFdel{Optimization}\DIFdelend \DIFaddbegin \DIFadd{optimization}\DIFaddend \sep
+	\DIFdelbegin \DIFdel{Genetic }\DIFdelend \DIFaddbegin \DIFadd{genetic }\DIFaddend algorithms\sep
+	Alpine climate
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+
+\section{Introduction}
+\label{sec:intro}
+
+The analogue method (AM) is a downscaling technique based on the idea expressed by \citet{Lorenz1956, Lorenz1969} \DIFdelbegin \DIFdel{, }\DIFdelend that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+\citep{Duband1970, Bontron2005}}%DIFAUXCMD
+. It aims at forecasting a predictand, often the daily precipitation \mbox{%DIFAUXCMD
+\citep[eg.][]{Guilbaud1997, Bontron2005, Bliefernicht2010, Marty2012, Horton2012, Radanovics2013, BenDaoud2015}}%DIFAUXCMD
+, on the basis of }\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\citep{Duband1970}}%DIFAUXCMD
+. It uses }\DIFaddend predictor variables describing the synoptic atmospheric circulation \DIFdelbegin \DIFdel{. }\DIFdelend \DIFaddbegin \DIFadd{in order to predict local-scale predictands of interest. It is often used to predict daily precipitation, either in an operational forecasting context \mbox{%DIFAUXCMD
+\citep[e.g.][]{Guilbaud1997, Bontron2005, Hamill2006, Bliefernicht2010, Marty2012, Horton2012, Horton2016a, Hamill2015, BenDaoud2016} }%DIFAUXCMD
+or a climate downscaling context \mbox{%DIFAUXCMD
+\citep[e.g.][]{Radanovics2013, Chardon2014, Dayon2015, Raynaud2016b}}%DIFAUXCMD
+. }\DIFaddend Other predictands are also \DIFdelbegin \DIFdel{often considered\mbox{%DIFAUXCMD
+\citep[see][for a non-exhaustive list]{Horton2016}}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{considered, such as precipitation radar images \mbox{%DIFAUXCMD
+\citep{Panziera2011,Foresti2015a}}%DIFAUXCMD
+, temperature \mbox{%DIFAUXCMD
+\citep{Radinovic1975, Woodcock1980, Kruizinga1983, DelleMonache2013, Caillouet2016, Raynaud2016b}}%DIFAUXCMD
+, wind \mbox{%DIFAUXCMD
+\citep{Gordon1987, DelleMonache2013, DelleMonache2011, Vanvyve2015, Alessandrini2015, Junk2015, Junk2015c}}%DIFAUXCMD
+, solar power \mbox{%DIFAUXCMD
+\citep{Alessandrini2015a, Bessa2015}}%DIFAUXCMD
+, snow avalanches \mbox{%DIFAUXCMD
+\citep{Obled1980, Bolognesi1993}}%DIFAUXCMD
+, and radiation \mbox{%DIFAUXCMD
+\citep{Bois1981, Raynaud2016b}}%DIFAUXCMD
+}\DIFaddend .
+
+In \DIFdelbegin \DIFdel{operational }\DIFdelend \DIFaddbegin \DIFadd{real-time }\DIFaddend forecasting, it \DIFdelbegin \DIFdel{has been }\DIFdelend \DIFaddbegin \DIFadd{is }\DIFaddend used mainly by practitioners, notably hydropower companies or flood forecasting services, \DIFdelbegin \DIFdel{while in }\DIFdelend \DIFaddbegin \DIFadd{that need to anticipate water yields or issue early flood warnings several days in advance. The classical forecasting chain consists of using limited area models (e.g. AROME, or COSMO) forced by global NWP (numerical weather prediction) models with a lower resolution. However, their use requires very important processing capacities, and the resulting forecast still presents large uncertainties and biases. Although these outputs are essential, they can be supplemented by other sources of forecasts providing useful information. In contrast to local NWP models, AMs can transform at low cost the synoptic-scale information provided by the global NWP model into precipitation forecasts, by using the natural local behaviour in response to synoptic-scale influences stored in the archive of observed precipitation. Running an AM approach is fast enough that it can search for analogues for each day, up to ten days ahead, eventually for the different traces of an ensemble forecast and/or those issued by different NWP models (e.g. NOAA-GFS or ECMWF-IFS), in a matter of minutes.
+}
+
+\DIFadd{In }\DIFaddend climate studies, \DIFdelbegin \DIFdel{it is }\DIFdelend \DIFaddbegin \DIFadd{AMs are }\DIFaddend used to downscale the \DIFdelbegin \DIFdel{results of global climate }\DIFdelend \DIFaddbegin \DIFadd{outputs of a general circulation }\DIFaddend model (GCM) \DIFdelbegin \DIFdel{simulation runs. In this last case, although the GCM represents the large or regional scaleevolutions of }\DIFdelend \DIFaddbegin \DIFadd{or regional climate model (RCM) simulation runs \mbox{%DIFAUXCMD
+\citep{Dayon2015} }%DIFAUXCMD
+or to reconstruct past weather conditions \mbox{%DIFAUXCMD
+\citep{Caillouet2016}}%DIFAUXCMD
+. In future climate studies, RCMs are often used to dynamically downscale precipitation to a local scale. However, even though the relevance of RCMs' outputs increases, a bias correction of the outputs is often still required, particularly in complex terrain. Moreover, their application is computer-intensive, which makes it difficult to cover all combinations of climate scenarios and GCMs. Therefore, }\DIFaddend the \DIFdelbegin \DIFdel{atmosphere, it would be far too computer intensive to get down to variables such as precipitation at a rather small and representative scale. Thereforethe }\DIFdelend idea is to \DIFdelbegin \DIFdel{rely on past observations to bypass these unaffordable small scale }\DIFdelend \DIFaddbegin \DIFadd{bypass the small-scale }\DIFaddend simulations and to go from the \DIFdelbegin \DIFdel{large scale situation proposed by the GCM }\DIFdelend \DIFaddbegin \DIFadd{large-scale situation }\DIFaddend to the end variables \DIFdelbegin \DIFdel{like precipitation by searching analogues in the archives. }\DIFdelend \DIFaddbegin \DIFadd{such as precipitation by statistical downscaling \mbox{%DIFAUXCMD
+\citep{Maraun2010}}%DIFAUXCMD
+. 
+}\DIFaddend 
+
+\DIFaddbegin \DIFadd{Beyond being computationally inexpensive, another big advantage of AMs is that they create realistic precipitation patterns for a region, provided that the analogue dates are the same, since they are based on observed situations with consistent spatial distribution \mbox{%DIFAUXCMD
+\citep{Radanovics2013, Chardon2014}}%DIFAUXCMD
+. For the same reason, they can also provide multivariate predictions that are physically consistent \mbox{%DIFAUXCMD
+\citep{Raynaud2016b}}%DIFAUXCMD
+.
+}
+
+\DIFaddend The method can be \DIFdelbegin \DIFdel{made of }\DIFdelend \DIFaddbegin \DIFadd{designed with }\DIFaddend multiple successive subsampling steps, \DIFaddbegin \DIFadd{or analogy levels, }\DIFaddend each of them relying on different meteorological variables. A certain number of parameters define the relationship between predictors and predictands, such as the choice of the predictor variable, its pressure level and temporal window to consider, the spatial domain to use for the comparison, as well as the analogy \DIFdelbegin \DIFdel{criteria }\DIFdelend \DIFaddbegin \DIFadd{criterion }\DIFaddend itself, and finally\DIFaddbegin \DIFadd{, }\DIFaddend the number of analogue situations to keep at each subsampling level. These parameters are usually calibrated by means of a semi-automatic sequential procedure \DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+\citep[see][for the details]{Bontron2004, Horton2016}}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\citep{Bontron2004, Radanovics2013}}%DIFAUXCMD
+}\DIFaddend , i.e. by optimizing each single parameter\DIFaddbegin \DIFadd{, }\DIFaddend one at a time, in an arbitrarily chosen order, with no or little \DIFdelbegin \DIFdel{reconsidering}\DIFdelend \DIFaddbegin \DIFadd{reassessment}\DIFaddend . This sequential approach \DIFdelbegin \DIFdel{has therefore }\DIFdelend \DIFaddbegin \DIFadd{therefore has }\DIFaddend strong limitations: (i) it cannot automatically choose the \DIFaddbegin \DIFadd{optimal }\DIFaddend pressure levels and the temporal windows for a given meteorological variable, (ii) it cannot handle dependencies between the parameters within a level of analogy, and even less between them, and (iii) it \DIFdelbegin \DIFdel{could not }\DIFdelend \DIFaddbegin \DIFadd{cannot }\DIFaddend easily handle new degrees of freedom, such as a \DIFaddbegin \DIFadd{possible }\DIFaddend weighting between the pressure levels. Thus, even if the processing involved is relatively fast, the sequential approach requires laborious assessments of \DIFdelbegin \DIFdel{predictors }\DIFdelend \DIFaddbegin \DIFadd{predictor }\DIFaddend combinations (variables, pressure levels, temporal windows), and \DIFdelbegin \DIFdel{present }\DIFdelend \DIFaddbegin \DIFadd{presents }\DIFaddend a high risk of ending in a local optimum \DIFdelbegin \DIFdel{due to }\DIFdelend \DIFaddbegin \DIFadd{because of }\DIFaddend subjective initial choices and lack of consideration of \DIFdelbegin \DIFdel{parameters }\DIFdelend \DIFaddbegin \DIFadd{parameter }\DIFaddend inter-dependencies. \DIFaddbegin \DIFadd{Other calibration methods exist for specific applications, such as radar images \mbox{%DIFAUXCMD
+\citep{Panziera2011, Foresti2015a}}%DIFAUXCMD
+.
+}\DIFaddend 
+
+\DIFdelbegin \DIFdel{With the perspective }\DIFdelend \DIFaddbegin \DIFadd{Aiming }\DIFaddend to overcome these limitations, a global optimization by \DIFdelbegin \DIFdel{Genetic Algorithms }\DIFdelend \DIFaddbegin \DIFadd{genetic algorithms }\DIFaddend (GAs) was introduced\DIFdelbegin \DIFdel{by \mbox{%DIFAUXCMD
+\citet{Horton2016a}}%DIFAUXCMD
+}\DIFdelend . An intensive assessment \DIFdelbegin \DIFdel{work }\DIFdelend resulted in recommendations \DIFdelbegin \DIFdel{of parametrization of }\DIFdelend \DIFaddbegin \DIFadd{to parametrize }\DIFaddend GAs in order to optimize AMs successfully \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\citep{Horton2016}}%DIFAUXCMD
+}\DIFaddend . The present paper is based on these recommendations\DIFdelbegin \DIFdel{and illustrate them on precipitation predicting }\DIFdelend \DIFaddbegin \DIFadd{, and applies them to precipitation prediction }\DIFaddend for the upper Rh\^{o}ne catchment in the Swiss Alps\DIFaddbegin \DIFadd{, using AMs of varying complexity}\DIFaddend . It aims at \DIFdelbegin \DIFdel{proving }\DIFdelend \DIFaddbegin \DIFadd{illustrating }\DIFaddend the relevance of a \DIFdelbegin \DIFdel{fully-automatic}\DIFdelend \DIFaddbegin \DIFadd{fully automatic}\DIFaddend , objective, and global, optimization technique for AMs. The applications are indeed numerous, as \DIFdelbegin \DIFdel{the AM has }\DIFdelend \DIFaddbegin \DIFadd{AMs have }\DIFaddend to be adapted to every new location \DIFdelbegin \DIFdel{it is }\DIFdelend \DIFaddbegin \DIFadd{they are }\DIFaddend applied, or to any new predictand \DIFdelbegin \DIFdel{it }\DIFdelend \DIFaddbegin \DIFadd{they }\DIFaddend should predict.
+
+\DIFdelbegin \DIFdel{A short overview of AMsis presented in section \ref{sec:analog_method}, as well as a summary of Genetic Algorithms in section \ref{sec:gas}. Section \ref{sec:case_study} describes the case study area}\DIFdelend \DIFaddbegin \DIFadd{The data, AMs, and optimization techniques (sequential and GAs) are presented in Section \ref{sec:data_methods}}\DIFaddend . The results are first \DIFdelbegin \DIFdel{detailed }\DIFdelend \DIFaddbegin \DIFadd{given }\DIFaddend for the optimization of the analogy \DIFdelbegin \DIFdel{on the }\DIFdelend \DIFaddbegin \DIFadd{of }\DIFaddend atmospheric circulation only (\DIFdelbegin \DIFdel{section }\DIFdelend \DIFaddbegin \DIFadd{Section }\DIFaddend \ref{sec:optim_circul}), before being extended to a method adding a second level of analogy on moisture variables (\DIFdelbegin \DIFdel{section }\DIFdelend \DIFaddbegin \DIFadd{Section }\DIFaddend \ref{sec:optim_moisture}). General discussions (\DIFdelbegin \DIFdel{section }\DIFdelend \DIFaddbegin \DIFadd{Section }\DIFaddend \ref{sec:discussion}) and conclusions (\DIFdelbegin \DIFdel{section }\DIFdelend \DIFaddbegin \DIFadd{Section }\DIFaddend \ref{sec:conclusions}) follow.
+
+
+\section{\DIFdelbegin \DIFdel{The Analogue Method}\DIFdelend \DIFaddbegin \DIFadd{Data and methods}\DIFaddend }
+\DIFdelbegin %DIFDELCMD < \label{sec:analog_method}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \label{sec:data_methods}
+\DIFaddend 
+
+
+\subsection{\DIFdelbegin \DIFdel{References}\DIFdelend \DIFaddbegin \DIFadd{Case study description}\DIFaddend }
+\DIFaddbegin \label{sec:case_study}
+
+\DIFadd{The study area is the alpine upper Rh\^{o}ne catchment in Switzerland (Fig.\ \ref{fig:map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region is the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project, which aimed at real-time flood management on the upper Rh\^{o}ne catchment \mbox{%DIFAUXCMD
+\citep{GarciaHernandez2009b}}%DIFAUXCMD
+. Even though the region is rather small, the meteorological influences related to extreme weather conditions vary substantially within it \mbox{%DIFAUXCMD
+\citep[see][]{Horton2012}}%DIFAUXCMD
+. Indeed, a high spatial variability of precipitation climatology exists, which is due to the complex orography of the region, and the mix of various meteorological influences. Based on different climatological analyses, the precipitation gauge stations in the catchment were clustered in ten subregions (Fig.\ \ref{fig:map}):
+}
+
+\begin{enumerate}
+	\item \DIFadd{Swiss Chablais
+	}\item \DIFadd{Trient Valley
+	}\item \DIFadd{West Bernese Alps
+	}\item \DIFadd{Lower Rhone Valley
+	}\item \DIFadd{Southern valleys
+	}\item \DIFadd{Southern ridges
+	}\item \DIFadd{Upper Rhone Valley
+	}\item \DIFadd{Southeast ridges
+	}\item \DIFadd{East Bernese Alps
+	}\item \DIFadd{Conches Valley
+}\end{enumerate}
+
+
+\subsection{\DIFadd{Data}}
+\label{sec:data}
+
+\DIFadd{AMs rely on two types of data: predictors, which are atmospheric variables describing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather variable one wants to predict.
+}
+
+\DIFadd{Predictors are generally extracted from reanalysis datasets. The NCEP-NCAR reanalysis I \mbox{%DIFAUXCMD
+\citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996} }%DIFAUXCMD
+was used here, but it could have been any other reanalysis dataset.
+}
+
+\DIFadd{The predictand (which is to be predicted) is here the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss network stations, for the period 1961--2008. The time series from every available gauge station were averaged over the ten subregions (Fig.\ \ref{fig:map}), which were approximately 500~km$^{2}$ each, in order to smooth local effects \mbox{%DIFAUXCMD
+\citep{Obled2002, Marty2012}}%DIFAUXCMD
+. This helps account for local variability, mainly when convective processes are involved, which slightly increases the prediction skill.
+}
+
+\DIFadd{It must be stressed that the predictand here is a temporally cumulated variable, compared to the meteorological predictors, which may be considered instantaneous. Depending on the duration of the accumulation period (here 24~h, but could have been 6~h, 12~h, or more than 24~h), the choice of predictors will vary. 
+}
+
+\DIFadd{The 48-yr precipitation dataset was divided into a calibration period (CP) and a validation period (VP). Using data independent of the CP to validate the results is very important in order to assess the robustness of the proposed improvements and to avoid over-parametrization of the method.
+}
+
+\DIFadd{In order to reduce potential biases related to trends linked to climate change or to the evolution in measurement techniques, the selection of the VP was evenly distributed over the entire series \mbox{%DIFAUXCMD
+\citep{BenDaoud2010}}%DIFAUXCMD
+. Thus, one out of every six years was selected for validation, which represents a total of 8 years for the VP and 40 for the CP. This choice of sequence was made in order to have similar statistical characteristics between the CP and VP.
+}
+
+
+\subsection{\DIFadd{The analogue method}}
+\DIFaddend \label{sec:references}
+
+Multiple variations of the \DIFdelbegin \DIFdel{methods exist, and most of them will not be detailed hereafter \mbox{%DIFAUXCMD
+\cite[see][for more comprehensive listings]{Horton2016, BenDaoud2015}}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{analogue method exist, most of which are not detailed here \mbox{%DIFAUXCMD
+\cite[see][for a more comprehensive listing]{BenDaoud2016}}%DIFAUXCMD
+}\DIFaddend . However, there are mainly \DIFdelbegin \DIFdel{2 }\DIFdelend \DIFaddbegin \DIFadd{two }\DIFaddend parameterizations that are most often used for precipitation \DIFdelbegin \DIFdel{forecasting and that will be }\DIFdelend \DIFaddbegin \DIFadd{prediction and that are }\DIFaddend considered as reference: one that relies on an analogy of the atmospheric circulation, and another that adds a second level of analogy on moisture variables \citep{Obled2002, Bontron2005, Marty2012}.
+
+The method based on the analogy of \DIFdelbegin \DIFdel{the }\DIFdelend synoptic circulation consists \DIFdelbegin \DIFdel{in }\DIFdelend \DIFaddbegin \DIFadd{of }\DIFaddend the following steps (Table \ref{table:params_R1}): the similarity of the atmospheric circulation of a target date with every day of the archive is assessed by processing the S1 \DIFdelbegin \DIFdel{criteria }\DIFdelend \DIFaddbegin \DIFadd{criterion }\DIFaddend \citep[Eq.\ \ref{eq:S1}, ][]{Teweles1954, Drosdowsky2003}, which is a comparison of gradients, over a certain spatial window\DIFdelbegin \DIFdel{. \mbox{%DIFAUXCMD
+\citet{Bontron2005} }%DIFAUXCMD
+showed }\DIFdelend \DIFaddbegin \DIFadd{:
+}
+
+\begin{equation}
+\label{eq:S1}
+S1=100 \frac {\displaystyle \sum_{i} \vert \Delta\hat{z}_{i} - \Delta z_{i} \vert}
+{\displaystyle \sum_{i} max\left\lbrace \vert \Delta\hat{z}_{i} \vert , \vert \Delta z_{i} \vert \right\rbrace }
+\end{equation}
+where $\Delta \hat{z}_{i}$ is the difference in geopotential height between the \textit{i}-th pair of adjacent points of gridded data describing the target situation, and $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation. The differences are processed separately in both North and East directions over the selected spatial domain. The smaller the S1 values, the more similar the pressure fields.
+
+\DIFadd{\mbox{%DIFAUXCMD
+\citet{Bontron2005} }%DIFAUXCMD
+show }\DIFaddend that the geopotential height at 500~hPa (Z500) and 1000~hPa (Z1000) are the best first predictors of the NCEP/NCAR reanalysis \DIFaddbegin \DIFadd{I }\DIFaddend dataset, and that the S1 \DIFdelbegin \DIFdel{criteria }\DIFdelend \DIFaddbegin \DIFadd{criterion }\DIFaddend performs better than scores based on absolute distances. The reason for such better results is that the S1 \DIFdelbegin \DIFdel{criteria allows comparing the circulation pattern}\DIFdelend \DIFaddbegin \DIFadd{criterion allows comparison of the circulation patterns}\DIFaddend , by means of the gradients, rather than the absolute value of the geopotential height\DIFaddbegin \DIFadd{, which better represent the flow direction}\DIFaddend . To cope with seasonal effects, candidate dates are extracted within a period of \DIFdelbegin \DIFdel{4 months centered }\DIFdelend \DIFaddbegin \DIFadd{four months centred }\DIFaddend around the target date, for every year of the archive. \DIFdelbegin \DIFdel{Following the nomenclature proposed by \mbox{%DIFAUXCMD
+\citet{Horton2016}}%DIFAUXCMD
+, this }\DIFdelend \DIFaddbegin \DIFadd{This }\DIFaddend method using two geopotential heights \DIFdelbegin \DIFdel{will be named }\DIFdelend \DIFaddbegin \DIFadd{is named here }\DIFaddend 2Z.
+
+
+%DIFDELCMD < %%%
+\DIFdelend The $N_{1}$ dates with the lowest values of S1 are considered as analogues to the target day. The number of analogues, $N_{1}$, is a parameter to calibrate. Then, the daily observed precipitation amount \DIFdelbegin \DIFdel{of }\DIFdelend \DIFaddbegin \DIFadd{for }\DIFaddend the $N_{1}$ resulting dates provide the empirical conditional distribution\DIFaddbegin \DIFadd{, }\DIFaddend considered as the probabilistic \DIFdelbegin \DIFdel{forecast }\DIFdelend \DIFaddbegin \DIFadd{prediction }\DIFaddend for the target day.
+
+The other most \DIFdelbegin \DIFdel{know }\DIFdelend \DIFaddbegin \DIFadd{well-known }\DIFaddend parametrization adds a second level of analogy on \DIFaddbegin \DIFadd{the }\DIFaddend moisture variables (method 2Z-2MI, Table \ref{table:params_R2}). The predictor that \citet{Bontron2004} found optimal for \DIFdelbegin \DIFdel{the France territory }\DIFdelend \DIFaddbegin \DIFadd{France }\DIFaddend is a moisture index made of the product of the \DIFdelbegin \DIFdel{precipitable water }\DIFdelend \DIFaddbegin \DIFadd{total precipitable water (TPW) }\DIFaddend with the relative humidity at 850~hPa (RH850). \cite{Horton2012a} \DIFdelbegin \DIFdel{confirmed }\DIFdelend \DIFaddbegin \DIFadd{confirms }\DIFaddend that this index is also better for the Swiss Alps than any other variable from the NCEP/NCAR reanalysis \DIFaddbegin \DIFadd{I }\DIFaddend considered independently. When adding a second level of analogy, $N_{2}$ dates are subsampled \DIFdelbegin \DIFdel{in }\DIFdelend \DIFaddbegin \DIFadd{within }\DIFaddend the $N_{1}$ analogues \DIFdelbegin \DIFdel{on }\DIFdelend \DIFaddbegin \DIFadd{of }\DIFaddend the atmospheric circulation, to end up with a smaller number of analogue situations. When \DIFdelbegin \DIFdel{a }\DIFdelend \DIFaddbegin \DIFadd{this }\DIFaddend second level of analogy is added, a higher number of analogues $N_{1}$ is kept on the first level. \DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\subsection{\DIFdel{Data}}
+%DIFAUXCMD
+\addtocounter{subsection}{-1}%DIFAUXCMD
+%DIFDELCMD < \label{sec:data}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{The AM relies on two types of data: predictors, that are atmospheric variablesdescribing the state of the atmosphere at a synoptic scale, and the predictand, which is the local weather time series one wants to predict}\DIFdelend \DIFaddbegin \DIFadd{Moisture fields are not as well-predicted by NWP models as pressure variables. This implies that the 2Z-2MI method, when used in real-time forecasting, is very dependent on the skill of the NWP model in predicting moisture fields, and thus its use is often restricted to the first lead times}\DIFaddend .
+
+
+\DIFdelbegin \DIFdel{Predictors are generally reanalysis datasets. NCEP-NCAR reanalysis \mbox{%DIFAUXCMD
+\citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996} }%DIFAUXCMD
+are used here, but it could be any other reanalysis dataset.
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{The predictand (which is to be predicted) is here the daily precipitation (6~a .m. to 6~a.m. the next day) measured at the MeteoSwiss' stations network, for the period 1961-2008. The time series from every available gauging station were averaged over subregions of approximately 500~km$^{2}$ in order to smooth local effects \mbox{%DIFAUXCMD
+\citep{Obled2002, Marty2012}}%DIFAUXCMD
+.
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \subsection{Performance assessment}
+\label{sec:score}
+
+The \DIFaddbegin \DIFadd{performance assessment in the present context consists of verifying the prediction of an ensemble probabilistic technique. The set of precipitation values collected with each analogue can be considered as a sample drawn from the conditional distribution associated with the current circulation. The }\DIFaddend score that is most often used to assess an AM performance is the CRPS \citep[Continuous Ranked Probability Score,][]{Brown1974, Matheson1976, Hersbach2000}. It allows evaluating the predicted cumulative distribution functions $F(y)$, for example\DIFaddbegin \DIFadd{, }\DIFaddend of the precipitation values $y$ from analogue situations, compared to the observed value $y^{0}$. The better the prediction, the smaller the score. The mean CRPS of a prediction series of length $n$ can be written \DIFaddbegin \DIFadd{as}\DIFaddend :
+
+\begin{equation}
+\label{eq:CRPS}
+CRPS = \frac{1}{n} \sum_{i=1}^{n} \left(  \int_{-\infty}^{+\infty} \left[ F_{i}(y)-H_{i}(y-y_{i}^{0})\right]^{2} dy \right) 
+\end{equation}
+where $H(y-y_{i}^{0})$ is the Heaviside function that is null when $y-y_{i}^{0}<0$, and has the value 1 otherwise.
+\DIFdelbegin \DIFdel{The mean CRPS is averaged on the calibration, respectively the validation periods, on all days.
+}\DIFdelend 
+
+In order to compare the value of the score \DIFdelbegin \DIFdel{in regard }\DIFdelend \DIFaddbegin \DIFadd{relative }\DIFaddend to a reference, one often considers its skill score expression, and \DIFdelbegin \DIFdel{use }\DIFdelend \DIFaddbegin \DIFadd{uses }\DIFaddend the climatological distribution of \DIFdelbegin \DIFdel{daily precipitation }\DIFdelend \DIFaddbegin \DIFadd{precipitation from the entire archive }\DIFaddend as the reference. The CRPSS (\DIFdelbegin \textit{\DIFdel{Continuous Ranked Probability Skill Score}}%DIFAUXCMD
+\DIFdelend \DIFaddbegin \DIFadd{Continuous Ranked Probability Skill Score}\DIFaddend ) is thus defined as \DIFdelbegin \DIFdel{following}\DIFdelend \DIFaddbegin \DIFadd{follows}\DIFaddend :
+
+\begin{equation}
+\label{eq:CRPSS}
+CRPSS = \frac{CRPS-CRPS_{r}}{CRPS_{p}-CRPS_{r}} = 1-\frac{CRPS}{CRPS_{r}}
+\end{equation}
+where $CRPS_{r}$ is the CRPS value for the reference and $CRPS_{p}$ would be the one for a perfect prediction (which implies $CRPS_{p}~=~0$). A better prediction is characterized by an increase in CRPSS.
+
+\DIFdelbegin \section{\DIFdel{Genetic Algorithms}}
+%DIFAUXCMD
+\addtocounter{section}{-1}%DIFAUXCMD
+\DIFdelend \DIFaddbegin \DIFadd{Note, however, that the choice of reference does not matter so much when assessing potential improvements of the method, since we consider more its relative increase or decrease rather than the CRPSS absolute value.
+}
+
+\subsection{\DIFadd{Sequential calibration}}
+\label{sec:sequential}
+
+\DIFadd{AMs are usually calibrated by a semi-automatic sequential procedure, as elaborated by \mbox{%DIFAUXCMD
+\citet{Bontron2004} }%DIFAUXCMD
+\mbox{%DIFAUXCMD
+\cite[see also ][]{Radanovics2013, BenDaoud2016}}%DIFAUXCMD
+. The calibration technique optimizes the spatial windows in which the predictors are compared and the number of analogues for every level of analogy, by maximizing the performance score (CRPSS). However, the different analogy levels are calibrated sequentially, and the meteorological variables, pressure levels, and temporal windows are chosen manually. The procedure, as defined by \mbox{%DIFAUXCMD
+\citet{Bontron2004}}%DIFAUXCMD
+, consists of the following steps:
+}
+
+\begin{enumerate}
+	\item \DIFadd{Manual selection of the following parameters:
+	}\begin{enumerate}
+		\item \DIFadd{Meteorological variable
+		}\item \DIFadd{Pressure level
+		}\item \DIFadd{Temporal window (hour of the day)
+		}\item \DIFadd{Initial analogue numbers
+	}\end{enumerate}
+
+	\item \DIFadd{For every level of analogy:
+	}\begin{enumerate}
+		\item \DIFadd{Identification, for the analogy level considered, of the most skilled unitary cell of all predictors jointly, over a large domain, by a full scanning of the grid.
+		}\item \DIFadd{From this most skilled cell, the spatial window is expanded by successive iterations in the direction of greater performance gain until no improvement is reached.
+		}\item \DIFadd{The number of analogue situations $N_{1}$ is then reconsidered and optimized for the current level of analogy.
+	}\end{enumerate}
+	\item \DIFadd{A new level of analogy can then be added, based on other variables (such as the moisture index) with some chosen pressure levels, temporal windows, and initial number of analogues $N_{2}$. The procedure starts again from step 2 (calibration of the spatial window and the number of analogues) for the new level. The parameters calibrated on the previous analogy levels are fixed and do not change. 
+	}\item \DIFadd{Finally, the numbers of analogues $N_{1}$ and $N_{2}$ for the different levels of analogy are reassessed by systematic increments.
+}\end{enumerate}
+
+\DIFadd{The calibration is done in successive steps with a limited number of parameters. Previously calibrated parameters are generally not reassessed (except for the number of analogues).
+}
+
+\DIFadd{This procedure was used to calibrate the methods that were here considered as references to further assess the ability of genetic algorithms to outperform the classic approach.
+}
+
+
+\subsection{\DIFadd{Genetic algorithms}}
+\DIFaddend \label{sec:gas}
+
+Genetic \DIFdelbegin \DIFdel{Algorithms }\DIFdelend \DIFaddbegin \DIFadd{algorithms }\DIFaddend (GAs) were developed by \citet{Holland1992b} and \citet{Goldberg1989}. They are part of \DIFaddbegin \DIFadd{the }\DIFaddend Evolutionary Algorithms \citep{Back1993b, Schwefel1993}, which \DIFdelbegin \DIFdel{get inspiration from some mechanisms of }\DIFdelend \DIFaddbegin \DIFadd{were inspired by some mechanisms in }\DIFaddend biological evolution, such as reproduction, genetic mutations, chromosomal crossovers, and natural selection. GAs seek the global optimum on a complex surface, theoretically without restriction\DIFaddbegin \DIFadd{, which is of interest for AMs, which are characterized by a complex high-dimensional error function having multiple local optima}\DIFaddend . Practically, GAs allow rapidly approaching satisfactory solutions, but they \DIFdelbegin \DIFdel{do not }\DIFdelend \DIFaddbegin \DIFadd{are not guaranteed to }\DIFaddend provide the optimum solution \DIFdelbegin \DIFdel{for sure }\DIFdelend \citep{Zitzler2004a}. It is indeed mainly a matter of time. When the optimizer gets closer to the global optimum, any new improvement takes more time to appear\DIFdelbegin \DIFdel{(see for example Figure \ref{fig:evolution})}\DIFdelend , and the final adjustment of the parameters \DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{can be }\DIFaddend very time consuming \citep{Back1993a}. For problems that require a significant amount of time \DIFdelbegin \DIFdel{in order }\DIFdelend to evaluate the objective function, as in the case of AMs \DIFaddbegin \DIFadd{(because it needs to make a prediction for every day of the CP)}\DIFaddend , the number of generations has to be limited in order to \DIFdelbegin \DIFdel{get }\DIFdelend \DIFaddbegin \DIFadd{ensure a }\DIFaddend reasonable processing time. Thus, different acceptable solutions can result from one or more \DIFdelbegin \DIFdel{optimizations }\DIFdelend \DIFaddbegin \DIFadd{optimization runs }\DIFaddend \citep{Holland1992b}. This is \DIFaddbegin \DIFadd{both }\DIFaddend a strength and a weakness of GAs: they are very good at exploring complex parameter spaces in order to identify the most promising areas, but they will not necessarily always find the best solution with the optimal values \DIFdelbegin \DIFdel{of }\DIFdelend \DIFaddbegin \DIFadd{for }\DIFaddend all parameters \citep{Holland1992b}.
+
+The optimizations \DIFaddbegin \DIFadd{here }\DIFaddend were performed based on the recommended \DIFdelbegin \DIFdel{GAs }\DIFdelend \DIFaddbegin \DIFadd{GA }\DIFaddend parametrization for AMs as described in \DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+\citet{Horton2016a}}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\citet{Horton2016}}%DIFAUXCMD
+}\DIFaddend . As the optimization is mostly sensitive to the mutation operator (that randomly changes some values in the \DIFdelbegin \DIFdel{parameters }\DIFdelend \DIFaddbegin \DIFadd{parameter }\DIFaddend sets), parallel optimizations are considered with variants of this operator, according to \DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+\citet{Horton2016a}}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\citet{Horton2016}}%DIFAUXCMD
+}\DIFaddend :
+
+\begin{itemize}
+	\item 3x non-uniform mutation \citep{Michalewicz1996} with varying parameters
+	\DIFdelbegin \DIFdel{,
+	}\DIFdelend \item 1x multi-scale mutation \DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+\citep{Horton2016a}}%DIFAUXCMD
+,
+	}\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\citep{Horton2016}
+	}%DIFAUXCMD
+}\DIFaddend \item 2x chromosome of adaptive search radius \DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+\citep{Horton2016a}
+}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
+\citep{Horton2016}}%DIFAUXCMD
+.
+}\DIFaddend \end{itemize}
+
+A population size of 500 individuals (\DIFaddbegin \DIFadd{i.e. }\DIFaddend parameter sets of the AM to be detailed \DIFdelbegin \DIFdel{hereunder}\DIFdelend \DIFaddbegin \DIFadd{below}\DIFaddend ) was considered, and the optimization was stopped when the best individual (with the highest CRPSS performance score) did not evolve for 20 generations (cycles of \DIFdelbegin \DIFdel{the }\DIFdelend optimization).
+
+
+\DIFdelbegin \section{\DIFdel{Case study description}}
+%DIFAUXCMD
+\addtocounter{section}{-1}%DIFAUXCMD
+%DIFDELCMD < \label{sec:case_study}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{The study area is the alpine upper Rh\^{o}ne catchment in Switzerland (Fig.\ \ref{fig:map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region is the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project that aims at allowing real-time flood management on the upper Rh\^{o}ne catchment \mbox{%DIFAUXCMD
+\citep{GarciaHernandez2009b}}%DIFAUXCMD
+. Even though the region is rather small, the meteorological influences related to extreme weather conditions varies substantially within it \mbox{%DIFAUXCMD
+\citep[see][]{Horton2012}}%DIFAUXCMD
+. Based on different climatological analyses, the gauging stations in the catchment were clustered in 10~subregions (Fig.\ \ref{fig:map}) :
+}%DIFDELCMD < 
+
+%DIFDELCMD < \begin{enumerate}
+\begin{enumerate}%DIFAUXCMD
+%DIFDELCMD < 	\item %%%
+\item%DIFAUXCMD
+\DIFdel{Swiss Chablais
+	}%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{Trient Valley
+	}%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{West Bernese Alps
+	}%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{Lower Rhone Valley
+	}%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{Left side valleys
+	}%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{Southern ridges
+	}%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{Upper Rhone Valley
+	}%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{Southeast ridges
+	}%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{East Bernese Alps
+	}%DIFDELCMD < \item %%%
+\item%DIFAUXCMD
+\DIFdel{Conches Valley
+}
+\end{enumerate}%DIFAUXCMD
+%DIFDELCMD < \end{enumerate}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{The 48 years precipitation dataset (see section \ref{sec:intro}.\ref{sec:data}) was divided into a calibration period (CP) and a validation period (VP). Using data independent from the CP to validate the results is very important in order to assess the robustness of the improvements and to avoid over-parametrization of the method. Parameters determined on the CP are then applied to the VP in order to obtain a performance score for the independent period.
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{In order to reduce potential bias related to trends linked to climate change or to the evolution in measurement techniques, the selection of the VP is evenly distributed over the entire series \mbox{%DIFAUXCMD
+\citep{BenDaoud2010}}%DIFAUXCMD
+. Thus, one year every six years were selected for validation, which represents a total of 8 years for the VP and 40 for CP. The choice of the sequence was made in order to have similar statistical characteristics between the CP and the VP.
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \section{Optimization of the circulation analogy}
+\label{sec:optim_circul}
+
+The analogy of the atmospheric circulation was optimized for the \DIFdelbegin \DIFdel{10 subregions }\DIFdelend \DIFaddbegin \DIFadd{ten subregions (Section \ref{sec:case_study}) }\DIFaddend independently. We started from the \DIFdelbegin \DIFdel{most simple }\DIFdelend \DIFaddbegin \DIFadd{simplest }\DIFaddend AM, and increased the complexity in order to identify the degrees of freedom that are of particular interest. Thus, the tested parametrization evolved iteratively in complexity. The detailed results of the intermediate stages are not provided \DIFaddbegin \DIFadd{in this paper }\DIFaddend \citep[see][for the details]{Horton2012a}.
+
+The reference method for the analogy of the atmospheric circulation (2Z, Table \ref{table:params_R1}), based on Z500 and Z1000, was first considered. The optimizer had to choose \DIFaddbegin \DIFadd{simultaneously }\DIFaddend the number of analogues, both spatial windows with no overlapping constraint \DIFaddbegin \DIFadd{(i.e. they can differ from one pressure level to another)}\DIFaddend , as well as the temporal windows (hours of observation of the geopotential), \DIFdelbegin \DIFdel{what }\DIFdelend \DIFaddbegin \DIFadd{which cannot be achieved with }\DIFaddend the sequential calibration \DIFdelbegin \DIFdel{cannot do. With these }\DIFdelend \DIFaddbegin \DIFadd{technique. The performance score (CRPSS) was slightly improved, with these limited }\DIFaddend degrees of freedom, \DIFdelbegin \DIFdel{a relative CRPSS improvement of 3.97\% and 2.45\% in average was obtained for the CP and the VP respectively}\DIFdelend \DIFaddbegin \DIFadd{relative to the 2Z reference method calibrated with the sequential procedure}\DIFaddend . Some tests showed that most of the gains \DIFdelbegin \DIFdel{are }\DIFdelend \DIFaddbegin \DIFadd{were }\DIFaddend due to the non-overlapping spatial windows. This \DIFdelbegin \DIFdel{is not a tremendous improvement, but it }\DIFdelend demonstrated that the optimizer was able to \DIFdelbegin \DIFdel{get relevant parameters }\DIFdelend \DIFaddbegin \DIFadd{obtain relevant parameters for a simple method}\DIFaddend .
+
+Then, an additional degree of freedom was provided to the GAs by letting them choose the pressure levels along with the other parameters \DIFdelbegin \DIFdel{, }\DIFdelend \DIFaddbegin \DIFadd{(analogue numbers, spatial and temporal windows), }\DIFaddend which is also a non-automated process in the sequential calibration. This degree of freedom increased the optimization time\DIFdelbegin \DIFdel{and may }\DIFdelend \DIFaddbegin \DIFadd{, and might }\DIFaddend decrease the number of simulations that converge to a single solution. However, most solutions were very close in terms of \DIFdelbegin \DIFdel{score. The averaged relative improvement of the CRPSS is 5.63\% for the CP and 3.82\% for the VP. The pressure levels that were chosen are }\DIFdelend \DIFaddbegin \DIFadd{the performance score, which was further improved. The selected pressure levels were }\DIFaddend Z500 or Z700 for the upper level, and Z925 or Z1000 (most often) for the lower level.
+
+Parallel analyses showed that the analogy of circulation is incomplete, and that \DIFdelbegin \DIFdel{the geopotential still contains }\DIFdelend \DIFaddbegin \DIFadd{geopotential heights still contain }\DIFaddend relevant information that can improve the statistical relationship. Therefore, a third\DIFdelbegin \DIFdel{predictor was }\DIFdelend \DIFaddbegin \DIFadd{, followed by a fourth circulation predictor were }\DIFaddend added (still \DIFdelbegin \DIFdel{on the geopotential height)that the optimizer could use along with the previous parameters}\DIFdelend \DIFaddbegin \DIFadd{only geopotential heights)}\DIFaddend . There was no constraint on the predictors, so that the same pressure level could be selected more than once. \DIFdelbegin \DIFdel{Some }\DIFdelend \DIFaddbegin \DIFadd{Further }\DIFaddend improvements were found \DIFdelbegin \DIFdel{on the }\DIFdelend \DIFaddbegin \DIFadd{in the performance }\DIFaddend score, both for the CP and the VP, confirming that this additional information \DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{was }\DIFaddend beneficial for the quality of the prediction. 
+\DIFdelbegin \DIFdel{We then tried with 4 predictors, and so on, up to 8. Every time a new predictor to optimize was added, the score on the CP increased, but always more to a smaller extent. However, the score value on the VP dropped after 4 predictors, revealing an over-parametrization of the method, and thus a lack of robustness. Considering 4 predictors is optimal for this case study, since the gain in CRPSS is significant. It cannot be excluded that another number would prevail in another region under other meteorological conditions.
+}\DIFdelend 
+
+Finally, a weighting of the \DIFaddbegin \DIFadd{analogy }\DIFaddend criteria values per pressure level was proposed, again optimized by GAs. The weighting operates in the combination of the S1 criteria processed on every level, which were previously averaged with equal weights. The role of this new degree of freedom is to give more weight to the levels with greater predictive capacity, and to consider the \DIFdelbegin \DIFdel{geopotential variability changes }\DIFdelend \DIFaddbegin \DIFadd{differences in the geopotential height variability }\DIFaddend with altitude. 
+
+\DIFdelbegin \subsection{\DIFdel{Which parameters are optimized ?}}
+%DIFAUXCMD
+\addtocounter{subsection}{-1}%DIFAUXCMD
+\DIFdelend \DIFaddbegin \DIFadd{The number of circulation predictors (still only geopotential heights) was then successively increased up to ten, considering the weighting of the analogy criteria values. The addition of circulation predictors globally improved the prediction skill (for both the CP and the VP) only up to four predictors (Figure \ref{fig:figure_nb_levels}). Afterwards, the score on the VP was more variable, eventually even showing a decrease, which revealed an over-parametrization of the method, and thus a lack of robustness. After four predictors, the score for the CP did not increase substantially, and even presented a local decrease due to increasing difficulty for the optimizer to converge. Selecting four circulation predictors (geopotential heights) was considered optimal for this case study, since the gain in CRPSS was significant, and the model remained relatively simple. It cannot be ruled out that another number would prevail in a region other than the upper Rh\^{o}ne catchment, under other meteorological conditions, or with another reanalysis dataset.
+}\DIFaddend 
+
+\DIFaddbegin \subsection{\DIFadd{Which parameters are optimized?}}
+
+\DIFaddend The chosen method for the atmospheric circulation analogy, based on \DIFdelbegin \DIFdel{4 levels of the geopotential , and that will be name }\DIFdelend \DIFaddbegin \DIFadd{four circulation predictors (geopotential heights), and which is here named }\DIFaddend 4Zo \DIFdelbegin \DIFdel{, is made of }\DIFdelend \DIFaddbegin \DIFadd{(o for optimized), was based on }\DIFaddend the following degrees of freedom:
+
+\begin{itemize}
+	\setlength\itemsep{-4px}
+	\item \DIFdelbegin \DIFdel{the selection of the }\DIFdelend \DIFaddbegin \DIFadd{selection of }\DIFaddend pressure levels (4 degrees)
+	\item \DIFdelbegin \DIFdel{the }\DIFdelend temporal windows (4 degrees)
+	\item \DIFdelbegin \DIFdel{the }\DIFdelend spatial windows (\DIFdelbegin \DIFdel{4x4 }\DIFdelend \DIFaddbegin \DIFadd{4 x 4 }\DIFaddend degrees)
+	\item \DIFdelbegin \DIFdel{the }\DIFdelend weights (4 degrees)
+	\item \DIFdelbegin \DIFdel{the }\DIFdelend number of analogues (1 degree).
+\end{itemize}
+
+This \DIFdelbegin \DIFdel{sums }\DIFdelend \DIFaddbegin \DIFadd{adds }\DIFaddend up to 29 degrees of freedom that \DIFdelbegin \DIFdel{are }\DIFdelend \DIFaddbegin \DIFadd{were }\DIFaddend optimized simultaneously.
+
+
+\subsection{Results for the 4Zo method}
+
+The resulting optimized parameters for 4Zo vary from one subregion to another. \DIFdelbegin \DIFdel{An example of the detailed parameters is provided for the Swiss Chablais in Table \ref{table:params_GA_4Zo}. }\DIFdelend The optimized spatial windows are given for every subregion in Figure \ref{fig:spatial_windows_4Zo}, and the selected pressure levels in Table~\ref{table:levels_GA_4Zo}. 
+
+The resulting CRPSS scores are provided in \DIFdelbegin \DIFdel{Table \ref{table:scores} and are in }\DIFdelend \DIFaddbegin \DIFadd{Figure \ref{fig:figure_crpss_4Zo} and were on }\DIFaddend average 35.8\% for the CP and 35.5\% for the VP\DIFdelbegin \DIFdel{. The improvement of the CRPSS score relatively to }\DIFdelend \DIFaddbegin \DIFadd{, compared to 31.1\% and 32.3\%, respectively, for }\DIFaddend the reference method \DIFaddbegin \DIFadd{2Z }\DIFaddend on the atmospheric circulation (optimized by the sequential procedure)\DIFdelbegin \DIFdel{is illustrated in Figure \ref{fig:figure_dcrpss_4Zo} and is in average 15.3 \% for the CP and 9.9 \% for the VP}\DIFdelend . The score was also calculated for three precipitation thresholds: P \(\geq\) 1\DIFaddbegin \DIFadd{~}\DIFaddend mm, P \(\geq\) 0.1\(\cdot\)P10\DIFaddbegin \DIFadd{, }\DIFaddend and P \(\geq\) 0.5\(\cdot\)P10, P10 being the daily precipitation with a 10~year return period (Table \ref{table:scores_thresholds_4Zo}). The gain in score \DIFdelbegin \DIFdel{increases }\DIFdelend \DIFaddbegin \DIFadd{increased }\DIFaddend with the precipitation threshold: the relative improvement of the CRPSS \DIFdelbegin \DIFdel{is in average, respectively }\DIFdelend \DIFaddbegin \DIFadd{was, on average, }\DIFaddend for the different thresholds, 13.3\%, 15.4\%\DIFaddbegin \DIFadd{, }\DIFaddend and 29.1\% for the CP and 7.9\%, 11.1\%\DIFaddbegin \DIFadd{, }\DIFaddend and 34.5\% for the VP. The optimization \DIFdelbegin \DIFdel{improves thus even more the prediction }\DIFdelend \DIFaddbegin \DIFadd{thus improved the prediction even more }\DIFaddend for days with significant precipitation than \DIFaddbegin \DIFadd{for the }\DIFaddend usual days.
+
+To assess the parameters\DIFaddbegin \DIFadd{’ }\DIFaddend cross-compatibility \DIFaddbegin \DIFadd{and the spatial coherence of the resulting parameters}\DIFaddend , those optimized for one subregion were applied to the others. The resulting losses or gains of the CRPSS are displayed in Figure \DIFdelbegin \DIFdel{\ref{fig:crossing_4Zo_calib} for the CP and in Figure \ref{fig:crossing_4Zo_valid} for the VP}\DIFdelend \DIFaddbegin \DIFadd{\ref{fig:crossing_4Zo}}\DIFaddend .
+
+
+\subsection{Analysis}
+
+The automatic selections of \DIFdelbegin \DIFdel{the }\DIFdelend pressure levels (Table \ref{table:levels_GA_4Zo}) and \DIFdelbegin \DIFdel{the }\DIFdelend temporal windows (not shown) for the analogy of circulation \DIFdelbegin \DIFdel{show }\DIFdelend \DIFaddbegin \DIFadd{showed }\DIFaddend a great homogeneity and \DIFdelbegin \DIFdel{are }\DIFdelend \DIFaddbegin \DIFadd{were }\DIFaddend spatially consistent. First of all, the level Z1000 \DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{was }\DIFaddend always selected twice (the first time at 6 or 12~h, and the second always at 30~h) and Z700 \DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{was }\DIFaddend selected once for every subregion (always at 24~h). The level \DIFdelbegin \DIFdel{which varies }\DIFdelend \DIFaddbegin \DIFadd{that varied }\DIFaddend from one subregion to another\DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{, albeit in a spatially consistent way, was }\DIFaddend the upper level (\DIFdelbegin \DIFdel{however }\DIFdelend always at 12~h), which \DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{was }\DIFaddend Z300 for the \DIFdelbegin \DIFdel{North-West }\DIFdelend \DIFaddbegin \DIFadd{north-west }\DIFaddend part of the catchment, Z500 for most of the \DIFaddbegin \DIFadd{other }\DIFaddend subregions, and Z600 for the Conches Valley. \DIFdelbegin \DIFdel{Its spatial distribution is however homogeneous. }\DIFdelend The optimizer thus provided consistent selections of pressure levels and temporal windows\DIFdelbegin \DIFdel{, which depicts a significant preference in the AM, and the success of GAs to provide consistent results}\DIFdelend . The automatic selection of \DIFdelbegin \DIFdel{the }\DIFdelend pressure levels is a big advantage in \DIFdelbegin \DIFdel{favor of a }\DIFdelend \DIFaddbegin \DIFadd{favour of }\DIFaddend global optimization.
+
+The resulting spatial windows (Figure \ref{fig:spatial_windows_4Zo}) may look very diverse first, but there are significant similarities for subregions located within the same vicinity. The first \DIFdelbegin \DIFdel{4 subregions are }\DIFdelend \DIFaddbegin \DIFadd{four subregions were }\DIFaddend characterized by a large spatial window on the upper level, whereas it \DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{was }\DIFaddend smaller elsewhere. For most subregions, the second level (Z700) \DIFdelbegin \DIFdel{is represented by }\DIFdelend \DIFaddbegin \DIFadd{was compared on }\DIFaddend thin and longitudinally extended \DIFdelbegin \DIFdel{domains}\DIFdelend \DIFaddbegin \DIFadd{spatial windows}\DIFaddend . The third level (Z1000 at 6 or 12~h) also \DIFdelbegin \DIFdel{contains }\DIFdelend \DIFaddbegin \DIFadd{had }\DIFaddend longitudinally extended domains, \DIFdelbegin \DIFdel{but a bit }\DIFdelend \DIFaddbegin \DIFadd{which were slightly }\DIFaddend larger. The last one (Z1000 at 30~h) \DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{had }\DIFaddend rather large and squared \DIFaddbegin \DIFadd{windows}\DIFaddend . Subregions number 5 (\DIFdelbegin \DIFdel{Left side }\DIFdelend \DIFaddbegin \DIFadd{southern }\DIFaddend valleys) and 6 (\DIFdelbegin \DIFdel{Southern ridges) have }\DIFdelend \DIFaddbegin \DIFadd{southern ridges) had }\DIFaddend exactly the same spatial windows, which \DIFdelbegin \DIFdel{suggest }\DIFdelend \DIFaddbegin \DIFadd{suggests }\DIFaddend that they behave in a similar way and thus could have been merged. This similarity is a good sign for the accuracy of the optimized parameters.
+
+The \DIFdelbegin \DIFdel{scores show significant }\DIFdelend \DIFaddbegin \DIFadd{performance scores showed non-negligible }\DIFaddend improvements for both the CP and \DIFdelbegin \DIFdel{the }\DIFdelend VP (Figure \DIFdelbegin \DIFdel{\ref{fig:figure_dcrpss_4Zo}}\DIFdelend \DIFaddbegin \DIFadd{\ref{fig:figure_crpss_4Zo}}\DIFaddend ) compared to the \DIFaddbegin \DIFadd{2Z }\DIFaddend reference method optimized by the sequential procedure. Even more interestingly, the results for higher precipitation thresholds (Table \ref{table:scores_thresholds_4Zo}) \DIFdelbegin \DIFdel{show }\DIFdelend \DIFaddbegin \DIFadd{showed }\DIFaddend the largest improvements. This is of particular interest in the framework of flood forecasting. \DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{The CRPS score was also discretized into its accuracy and sharpness components, as suggested by \mbox{%DIFAUXCMD
+\citet{Bontron2004}}%DIFAUXCMD
+. The changes in each of these components has been illustrated in Figure \ref{fig:figure_dcrps_comp_4Zo} relatively to the total CRPS value of the 2Z reference method for the different regions and both the CP and the VP. One can see that the accuracy part is always improved to a greater extent than the sharpness, which can occasionally deteriorate. It means that the medians of the predicted precipitations distributions are closer to the observed value, whereas the spread of the distribution vary, but is in general a bit narrower}\DIFdelend \DIFaddbegin \DIFadd{The further improvement of days with higher precipitation totals is likely related to the fact that larger values contribute more to the CRPS score, which means that better predicting these days results in significant increase in the global performance score}\DIFaddend .
+
+The analysis of the parameters\DIFaddbegin \DIFadd{’ }\DIFaddend cross-compatibility \DIFdelbegin \DIFdel{shows that obviously, the parameters are }\DIFdelend \DIFaddbegin \DIFadd{showed that the parameters were obviously }\DIFaddend optimal on the CP \DIFdelbegin \DIFdel{when they are optimized for a given subregion (Figure \ref{fig:crossing_4Zo_calib}}\DIFdelend \DIFaddbegin \DIFadd{for the subregion for which they were optimized (Figure \ref{fig:crossing_4Zo} top}\DIFaddend ). However, the losses in CRPSS when exchanging the parameters \DIFdelbegin \DIFdel{are }\DIFdelend \DIFaddbegin \DIFadd{were }\DIFaddend not of the same magnitude \DIFdelbegin \DIFdel{between }\DIFdelend \DIFaddbegin \DIFadd{among }\DIFaddend the different subregions. Indeed, the Upper Rhone Valley (7) and\DIFdelbegin \DIFdel{moreover the Southeast }\DIFdelend \DIFaddbegin \DIFadd{, moreover, the southeast }\DIFaddend ridges (8) \DIFdelbegin \DIFdel{seem }\DIFdelend \DIFaddbegin \DIFadd{seemed }\DIFaddend to behave significantly differently\DIFdelbegin \DIFdel{, likely due to their particular sensitivity to southerly flows\mbox{%DIFAUXCMD
+\citep{Horton2012}}%DIFAUXCMD
+. }\DIFdelend \DIFaddbegin \DIFadd{. These two regions have different climatic properties than the others, as they are particularly sensitive to southerly flows. Indeed, almost all heavy precipitation events occurred under a southerly regime, such as in the Liguria, Piedmont, and Aosta regions in Italy, whereas the other subregions of the catchment had extreme events mainly under a westerly regime \mbox{%DIFAUXCMD
+\citep{Horton2012}}%DIFAUXCMD
+. Thus, as the performance score is significantly influenced by heavy precipitation values, the parameters for the different subregions are likely optimized to better predict these days. It can then be expected that the optimal parameters differ between these two subregions and the others. }\DIFaddend This points at the importance of taking into account leading meteorological influences during \DIFdelbegin \DIFdel{discretization, that }\DIFdelend \DIFaddbegin \DIFadd{precipitation station clustering, which }\DIFaddend are not always best represented by \DIFdelbegin \DIFdel{the physical distance. 
+}\DIFdelend \DIFaddbegin \DIFadd{geographical distance. 
+}
+
+\DIFaddend Globally, the same \DIFdelbegin \DIFdel{pattern can }\DIFdelend \DIFaddbegin \DIFadd{cross-compatibility structure could }\DIFaddend be observed for the VP (Figure \DIFdelbegin \DIFdel{\ref{fig:crossing_4Zo_valid}}\DIFdelend \DIFaddbegin \DIFadd{\ref{fig:crossing_4Zo} bottom}\DIFaddend ), but in this case, minor improvements \DIFdelbegin \DIFdel{may occur }\DIFdelend \DIFaddbegin \DIFadd{were occasionally observed }\DIFaddend when crossing the parameters, \DIFdelbegin \DIFdel{due to }\DIFdelend \DIFaddbegin \DIFadd{because of }\DIFaddend the presence of other events in the VP that \DIFdelbegin \DIFdel{may }\DIFdelend \DIFaddbegin \DIFadd{might }\DIFaddend be better predicted by a different parameter set. The relatively small \DIFdelbegin \DIFdel{gaps in score between parameterizations indicate }\DIFdelend \DIFaddbegin \DIFadd{differences in scores between parameterizations indicated }\DIFaddend that even though the parameters \DIFdelbegin \DIFdel{may }\DIFdelend \DIFaddbegin \DIFadd{might }\DIFaddend differ significantly, the performance \DIFdelbegin \DIFdel{may }\DIFdelend \DIFaddbegin \DIFadd{might }\DIFaddend not be drastically affected. Even a change in the pressure level \DIFdelbegin \DIFdel{does }\DIFdelend \DIFaddbegin \DIFadd{did }\DIFaddend not mean a radical drop \DIFdelbegin \DIFdel{of }\DIFdelend \DIFaddbegin \DIFadd{in }\DIFaddend the score value. A different parametrization may lead to a distinct selection of analogue days, and thus to an improvement of the prediction under certain weather conditions at the expense of others.
+
+
+\section{Optimization of the analogy with moisture information}
+\label{sec:optim_moisture}
+
+It is known that moisture variables as a second level of analogy do provide improvements to the method (section \DIFdelbegin \DIFdel{\ref{sec:analog_method}}\DIFdelend \DIFaddbegin \DIFadd{\ref{sec:references}}\DIFaddend ). The moisture index, which is a combination of the relative humidity and \DIFdelbegin \DIFdel{the }\DIFdelend precipitable water, has thus also to be optimized. In order to do so, a constraint \DIFdelbegin \DIFdel{to }\DIFdelend \DIFaddbegin \DIFadd{on }\DIFaddend the optimizer had to be introduced, so as to select the same temporal window (time of observation) for both variables. 
+
+Two methods were assessed: one with \DIFdelbegin \DIFdel{2 }\DIFdelend \DIFaddbegin \DIFadd{two }\DIFaddend moisture predictors (moisture index on \DIFdelbegin \DIFdel{2 }\DIFdelend \DIFaddbegin \DIFadd{two }\DIFaddend pressure levels or at \DIFdelbegin \DIFdel{2 }\DIFdelend \DIFaddbegin \DIFadd{two }\DIFaddend different hours)\DIFaddbegin \DIFadd{, }\DIFaddend named 4Zo-2MIo, and one with \DIFdelbegin \DIFdel{4 moisture predictors}\DIFdelend \DIFaddbegin \DIFadd{four moisture predictors, }\DIFaddend named 4Zo-4MIo. When introducing \DIFdelbegin \DIFdel{2 }\DIFdelend \DIFaddbegin \DIFadd{two }\DIFaddend predictors for the moisture analogy, the number of degrees of freedom \DIFdelbegin \DIFdel{raises }\DIFdelend \DIFaddbegin \DIFadd{increased }\DIFaddend to 42, and to 54 with \DIFdelbegin \DIFdel{4 predictors. }\DIFdelend \DIFaddbegin \DIFadd{four predictors. However, there was no substantial difference in the performance scores between both 4Zo-2MIo and 4Zo-4MIo methods, which suggests that considering four moisture predictors is not necessary. For this reason, only the results of 4Zo-2MIo are presented.
+}\DIFaddend 
+
+The optimization was processed on both levels of analogy simultaneously. This implies that the analogy of the atmospheric circulation \DIFdelbegin \DIFdel{may change due to }\DIFdelend \DIFaddbegin \DIFadd{could change because of }\DIFaddend the new moisture information.
+
+
+\subsection{Results for \DIFaddbegin \DIFadd{the }\DIFaddend 4Zo-2MIo \DIFdelbegin \DIFdel{and 4Zo-4MIo methods}\DIFdelend \DIFaddbegin \DIFadd{method}\DIFaddend }
+
+\DIFdelbegin \DIFdel{Due to significant similarities between the results from 4Zo-2MIo and 4Zo-4MIo, the latter will only be partly shown in order to improve readability.
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{As }\DIFdelend \DIFaddbegin \DIFadd{As seen }\DIFaddend previously, the optimized parameters \DIFdelbegin \DIFdel{differ }\DIFdelend \DIFaddbegin \DIFadd{differed }\DIFaddend from one subregion to another, \DIFdelbegin \DIFdel{and this even to a }\DIFdelend \DIFaddbegin \DIFadd{but to an even }\DIFaddend greater extent. \DIFdelbegin \DIFdel{Detailed examples are again provided for the Swiss Chablais subregion in Table \ref{table:params_GA_4Zo_2MIo} for 4Zo-2MIo. }\DIFdelend The resulting spatial windows are displayed in Figure \ref{fig:spatial_windows_4Zo-2MIo} for 4Zo-2MIo, along with the selected pressure levels for both the circulation and \DIFdelbegin \DIFdel{the }\DIFdelend moisture analogy (Table \ref{table:levels_GA_4Zo_2MIo}). 
+
+The CRPSS scores of the optimized \DIFdelbegin \DIFdel{methods }\DIFdelend \DIFaddbegin \DIFadd{4Zo-2MIo method }\DIFaddend are provided in \DIFdelbegin \DIFdel{Table \ref{table:scores} and amounts to slightly more than }\DIFdelend \DIFaddbegin \DIFadd{Figure \ref{fig:figure_crpss_4Zo-2HIo} and amounted on average to }\DIFaddend 40\% \DIFdelbegin \DIFdel{in average for both methods and for both periods. This results in a relative improvements for 4Zo-2MIo that is in average 14.0 \% for the CPand 11.5 \% for the VP (Figure \ref{fig:figure_dcrpss_4Zo-2HIo}}\DIFdelend \DIFaddbegin \DIFadd{(CP) and 40.3\% (VP}\DIFaddend ), compared to \DIFaddbegin \DIFadd{35.2\% (CP) and 36.2\% (VP) for }\DIFaddend the reference method \DIFaddbegin \DIFadd{2Z-2MI }\DIFaddend on the moisture analogy optimized with the sequential procedure. \DIFdelbegin \DIFdel{For 4Zo-4MIo, the average improvement is 15.6 \% for the CP and 12.1 \% for the VP (Figure \ref{fig:figure_dcrpss_4Zo-4HIo}). }%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \DIFadd{The parameters’ cross-compatibilities are shown in Figure \ref{fig:crossing_4Zo-2MIo}. }\DIFaddend As for 4Zo, the 4Zo-2MIo \DIFdelbegin \DIFdel{and 4Zo-4MIo methods present }\DIFdelend \DIFaddbegin \DIFadd{method presented }\DIFaddend larger improvements in the prediction \DIFdelbegin \DIFdel{for }\DIFdelend \DIFaddbegin \DIFadd{of }\DIFaddend significant rainfall (\DIFdelbegin \DIFdel{thresholds P\(\geq\)1 mm, P\(\geq\)0.1\(\cdot\)P10 and P\(\geq\)0.5\(\cdot\)P10). The improvement are relatively similar for 4Zo-2MIo (}\DIFdelend Table \ref{table:scores_thresholds_4Zo-2MIo})\DIFdelbegin \DIFdel{and 4Zo-4MIo (not shown), with slightly superior scores for the latter on small precipitation (P\(\geq\)1 mm : 17.7\% and 13.0\%) and extremes (P\(\geq\)0.5\(\cdot\)P10 : 23.7\% and 29.2\%)}\DIFdelend .
+
+
+\DIFdelbegin \DIFdel{The parameters cross-compatibility has also been assessed for the methods with moisture variables, and are shown in Figures \ref{fig:crossing_4Zo-2MIo_calib} and \ref{fig:crossing_4Zo-2MIo_valid} for the method 4Zo-2MIo (not shown for 4Zo-4MIo, but similar).
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \subsection{Analysis}
+
+When optimizing a method \DIFdelbegin \DIFdel{made of 2 }\DIFdelend \DIFaddbegin \DIFadd{consisting of two }\DIFaddend levels of analogy, the introduction of moisture variables in the second level has an influence on the parameter values of the first level. This \DIFaddbegin \DIFadd{means that the two levels of analogy bring complementary information, and are thus not independent. This }\DIFaddend is first visible \DIFdelbegin \DIFdel{on }\DIFdelend \DIFaddbegin \DIFadd{in }\DIFaddend the number $N_{1}$ of analogues to be selected on the first level, and \DIFdelbegin \DIFdel{on }\DIFdelend \DIFaddbegin \DIFadd{in }\DIFaddend the selection of the pressure levels for the circulation analogy. \DIFaddbegin \DIFadd{If the change in the optimal value of $N_{1}$ was already known, a change in the optimal pressure levels for the circulation analogy has never been identified before.
+}\DIFaddend 
+
+As for the sequential procedure, the optimal value of $N_{1}$ \DIFdelbegin \DIFdel{increases }\DIFdelend \DIFaddbegin \DIFadd{increased }\DIFaddend when adding a second level of analogy (Figure \DIFdelbegin \DIFdel{\ref{fig:figure_nb_analogues}}\DIFdelend \DIFaddbegin \DIFadd{\ref{fig:figure_nb_analogs}}\DIFaddend ). One can also \DIFdelbegin \DIFdel{notice }\DIFdelend \DIFaddbegin \DIFadd{see }\DIFaddend that the optimal number of analogues $N_{2}$ for the second level of analogy of 4Zo-2MIo \DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{was }\DIFaddend slightly inferior to $N_{1}$ from 4Zo, but very close. There is a \DIFdelbegin \DIFdel{trend }\DIFdelend \DIFaddbegin \DIFadd{globally common tendency }\DIFaddend between the optimal analogue number values of both methods: \DIFdelbegin \DIFdel{the higher }\DIFdelend $N_{1}$ of the 4Zo method, \DIFdelbegin \DIFdel{the higher }\DIFdelend \DIFaddbegin \DIFadd{and }\DIFaddend $N_{1}$ and $N_{2}$ of 4Zo-2MIo \DIFdelbegin \DIFdel{is (Figure \ref{fig:figure_nb_analogues_relationships}). This relationship is not to be considered perfectly robust and should not be transposed to another case study, but in this case, it relates the magnitudes of the $N_{1}$ and $N_{2}$ on the various levels and methods}\DIFdelend \DIFaddbegin \DIFadd{tend to be higher or lower together for a given region}\DIFaddend .
+
+The optimal final \DIFdelbegin \DIFdel{number of analogues do }\DIFdelend \DIFaddbegin \DIFadd{numbers of analogues did }\DIFaddend not vary much: $23 \leq N_{1} \leq 33$ for 4Zo and $21 \leq N_{2} \leq 28$ for 4Zo-2MIo. However, the optimal number of \DIFaddbegin \DIFadd{the }\DIFaddend $N_{1}$ analogues of the first level of 4Zo-2MIo \DIFdelbegin \DIFdel{varies }\DIFdelend \DIFaddbegin \DIFadd{varied }\DIFaddend to a greater extent: $48 \leq N_{1} \leq 84$. In this latter method, it may be problematic to consider a fixed and unique value for all regions.
+
+As for the pressure levels, Z1000\DIFdelbegin \DIFdel{that }\DIFdelend \DIFaddbegin \DIFadd{, which }\DIFaddend was previously systematically selected twice (Table \ref{table:levels_GA_4Zo}) \DIFdelbegin \DIFdel{is now less }\DIFdelend \DIFaddbegin \DIFadd{was here less often }\DIFaddend chosen (once or even not at all) for \DIFdelbegin \DIFdel{both }\DIFdelend 4Zo-2MIo (Table \ref{table:levels_GA_4Zo_2MIo})\DIFdelbegin \DIFdel{and 4Zo-4MIo (not shown). There is indeed a shift of }\DIFdelend \DIFaddbegin \DIFadd{. There was indeed a vertical shift in }\DIFaddend the previously selected Z1000 for higher levels \DIFdelbegin \DIFdel{, that is }\DIFdelend \DIFaddbegin \DIFadd{that was }\DIFaddend even slightly stronger with \DIFdelbegin \DIFdel{4 }\DIFdelend \DIFaddbegin \DIFadd{four }\DIFaddend moisture predictors than with \DIFdelbegin \DIFdel{2. }\DIFdelend \DIFaddbegin \DIFadd{two. }\DIFaddend This change is likely due to the fact that when considering only the circulation analogy, the method \DIFdelbegin \DIFdel{tries }\DIFdelend \DIFaddbegin \DIFadd{tried }\DIFaddend to take into account information that can serve as \DIFaddbegin \DIFadd{a }\DIFaddend proxy for moisture assessment, whereas it \DIFdelbegin \DIFdel{does }\DIFdelend \DIFaddbegin \DIFadd{did }\DIFaddend not need it with the moisture index. This \DIFdelbegin \DIFdel{aspect has never been demonstrated before, as sequential calibration tools do not allow it. It }\DIFdelend can only be assessed by a global optimization technique that can \DIFdelbegin \DIFdel{tune jointly }\DIFdelend \DIFaddbegin \DIFadd{work jointly on }\DIFaddend both levels of analogy. 
+
+The selected pressure levels for the analogy \DIFdelbegin \DIFdel{on }\DIFdelend \DIFaddbegin \DIFadd{of }\DIFaddend the moisture index \DIFdelbegin \DIFdel{are strongly centered }\DIFdelend \DIFaddbegin \DIFadd{were strongly centred }\DIFaddend around 700~hPa and 600~hPa. No other value \DIFdelbegin \DIFdel{has been }\DIFdelend \DIFaddbegin \DIFadd{was }\DIFaddend selected when considering \DIFdelbegin \DIFdel{2 pressure levels }\DIFdelend \DIFaddbegin \DIFadd{two moisture predictors }\DIFaddend (Table \ref{table:levels_GA_4Zo_2MIo})\DIFdelbegin \DIFdel{, and when considering 4 levels, 850~hPa and 500~hPa were sometimes also selected (not shown). However, even in this latter method, the 700~hPa and 600~hPa levels still hold 78 \% of the selection. It is thus }\DIFdelend \DIFaddbegin \DIFadd{. It was sometimes }\DIFaddend more efficient, in terms of prediction performance, to consider \DIFdelbegin \DIFdel{one of this level several times at different hours }\DIFdelend \DIFaddbegin \DIFadd{the moisture at 700~hPa twice, but at different hours, }\DIFaddend rather than selecting another pressure level. Besides, the optimizer never chose the same pressure level at the same hour for any variable, even though it was allowed to do so. The selected pressure levels for the \DIFdelbegin \DIFdel{analogy on the moisture index differ from the parameters resulting from the reference method optimized by the sequential procedure }\DIFdelend \DIFaddbegin \DIFadd{moisture analogy differed from the reference method }\DIFaddend (Tables \ref{table:params_R2} and \ref{table:levels_GA_4Zo_2MIo}, last row).
+\DIFdelbegin \DIFdel{It is possible that the level 850~hPa is more optimal for the region for which the reference parameterization was established. However, this selection is usually not reconsidered when applying the sequential procedure.
+}\DIFdelend 
+
+The selection of \DIFdelbegin \DIFdel{the }\DIFdelend temporal windows for \DIFdelbegin \DIFdel{the atmospheric circulation is }\DIFdelend \DIFaddbegin \DIFadd{atmospheric circulation was }\DIFaddend similar to the preceding optimization (in \DIFdelbegin \DIFdel{the }\DIFdelend order of increasing pressure: 12~h, 24/30~h, 12~h, 30~h), but sometimes with \DIFdelbegin \DIFdel{a bit more }\DIFdelend \DIFaddbegin \DIFadd{some }\DIFaddend variability. When it comes to the moisture analogy, there \DIFdelbegin \DIFdel{is a clear trend }\DIFdelend \DIFaddbegin \DIFadd{was a clear tendency }\DIFaddend to select 12~h and 24~h\DIFdelbegin \DIFdel{when considering 2 predictors. }\DIFdelend \DIFaddbegin \DIFadd{. However, it must be remembered that this holds for our predictand, the accumulated precipitation over 06--30~h~UTC, and that it is expected to differ if the temporal window changes (e.g. 00--24~h~UTC, or another accumulation duration).
+}\DIFaddend 
+
+The optimized spatial windows for the atmospheric circulation have also changed (Figure \ref{fig:spatial_windows_4Zo-2MIo}\DIFdelbegin \DIFdel{; results of 4Zo-4MIo are not shown but present the same trends}\DIFdelend ). The very large domains on the upper level of the \DIFdelbegin \DIFdel{4 first subregions are }\DIFdelend \DIFaddbegin \DIFadd{first four subregions were }\DIFaddend not present anymore, and more variability \DIFdelbegin \DIFdel{can }\DIFdelend \DIFaddbegin \DIFadd{could }\DIFaddend be observed. The selected points for the \DIFdelbegin \DIFdel{analogy on the moisture index are always located nearby }\DIFdelend \DIFaddbegin \DIFadd{moisture analogy were always located near }\DIFaddend the catchment, including at least \DIFdelbegin \DIFdel{1 }\DIFdelend \DIFaddbegin \DIFadd{one }\DIFaddend of the nearest points from the reanalysis dataset, and the spatial windows \DIFdelbegin \DIFdel{are }\DIFdelend \DIFaddbegin \DIFadd{were }\DIFaddend relatively small. Thus, for this case study, there is no need to look for distant moisture information\DIFaddbegin \DIFadd{, }\DIFaddend and the search could be reduced to a smaller domain. 
+
+The CRPSS scores were improved by considering the moisture information (\DIFdelbegin \DIFdel{Table \ref{table:scores}}\DIFdelend \DIFaddbegin \DIFadd{Figure \ref{fig:figure_crpss_4Zo-2HIo} to be compared with Figure \ref{fig:figure_crpss_4Zo}}\DIFaddend ). The optimized \DIFdelbegin \DIFdel{methods also perform }\DIFdelend \DIFaddbegin \DIFadd{method also performed }\DIFaddend significantly better than the \DIFdelbegin \DIFdel{reference method based on the moisture index (Figures \ref{fig:figure_dcrpss_4Zo-2HIo} and \ref{fig:figure_dcrpss_4Zo-4HIo}) }\DIFdelend \DIFaddbegin \DIFadd{2Z-2MI reference method }\DIFaddend optimized by the sequential procedure. \DIFdelbegin \DIFdel{However, there is no drastic difference between both 4Zo-2MIo and 4Zo-4MIo methods, which suggests that considering 4 moisture predictors is not necessary. }\DIFdelend When it comes to improvements for days with precipitation above the \DIFdelbegin \DIFdel{3 }\DIFdelend \DIFaddbegin \DIFadd{three }\DIFaddend thresholds (P\(\geq\)1\DIFaddbegin \DIFadd{~}\DIFaddend mm, P \(\geq\) 0.1\(\cdot\)P10\DIFaddbegin \DIFadd{, }\DIFaddend and P \(\geq\) 0.5\(\cdot\)P10), the conclusion is the same as before, that is\DIFaddbegin \DIFadd{, }\DIFaddend a significant improvement \DIFdelbegin \DIFdel{of }\DIFdelend \DIFaddbegin \DIFadd{in }\DIFaddend the prediction compared to the reference method, mainly for heavy rainfall.
+
+\DIFdelbegin \DIFdel{As previously, the CRPS scores were discretized into their sharpness and accuracy components. The changes in each of these components, expressed relatively to the total CRPS values, is once again in favor of the accuracy over the sharpness (Figure \ref{fig:figure_dcrps_comp_4Zo-2HIo} for 4Zo-2MIo; 4Zo-4MIo not shown, but similar).
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend The analysis of the parameters\DIFaddbegin \DIFadd{’ }\DIFaddend cross-compatibility (\DIFdelbegin \DIFdel{Figures \ref{fig:crossing_4Zo-2MIo_calib} and \ref{fig:crossing_4Zo-2MIo_valid}) is }\DIFdelend \DIFaddbegin \DIFadd{Figure \ref{fig:crossing_4Zo-2MIo}) was }\DIFaddend also very similar to the one \DIFdelbegin \DIFdel{on }\DIFdelend \DIFaddbegin \DIFadd{of }\DIFaddend the circulation analogy only\DIFdelbegin \DIFdel{(results for 4Zo-4MIo not shown as very similar)}\DIFdelend . The same pattern \DIFdelbegin \DIFdel{can }\DIFdelend \DIFaddbegin \DIFadd{could }\DIFaddend be observed, with a drop of performance for the subregions submitted to different meteorological influences. However, the losses \DIFdelbegin \DIFdel{of performance are }\DIFdelend \DIFaddbegin \DIFadd{in performance were }\DIFaddend globally more important than before, suggesting that more complex methods with moisture variables are less transposable to another subregion \DIFaddbegin \DIFadd{(consistent with the observations of \mbox{%DIFAUXCMD
+\citet{Chardon2014}}%DIFAUXCMD
+)}\DIFaddend , even though both \DIFdelbegin \DIFdel{are }\DIFdelend \DIFaddbegin \DIFadd{were }\DIFaddend located within the same grid cell of the reanalysis dataset. \DIFaddbegin \DIFadd{Moisture fields have greater variability than pressure fields, and thus a change in the spatial windows can have a greater impact on the method performance. Indeed, the two regions with the lowest cross-compatibility with the others were the upper Rhone Valley (7) and the southeast ridges (8), which had similar optimal pressure levels and temporal windows to other regions, but had rather different spatial windows on the moisture predictor.
+}\DIFaddend 
+
+\DIFaddbegin \DIFadd{Predictors based on moisture variables do significantly increase the prediction skill, and are thus recommended, as long as they are reliable. In real-time forecasting, their reliability depends on the lead time: for lead times superior to 3--4 days, the uncertainties related to moisture variables from NWP models become fairly high, which reduces the relevance of methods relying on this information. In climate downscaling studies, it mainly depends on the coherence of the climatologies between the archive and the GCM model outputs. One should, however, not establish an AM with moisture variables for too large a region, as the transferability is reduced \mbox{%DIFAUXCMD
+\citep[see][for alternative approaches]{Chardon2014}}%DIFAUXCMD
+.
+}
+
+
+\DIFaddend \section{Discussion}
+\label{sec:discussion}
+
+The optimization of the AM by means of GAs has been undertaken in \DIFaddbegin \DIFadd{successive }\DIFaddend stages by releasing progressively new degrees of freedom. This approach allowed us to differentiate the contributions to performance gains, as well as to identify possible over-parametrization. The main improvements \DIFdelbegin \DIFdel{for }\DIFdelend \DIFaddbegin \DIFadd{obtained in }\DIFaddend the present case study are due to the following \DIFdelbegin \DIFdel{factors}\DIFdelend \DIFaddbegin \DIFadd{elements}\DIFaddend :
+
+\begin{itemize}
+	\item Using \DIFdelbegin \DIFdel{4 }\DIFdelend \DIFaddbegin \DIFadd{four }\DIFaddend pressure levels for the \DIFdelbegin \DIFdel{analogy of circulation . It seems to be the }\DIFdelend \DIFaddbegin \DIFadd{circulation analogy seemed to be an }\DIFaddend optimal number for the studied region\DIFdelbegin \DIFdel{. Beyond that value }\DIFdelend \DIFaddbegin \DIFadd{, length of archive available, and target predictand considered. Beyond four, }\DIFaddend the validation score \DIFdelbegin \DIFdel{drops}\DIFdelend \DIFaddbegin \DIFadd{was more variable}\DIFaddend , revealing a loss in robustness due to over-parametrization.
+	\item The automatic and joint optimization of all parameters: the \DIFdelbegin \DIFdel{analogues number, the selection of the }\DIFdelend \DIFaddbegin \DIFadd{analogue numbers, selection of }\DIFaddend pressure levels and \DIFdelbegin \DIFdel{the }\DIFdelend temporal windows, and \DIFdelbegin \DIFdel{the }\DIFdelend spatial windows. These parameters are highly interdependent, so one needs to optimize them jointly in order to identify optimal combinations. \DIFdelbegin \DIFdel{Traditional calibration procedures based on a systematic assessment of every combination is not possible anymore when considering more than 2 pressure levels.}\DIFdelend \DIFaddbegin \DIFadd{Indeed, there is a strong interdependence between space and time in the atmospheric circulation, so that, e.g. the spatial window should move upstream the main atmospheric flow for earlier temporal windows.
+	}\DIFaddend \item The introduction of distinct spatial windows between pressure levels. The synoptic circulation is characterized by features with very different scales depending on the height, and important information for predicting \DIFdelbegin \DIFdel{rainfall }\DIFdelend \DIFaddbegin \DIFadd{precipitation }\DIFaddend is not necessarily located in the same area from one level to another.
+	\DIFdelbegin \DIFdel{However, the optimized spatial windows are consistent in between the subregions.
+	}\DIFdelend \item The weighting of the analogy criteria between different pressure levels. \DIFdelbegin \DIFdel{It }\DIFdelend \DIFaddbegin \DIFadd{This }\DIFaddend can be influenced by the variability of the geopotential \DIFaddbegin \DIFadd{height }\DIFaddend with altitude, \DIFdelbegin \DIFdel{and the change of some levels significance with the targeted }\DIFdelend \DIFaddbegin \DIFadd{or the levels of significance in regards to the meteorological processes specific to a }\DIFaddend region. There is a trend \DIFdelbegin \DIFdel{for }\DIFdelend \DIFaddbegin \DIFadd{in }\DIFaddend the weighting of circulation predictors to decrease with the increase in pressure, as one can see in Figure \DIFdelbegin \DIFdel{\ref{fig:levels_weights} for the method 4Zo, and in Figure }\DIFdelend \ref{fig:levels_weights_average} for the \DIFdelbegin \DIFdel{averages over the 3 }\DIFdelend \DIFaddbegin \DIFadd{three optimized }\DIFaddend methods. However, the values \DIFdelbegin \DIFdel{stay around equity}\DIFdelend \DIFaddbegin \DIFadd{remained approximately equal}\DIFaddend . This may not be the most influencing factor, and we may suggest \DIFdelbegin \DIFdel{to remove }\DIFdelend \DIFaddbegin \DIFadd{removing }\DIFaddend it first when trying to reduce the \DIFdelbegin \DIFdel{number of }\DIFdelend degrees of freedom.
+	\item The joint optimization of the circulation and moisture analogy levels, \DIFdelbegin \DIFdel{that }\DIFdelend \DIFaddbegin \DIFadd{which }\DIFaddend are usually calibrated successively. We \DIFdelbegin \DIFdel{have been }\DIFdelend \DIFaddbegin \DIFadd{were }\DIFaddend able to demonstrate that there is a dependency between the analogy levels, and that in order to approach the optimal parameters, one must consider them jointly.
+\end{itemize}
+
+
+GAs have proved very useful to optimize complex variants of the AM, and to assess new degrees of freedom that were not available \DIFdelbegin \DIFdel{so }\DIFdelend \DIFaddbegin \DIFadd{thus }\DIFaddend far. However, it can be dangerous to add too many parameters to optimize. Indeed, the optimizer will probably use them to successfully improve the calibration score, \DIFdelbegin \DIFdel{but }\DIFdelend \DIFaddbegin \DIFadd{so }\DIFaddend the validation control remains very important in order to determine if one is actually improving the method, or if it is being over-parametrized. \DIFaddbegin \DIFadd{Moreover, it might not always be desirable to increase the degrees of freedom, and some constraints (e.g. same weighting of the analogy criteria between different pressure levels) can be justified. However, one should first assess the consequence of a constraint before establishing it. In this sense, even though not all degrees of freedom are useful, GAs allow us to assess their influence. Finally, GAs could be used to identify, among other things, the best pairs of spatial and temporal windows, in order to later create a simpler regional method.
+}\DIFaddend 
+
+The convergence of parallel optimizations \DIFdelbegin \DIFdel{decreases when the method to optimize becomes }\DIFdelend \DIFaddbegin \DIFadd{decreased when the AM to optimize became }\DIFaddend more and more complex. The optimizer \DIFdelbegin \DIFdel{do }\DIFdelend \DIFaddbegin \DIFadd{did }\DIFaddend not always converge to the exact global optimum, but to its surroundings. This is related to the fact that the optimization slows down when it gets closer to the global optimum, and that one has to stop it before the end, \DIFdelbegin \DIFdel{due to }\DIFdelend \DIFaddbegin \DIFadd{because of }\DIFaddend the required processing time (see \DIFdelbegin \DIFdel{Figure \ref{fig:evolution} as example}\DIFdelend \DIFaddbegin \DIFadd{for example the slow-down of the improvements over generations in Figure \ref{fig:evolution}}\DIFaddend ). The resulting parameters \DIFdelbegin \DIFdel{may sometimes present non negligible }\DIFdelend \DIFaddbegin \DIFadd{might sometimes present non-negligible }\DIFaddend differences, even though the score is \DIFdelbegin \DIFdel{almost }\DIFdelend similar. Through \DIFdelbegin \DIFdel{some }\DIFdelend Monte-Carlo analyses of the parameter space properties of the AM, \citet{Horton2012a} showed that some parameters of the method have a wide range of acceptable values\DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+\citep[see also][]{Horton2016}}%DIFAUXCMD
+}\DIFdelend . The spatial windows, for example, can be larger than the optimal size without much impact on the score, while they cannot be smaller \citep[see also][]{Bontron2004}. We \DIFdelbegin \DIFdel{could also observe }\DIFdelend \DIFaddbegin \DIFadd{also observed }\DIFaddend that the selection of \DIFdelbegin \DIFdel{the }\DIFdelend pressure level is not a parameter as discrete as we would have thought, and that choosing another level may have reduced \DIFaddbegin \DIFadd{the }\DIFaddend consequences on the performance. This is particularly true for higher pressure levels\DIFaddbegin \DIFadd{, }\DIFaddend but can be more critical for lower layers. It was thus interesting to sometimes \DIFdelbegin \DIFdel{get }\DIFdelend \DIFaddbegin \DIFadd{obtain }\DIFaddend several sets of near-optimal parameters, but with some nuances, in order to get an idea of the sensitivity of the parameters for a given region, and to compare the score \DIFdelbegin \DIFdel{on }\DIFdelend \DIFaddbegin \DIFadd{for }\DIFaddend the VP. In this regard, a cross-validation technique may be advisable. \DIFaddbegin \DIFadd{However, as solutions identified at different regions of the parameter space might provide sufficiently good performance, an ensemble of these could be used, instead of a unique solution. These could account for the parameters’ uncertainty in the AM, and could also increase the sample size contributing to the empirical distribution of precipitation values. }\DIFaddend An approach that can also be recommended is to first explore a wide range of the parameter space with some optimizations, and to narrow it according to the results for more targeted optimizations that are likely to go faster and to perform better.
+
+We tried to optimize the \DIFaddbegin \DIFadd{length of the }\DIFaddend preselection period (i.e. the \DIFdelbegin \DIFdel{4-months }\DIFdelend \DIFaddbegin \DIFadd{seasonal stratification, which is a 4-month }\DIFaddend window) jointly with the other parameters, but no improvement was observed. Optimizing the moisture flux, which is composed of the moisture index multiplied \DIFdelbegin \DIFdel{with }\DIFdelend \DIFaddbegin \DIFadd{by }\DIFaddend the wind flux, was also assessed. However, the results were not better than when considering the moisture index alone. This may be related to the fact that the optimizer tries to provide the best analogy of the atmospheric circulation in the first place, which makes the wind information less relevant in the second level of analogy.
+
+As \DIFdelbegin \DIFdel{it }\DIFdelend has been observed, methods with \DIFdelbegin \DIFdel{a }\DIFdelend higher complexity that integrate moisture predictors are less transposable than simpler ones. It was also noticed in another unpublished work, that it is by far better to optimize for \DIFdelbegin \DIFdel{2 subregions jointly rather }\DIFdelend \DIFaddbegin \DIFadd{two subregions jointly }\DIFaddend than to optimize on one and to apply its parametrization to the other. Finally, the discretization in subregions is an important process and should be handled with care. Indeed, the \DIFdelbegin \DIFdel{physical }\DIFdelend \DIFaddbegin \DIFadd{geographical }\DIFaddend distance is not always the leading factor to define a subregion. For example, the \DIFdelbegin \DIFdel{Southeast ridges subregion do }\DIFdelend \DIFaddbegin \DIFadd{southeast ridges subregion does }\DIFaddend not behave like its \DIFdelbegin \DIFdel{surrounding and differ }\DIFdelend \DIFaddbegin \DIFadd{surroundings, and differs }\DIFaddend in its parametrization \DIFdelbegin \DIFdel{, due to }\DIFdelend \DIFaddbegin \DIFadd{because of }\DIFaddend different leading meteorological influences.
+
+GAs are relatively heavy on processing and require an IT infrastructure capable of performing thousands \DIFaddbegin \DIFadd{of }\DIFaddend hours of calculations. However, they automatically optimize all parameters of the AM, \DIFdelbegin \DIFdel{what }\DIFdelend \DIFaddbegin \DIFadd{which is not possible with }\DIFaddend the sequential calibration\DIFdelbegin \DIFdel{does not allow}\DIFdelend . Therefore, much human time\DIFdelbegin \DIFdel{is saved, that was }\DIFdelend \DIFaddbegin \DIFadd{, }\DIFaddend previously required to \DIFdelbegin \DIFdel{assess successively }\DIFdelend \DIFaddbegin \DIFadd{successively assess }\DIFaddend numerous combinations of parameters (particularly the selection of \DIFdelbegin \DIFdel{the }\DIFdelend pressure levels and \DIFdelbegin \DIFdel{the }\DIFdelend temporal windows)\DIFaddbegin \DIFadd{, is saved}\DIFaddend . The ability to \DIFdelbegin \DIFdel{optimize jointly }\DIFdelend \DIFaddbegin \DIFadd{jointly optimize }\DIFaddend all parameters is important given the strong dependencies between them and between the levels of analogy.
+
+\DIFaddbegin \DIFadd{Furthermore, AMs optimized with GAs showed an improvement in predictions for days with heavier precipitation, including extremes. Even though no new extreme value was added to the existing precipitation archive, the distribution of analogue precipitation values for a target situation can move towards the targeted extreme by sampling better candidate situations. Then, the subset of precipitation values collected on the analogue dates can be considered as a sample of the conditional distribution of precipitation associated with this situation. A truncated exponential or a gamma distribution model can be fit and extrapolated to extreme values not contained in the sample or even in the whole precipitation archive \mbox{%DIFAUXCMD
+\citep{Obled2002}}%DIFAUXCMD
+. Another possible approach is to combine AMs with other methods \mbox{%DIFAUXCMD
+\citep[e.g.][]{Chardon2014}}%DIFAUXCMD
+.
+}
+
+
+\DIFaddend \section{Conclusions and perspectives}
+\label{sec:conclusions}
+
+
+The parameters resulting from the optimization by GAs \DIFdelbegin \DIFdel{are }\DIFdelend \DIFaddbegin \DIFadd{were }\DIFaddend very consistent in terms of \DIFdelbegin \DIFdel{selection of the pressure levels , and the }\DIFdelend \DIFaddbegin \DIFadd{the selection of pressure levels and }\DIFaddend temporal and spatial windows. There \DIFdelbegin \DIFdel{are }\DIFdelend \DIFaddbegin \DIFadd{were }\DIFaddend clear trends or even identical results for subregions under similar meteorological influences, which confirm that the optimized parameters \DIFdelbegin \DIFdel{are }\DIFdelend \DIFaddbegin \DIFadd{were }\DIFaddend coherent, despite an eventual first impression of \DIFdelbegin \DIFdel{a }\DIFdelend great variability in the spatial windows. When adding moisture variables, the results \DIFdelbegin \DIFdel{show }\DIFdelend \DIFaddbegin \DIFadd{showed }\DIFaddend a higher variability, but \DIFdelbegin \DIFdel{remains }\DIFdelend \DIFaddbegin \DIFadd{remained }\DIFaddend highly acceptable and coherent.
+
+Strong dependencies between the parameters of the AM \DIFdelbegin \DIFdel{could be }\DIFdelend \DIFaddbegin \DIFadd{were }\DIFaddend observed. Thus, the sequential calibration, which optimizes the parameters successively, may not lead to the optimal combination. Moreover, it contains several manual systematic \DIFdelbegin \DIFdel{assessment}\DIFdelend \DIFaddbegin \DIFadd{assessments}\DIFaddend , such as the selection of \DIFdelbegin \DIFdel{the }\DIFdelend pressure levels and \DIFdelbegin \DIFdel{the }\DIFdelend temporal windows. GAs, however, can \DIFdelbegin \DIFdel{select the }\DIFdelend \DIFaddbegin \DIFadd{automatically select }\DIFaddend pressure levels and \DIFdelbegin \DIFdel{the time windowsautomatically}\DIFdelend \DIFaddbegin \DIFadd{temporal windows}\DIFaddend , which can save a considerable amount of human time. A great advantage of a global optimization is its ability to approach or reach optimal parameter values when they are considered jointly. 
+
+A \DIFdelbegin \DIFdel{parametric dependence between the analogy of circulation and the }\DIFdelend \DIFaddbegin \DIFadd{dependence in the selected parameters between the circulation analogy and }\DIFaddend moisture variables was identified. When the two \DIFaddbegin \DIFadd{analogy }\DIFaddend levels are considered together, the optimal parameters of the circulation analogy \DIFdelbegin \DIFdel{are different}\DIFdelend \DIFaddbegin \DIFadd{changed}\DIFaddend . This complexity can only be exploited in a suitable manner by global optimization methods.
+
+For the present case study, there \DIFdelbegin \DIFdel{seems }\DIFdelend \DIFaddbegin \DIFadd{seemed }\DIFaddend to be an optimum number of pressure levels to consider for the \DIFdelbegin \DIFdel{analogy of circulation }\DIFdelend \DIFaddbegin \DIFadd{circulation analogy}\DIFaddend , which is four, before losing \DIFdelbegin \DIFdel{performance in validation. The analogy of circulation has also been }\DIFdelend \DIFaddbegin \DIFadd{consistency of the real gains. The circulation analogy was }\DIFaddend improved by introducing a weighting between pressure levels, and considering independent spatial windows between \DIFaddbegin \DIFadd{pressure }\DIFaddend levels.
+
+GAs \DIFdelbegin \DIFdel{provide }\DIFdelend \DIFaddbegin \DIFadd{provided }\DIFaddend parameterizations of AMs that \DIFdelbegin \DIFdel{exceed }\DIFdelend \DIFaddbegin \DIFadd{exceeded }\DIFaddend the performance of the sequential calibration. In addition, it has been observed that the prediction for days with strong precipitation were \DIFdelbegin \DIFdel{significantly more improved }\DIFdelend \DIFaddbegin \DIFadd{improved to a greater extent}\DIFaddend , which is clearly interesting in the \DIFdelbegin \DIFdel{framework }\DIFdelend \DIFaddbegin \DIFadd{context }\DIFaddend of flood forecasting.
+
+This work is by \DIFdelbegin \DIFdel{far not exhaustiveand means }\DIFdelend \DIFaddbegin \DIFadd{no means exhaustive, and is meant }\DIFaddend to open a door \DIFdelbegin \DIFdel{for }\DIFdelend \DIFaddbegin \DIFadd{to }\DIFaddend new explorations of AMs with GAs. It is even possible to let the optimizer chose the meteorological variable to be used as \DIFaddbegin \DIFadd{a }\DIFaddend predictor, as well as the analogy criteria\DIFdelbegin \DIFdel{. It is already possible to undertake such approach with our code}\DIFdelend \DIFaddbegin \DIFadd{, which is the topic of work in progress}\DIFaddend . Moreover, the AM has been explored for decades for precipitation \DIFdelbegin \DIFdel{forecasting, but very few works analyze its potential }\DIFdelend \DIFaddbegin \DIFadd{prediction, but not as intensively }\DIFaddend for other predictands. A global optimizer, such as \DIFdelbegin \DIFdel{GAs}\DIFdelend \DIFaddbegin \DIFadd{a GA}\DIFaddend , can speed up this assessment significantly.
+
+
+\section*{Acknowledgments}
+\DIFdelbegin \DIFdel{Thanks to }\DIFdelend \DIFaddbegin \DIFadd{We thank }\DIFaddend Hamid Hussain-Khan of the University of Lausanne for his help and availability, and for the intensive use of the cluster he \DIFdelbegin \DIFdel{is in charge of. Thanks to }\DIFdelend \DIFaddbegin \DIFadd{administers. We also thank }\DIFaddend Renaud Marty for \DIFdelbegin \DIFdel{his }\DIFdelend fruitful collaboration over the years\DIFdelbegin \DIFdel{. Thanks to }\DIFdelend \DIFaddbegin \DIFadd{, and }\DIFaddend Dominique B\'{e}rod for his support.
+
+\DIFdelbegin \DIFdel{Thanks to }\DIFdelend \DIFaddbegin \DIFadd{We thank }\DIFaddend the Roads and Water courses Service, \DIFaddbegin \DIFadd{the }\DIFaddend Energy and Water Power Service of the Wallis Canton, the Water, Land and Sanitation Service of the Vaud Canton\DIFaddbegin \DIFadd{, }\DIFaddend and the Swiss Federal Office for Environment (FOEV) \DIFdelbegin \DIFdel{who financed }\DIFdelend \DIFaddbegin \DIFadd{for financing }\DIFaddend the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me des Rivi\`{e}res Valaisannes et de leurs Effets) project which started this research. \DIFdelbegin \DIFdel{The fruitful }\DIFdelend \DIFaddbegin \DIFadd{Fruitful }\DIFaddend collaboration with the Laboratoire d'Etude des Transferts en Hydrologie et Environnement of the Grenoble Institute of Technology (G-INP) was made possible thanks to the Herbette Foundation. NCEP reanalysis data \DIFdelbegin \DIFdel{provided by the }\DIFdelend \DIFaddbegin \DIFadd{were provided by }\DIFaddend NOAA/OAR/ESRL PSD, Boulder, Colorado, USA, \DIFdelbegin \DIFdel{from their Web site }\DIFdelend \DIFaddbegin \DIFadd{via their website }\DIFaddend at http://www.esrl.noaa.gov/psd/. \DIFdelbegin \DIFdel{Precipitation time series }\DIFdelend \DIFaddbegin \DIFadd{The precipitation time series were }\DIFaddend provided by MeteoSwiss. 
+
+\DIFaddbegin \DIFadd{The authors would also like to acknowledge the work of Loris Foresti and another anonymous reviewer, which contributed to improving this paper. 
+}
+
+\DIFaddend \section*{References}
+
+\bibliography{references}
+
+\clearpage
+
+%% FIGURES
+
+\begin{figure}[t]
+	\DIFdelbeginFL %DIFDELCMD < \centerline{\includegraphics[width=8.8cm]{figures/fig01.pdf}}
+	%DIFDELCMD < 	%%%
+	\DIFdelendFL \DIFaddbeginFL \centerline{\includegraphics[width=9cm]{figures/fig01.pdf}}
+	\DIFaddendFL \caption{Location of the alpine Rh\^{o}ne catchment in Switzerland. (source: Swisstopo)}
+	\label{fig:map}
+\end{figure}
+
+\begin{figure}[t]
+	\DIFdelbeginFL %DIFDELCMD < \centerline{\includegraphics[width=8.4cm]{figures/fig02.pdf}}
+	%DIFDELCMD < 	%%%
+	\DIFdelendFL \DIFaddbeginFL \centerline{\includegraphics[width=9cm]{figures/fig02.pdf}}
+	\DIFaddendFL \caption{\DIFaddbeginFL \DIFaddFL{Performance score (CRPSS) for CP and VP for three stations (1 - Swiss Chablais; 5 - Southern valleys; 8 - Southeast ridges) when varying the number of geopotential height levels available to the optimizer.}}
+	\label{fig:figure_nb_levels}
+\end{figure}
+
+
+\begin{figure}[t]
+	\centerline{\includegraphics[width=8.4cm]{figures/fig03.pdf}}
+	\caption{\DIFaddendFL Optimized spatial windows for the 4Zo method (analogy of \DIFaddbeginFL \DIFaddFL{the }\DIFaddendFL atmospheric circulation on \DIFdelbeginFL \DIFdelFL{4 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{four }\DIFaddendFL pressure levels).\DIFdelbeginFL \DIFdelFL{The pressure levels are ordered by increasing pressure and increasing time for the same levels.}\DIFdelendFL }
+	\label{fig:spatial_windows_4Zo}
+\end{figure}
+
+\begin{figure}[t]
+	\centerline{\includegraphics[width=9cm]{figures/fig04.pdf}}
+	\caption{Performance score (CRPSS) of the reference method 2Z (Table \ref{table:params_R1}) and the optimized 4Zo method for CP and VP for every subregion.}
+	\label{fig:figure_crpss_4Zo}
+\end{figure}
+
+
+\begin{figure}[t]
+	\centerline{\includegraphics[width=8.4cm]{figures/fig05.pdf}}
+	\caption{Losses or gains (in \%) \DIFdelbeginFL \DIFdelFL{of the }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{in }\DIFaddendFL CRPSS \DIFdelbeginFL \DIFdelFL{by }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{from }\DIFaddendFL applying \DIFdelbeginFL \DIFdelFL{the }\DIFdelendFL optimized parameters for the series in \DIFdelbeginFL \DIFdelFL{column }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{columns }\DIFaddendFL to those in \DIFdelbeginFL \DIFdelFL{line}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{rows}\DIFaddendFL . Method 4Zo, calibration \DIFdelbeginFL \DIFdelFL{period}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{and validation periods}\DIFaddendFL .}
+	\DIFdelbeginFL %DIFDELCMD < \label{fig:crossing_4Zo_calib}
+	%DIFDELCMD < %%%
+	\DIFdelendFL \DIFaddbeginFL \label{fig:crossing_4Zo}
+	\DIFaddendFL \end{figure}
+
+\begin{figure}[t]
+	\centerline{\includegraphics[width=8.4cm]{figures/fig06.pdf}}
+	\caption{Optimized spatial windows for the 4Zo-2MIo method (analogy of atmospheric circulation on four pressure levels and analogy on the moisture index on two pressure levels).}
+	\label{fig:spatial_windows_4Zo-2MIo}
+\end{figure}
+
+
+\begin{figure}[t]
+	\centerline{\includegraphics[width=9cm]{figures/fig07.pdf}}
+	\caption{Performance score (CRPSS) of the reference method 2Z-2MI (Table \ref{table:params_R2}) and the optimized 4Zo-2MIo method for CP and VP for every subregion.}
+	\label{fig:figure_crpss_4Zo-2HIo}
+\end{figure}
+
+\begin{figure}[t]
+	\centerline{\includegraphics[width=8.4cm]{figures/fig08.pdf}}
+	\caption{Losses or gains (in \%) of the CRPSS from applying optimized parameters for the series in columns to those in rows. Method 4Zo-2MIo, calibration and validation periods.}
+	\label{fig:crossing_4Zo-2MIo}
+\end{figure}
+
+
+\begin{figure}[t]
+	\DIFdelbeginFL %DIFDELCMD < \centerline{\includegraphics[width=8.8cm]{figures/fig10.pdf}}
+	%DIFDELCMD < 	%%%
+	\DIFdelendFL \DIFaddbeginFL \centerline{\includegraphics[width=8.4cm]{figures/fig08.pdf}}
+	\DIFaddendFL \caption{\DIFdelbeginFL \DIFdelFL{Changes }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Losses or gains (}\DIFaddendFL in \DIFdelbeginFL \DIFdelFL{the CRPS components }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{\%) }\DIFaddendFL of \DIFdelbeginFL \DIFdelFL{4Zo-2MIo relatively to }\DIFdelendFL the \DIFdelbeginFL \DIFdelFL{total CRPS of the reference methods 2Z-2MI (Table \ref{table:params_R2}) }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{CRPSS from applying optimized parameters }\DIFaddendFL for the \DIFdelbeginFL \DIFdelFL{CP }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{series in columns to those in rows. Method 4Zo-2MIo, calibration }\DIFaddendFL and \DIFdelbeginFL \DIFdelFL{the VP}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{validation periods}\DIFaddendFL .}
+	\DIFdelbeginFL %DIFDELCMD < \label{fig:figure_dcrps_comp_4Zo-2HIo}
+	%DIFDELCMD < %%%
+	\DIFdelendFL \DIFaddbeginFL \label{fig:crossing_4Zo-2MIo}
+	\DIFaddendFL \end{figure}
+
+\begin{figure}[t]
+	\DIFdelbeginFL %DIFDELCMD < \centerline{\includegraphics[width=8.8cm]{figures/fig11.pdf}}
+	%DIFDELCMD < 	%%%
+	\DIFdelendFL \DIFaddbeginFL \centerline{\includegraphics[width=9cm]{figures/fig09.pdf}}
+	\DIFaddendFL \caption{\DIFdelbeginFL \DIFdelFL{Number }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Optimal numbers }\DIFaddendFL of analogues for the different regions and the \DIFdelbeginFL \DIFdelFL{various }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{two }\DIFaddendFL methods\DIFaddbeginFL \DIFaddFL{, }\DIFaddendFL resulting from \DIFdelbeginFL \DIFdelFL{the }\DIFdelendFL optimization. Method 4Zo is made of a single level of analogy with $N_{1}$ analogues, whereas 4Zo-2MIo has two levels of analogy with \DIFdelbeginFL \DIFdelFL{respectively }\DIFdelendFL $N_{1}$ and $N_{2}$ analogues.}
+	\DIFdelbeginFL %DIFDELCMD < \label{fig:figure_nb_analogues}
+	%DIFDELCMD < %%%
+	\DIFdelendFL \DIFaddbeginFL \label{fig:figure_nb_analogs}
+	\DIFaddendFL \end{figure}
+
+
+\begin{figure}[t]
+	\DIFdelbeginFL %DIFDELCMD < \centerline{\includegraphics[width=8.8cm]{figures/fig12.pdf}}
+	%DIFDELCMD < 	%%%
+	%DIFDELCMD < \caption{%
+	{%DIFAUXCMD
+		\DIFdelFL{Relationships between the optimal number of analogues for both levels of the 4Zo-2MIo method and the corresponding ones for the unique level of the 4Zo method.}}
+	%DIFAUXCMD
+	%DIFDELCMD < \label{fig:figure_nb_analogues_relationships}
+	%DIFDELCMD < \end{figure}
+	%DIFDELCMD < 
+	
+	%DIFDELCMD < \begin{figure}[t]
+	%DIFDELCMD < 	\centerline{\includegraphics[width=8.4cm]{figures/fig13.pdf}}
+	%DIFDELCMD < 	%%%
+	%DIFDELCMD < \caption{%
+	{%DIFAUXCMD
+		\DIFdelFL{Losses or gains (in \%) of the CRPSS by applying the optimized parameters for the series in column to those in line. Method 4Zo-2MIo, calibration period.}}
+	%DIFAUXCMD
+	%DIFDELCMD < \label{fig:crossing_4Zo-2MIo_calib}
+	%DIFDELCMD < \end{figure}
+	%DIFDELCMD < 
+	
+	%DIFDELCMD < \begin{figure}[t]
+	%DIFDELCMD < 	\centerline{\includegraphics[width=8.4cm]{figures/fig14.pdf}}
+	%DIFDELCMD < 	%%%
+	%DIFDELCMD < \caption{%
+	{%DIFAUXCMD
+		\DIFdelFL{Same as Figure \ref{fig:crossing_4Zo-2MIo_calib} but for the validation period.}}
+	%DIFAUXCMD
+	%DIFDELCMD < \label{fig:crossing_4Zo-2MIo_valid}
+	%DIFDELCMD < \end{figure}
+	%DIFDELCMD < 
+	
+	%DIFDELCMD < \begin{figure}[t]
+	%DIFDELCMD < 	\centerline{\includegraphics[width=8.8cm]{figures/fig15.pdf}}
+	%DIFDELCMD < 	%%%
+	%DIFDELCMD < \caption{%
+	{%DIFAUXCMD
+		\DIFdelFL{Optimized weighting for the pressure levels of the 4Zo method.}}
+	%DIFAUXCMD
+	%DIFDELCMD < \label{fig:levels_weights}
+	%DIFDELCMD < \end{figure}
+	%DIFDELCMD < 
+	
+	%DIFDELCMD < \begin{figure}[t]
+	%DIFDELCMD < 	\centerline{\includegraphics[width=8.8cm]{figures/fig16.pdf}}
+	%DIFDELCMD < 	%%%
+	%DIFDELCMD < \caption{%
+	{%DIFAUXCMD
+		\DIFdelFL{Averaged weighting for the pressure levels of the circulation analogy of the three methods.}}
+	%DIFAUXCMD
+	\DIFdelendFL \DIFaddbeginFL \centerline{\includegraphics[width=9cm]{figures/fig10.png}}
+	\caption{\DIFaddFL{Distribution of optimal weights for the predictors of the first level of analogy (geopotential heights) of (blue) 4Zo, (red) 4Zo-2MIo, and (green) 4Zo-4MIo methods. Results are for the ten subregions. Geopotential heights are sorted by increasing pressure and hour.}}
+	\DIFaddendFL \label{fig:levels_weights_average}
+\end{figure}
+
+\begin{figure}[t]
+	\DIFdelbeginFL %DIFDELCMD < \centerline{\includegraphics[width=7.5cm]{figures/fig17.pdf}}
+	%DIFDELCMD < 	%%%
+	\DIFdelendFL \DIFaddbeginFL \centerline{\includegraphics[width=7.5cm]{figures/fig11.pdf}}
+	\DIFaddendFL \caption{Example of \DIFdelbeginFL \DIFdelFL{the }\DIFdelendFL evolution of the performance score of the best individual over \DIFdelbeginFL \DIFdelFL{8 }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{eight }\DIFaddendFL independent optimizations.}
+	\label{fig:evolution}
+\end{figure}
+
+\clearpage
+
+
+%% TABLES
+
+\begin{table}[t]
+	\caption{Parameters of the reference method on \DIFdelbeginFL \DIFdelFL{the }\DIFdelendFL atmospheric circulation (2Z). \DIFdelbeginFL \DIFdelFL{The first }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{First }\DIFaddendFL column is \DIFdelbeginFL \DIFdelFL{the }\DIFdelendFL level of analogy (0 for preselection)\DIFdelbeginFL \DIFdelFL{, then comes the }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{; subsequent columns list }\DIFaddendFL meteorological variable\DIFdelbeginFL \DIFdelFL{and }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{, }\DIFaddendFL its hour of observation \DIFaddbeginFL \DIFaddFL{within the target day }\DIFaddendFL (temporal window)\DIFdelbeginFL \DIFdelFL{. The criteria }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{, criterion }\DIFaddendFL used for \DIFdelbeginFL \DIFdelFL{the }\DIFdelendFL current level of analogy\DIFdelbeginFL \DIFdelFL{is then provided}\DIFdelendFL , \DIFdelbeginFL \DIFdelFL{as well as the }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{and }\DIFaddendFL number of analogues.}
+	\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline
+			Level & Variable & Hour & \DIFdelbeginFL \DIFdelFL{Criteria }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Criterion }\DIFaddendFL & Nb \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{50} \\
+			& Z500 & 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:params_R1}
+\end{table}
+
+\begin{table}[t]
+	\caption{Parameters of the reference method with moisture variables (2Z-2MI). \DIFdelbeginFL \DIFdelFL{Same conventions }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Conventions are the same }\DIFaddendFL as \DIFaddbeginFL \DIFaddFL{in }\DIFaddendFL Table \ref{table:params_R1}}
+	\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\hline 
+			Level & Variable & Hour & \DIFdelbeginFL \DIFdelFL{Criteria }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Criterion }\DIFaddendFL & Nb \\ 
+			\hline 
+			0 & \multicolumn{4}{l}{$\pm 60$ days around the target date} \\
+			\hline 
+			\multirow{2}{*}{1} & Z1000 & 12~h & \multirow{2}{*}{S1} & \multirow{2}{*}{70} \\
+			& Z500 & 24~h & & \\ 
+			\hline
+			\multirow{2}{*}{2} & TPW * RH850 & 12~h & \multirow{2}{*}{RMSE} & \multirow{2}{*}{30} \\
+			& TPW * RH850 & 24~h & & \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:params_R2}
+\end{table}
+
+\begin{table}[t]
+	\caption{\DIFdelbeginFL \DIFdelFL{Parameters of }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Pressure levels ($\sim$) automatically selected for }\DIFaddendFL the 4Zo method \DIFaddbeginFL \DIFaddFL{for different subregions }\DIFaddendFL (\DIFdelbeginFL \DIFdelFL{analogy on 4 levels of the atmospheric circulation}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{ID}\DIFaddendFL )\DIFdelbeginFL \DIFdelFL{optimized for the Chablais subregion}\DIFdelendFL . \DIFdelbeginFL \DIFdelFL{The columns are }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{R represents }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{following: L = level of analogy, V = meteorological variable, H = hour of observation or temporal window, D = domain or spatial window, W = weighting of the score for the selected pressure levels, C = criteria, N = number of analogues}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{2Z reference method (Table \ref{table:params_R1})}\DIFaddendFL .}
+	\footnotesize
+	\begin{center}
+		\DIFdelbeginFL %DIFDELCMD < \begin{tabular}{ccccccc}
+		%DIFDELCMD < 			\hline %%%
+		\DIFdelFL{L }%DIFDELCMD < & %%%
+		\DIFdelFL{V }%DIFDELCMD < & %%%
+		\DIFdelFL{H }%DIFDELCMD < & %%%
+		\DIFdelFL{D }%DIFDELCMD < & %%%
+		\DIFdelFL{W }%DIFDELCMD < & %%%
+		\DIFdelFL{C }%DIFDELCMD < & %%%
+		\DIFdelFL{N }%DIFDELCMD < \\ 
+		%DIFDELCMD < 			\hline 
+		%DIFDELCMD < 			%%%
+		\DIFdelFL{0 }%DIFDELCMD < & \multicolumn{6}{l}{$\pm 60$ days around the target date} \\
+		%DIFDELCMD < 			\hline 
+		%DIFDELCMD < 			\multirow{8}{*}{1} &  \multirow{2}{*}{Z300} & \multirow{2}{*}{12~h} & %%%
+		\DIFdelFL{-2.5 - 15.0 }%DIFDELCMD < \degree %%%
+		\DIFdelFL{E }%DIFDELCMD < & \multirow{2}{*}{32\%} & \multirow{8}{*}{S1} & \multirow{8}{*}{28} \\
+		%DIFDELCMD < 			& & & %%%
+		\DIFdelFL{37.5 - 57.5 }%DIFDELCMD < \degree %%%
+		\DIFdelFL{N }%DIFDELCMD < & & & \\ 
+		%DIFDELCMD < 			& \multirow{2}{*}{Z700} & \multirow{2}{*}{24~h} & %%%
+		\DIFdelFL{2.5 - 10.0 }%DIFDELCMD < \degree %%%
+		\DIFdelFL{E }%DIFDELCMD < & \multirow{2}{*}{22\%} & & \\ 
+		%DIFDELCMD < 			& & & %%%
+		\DIFdelFL{42.5 - 45.0 }%DIFDELCMD < \degree %%%
+		\DIFdelFL{N }%DIFDELCMD < & & & \\ 
+		%DIFDELCMD < 			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{6~h} & %%%
+		\DIFdelFL{-5.0 - 15.0 }%DIFDELCMD < \degree %%%
+		\DIFdelFL{E }%DIFDELCMD < & \multirow{2}{*}{24\%} & & \\ 
+		%DIFDELCMD < 			& & & %%%
+		\DIFdelFL{42.5 - 47.5 }%DIFDELCMD < \degree %%%
+		\DIFdelFL{N }%DIFDELCMD < & & & \\ 
+		%DIFDELCMD < 			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{30~h} & %%%
+		\DIFdelFL{2.5 - 15.0 }%DIFDELCMD < \degree %%%
+		\DIFdelFL{E }%DIFDELCMD < & \multirow{2}{*}{22\%} & & \\ 
+		%DIFDELCMD < 			& & & %%%
+		\DIFdelFL{40.0 - 50.0 }%DIFDELCMD < \degree %%%
+		\DIFdelFL{N }%DIFDELCMD < & & & \\ 
+		%DIFDELCMD < 			\hline 
+		%DIFDELCMD < 		\end{tabular} 
+		%DIFDELCMD < 	\end{center}
+		%DIFDELCMD < 	\label{table:params_GA_4Zo}
+		%DIFDELCMD < \end{table}
+		%DIFDELCMD < 
+		
+		%DIFDELCMD < \begin{table}[t]
+		%DIFDELCMD < 	%%%
+		%DIFDELCMD < \caption{%
+		{%DIFAUXCMD
+			\DIFdelFL{Pressure levels ($\sim$) automatically selected for the 4Zo method at the different subregions. R represents the reference method (Table \ref{table:params_R1}).}}
+		%DIFAUXCMD
+		%DIFDELCMD < \footnotesize
+		%DIFDELCMD < 	\begin{center}
+		%DIFDELCMD < 		%%%
+		\DIFdelendFL \begin{tabular}{ccccccccc}
+			\hline ID & 300 & 400 & 500 & 600 & 700 & 850 & 925 & 1000 \\ 
+			\hline 
+			1  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
+			2  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
+			3  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
+			4  & $\sim$ &   &   &   & $\sim$ &   &   & $\sim \sim$ \\
+			5  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			6  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			7  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			8  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			9  &   &   & $\sim$ &   & $\sim$ &   &   & $\sim \sim$ \\
+			10 &   &   &   & $\sim$ & $\sim$ &   &   & $\sim \sim$ \\
+			\hline 	
+			R  &   &   & $\sim$ &   &   &   &   & $\sim$ \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+	\label{table:levels_GA_4Zo}
+\end{table}
+	
+	
+	
+	\begin{table}[t]
+		\caption{\DIFdelbeginFL \DIFdelFL{CRPSS score }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Relative improvement }\DIFaddendFL (\%) \DIFdelbeginFL \DIFdelFL{of }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{in CRPSS for different precipitation thresholds for }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{three }\DIFdelendFL optimized \DIFdelbeginFL \DIFdelFL{methods (}\DIFdelendFL 4Zo \DIFdelbeginFL \DIFdelFL{is the atmospheric circulation analogy detailed in the present section; 4Zo-2MIo and 4Zo-4MIo add a second level of analogy on moisture indexes}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{method}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{as explained in section \ref{sec:optim_moisture})}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{compared to the reference method}\DIFaddendFL .}
+		\footnotesize
+	\begin{center}
+		\begin{tabular}{ccccccc}
+			\hline 
+			ID & \multicolumn{2}{c}{P\(\geq\)1 mm} & \multicolumn{2}{c}{P\(\geq\)0.1\(\cdot\)P10} & \multicolumn{2}{c}{P\(\geq\)0.5\(\cdot\)P10} \\ 
+			& CP & VP & CP & VP & CP & VP \\ 
+			\hline 
+			1 & 10.2 & 9.4 & 8.5 & 7.9 & 17.0 & 14.2 \\ 
+			2 & 9.9 & 3.4 & 10.2 & 7.3 & 19.3 & 13.7 \\ 
+			3 & 13.3 & 10.5 & 13.3 & 10.9 & 19.7 & 9.7 \\ 
+			4 & 11.0 & 7.4 & 12.9 & 10.0 & 23.2 & 23.8 \\ 
+			5 & 8.6 & 4.2 & 10.9 & 6.2 & 25.2 & 23.8 \\ 
+			6 & 10.5 & 5.1 & 11.1 & 7.1 & 21.2 & 41.1 \\ 
+			7 & 24.3 & 12.4 & 33.1 & 26.0 & 71.2 & 104.3 \\ 
+			8 & 19.0 & 12.7 & 26.2 & 19.2 & 39.4 & 34.9 \\ 
+			9 & 12.4 & 6.8 & 13.8 & 9.9 & 24.9 & 48.1 \\ 
+			10 & 13.6 & 6.8 & 14.4 & 6.9 & 29.9 & 31.5 \\ 
+			\hline 
+			av. & 13.3 & 7.9 & 15.4 & 11.1 & 29.1 & 34.5 \\ 
+			\hline 
+		\end{tabular} 
+	\end{center}
+		\label{table:scores_thresholds_4Zo}
+	\end{table}
+	
+	
+	
+	\begin{table}[t]
+		\caption{\DIFdelbeginFL \DIFdelFL{Parameters of }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Atmospheric levels automatically selected for }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{4Zo-2MIo method (}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{analogy of }\DIFaddendFL atmospheric circulation \DIFdelbeginFL \DIFdelFL{on 4 levels }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{($\sim$) }\DIFaddendFL and moisture \DIFdelbeginFL \DIFdelFL{index on 2 levels}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{analogy ($\bullet$}\DIFaddendFL ) \DIFaddbeginFL \DIFaddFL{of the 4Zo-2MIo method}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{optimized }\DIFdelendFL for \DIFdelbeginFL \DIFdelFL{the Chablais subregion}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{different subregions (ID)}\DIFaddendFL . \DIFdelbeginFL \DIFdelFL{Same conventions as }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{R represents the 2Z-2MI reference method (}\DIFaddendFL Table \DIFdelbeginFL \DIFdelFL{\ref{table:params_GA_4Zo}.}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{\ref{table:params_R2})}\DIFaddendFL }
+		\footnotesize
+		\begin{center}
+			\DIFdelbeginFL %DIFDELCMD < \begin{tabular}{ccccccc}
+			%DIFDELCMD < 			\hline %%%
+			\DIFdelFL{L }%DIFDELCMD < & %%%
+			\DIFdelFL{V }%DIFDELCMD < & %%%
+			\DIFdelFL{H }%DIFDELCMD < & %%%
+			\DIFdelFL{D }%DIFDELCMD < & %%%
+			\DIFdelFL{W }%DIFDELCMD < & %%%
+			\DIFdelFL{C }%DIFDELCMD < & %%%
+			\DIFdelFL{N }%DIFDELCMD < \\ 
+			%DIFDELCMD < 			\hline 
+			%DIFDELCMD < 			%%%
+			\DIFdelFL{0 }%DIFDELCMD < & \multicolumn{6}{l}{$\pm 60$ days around the target date} \\
+			%DIFDELCMD < 			\hline 
+			%DIFDELCMD < 			\multirow{8}{*}{1} &  \multirow{2}{*}{Z300} & \multirow{2}{*}{12~h} & %%%
+			\DIFdelFL{0.0 - 15.0 }%DIFDELCMD < \degree %%%
+			\DIFdelFL{E }%DIFDELCMD < & \multirow{2}{*}{23\%} & \multirow{8}{*}{S1} & \multirow{8}{*}{74} \\
+			%DIFDELCMD < 			& & & %%%
+			\DIFdelFL{42.5 - 55.0 }%DIFDELCMD < \degree %%%
+			\DIFdelFL{N }%DIFDELCMD < & & & \\ 
+			%DIFDELCMD < 			& \multirow{2}{*}{Z500} & \multirow{2}{*}{30~h} & %%%
+			\DIFdelFL{0.0 - 10.0 }%DIFDELCMD < \degree %%%
+			\DIFdelFL{E }%DIFDELCMD < & \multirow{2}{*}{25\%} & & \\ 
+			%DIFDELCMD < 			& & & %%%
+			\DIFdelFL{40.0 - 45.0 }%DIFDELCMD < \degree %%%
+			\DIFdelFL{N }%DIFDELCMD < & & & \\ 
+			%DIFDELCMD < 			& \multirow{2}{*}{Z850} & \multirow{2}{*}{12~h} & %%%
+			\DIFdelFL{0.0 - 10.0 }%DIFDELCMD < \degree %%%
+			\DIFdelFL{E }%DIFDELCMD < & \multirow{2}{*}{26\%} & & \\ 
+			%DIFDELCMD < 			& & & %%%
+			\DIFdelFL{42.5 - 47.5 }%DIFDELCMD < \degree %%%
+			\DIFdelFL{N }%DIFDELCMD < & & & \\ 
+			%DIFDELCMD < 			& \multirow{2}{*}{Z1000} & \multirow{2}{*}{30~h} & %%%
+			\DIFdelFL{0.0 - 20.0 }%DIFDELCMD < \degree %%%
+			\DIFdelFL{E }%DIFDELCMD < & \multirow{2}{*}{26\%} & & \\ 
+			%DIFDELCMD < 			& & & %%%
+			\DIFdelFL{40.0 - 47.5 }%DIFDELCMD < \degree %%%
+			\DIFdelFL{N }%DIFDELCMD < & & & \\ 
+			%DIFDELCMD < 			\hline 
+			%DIFDELCMD < 			\multirow{4}{*}{2} & %%%
+			\DIFdelFL{TPW }%DIFDELCMD < & \multirow{2}{*}{12~h} & %%%
+			\DIFdelFL{5.0 - 10.0 }%DIFDELCMD < \degree %%%
+			\DIFdelFL{E }%DIFDELCMD < & \multirow{2}{*}{57\%} & \multirow{4}{*}{RMSE} & \multirow{4}{*}{25} \\
+			%DIFDELCMD < 			& %%%
+			\DIFdelFL{*RH700 }%DIFDELCMD < & & %%%
+			\DIFdelFL{45.0 - 47.5 }%DIFDELCMD < \degree %%%
+			\DIFdelFL{N }%DIFDELCMD < & & & \\ 
+			%DIFDELCMD < 			& %%%
+			\DIFdelFL{TPW }%DIFDELCMD < & \multirow{2}{*}{24~h} & %%%
+			\DIFdelFL{5.0 - 10.0 }%DIFDELCMD < \degree %%%
+			\DIFdelFL{E }%DIFDELCMD < & \multirow{2}{*}{43\%} & & \\ 
+			%DIFDELCMD < 			& %%%
+			\DIFdelFL{*RH700 }%DIFDELCMD < & & %%%
+			\DIFdelFL{45.0 - 47.5 }%DIFDELCMD < \degree %%%
+			\DIFdelFL{N }%DIFDELCMD < & & & \\ 
+			%DIFDELCMD < 			\hline 
+			%DIFDELCMD < 		\end{tabular} 
+			%DIFDELCMD < 	\end{center}
+			%DIFDELCMD < 	\label{table:params_GA_4Zo_2MIo}
+			%DIFDELCMD < \end{table}
+			%DIFDELCMD < 
+			
+			%DIFDELCMD < \begin{table}[t]
+			%DIFDELCMD < 	%%%
+			%DIFDELCMD < \caption{%
+			{%DIFAUXCMD
+				\DIFdelFL{Atmospheric levels automatically selected for the analogy of the atmospheric circulation ($\sim$) and the analogy of moisture ($\bullet$) of the 4Zo-2MIo method, at the different subregions.  R represents the reference method (Table \ref{table:params_R2})}}
+			%DIFAUXCMD
+			%DIFDELCMD < \footnotesize
+			%DIFDELCMD < 	\begin{center}
+			%DIFDELCMD < 		%%%
+			\DIFdelendFL \begin{tabular}{ccccccccc}
+				\hline ID & 300 & 400 & 500 & 600 & 700 & 850 & 925 & 1000 \\ 
+				\hline 
+				1  & $\sim$ &   & $\sim$ &   & $\bullet \bullet$  & $\sim$ &   & $\sim$ \\
+				2  & $\sim$ &   &   &   & $\sim \bullet \bullet$ & $\sim$ &   & $\sim$ \\
+				3  & $\sim$ &   &   &   & $\sim \bullet \bullet$ & $\sim$ & $\sim$ &   \\
+				4  &   &   & $\sim$ & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
+				5  &   & $\sim$ &   &   & $\sim \bullet \bullet$ &   & $\sim \sim$ &   \\
+				6  &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
+				7  &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
+				8  &   &   & $\sim$ & $\bullet$ & $\sim \bullet$ &   & $\sim \sim$ &   \\
+				9  &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ & $\sim$ &   \\
+				10 &   & $\sim$ &   & $\bullet$ & $\sim \bullet$ & $\sim$ &   & $\sim$ \\
+				\hline 
+				R &   &   & $\sim$ &   &   & $\bullet \bullet$ &   & $\sim$ \\
+				\hline 
+			\end{tabular} 
+		\end{center}
+		\label{table:levels_GA_4Zo_2MIo}
+	\end{table}
+	
+	\begin{table}[t]
+		\caption{\DIFdelbeginFL \DIFdelFL{Improvement }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Relative improvement }\DIFaddendFL (\%) \DIFdelbeginFL \DIFdelFL{of the }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{in }\DIFaddendFL CRPSS for different precipitations thresholds for the optimized 4Zo-2MIo \DIFaddbeginFL \DIFaddFL{method, compared to the reference }\DIFaddendFL method.}
+		\footnotesize
+		\begin{center}
+			\begin{tabular}{ccccccc}
+				\hline 
+				ID & \multicolumn{2}{c}{P\(\geq\)1 mm} & \multicolumn{2}{c}{P\(\geq\)0.1\(\cdot\)P10} & \multicolumn{2}{c}{P\(\geq\)0.5\(\cdot\)P10} \\  
+				& CP & VP & CP & VP & CP & VP \\ 
+				\hline 
+				1 & 12.6 & 9.3 & 12.4 & 9.7 & 15.8 & 11.0 \\
+				2 & 10.4 & 7.7 & 11.2 & 10.5 & 18.9 & 16.6 \\ 
+				3 & 14.5 & 11.6 & 14.1 & 11.4 & 18.7 & 14.6 \\ 
+				4 & 11.4 & 9.4 & 11.5 & 11.6 & 14.9 & 22.7 \\ 
+				5 & 11.8 & 8.0 & 12.2 & 8.9 & 12.0 & 12.8 \\ 
+				6 & 11.3 & 7.1 & 11.2 & 8.0 & 15.3 & 29.1 \\ 
+				7 & 20.5 & 15.5 & 25.2 & 24.0 & 43.0 & 79.5 \\
+				8 & 19.3 & 15.7 & 23.1 & 18.6 & 25.2 & 31.7 \\ 
+				9 & 17.0 & 15.4 & 17.4 & 16.5 & 23.7 & 39.4 \\ 
+				10 & 12.9 & 9.6 & 13.8 & 11.1 & 28.5 & 32.1 \\ 
+				\hline 
+				av. & 14.2 & 10.9 & 15.2 & 13.0 & 21.6 & 28.9 \\ 
+				\hline 
+			\end{tabular} 
+		\end{center}
+		\label{table:scores_thresholds_4Zo-2MIo}
+	\end{table}
+	
+\end{document}
