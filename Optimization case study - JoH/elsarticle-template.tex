@@ -339,7 +339,7 @@ The optimization of the AM by means of GAs has been undertaken in successive sta
 
 GAs have proved very useful to optimize complex variants of the AM, and to assess new degrees of freedom that were not available thus far. However, it can be dangerous to add too many parameters to optimize. Indeed, the optimizer will probably use them to successfully improve the calibration score, so the validation control remains very important in order to determine if one is actually improving the method, or if it is being over-parametrized. Moreover, it might not always be desirable to increase the degrees of freedom, and some constraints (e.g. same weighting of the analogy criteria between different pressure levels) can be justified. However, one should first assess the consequence of a constraint before establishing it. In this sense, even though not all degrees of freedom are useful, GAs allow us to assess their influence. Finally, GAs could be used to identify, among other things, the best pairs of spatial and temporal windows, in order to later create a simpler regional method.
 
-The convergence of parallel optimizations decreased when the AM to optimize became more and more complex. The optimizer did not always converge to the exact global optimum, but to its surroundings. This is related to the fact that the optimization slows down when it gets closer to the global optimum, and that one has to stop it before the end, because of the required processing time (see Figure \ref{fig:evolution} as an example). The resulting parameters might sometimes present non-negligible differences, even though the score is similar. Through Monte-Carlo analyses of the parameter space properties of the AM, \citet{Horton2012a} showed that some parameters of the method have a wide range of acceptable values. The spatial windows, for example, can be larger than the optimal size without much impact on the score, while they cannot be smaller \citep[see also][]{Bontron2004}. We also observed that the selection of pressure level is not a parameter as discrete as we would have thought, and that choosing another level may have reduced the consequences on the performance. This is particularly true for higher pressure levels, but can be more critical for lower layers. It was thus interesting to sometimes obtain several sets of near-optimal parameters, but with some nuances, in order to get an idea of the sensitivity of the parameters for a given region, and to compare the score for the VP. In this regard, a cross-validation technique may be advisable. However, as solutions identified at different regions of the parameter space might provide sufficiently good performance, an ensemble of these could be used, instead of a unique solution. These could account for the parameters’ uncertainty in the AM, and could also increase the sample size contributing to the empirical distribution of precipitation values. An approach that can also be recommended is to first explore a wide range of the parameter space with some optimizations, and to narrow it according to the results for more targeted optimizations that are likely to go faster and to perform better.
+The convergence of parallel optimizations decreased when the AM to optimize became more and more complex. The optimizer did not always converge to the exact global optimum, but to its surroundings. This is related to the fact that the optimization slows down when it gets closer to the global optimum, and that one has to stop it before the end, because of the required processing time (see for example the slow-down of the improvements over generations in Figure \ref{fig:evolution}). The resulting parameters might sometimes present non-negligible differences, even though the score is similar. Through Monte-Carlo analyses of the parameter space properties of the AM, \citet{Horton2012a} showed that some parameters of the method have a wide range of acceptable values. The spatial windows, for example, can be larger than the optimal size without much impact on the score, while they cannot be smaller \citep[see also][]{Bontron2004}. We also observed that the selection of pressure level is not a parameter as discrete as we would have thought, and that choosing another level may have reduced the consequences on the performance. This is particularly true for higher pressure levels, but can be more critical for lower layers. It was thus interesting to sometimes obtain several sets of near-optimal parameters, but with some nuances, in order to get an idea of the sensitivity of the parameters for a given region, and to compare the score for the VP. In this regard, a cross-validation technique may be advisable. However, as solutions identified at different regions of the parameter space might provide sufficiently good performance, an ensemble of these could be used, instead of a unique solution. These could account for the parameters’ uncertainty in the AM, and could also increase the sample size contributing to the empirical distribution of precipitation values. An approach that can also be recommended is to first explore a wide range of the parameter space with some optimizations, and to narrow it according to the results for more targeted optimizations that are likely to go faster and to perform better.
 
 We tried to optimize the length of the preselection period (i.e. the seasonal stratification, which is a 4-month window) jointly with the other parameters, but no improvement was observed. Optimizing the moisture flux, which is composed of the moisture index multiplied by the wind flux, was also assessed. However, the results were not better than when considering the moisture index alone. This may be related to the fact that the optimizer tries to provide the best analogy of the atmospheric circulation in the first place, which makes the wind information less relevant in the second level of analogy.
 
@@ -384,13 +384,13 @@ The authors would also like to acknowledge the work of Loris Foresti and another
 %% FIGURES
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig01.pdf}}
+	\centerline{\includegraphics[width=9cm]{figures/fig01.pdf}}
 	\caption{Location of the alpine Rh\^{o}ne catchment in Switzerland. (source: Swisstopo)}
 	\label{fig:map}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig02.pdf}}
+	\centerline{\includegraphics[width=9cm]{figures/fig02.pdf}}
 	\caption{Performance score (CRPSS) for CP and VP for three stations (1 - Swiss Chablais; 5 - Southern valleys; 8 - Southeast ridges) when varying the number of geopotential height levels available to the optimizer.}
 	\label{fig:figure_nb_levels}
 \end{figure}
@@ -402,7 +402,7 @@ The authors would also like to acknowledge the work of Loris Foresti and another
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig04.pdf}}
+	\centerline{\includegraphics[width=9cm]{figures/fig04.pdf}}
 	\caption{Performance score (CRPSS) of the reference method 2Z (Table \ref{table:params_R1}) and the optimized 4Zo method for CP and VP for every subregion.}
 	\label{fig:figure_crpss_4Zo}
 \end{figure}
@@ -420,7 +420,7 @@ The authors would also like to acknowledge the work of Loris Foresti and another
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig07.pdf}}
+	\centerline{\includegraphics[width=9cm]{figures/fig07.pdf}}
 	\caption{Performance score (CRPSS) of the reference method 2Z-2MI (Table \ref{table:params_R2}) and the optimized 4Zo-2MIo method for CP and VP for every subregion.}
 	\label{fig:figure_crpss_4Zo-2HIo}
 \end{figure}
@@ -432,13 +432,13 @@ The authors would also like to acknowledge the work of Loris Foresti and another
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig09.pdf}}
+	\centerline{\includegraphics[width=9cm]{figures/fig09.pdf}}
 	\caption{Optimal numbers of analogues for the different regions and the two methods, resulting from optimization. Method 4Zo is made of a single level of analogy with $N_{1}$ analogues, whereas 4Zo-2MIo has two levels of analogy with $N_{1}$ and $N_{2}$ analogues.}
 	\label{fig:figure_nb_analogs}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig10.pdf}}
+	\centerline{\includegraphics[width=9cm]{figures/fig10.png}}
 	\caption{Distribution of optimal weights for the predictors of the first level of analogy (geopotential heights) of (blue) 4Zo, (red) 4Zo-2MIo, and (green) 4Zo-4MIo methods. Results are for the ten subregions. Geopotential heights are sorted by increasing pressure and hour.}
 	\label{fig:levels_weights_average}
 \end{figure}
