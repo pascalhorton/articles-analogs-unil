@@ -217,7 +217,7 @@ This procedure was used to calibrate the methods that were here considered as re
 \subsection{Genetic algorithms}
 \label{sec:gas}
 
-Genetic algorithms (GAs) were developed by \citet{Holland1992b} and \citet{Goldberg1989}. They are part of the Evolutionary Algorithms \citep{Back1993b, Schwefel1993}, which were inspired by some mechanisms in biological evolution, such as reproduction, genetic mutations, chromosomal crossovers, and natural selection. GAs seek the global optimum on a complex surface, theoretically without restriction, which is of interest for AMs, which are characterized by a complex high-dimensional error function having multiple local optima. Practically, GAs allow rapidly approaching satisfactory solutions, but they are not guaranteed to provide the optimum solution \citep{Zitzler2004a}. It is indeed mainly a matter of time. When the optimizer gets closer to the global optimum, any new improvement takes more time to appear (see for example the slow-down of the improvements over generations in Figure \ref{fig:evolution}), and the final adjustment of the parameters can be very time consuming \citep{Back1993a}. For problems that require a significant amount of time to evaluate the objective function, as in the case of AMs (because it needs to make a prediction for every day of the CP), the number of generations has to be limited in order to ensure a reasonable processing time. Thus, different acceptable solutions can result from one or more optimization runs \citep{Holland1992b}. This is both a strength and a weakness of GAs: they are very good at exploring complex parameter spaces in order to identify the most promising areas, but they will not necessarily always find the best solution with the optimal values for all parameters \citep{Holland1992b}.
+Genetic algorithms (GAs) were developed by \citet{Holland1992b} and \citet{Goldberg1989}. They are part of the Evolutionary Algorithms \citep{Back1993b, Schwefel1993}, which were inspired by some mechanisms in biological evolution, such as reproduction, genetic mutations, chromosomal crossovers, and natural selection. GAs seek the global optimum on a complex surface, theoretically without restriction, which is of interest for AMs, which are characterized by a complex high-dimensional error function having multiple local optima. Practically, GAs allow rapidly approaching satisfactory solutions, but they are not guaranteed to provide the optimum solution \citep{Zitzler2004a}. It is indeed mainly a matter of time. When the optimizer gets closer to the global optimum, any new improvement takes more time to appear, and the final adjustment of the parameters can be very time consuming \citep{Back1993a}. For problems that require a significant amount of time to evaluate the objective function, as in the case of AMs (because it needs to make a prediction for every day of the CP), the number of generations has to be limited in order to ensure a reasonable processing time. Thus, different acceptable solutions can result from one or more optimization runs \citep{Holland1992b}. This is both a strength and a weakness of GAs: they are very good at exploring complex parameter spaces in order to identify the most promising areas, but they will not necessarily always find the best solution with the optimal values for all parameters \citep{Holland1992b}.
 
 The optimizations here were performed based on the recommended GA parametrization for AMs as described in \citet{Horton2016}. As the optimization is mostly sensitive to the mutation operator (that randomly changes some values in the parameter sets), parallel optimizations are considered with variants of this operator, according to \citet{Horton2016}:
 
@@ -426,15 +426,15 @@ The authors would also like to acknowledge the work of Loris Foresti and another
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.8cm]{figures/fig08.pdf}}
-	\caption{Optimal numbers of analogues for the different regions and the two methods, resulting from optimization. Method 4Zo is made of a single level of analogy with $N_{1}$ analogues, whereas 4Zo-2MIo has two levels of analogy with $N_{1}$ and $N_{2}$ analogues.}
-	\label{fig:figure_nb_analogs}
+	\centerline{\includegraphics[width=8.4cm]{figures/fig08.pdf}}
+	\caption{Losses or gains (in \%) of the CRPSS from applying optimized parameters for the series in columns to those in rows. Method 4Zo-2MIo, calibration and validation periods.}
+	\label{fig:crossing_4Zo-2MIo}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.4cm]{figures/fig09.pdf}}
-	\caption{Losses or gains (in \%) of the CRPSS from applying optimized parameters for the series in columns to those in rows. Method 4Zo-2MIo, calibration and validation periods.}
-	\label{fig:crossing_4Zo-2MIo}
+	\centerline{\includegraphics[width=8.8cm]{figures/fig09.pdf}}
+	\caption{Optimal numbers of analogues for the different regions and the two methods, resulting from optimization. Method 4Zo is made of a single level of analogy with $N_{1}$ analogues, whereas 4Zo-2MIo has two levels of analogy with $N_{1}$ and $N_{2}$ analogues.}
+	\label{fig:figure_nb_analogs}
 \end{figure}
 
 \begin{figure}[t]
