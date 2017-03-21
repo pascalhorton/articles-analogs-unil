@@ -104,10 +104,7 @@
 	
 	The study area is the upper Rh\^{o}ne catchment in Switzerland. Precipitation time series come from six automatic weather stations, viz., Ulrichen, Zermatt, Visp, Montana, Sion, and Aigle (Fig. \ref{fig:map}) that are subject to various meteorological influences \citep{Horton2012}. The data were available at an hourly time step for 25~years (1982\textendash 2007) and were also obtained at a daily time step (from 6:00~UTC to 6:00~UTC the next day) for 47~years (1961\textendash 2008). Due to the low density of weather stations with high temporal resolution and long archives, no spatially aggregated rainfall was processed. The results will hereafter be presented arbitrarily for the Ulrichen station but are equivalent for all stations.
 	
-	Synoptic-scale variables, used as predictors, were extracted from the NCEP/NCAR reanalysis 1 dataset \citep{Kalnay1996} with a 6h temporal resolution, 17 pressure levels, and a spatial resolution of 2.5\textdegree. This dataset is now relatively old, but it is not expected to affect the conclusions of the present study (see discussion in Sect. \ref{sec:old_reanalysis}).
-	
-	\citep{Poli2016}
-	
+	Synoptic-scale variables, used as predictors, were extracted from the ERA-20C reanalysis dataset \citep{Poli2016} with a 3h temporal resolution, and a spatial resolution of 1\textdegree. The study was originally performed on the NCEP/NCAR reanalysis 1 dataset \citep{Kalnay1996}, and the conclusions were similar. The main advantage of the ERA-20C is that it allows testing the relevance of the MTW at a 3h time step.
 	
 	\subsection{The considered analogue method}
 	\label{sec:analog_method}
@@ -168,16 +165,6 @@
 	In order to assess the benefit of searching for analogue situations at a sub-daily time step for quantitative precipitation prediction, an appropriate precipitation series is required. On the basis of high temporal resolution time series (Sect. \ref{sec:data}), 24h totals were processed at a 6h time step by means of a moving 24h total. Since sub-daily precipitation time series are available on a shorter period than daily ones, the loss of performance resulting from a reduction of a 47~year archive (1961\textendash 2008) to 25~years (1982\textendash 2007) can be expected. However, the competition between the loss of performance due to a smaller archive length and the potentially better analogy between target and MTW candidates needs to be assessed.
 	
 	
-	\subsection{Reconstruction of a longer precipitation archive}
-	\label{sec:reconstruction}
-	
-	It would be profitable to be able to apply the MTW to a longer archive (here, 1961\textendash 2008), rather than being limited to the reduced period where the sub-daily precipitation data are available (cf. previous section). Therefore, in order to reconstruct a longer archive of moving 24h totals, two simple disaggregation approaches of the daily precipitation time series were assessed.
-	
-	The first technique was a proportional distribution, where the observed daily precipitations were considered constant during the measuring period (6:00~UTC to 6:00~UTC the next day). Proportional parts of the original daily time series were allocated into a new moving average of 24h totals (Fig. \ref{fig:illustration_disaggregation}). 
-	
-	The second approach aimed at getting closer to the chronology of the actual precipitation by relying on some informative variables during the reconstruction procedure. Data from the NCEP/NCAR reanalysis 1 (Sect. \ref{sec:data}) were used for this purpose, despite their rough resolution (2.5\textdegree). Precipitable water and relative humidity (at 1000~hPa, 925~hPa or 850~hPa) were assessed at the four points surrounding the catchment, and a time lapse between both series was allowed to take into account the significant distance separating the weather stations and the reanalysis grid point. The best proxy variable was identified by means of a correlation analyses (on non-zero values) with the 6-hourly precipitation time series over the period 1982\textendash 2007. Once the best proxy had been selected, its temporal profile was used in order to disaggregate the daily precipitation time series.
-	
-	
 	\subsection{Calibration of the analogue method}
 	\label{sec:calibration}
 	
@@ -207,13 +194,6 @@
 	
 	\section{Results}
 	\label{sec:results}
-	
-	\subsection{Consequences of the archive reduction}
-	\label{sec:archive_reduction}
-	
-	The performance loss resulting from the reduction of a 47~year archive (1961\textendash 2008, corresponding to the daily time series) to 25~years (1982\textendash 2007, corresponding to the hourly time series in Sect. \ref{sec:mtw}) was assessed with the original method without MTW. Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated on the original archive (see resulting analogue numbers in Table \ref{table:analog_nb}) and were used thereafter.
-	
-	The impact of the archive reduction can be seen in Fig. \ref{fig:plots_CRPSS_2Z} for the 2Z method and in Fig. \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z-2MI method. As expected, a loss of performance was observed for each station, except for that of Aigle, which seemed relatively indifferent to this change. This loss was globally significant, with up to \textendash 1.89 points (\% of CRPSS) for Visp and the 2Z method. 
 	
 	
 	\subsection{Influence of the MTW on the analogy criterion}
@@ -281,6 +261,17 @@
 	\label{sec:discussion}
 	
 	
+		
+	\subsection{Consequences of the archive reduction}
+	\label{sec:archive_reduction}
+	
+	The performance loss resulting from the reduction of a 47~year archive (1961\textendash 2008, corresponding to the daily time series) to 25~years (1982\textendash 2007, corresponding to the hourly time series in Sect. \ref{sec:mtw}) was assessed with the original method without MTW. Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated on the original archive (see resulting analogue numbers in Table \ref{table:analog_nb}) and were used thereafter.
+	
+	The impact of the archive reduction can be seen in Fig. \ref{fig:plots_CRPSS_2Z} for the 2Z method and in Fig. \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z-2MI method. As expected, a loss of performance was observed for each station, except for that of Aigle, which seemed relatively indifferent to this change. This loss was globally significant, with up to \textendash 1.89 points (\% of CRPSS) for Visp and the 2Z method. 
+	
+	
+	
+	
 	\subsection{Improvement of the selection of analogue situations}
 	
 	For the first level of analogy, the improvement of the S1 criterion (Fig. \ref{fig:changes_S1} bottom) started approximately at 5~\% for the first analogue and reached more than 10~\% for the last (40$^{th}$) (Sect. \ref{sec:perf_2Z}). This increase in improvement with the analogue rank can be explained by the accumulation of better analogues in the selection, with new better situations pushing previous analogues to higher ranks. The curve representing the minimum improvement is mostly superior to zero, meaning that the criteria have been improved on most analogue ranks for every day of the calibration period. All other stations had a similar improvement in the S1 criterion, both in terms of the distribution shape and amplitude. The introduction of the MTW allows finding better analogue situations in the first level of analogy, resulting in a selection of days with better similarity in atmospheric circulation.
@@ -328,7 +319,20 @@
 	Moreover, one can assume that the gain observed here by introducing a MTW should also be found for a better reanalysis dataset. Indeed, a better dataset does not negatively influence the fact that one can find better analogue situations at other hours of the day rather than at fixed hours.
 	
 	
-	\subsection{Relevance of the reconstructed precipitation archives}
+	
+
+	\subsection{Reconstruction of a longer precipitation archive}
+	\label{sec:reconstruction}
+	
+	It would be profitable to be able to apply the MTW to a longer archive (here, 1961\textendash 2008), rather than being limited to the reduced period where the sub-daily precipitation data are available (cf. previous section). Therefore, in order to reconstruct a longer archive of moving 24h totals, two simple disaggregation approaches of the daily precipitation time series were assessed.
+	
+	The first technique was a proportional distribution, where the observed daily precipitations were considered constant during the measuring period (6:00~UTC to 6:00~UTC the next day). Proportional parts of the original daily time series were allocated into a new moving average of 24h totals. 
+	
+	The second approach aimed at getting closer to the chronology of the actual precipitation by relying on some informative variables during the reconstruction procedure. Data from the NCEP/NCAR reanalysis 1 (Sect. \ref{sec:data}) were used for this purpose, despite their rough resolution (2.5\textdegree). Precipitable water and relative humidity (at 1000~hPa, 925~hPa or 850~hPa) were assessed at the four points surrounding the catchment, and a time lapse between both series was allowed to take into account the significant distance separating the weather stations and the reanalysis grid point. The best proxy variable was identified by means of a correlation analyses (on non-zero values) with the 6-hourly precipitation time series over the period 1982\textendash 2007. Once the best proxy had been selected, its temporal profile was used in order to disaggregate the daily precipitation time series.
+
+
+
+
 	
 	The two simple methods assessed to reconstruct precipitation archives (Sect. \ref{sec:reconstruction}) did not result in valuable outputs (Sect. \ref{sec:reconstruction_results}). Indeed, the performance improvement brought by the MTW was lost due to the poor quality of the precipitation archives. A slight improvement could be obtained for the second method relying on a proxy variable compared to the proportional distribution method, but it was still relatively small, and most of the benefit of the MTW was lost. A more recent reanalysis archive with more accurate moisture variables might produce better proxies.
 	
@@ -416,51 +420,43 @@
 	
 	\begin{figure}[htb]
 		\begin{center}
-			\includegraphics[width=8.3cm]{fig02.pdf}
+			\includegraphics[width=8cm]{fig02.pdf}
 		\end{center}
 		\caption{Illustration of the principle of a moving time window. The target situation is the same for the conventional approach and the MTW, while the candidate situations are 4 times as many with the MTW. The larger horizontal bars represent the 24h precipitation totals.}
 		\label{fig:principle}
 	\end{figure}
 	
 	\begin{figure}[htb]
-		\begin{center}
-			\includegraphics[width=8cm]{fig03.pdf}
-		\end{center}
-		\caption{Illustration of the generation of 24h total moving averages by means of a proportional distribution. The colours refer to the corresponding day of the daily time series.}
-		\label{fig:illustration_disaggregation}
-	\end{figure}
-	
-	\begin{figure}[htb]
-		\includegraphics[width=8.3cm]{fig04.pdf}
+		\includegraphics[width=8.3cm]{fig03.pdf}
 		\caption{Performance score (CRPSS) of the AM on the atmospheric circulation at the different stations for (dashed) the full archive, i.e. 1961\textendash 2008; (yellow) the reduced archive, i.e. 1982\textendash 2007; (blue) the introduction of the MTW on the reduced archive; and (green) the recalibrated parameters of the AM with the MTW.}
 		\label{fig:plots_CRPSS_2Z}
 	\end{figure}
 	
 	\begin{figure}[htb]
-		\includegraphics[width=8.3cm]{fig05.pdf}
+		\includegraphics[width=8.3cm]{fig04.pdf}
 		\caption{Same as Figure \ref{fig:plots_CRPSS_2Z}, but for the analogue method with a second level with the moisture variables.}
 		\label{fig:plots_CRPSS_2Z-2MI}
 	\end{figure}
 	
 	\begin{figure*}[htb]
 		\begin{center}
-			\includegraphics[width=15cm]{fig06.pdf}
+			\includegraphics[width=17cm]{fig05.pdf}
 		\end{center}
-		\caption{Changes in the S1 criterion distributions due to the MTW of (a) the $1^{st}$, (b) $5^{th}$, (c) $20^{th}$, and (d) $40^{th}$ analogue ranks for the Ulrichen station over the whole calibration period (1961\textendash 2008).}
+		\caption{Changes in the S1 criterion distributions due to the introduction of a MTW with a 12~h, 6~h or 3~h time step. Distributions are provided for (a) the $1^{st}$, (b) $15^{th}$, and (c) $30^{th}$ analogue ranks for the Ulrichen station.}
 		\label{fig:changes_S1_analogs}
 	\end{figure*}
 	
 	\begin{figure}[htb]
 		\begin{center}
-			\includegraphics[width=8.2cm]{fig07.pdf}
+			\includegraphics[width=8.2cm]{fig06.pdf}
 		\end{center}
-		\caption{Synthesis of the changes in the S1 criterion due to the MTW for the Ulrichen station depending on the rank of the analogue. (a) Quantiles of the S1 distributions with and without the MTW. (b) Quantiles of the relative improvements of the S1 criterion when using the MTW.}
+		\caption{Synthesis of the changes in the S1 criterion due to the MTW (with a 12~h, 6~h, and 3~h time step) for the Ulrichen station depending on the rank of the analogue. (a) Quantiles of the S1 distributions corresponding to the MTW with different time steps (24~h is the standard approach without MTW). (b) Quantiles of the relative improvements of the S1 criterion when using the MTW.}
 		\label{fig:changes_S1}
 	\end{figure}
 	
 	\begin{figure}[htb]
 		\begin{center}
-			\includegraphics[width=8.3cm]{fig08.pdf}
+			\includegraphics[width=8.3cm]{fig07.pdf}
 		\end{center}
 		\caption{Distribution of the median improvements of the S1 criterion due to the MTW depending on daily precipitation thresholds at the Ulrichen station.}
 		\label{fig:changes_S1_precip_threshold}
@@ -468,7 +464,7 @@
 	
 	\begin{figure}[htb]
 		\begin{center}
-			\includegraphics[width=7cm]{fig09.pdf}
+			\includegraphics[width=8.3cm]{fig08.pdf}
 		\end{center}
 		\caption{Seasonal effect on the median reduction of the S1 criterion for the Ulrichen station due to the MTW. DJF: winter, MAM: spring, JJA: summer, and SON: fall.}
 		\label{fig:changes_S1_seasons}
@@ -476,20 +472,20 @@
 	
 	\begin{figure}[htb]
 		\begin{center}
-			\includegraphics[width=8.1cm]{fig10.pdf}
+			\includegraphics[width=8.1cm]{fig09.pdf}
 		\end{center}
 		\caption{Synthesis of the changes in the RMSE criterion due to the MTW for the Ulrichen station depending on the rank of the analogue. (a) Quantiles of the RMSE distributions with and without the MTW. (b) Quantiles of the relative improvements of the RMSE criterion when using the MTW.}
 		\label{fig:changes_RMSE}
 	\end{figure}
 	
 	\begin{figure}[htb]
-		\includegraphics[width=5cm]{fig11.pdf}
+		\includegraphics[width=5cm]{fig10.pdf}
 		\caption{Differences of the CRPSS performance score due to the introduction of the MTW as a function of daily precipitation thresholds at the Ulrichen station. The stars represent averages.}
 		\label{fig:changes_CRPS_precip_threshold}
 	\end{figure}
 	
 	\begin{figure}[htb]
-		\includegraphics[width=8.3cm]{fig12.pdf}
+		\includegraphics[width=8.3cm]{fig11.pdf}
 		\caption{Distribution of the predictor hours on the selected analogue dates, when using the MTW, depending on the season for the Ulrichen station.}
 		\label{fig:hours_selection_per_season}
 	\end{figure}
