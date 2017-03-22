@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="254.0347"
-     inkscape:cy="785.68353"
+     inkscape:zoom="2.0000001"
+     inkscape:cx="216.20714"
+     inkscape:cy="823.34823"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1262,32 +1262,32 @@
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#28ae80;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 200.57525,333.72742 h 79.75963"
+       d="m 220.55454,333.72742 h 79.75963"
        id="path2985-0-6-6"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#28ae80;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 200.57525,339.96786 V 327.46722"
+       d="M 220.55454,339.96786 V 327.46722"
        id="path2987-6-9"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#28ae80;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 280.57525,339.96786 V 327.46722"
+       d="M 300.55454,339.96786 V 327.46722"
        id="path2987-1-3-2"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#28ae80;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 240.53737,346.22742 H 320.297"
+       d="m 260.51666,346.22742 h 79.75963"
        id="path2985-0-6-0-48"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#28ae80;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 240.53737,352.46786 V 339.96722"
+       d="M 260.51666,352.46786 V 339.96722"
        id="path2987-6-7-9"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;stroke:#28ae80;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 320.53737,352.46786 V 339.96722"
+       d="M 340.51666,352.46786 V 339.96722"
        id="path2987-1-3-6-4"
        inkscape:connector-curvature="0" />
     <text
@@ -1300,7 +1300,7 @@
          id="tspan3330-0-0-3-9-2-1-0"
          x="392.2254"
          y="337.06091"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:1">18 h  / 06 h</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:1">24 h  / 12 h</tspan></text>
     <path
        id="path4619-6-0-8-26"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -1316,7 +1316,7 @@
          id="tspan3330-0-0-3-9-2-1-1-8"
          x="392.2254"
          y="349.59998"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:1">30 h  / 18 h</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:1">36 h  / 24 h</tspan></text>
     <path
        id="path4619-6-0-8-2-5"
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -1493,11 +1493,11 @@
          id="tspan3330-0-08"
          x="181.75047"
          y="337.19162"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';text-align:center;text-anchor:middle;stroke-width:1">MTW </tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';text-align:center;text-anchor:middle;stroke-width:1">MTW </tspan><tspan
          sodipodi:role="line"
          x="180.34422"
          y="351.25412"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';text-align:center;text-anchor:middle;stroke-width:1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';text-align:center;text-anchor:middle;stroke-width:1"
          id="tspan1599">12 h</tspan></text>
     <text
        xml:space="preserve"
@@ -1509,11 +1509,11 @@
          id="tspan3330-0-08-9"
          x="181.75047"
          y="370.94162"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';text-align:center;text-anchor:middle;stroke-width:1">MTW </tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';text-align:center;text-anchor:middle;stroke-width:1">MTW </tspan><tspan
          sodipodi:role="line"
          x="180.34422"
          y="385.00412"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';text-align:center;text-anchor:middle;stroke-width:1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';text-align:center;text-anchor:middle;stroke-width:1"
          id="tspan1599-9">06 h</tspan></text>
     <text
        xml:space="preserve"
@@ -1525,11 +1525,11 @@
          id="tspan3330-0-08-9-7"
          x="181.75047"
          y="430.94162"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';text-align:center;text-anchor:middle;stroke-width:1">MTW </tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';text-align:center;text-anchor:middle;stroke-width:1">MTW </tspan><tspan
          sodipodi:role="line"
          x="180.34422"
          y="445.00412"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';text-align:center;text-anchor:middle;stroke-width:1"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.25px;line-height:1.25;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';text-align:center;text-anchor:middle;stroke-width:1"
          id="tspan1599-9-0">03 h</tspan></text>
   </g>
 </svg>
