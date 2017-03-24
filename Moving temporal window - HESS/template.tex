@@ -249,7 +249,7 @@
 	
 	The previous assessment of the performance improvement was established with the original parameters optimized with a fixed time window. However, one can assume that the introduction of the MTW might change the optimum value of some parameters. The calibration (see Sect. \ref{sec:calibration}) should then be reprocessed.
 	
-	After recalibrating, changes in the AM parameters could be observed for both the 2Z and 2Z-2MI methods. Among these, the zonal extent of the spatial windows of the circulation analogy decreased slightly (not shown). More significantly, the optimal number of analogues $N_{1}$ and $N_{2}$ increased after introducing the MTW by a considerable magnitude (Table \ref{table:analog_nb}): 25~\% to 83~\% for the 2Z method and 20~\% to 67~\% for the final selection of the 2Z-2MI method. The number of analogues $N_{1}$ of the first analogy level of the 2Z-2MI method reached three times its previous value for the Visp station ($N_{1}$~=~135 instead of 45; Table \ref{table:analog_nb}). 
+	After recalibrating, changes in the AM parameters could be observed for both the 2Z and 2Z-2MI methods. Among these, the zonal extent of the spatial windows of the circulation analogy decreased slightly (not shown). More significantly, the optimal number of analogues $N_{1}$ and $N_{2}$ increased after introducing the MTW by a considerable magnitude (Fig. \ref{fig:analog_nb}): 25~\% to 83~\% for the 2Z method and 20~\% to 67~\% for the final selection of the 2Z-2MI method. The number of analogues $N_{1}$ of the first analogy level of the 2Z-2MI method reached three times its previous value for the Visp station ($N_{1}$~=~135 instead of 45; Fig. \ref{fig:analog_nb}). 
 	
 	The values of the CRPSS scores for both methods (Fig. \ref{fig:plots_CRPSS_2Z} and \ref{fig:plots_CRPSS_2Z-2MI}) have significantly increased after recalibration. When analysing the change in performance per precipitation class, the results (not shown) were very similar to the observations in Sect. \ref{sec:improvement_CRPSS_precip_threshold}, with a slight performance increase for small precipitation values that can be observed at the expense of higher amounts, due to the higher number of analogues.
 	
@@ -272,7 +272,7 @@
 	\subsection{Consequences of the archive reduction}
 	\label{sec:archive_reduction}
 	
-	The performance loss resulting from the reduction of a 47~year archive (1961\textendash 2008, corresponding to the daily time series) to 25~years (1982\textendash 2007, corresponding to the hourly time series in Sect. \ref{sec:mtw}) was assessed with the original method without MTW. Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated on the original archive (see resulting analogue numbers in Table \ref{table:analog_nb}) and were used thereafter.
+	The performance loss resulting from the reduction of a 47~year archive (1961\textendash 2008, corresponding to the daily time series) to 25~years (1982\textendash 2007, corresponding to the hourly time series in Sect. \ref{sec:mtw}) was assessed with the original method without MTW. Both 2Z (Table \ref{table:method_2Z}) and 2Z-2MI (Table \ref{table:method_2Z-2MI}) methods were considered. The AM parameters were calibrated on the original archive (see resulting analogue numbers in Fig. \ref{fig:analog_nb}) and were used thereafter.
 	
 	The impact of the archive reduction can be seen in Fig. \ref{fig:plots_CRPSS_2Z} for the 2Z method and in Fig. \ref{fig:plots_CRPSS_2Z-2MI} for the 2Z-2MI method. As expected, a loss of performance was observed for each station, except for that of Aigle, which seemed relatively indifferent to this change. This loss was globally significant, with up to \textendash 1.89 points (\% of CRPSS) for Visp and the 2Z method. 
 	
@@ -308,7 +308,7 @@
 	
 	\subsection{On the increase in the number of analogues}
 	
-	After the recalibration of the AMs with the MTW, the optimal analogue numbers were significantly higher than in the original methods (see Sect. \ref{sec:recalibration} and Table \ref{table:analog_nb}). As shown in Fig. \ref{fig:changes_S1}, the improvement of the S1 criterion grew along with the rank of the analogue, which shows an accumulation of better analogue situations in the distributions. It seems profitable to widen the selection of analogues in order to also keep some whose rank has increased, as they appear to be relevant to the prediction of the precipitation values. The number of good analogues was globally increased.
+	After the recalibration of the AMs with the MTW, the optimal analogue numbers were significantly higher than in the original methods (see Sect. \ref{sec:recalibration} and Fig. \ref{fig:analog_nb}). As shown in Fig. \ref{fig:changes_S1}, the improvement of the S1 criterion grew along with the rank of the analogue, which shows an accumulation of better analogue situations in the distributions. It seems profitable to widen the selection of analogues in order to also keep some whose rank has increased, as they appear to be relevant to the prediction of the precipitation values. The number of good analogues was globally increased.
 	
 	A higher number of analogues generally means, with an archive of fixed length, a poorer analogy. Indeed, when the choice of the predictors or the parameters are improved, leading to a better prediction, the optimal number of analogue situations decreases. However, when the length of the archive increases, the optimal number of analogues increases too for a better performance up to a certain threshold \citep[][]{Bontron2004, Hamill2006a}. The observed increase in the number of analogue situations with the MTW resulted in better performance skills for the given methods, as it can be seen as an inflation of the archive. However, if new relevant predictors were added to the method, the number of analogues would then decrease.
 	
@@ -496,6 +496,12 @@
 		\caption{Distribution of the predictor hours on the selected analogue dates, when using the MTW, depending on the season for the Ulrichen station.}
 		\label{fig:hours_selection_per_season}
 	\end{figure}
+
+	\begin{figure}[htb]
+	\includegraphics[width=7.5cm]{fig12.pdf}
+	\caption{Optimal number of analogues (of the first and second level of analogy, respectively, $N_{1}$ and $N_{2}$) of the method based on the atmospheric circulation only (method 2Z) and the method with a second level of analogy with moisture variables (2Z-2MI) on the full archive (Standard), and after recalibration using the MTW (MTW-r).}
+	\label{fig:analog_nb}
+	\end{figure}
 	
 	
 	\clearpage
@@ -538,27 +544,6 @@
 			\end{tabular} 
 		\end{center}
 		\label{table:method_2Z-2MI}
-	\end{table}
-	
-	\begin{table}[htb]
-		\caption{Optimal number of analogues (of the first and second level of analogy, respectively, $N_{1}$ and $N_{2}$) of the method based on the atmospheric circulation only (method 2Z) and the method with a second level of analogy with moisture variables (2Z-2MI) on the full archive (Standard), and after recalibration using the MTW (MTW-r).}
-		\begin{center}
-			\begin{tabular}{l c c c c c c }
-				\hline
-				\multirow{3}{*}{Station} & \multicolumn{3}{c}{Standard} & \multicolumn{3}{c}{MTW-r} \\
-				& 2Z & \multicolumn{2}{c}{2Z-2MI} & 2Z & \multicolumn{2}{c}{2Z-2MI}\\
-				& $N_{1}$ & $N_{1}$ & $N_{2}$ & $N_{1}$ & $N_{1}$ & $N_{2}$\\ 
-				\hline
-				Ulrichen & 40 & 60 & 25 & 50 & 110 & 35\\
-				Zermatt & 35 & 55 & 25 & 55 & 80 & 30\\
-				Visp & 30 & 45 & 25 & 55 & 135 & 35\\
-				Montana & 40 & 55 & 30 & 55 & 110 & 40\\
-				Sion & 40 & 90 & 30 & 55 & 140 & 50\\
-				Aigle & 50 & 100 & 35 & 75 & 135 & 45\\ 
-				\hline
-			\end{tabular}
-		\end{center}	
-		\label{table:analog_nb}
 	\end{table}
 	
 	\begin{table}[htb]
