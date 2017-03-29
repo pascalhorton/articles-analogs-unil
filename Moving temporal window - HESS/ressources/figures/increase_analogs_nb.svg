@@ -282,17 +282,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="-74.207541"
-     inkscape:cy="782.11824"
+     inkscape:zoom="0.7"
+     inkscape:cx="351.99098"
+     inkscape:cy="550.92187"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1138"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1227"
+     inkscape:window-height="902"
+     inkscape:window-x="139"
+     inkscape:window-y="180"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -301,21 +301,22 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     style="display:inline">
     <path
        d="m 58.416142,89.513462 v 1.234722"
        style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.28222221;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
        id="path4499"
        inkscape:connector-curvature="0" />
     <text
-       style="font-variant:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778;font-weight:normal;font-style:normal;font-stretch:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        id="text4503"
        x="53.968082"
        y="96.006401">
@@ -324,7 +325,7 @@
          y="96.006401"
          sodipodi:role="line"
          id="tspan4501"
-         style="stroke-width:0.35277778;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">24h</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">24h</tspan>
     </text>
     <path
        d="m 95.20225,89.513462 v 1.234722"
@@ -332,7 +333,7 @@
        id="path4505"
        inkscape:connector-curvature="0" />
     <text
-       style="font-variant:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778;font-weight:normal;font-style:normal;font-stretch:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        id="text4509"
        x="90.754189"
        y="96.006401">
@@ -341,7 +342,7 @@
          y="96.006401"
          sodipodi:role="line"
          id="tspan4507"
-         style="stroke-width:0.35277778;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">12h</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">12h</tspan>
     </text>
     <path
        d="m 131.98836,89.513462 v 1.234722"
@@ -349,7 +350,7 @@
        id="path4511"
        inkscape:connector-curvature="0" />
     <text
-       style="font-variant:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778;font-weight:normal;font-style:normal;font-stretch:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        id="text4515"
        x="128.94614"
        y="96.006401">
@@ -358,7 +359,7 @@
          y="96.006401"
          sodipodi:role="line"
          id="tspan4513"
-         style="stroke-width:0.35277778;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">6h</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">6h</tspan>
     </text>
     <path
        d="m 168.77446,89.513462 v 1.234722"
@@ -366,7 +367,7 @@
        id="path4517"
        inkscape:connector-curvature="0" />
     <text
-       style="font-variant:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778;font-weight:normal;font-style:normal;font-stretch:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        id="text4521"
        x="165.73224"
        y="96.006401">
@@ -375,13 +376,12 @@
          y="96.006401"
          sodipodi:role="line"
          id="tspan4519"
-         style="stroke-width:0.35277778;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">3h</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">3h</tspan>
     </text>
     <g
        clip-path="url(#clipPath4529)"
        id="g4525"
-       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)"
-       style="">
+       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)">
       <path
          inkscape:connector-curvature="0"
          id="path4531"
@@ -391,17 +391,16 @@
     <g
        clip-path="url(#clipPath4547)"
        id="g4543"
-       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)"
-       style="">
+       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)">
       <path
          inkscape:connector-curvature="0"
          id="path4549"
-         style="fill:none;stroke:#b0b0b0;stroke-width:0.7993701;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0.7993701,6.39496078;stroke-opacity:1;stroke-dashoffset:0"
+         style="fill:none;stroke:#b0b0b0;stroke-width:0.79937011;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0.7993701, 6.39496078;stroke-dashoffset:0;stroke-opacity:1"
          d="M 68.09058,557.31783 H 412.2" />
     </g>
     <text
        id="text4557"
-       style="font-variant:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778;font-weight:normal;font-style:normal;font-stretch:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="44.805424"
        y="76.700012">
       <tspan
@@ -409,22 +408,21 @@
          sodipodi:role="line"
          y="76.700012"
          x="44.805424 47.617104"
-         style="stroke-width:0.35277778;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">25</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">25</tspan>
     </text>
     <g
        clip-path="url(#clipPath4565)"
        id="g4561"
-       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)"
-       style="">
+       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)">
       <path
          inkscape:connector-curvature="0"
          id="path4567"
-         style="fill:none;stroke:#b0b0b0;stroke-width:0.7993701;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0.7993701,6.39496078;stroke-opacity:1;stroke-dashoffset:0"
+         style="fill:none;stroke:#b0b0b0;stroke-width:0.79937011;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0.7993701, 6.39496078;stroke-dashoffset:0;stroke-opacity:1"
          d="M 68.09058,599.34199 H 412.2" />
     </g>
     <text
        id="text4575"
-       style="font-variant:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778;font-weight:normal;font-style:normal;font-stretch:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="44.805424"
        y="61.874825">
       <tspan
@@ -432,22 +430,21 @@
          sodipodi:role="line"
          y="61.874825"
          x="44.805424 47.617104"
-         style="stroke-width:0.35277778;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">50</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">50</tspan>
     </text>
     <g
        clip-path="url(#clipPath4583)"
        id="g4579"
-       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)"
-       style="">
+       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)">
       <path
          inkscape:connector-curvature="0"
          id="path4585"
-         style="fill:none;stroke:#b0b0b0;stroke-width:0.7993701;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0.7993701,6.39496078;stroke-opacity:1;stroke-dashoffset:0"
+         style="fill:none;stroke:#b0b0b0;stroke-width:0.79937011;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0.7993701, 6.39496078;stroke-dashoffset:0;stroke-opacity:1"
          d="M 68.09058,641.36616 H 412.2" />
     </g>
     <text
        id="text4593"
-       style="font-variant:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778;font-weight:normal;font-style:normal;font-stretch:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="44.805424"
        y="47.049633">
       <tspan
@@ -455,22 +452,21 @@
          sodipodi:role="line"
          y="47.049633"
          x="44.805424 47.617104"
-         style="stroke-width:0.35277778;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">75</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">75</tspan>
     </text>
     <g
        clip-path="url(#clipPath4601)"
        id="g4597"
-       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)"
-       style="">
+       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)">
       <path
          inkscape:connector-curvature="0"
          id="path4603"
-         style="fill:none;stroke:#b0b0b0;stroke-width:0.7993701;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0.7993701,6.39496078;stroke-opacity:1;stroke-dashoffset:0"
+         style="fill:none;stroke:#b0b0b0;stroke-width:0.79937011;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:0.7993701, 6.39496078;stroke-dashoffset:0;stroke-opacity:1"
          d="M 68.09058,683.39033 H 412.2" />
     </g>
     <text
        id="text4611"
-       style="font-variant:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778;font-weight:normal;font-style:normal;font-stretch:normal;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="41.993748"
        y="32.224442">
       <tspan
@@ -478,26 +474,12 @@
          sodipodi:role="line"
          y="32.224442"
          x="41.993748 44.805424 47.617104"
-         style="stroke-width:0.35277778;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">100</tspan>
-    </text>
-    <text
-       id="text4615"
-       style="font-variant:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778;font-weight:normal;font-style:normal;font-stretch:normal;"
-       transform="rotate(-90)"
-       x="-83.901131"
-       y="38.99688">
-      <tspan
-         id="tspan4613"
-         sodipodi:role="line"
-         y="38.99688"
-         x="-83.901131 -79.233749 -75.848488 -70.888687 -67.784592 -65.096626 -61.475185 -58.410458 -55.137665 -52.325985 -49.058815 -46.247139 -44.61636 -41.551636 -38.430672 -35.045414 -32.357449"
-         style="stroke-width:0.35277778;-inkscape-font-specification:'Palatino Linotype';font-family:'Palatino Linotype';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">Numberofanalogues</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">100</tspan>
     </text>
     <g
        clip-path="url(#clipPath4623)"
        id="g4619"
-       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)"
-       style="">
+       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)">
       <path
          inkscape:connector-curvature="0"
          id="path4625"
@@ -507,8 +489,7 @@
     <g
        clip-path="url(#clipPath4633)"
        id="g4629"
-       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)"
-       style="">
+       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)">
       <path
          inkscape:connector-curvature="0"
          id="path4635"
@@ -518,8 +499,7 @@
     <g
        clip-path="url(#clipPath4643)"
        id="g4639"
-       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)"
-       style="">
+       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)">
       <path
          inkscape:connector-curvature="0"
          id="path4645"
@@ -529,8 +509,7 @@
     <g
        clip-path="url(#clipPath4653)"
        id="g4649"
-       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)"
-       style="">
+       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)">
       <path
          inkscape:connector-curvature="0"
          id="path4655"
@@ -540,8 +519,7 @@
     <g
        clip-path="url(#clipPath4663)"
        id="g4659"
-       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)"
-       style="">
+       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)">
       <path
          inkscape:connector-curvature="0"
          id="path4665"
@@ -551,8 +529,7 @@
     <g
        clip-path="url(#clipPath4673)"
        id="g4669"
-       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)"
-       style="">
+       transform="matrix(0.35277777,0,0,-0.35277777,28.877383,271.29761)">
       <path
          inkscape:connector-curvature="0"
          id="path4675"
@@ -571,7 +548,7 @@
        d="m 58.416142,164.51634 v 1.23472" />
     <text
        id="text4693"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="53.968082"
        y="171.00928">
       <tspan
@@ -579,7 +556,7 @@
          sodipodi:role="line"
          y="171.00928"
          x="53.968082 56.779758 59.591438"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">24h</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">24h</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -588,7 +565,7 @@
        d="m 95.20225,164.51634 v 1.23472" />
     <text
        id="text4699"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="90.754189"
        y="171.00928">
       <tspan
@@ -596,7 +573,7 @@
          sodipodi:role="line"
          y="171.00928"
          x="90.754189 93.565865 96.377548"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">12h</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">12h</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -605,7 +582,7 @@
        d="m 131.98836,164.51634 v 1.23472" />
     <text
        id="text4705"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="128.94614"
        y="171.00928">
       <tspan
@@ -613,7 +590,7 @@
          sodipodi:role="line"
          y="171.00928"
          x="128.94614 131.75781"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">6h</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">6h</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -622,7 +599,7 @@
        d="m 168.77446,164.51634 v 1.23472" />
     <text
        id="text4711"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="165.73224"
        y="171.00928">
       <tspan
@@ -630,7 +607,7 @@
          sodipodi:role="line"
          y="171.00928"
          x="165.73224 168.54391"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">3h</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">3h</tspan>
     </text>
     <g
        clip-path="url(#clipPath4719)"
@@ -654,7 +631,7 @@
     </g>
     <text
        id="text4747"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="44.805424"
        y="151.70288">
       <tspan
@@ -662,7 +639,7 @@
          sodipodi:role="line"
          y="151.70288"
          x="44.805424 47.617104"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">50</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">50</tspan>
     </text>
     <g
        clip-path="url(#clipPath4755)"
@@ -676,7 +653,7 @@
     </g>
     <text
        id="text4765"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="41.993748"
        y="136.8777">
       <tspan
@@ -684,7 +661,7 @@
          sodipodi:role="line"
          y="136.8777"
          x="41.993748 44.805424 47.617104"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">100</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">100</tspan>
     </text>
     <g
        clip-path="url(#clipPath4773)"
@@ -698,7 +675,7 @@
     </g>
     <text
        id="text4783"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="41.993748"
        y="122.05251">
       <tspan
@@ -706,7 +683,7 @@
          sodipodi:role="line"
          y="122.05251"
          x="41.993748 44.805424 47.617104"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">150</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">150</tspan>
     </text>
     <g
        clip-path="url(#clipPath4791)"
@@ -720,7 +697,7 @@
     </g>
     <text
        id="text4801"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="41.993748"
        y="107.22732">
       <tspan
@@ -728,20 +705,7 @@
          sodipodi:role="line"
          y="107.22732"
          x="41.993748 44.805424 47.617104"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">200</tspan>
-    </text>
-    <text
-       id="text4805"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
-       transform="rotate(-90)"
-       x="-158.90401"
-       y="38.99688">
-      <tspan
-         id="tspan4803"
-         sodipodi:role="line"
-         y="38.99688"
-         x="-158.90401 -154.23662 -150.85136 -145.89156 -142.78748 -140.0995 -136.47806 -133.41333 -130.14053 -127.32887 -124.0617 -121.25002 -119.61923 -116.55452 -113.43356 -110.04829 -107.36033"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">Numberofanalogues</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">200</tspan>
     </text>
     <g
        clip-path="url(#clipPath4813)"
@@ -815,7 +779,7 @@
        d="m 58.416142,239.51921 v 1.23472" />
     <text
        id="text4883"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="53.968082"
        y="246.01215">
       <tspan
@@ -823,7 +787,7 @@
          sodipodi:role="line"
          y="246.01215"
          x="53.968082 56.779758 59.591438"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">24h</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">24h</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -832,7 +796,7 @@
        d="m 95.20225,239.51921 v 1.23472" />
     <text
        id="text4889"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="90.754189"
        y="246.01215">
       <tspan
@@ -840,7 +804,7 @@
          sodipodi:role="line"
          y="246.01215"
          x="90.754189 93.565865 96.377548"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">12h</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">12h</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -849,7 +813,7 @@
        d="m 131.98836,239.51921 v 1.23472" />
     <text
        id="text4895"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="128.94614"
        y="246.01215">
       <tspan
@@ -857,7 +821,7 @@
          sodipodi:role="line"
          y="246.01215"
          x="128.94614 131.75781"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">6h</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">6h</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -866,7 +830,7 @@
        d="m 168.77446,239.51921 v 1.23472" />
     <text
        id="text4901"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="165.73224"
        y="246.01215">
       <tspan
@@ -874,19 +838,7 @@
          sodipodi:role="line"
          y="246.01215"
          x="165.73224 168.54391"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">3h</tspan>
-    </text>
-    <text
-       id="text4905"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
-       x="94.284912"
-       y="253.03252">
-      <tspan
-         id="tspan4903"
-         sodipodi:role="line"
-         y="253.03252"
-         x="94.284912 99.598984 103.04048 110.06968 111.89727 113.52804 118.48785 122.58164 124.96033 126.78792 129.47588"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">MTWtimestep</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">3h</tspan>
     </text>
     <g
        clip-path="url(#clipPath4913)"
@@ -910,7 +862,7 @@
     </g>
     <text
        id="text4941"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="44.805424"
        y="222.89357">
       <tspan
@@ -918,7 +870,7 @@
          sodipodi:role="line"
          y="222.89357"
          x="44.805424 47.617104"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">20</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">20</tspan>
     </text>
     <g
        clip-path="url(#clipPath4949)"
@@ -932,7 +884,7 @@
     </g>
     <text
        id="text4959"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="44.805424"
        y="204.25618">
       <tspan
@@ -940,7 +892,7 @@
          sodipodi:role="line"
          y="204.25618"
          x="44.805424 47.617104"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">40</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">40</tspan>
     </text>
     <g
        clip-path="url(#clipPath4967)"
@@ -954,7 +906,7 @@
     </g>
     <text
        id="text4977"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="44.805424"
        y="185.61879">
       <tspan
@@ -962,20 +914,7 @@
          sodipodi:role="line"
          y="185.61879"
          x="44.805424 47.617104"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">60</tspan>
-    </text>
-    <text
-       id="text4981"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
-       transform="rotate(-90)"
-       x="-233.90688"
-       y="41.808556">
-      <tspan
-         id="tspan4979"
-         sodipodi:role="line"
-         y="41.808556"
-         x="-233.90688 -229.23949 -225.85423 -220.89442 -217.79034 -215.10237 -211.48093 -208.4162 -205.1434 -202.33173 -199.06456 -196.25288 -194.6221 -191.55737 -188.43642 -185.05115 -182.36319"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">Numberofanalogues</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">60</tspan>
     </text>
     <g
        clip-path="url(#clipPath4989)"
@@ -1146,7 +1085,7 @@
        d="m 126.97472,267.05271 h 9.40364" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="57.195675"
        y="38.224007"
        id="text4731"><tspan
@@ -1154,10 +1093,10 @@
          id="tspan4729"
          x="57.195675"
          y="38.224007"
-         style="stroke-width:0.26458332px">(a) 2Z, N1</tspan></text>
+         style="font-size:4.93888903px;stroke-width:0.26458332px">(a) 2Z, N1</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="57.195675"
        y="113.36565"
        id="text4731-2"><tspan
@@ -1165,10 +1104,10 @@
          id="tspan4729-5"
          x="57.195675"
          y="113.36565"
-         style="stroke-width:0.26458332px">(b) 2Z-2MI, N1</tspan></text>
+         style="font-size:4.93888903px;stroke-width:0.26458332px">(b) 2Z-2MI, N1</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="57.195675"
        y="190.62393"
        id="text4731-2-6"><tspan
@@ -1176,7 +1115,7 @@
          id="tspan4729-5-1"
          x="57.195675"
          y="190.62393"
-         style="stroke-width:0.26458332px">(c) 2Z-2MI, N2</tspan></text>
+         style="font-size:4.93888903px;stroke-width:0.26458332px">(c) 2Z-2MI, N2</tspan></text>
     <path
        inkscape:connector-curvature="0"
        id="path4535"
@@ -1184,14 +1123,14 @@
        d="M 52.898227,89.513461 H 51.663505" />
     <text
        id="text4539"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="47.617104"
        y="91.525208">
       <tspan
          id="tspan4537"
          y="91.525208"
          x="47.617104"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">0</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">0</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -1200,14 +1139,14 @@
        d="M 52.898227,164.51635 H 51.663505" />
     <text
        id="text4729"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="47.617104"
        y="166.52809">
       <tspan
          id="tspan4727"
          y="166.52809"
          x="47.617104"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">0</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">0</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -1216,14 +1155,14 @@
        d="M 52.898227,239.51922 H 51.663505" />
     <text
        id="text4923"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.62335634px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
        x="47.617104"
        y="241.53098">
       <tspan
          id="tspan4921"
          y="241.53098"
          x="47.617104"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">0</tspan>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">0</tspan>
     </text>
     <path
        inkscape:connector-curvature="0"
@@ -1295,12 +1234,59 @@
        id="path4973"
        style="display:inline;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.28222221;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
        d="M 52.898228,183.60707 H 51.663506" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-80.728691"
+       y="38.784466"
+       id="text4735"
+       transform="rotate(-90)"><tspan
+         sodipodi:role="line"
+         id="tspan4733"
+         x="-80.728691"
+         y="38.784466"
+         style="font-size:4.93888903px;stroke-width:0.26458332px">Number of analogues</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-156.3996"
+       y="38.784466"
+       id="text4735-3"
+       transform="rotate(-90)"><tspan
+         sodipodi:role="line"
+         id="tspan4733-9"
+         x="-156.3996"
+         y="38.784466"
+         style="font-size:4.93888903px;stroke-width:0.26458332px">Number of analogues</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-230.483"
+       y="38.784466"
+       id="text4735-3-5"
+       transform="rotate(-90)"><tspan
+         sodipodi:role="line"
+         id="tspan4733-9-6"
+         x="-230.483"
+         y="38.784466"
+         style="font-size:4.93888903px;stroke-width:0.26458332px">Number of analogues</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="95.519485"
+       y="252.9507"
+       id="text4735-3-5-6"><tspan
+         sodipodi:role="line"
+         id="tspan4733-9-6-9"
+         x="95.519485"
+         y="252.9507"
+         style="font-size:4.93888903px;stroke-width:0.26458332px">MTW time step</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Layer 2"
-     style="display:none">
+     style="display:inline">
     <path
        inkscape:connector-curvature="0"
        id="path4681"

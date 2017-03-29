@@ -362,9 +362,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="557.44698"
-     inkscape:cy="705.99155"
+     inkscape:zoom="0.7"
+     inkscape:cx="195.74639"
+     inkscape:cy="840.21336"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -410,69 +410,21 @@
            id="tspan7890">24h</tspan>
       </text>
     </g>
-    <g
-       id="g9801"
-       transform="translate(4.1320826,-9.9482016)">
-      <path
-         d="m 64.198944,169.76 h 9.403644 v -3.29127 h -9.403644 z"
-         style="fill:none;stroke:#28ae80;stroke-width:0.55299997;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-         id="path7894"
-         inkscape:connector-curvature="0" />
-      <text
-         y="169.76001"
-         x="77.364044"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68425703px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
-         id="text7898">
-        <tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778"
-           x="77.364044 81.790665 84.657433 90.512756 92.854881 96.368073"
-           y="169.76001"
-           sodipodi:role="line"
-           id="tspan7896">MTW12h</tspan>
-      </text>
-    </g>
-    <g
-       id="g9796"
-       transform="translate(4.6809831,-10.289877)">
-      <path
-         d="m 107.22934,170.10168 h 9.40364 v -3.29128 h -9.40364 z"
-         style="fill:none;stroke:#33638d;stroke-width:0.55299997;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-         id="path7900"
-         inkscape:connector-curvature="0" />
-      <text
-         y="170.10168"
-         x="120.39444"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68425703px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
-         id="text7904">
-        <tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778"
-           x="120.39444 124.82106 127.68783 133.54315 135.88527 139.39847"
-           y="170.10168"
-           sodipodi:role="line"
-           id="tspan7902">MTW06h</tspan>
-      </text>
-    </g>
-    <g
-       id="g9791"
-       transform="translate(5.2298937,-10.898817)">
-      <path
-         d="m 150.25973,170.71062 h 9.40364 v -3.29128 h -9.40364 z"
-         style="fill:none;stroke:#440154;stroke-width:0.55299997;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-         id="path7906"
-         inkscape:connector-curvature="0" />
-      <text
-         y="170.71062"
-         x="163.42484"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.68425703px;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277778"
-         id="text7910">
-        <tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778"
-           x="163.42484 167.85146 170.71822 176.57355 178.91566 182.42886"
-           y="170.71062"
-           sodipodi:role="line"
-           id="tspan7908">MTW03h</tspan>
-      </text>
-    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path7894"
+       style="fill:none;stroke:#28ae80;stroke-width:0.55299997;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       d="m 68.331027,159.8118 h 9.403644 v -3.29127 h -9.403644 z" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path7900"
+       style="fill:none;stroke:#33638d;stroke-width:0.55299997;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       d="m 111.91032,159.8118 h 9.40364 v -3.29128 h -9.40364 z" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path7906"
+       style="fill:none;stroke:#440154;stroke-width:0.55299997;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       d="m 155.48962,159.8118 h 9.40364 v -3.29128 h -9.40364 z" />
     <g
        id="g9781">
       <path
@@ -1758,5 +1710,38 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';stroke-width:0.35277778">Median</tspan>
       </text>
     </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="81.15406"
+       y="159.68552"
+       id="text4822"><tspan
+         sodipodi:role="line"
+         id="tspan4820"
+         x="81.15406"
+         y="159.68552"
+         style="font-size:4.6813612px;stroke-width:0.26458332px">12h-MTW</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="125.17858"
+       y="159.85139"
+       id="text4822-0"><tspan
+         sodipodi:role="line"
+         id="tspan4820-1"
+         x="125.17858"
+         y="159.85139"
+         style="font-size:4.68136168px;stroke-width:0.26458332px">6h-MTW</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="168.68561"
+       y="159.88243"
+       id="text4822-6"><tspan
+         sodipodi:role="line"
+         id="tspan4820-3"
+         x="168.68561"
+         y="159.88243"
+         style="font-size:4.68136168px;stroke-width:0.26458332px">3h-MTW</tspan></text>
   </g>
 </svg>
