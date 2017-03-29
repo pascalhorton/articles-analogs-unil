@@ -222,6 +222,8 @@
 	
 	The introduction of an MTW was previously found to show greater improvement of the S1 criterion for days with higher precipitation values (Sect. \ref{sec:changes_analogy_circul}). The impact of the MTW was then assessed in terms of change of prediction skill, on the whole period, per precipitation classes (for the target day). Figure \ref{fig:changes_CRPS_precip_threshold} synthesizes these differences for the Ulrichen station, using the original parameters with the MTW. It shows that, after the introduction of the MTW, the performance score was in average further improved (reduced CRPS) for days with higher precipitation than for non-rainy days and small precipitation values. When recalibrating the parameters using the MTW, the spread of the changes in CRPS tended to decrease, but with a slight loss in performance for the most rainy days.
 	
+	Reliability diagrams were also performed on the VP for both the 2Z and 2Z-2MI methods and for the exceedence of percentiles 80~\% (P80 -- 4~mm), 90~\% (P90 -- 9.5~mm), and 95~\% (P95 -- 17.5~mm) at the Ulrichen station (Fig. \ref{fig:reliability_diagrams}). Reliability diagrams plot the observed frequency against the predicted probability of a binary event -- a threshold exceedence in our case.	For perfectly calibrated predictions, the curve should be as close as possible to the diagonal. The VP only contains six years (Sect. \ref{sec:data_methods}), and thus higher variability is present for higher thresholds, the curves being smoother and closer to the diagonals for the CP, which is longer. Figure \ref{fig:reliability_diagrams} shows that the MTW improved the reliability for both 2Z and 2Z-2MI methods and for all thresholds, as the curves move toward the diagonal with a decreasing MTW time step. For P80, the 3h-MTW predictions fits very well the observations. When considering higher thresholds, the 2Z-2MI method is generall better than 2Z. The case of a P95 threshold shows a conditional dry bias associated with larger forecast probabilities for the considered AMs, which is however substantially reduced by the 3h-MTW. This conditional dry bias means here that the AM did not predict the event with a probability equal to 1 for example for 2Z. Obtaining a probability of 1 would mean that all analogue dates for a certain target date would be above the threshold. As the number of analogue dates is 30 in this case, it becomes less likely to have 30 values above the threshold when it increases. This issue is the topic of an ongoing work. However, as one can see in Figure \ref{fig:reliability_diagrams}e\&d, the introduction of an MTW, especially with a 3h timse step, improves partly this missmatch.
+	
 
 	\section{Discussion}
 	\label{sec:discussion}
@@ -422,9 +424,9 @@
 	
 	\begin{figure*}[htb]
 		\begin{center}
-			\includegraphics[width=15cm]{fig12.pdf}
+			\includegraphics[width=14cm]{fig12.pdf}
 		\end{center}
-		\caption{............}
+		\caption{Reliability diagrams for the (a, c, e) 2Z method and (b, d, f) the 2Z-2MI method and the prediction of the exceedence of percentiles (a, b) 80~\%, (c, d) 90~\% and (e, f) 95~\% at the Ulrichen station. The percentiles were processed on the whole period and the plots were established on the VP only. The conventional method (24h) is provided as well as the 12h-MTW, 6h-MTW and 3h-MTW.}
 		\label{fig:reliability_diagrams}
 	\end{figure*}
 
