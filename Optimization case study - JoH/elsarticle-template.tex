@@ -84,13 +84,13 @@
 \section{Introduction}
 \label{sec:intro}
 
-The analogue method (AM) is a downscaling technique based on the idea expressed by \citet{Lorenz1956, Lorenz1969} that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Duband1970}. It uses predictor variables describing the synoptic atmospheric circulation in order to predict local-scale predictands of interest. It is often used to predict daily precipitation, either in an operational forecasting context \citep[e.g.][]{Guilbaud1997, Bontron2005, Hamill2006, Bliefernicht2010, Marty2012, Horton2012, Horton2016a, Hamill2015, BenDaoud2016} or a climate downscaling context \citep[e.g.][]{Radanovics2013, Chardon2014, Dayon2015, Raynaud2016b}. Other predictands are also considered, such as precipitation radar images \citep{Panziera2011,Foresti2015a}, temperature \citep{Radinovic1975, Woodcock1980, Kruizinga1983, DelleMonache2013, Caillouet2016, Raynaud2016b}, wind \citep{Gordon1987, DelleMonache2013, DelleMonache2011, Vanvyve2015, Alessandrini2015, Junk2015, Junk2015c}, solar power \citep{Alessandrini2015a, Bessa2015}, snow avalanches \citep{Obled1980, Bolognesi1993}, and radiation \citep{Bois1981, Raynaud2016b}.
+The analogue method (AM) is a downscaling technique based on the idea expressed by \citet{Lorenz1956, Lorenz1969} that similar situations in terms of atmospheric circulation are likely to lead to similar local weather \citep{Duband1970}. It uses predictor variables describing the synoptic atmospheric circulation in order to predict local-scale predictands of interest. It is often used to predict daily precipitation, either in an operational forecasting context \citep[e.g.][]{Guilbaud1997, Bontron2005, Hamill2006, Bliefernicht2010, Marty2012, Horton2012, Horton2016a, Hamill2015, BenDaoud2016} or a climate downscaling context \citep[e.g.][]{Radanovics2013, Chardon2014, Dayon2015, Raynaud2016b}. Other predictands are also considered, such as precipitation radar images \citep{Panziera2011,Foresti2015a}, temperature \citep{Radinovic1975, Woodcock1980, Kruizinga1983, DelleMonache2013, Caillouet2016, Raynaud2016b}, wind \citep{Gordon1987, DelleMonache2013, DelleMonache2011, Vanvyve2015, Alessandrini2015, Junk2015, Junk2015c}, and solar radiation or power production \citep{Alessandrini2015a, Bessa2015, Raynaud2016b}.
 
-In real-time forecasting, it is used mainly by practitioners, notably hydropower companies or flood forecasting services, that need to anticipate water yields or issue early flood warnings several days in advance. The classical forecasting chain consists of using limited area models (e.g. AROME, or COSMO) forced by global NWP (numerical weather prediction) models with a lower resolution. However, their use requires very important processing capacities, and the resulting forecast still presents large uncertainties and biases. Although these outputs are essential, they can be supplemented by other sources of forecasts providing useful information. In contrast to local NWP models, AMs can transform at low cost the synoptic-scale information provided by the global NWP model into precipitation forecasts, by using the natural local behaviour in response to synoptic-scale influences stored in the archive of observed precipitation. Running an AM approach is fast enough that it can search for analogues for each day, up to ten days ahead, eventually for the different traces of an ensemble forecast and/or those issued by different NWP models (e.g. NOAA-GFS or ECMWF-IFS), in a matter of minutes.
+In real-time forecasting, it is used mainly by practitioners, notably hydropower companies or flood forecasting services, that need to anticipate water yields or issue early flood warnings several days in advance. The classical forecasting chain consists of using limited area models (e.g. AROME, or COSMO) forced by global NWP (numerical weather prediction) models with a lower resolution. However, their use requires very important processing capacities, and the resulting forecast still presents large uncertainties and biases. Although these outputs are essential, they can be supplemented by other sources of forecasts providing useful information. In contrast to local NWP models, AMs can transform at low cost the synoptic-scale information provided by the global NWP model into precipitation forecasts. They rely on the inherent relationship between the synoptic-scale influences and the related local weather that can be exploited from the archive of observed precipitation. Running an AM approach is fast enough that it can search for analogues for each day, up to ten days ahead, in a matter of seconds to minutes. It can eventually use the different members of an ensemble forecast and/or those issued by different NWP models (e.g. NOAA-GFS or ECMWF-IFS).
 
 In climate studies, AMs are used to downscale the outputs of a general circulation model (GCM) or regional climate model (RCM) simulation runs \citep{Dayon2015} or to reconstruct past weather conditions \citep{Caillouet2016}. In future climate studies, RCMs are often used to dynamically downscale precipitation to a local scale. However, even though the relevance of RCMs' outputs increases, a bias correction of the outputs is often still required, particularly in complex terrain. Moreover, their application is computer-intensive, which makes it difficult to cover all combinations of climate scenarios and GCMs. Therefore, the idea is to bypass the small-scale simulations and to go from the large-scale situation to the end variables such as precipitation by statistical downscaling \citep{Maraun2010}. 
 
-Beyond being computationally inexpensive, another big advantage of AMs is that they create realistic precipitation patterns for a region, provided that the analogue dates are the same, since they are based on observed situations with consistent spatial distribution \citep{Radanovics2013, Chardon2014}. For the same reason, they can also provide multivariate predictions that are physically consistent \citep{Raynaud2016b}.
+The spatial transferability of AMs is analysed in \citet{Chardon2014} and \citet{Radanovics2013}, and their temporal transferability in \citet{Dayon2015} and \citet{Caillouet2016}. The physical consistency of multivariate predictions is presented in  \citet{Raynaud2016b}.
 
 The method can be designed with multiple successive subsampling steps, or analogy levels, each of them relying on different meteorological variables. A certain number of parameters define the relationship between predictors and predictands, such as the choice of the predictor variable, its pressure level and temporal window to consider, the spatial domain to use for the comparison, as well as the analogy criterion itself, and finally, the number of analogue situations to keep at each subsampling level. These parameters are usually calibrated by means of a semi-automatic sequential procedure \citep{Bontron2004, Radanovics2013}, i.e. by optimizing each single parameter, one at a time, in an arbitrarily chosen order, with no or little reassessment. This sequential approach therefore has strong limitations: (i) it cannot automatically choose the optimal pressure levels and the temporal windows for a given meteorological variable, (ii) it cannot handle dependencies between the parameters within a level of analogy, and even less between them, and (iii) it cannot easily handle new degrees of freedom, such as a possible weighting between the pressure levels. Thus, even if the processing involved is relatively fast, the sequential approach requires laborious assessments of predictor combinations (variables, pressure levels, temporal windows), and presents a high risk of ending in a local optimum because of subjective initial choices and lack of consideration of parameter inter-dependencies. Other calibration methods exist for specific applications, such as radar images \citep{Panziera2011, Foresti2015a}.
 
@@ -103,7 +103,7 @@ The data, AMs, and optimization techniques (sequential and GAs) are presented in
 \label{sec:data_methods}
 
 
-\subsection{Case study description}
+\subsection{Description of study area}
 \label{sec:case_study}
 
 The study area is the alpine upper Rh\^{o}ne catchment in Switzerland (Fig.\ \ref{fig:map}). The altitude ranges from 372 to 4634~m.a.s.l.\ and the area is 5524~km$^{2}$. This region is the target of the MINERVE (Mod\'{e}lisation des Intemp\'{e}ries de Nature Extr\^{e}me sur les Rivi\`{e}res Valaisannes et de leurs Effets) project, which aimed at real-time flood management on the upper Rh\^{o}ne catchment \citep{GarciaHernandez2009b}. Even though the region is rather small, the meteorological influences related to extreme weather conditions vary substantially within it \citep[see][]{Horton2012}. Indeed, a high spatial variability of precipitation climatology exists, which is due to the complex orography of the region, and the mix of various meteorological influences. Based on different climatological analyses, the precipitation gauge stations in the catchment were clustered in ten subregions (Fig.\ \ref{fig:map}):
@@ -129,7 +129,7 @@ AMs rely on two types of data: predictors, which are atmospheric variables descr
 
 Predictors are generally extracted from reanalysis datasets. The NCEP-NCAR reanalysis I \citep[6-hourly, 17 pressure levels at a resolution of 2.5\degree, see][]{Kalnay1996} was used here, but it could have been any other reanalysis dataset.
 
-The predictand (which is to be predicted) is here the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss network stations, for the period 1961--2008. The time series from every available gauge station were averaged over the ten subregions (Fig.\ \ref{fig:map}), which were approximately 500~km$^{2}$ each, in order to smooth local effects \citep{Obled2002, Marty2012}. This helps account for local variability, mainly when convective processes are involved, which slightly increases the prediction skill.
+The predictand (which is to be predicted) is here the daily precipitation (6~a.m. to 6~a.m. the next day) measured at the MeteoSwiss network stations, for the period 1961--2008. The time series from every available gauge station were averaged over the ten subregions (Fig.\ \ref{fig:map}), which were approximately 500~km$^{2}$ each, in order to smooth local effects \citep{Obled2002, Marty2012}. This helps accounting for local variability, mainly when convective processes are involved, which slightly increases the prediction skill.
 
 It must be stressed that the predictand here is a temporally cumulated variable, compared to the meteorological predictors, which may be considered instantaneous. Depending on the duration of the accumulation period (here 24~h, but could have been 6~h, 12~h, or more than 24~h), the choice of predictors will vary. 
 
@@ -152,11 +152,11 @@ S1=100 \frac {\displaystyle \sum_{i} \vert \Delta\hat{z}_{i} - \Delta z_{i} \ver
 \end{equation}
 where $\Delta \hat{z}_{i}$ is the difference in geopotential height between the \textit{i}-th pair of adjacent points of gridded data describing the target situation, and $\Delta z_{i}$ is the corresponding observed geopotential height difference in the candidate situation. The differences are processed separately in both North and East directions over the selected spatial domain. The smaller the S1 values, the more similar the pressure fields.
 
-\citet{Bontron2005} show that the geopotential height at 500~hPa (Z500) and 1000~hPa (Z1000) are the best first predictors of the NCEP/NCAR reanalysis I dataset, and that the S1 criterion performs better than scores based on absolute distances. The reason for such better results is that the S1 criterion allows comparison of the circulation patterns, by means of the gradients, rather than the absolute value of the geopotential height, which better represent the flow direction. To cope with seasonal effects, candidate dates are extracted within a period of four months centred around the target date, for every year of the archive. This method using two geopotential heights is named here 2Z.
+\citet{Bontron2005} showed that the geopotential height at 500~hPa (Z500) and 1000~hPa (Z1000) are the best first predictors of the NCEP/NCAR reanalysis I dataset, and that the S1 criterion performs better than scores based on absolute distances. The reason for such better results is that the S1 criterion allows comparison of the circulation patterns, by means of the gradients, rather than the absolute value of the geopotential height, which better represent the flow direction. To cope with seasonal effects, candidate dates are extracted within a period of four months centred around the target date, for every year of the archive. This method using two geopotential heights is named here 2Z.
 
 The $N_{1}$ dates with the lowest values of S1 are considered as analogues to the target day. The number of analogues, $N_{1}$, is a parameter to calibrate. Then, the daily observed precipitation amount for the $N_{1}$ resulting dates provide the empirical conditional distribution, considered as the probabilistic prediction for the target day.
 
-The other most well-known parametrization adds a second level of analogy on the moisture variables (method 2Z-2MI, Table \ref{table:params_R2}). The predictor that \citet{Bontron2004} found optimal for France is a moisture index made of the product of the total precipitable water (TPW) with the relative humidity at 850~hPa (RH850). \cite{Horton2012a} confirms that this index is also better for the Swiss Alps than any other variable from the NCEP/NCAR reanalysis I considered independently. When adding a second level of analogy, $N_{2}$ dates are subsampled within the $N_{1}$ analogues of the atmospheric circulation, to end up with a smaller number of analogue situations. When this second level of analogy is added, a higher number of analogues $N_{1}$ is kept on the first level. Moisture fields are not as well-predicted by NWP models as pressure variables. This implies that the 2Z-2MI method, when used in real-time forecasting, is very dependent on the skill of the NWP model in predicting moisture fields, and thus its use is often restricted to the first lead times.
+The other most well-known parametrization adds a second level of analogy on the moisture variables (method 2Z-2MI, Table \ref{table:params_R2}). The predictor that \citet{Bontron2004} found optimal for France is a moisture index made of the product of the total precipitable water (TPW) with the relative humidity at 850~hPa (RH850). \cite{Horton2012a} confirms that this index is also better for the Swiss Alps than any other variable from the NCEP/NCAR reanalysis I considered independently. When adding a second level of analogy, $N_{2}$ dates are subsampled within the $N_{1}$ analogues of the atmospheric circulation, to end up with a smaller number of analogue situations. When this second level of analogy is added, a higher number of analogues $N_{1}$ is kept on the first level. Prediction of moisture fields by NWP models are more model-dependent and more uncertain than pressure variables. This implies that the 2Z-2MI method, when used in real-time forecasting, is very dependent on the skill of the NWP model in predicting moisture fields. Therefore its use is often restricted to the first lead times.
 
 
 \subsection{Performance assessment}
@@ -191,7 +191,7 @@ AMs are usually calibrated by a semi-automatic sequential procedure, as elaborat
 		\item Meteorological variable
 		\item Pressure level
 		\item Temporal window (hour of the day)
-		\item Initial analogue numbers
+		\item Number of analogues
 	\end{enumerate}
 	
 	\item For every level of analogy:
@@ -201,7 +201,7 @@ AMs are usually calibrated by a semi-automatic sequential procedure, as elaborat
 		\item The number of analogue situations $N_{1}$ is then reconsidered and optimized for the current level of analogy.
 	\end{enumerate}
 	\item A new level of analogy can then be added, based on other variables (such as the moisture index) with some chosen pressure levels, temporal windows, and initial number of analogues $N_{2}$. The procedure starts again from step 2 (calibration of the spatial window and the number of analogues) for the new level. The parameters calibrated on the previous analogy levels are fixed and do not change. 
-	\item Finally, the numbers of analogues $N_{1}$ and $N_{2}$ for the different levels of analogy are reassessed by systematic increments.
+	\item Finally, the numbers of analogues $N_{1}$ and $N_{2}$ for the different levels of analogy are reassessed. This is done iteratively by varying the number of analogues of each level in a systematic way.
 \end{enumerate}
 
 The calibration is done in successive steps with a limited number of parameters. Previously calibrated parameters are generally not reassessed (except for the number of analogues).
@@ -232,7 +232,7 @@ The analogy of the atmospheric circulation was optimized for the ten subregions 
 
 The reference method for the analogy of the atmospheric circulation (2Z, Table \ref{table:params_R1}), based on Z500 and Z1000, was first considered. The optimizer had to choose simultaneously the number of analogues, both spatial windows with no overlapping constraint (i.e. they can differ from one pressure level to another), as well as the temporal windows (hours of observation of the geopotential), which cannot be achieved with the sequential calibration technique. The performance score (CRPSS) was slightly improved, with these limited degrees of freedom, relative to the 2Z reference method calibrated with the sequential procedure. Some tests showed that most of the gains were due to the non-overlapping spatial windows. This demonstrated that the optimizer was able to obtain relevant parameters for a simple method.
 
-Then, an additional degree of freedom was provided to the GAs by letting them choose the pressure levels along with the other parameters (analogue numbers, spatial and temporal windows), which is also a non-automated process in the sequential calibration. This degree of freedom increased the optimization time, and might decrease the number of simulations that converge to a single solution. However, most solutions were very close in terms of the performance score, which was further improved. The selected pressure levels were Z500 or Z700 for the upper level, and Z925 or Z1000 (most often) for the lower level.
+Then, an additional degree of freedom was provided to the GAs by letting them choose the pressure levels along with the other parameters (number of analogues, spatial and temporal windows), which is also a non-automated process in the sequential calibration. This degree of freedom increased the optimization time, and might decrease the number of simulations that converge to a single solution. However, most solutions were very close in terms of the performance score, which was further improved. The selected pressure levels were Z500 or Z700 for the upper level, and Z925 or Z1000 (most often) for the lower level.
 
 Parallel analyses showed that the analogy of circulation is incomplete, and that geopotential heights still contain relevant information that can improve the statistical relationship. Therefore, a third, followed by a fourth circulation predictor were added (still only geopotential heights). There was no constraint on the predictors, so that the same pressure level could be selected more than once. Further improvements were found in the performance score, both for the CP and the VP, confirming that this additional information was beneficial for the quality of the prediction. 
 
@@ -299,7 +299,7 @@ The CRPSS scores of the optimized 4Zo-2MIo method are provided in Figure \ref{fi
 
 When optimizing a method consisting of two levels of analogy, the introduction of moisture variables in the second level has an influence on the parameter values of the first level. This means that the two levels of analogy bring complementary information, and are thus not independent. This is first visible in the number $N_{1}$ of analogues to be selected on the first level, and in the selection of the pressure levels for the circulation analogy. If the change in the optimal value of $N_{1}$ was already known, a change in the optimal pressure levels for the circulation analogy has never been identified before.
 
-As for the sequential procedure, the optimal value of $N_{1}$ increased when adding a second level of analogy (Figure \ref{fig:figure_nb_analogs}). One can also see that the optimal number of analogues $N_{2}$ for the second level of analogy of 4Zo-2MIo was slightly inferior to $N_{1}$ from 4Zo, but very close. There is a globally common tendency between the optimal analogue number values of both methods: $N_{1}$ of the 4Zo method, and $N_{1}$ and $N_{2}$ of 4Zo-2MIo tend to be higher or lower together for a given region.
+As for the sequential procedure, the optimal value of $N_{1}$ increased when adding a second level of analogy (Figure \ref{fig:figure_nb_analogs}). One can also see that the optimal number of analogues $N_{2}$ for the second level of analogy of 4Zo-2MIo was slightly inferior to $N_{1}$ from 4Zo, but very close. There is a globally common tendency between the optimal number of analogues of both methods: $N_{1}$ of the 4Zo method, and $N_{1}$ and $N_{2}$ of 4Zo-2MIo tend to be higher or lower together for a given region.
 
 The optimal final numbers of analogues did not vary much: $23 \leq N_{1} \leq 33$ for 4Zo and $21 \leq N_{2} \leq 28$ for 4Zo-2MIo. However, the optimal number of the $N_{1}$ analogues of the first level of 4Zo-2MIo varied to a greater extent: $48 \leq N_{1} \leq 84$. In this latter method, it may be problematic to consider a fixed and unique value for all regions.
 
@@ -325,7 +325,7 @@ The optimization of the AM by means of GAs has been undertaken in successive sta
 
 \begin{itemize}
 	\item Using four pressure levels for the circulation analogy seemed to be an optimal number for the studied region, length of archive available, and target predictand considered. Beyond four, the validation score was more variable, revealing a loss in robustness due to over-parametrization.
-	\item The automatic and joint optimization of all parameters: the analogue numbers, selection of pressure levels and temporal windows, and spatial windows. These parameters are highly interdependent, so one needs to optimize them jointly in order to identify optimal combinations. Indeed, there is a strong interdependence between space and time in the atmospheric circulation, so that, e.g. the spatial window should move upstream the main atmospheric flow for earlier temporal windows.
+	\item The automatic and joint optimization of all parameters: the number of analogues, selection of pressure levels and temporal windows, and spatial windows. These parameters are highly interdependent, so one needs to optimize them jointly in order to identify optimal combinations. Indeed, there is a strong interdependence between space and time in the atmospheric circulation, so that, e.g. the spatial window should move upstream the main atmospheric flow for earlier temporal windows.
 	\item The introduction of distinct spatial windows between pressure levels. The synoptic circulation is characterized by features with very different scales depending on the height, and important information for predicting precipitation is not necessarily located in the same area from one level to another.
 	\item The weighting of the analogy criteria between different pressure levels. This can be influenced by the variability of the geopotential height with altitude, or the levels of significance in regards to the meteorological processes specific to a region. There is a trend in the weighting of circulation predictors to decrease with the increase in pressure, as one can see in Figure \ref{fig:levels_weights_average} for the three optimized methods. However, the values remained approximately equal. This may not be the most influencing factor, and we may suggest removing it first when trying to reduce the degrees of freedom.
 	\item The joint optimization of the circulation and moisture analogy levels, which are usually calibrated successively. We were able to demonstrate that there is a dependency between the analogy levels, and that in order to approach the optimal parameters, one must consider them jointly.
@@ -378,67 +378,67 @@ The authors would also like to acknowledge the work of Loris Foresti and another
 %% FIGURES
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=9cm]{figures/fig01.pdf}}
-	\caption{Location of the alpine Rh\^{o}ne catchment in Switzerland. (source: Swisstopo)}
+	\centerline{\includegraphics[width=7.9cm]{fig01.pdf}}
+	\caption{Location of the alpine Rh\^{o}ne catchment in Switzerland and its discretization into ten subregions. (source: Swisstopo)}
 	\label{fig:map}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=9cm]{figures/fig02.pdf}}
-	\caption{Performance score (CRPSS) for CP and VP for three stations (1 - Swiss Chablais; 5 - Southern valleys; 8 - Southeast ridges) when varying the number of geopotential height levels available to the optimizer.}
+	\centerline{\includegraphics[width=7.9cm]{fig02.pdf}}
+	\caption{Performance score (CRPSS) for CP and VP for three regions (1 - Swiss Chablais; 5 - Southern valleys; 8 - Southeast ridges) when varying the number of geopotential height levels available to the optimizer.}
 	\label{fig:figure_nb_levels}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.4cm]{figures/fig03.pdf}}
-	\caption{Optimized spatial windows for the 4Zo method (analogy of the atmospheric circulation on four pressure levels).}
+	\centerline{\includegraphics[width=7.9cm]{fig03.pdf}}
+	\caption{Optimized spatial windows for each region for the 4Zo method (analogy of the atmospheric circulation on four pressure levels). The spatial windows are different from a pressure level to another.}
 	\label{fig:spatial_windows_4Zo}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=9cm]{figures/fig04.pdf}}
+	\centerline{\includegraphics[width=7.9cm]{fig04.pdf}}
 	\caption{Performance score (CRPSS) of the reference method 2Z (Table \ref{table:params_R1}) and the optimized 4Zo method for CP and VP for every subregion.}
 	\label{fig:figure_crpss_4Zo}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.4cm]{figures/fig05.pdf}}
+	\centerline{\includegraphics[width=7.9cm]{fig05.pdf}}
 	\caption{Losses or gains (in \%) in CRPSS from applying optimized parameters for the series in columns to those in rows. Method 4Zo, calibration and validation periods.}
 	\label{fig:crossing_4Zo}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.4cm]{figures/fig06.pdf}}
+	\centerline{\includegraphics[width=7.9cm]{fig06.pdf}}
 	\caption{Optimized spatial windows for the 4Zo-2MIo method (analogy of atmospheric circulation on four pressure levels and analogy on the moisture index on two pressure levels).}
 	\label{fig:spatial_windows_4Zo-2MIo}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=9cm]{figures/fig07.pdf}}
+	\centerline{\includegraphics[width=7.9cm]{fig07.pdf}}
 	\caption{Performance score (CRPSS) of the reference method 2Z-2MI (Table \ref{table:params_R2}) and the optimized 4Zo-2MIo method for CP and VP for every subregion.}
 	\label{fig:figure_crpss_4Zo-2HIo}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=8.4cm]{figures/fig08.pdf}}
+	\centerline{\includegraphics[width=7.9cm]{fig08.pdf}}
 	\caption{Losses or gains (in \%) of the CRPSS from applying optimized parameters for the series in columns to those in rows. Method 4Zo-2MIo, calibration and validation periods.}
 	\label{fig:crossing_4Zo-2MIo}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=9cm]{figures/fig09.pdf}}
+	\centerline{\includegraphics[width=7.9cm]{fig09.pdf}}
 	\caption{Optimal numbers of analogues for the different regions and the two methods, resulting from optimization. Method 4Zo is made of a single level of analogy with $N_{1}$ analogues, whereas 4Zo-2MIo has two levels of analogy with $N_{1}$ and $N_{2}$ analogues.}
 	\label{fig:figure_nb_analogs}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=9cm]{figures/fig10.png}}
+	\centerline{\includegraphics[width=7.9cm]{fig10.pdf}}
 	\caption{Distribution of optimal weights for the predictors of the first level of analogy (geopotential heights) of (blue) 4Zo, (red) 4Zo-2MIo, and (green) 4Zo-4MIo methods. Results are for the ten subregions. Geopotential heights are sorted by increasing pressure and hour.}
 	\label{fig:levels_weights_average}
 \end{figure}
 
 \begin{figure}[t]
-	\centerline{\includegraphics[width=7.5cm]{figures/fig11.pdf}}
+	\centerline{\includegraphics[width=7.9cm]{fig11.pdf}}
 	\caption{Example of evolution of the performance score of the best individual over eight independent optimizations.}
 	\label{fig:evolution}
 \end{figure}
