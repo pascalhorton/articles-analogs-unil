@@ -114,11 +114,11 @@
 	
 	Then, $N_{1}$ dates with the lowest values of S1 are considered as analogues to the target day, where $N_{1}$ needs to be calibrated (Sect. \ref{sec:calibration}). Finally, the daily observed precipitation amount of the corresponding dates provide the empirical conditional distribution considered as the probabilistic prediction for the target day. This method is referred to as 2Z.
 	
-	The second reference method \citep[2Z-2MI, Table \ref{table:method_2Z-2MI};][]{Bontron2005} adds a subsequent level of analogy with moisture variables, which are compared by means of the root--mean--square error (RMSE):
+	The second reference method \citep[2Z-2MI, Table \ref{table:method_2Z-2MI};][]{Bontron2005} adds a subsequent level of analogy with moisture variables, which are compared by means of the root--mean--square error (RMSE) criteria:
 	
 	\begin{equation}
 	\label{eq:RMSE}
-	E_{RMS}= \sqrt[]{ \frac{1}{n} \sum_{i=1}^{n}(\hat{v}_{i} - v_{i})^{2}} ,
+	C_{RMSE}= \sqrt[]{ \frac{1}{n} \sum_{i=1}^{n}(\hat{v}_{i} - v_{i})^{2}} ,
 	\end{equation}
 	where $\hat{v}_{i}$ is the \textit{i}th predictor value from the grid of the target situation, $v_{i}$ is the corresponding observed value in the candidate situation, and $n$ is the number of points in the grid.
 	
@@ -158,7 +158,7 @@
 	
 	\begin{equation}
 	\label{eq:CRPS}
-	S_{\text{CRP}} = \int_{-\infty}^{+\infty} \left[ F(y)-\text{H}(y-y^{0})\right]^{2} \text{d}y ,  
+	S_{\text{CRPS}} = \int_{-\infty}^{+\infty} \left[ F(y)-\text{H}(y-y^{0})\right]^{2} \text{d}y ,  
 	\end{equation}
 	where $\text{H}(y-y^{0})$ is the Heaviside function, which is null when $y-y^{0}<0$ and has the value of 1 otherwise.
 	
