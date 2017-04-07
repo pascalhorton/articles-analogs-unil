@@ -14,7 +14,7 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.1 r15371"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="changes_S1_precip_threshold.svg">
   <defs
      id="defs2">
@@ -235,14 +235,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="77.853883"
+     inkscape:cx="27.853883"
      inkscape:cy="623.86964"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1138"
-     inkscape:window-x="-8"
+     inkscape:window-width="1680"
+     inkscape:window-height="987"
+     inkscape:window-x="1672"
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
@@ -1597,22 +1597,24 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.30729151px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="30.61607"
        y="32.038692"
-       id="text6017"><tspan
+       id="text6017"
+       sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan6015"
          x="30.61607"
          y="32.038692"
-         style="font-size:5.64444447px;stroke-width:0.26458332px">(a) 3h-MTW</tspan></text>
+         style="font-size:5.64444447px;stroke-width:0.26458332px">(a) 3-h MTW</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.30729175px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="30.616072"
        y="169.62206"
-       id="text6017-3"><tspan
+       id="text6017-3"
+       sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan6015-5"
          x="30.616072"
          y="169.62206"
-         style="font-size:5.64444447px;stroke-width:0.26458332px">(b) 6h-MTW</tspan></text>
+         style="font-size:5.64444447px;stroke-width:0.26458332px">(b) 6-h MTW</tspan></text>
   </g>
 </svg>

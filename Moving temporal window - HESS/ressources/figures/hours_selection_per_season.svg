@@ -14,7 +14,7 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.1 r15371"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="hours_selection_per_season.svg">
   <defs
      id="defs2">
@@ -835,14 +835,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="-25.227145"
-     inkscape:cy="381.9001"
+     inkscape:cx="527.62788"
+     inkscape:cy="92.155708"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1138"
-     inkscape:window-x="-8"
+     inkscape:window-width="1680"
+     inkscape:window-height="987"
+     inkscape:window-x="1672"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      showborder="false" />
@@ -2496,34 +2496,37 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="18.575233"
        y="-3.822598"
-       id="text7789"><tspan
+       id="text7789"
+       sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7787"
          x="18.575233"
          y="-3.822598"
-         style="stroke-width:0.26458332px">(a) 12h-MTW</tspan></text>
+         style="stroke-width:0.26458332px">(a) 12-h MTW</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="18.575233"
        y="123.66876"
-       id="text7789-3"><tspan
+       id="text7789-3"
+       sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7787-2"
          x="18.575233"
          y="123.66876"
-         style="stroke-width:0.26458332px">(b) 6h-MTW</tspan></text>
+         style="stroke-width:0.26458332px">(b) 6-h MTW</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:125%;font-family:'Palatino Linotype';-inkscape-font-specification:'Palatino Linotype';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="18.575233"
        y="247.49388"
-       id="text7789-3-1"><tspan
+       id="text7789-3-1"
+       sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan7787-2-8"
          x="18.575233"
          y="247.49388"
-         style="stroke-width:0.26458332px">(c) 3h-MTW</tspan></text>
+         style="stroke-width:0.26458332px">(c) 3-h MTW</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
